@@ -1,1 +1,3 @@
-export const InfoCard = {};
+export const InfoCard = () => {
+	return <></>;
+};
