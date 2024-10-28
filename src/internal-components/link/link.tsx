@@ -1,26 +1,39 @@
-import { LinkProps } from './link.types';
+import React from 'react';
+import type { LinkProps } from './link.types';
 
-export const Link: React.FC<LinkProps> = ({ href, children, ...props }) => {
-	let NextLink;
+let NextLink: any;
+
+// Check for Next.js Link at module level
+if (typeof window !== 'undefined') {
 	try {
-		// Dynamically import Next.js Link if available
 		NextLink = require('next/link').default;
-	} catch (error) {
+	} catch {
 		NextLink = null;
 	}
+}
 
-	if (NextLink) {
+export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(({ href, children, prefetch, ...props }, ref) => {
+	// If Next.js Link is available and href is internal
+	if (NextLink && !href.startsWith('http') && !href.startsWith('//')) {
 		return (
-			<NextLink href={href} {...props}>
+			<NextLink href={href} ref={ref} prefetch={prefetch} {...props}>
 				{children}
 			</NextLink>
 		);
 	}
 
-	// Fallback for React projects
+	// Fallback to regular anchor for external links or non-Next.js projects
 	return (
-		<a href={href} {...props}>
+		<a
+			href={href}
+			ref={ref}
+			{...props}
+			// Add security attributes for external links
+			{...(href.startsWith('http') || href.startsWith('//') ? { rel: 'noopener noreferrer', target: '_blank' } : {})}
+		>
 			{children}
 		</a>
 	);
-};
+});
+
+Link.displayName = 'Link';
