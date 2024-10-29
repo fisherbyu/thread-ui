@@ -1,4 +1,8 @@
 // Theme Types:
+export { BaseColorOptions } from './theme/colors/colors.types';
+export { ExpandedColorOptions } from './theme/colors/colors.types';
+export { ColorShades } from './theme/colors/colors.types';
+export { ExpandedColorShades } from './theme/colors/colors.types';
 
 // Element Props
 
