@@ -12,3 +12,7 @@ export { ThemeColors } from './theme/colors/themeColors.types';
 
 // Size
 export { ThemeSizes } from './theme/size/themeSizes.types';
+
+// Border
+export { BorderSizes } from './theme/borders/borders.types';
+export { ThemeBorders } from './theme/borders/themeBorders.types';
