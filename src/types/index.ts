@@ -1,4 +1,7 @@
-// Theme Types:
+// THEME TYPES
+export { Theme } from './theme/theme.types';
+
+// Color Types
 export { BaseColorOptions } from './theme/colors/colors.types';
 export { ExpandedColorOptions } from './theme/colors/colors.types';
 export { ColorShades } from './theme/colors/colors.types';
