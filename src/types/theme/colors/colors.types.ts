@@ -2,8 +2,6 @@ export type BaseColorOptions = 'light' | 'medium' | 'dark';
 
 export type ExpandedColorOptions = 'extra-light' | BaseColorOptions | 'extra-dark';
 
-export type TextColorOptions = 'primary' | 'secondary' | 'disabled';
-
 export type ColorShades = {
 	light: string;
 	medium: string;
@@ -19,6 +17,12 @@ export type ExpandedColorShades = {
 };
 
 export type LevelColorShades = {
-	light: 'string';
-	dark: 'string';
+	light: string;
+	dark: string;
+};
+
+export type TextColorShades = {
+	primary: string;
+	secondary: string;
+	disabled: string;
 };
