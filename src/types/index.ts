@@ -1,4 +1,4 @@
-// Color Types:
+// Theme Types:
 
 // Element Props
 
