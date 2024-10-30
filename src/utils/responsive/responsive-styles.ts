@@ -1,14 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../theme/theme-provider';
-
-type ResponsiveStylesProps = {
-	base: number | string;
-	sm?: number | string;
-	md?: number | string;
-	lg?: number | string;
-	xl?: number | string;
-	xxl?: number | string;
-};
+import { ResponsiveStylesProps } from './responsive-styles.types';
 
 export function useResponsiveStyles(values: ResponsiveStylesProps) {
 	const theme = useTheme();
