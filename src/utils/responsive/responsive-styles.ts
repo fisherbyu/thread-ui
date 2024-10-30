@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../theme/theme-provider';
 
+type ResponsiveBreakpoints = {
+	base: number | string;
+	sm: number | string;
+	md: number | string;
+	lg: number | string;
+	xl: number | string;
+	xxl: number | string;
+};
+
+type ResponsiveStylesProps = {};
+
 type BreakpointKey = 'base' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 type ResponsiveValue<T> = Partial<Record<BreakpointKey, T>>;
 
