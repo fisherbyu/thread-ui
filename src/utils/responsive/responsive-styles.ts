@@ -1,28 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../theme/theme-provider';
 
-type ResponsiveBreakpoints = {
+type ResponsiveStylesProps = {
 	base: number | string;
-	sm: number | string;
-	md: number | string;
-	lg: number | string;
-	xl: number | string;
-	xxl: number | string;
+	sm?: number | string;
+	md?: number | string;
+	lg?: number | string;
+	xl?: number | string;
+	xxl?: number | string;
 };
 
-type ResponsiveStylesProps = {};
-
-type BreakpointKey = 'base' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
-type ResponsiveValue<T> = Partial<Record<BreakpointKey, T>>;
-
-export function useResponsiveStyles<T>(values: ResponsiveValue<T> | T) {
+export function useResponsiveStyles(values: ResponsiveStylesProps) {
 	const theme = useTheme();
-	const [currentValue, setCurrentValue] = useState<T | undefined>();
+	const [currentValue, setCurrentValue] = useState<number | string>(values.base);
 	const [windowWidth, setWindowWidth] = useState(0);
-
-	// Convert single value to responsive object
-	const responsiveValues: ResponsiveValue<T> =
-		typeof values === 'object' && !Array.isArray(values) ? (values as ResponsiveValue<T>) : { base: values as T };
 
 	useEffect(() => {
 		setWindowWidth(window.innerWidth);
@@ -38,22 +29,28 @@ export function useResponsiveStyles<T>(values: ResponsiveValue<T> | T) {
 	useEffect(() => {
 		const breakpoints = theme.sizes;
 
-		let newValue = responsiveValues.base;
+		// Start with base value
+		let newValue = values.base;
 
-		if (windowWidth >= breakpoints.xxl && responsiveValues.xxl) {
-			newValue = responsiveValues.xxl;
-		} else if (windowWidth >= breakpoints.xl && responsiveValues.xl) {
-			newValue = responsiveValues.xl;
-		} else if (windowWidth >= breakpoints.lg && responsiveValues.lg) {
-			newValue = responsiveValues.lg;
-		} else if (windowWidth >= breakpoints.md && responsiveValues.md) {
-			newValue = responsiveValues.md;
-		} else if (windowWidth >= breakpoints.sm && responsiveValues.sm) {
-			newValue = responsiveValues.sm;
+		// Only override if the breakpoint exists and window width matches
+		if (windowWidth >= breakpoints.sm && values.sm !== undefined) {
+			newValue = values.sm;
+		}
+		if (windowWidth >= breakpoints.md && values.md !== undefined) {
+			newValue = values.md;
+		}
+		if (windowWidth >= breakpoints.lg && values.lg !== undefined) {
+			newValue = values.lg;
+		}
+		if (windowWidth >= breakpoints.xl && values.xl !== undefined) {
+			newValue = values.xl;
+		}
+		if (windowWidth >= breakpoints.xxl && values.xxl !== undefined) {
+			newValue = values.xxl;
 		}
 
 		setCurrentValue(newValue);
-	}, [windowWidth, responsiveValues, theme]);
+	}, [windowWidth, values, theme]);
 
 	return currentValue;
 }
