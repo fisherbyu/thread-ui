@@ -1,4 +1,6 @@
-export const InfoCard = () => {
+import { InfoCardProps } from './info-card.types';
+
+export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 	const page = {
 		id: 1,
 		title: 'string',
@@ -10,22 +12,72 @@ export const InfoCard = () => {
 		img: 'https://images.unsplash.com/photo-1685397166786-b43234186139?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb',
 	};
 	return (
-		<div className="mx-auto rounded-lg border bg-card text-card-foreground shadow-sm my-3 overflow-hidden max-h-60 w-[391px] h-[241px]">
+		<div
+			style={{
+				marginLeft: 'auto',
+				marginRight: 'auto',
+				borderRadius: '0.5rem',
+				border: '1px solid',
+				backgroundColor: 'var(--card-background)',
+				color: 'var(--card-foreground)',
+				boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+				marginTop: '0.75rem',
+				marginBottom: '0.75rem',
+				overflow: 'hidden',
+				maxHeight: '15rem',
+				width: '391px',
+				height: '241px',
+			}}
+		>
 			<a href={page.url}>
-				<span className=" cursor-pointer">
-					<div className="overflow-hidden w-full h-5/6">
-						<img className="h-auto min-h-full w-auto min-w-full" src={page.img} alt="recipe cover" />
+				<span style={{ cursor: 'pointer' }}>
+					<div
+						style={{
+							overflow: 'hidden',
+							width: '100%',
+							height: '83.333333%',
+						}}
+					>
+						<img
+							style={{
+								height: 'auto',
+								minHeight: '100%',
+								width: 'auto',
+								minWidth: '100%',
+							}}
+							src={page.img}
+							alt="recipe cover"
+						/>
 					</div>
-					<div className="p-2 h-1/6">
-						<span className="flex justify-start items-center">
+					<div
+						style={{
+							padding: '0.5rem',
+							height: '16.666667%',
+						}}
+					>
+						<span
+							style={{
+								display: 'flex',
+								justifyContent: 'flex-start',
+								alignItems: 'center',
+							}}
+						>
 							{page.icon.type === 'emoji' ? (
-								<span className=" pr-1" role="img">
+								<span style={{ paddingRight: '0.25rem' }} role="img">
 									{JSON.parse(`"${page.icon.content}"`)}
 								</span>
 							) : (
-								<img className="pr-1" height={23} width={23} src={page.icon.content} alt="Recipe Logo" />
+								<img
+									style={{
+										paddingRight: '0.25rem',
+										height: '23px',
+										width: '23px',
+									}}
+									src={page.icon.content}
+									alt="Recipe Logo"
+								/>
 							)}
-							<p className=" text-sm">{page.title}</p>
+							<p style={{ fontSize: '0.875rem' }}>{page.title}</p>
 						</span>
 					</div>
 				</span>
