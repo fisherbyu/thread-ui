@@ -1,27 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../theme/theme-provider';
-import { CSSProperties } from 'react';
 
-// Helper types
-type CSSPropertyValue<T extends keyof CSSProperties> = CSSProperties[T];
 type BreakpointKey = 'base' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+type ResponsiveValue<T> = Partial<Record<BreakpointKey, T>>;
 
-// Type to ensure CSS property keys are valid
-type CSSPropertyKey = keyof CSSProperties;
-
-// Type for the values object
-type ResponsiveValues<T> = Partial<Record<BreakpointKey, T>>;
-
-export function useResponsiveStyles<T extends CSSPropertyKey>(
-	property: T,
-	values: ResponsiveValues<CSSPropertyValue<T>> | CSSPropertyValue<T>
-) {
+export function useResponsiveStyles<T>(values: ResponsiveValue<T> | T) {
 	const theme = useTheme();
-	const [currentValue, setCurrentValue] = useState<CSSPropertyValue<T>>();
+	const [currentValue, setCurrentValue] = useState<T | undefined>();
 	const [windowWidth, setWindowWidth] = useState(0);
 
 	// Convert single value to responsive object
-	const responsiveValues: ResponsiveValues<CSSPropertyValue<T>> = typeof values === 'object' ? values : { base: values };
+	const responsiveValues: ResponsiveValue<T> =
+		typeof values === 'object' && !Array.isArray(values) ? (values as ResponsiveValue<T>) : { base: values as T };
 
 	useEffect(() => {
 		setWindowWidth(window.innerWidth);
