@@ -1,2 +1,2 @@
 // Theme
-export { DEFAULT_THEME } from './theme-defaults/default-theme';
+export { DEFAULT_THEME } from './theme/default-theme';
