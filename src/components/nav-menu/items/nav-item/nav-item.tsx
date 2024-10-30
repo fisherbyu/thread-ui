@@ -8,18 +8,6 @@ export const NavItem = ({ title, href }: NavItemProps) => {
 	const theme = useTheme();
 
 	const styles = {
-		// container: {
-		// 	display: 'inline-flex',
-		// 	height: '2.5rem',
-		// 	alignItems: 'center',
-		// 	justifyContent: 'center',
-		// 	borderRadius: '0.375rem',
-		// 	backgroundColor: theme.colors.background.light,
-		// 	fontSize: '0.875rem',
-		// 	fontWeight: 500,
-		// 	// transition: 'all 150ms cubic-bezier(0.4, 0, 0.2, 1)',
-		// },
-
 		link: {
 			display: 'inline-flex',
 			height: '2.5rem',
