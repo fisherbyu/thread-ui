@@ -1,4 +1,4 @@
-import { ThemeBorders } from '../../../types';
+import { ThemeBorders } from '../../types';
 
 export const DEFAULT_BORDERS: ThemeBorders = {
 	size: {

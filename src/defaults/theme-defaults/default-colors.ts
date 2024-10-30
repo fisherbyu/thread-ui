@@ -1,4 +1,4 @@
-import { ThemeColors } from '../../../types';
+import { ThemeColors } from '../../types';
 
 export const DEFAULT_COLORS: ThemeColors = {
 	// Primary Color Themes

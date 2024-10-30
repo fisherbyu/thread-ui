@@ -1,4 +1,4 @@
-import { ThemeSizes } from '../../../types';
+import { ThemeSizes } from '../../types';
 
 export const DEFAULT_SIZES: ThemeSizes = {
 	sm: 640,
