@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useResponsiveStyles } from '../../../../utils/responsive/responsive-styles';
 import { NavItemProps } from './nav-item.types';
 import { Link } from '../../../../internal-components';
 import { useTheme } from '../../../../utils/theme/theme-provider';
@@ -31,7 +31,7 @@ export const NavItem = ({ title, href }: NavItemProps) => {
 			fontSize: '0.875rem',
 			fontWeight: 500,
 			padding: '0.5rem 1rem',
-			width: 'fit-content',
+			width: useResponsiveStyles({ base: '100%', lg: 'fit-content' }),
 			textDecoration: 'none',
 			transition: 'all 150ms ease-in-out',
 		},
