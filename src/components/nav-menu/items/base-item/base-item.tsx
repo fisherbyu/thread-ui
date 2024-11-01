@@ -18,14 +18,15 @@ export const BaseItem = ({ title, href, padding }: BaseItemProps) => {
 			fontSize: '0.875rem',
 			fontWeight: 500,
 			padding: padding ?? '0.5rem 1rem',
-			width: useResponsiveStyles({ base: '100%', lg: 'fit-content' }),
+			width: useResponsiveStyles({ base: '100%', sm: 'fit-content' }),
 			textDecoration: 'none',
 			transition: 'all 150ms ease-in-out',
+			margin: 'auto',
 		},
 
 		linkHover: {
 			backgroundColor: theme.colors.gray.light,
-			color: theme.colors.text.light.secondary,
+			color: theme.colors.gray.dark,
 		},
 	};
 
