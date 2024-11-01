@@ -57,6 +57,10 @@ export const DEFAULT_COLORS: ThemeColors = {
 		light: '#f8fafc',
 		dark: '#18181b',
 	},
+	structure: {
+		light: '#e5e7eb',
+		dark: '#e5e7eb',
+	},
 	// Text
 	text: {
 		light: {

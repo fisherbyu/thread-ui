@@ -20,6 +20,7 @@ export type ThemeColors = {
 	// Layers
 	background: LevelColorShades;
 	surface: LevelColorShades;
+	structure: LevelColorShades;
 
 	// Text
 	text: {
