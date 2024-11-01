@@ -19,9 +19,6 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			zIndex: '40',
 			backgroundColor: theme.colors.background.light,
 		},
-		span: {
-			color: useResponsiveStyles({ base: 'blue', md: 'black' }),
-		},
 
 		nav: {
 			width: '100%',
