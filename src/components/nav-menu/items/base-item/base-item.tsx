@@ -7,6 +7,11 @@ export const BaseItem = ({ children, href, padding }: BaseItemProps) => {
 	const theme = useTheme();
 
 	const styles = {
+		li: {
+			display: 'flex',
+			alignItems: 'center',
+			listStyleType: 'none',
+		},
 		link: {
 			display: 'inline-flex',
 			height: '2.5rem',
@@ -34,7 +39,7 @@ export const BaseItem = ({ children, href, padding }: BaseItemProps) => {
 	const [isHovered, setIsHovered] = React.useState(false);
 
 	return (
-		<li style={{ listStyleType: 'none' }}>
+		<li style={styles.li}>
 			<Link
 				href={href}
 				style={{
