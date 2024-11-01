@@ -7,3 +7,6 @@ export * from './components/nav-menu/items/nav-item/nav-item';
 
 // Export Types
 export * from './types';
+
+//
+export { BaseItem } from './components/nav-menu/items/base-item';
