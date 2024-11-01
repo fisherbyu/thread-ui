@@ -1,2 +1,2 @@
-export { NavDropDownItemProps } from './nav-drop-down-item.types';
-export { NavDropDownItem } from './nav-drop-down-item';
+export { NavDropdownItemProps } from './nav-drop-down-item.types';
+export { NavDropdownItem } from './nav-drop-down-item';
