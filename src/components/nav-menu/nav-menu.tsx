@@ -1,6 +1,7 @@
 import { CSSProperties } from 'react';
 import { NavMenuProps } from './nav-menu.types';
-import { useTheme } from '../../utils';
+import { useResponsiveStyles, useTheme } from '../../utils';
+import { NavIconItem } from './items/nav-icon-item';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	const theme = useTheme();
@@ -18,12 +19,31 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			zIndex: '40',
 			backgroundColor: theme.colors.background.light,
 		},
+		span: {
+			color: useResponsiveStyles({ base: 'blue', md: 'black' }),
+		},
+
+		nav: {
+			width: '100%',
+			marginRight: 'auto',
+			marginLeft: 'auto',
+			paddingRight: '32px',
+			paddingLeft: '32px',
+			position: 'relative',
+			display: 'flex',
+			columnGap: '20px',
+			justifyContent: useResponsiveStyles({ base: 'space-between ', lg: 'flex-start' }),
+			alignItems: 'center',
+		},
 	};
 
 	return (
 		<>
 			<header id="site-menu" style={style.header}>
-				<nav className=" container relative mx-auto w-full flex gap-x-5 justify-between lg:justify-start items-center"></nav>
+				<nav style={style.nav}>
+					{logo && <NavIconItem href={logo.href} logo={logo.logo} />}
+					<span>x</span>
+				</nav>
 			</header>
 		</>
 	);
