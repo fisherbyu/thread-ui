@@ -2,6 +2,8 @@ import { CSSProperties } from 'react';
 import { NavMenuProps } from './nav-menu.types';
 import { useResponsiveStyles, useTheme } from '../../utils';
 import { NavIconItem } from './items/nav-icon-item';
+import { NavItemProps } from './items/nav-item';
+import { NavDropdownItemProps } from './items/nav-drop-down-item/nav-drop-down-item.types';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	const theme = useTheme();
@@ -34,8 +36,8 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		},
 	};
 
-	const _renderNavItem = () => {};
-	const _renderNavDropdown = () => {};
+	const _renderNavItem = ({ href, title }: NavItemProps) => {};
+	const _renderNavDropdown = ({ title, items }: NavDropdownItemProps) => {};
 
 	return (
 		<>
