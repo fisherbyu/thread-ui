@@ -1,16 +1,8 @@
+import { NavDropdownItemProps } from './items/nav-drop-down-item/nav-drop-down-item.types';
 import { NavIconItemProps } from './items/nav-icon-item';
 import { NavItemProps } from './items/nav-item';
 
-type NavLogo = {
-	href: string;
-	logo: React.ReactNode;
-};
-type NavItem = {
-	href: string;
-	title: string;
-};
-
 export type NavMenuProps = {
-	logo?: NavLogo;
-	items: NavItem[];
+	logo?: NavIconItemProps;
+	items: (NavItemProps | NavDropdownItemProps)[];
 };
