@@ -17,7 +17,7 @@ export const BaseItem = ({ children, href, padding }: BaseItemProps) => {
 			color: theme.colors.text.light.primary,
 			fontSize: '0.875rem',
 			fontWeight: 500,
-			padding: padding ?? '0.5rem 1rem',
+			padding: padding ?? '8px 16px',
 			width: useResponsiveStyles({ base: '100%', sm: 'fit-content' }),
 			textDecoration: 'none',
 			transition: 'all 150ms ease-in-out',
