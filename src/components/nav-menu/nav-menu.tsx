@@ -34,6 +34,9 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		},
 	};
 
+	const _renderNavItem = () => {};
+	const _renderNavDropdown = () => {};
+
 	return (
 		<>
 			<header id="site-menu" style={style.header}>
