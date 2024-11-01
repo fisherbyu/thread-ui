@@ -1,1 +1,1 @@
-export { NavItem } from './items/nav-item';
+export { NavMenu } from './nav-menu';
