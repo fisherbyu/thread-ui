@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
+
 export type BaseItemProps = {
-	title: string;
+	children: ReactNode;
 	href: string;
 	padding?: string;
 };

@@ -3,7 +3,7 @@ import { useTheme, useResponsiveStyles } from '../../../../utils';
 import { BaseItemProps } from './base-item.types';
 import { Link } from '../../../../internal-components';
 
-export const BaseItem = ({ title, href, padding }: BaseItemProps) => {
+export const BaseItem = ({ children, href, padding }: BaseItemProps) => {
 	const theme = useTheme();
 
 	const styles = {
@@ -44,7 +44,7 @@ export const BaseItem = ({ title, href, padding }: BaseItemProps) => {
 				onMouseEnter={() => setIsHovered(true)}
 				onMouseLeave={() => setIsHovered(false)}
 			>
-				{title}
+				{children}
 			</Link>
 		</li>
 	);
