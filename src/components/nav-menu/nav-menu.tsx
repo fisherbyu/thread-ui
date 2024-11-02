@@ -81,6 +81,8 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		},
 
 		menuItemBlock: {
+			animationDuration: '300ms',
+			animationTimingFunction: 'linear',
 			position: useResponsiveStyles({ base: 'absolute', lg: 'relative' }) as React.CSSProperties['position'],
 			top: useResponsiveStyles({ base: '100%', lg: '0px' }),
 			left: '0px',
@@ -95,7 +97,6 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			width: useResponsiveStyles({ base: '100%', lg: 'max-content' }),
 			display: useResponsiveStyles({ base: 'block', lg: 'flex' }),
 			columnGap: '24px',
-			transitionProperty: 'none',
 		},
 
 		menuOpenItemBlock: {
@@ -103,15 +104,15 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			transitionTimingFunction: 'linear',
 			visibility: 'visible',
 			opacity: 1,
-			transform: 'translate(0px, 0px) rotate(0deg) skewX(0deg) skewY(0deg) scaleX(1) scaleY(1)',
+			transform: 'translateY(0)',
 		},
 
 		menuCloseItemBlock: {
 			transitionDuration: '300ms',
 			transitionTimingFunction: 'linear',
 			transform: useResponsiveStyles({
-				base: 'translate(0px, 2.5rem) rotate(0deg) skewX(0deg) skewY(0deg) scaleX(1) scaleY(1)',
-				lg: 'translate(0px, 0px) rotate(0deg) skewX(0deg) skewY(0deg) scaleX(1) scaleY(1)',
+				base: 'translateY(2.5rem)', // translate-y-10 (10 * 0.25rem = 2.5rem)
+				lg: 'translateY(0)',
 			}),
 			opacity: useResponsiveStyles({ base: '0', lg: '1' }),
 			visibility: useResponsiveStyles({ base: 'hidden', lg: 'visible' }) as React.CSSProperties['visibility'],
