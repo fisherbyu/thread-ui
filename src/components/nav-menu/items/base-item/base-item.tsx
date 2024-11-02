@@ -23,7 +23,7 @@ export const BaseItem = ({ children, href, padding }: BaseItemProps) => {
 			fontSize: '0.875rem',
 			fontWeight: 500,
 			padding: padding ?? '8px 16px',
-			width: useResponsiveStyles({ base: '100%', sm: 'fit-content' }),
+			width: useResponsiveStyles({ base: '100%', lg: 'fit-content' }),
 			textDecoration: 'none',
 			transition: 'all 150ms ease-in-out',
 			margin: 'auto',
