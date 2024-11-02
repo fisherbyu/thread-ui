@@ -5,7 +5,6 @@ import { NavIconItem } from './items/nav-icon-item';
 import { NavItem, NavItemProps } from './items/nav-item';
 import { NavDropdownItemProps } from './items/nav-drop-down-item/nav-drop-down-item.types';
 import { NavDropdownItem } from './items/nav-drop-down-item';
-import { relative } from 'path';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	// Navmenu Controls
