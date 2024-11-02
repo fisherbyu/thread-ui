@@ -1,4 +1,4 @@
-import { CSSProperties, useState } from 'react';
+import { CSSProperties, useEffect, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
 import { useResponsiveStyles, useTheme } from '../../utils';
 import { NavIconItem } from './items/nav-icon-item';
@@ -7,7 +7,49 @@ import { NavDropdownItemProps } from './items/nav-drop-down-item/nav-drop-down-i
 import { NavDropdownItem } from './items/nav-drop-down-item';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
+	// Navmenu Controls
 	const [navIsOpened, setNavIsOpened] = useState(false);
+	const closeNavbar = () => {
+		setNavIsOpened(false);
+	};
+	const toggleNavbar = () => {
+		setNavIsOpened((navIsOpened) => !navIsOpened);
+	};
+
+	// Dropdown Control
+	const [isDropdownHovered, setIsDropdownHovered] = useState(false);
+	const handleMusicHover = (hovered: boolean) => {
+		setIsDropdownHovered(hovered);
+	};
+
+	useEffect(() => {
+		const onResize = () => {
+			closeNavbar();
+		};
+
+		window.addEventListener('resize', onResize);
+	}, []);
+
+	useEffect(() => {
+		const handleOutsideClick = (event: MouseEvent) => {
+			// Check if the click is outside of the menu
+			const menu = document.getElementById('site-menu');
+			const isClickInsideMenu = menu && menu.contains(event.target as Node);
+
+			if (!isClickInsideMenu) {
+				console.log('out');
+				console.log('Close Here');
+				closeNavbar();
+			}
+		};
+
+		document.addEventListener('click', handleOutsideClick);
+
+		return () => {
+			document.removeEventListener('click', handleOutsideClick);
+		};
+	}, []);
+
 	const theme = useTheme();
 	const style: Record<string, CSSProperties> = {
 		header: {
@@ -37,7 +79,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			alignItems: 'center',
 		},
 
-		menuItems: {
+		menuItemBlock: {
 			position: useResponsiveStyles({ base: 'absolute', lg: 'relative' }) as React.CSSProperties['position'],
 			top: useResponsiveStyles({ base: '100%', lg: '0px' }),
 			left: '0px',
@@ -55,7 +97,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			transitionProperty: 'none',
 		},
 
-		menuOpenItems: {
+		menuOpenItemBlock: {
 			transitionDuration: '300ms',
 			transitionTimingFunction: 'linear',
 			visibility: 'visible',
@@ -63,7 +105,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			transform: 'translate(0px, 0px) rotate(0deg) skewX(0deg) skewY(0deg) scaleX(1) scaleY(1)',
 		},
 
-		menuCloseItems: {
+		menuCloseItemBlock: {
 			transitionDuration: '300ms',
 			transitionTimingFunction: 'linear',
 			transform: useResponsiveStyles({
@@ -73,6 +115,20 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			opacity: useResponsiveStyles({ base: '0', lg: '1' }),
 			visibility: useResponsiveStyles({ base: 'hidden', lg: 'visible' }) as React.CSSProperties['visibility'],
 		},
+
+		itemList: {
+			display: 'flex',
+			flexDirection: useResponsiveStyles({ base: 'column', lg: 'row' }) as React.CSSProperties['flexDirection'],
+			gap: '24px',
+			alignItems: useResponsiveStyles({ base: 'stretch', lg: 'center' }),
+			width: useResponsiveStyles({ base: 'auto', lg: '100%' }),
+			justifyContent: useResponsiveStyles({ base: 'flex-center', lg: 'center' }),
+		},
+
+		menuControl: {
+			display: useResponsiveStyles({ base: 'flex', lg: 'none' }),
+			alignItems: 'center',
+		},
 	};
 
 	const _renderNavItem = ({ href, title }: NavItemProps) => {
@@ -81,7 +137,6 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	const _renderNavDropdown = ({ title, items }: NavDropdownItemProps) => {
 		return <NavDropdownItem title={title} items={items} />;
 	};
-
 	const _renderItem = (item: NavItemProps | NavDropdownItemProps) => {
 		if ('href' in item) {
 			// item is of type NavItem
@@ -99,14 +154,13 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 					{logo && <NavIconItem href={logo.href} logo={logo.logo} />}
 					<div
 						style={{
-							...style.menuItems,
-							...(navIsOpened ? style.menuOpenItems : style.menuCloseItems),
+							...style.menuItemBlock,
+							...(navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock),
 						}}
 					>
-						<ul className="flex flex-col lg:flex-row gap-6 lg:items-center text-gray-700 dark:text-gray-300 lg:w-full lg:justify-center">
-							{items.map((item) => _renderItem(item))}
-						</ul>
+						<ul style={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
 					</div>
+					<div style={style.menuControl}></div>
 				</nav>
 			</header>
 		</>
