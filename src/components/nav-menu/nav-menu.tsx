@@ -5,6 +5,7 @@ import { NavIconItem } from './items/nav-icon-item';
 import { NavItem, NavItemProps } from './items/nav-item';
 import { NavDropdownItemProps } from './items/nav-drop-down-item/nav-drop-down-item.types';
 import { NavDropdownItem } from './items/nav-drop-down-item';
+import { relative } from 'path';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	// Navmenu Controls
@@ -129,6 +130,46 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			display: useResponsiveStyles({ base: 'flex', lg: 'none' }),
 			alignItems: 'center',
 		},
+
+		menuControlButton: {
+			outline: '2px solid transparent',
+			outlineOffset: '2px',
+			borderLeftWidth: '1px',
+			borderLeftColor: theme.colors.gray.medium,
+			paddingLeft: '12px',
+			position: 'relative',
+			paddingTop: '12px',
+			paddingBottom: '12px',
+		},
+
+		menuCross: {
+			animationDuration: '300ms',
+			display: 'flex',
+			height: '2px',
+			width: '24px',
+			borderRadius: theme.borders.radius.sm,
+			backgroundColor: theme.colors.gray['extra-dark'],
+			transitionProperty:
+				'color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
+			transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+			transitionDuration: '300ms',
+		},
+
+		// menuCrossTop: {
+		// 	// margin-top: 0.5rem /* 8px */
+		// },
+
+		menuCrossBottom: {
+			marginTop: '8px',
+		},
+
+		menuCrossTopOpen: {
+			transform: 'translate(0, 0.324rem) rotate(45deg)',
+		},
+
+		menuCrossBottomOpen: {
+			transform: 'translate(0, -0.324rem) rotate(-45deg)',
+		},
 	};
 
 	const _renderNavItem = ({ href, title }: NavItemProps) => {
@@ -160,7 +201,31 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 					>
 						<ul style={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
 					</div>
-					<div style={style.menuControl}></div>
+					<div style={style.menuControl}>
+						<button
+							className=" "
+							onClick={() => {
+								toggleNavbar();
+							}}
+							aria-label="toggle navbar"
+						>
+							<span
+								aria-hidden={true}
+								style={{
+									...style.menuCross,
+									...(navIsOpened ? style.menuCrossTopOpen : {}),
+								}}
+							/>
+							<span
+								aria-hidden={true}
+								style={{
+									...style.menuCross,
+									...style.menuCrossBottom,
+									...(navIsOpened ? style.menuCrossBottomOpen : {}),
+								}}
+							/>
+						</button>
+					</div>
 				</nav>
 			</header>
 		</>
