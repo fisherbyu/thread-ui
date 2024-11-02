@@ -96,6 +96,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			width: useResponsiveStyles({ base: '100%', lg: 'max-content' }),
 			display: useResponsiveStyles({ base: 'block', lg: 'flex' }),
 			columnGap: '24px',
+			transitionProperty: useResponsiveStyles({ base: '', md: 'none' }),
 		},
 
 		menuOpenItemBlock: {
