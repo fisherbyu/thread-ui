@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { useTheme, useResponsiveStyles } from '../../../../utils';
 import { BaseItemProps } from './base-item.types';
 import { Link } from '../../../../internal-components';
@@ -6,7 +6,7 @@ import { Link } from '../../../../internal-components';
 export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave }: BaseItemProps) => {
 	const theme = useTheme();
 
-	const styles = {
+	const styles: Record<string, CSSProperties> = {
 		li: {
 			display: 'flex',
 			alignItems: 'center',
@@ -14,6 +14,7 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave }
 		},
 		link: {
 			display: 'inline-flex',
+			flexDirection: 'column',
 			height: '2.5rem',
 			alignItems: 'center',
 			justifyContent: 'center',
