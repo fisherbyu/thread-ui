@@ -36,8 +36,8 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 
 		dropdownItems: {
 			position: 'relative',
-			// width: `calc(100% + ${NavMenuSpacing.paddingX}px`,
-			width: '100%',
+			width: `calc(100% + ${NavMenuSpacing.paddingX}px`,
+			// width: '100%',
 			height: 'fit-content',
 			left: `-${NavMenuSpacing.paddingX * 0.5}px`,
 			padding: `${NavMenuSpacing.paddingY}px ${NavMenuSpacing.paddingX}px`,
@@ -52,9 +52,9 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 					<div id="spacer" style={styles.spacer} />
 					<div style={styles.anchor}>
 						<div style={styles.dropdownItems} className="border">
-							{/* {items.map((item) => (
+							{items.map((item) => (
 								<BaseItem href={item.href}>{item.title}</BaseItem>
-							))} */}
+							))}
 						</div>
 					</div>
 				</div>
