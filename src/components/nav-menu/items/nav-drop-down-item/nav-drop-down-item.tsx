@@ -3,7 +3,7 @@ import { BaseItem } from '../base-item';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { relative } from 'path';
 import { NavMenuSpacing } from '../../nav-menu-spacing';
-import { useTheme } from '../../../../utils';
+import { useResponsiveStyles, useTheme } from '../../../../utils';
 import { blob } from 'stream/consumers';
 
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
@@ -11,44 +11,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 
 	const [isHovered, setIsHovered] = useState(false);
 
-	const xstyles: Record<string, CSSProperties> = {
-		title: {
-			display: 'flex',
-			flexDirection: 'row',
-			alignItems: 'center',
-			justifyContent: 'space-between',
-			gap: '2px',
-		},
-
-		anchor: {
-			width: '100%',
-			height: '0px',
-		},
-
-		dropdownContent: {
-			height: 'fit-content',
-			width: `calc(100% + ${NavMenuSpacing.paddingX * 1.75 * 2}px)`,
-			position: 'relative',
-			left: `-${NavMenuSpacing.paddingX * 1.75}px`,
-			top: '-9px',
-			display: 'flex',
-			flexDirection: 'column',
-			gap: '24px',
-		},
-
-		spacer: { height: '40px', width: '100%' },
-
-		dropdownItems: {
-			position: 'relative',
-			width: `calc(100% + ${NavMenuSpacing.paddingX}px`,
-			// width: '100%',
-			height: 'fit-content',
-			left: `-${NavMenuSpacing.paddingX * 0.5}px`,
-			padding: `${NavMenuSpacing.paddingY}px ${NavMenuSpacing.paddingX}px`,
-			display: 'flex',
-			flexDirection: 'column',
-		},
-	};
+	const targetSpacer = useResponsiveStyles({ base: '0px', lg: '30px' });
 
 	const styles: Record<string, CSSProperties> = {
 		parentBlock: {
@@ -75,10 +38,10 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 		targetArea: {
 			position: 'absolute',
 			width: `calc(100% + ${NavMenuSpacing.paddingX * 2}px)`,
-			height: '30px',
+			height: targetSpacer,
 			left: '50%',
 			transform: 'translateX(-50%)',
-			bottom: '-30px',
+			bottom: `-${targetSpacer}`,
 		},
 
 		dropdownContent: {
@@ -90,8 +53,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			borderRadius: theme.borders.radius.md,
 			padding: `${NavMenuSpacing.paddingY}px ${NavMenuSpacing.paddingX}px`,
 			zIndex: 10,
-			top: 'calc(100% + 30px)',
-
+			top: `calc(100% + ${targetSpacer})`,
 			left: '50%',
 			transform: 'translateX(-50%)',
 		},
@@ -115,7 +77,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 					<path d="m6 9 6 6 6-6"></path>
 				</svg>
 			</div>
-			<div style={styles.targetArea} />
+			{isHovered && <div className="border" style={styles.targetArea} />}
 			<div className="border" style={styles.dropdownContent}>
 				{items.map((item) => (
 					<BaseItem href={item.href} isDropdownItem>
