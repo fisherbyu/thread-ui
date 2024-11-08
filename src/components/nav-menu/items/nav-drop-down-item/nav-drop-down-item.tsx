@@ -67,6 +67,8 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			marginTop: '1px',
 			height: '12px',
 			width: '12px',
+			transition: 'all 200ms',
+			transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)',
 		},
 
 		dropdownContent: {
@@ -98,7 +100,6 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 					strokeLinecap="round"
 					strokeLinejoin="round"
 					style={styles.arrow}
-					className={` transition duration-200  ${isHovered ? 'rotate-180' : ''}`}
 				>
 					<path d="m6 9 6 6 6-6"></path>
 				</svg>
