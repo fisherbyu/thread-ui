@@ -59,16 +59,24 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			display: 'flex',
 			flexDirection: 'row',
 			gap: '4px',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+
+		arrow: {
+			marginTop: '1px',
+			height: '12px',
+			width: '12px',
 		},
 
 		dropdownContent: {
 			backgroundColor: 'white',
 			boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
 			position: 'absolute',
-			width: 'fit-content', // Or any size needed for the dropdown
+			width: 'fit-content',
 			borderRadius: theme.borders.radius.md,
 			padding: `${NavMenuSpacing.paddingY}px ${NavMenuSpacing.paddingX}px`,
-			zIndex: 10, // Ensures dropdown is on top of other content
+			zIndex: 10,
 			top: 'calc(100% + 30px)',
 
 			left: '50%',
@@ -76,14 +84,9 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 		},
 	};
 	return (
-		<BaseItem
-			href="#"
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-			optionalStyles={styles.parentBlock}
-		>
+		<BaseItem href="#" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div style={styles.textBlock}>
-				Text
+				<span>Text</span>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
@@ -94,36 +97,19 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 					strokeWidth="2"
 					strokeLinecap="round"
 					strokeLinejoin="round"
-					className={` relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open] ${isHovered ? 'rotate-180' : ''}`}
+					style={styles.arrow}
+					className={` transition duration-200  ${isHovered ? 'rotate-180' : ''}`}
 				>
 					<path d="m6 9 6 6 6-6"></path>
 				</svg>
 			</div>
 			<div className="border" style={styles.dropdownContent}>
 				{items.map((item) => (
-					<BaseItem href={item.href}>{item.title}</BaseItem>
+					<BaseItem href={item.href} isDropdownItem>
+						{item.title}
+					</BaseItem>
 				))}
 			</div>
 		</BaseItem>
 	);
-	// return (
-	// 	<BaseItem href="#" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-	// 		<div style={styles.anchor}>
-	// 			<div id="dropdownContent" className="border" style={styles.dropdownContent}>
-	// 				<div id="spacer" style={styles.spacer} />
-	// 				<div style={styles.anchor}>
-	// 					<div style={styles.dropdownItems} className="border">
-	// 						{items.map((item) => (
-	// 							<BaseItem href={item.href}>{item.title}</BaseItem>
-	// 						))}
-	// 					</div>
-	// 				</div>
-	// 			</div>
-	// 		</div>
-	// 		<div style={styles.title}>
-	// 			<span>{title}</span>
-	// 			<span>X</span>
-	// 		</div>
-	// 	</BaseItem>
-	// );
 };
