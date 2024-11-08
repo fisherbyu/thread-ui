@@ -3,7 +3,7 @@ import { useTheme, useResponsiveStyles } from '../../../../utils';
 import { BaseItemProps } from './base-item.types';
 import { Link } from '../../../../internal-components';
 
-export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave }: BaseItemProps) => {
+export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, isDropdownItem }: BaseItemProps) => {
 	const theme = useTheme();
 
 	const styles: Record<string, CSSProperties> = {
@@ -13,6 +13,7 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave }
 			listStyleType: 'none',
 		},
 		link: {
+			position: 'relative',
 			display: 'inline-flex',
 			flexDirection: 'column',
 			height: '2.5rem',
@@ -24,7 +25,9 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave }
 			fontSize: '0.875rem',
 			fontWeight: 500,
 			padding: padding ?? '8px 16px',
-			width: useResponsiveStyles({ base: '100%', lg: 'fit-content' }),
+			width: isDropdownItem
+				? useResponsiveStyles({ base: 'fit-content', lg: '100%' })
+				: useResponsiveStyles({ base: '100%', lg: 'fit-content' }),
 			textDecoration: 'none',
 			transition: 'all 150ms ease-in-out',
 			margin: 'auto',
@@ -55,66 +58,3 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave }
 		</li>
 	);
 };
-
-// // Logo variant
-// export const LogoNavItem = ({ title, href }: NavItemProps) => {
-// 	const NavItemComponent = <NavItem title={title} href={href} />;
-// 	return React.cloneElement(NavItemComponent, {
-// 		style: {
-// 			...NavItemComponent.props.style,
-// 			width: 'fit-content',
-// 		},
-// 	});
-// };
-
-// // Dropdown variant
-// export const DropdownNavItem = ({ title, href }: NavItemProps) => {
-// 	const NavItemComponent = <NavItem title={title} href={href} />;
-// 	return React.cloneElement(NavItemComponent, {
-// 		style: {
-// 			...NavItemComponent.props.style,
-// 			width: '66.666667%', // equivalent to w-8/12
-// 		},
-// 	});
-// };
-
-// // Optional: Create a reusable hook for the styles
-// export const useNavItemStyles = () => {
-// 	const theme = useTheme();
-
-// 	return React.useMemo(
-// 		() => ({
-// 			container: {
-// 				display: 'inline-flex',
-// 				height: '2.5rem',
-// 				alignItems: 'center',
-// 				justifyContent: 'center',
-// 				borderRadius: '0.375rem',
-// 				backgroundColor: theme.colors.background.light,
-// 				fontSize: '0.875rem',
-// 				fontWeight: 500,
-// 				transition: 'all 150ms cubic-bezier(0.4, 0, 0.2, 1)',
-// 			},
-// 			link: {
-// 				display: 'inline-flex',
-// 				height: '2.5rem',
-// 				alignItems: 'center',
-// 				justifyContent: 'center',
-// 				borderRadius: '0.375rem',
-// 				backgroundColor: theme.colors.background.light,
-// 				color: theme.colors.text.light.primary,
-// 				fontSize: '0.875rem',
-// 				fontWeight: 500,
-// 				padding: '0.5rem 1rem',
-// 				width: '100%',
-// 				textDecoration: 'none',
-// 				transition: 'all 150ms ease-in-out',
-// 			},
-// 			linkHover: {
-// 				backgroundColor: theme.colors.gray.light,
-// 				color: theme.colors.primary.medium,
-// 			},
-// 		}),
-// 		[theme]
-// 	);
-// };
