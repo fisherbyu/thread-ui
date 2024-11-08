@@ -4,6 +4,7 @@ import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { relative } from 'path';
 import { NavMenuSpacing } from '../../nav-menu-spacing';
 import { useTheme } from '../../../../utils';
+import { blob } from 'stream/consumers';
 
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	const theme = useTheme();
@@ -71,7 +72,17 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)',
 		},
 
+		targetArea: {
+			position: 'absolute',
+			width: `calc(100% + ${NavMenuSpacing.paddingX * 2}px)`,
+			height: '30px',
+			left: '50%',
+			transform: 'translateX(-50%)',
+			bottom: '-30px',
+		},
+
 		dropdownContent: {
+			display: isHovered ? 'block' : 'none',
 			backgroundColor: 'white',
 			boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
 			position: 'absolute',
@@ -104,6 +115,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 					<path d="m6 9 6 6 6-6"></path>
 				</svg>
 			</div>
+			<div style={styles.targetArea} />
 			<div className="border" style={styles.dropdownContent}>
 				{items.map((item) => (
 					<BaseItem href={item.href} isDropdownItem>
