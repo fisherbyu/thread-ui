@@ -58,6 +58,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			transform: 'translateX(-50%)',
 		},
 	};
+
 	return (
 		<BaseItem href="#" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div style={styles.textBlock}>
