@@ -2,6 +2,7 @@ import React, { CSSProperties } from 'react';
 import { useTheme, useResponsiveStyles } from '../../../../utils';
 import { BaseItemProps } from './base-item.types';
 import { Link } from '../../../../internal-components';
+import { NavMenuSpacing } from '../../nav-menu-spacing';
 
 export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, isDropdownItem }: BaseItemProps) => {
 	const theme = useTheme();
@@ -24,7 +25,7 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, 
 			color: theme.colors.text.light.primary,
 			fontSize: '0.875rem',
 			fontWeight: 500,
-			padding: padding ?? '8px 16px',
+			padding: padding ?? `${NavMenuSpacing.paddingY / 2}px ${NavMenuSpacing.paddingX}px`,
 			width: isDropdownItem
 				? useResponsiveStyles({ base: 'fit-content', lg: '100%' })
 				: useResponsiveStyles({ base: '100%', lg: 'fit-content' }),
