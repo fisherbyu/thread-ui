@@ -14,11 +14,6 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	const targetSpacer = useResponsiveStyles({ base: '0px', lg: '30px' });
 
 	const styles: Record<string, CSSProperties> = {
-		parentBlock: {
-			position: 'relative',
-			display: 'inline-flex',
-		},
-
 		textBlock: {
 			display: 'flex',
 			flexDirection: 'row',
