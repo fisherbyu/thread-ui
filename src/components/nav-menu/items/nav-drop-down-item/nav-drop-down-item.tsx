@@ -46,7 +46,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 
 		dropdownContent: {
 			display: isHovered ? 'block' : 'none',
-			backgroundColor: 'white',
+			backgroundColor: theme.colors.background.light,
 			boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
 			position: 'absolute',
 			width: 'fit-content',
