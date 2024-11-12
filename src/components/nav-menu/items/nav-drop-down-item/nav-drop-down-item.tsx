@@ -50,6 +50,8 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			left: '50%',
 			transform: 'translateX(-50%)',
 		},
+
+		collapsedDropdownContent: {},
 	};
 
 	return (
