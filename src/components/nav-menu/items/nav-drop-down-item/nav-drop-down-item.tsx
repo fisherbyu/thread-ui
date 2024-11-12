@@ -1,10 +1,8 @@
 import { CSSProperties, useState } from 'react';
 import { BaseItem } from '../base-item';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
-import { relative } from 'path';
 import { NavMenuSpacing } from '../../nav-menu-spacing';
 import { useResponsiveStyles, useTheme } from '../../../../utils';
-import { blob } from 'stream/consumers';
 
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	const theme = useTheme();
