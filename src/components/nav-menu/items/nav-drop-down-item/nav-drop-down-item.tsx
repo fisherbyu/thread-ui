@@ -40,6 +40,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 		dropdownContent: {
 			display: isHovered ? 'block' : 'none',
 			backgroundColor: theme.colors.background.light,
+			borderWidth: '1px',
 			boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
 			position: 'absolute',
 			width: 'fit-content',
@@ -51,7 +52,16 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			transform: 'translateX(-50%)',
 		},
 
-		collapsedDropdownContent: {},
+		collapsedDropdownContent: {
+			display: isHovered ? 'flex' : 'none',
+			justifyContent: 'center',
+			columnGap: '24px',
+			alignItems: 'center',
+			backgroundColor: theme.colors.background.light,
+			width: '100%',
+			borderRadius: theme.borders.radius.md,
+			zIndex: 10,
+		},
 	};
 
 	return (
@@ -74,7 +84,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 				</svg>
 			</div>
 			{isHovered && <div style={styles.targetArea} />}
-			<div className="border" style={styles.dropdownContent}>
+			<div style={useResponsiveStyles({ base: styles.collapsedDropdownContent, lg: styles.dropdownContent })}>
 				{items.map((item) => (
 					<BaseItem href={item.href} isDropdownItem>
 						{item.title}
