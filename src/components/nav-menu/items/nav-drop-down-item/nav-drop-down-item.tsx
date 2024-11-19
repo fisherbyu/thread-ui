@@ -57,7 +57,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	return (
 		<BaseItem href="#" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
 			<div style={styles.textBlock}>
-				<span>Text</span>
+				<span>{title}</span>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
