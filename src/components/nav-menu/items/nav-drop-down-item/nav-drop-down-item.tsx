@@ -1,7 +1,7 @@
 import { CSSProperties, useState } from 'react';
 import { BaseItem } from '../base-item';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
-import { NavMenuSpacing } from '../../nav-menu-styles';
+import { NavMenuStyles } from '../../nav-menu-styles';
 import { useResponsiveStyles, useTheme } from '../../../../utils';
 
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
@@ -30,7 +30,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 
 		targetArea: {
 			position: 'absolute',
-			width: `calc(100% + ${NavMenuSpacing.paddingX * 2}px)`,
+			width: `calc(100% + ${NavMenuStyles.paddingX * 2}px)`,
 			height: targetSpacer,
 			left: '50%',
 			transform: 'translateX(-50%)',
@@ -45,7 +45,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			position: 'absolute',
 			width: 'fit-content',
 			borderRadius: theme.borders.radius.md,
-			padding: `${NavMenuSpacing.paddingY}px ${NavMenuSpacing.paddingX}px`,
+			padding: `${NavMenuStyles.paddingY}px ${NavMenuStyles.paddingX}px`,
 			zIndex: 10,
 			top: `calc(100% + ${targetSpacer})`,
 			left: '50%',
