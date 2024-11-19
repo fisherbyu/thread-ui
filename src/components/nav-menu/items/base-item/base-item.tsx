@@ -14,7 +14,7 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, 
 			listStyleType: 'none',
 		},
 		link: {
-			position: 'relative',
+			position: useResponsiveStyles({ base: 'static', lg: 'relative' }) as React.CSSProperties['position'],
 			display: 'inline-flex',
 			flexDirection: 'column',
 			height: useResponsiveStyles({ base: 'auto', lg: '2.5rem' }),
