@@ -73,7 +73,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 					<path d="m6 9 6 6 6-6"></path>
 				</svg>
 			</div>
-			{isHovered && <div className="border" style={styles.targetArea} />}
+			{isHovered && <div style={styles.targetArea} />}
 			<div className="border" style={styles.dropdownContent}>
 				{items.map((item) => (
 					<BaseItem href={item.href} isDropdownItem>
