@@ -1,7 +1,7 @@
 import { CSSProperties, useState } from 'react';
 import { BaseItem } from '../base-item';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
-import { NavMenuSpacing } from '../../nav-menu-spacing';
+import { NavMenuSpacing } from '../../nav-menu-styles';
 import { useResponsiveStyles, useTheme } from '../../../../utils';
 
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {

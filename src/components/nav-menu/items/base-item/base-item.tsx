@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react';
 import { useTheme, useResponsiveStyles } from '../../../../utils';
 import { BaseItemProps } from './base-item.types';
 import { Link } from '../../../../internal-components';
-import { NavMenuSpacing } from '../../nav-menu-spacing';
+import { NavMenuSpacing } from '../../nav-menu-styles';
 
 export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, isDropdownItem }: BaseItemProps) => {
 	const theme = useTheme();
