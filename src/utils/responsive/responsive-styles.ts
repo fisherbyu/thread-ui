@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '../theme/theme-provider';
 import { ResponsiveStylesProps } from './responsive-styles.types';
 
-export function useResponsiveStyles(values: ResponsiveStylesProps): string | undefined {
+export function useResponsiveStyles(values: ResponsiveStylesProps): string | any | undefined {
 	const theme = useTheme();
 	const [currentValue, setCurrentValue] = useState<number | string>(values.base);
 	const [windowWidth, setWindowWidth] = useState(0);
@@ -44,5 +44,5 @@ export function useResponsiveStyles(values: ResponsiveStylesProps): string | und
 		setCurrentValue(newValue);
 	}, [windowWidth, values, theme]);
 
-	return `${currentValue}`;
+	return currentValue;
 }
