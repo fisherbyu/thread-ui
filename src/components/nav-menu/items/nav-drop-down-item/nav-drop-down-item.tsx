@@ -12,6 +12,9 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	const targetSpacer = useResponsiveStyles({ base: '0px', lg: '30px' });
 
 	const styles: Record<string, CSSProperties> = {
+		parentBlock: {
+			position: useResponsiveStyles({ base: 'static', lg: 'relative' }) as React.CSSProperties['position'],
+		},
 		textBlock: {
 			display: 'flex',
 			flexDirection: 'row',
@@ -65,8 +68,8 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	};
 
 	return (
-		<>
-			<BaseItem href="#" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<div style={styles.parentBlock} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+			<BaseItem href="#">
 				<div style={styles.textBlock}>
 					<span>{title}</span>
 					<svg
@@ -84,15 +87,15 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 						<path d="m6 9 6 6 6-6"></path>
 					</svg>
 				</div>
-				{isHovered && <div style={styles.targetArea} />}
-				<div style={useResponsiveStyles({ base: styles.collapsedDropdownContent, lg: styles.dropdownContent })}>
-					{items.map((item) => (
-						<BaseItem href={item.href} isDropdownItem>
-							{item.title}
-						</BaseItem>
-					))}
-				</div>
 			</BaseItem>
-		</>
+			{isHovered && <div style={styles.targetArea} />}
+			<div style={useResponsiveStyles({ base: styles.collapsedDropdownContent, lg: styles.dropdownContent })}>
+				{items.map((item) => (
+					<BaseItem href={item.href} isDropdownItem>
+						{item.title}
+					</BaseItem>
+				))}
+			</div>
+		</div>
 	);
 };
