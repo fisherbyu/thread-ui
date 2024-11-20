@@ -44,7 +44,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			display: isHovered ? 'block' : 'none',
 			backgroundColor: theme.colors.background.light,
 			borderWidth: '1px',
-			boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+			boxShadow: `0 4px 8px ${theme.colors.background.light}`,
 			position: 'absolute',
 			width: 'fit-content',
 			borderRadius: theme.borders.radius.md,
