@@ -16,3 +16,6 @@ export { ThemeSizes } from './theme/size/themeSizes.types';
 // Border
 export { BorderSizes } from './theme/borders/borders.types';
 export { ThemeBorders } from './theme/borders/themeBorders.types';
+
+// IMAGE TYPES
+export { ImageProps } from './image/image.types';

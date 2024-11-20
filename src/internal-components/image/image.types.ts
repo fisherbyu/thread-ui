@@ -1,8 +1,4 @@
 import { ImgHTMLAttributes } from 'react';
+import { ImageProps as DefaultImageProps } from '../../types';
 
-export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
-	src: string;
-	alt: string;
-	layout?: 'fill' | 'fixed' | 'intrinsic' | 'responsive'; // Next.js specific
-	priority?: boolean; // Next.js specific
-}
+export interface ImageProps extends DefaultImageProps {}
