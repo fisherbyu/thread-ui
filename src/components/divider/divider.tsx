@@ -22,8 +22,8 @@ export const Divider = ({ width, marginY, weight }: DividerProps) => {
 
 	const styles: React.CSSProperties = {
 		width: width || '75%',
-		marginTop: marginY || '2px',
-		marginBottom: marginY || '2px',
+		marginTop: marginY || '16px',
+		marginBottom: marginY || '16px',
 		marginLeft: 'auto',
 		marginRight: 'auto',
 		height: `${dividerWeight}px`,
