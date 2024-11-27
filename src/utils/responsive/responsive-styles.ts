@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 import { useTheme } from '../theme/theme-provider';
 import { ResponsiveStylesProps } from './responsive-styles.types';

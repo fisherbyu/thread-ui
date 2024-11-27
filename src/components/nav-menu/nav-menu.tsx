@@ -1,3 +1,4 @@
+'use client';
 import { CSSProperties, useEffect, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
 import { useResponsiveStyles, useTheme } from '../../utils';
