@@ -1,6 +1,5 @@
 export type ResponsiveStylesProps = {
-	base: any;
-	sm?: any;
+	sm: any;
 	md?: any;
 	lg?: any;
 	xl?: any;
