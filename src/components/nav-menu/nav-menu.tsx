@@ -76,28 +76,28 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			position: 'relative',
 			display: 'flex',
 			columnGap: '20px',
-			justifyContent: useResponsiveStyles({ base: 'space-between ', lg: 'flex-start' }),
+			justifyContent: useResponsiveStyles({ sm: 'space-between ', lg: 'flex-start' }),
 			alignItems: 'center',
 		},
 
 		menuItemBlock: {
 			animationDuration: '300ms',
 			animationTimingFunction: 'linear',
-			position: useResponsiveStyles({ base: 'absolute', lg: 'relative' }) as React.CSSProperties['position'],
-			top: useResponsiveStyles({ base: '100%', lg: '0px' }),
+			position: useResponsiveStyles({ sm: 'absolute', lg: 'relative' }) as React.CSSProperties['position'],
+			top: useResponsiveStyles({ sm: '100%', lg: '0px' }),
 			left: '0px',
 			borderBottomWidth: '1px',
-			backgroundColor: useResponsiveStyles({ base: 'rgb(255 255 255 / 1)', lg: 'transparent' }),
+			backgroundColor: useResponsiveStyles({ sm: 'rgb(255 255 255 / 1)', lg: 'transparent' }),
 			borderColor: '#e5e7eb',
-			paddingTop: useResponsiveStyles({ base: '32px', lg: '0px' }),
-			paddingBottom: useResponsiveStyles({ base: '32px', lg: '0px' }),
-			paddingLeft: useResponsiveStyles({ base: '20px', sm: '40px', md: '48px', lg: '0px' }),
-			paddingRight: useResponsiveStyles({ base: '20px', sm: '40px', md: '48px', lg: '0px' }),
-			borderStyle: useResponsiveStyles({ base: 'solid', lg: 'none' }),
-			width: useResponsiveStyles({ base: '100%', lg: 'max-content' }),
-			display: useResponsiveStyles({ base: 'block', lg: 'flex' }),
+			paddingTop: useResponsiveStyles({ sm: '32px', lg: '0px' }),
+			paddingBottom: useResponsiveStyles({ sm: '32px', lg: '0px' }),
+			paddingLeft: useResponsiveStyles({ sm: '20px', md: '48px', lg: '0px' }),
+			paddingRight: useResponsiveStyles({ sm: '20px', md: '48px', lg: '0px' }),
+			borderStyle: useResponsiveStyles({ sm: 'solid', lg: 'none' }),
+			width: useResponsiveStyles({ sm: '100%', lg: 'max-content' }),
+			display: useResponsiveStyles({ sm: 'block', lg: 'flex' }),
 			columnGap: '24px',
-			transitionProperty: useResponsiveStyles({ base: '', md: 'none' }),
+			transitionProperty: useResponsiveStyles({ sm: '', md: 'none' }),
 		},
 
 		menuOpenItemBlock: {
@@ -112,24 +112,24 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			transitionDuration: '300ms',
 			transitionTimingFunction: 'linear',
 			transform: useResponsiveStyles({
-				base: 'translateY(2.5rem)', // translate-y-10 (10 * 0.25rem = 2.5rem)
+				sm: 'translateY(2.5rem)', // translate-y-10 (10 * 0.25rem = 2.5rem)
 				lg: 'translateY(0)',
 			}),
-			opacity: useResponsiveStyles({ base: '0', lg: '1' }),
-			visibility: useResponsiveStyles({ base: 'hidden', lg: 'visible' }) as React.CSSProperties['visibility'],
+			opacity: useResponsiveStyles({ sm: '0', lg: '1' }),
+			visibility: useResponsiveStyles({ sm: 'hidden', lg: 'visible' }) as React.CSSProperties['visibility'],
 		},
 
 		itemList: {
 			display: 'flex',
-			flexDirection: useResponsiveStyles({ base: 'column', lg: 'row' }) as React.CSSProperties['flexDirection'],
+			flexDirection: useResponsiveStyles({ sm: 'column', lg: 'row' }) as React.CSSProperties['flexDirection'],
 			gap: '24px',
-			alignItems: useResponsiveStyles({ base: 'stretch', lg: 'center' }),
-			width: useResponsiveStyles({ base: 'auto', lg: '100%' }),
-			justifyContent: useResponsiveStyles({ base: 'flex-center', lg: 'center' }),
+			alignItems: useResponsiveStyles({ sm: 'stretch', lg: 'center' }),
+			width: useResponsiveStyles({ sm: 'auto', lg: '100%' }),
+			justifyContent: useResponsiveStyles({ sm: 'flex-center', lg: 'center' }),
 		},
 
 		menuControl: {
-			display: useResponsiveStyles({ base: 'flex', lg: 'none' }),
+			display: useResponsiveStyles({ sm: 'flex', lg: 'none' }),
 			alignItems: 'center',
 		},
 

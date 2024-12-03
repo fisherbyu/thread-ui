@@ -14,10 +14,10 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, 
 			listStyleType: 'none',
 		},
 		link: {
-			position: useResponsiveStyles({ base: 'static', lg: 'relative' }) as React.CSSProperties['position'],
+			position: useResponsiveStyles({ sm: 'static', lg: 'relative' }) as React.CSSProperties['position'],
 			display: 'inline-flex',
 			flexDirection: 'column',
-			height: useResponsiveStyles({ base: 'auto', lg: '2.5rem' }),
+			height: useResponsiveStyles({ sm: 'auto', lg: '2.5rem' }),
 			alignItems: 'center',
 			justifyContent: 'center',
 			borderRadius: '0.375rem',
@@ -27,8 +27,8 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, 
 			fontWeight: 500,
 			padding: padding ?? `${NavMenuStyles.paddingY / 2}px ${NavMenuStyles.paddingX}px`,
 			width: isDropdownItem
-				? useResponsiveStyles({ base: 'fit-content', lg: '100%' })
-				: useResponsiveStyles({ base: '100%', lg: 'fit-content' }),
+				? useResponsiveStyles({ sm: 'fit-content', lg: '100%' })
+				: useResponsiveStyles({ sm: '100%', lg: 'fit-content' }),
 			textDecoration: 'none',
 			transition: 'all 150ms ease-in-out',
 			margin: 'auto',

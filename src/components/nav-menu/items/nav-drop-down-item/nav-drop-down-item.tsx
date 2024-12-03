@@ -9,11 +9,11 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 
 	const [isHovered, setIsHovered] = useState(false);
 
-	const targetSpacer = useResponsiveStyles({ base: '0px', lg: '30px' });
+	const targetSpacer = useResponsiveStyles({ sm: '0px', lg: '30px' });
 
 	const styles: Record<string, CSSProperties> = {
 		parentBlock: {
-			position: useResponsiveStyles({ base: 'static', lg: 'relative' }) as React.CSSProperties['position'],
+			position: useResponsiveStyles({ sm: 'static', lg: 'relative' }) as React.CSSProperties['position'],
 		},
 		textBlock: {
 			display: 'flex',
@@ -89,7 +89,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 				</div>
 			</BaseItem>
 			{isHovered && <div style={styles.targetArea} />}
-			<div style={useResponsiveStyles({ base: styles.collapsedDropdownContent, lg: styles.dropdownContent })}>
+			<div style={useResponsiveStyles({ sm: styles.collapsedDropdownContent, lg: styles.dropdownContent })}>
 				{items.map((item) => (
 					<BaseItem href={item.href} isDropdownItem>
 						{item.title}
