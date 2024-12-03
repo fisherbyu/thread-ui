@@ -175,10 +175,10 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	};
 
 	const _renderNavItem = ({ href, title }: NavItemProps) => {
-		return <NavItem href={href} title={title} />;
+		return <NavItem key={title} href={href} title={title} />;
 	};
 	const _renderNavDropdown = ({ title, items }: NavDropdownItemProps) => {
-		return <NavDropdownItem title={title} items={items} />;
+		return <NavDropdownItem key={title} title={title} items={items} />;
 	};
 	const _renderItem = (item: NavItemProps | NavDropdownItemProps) => {
 		if ('href' in item) {

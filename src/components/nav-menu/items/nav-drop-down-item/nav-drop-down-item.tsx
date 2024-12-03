@@ -91,7 +91,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			{isHovered && <div style={styles.targetArea} />}
 			<div style={useResponsiveStyles({ sm: styles.collapsedDropdownContent, lg: styles.dropdownContent })}>
 				{items.map((item) => (
-					<BaseItem href={item.href} isDropdownItem>
+					<BaseItem key={item.title} href={item.href} isDropdownItem>
 						{item.title}
 					</BaseItem>
 				))}
