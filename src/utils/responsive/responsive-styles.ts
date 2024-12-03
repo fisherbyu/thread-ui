@@ -1,49 +1,56 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useTheme } from '../theme/theme-provider';
 import { ResponsiveStylesProps } from './responsive-styles.types';
 
-export function useResponsiveStyles(values: ResponsiveStylesProps): string | any | undefined {
-	const theme = useTheme();
-	const [currentValue, setCurrentValue] = useState<number | string>(values.base);
-	const [windowWidth, setWindowWidth] = useState(0);
+const BREAKPOINTS = {
+	sm: 0,
+	md: 768,
+	lg: 1024,
+	xl: 1280,
+	xxl: 1536,
+} as const;
+
+export const useResponsiveStyles = (props: ResponsiveStylesProps) => {
+	const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 0);
 
 	useEffect(() => {
-		setWindowWidth(window.innerWidth);
-
 		const handleResize = () => {
 			setWindowWidth(window.innerWidth);
 		};
 
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
+		if (typeof window !== 'undefined') {
+			window.addEventListener('resize', handleResize);
+			handleResize(); // Initial call
+		}
+
+		return () => {
+			if (typeof window !== 'undefined') {
+				window.removeEventListener('resize', handleResize);
+			}
+		};
 	}, []);
 
-	useEffect(() => {
-		const breakpoints = theme.sizes;
+	// Get appropriate value based on current window width
+	const getValue = () => {
+		if (windowWidth >= BREAKPOINTS.xxl && props.xxl) return props.xxl;
+		if (windowWidth >= BREAKPOINTS.xl && props.xl) return props.xl;
+		if (windowWidth >= BREAKPOINTS.lg && props.lg) return props.lg;
+		if (windowWidth >= BREAKPOINTS.md && props.md) return props.md;
+		return props.sm;
+	};
 
-		// Start with base value
-		let newValue = values.base;
+	return getValue();
+};
 
-		// Only override if the breakpoint exists and window width matches
-		if (windowWidth >= breakpoints.sm && values.sm !== undefined) {
-			newValue = values.sm;
-		}
-		if (windowWidth >= breakpoints.md && values.md !== undefined) {
-			newValue = values.md;
-		}
-		if (windowWidth >= breakpoints.lg && values.lg !== undefined) {
-			newValue = values.lg;
-		}
-		if (windowWidth >= breakpoints.xl && values.xl !== undefined) {
-			newValue = values.xl;
-		}
-		if (windowWidth >= breakpoints.xxl && values.xxl !== undefined) {
-			newValue = values.xxl;
-		}
+// Static version for non-reactive contexts
+export const getResponsiveValue = (props: ResponsiveStylesProps): any => {
+	if (typeof window === 'undefined') return props.sm;
 
-		setCurrentValue(newValue);
-	}, [windowWidth, values, theme]);
+	const width = window.innerWidth;
 
-	return currentValue;
-}
+	if (width >= BREAKPOINTS.xxl && props.xxl) return props.xxl;
+	if (width >= BREAKPOINTS.xl && props.xl) return props.xl;
+	if (width >= BREAKPOINTS.lg && props.lg) return props.lg;
+	if (width >= BREAKPOINTS.md && props.md) return props.md;
+	return props.sm;
+};
