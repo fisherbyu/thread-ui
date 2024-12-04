@@ -16,13 +16,13 @@ export type ExpandedColorShades = {
 	'extra-dark': string;
 };
 
-export type LevelColorShades = {
+export type ModeColorShades = {
 	light: string;
 	dark: string;
 };
 
 export type TextColorShades = {
-	primary: string;
-	secondary: string;
-	disabled: string;
+	primary: ModeColorShades;
+	// secondary: ModeColorShades;
+	disabled: ModeColorShades;
 };

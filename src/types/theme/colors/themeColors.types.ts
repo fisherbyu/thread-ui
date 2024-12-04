@@ -1,10 +1,10 @@
-import { ColorShades, ExpandedColorShades, LevelColorShades, TextColorShades } from './colors.types';
+import { ColorShades, ExpandedColorShades, ModeColorShades, TextColorShades } from './colors.types';
 
 export type ThemeColors = {
 	// Primary Color Themes
 	primary: ColorShades;
 	secondary: ColorShades;
-	Tertiary: ColorShades;
+	tertiary: ColorShades;
 
 	// Neutrals
 	white: string;
@@ -18,13 +18,10 @@ export type ThemeColors = {
 	info: ColorShades;
 
 	// Layers
-	background: LevelColorShades;
-	surface: LevelColorShades;
-	structure: LevelColorShades;
+	background: ModeColorShades;
+	surface: ModeColorShades;
+	structure: ModeColorShades;
 
 	// Text
-	text: {
-		light: TextColorShades;
-		dark: TextColorShades;
-	};
+	text: TextColorShades;
 };

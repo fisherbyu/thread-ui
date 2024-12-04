@@ -12,7 +12,7 @@ export const DEFAULT_COLORS: ThemeColors = {
 		medium: '#22c55e',
 		dark: '#14532d',
 	},
-	Tertiary: {
+	tertiary: {
 		light: '#fbbf24',
 		medium: '#f59e0b',
 		dark: '#78350f',
@@ -63,18 +63,27 @@ export const DEFAULT_COLORS: ThemeColors = {
 	},
 	// Text
 	text: {
-		light: {
-			primary: '#18181b',
-			secondary: '#71717a',
-			disabled: '#a1a1aa',
+		primary: {
+			light: '#18181b',
+			dark: '#fafafa',
 		},
-		dark: {
-			primary: '#fafafa',
-			secondary: '#a1a1aa',
-			disabled: '#71717a',
+		disabled: {
+			light: '#fafafa',
+			dark: '#71717a',
 		},
 	},
 };
+
+// light: {
+// 	primary: '#18181b',
+// 	secondary: '#71717a',
+// 	disabled: '#a1a1aa',
+// },
+// dark: {
+// 	primary: '#fafafa',
+// 	secondary: '#a1a1aa',
+// 	disabled: '#71717a',
+// },
 
 // const defaultColors: ThemeColors = {
 // 	// Primary Color Themes
