@@ -1,2 +1,2 @@
-export { useTheme } from './theme/theme-provider';
+export { useTheme } from './theme/use-theme';
 export { useResponsiveStyles } from './responsive/responsive-styles';
