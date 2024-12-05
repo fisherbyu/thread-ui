@@ -26,3 +26,8 @@ export type TextColorShades = {
 	// secondary: ModeColorShades;
 	disabled: ModeColorShades;
 };
+
+export type AppliedTextColors = {
+	primary: string;
+	disabled: string;
+};
