@@ -1,6 +1,6 @@
-import { ColorShades, ExpandedColorShades, ModeColorShades, TextColorShades } from './colors.types';
+import { AppliedTextColors, ColorShades, ExpandedColorShades, ModeColorShades, TextColorShades } from './colors.types';
 
-export type ThemeColors = {
+type BaseThemeColors = {
 	// Primary Color Themes
 	primary: ColorShades;
 	secondary: ColorShades;
@@ -16,7 +16,9 @@ export type ThemeColors = {
 	warning: ColorShades;
 	error: ColorShades;
 	info: ColorShades;
+};
 
+export type ThemeColors = BaseThemeColors & {
 	// Layers
 	background: ModeColorShades;
 	surface: ModeColorShades;
@@ -24,4 +26,14 @@ export type ThemeColors = {
 
 	// Text
 	text: TextColorShades;
+};
+
+export type AppliedThemeColors = BaseThemeColors & {
+	// Layers
+	background: string;
+	surface: string;
+	structure: string;
+
+	// Text
+	text: AppliedTextColors;
 };
