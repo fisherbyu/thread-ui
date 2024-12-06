@@ -1,5 +1,7 @@
 import { AppliedTextColors, ColorShades, ExpandedColorShades, ModeColorShades, TextColorShades } from './colors.types';
 
+export type ColorOptions = 'primary' | 'secondary' | 'tertiary' | 'black' | 'structure' | 'text';
+
 type BaseThemeColors = {
 	// Primary Color Themes
 	primary: ColorShades;
