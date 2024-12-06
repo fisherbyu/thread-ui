@@ -27,7 +27,7 @@ export const Divider = ({ width, marginY, weight }: DividerProps) => {
 		marginLeft: 'auto',
 		marginRight: 'auto',
 		height: `${dividerWeight}px`,
-		backgroundColor: theme.colors.structure.light,
+		backgroundColor: theme.colors.structure,
 	};
 
 	return <div style={styles}></div>;

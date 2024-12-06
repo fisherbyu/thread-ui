@@ -42,9 +42,9 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 
 		dropdownContent: {
 			display: isHovered ? 'block' : 'none',
-			backgroundColor: theme.colors.background.light,
+			backgroundColor: theme.colors.background,
 			borderWidth: '1px',
-			boxShadow: `0 4px 8px ${theme.colors.background.light}`,
+			boxShadow: `0 4px 8px ${theme.colors.background}`,
 			position: 'absolute',
 			width: 'fit-content',
 			borderRadius: theme.borders.radius.md,
@@ -60,7 +60,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			justifyContent: 'center',
 			columnGap: '24px',
 			alignItems: 'center',
-			backgroundColor: theme.colors.background.light,
+			backgroundColor: theme.colors.background,
 			width: '100%',
 			borderRadius: theme.borders.radius.md,
 			zIndex: 10,

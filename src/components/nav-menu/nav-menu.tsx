@@ -62,9 +62,9 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			height: '80px',
 			backdropFilter: 'blur(24px)',
 			borderBottomWidth: '1px',
-			borderBottomColor: theme.colors.structure.light,
+			borderBottomColor: theme.colors.structure,
 			zIndex: '40',
-			backgroundColor: theme.colors.background.light,
+			backgroundColor: theme.colors.background,
 		},
 
 		nav: {
