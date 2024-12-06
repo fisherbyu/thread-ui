@@ -1,5 +1,6 @@
 // THEME TYPES
 export { Theme } from './theme/theme.types';
+export { AppliedTheme } from './theme/theme.types';
 
 // Color
 export { BaseColorOptions } from './theme/colors/colors.types';
