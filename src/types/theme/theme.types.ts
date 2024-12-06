@@ -13,3 +13,9 @@ export type AppliedTheme = {
 	colors: AppliedThemeColors;
 	sizes: ThemeSizes;
 };
+
+export type ThemeControls = {
+	colorMode: 'light' | 'dark';
+	setColorMode: (mode: 'light' | 'dark') => void;
+	toggleColorMode: () => void;
+};
