@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type MasonryBlockProps = {
+export type MasonryLayoutProps = {
 	title?: string;
 	caption?: string;
 	components: ReactNode[];

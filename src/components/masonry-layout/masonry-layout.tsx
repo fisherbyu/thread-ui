@@ -1,6 +1,6 @@
-import { MasonryBlockProps } from './masonry-layout.types';
+import { MasonryLayoutProps } from './masonry-layout.types';
 
-export const MasonryBlock = ({ title, caption, components }: MasonryBlockProps) => {
+export const MasonryLayout = ({ title, caption, components }: MasonryLayoutProps) => {
 	return (
 		<section className="container">
 			{title && <h3 className="text-2xl font-normal tracking-tight text-black sm:text-4xl">{title}</h3>}
