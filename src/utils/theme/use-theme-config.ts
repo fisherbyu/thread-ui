@@ -1,3 +1,4 @@
+'use client';
 // hooks/use-theme-config.ts
 import { useEffect, useState } from 'react';
 import { Theme } from '../../types';
