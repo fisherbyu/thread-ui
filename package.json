@@ -24,6 +24,18 @@
 	"author": "Andrew Fisher",
 	"license": "MIT",
 	"jest": {
+		"modulePaths": [
+			"node_modules"
+		],
+		"moduleFileExtensions": [
+			"js",
+			"jsx",
+			"ts",
+			"tsx"
+		],
+		"moduleDirectories": [
+			"node_modules"
+		],
 		"testEnvironment": "jsdom"
 	},
 	"devDependencies": {
