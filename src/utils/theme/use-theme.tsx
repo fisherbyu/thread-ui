@@ -41,7 +41,7 @@ export const useTheme = (): AppliedTheme => {
 
 			return convertThemeToApplied(baseTheme, colorMode);
 		} catch (error) {
-			console.error('Error applying theme:', error);
+			// console.error('Error applying theme:', error);
 			// Convert DEFAULT_THEME to applied format before returning
 			return convertThemeToApplied(DEFAULT_THEME, colorMode);
 		}

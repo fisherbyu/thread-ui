@@ -4,6 +4,7 @@ export { AppliedTheme } from './theme/theme.types';
 export { ColorMode } from './theme/theme.types';
 
 // Color
+export { ColorOptions } from './theme/colors/themeColors.types';
 export { BaseColorOptions } from './theme/colors/colors.types';
 export { ExpandedColorOptions } from './theme/colors/colors.types';
 export { ColorShades } from './theme/colors/colors.types';

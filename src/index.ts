@@ -6,6 +6,7 @@ export * from './components/info-card';
 export * from './components/nav-menu';
 export * from './components/divider';
 export * from './components/photo-card';
+export * from './components/masonry-layout';
 
 // Export Types
 export * from './types';
