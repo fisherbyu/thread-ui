@@ -2,7 +2,7 @@ import { MasonryLayoutProps } from './masonry-layout.types';
 
 export const MasonryLayout = ({ title, caption, components }: MasonryLayoutProps) => {
 	return (
-		<section className="container">
+		<section data-testid="masonry" className="container">
 			{title && <h3 className="text-2xl font-normal tracking-tight text-black sm:text-4xl">{title}</h3>}
 			{caption && <p className="mt-4 text-lg tracking-tight text-gray-600">{caption}</p>}
 			<div>
