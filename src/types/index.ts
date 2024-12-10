@@ -1,33 +1,24 @@
-// Color Types:
-export { PrimaryColors } from './color-types/color-names.types';
-export { SecondaryColors } from './color-types/color-names.types';
-export { TertiaryColors } from './color-types/color-names.types';
-export { BaseColors } from './color-types/color-names.types';
-export { SucessColors } from './color-types/color-names.types';
-export { ErrorColors } from './color-types/color-names.types';
-export { WarningColors } from './color-types/color-names.types';
-export { InfoColors } from './color-types/color-names.types';
-export { StatusColors } from './color-types/color-names.types';
+// THEME TYPES
+export { Theme } from './theme/theme.types';
+export { AppliedTheme } from './theme/theme.types';
+export { ColorMode } from './theme/theme.types';
 
-export { ThemeColors } from './color-types/theme-colors.types';
+// Color
+export { BaseColorOptions } from './theme/colors/colors.types';
+export { ExpandedColorOptions } from './theme/colors/colors.types';
+export { ColorShades } from './theme/colors/colors.types';
+export { ExpandedColorShades } from './theme/colors/colors.types';
+export { ModeColorShades } from './theme/colors/colors.types';
+export { TextColorShades } from './theme/colors/colors.types';
+export { ThemeColors } from './theme/colors/themeColors.types';
+export { AppliedThemeColors } from './theme/colors/themeColors.types';
 
-// Element Props
-export { ElementBackgroundProps } from './element-types/element-props/element-background-props.types';
-export { ElementBorderProps } from './element-types/element-props/element-border-props.types';
-export { ElementDisplayOptionProps } from './element-types/element-props/element-display-options-props.types';
-export { ElementDisplayProps } from './element-types/element-props/element-display-props.types';
-export { ElementFlexboxItemProps } from './element-types/element-props/element-flexbox-item-props.types';
-export { ElementFlexboxProps } from './element-types/element-props/element-flexbox-props.types';
-export { ElementGridProps } from './element-types/element-props/element-grid-props.types';
-export { ElementPositioningProps } from './element-types/element-props/element-positioning-props.types';
-export { ElementSizeProps } from './element-types/element-props/element-size-props.types';
-export { ElementSpacingProps } from './element-types/element-props/element-spacing-props.types';
-export { ElementTypographyProps } from './element-types/element-props/element-typography-props.types';
+// Size
+export { ThemeSizes } from './theme/size/themeSizes.types';
 
-// Combined Element Props
-export { BaseElementProps } from './element-types/element-props/element-props.types';
-export { StyledElementProps } from './element-types/element-props/element-props.types';
+// Border
+export { BorderSizes } from './theme/borders/borders.types';
+export { ThemeBorders } from './theme/borders/themeBorders.types';
 
-// Element Types
-export { StandardElementProps } from './element-types/standard-element-props.types';
-export { FlexboxElementProps } from './element-types/flexbox-element-props.types';
+// IMAGE TYPES
+export { ImageProps } from './image/image.types';
