@@ -1,4 +1,3 @@
-// hooks/useTheme.ts
 import { useMemo } from 'react';
 import { AppliedTheme, Theme } from '../../types';
 import { DEFAULT_THEME } from '../../defaults';
@@ -41,8 +40,6 @@ export const useTheme = (): AppliedTheme => {
 
 			return convertThemeToApplied(baseTheme, colorMode);
 		} catch (error) {
-			// console.error('Error applying theme:', error);
-			// Convert DEFAULT_THEME to applied format before returning
 			return convertThemeToApplied(DEFAULT_THEME, colorMode);
 		}
 	}, [configTheme, colorMode]);
