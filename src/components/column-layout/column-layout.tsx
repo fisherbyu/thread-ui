@@ -10,7 +10,7 @@ export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayo
 			<ColumnSkeleton mdcol={mdcol || 2} lgcol={lgcol || 4}>
 				{items.map((item, index) => (
 					<div key={index}>
-						<div className="mb-6">
+						<div className="mb-6 w-full h-auto rounded overflow-hidden">
 							{React.isValidElement(item.image)
 								? item.image
 								: 'src' in (item.image as { src: string }) && (
