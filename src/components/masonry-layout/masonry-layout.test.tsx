@@ -9,6 +9,6 @@ describe('Masonry Layout', () => {
 	test('Render ML', () => {
 		render(<MasonryLayout components={items} />);
 
-		expect(screen.getAllByTestId('masonry')).toBeInTheDocument;
+		expect(screen.getByTestId('masonry')).toBeInTheDocument();
 	});
 });
