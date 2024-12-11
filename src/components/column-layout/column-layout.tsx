@@ -5,8 +5,12 @@ import { ColumnLayoutProps, ColumnItem } from './column-layout.types';
 export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayoutProps) => {
 	return (
 		<section className="container mx-auto py-10 md:py-8 lg:py-6 flex flex-col justify-center flex-1 lg:flex-none">
-			{title && <h3 className="text-2xl font-medium tracking-tight text-black sm:text-4xl">{title}</h3>}
-			{caption && <p className="mt-4 text-lg tracking-tight text-gray-600">{caption}</p>}
+			{(title || caption) && (
+				<div className="pb-3">
+					{title && <h3 className="text-2xl font-medium tracking-tight text-black sm:text-4xl">{title}</h3>}
+					{caption && <p className="mt-4 text-lg tracking-tight text-gray-600">{caption}</p>}
+				</div>
+			)}
 			<ColumnSkeleton mdcol={mdcol || 2} lgcol={lgcol || 4}>
 				{items.map((item, index) => (
 					<div key={index}>
