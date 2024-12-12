@@ -13,9 +13,8 @@
 		"test": "jest",
 		"build-tailwind": "npx tailwindcss -i ./src/styles/styles.css -o ./src/styles/thread.css --watch",
 		"weave": "npm run clean && npm run build && npm run pack-to-dist",
-		"storybook": "storybook dev -p 6006",
-		"start-storybook": "concurrently \"npm run build-tailwind\" \"npm run storybook\"",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+		"storybook": "concurrently \"npm run build-tailwind\" \"storybook dev -p 6006\""
 	},
 	"repository": {
 		"type": "git",
