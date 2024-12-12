@@ -17,7 +17,7 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 							) : (
 								<img className="pr-1" height={23} width={23} src={icon.content} alt="Recipe Logo" />
 							)}
-							<p className=" text-sm">{title}</p>
+							<p className="truncate text-sm">{title}</p>
 						</span>
 					</div>
 				</span>
