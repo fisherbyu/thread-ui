@@ -6,11 +6,11 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "tsc && npm run build-css",
-		"build-css": "npx tailwindcss -i src/styles.css -o dist/styles.css",
+		"build-css": "npx postcss src/styles/thread.css -o dist/styles/thread.css",
 		"clean": "rm -rf dist",
 		"prebuild": "npm run clean",
 		"test": "jest",
-		"weave": "npm run clean && npm run build  "
+		"weave": "npm run clean && npm run build"
 	},
 	"repository": {
 		"type": "git",
