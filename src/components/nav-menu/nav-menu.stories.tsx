@@ -3,7 +3,7 @@ import { NavMenu } from './nav-menu';
 import { NavMenuProps } from './nav-menu.types';
 
 const meta: Meta<typeof NavMenu> = {
-	title: 'Navigation/NavMenu',
+	title: 'Components/NavMenu',
 	component: NavMenu,
 	parameters: {
 		layout: 'fullscreen',
