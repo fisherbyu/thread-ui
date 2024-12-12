@@ -6,11 +6,12 @@
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"build": "tsc && npm run build-css",
-		"build-css": "npx postcss src/styles/thread.css -o dist/styles/thread.css",
+		"build-css": "npx postcss src/styles/styles.css -o dist/styles/thread.css",
 		"clean": "rm -rf dist",
 		"prebuild": "npm run clean",
 		"pack-to-dist": "npm pack && mkdir -p dist && mv thread-ui-*.tgz dist/",
 		"test": "jest",
+		"build-tailwind": "npx tailwindcss -i ./src/styles/styles.css -o ./src/styles/thread.css --watch",
 		"weave": "npm run clean && npm run build && npm run pack-to-dist"
 	},
 	"repository": {
