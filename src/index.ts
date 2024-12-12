@@ -1,5 +1,5 @@
 // Import Tailwind Styles
-// import './styles.css';
+import './styles/thread.css';
 
 // Export Components
 export * from './components/info-card';
