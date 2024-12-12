@@ -9,8 +9,9 @@
 		"build-css": "npx postcss src/styles/thread.css -o dist/styles/thread.css",
 		"clean": "rm -rf dist",
 		"prebuild": "npm run clean",
+		"pack-to-dist": "npm pack && mkdir -p dist && mv thread-ui-*.tgz dist/",
 		"test": "jest",
-		"weave": "npm run clean && npm run build"
+		"weave": "npm run clean && npm run build && npm run pack-to-dist"
 	},
 	"repository": {
 		"type": "git",
@@ -62,7 +63,7 @@
 		"typescript": "^5.5.4"
 	},
 	"peerDependencies": {
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
+		"react": ">=18.0.0 <20.0.0",
+		"react-dom": ">=18.0.0 <20.0.0"
 	}
 }
