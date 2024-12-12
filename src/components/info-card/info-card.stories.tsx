@@ -84,13 +84,6 @@ export const WithEmojiIcon: Story = {
 	},
 };
 
-export const NoImage: Story = {
-	args: {
-		...recipesData[0],
-		img: '',
-	},
-};
-
 export const LongTitle: Story = {
 	args: {
 		...recipesData[0],
