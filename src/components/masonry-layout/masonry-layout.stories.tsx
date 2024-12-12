@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { MasonryLayout } from './masonry-layout';
-
+import '../../styles/thread.css';
 // Sample components for demonstration
 const SampleCard = ({ height, color }: { height: number; color: string }) => (
 	<div
-		className="w-full mb-4 rounded-lg"
+		className="w-full rounded-lg"
 		style={{
 			height: `${height}px`,
 			backgroundColor: color,
