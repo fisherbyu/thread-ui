@@ -72,6 +72,16 @@ const recipesData = [
 	},
 ];
 
+const infoCard = {
+	title: 'This is a very very very long title that might need to be truncated or handled specially',
+	url: 'https://fisherandrew.org/photo',
+	icon: {
+		type: 'emoji' as const,
+		content: '📷',
+	},
+	img: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falpine-loop-1.98af1205.jpg&w=3840&q=75',
+};
+
 export const Default: Story = {
 	args: {
 		...recipesData[0],
@@ -86,8 +96,7 @@ export const WithEmojiIcon: Story = {
 
 export const LongTitle: Story = {
 	args: {
-		...recipesData[0],
-		title: 'This is a very very very long title that might need to be truncated or handled specially',
+		...infoCard,
 	},
 };
 
