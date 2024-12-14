@@ -3,7 +3,7 @@ import { CSSProperties, useState } from 'react';
 import { useTheme } from '../utils';
 import { ButtonProps } from './button.types';
 
-export const Button = ({ content, fullWidth, color = 'primary', onClick }: ButtonProps) => {
+export const Button = ({ content, fullWidth, color = 'primary', onClick, type = 'button' }: ButtonProps) => {
 	const theme = useTheme();
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -83,7 +83,7 @@ export const Button = ({ content, fullWidth, color = 'primary', onClick }: Butto
 
 	return (
 		<button
-			type="button"
+			type={type}
 			style={isHovered ? hoverButton : buttonStyles}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
