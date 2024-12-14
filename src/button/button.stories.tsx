@@ -7,6 +7,16 @@ const meta = {
 	parameters: {
 		layout: 'centered',
 	},
+	decorators: [
+		(Story) => (
+			<div style={{ width: '300px' }}>
+				<Story />
+			</div>
+		),
+	],
+	argTypes: {
+		onClick: { action: 'clicked' },
+	},
 	tags: ['autodocs'],
 } satisfies Meta<typeof Button>;
 
@@ -30,10 +40,12 @@ export const FullWidth: Story = {
 	},
 };
 
-export const FitContent: Story = {
+// Interactive example
+export const WithClickHandler: Story = {
 	args: {
-		content: 'Fit Content Button',
-		fullWidth: false,
+		content: 'Click Me!',
+		color: 'success',
+		onClick: () => console.log('Button clicked!'),
 	},
 };
 
