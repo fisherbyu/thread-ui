@@ -3,7 +3,7 @@ import { CSSProperties, useState } from 'react';
 import { useTheme } from '../utils';
 import { ButtonProps } from './button.types';
 
-export const Button = ({ content, fullWidth, color = 'primary', onClick, type = 'button' }: ButtonProps) => {
+export const Button = ({ children, fullWidth, color = 'primary', onClick, type = 'button' }: ButtonProps) => {
 	const theme = useTheme();
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -89,7 +89,7 @@ export const Button = ({ content, fullWidth, color = 'primary', onClick, type = 
 			onMouseLeave={() => setIsHovered(false)}
 			onClick={onClick}
 		>
-			{content}
+			{children}
 		</button>
 	);
 };

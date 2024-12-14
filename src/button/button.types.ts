@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
+
 export type ButtonProps = {
-	content: string;
+	children: ReactNode;
 	fullWidth?: boolean;
 	color?: 'primary' | 'secondary' | 'tertiary' | 'black' | 'grey' | 'success' | 'error' | 'info';
 	type?: 'button' | 'submit' | 'reset';

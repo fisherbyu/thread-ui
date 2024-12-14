@@ -26,7 +26,7 @@ type Story = StoryObj<typeof Button>;
 // Default story with primary color
 export const Default: Story = {
 	args: {
-		content: 'Default Button',
+		children: 'Default Button',
 		color: 'primary',
 		fullWidth: false,
 	},
@@ -35,7 +35,7 @@ export const Default: Story = {
 // Width variations
 export const FullWidth: Story = {
 	args: {
-		content: 'Full Width Button',
+		children: 'Full Width Button',
 		fullWidth: true,
 	},
 };
@@ -43,7 +43,7 @@ export const FullWidth: Story = {
 // Interactive example
 export const WithClickHandler: Story = {
 	args: {
-		content: 'Click Me!',
+		children: 'Click Me!',
 		color: 'success',
 		onClick: () => alert('Button clicked!'),
 	},
@@ -52,56 +52,56 @@ export const WithClickHandler: Story = {
 // Color variations
 export const Primary: Story = {
 	args: {
-		content: 'Primary Button',
+		children: 'Primary Button',
 		color: 'primary',
 	},
 };
 
 export const Secondary: Story = {
 	args: {
-		content: 'Secondary Button',
+		children: 'Secondary Button',
 		color: 'secondary',
 	},
 };
 
 export const Tertiary: Story = {
 	args: {
-		content: 'Tertiary Button',
+		children: 'Tertiary Button',
 		color: 'tertiary',
 	},
 };
 
 export const Black: Story = {
 	args: {
-		content: 'Black Button',
+		children: 'Black Button',
 		color: 'black',
 	},
 };
 
 export const Grey: Story = {
 	args: {
-		content: 'Grey Button',
+		children: 'Grey Button',
 		color: 'grey',
 	},
 };
 
 export const Success: Story = {
 	args: {
-		content: 'Success Button',
+		children: 'Success Button',
 		color: 'success',
 	},
 };
 
 export const Error: Story = {
 	args: {
-		content: 'Error Button',
+		children: 'Error Button',
 		color: 'error',
 	},
 };
 
 export const Info: Story = {
 	args: {
-		content: 'Info Button',
+		children: 'Info Button',
 		color: 'info',
 	},
 };
