@@ -3,7 +3,16 @@
 	"version": "1.0.0",
 	"description": "Unified UI Library for React Applications.",
 	"main": "dist/index.js",
+	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"module": "./dist/index.js",
+			"default": "./dist/index.js"
+		}
+	},
+	"sideEffects": false,
 	"scripts": {
 		"build": "tsc && npm run build-css",
 		"build-css": "npx postcss src/styles/styles.css -o dist/styles/thread.css",
@@ -16,6 +25,12 @@
 		"build-storybook": "storybook build",
 		"storybook": "concurrently \"npm run build-tailwind\" \"storybook dev -p 6006\""
 	},
+	"files": [
+		"dist",
+		"!dist/package",
+		"!**/*.test.*",
+		"!**/*.stories.*"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/fisherbyu/thread-ui.git"
