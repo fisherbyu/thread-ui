@@ -3,9 +3,8 @@ import { CSSProperties, useState } from 'react';
 import { useTheme } from '../utils';
 import { ButtonProps } from './button.types';
 
-export const Button = ({ content, fullWidth, color = 'primary' }: ButtonProps) => {
+export const Button = ({ content, fullWidth, color = 'primary', onClick }: ButtonProps) => {
 	const theme = useTheme();
-	const width = fullWidth ? 'w-full' : 'w-fit';
 	const [isHovered, setIsHovered] = useState(false);
 
 	const getColorValue = (colorType: ButtonProps['color']): { dark: string; light: string } => {
@@ -32,7 +31,7 @@ export const Button = ({ content, fullWidth, color = 'primary' }: ButtonProps) =
 				};
 			case 'grey':
 				return {
-					dark: theme.colors.gray.dark,
+					dark: theme.colors.gray.medium,
 					light: theme.colors.gray.light,
 				};
 			case 'success':
@@ -72,6 +71,8 @@ export const Button = ({ content, fullWidth, color = 'primary' }: ButtonProps) =
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
+		cursor: 'pointer',
+		userSelect: 'none',
 	};
 
 	const hoverButton: CSSProperties = {
@@ -81,12 +82,14 @@ export const Button = ({ content, fullWidth, color = 'primary' }: ButtonProps) =
 	};
 
 	return (
-		<div
+		<button
+			type="button"
 			style={isHovered ? hoverButton : buttonStyles}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
+			onClick={onClick}
 		>
 			{content}
-		</div>
+		</button>
 	);
 };
