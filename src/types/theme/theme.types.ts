@@ -6,12 +6,14 @@ export type Theme = {
 	borders: ThemeBorders;
 	colors: ThemeColors;
 	sizes: ThemeSizes;
+	space: number;
 };
 
 export type AppliedTheme = {
 	borders: ThemeBorders;
 	colors: AppliedThemeColors;
 	sizes: ThemeSizes;
+	space: number;
 };
 
 export type ColorMode = 'light' | 'dark';

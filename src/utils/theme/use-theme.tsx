@@ -17,6 +17,7 @@ const applyTheme = (theme: Theme): AppliedTheme => {
 			},
 		},
 		sizes: theme.sizes,
+		space: theme.space,
 	};
 };
 

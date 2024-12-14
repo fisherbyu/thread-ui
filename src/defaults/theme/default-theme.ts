@@ -7,4 +7,5 @@ export const DEFAULT_THEME: Theme = {
 	borders: DEFAULT_BORDERS,
 	colors: DEFAULT_COLORS,
 	sizes: DEFAULT_SIZES,
+	space: 4,
 };
