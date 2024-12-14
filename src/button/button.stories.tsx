@@ -45,7 +45,7 @@ export const WithClickHandler: Story = {
 	args: {
 		content: 'Click Me!',
 		color: 'success',
-		onClick: () => console.log('Button clicked!'),
+		onClick: () => alert('Button clicked!'),
 	},
 };
 
