@@ -3,7 +3,7 @@ import { CSSProperties, useState } from 'react';
 import { useTheme } from '../../utils';
 import { ButtonProps } from './button.types';
 
-export const Button = ({ children, fullWidth, color = 'primary', onClick, type = 'button' }: ButtonProps) => {
+export const Button = ({ children, fullWidth, color = 'primary', onClick, type = 'button', margin }: ButtonProps) => {
 	const theme = useTheme();
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -67,7 +67,7 @@ export const Button = ({ children, fullWidth, color = 'primary', onClick, type =
 		borderRadius: `${theme.borders.radius.md}px`,
 		color: theme.colors.white,
 		backgroundColor: colors.dark,
-		margin: 'auto',
+		margin: margin ? margin : 'auto',
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',

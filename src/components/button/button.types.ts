@@ -6,4 +6,5 @@ export type ButtonProps = {
 	color?: 'primary' | 'secondary' | 'tertiary' | 'black' | 'grey' | 'success' | 'error' | 'info';
 	type?: 'button' | 'submit' | 'reset';
 	onClick?: () => void;
+	margin?: string;
 };
