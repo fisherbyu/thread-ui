@@ -4,33 +4,37 @@ import { ColumnLayoutProps, ColumnItem } from './column-layout.types';
 
 export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayoutProps) => {
 	return (
-		<section className="container mx-auto py-10 md:py-8 lg:py-6 flex flex-col justify-center flex-1 lg:flex-none">
+		<section className="thread-container thread-mx-auto thread-py-10 md:thread-py-8 lg:thread-py-6 thread-flex thread-flex-col thread-justify-center thread-flex-1 lg:thread-flex-none">
 			{(title || caption) && (
-				<div className="pb-3">
-					{title && <h3 className="text-2xl font-medium tracking-tight text-black sm:text-4xl">{title}</h3>}
-					{caption && <p className="mt-4 text-lg tracking-tight text-gray-600">{caption}</p>}
+				<div className="thread-pb-3">
+					{title && (
+						<h3 className="thread-text-2xl thread-font-medium thread-tracking-tight thread-text-black sm:thread-text-4xl">
+							{title}
+						</h3>
+					)}
+					{caption && <p className="thread-mt-4 thread-text-lg thread-tracking-tight thread-text-gray-600">{caption}</p>}
 				</div>
 			)}
 			<ColumnSkeleton mdcol={mdcol || 2} lgcol={lgcol || 4}>
 				{items.map((item, index) => (
 					<div key={index}>
-						<div className="mb-6 w-full h-auto rounded overflow-hidden">
+						<div className="thread-mb-6 thread-w-full thread-h-auto thread-rounded thread-overflow-hidden">
 							{React.isValidElement(item.image)
 								? item.image
 								: 'src' in (item.image as { src: string }) && (
 										<img
 											src={(item.image as { src: string }).src}
 											alt={(item.image as { alt: string }).alt}
-											className="w-full h-auto rounded"
+											className="thread-w-full thread-h-auto thread-rounded"
 										/>
 									)}
 						</div>
 						{(item.title || item.description) && (
-							<div className="text-left">
-								{item.title && <h2 className="text-2xl ">{item.title}</h2>}
+							<div className="thread-text-left">
+								{item.title && <h2 className="thread-text-2xl ">{item.title}</h2>}
 								{item.description && (
-									<div className="mt-6">
-										<p className="whitespace-pre-wrap text-base">{item.description}</p>
+									<div className="thread-mt-6">
+										<p className="thread-whitespace-pre-wrap thread-text-base">{item.description}</p>
 									</div>
 								)}
 							</div>

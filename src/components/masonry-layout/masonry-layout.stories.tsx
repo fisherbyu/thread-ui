@@ -4,7 +4,7 @@ import '../../styles/thread.css';
 // Sample components for demonstration
 const SampleCard = ({ height, color }: { height: number; color: string }) => (
 	<div
-		className="w-full rounded-lg"
+		className="thread-w-full thread-rounded-lg"
 		style={{
 			height: `${height}px`,
 			backgroundColor: color,

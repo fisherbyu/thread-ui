@@ -2,22 +2,22 @@ import { InfoCardProps } from './info-card.types';
 
 export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 	return (
-		<div className="mx-auto rounded-lg border bg-card text-card-foreground shadow-sm my-3 overflow-hidden max-h-60 w-[391px] h-[241px]">
+		<div className="thread-mx-auto thread-rounded-lg thread-border thread-bg-card thread-text-card-foreground thread-shadow-sm thread-my-3 thread-overflow-hidden thread-max-h-60 thread-w-[391px] thread-h-[241px]">
 			<a href={url}>
-				<span className=" cursor-pointer">
-					<div className="overflow-hidden w-full h-5/6">
-						<img className="h-auto min-h-full w-auto min-w-full" src={img} alt="recipe cover" />
+				<span className=" thread-cursor-pointer">
+					<div className="thread-overflow-hidden thread-w-full thread-h-5/6">
+						<img className="thread-h-auto thread-min-h-full thread-w-auto thread-min-w-full" src={img} alt="recipe cover" />
 					</div>
-					<div className="p-2 h-1/6">
-						<span className="flex justify-start items-center">
+					<div className="thread-p-2 thread-h-1/6">
+						<span className="thread-flex thread-justify-start thread-items-center">
 							{icon.type === 'emoji' ? (
-								<span className=" pr-1" role="img">
+								<span className=" thread-pr-1" role="img">
 									{JSON.parse(`"${icon.content}"`)}
 								</span>
 							) : (
-								<img className="pr-1" height={23} width={23} src={icon.content} alt="Recipe Logo" />
+								<img className="thread-pr-1" height={23} width={23} src={icon.content} alt="Recipe Logo" />
 							)}
-							<p className="truncate text-sm">{title}</p>
+							<p className="thread-truncate thread-text-sm">{title}</p>
 						</span>
 					</div>
 				</span>
