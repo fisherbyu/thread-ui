@@ -203,7 +203,6 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 					</div>
 					<div style={style.menuControl}>
 						<button
-							className=" "
 							onClick={() => {
 								toggleNavbar();
 							}}
