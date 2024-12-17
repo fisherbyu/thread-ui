@@ -67,7 +67,7 @@ export const Button = ({ children, fullWidth, color = 'primary', onClick, type =
 		borderRadius: `${theme.borders.radius.md}px`,
 		color: theme.colors.white,
 		backgroundColor: colors.dark,
-		margin: margin ? margin : 'auto',
+		margin: margin ?? 'auto',
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
