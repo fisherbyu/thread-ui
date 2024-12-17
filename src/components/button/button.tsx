@@ -1,6 +1,6 @@
 'use client';
 import { CSSProperties, useState } from 'react';
-import { useTheme } from '../utils';
+import { useTheme } from '../../utils';
 import { ButtonProps } from './button.types';
 
 export const Button = ({ children, fullWidth, color = 'primary', onClick, type = 'button' }: ButtonProps) => {
