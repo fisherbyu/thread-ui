@@ -1,3 +1,3 @@
 // Export Internal Components
-export { Link } from './link';
+export * from './link-wrapper';
 export * from './column-skeleton';
