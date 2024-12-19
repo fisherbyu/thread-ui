@@ -1,46 +1,66 @@
-// import Image from 'next/image';
-// import GitHubIcon from '@/public/core/github.svg';
-// import LinkedInIcon from '@/public/core/linkedin.svg';
-// import AFLogo from '@/public/core/af-logo.svg';
-// import Link from 'next/link';
-import { LinkWrapper } from '../../internal-components/link-wrapper/link-wrapper';
+import { FacebookLogo, GithubLogo, InstagramLogo, TwitterLogo } from '@phosphor-icons/react';
+import { LinkWrapper } from '../../internal-components';
 import { Divider } from '../divider';
 import { FooterProps } from './footer.types';
 
-export default function CoreFooter({
-	icon,
-	caption,
-	facebookLink,
-	instagramLink,
-	twitterLink,
-	githubLink,
-	linkedInLink,
-}: FooterProps) {
+export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink, githubLink, linkedInLink }: FooterProps) => {
 	return (
 		<footer className="thread-h-52 thread-w-full">
-			<div className="thread-container mx-auto">
+			<div className="thread-container thread-mx-auto">
 				<Divider width="100%" />
 				<div className="">
-					<p className="mt-4 text-center">
-						{icon && (
-							<LinkWrapper link={icon.link} className="inline-block">
-								<icon.Icon />
+					<p className="thread-mt-4 thread-text-center">
+						{logo && (
+							<LinkWrapper link={logo.link} className="thread-inline-block">
+								{logo.icon}
 							</LinkWrapper>
 						)}
-						{caption && <span className="mx-auto mt-1 text-sm text-gray-500">{caption}</span>}
+						{caption && <span className="thread-mx-auto thread-mt-1 thread-text-sm thread-text-gray-500">{caption}</span>}
 					</p>
-					<div className="flex justify-center my-2 space-x-6">
-						<span className="inline-flex justify-center w-full gap-3 m-auto md:justify-start md:w-auto">
+					<div className="thread-flex thread-justify-center thread-my-2 thread-space-x-6">
+						<span className="thread-inline-flex thread-justify-center thread-w-full thread-gap-3 thread-m-auto md:thread-justify-start md:thread-w-auto">
+							{facebookLink && (
+								<LinkWrapper
+									link={githubLink}
+									className="thread-w-6 thread-h-6 thread-transition thread-fill-black hover:thread-text-blue-500"
+								>
+									<span className="thread-sr-only">facebook</span>
+									<FacebookLogo />
+								</LinkWrapper>
+							)}
+							{instagramLink && (
+								<LinkWrapper
+									link={githubLink}
+									className="thread-w-6 thread-h-6 thread-transition thread-fill-black hover:thread-text-blue-500"
+								>
+									<span className="thread-sr-only">instagram</span>
+									<InstagramLogo />
+								</LinkWrapper>
+							)}
+							{twitterLink && (
+								<LinkWrapper
+									link={githubLink}
+									className="thread-w-6 thread-h-6 thread-transition thread-fill-black hover:thread-text-blue-500"
+								>
+									<span className="thread-sr-only">instagram</span>
+									<TwitterLogo />
+								</LinkWrapper>
+							)}
 							{githubLink && (
-								<LinkWrapper link={githubLink} className="w-6 h-6 transition fill-black hover:text-blue-500">
-									<span className="sr-only">github</span>
-									{/* <Image src={GitHubIcon} alt="git-hub logo" /> */}
+								<LinkWrapper
+									link={githubLink}
+									className="thread-w-6 thread-h-6 thread-transition thread-fill-black hover:thread-text-blue-500"
+								>
+									<span className="thread-sr-only">instagram</span>
+									<GithubLogo />
 								</LinkWrapper>
 							)}
 							{linkedInLink && (
-								<LinkWrapper link={linkedInLink} className="w-6 h-6 transition fill-black hover:text-blue-500">
-									<span className="sr-only">Linkedin</span>
-									{/* <Image src={LinkedInIcon} alt="LinkedIn Logo" /> */}
+								<LinkWrapper
+									link={linkedInLink}
+									className="thread-w-6 thread-h-6 thread-transition thread-fill-black hover:thread-text-blue-500"
+								>
+									<span className="thread-sr-only">instagram</span>
 								</LinkWrapper>
 							)}
 						</span>
@@ -49,53 +69,4 @@ export default function CoreFooter({
 			</div>
 		</footer>
 	);
-}
-
-// export default function CoreFooter({
-// 	icon,
-// 	caption,
-// 	facebookLink,
-// 	instagramLink,
-// 	twitterLink,
-// 	githubLink,
-// 	linkedInLink,
-// }: FooterProps) {
-// 	return (
-// 		<footer className="thread-h-52 thread-w-full">
-// 			<div className="thread-container mx-auto">
-// 				<Divider width="100%" />
-// 				<div className="">
-// 					<p className="mt-4 text-center">
-// 						{icon &&
-
-//                         <LinkWrapper link={icon.link}>
-//                             <icon />
-//                         </LinkWrapper>
-//                         }
-// 						{/* <Link href="/">
-// 							<Image src={AFLogo} alt="AF" className="mx-auto" />
-// 						</Link> */}
-// 						<span className="mx-auto mt-1 text-sm text-gray-500">
-// 							{/* <Link href="/login">Created by Andrew Fisher</Link> */}
-// 						</span>
-// 					</p>
-// 					<div className="flex justify-center my-2 space-x-6">
-// 						<span className="inline-flex justify-center w-full gap-3 m-auto md:justify-start md:w-auto">
-// 							<a href="https://github.com/fisherbyu" className="w-6 h-6 transition fill-black hover:text-blue-500">
-// 								<span className="sr-only">github</span>
-// 								{/* <Image src={GitHubIcon} alt="git-hub logo" /> */}
-// 							</a>
-// 							<a
-// 								href="https://www.linkedin.com/in/fisherandrew777/"
-// 								className="w-6 h-6 transition fill-black hover:text-blue-500"
-// 							>
-// 								<span className="sr-only">Linkedin</span>
-// 								{/* <Image src={LinkedInIcon} alt="LinkedIn Logo" /> */}
-// 							</a>
-// 						</span>
-// 					</div>
-// 				</div>
-// 			</div>
-// 		</footer>
-// 	);
-// }
+};

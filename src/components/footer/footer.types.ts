@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 
 export type FooterProps = {
-	icon?: {
-		Icon: React.ComponentType; // Changed from svg: ReactSVGElement to Icon component
+	logo?: {
+		icon: ReactNode;
 		link: string | ReactNode;
 	};
 	caption?: string | ReactNode;
