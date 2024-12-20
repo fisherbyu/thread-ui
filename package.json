@@ -98,5 +98,8 @@
 	"peerDependencies": {
 		"react": ">=18.0.0 <20.0.0",
 		"react-dom": ">=18.0.0 <20.0.0"
+	},
+	"dependencies": {
+		"@phosphor-icons/react": "^2.1.7"
 	}
 }
