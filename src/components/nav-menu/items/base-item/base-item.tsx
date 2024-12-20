@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import { useTheme, useResponsiveStyles } from '../../../../utils';
 import { BaseItemProps } from './base-item.types';
-import { Link } from '../../../../internal-components';
+import { LinkWrapper } from '../../../../internal-components';
 import { NavMenuStyles } from '../../nav-menu-styles';
 
 export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, isDropdownItem }: BaseItemProps) => {
@@ -45,8 +45,8 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, 
 
 	return (
 		<li onMouseEnter={onMouseEnter} style={styles.li} onMouseLeave={onMouseLeave}>
-			<Link
-				href={href}
+			<LinkWrapper
+				link={href}
 				style={{
 					...styles.link,
 					...(isHovered ? styles.linkHover : {}),
@@ -55,7 +55,7 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, 
 				onMouseLeave={() => setIsHovered(false)}
 			>
 				{children}
-			</Link>
+			</LinkWrapper>
 		</li>
 	);
 };
