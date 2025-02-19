@@ -60,7 +60,7 @@ export const Button = ({ children, fullWidth, color = 'primary', onClick, type =
 	const colorValue = getUtilityColorValue(color);
 
 	const buttonStyles: CSSProperties = {
-		padding: `${theme.space * 3}px`,
+		padding: `${theme.space * 2}px`,
 		width: fullWidth ? '100%' : 'fit-content',
 		transition: 'background-color 0.2s ease',
 		border: `${theme.border.size.md}px ${colorValue} solid`,
