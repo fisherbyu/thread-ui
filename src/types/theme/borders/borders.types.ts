@@ -1,13 +1,11 @@
+// Border Attribute Options
+type BorderOptions = {
+	sm: string;
+	md: string;
+	lg: string;
+};
 // Theme Border Styles
 export type BorderStyles = {
-	radius: {
-		sm: string;
-		md: string;
-		lg: string;
-	};
-	width: {
-		thin: string;
-		medium: string;
-		thick: string;
-	};
+	radius: BorderOptions;
+	size: BorderOptions;
 };
