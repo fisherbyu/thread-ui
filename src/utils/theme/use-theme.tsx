@@ -1,5 +1,5 @@
 import { Theme, AppliedTheme } from '../../types';
-import { DEFAULT_THEME } from './default-theme';
+import { DEFAULT_THEME } from '../../defaults';
 // types.ts
 type DeepPartial<T> = {
 	[P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
