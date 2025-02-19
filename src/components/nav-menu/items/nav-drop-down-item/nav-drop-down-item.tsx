@@ -47,7 +47,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			boxShadow: `0 4px 8px ${theme.colors.background}`,
 			position: 'absolute',
 			width: 'fit-content',
-			borderRadius: theme.borders.radius.md,
+			borderRadius: theme.border.radius.md,
 			padding: `${NavMenuStyles.paddingY}px ${NavMenuStyles.paddingX}px`,
 			zIndex: 10,
 			top: `calc(100% + ${targetSpacer})`,
@@ -62,7 +62,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			alignItems: 'center',
 			backgroundColor: theme.colors.background,
 			width: '100%',
-			borderRadius: theme.borders.radius.md,
+			borderRadius: theme.border.radius.md,
 			zIndex: 10,
 		},
 	};

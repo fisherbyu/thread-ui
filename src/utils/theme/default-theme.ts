@@ -88,10 +88,10 @@ export const DEFAULT_THEME: Theme = {
 			md: '8px',
 			lg: '12px',
 		},
-		width: {
-			thin: '1px',
-			medium: '2px',
-			thick: '4px',
+		size: {
+			sm: '1px',
+			md: '2px',
+			lg: '4px',
 		},
 	},
 
