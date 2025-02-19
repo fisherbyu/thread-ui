@@ -1,4 +1,4 @@
-import { UtilityColorOptions } from '../../types/colors/utility-color-options.types';
+import { UtilityColorOptions } from '../../types';
 import { useTheme } from '../theme/use-theme';
 
 export const getUtilityColorValue = (color: UtilityColorOptions): string => {
