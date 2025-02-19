@@ -1,8 +1,8 @@
 // Border Attribute Options
 type BorderOptions = {
-	sm: string;
-	md: string;
-	lg: string;
+	sm: number;
+	md: number;
+	lg: number;
 };
 // Theme Border Styles
 export type BorderStyles = {

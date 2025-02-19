@@ -84,14 +84,14 @@ export const DEFAULT_THEME: Theme = {
 	// Borders
 	border: {
 		radius: {
-			sm: '4px',
-			md: '8px',
-			lg: '12px',
+			sm: 4,
+			md: 6,
+			lg: 8,
 		},
 		size: {
-			sm: '1px',
-			md: '2px',
-			lg: '4px',
+			sm: 0.5,
+			md: 1,
+			lg: 3,
 		},
 	},
 
