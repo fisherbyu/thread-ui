@@ -1,28 +1,21 @@
 import { Theme, AppliedTheme } from '../../types';
 import { DEFAULT_THEME } from '../../defaults';
-// types.ts
+console.log('theme ran');
+
 type DeepPartial<T> = {
 	[P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 
 type ThemeMode = 'light' | 'dark';
 
+// State management
 let userTheme: DeepPartial<Theme> | null = null;
 let mergedTheme: Theme = DEFAULT_THEME;
 let currentMode: ThemeMode = 'light';
-let appliedTheme: AppliedTheme;
+let appliedTheme: AppliedTheme = createAppliedTheme(DEFAULT_THEME, currentMode);
+let isInitialized = false;
 
-const loadConfig = async () => {
-	try {
-		const response = await fetch('/.threadconfig');
-		const config = await response.json();
-		return config as DeepPartial<Theme>;
-	} catch (error) {
-		console.debug('No .threadconfig found, using default theme');
-		return null;
-	}
-};
-
+// Utility functions
 const deepMerge = <T extends Record<string, any>>(target: T, source: DeepPartial<T>): T => {
 	const result = { ...target };
 
@@ -52,8 +45,7 @@ const deepMerge = <T extends Record<string, any>>(target: T, source: DeepPartial
 	return result;
 };
 
-export const createAppliedTheme = (theme: Theme, mode: 'light' | 'dark'): AppliedTheme => {
-	// Extract Colors
+export function createAppliedTheme(theme: Theme, mode: 'light' | 'dark'): AppliedTheme {
 	const { primary, secondary, tertiary, white, black, gray, success, warning, error, info, [mode]: modeColors } = theme.colors;
 
 	return {
@@ -73,34 +65,47 @@ export const createAppliedTheme = (theme: Theme, mode: 'light' | 'dark'): Applie
 			...modeColors,
 		},
 	};
+}
+
+// Theme initialization
+const loadConfig = async () => {
+	try {
+		const response = await fetch('/.threadconfig');
+		const config = await response.json();
+		return config as DeepPartial<Theme>;
+	} catch (error) {
+		console.debug('No .threadconfig found, using default theme');
+		return null;
+	}
 };
 
 let initPromise: Promise<void> | null = null;
 
-export const initializeTheme = () => {
+export const initializeTheme = async () => {
 	if (!initPromise) {
 		initPromise = loadConfig().then((config) => {
 			if (config) {
 				userTheme = config;
 				mergedTheme = deepMerge(DEFAULT_THEME, userTheme);
+				appliedTheme = createAppliedTheme(mergedTheme, currentMode);
 			}
-			// Initialize the applied theme with default mode
-			appliedTheme = createAppliedTheme(mergedTheme, currentMode);
+			isInitialized = true;
 		});
 	}
 	return initPromise;
 };
 
+// Theme getters and setters
 export const setThemeMode = (mode: ThemeMode) => {
 	currentMode = mode;
-	appliedTheme = createAppliedTheme(mergedTheme, mode);
+	appliedTheme = createAppliedTheme(isInitialized ? mergedTheme : DEFAULT_THEME, mode);
 };
 
 export const useTheme = (): AppliedTheme => {
 	return appliedTheme;
 };
 
-// Optional: Hook for components that need to react to theme mode changes
+// Theme mode management
 import { useState, useEffect } from 'react';
 
 export const useThemeMode = (): [ThemeMode, (mode: ThemeMode) => void] => {
@@ -113,9 +118,3 @@ export const useThemeMode = (): [ThemeMode, (mode: ThemeMode) => void] => {
 
 	return [mode, updateMode];
 };
-
-const testTheme = {
-	space: 9,
-};
-
-console.log(createAppliedTheme(DEFAULT_THEME, 'dark'));
