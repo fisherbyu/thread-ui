@@ -5,22 +5,22 @@ export const getUtilityColorValue = (color: UtilityColorOptions): string => {
 	const theme = useTheme();
 	switch (color) {
 		case 'primary':
-			return theme.colors.primary.medium;
+			return theme.colors.primary.main;
 		case 'secondary':
-			return theme.colors.secondary.medium;
+			return theme.colors.secondary.main;
 		case 'tertiary':
-			return theme.colors.tertiary.medium;
+			return theme.colors.tertiary.main;
 		case 'black':
 			return theme.colors.black;
 		case 'grey':
-			return theme.colors.gray.medium;
+			return theme.colors.gray.main;
 		case 'success':
-			return theme.colors.success.medium;
+			return theme.colors.success.main;
 		case 'error':
-			return theme.colors.error.medium;
+			return theme.colors.error.main;
 		case 'info':
-			return theme.colors.info.medium;
+			return theme.colors.info.main;
 		default:
-			return theme.colors.primary.medium;
+			return theme.colors.primary.main;
 	}
 };
