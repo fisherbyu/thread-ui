@@ -1,22 +1,28 @@
-import { ThemeBorders } from './borders/themeBorders.types';
-import { AppliedThemeColors, ThemeColors } from './colors/themeColors.types';
-import { ThemeSizes } from './size/themeSizes.types';
+import { BorderStyles } from './borders/borders.types';
 
-export type Theme = {
-	borders: ThemeBorders;
-	colors: ThemeColors;
-	sizes: ThemeSizes;
+import { StructureColors, ModeStructureColors, ThemeColors } from './colors/colors.types';
+
+type BaseTheme = {
+	// Borders
+	border: BorderStyles;
+
+	// Spacing Constant
 	space: number;
 };
 
-export type AppliedTheme = {
-	borders: ThemeBorders;
+type BaseThemeColors = ThemeColors & ModeStructureColors;
+
+type AppliedThemeColors = ThemeColors & StructureColors;
+
+export type Theme = BaseTheme & {
+	// Colors
+	colors: BaseThemeColors;
+};
+
+export type AppliedTheme = BaseTheme & {
+	// Colors
 	colors: AppliedThemeColors;
-	sizes: ThemeSizes;
-	space: number;
 };
-
-export type ColorMode = 'light' | 'dark';
 
 export type ThemeControls = {
 	colorMode: 'light' | 'dark';
