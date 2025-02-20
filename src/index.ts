@@ -12,3 +12,6 @@ export * from './components/icon';
 
 // Export Types
 export * from './types';
+
+// Export Utility Functions
+export { createTheme, createAppliedTheme } from './utils';
