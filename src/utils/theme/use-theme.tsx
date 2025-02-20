@@ -1,26 +1,51 @@
-import { AppliedTheme, Theme } from '../../types';
+// use-theme.ts
+'use client';
+import { createContext, useContext, useState } from 'react';
+import type { Theme, AppliedTheme, ThemeMode, ThemeContextType } from '../../types';
+import { createAppliedTheme } from './create-theme';
 import { DEFAULT_THEME } from '../../defaults';
 
-const applyTheme = (theme: Theme): AppliedTheme => {
-	return {
-		borders: theme.borders,
-		colors: {
-			// primary: theme.colors.primary,
-			// secondary: theme.colors.secondary,
-			...theme.colors,
-			background: theme.colors.background.light,
-			surface: theme.colors.surface.light,
-			structure: theme.colors.structure.light,
-			text: {
-				primary: theme.colors.text.primary.light,
-				disabled: theme.colors.text.primary.light,
-			},
-		},
-		sizes: theme.sizes,
-		space: theme.space,
-	};
+// Create default context value
+const defaultContextValue: ThemeContextType = {
+	theme: createAppliedTheme(DEFAULT_THEME, 'light'),
+	mode: 'light',
+	setMode: () => console.warn('ThemeProvider not found, using default theme'),
 };
 
-export const useTheme = (): AppliedTheme => {
-	return applyTheme(DEFAULT_THEME);
-};
+const ThemeContext = createContext<ThemeContextType>(defaultContextValue);
+
+// Theme Provider to implement Custom Themes
+export function ThemeProvider({
+	children,
+	initialTheme,
+	initialMode = 'light',
+}: {
+	children: React.ReactNode;
+	initialTheme: Theme;
+	initialMode?: ThemeMode;
+}) {
+	const [mode, setMode] = useState<ThemeMode>(initialMode);
+	const theme = createAppliedTheme(initialTheme, mode);
+
+	return (
+		<ThemeContext.Provider
+			value={{
+				theme,
+				mode,
+				setMode,
+			}}
+		>
+			{children}
+		</ThemeContext.Provider>
+	);
+}
+
+// Access Theme Values
+export function useTheme(): ThemeContextType {
+	return useContext(ThemeContext); // Will fall back to defaultContextValue
+}
+
+export function useThemeMode(): [ThemeMode, (mode: ThemeMode) => void] {
+	const { mode, setMode } = useTheme();
+	return [mode, setMode];
+}
