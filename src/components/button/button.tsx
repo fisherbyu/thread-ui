@@ -4,7 +4,7 @@ import { getUtilityColorValue, useTheme } from '../../utils';
 import { ButtonProps } from './button.types';
 
 export const Button = ({ children, fullWidth, color = 'primary', onClick, type = 'button', margin }: ButtonProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const [isHovered, setIsHovered] = useState(false);
 
 	const colorValue = getUtilityColorValue(color);
