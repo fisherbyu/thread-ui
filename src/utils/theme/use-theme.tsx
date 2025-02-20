@@ -14,6 +14,7 @@ const defaultContextValue: ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType>(defaultContextValue);
 
+// Theme Provider to implement Custom Themes
 export function ThemeProvider({
 	children,
 	initialTheme,
@@ -39,6 +40,7 @@ export function ThemeProvider({
 	);
 }
 
+// Access Theme Values
 export function useTheme(): ThemeContextType {
 	return useContext(ThemeContext); // Will fall back to defaultContextValue
 }
