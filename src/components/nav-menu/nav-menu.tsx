@@ -49,7 +49,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		};
 	}, []);
 
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const style: Record<string, CSSProperties> = {
 		header: {
 			position: 'sticky',
