@@ -3,6 +3,7 @@
 import { createContext, useContext, useState } from 'react';
 import type { Theme, AppliedTheme } from '../../types';
 import { createAppliedTheme } from './create-theme';
+import { DEFAULT_THEME } from '../../defaults';
 
 type ThemeMode = 'light' | 'dark';
 
@@ -12,7 +13,14 @@ type ThemeContextType = {
 	setMode: (mode: ThemeMode) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+// Create default context value
+const defaultContextValue: ThemeContextType = {
+	theme: createAppliedTheme(DEFAULT_THEME, 'light'),
+	mode: 'light',
+	setMode: () => console.warn('ThemeProvider not found, using default theme'),
+};
+
+const ThemeContext = createContext<ThemeContextType>(defaultContextValue);
 
 export function ThemeProvider({
 	children,
@@ -40,11 +48,7 @@ export function ThemeProvider({
 }
 
 export function useTheme(): ThemeContextType {
-	const context = useContext(ThemeContext);
-	if (!context) {
-		throw new Error('useTheme must be used within a ThemeProvider');
-	}
-	return context;
+	return useContext(ThemeContext); // Will fall back to defaultContextValue
 }
 
 export function useThemeMode(): [ThemeMode, (mode: ThemeMode) => void] {
