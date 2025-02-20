@@ -1,3 +1,4 @@
+'use client';
 import { FacebookLogo, GithubLogo, InstagramLogo, TwitterLogo } from '@phosphor-icons/react';
 import { LinkWrapper } from '../../internal-components';
 import { Divider } from '../divider';
@@ -7,7 +8,7 @@ import { useTheme } from '../../utils';
 import { log } from 'console';
 
 export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink, githubLink, linkedInLink }: FooterProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 
 	const styles: Record<string, CSSProperties> = {
 		footer: {
