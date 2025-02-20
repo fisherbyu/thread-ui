@@ -3,9 +3,7 @@ import { Theme, AppliedTheme } from '../../types';
 import { DEFAULT_THEME } from '../../defaults';
 import { deepMerge, DeepPartial } from '../deep-merge/deep-merge';
 
-type ThemeMode = 'light' | 'dark';
-
-// Pure functions - can be used in server components
+// Create Theme Functions for SSR
 export function createTheme(userConfig: DeepPartial<Theme>): Theme {
 	console.log('createTheme called with:', userConfig);
 	const newTheme = deepMerge(DEFAULT_THEME, userConfig);
