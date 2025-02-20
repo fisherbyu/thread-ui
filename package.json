@@ -14,17 +14,16 @@
 	},
 	"sideEffects": false,
 	"scripts": {
+		"clean": "rm -rf dist",
 		"build": "tsc && npm run build-css",
 		"build-css": "npx postcss src/styles/styles.css -o dist/styles/thread.css",
-		"clean": "rm -rf dist",
-		"prebuild": "npm run clean",
-		"pack-to-dist": "npm pack && mkdir -p dist && mv thread-ui-*.tgz dist/",
-		"test": "jest",
 		"build-tailwind": "npx tailwindcss -i ./src/styles/styles.css -o ./src/styles/thread.css --watch",
-		"weave": "npm run clean && npm run build",
-		"weave-local": "npm run clean && npm run build && npm run pack-to-dist",
-		"build-storybook": "storybook build",
-		"storybook": "concurrently \"npm run build-tailwind\" \"storybook dev -p 6006\""
+		"pack": "npm pack",
+		"pack-dev": "npm pack && mkdir -p dist && mv thread-ui-*.tgz dist/",
+		"test": "jest",
+		"storybook": "concurrently \"npm run build-tailwind\" \"storybook dev -p 6006\"",
+		"storybook:build": "storybook build",
+		"prepare-publish": "npm run clean && npm run build"
 	},
 	"files": [
 		"dist",
