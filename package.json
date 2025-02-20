@@ -21,7 +21,8 @@
 		"pack-to-dist": "npm pack && mkdir -p dist && mv thread-ui-*.tgz dist/",
 		"test": "jest",
 		"build-tailwind": "npx tailwindcss -i ./src/styles/styles.css -o ./src/styles/thread.css --watch",
-		"weave": "npm run clean && npm run build && npm run pack-to-dist",
+		"weave": "npm run clean && npm run build",
+		"weave-local": "npm run clean && npm run build && npm run pack-to-dist",
 		"build-storybook": "storybook build",
 		"storybook": "concurrently \"npm run build-tailwind\" \"storybook dev -p 6006\""
 	},
