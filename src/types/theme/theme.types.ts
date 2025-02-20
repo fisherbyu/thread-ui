@@ -24,8 +24,10 @@ export type AppliedTheme = BaseTheme & {
 	colors: AppliedThemeColors;
 };
 
-export type ThemeControls = {
-	colorMode: 'light' | 'dark';
-	setColorMode: (mode: 'light' | 'dark') => void;
-	toggleColorMode: () => void;
+export type ThemeMode = 'light' | 'dark';
+
+export type ThemeContextType = {
+	theme: AppliedTheme;
+	mode: ThemeMode;
+	setMode: (mode: ThemeMode) => void;
 };
