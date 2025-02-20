@@ -1,5 +1,6 @@
 // Import Tailwind Styles
 import './styles/thread.css';
+console.log('root index loaded');
 
 // Export Components
 export * from './components/info-card';
@@ -14,4 +15,4 @@ export * from './components/icon';
 export * from './types';
 
 // Export Utility Functions
-export { createTheme, createAppliedTheme } from './utils';
+export { createTheme, createAppliedTheme, ThemeProvider } from './utils';
