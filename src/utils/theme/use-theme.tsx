@@ -1,17 +1,9 @@
 // use-theme.ts
 'use client';
 import { createContext, useContext, useState } from 'react';
-import type { Theme, AppliedTheme } from '../../types';
+import type { Theme, AppliedTheme, ThemeMode, ThemeContextType } from '../../types';
 import { createAppliedTheme } from './create-theme';
 import { DEFAULT_THEME } from '../../defaults';
-
-type ThemeMode = 'light' | 'dark';
-
-type ThemeContextType = {
-	theme: AppliedTheme;
-	mode: ThemeMode;
-	setMode: (mode: ThemeMode) => void;
-};
 
 // Create default context value
 const defaultContextValue: ThemeContextType = {
