@@ -1,6 +1,5 @@
 // Import Tailwind Styles
 import './styles/thread.css';
-console.log('root index loaded');
 
 // Export Components
 export * from './components/info-card';
