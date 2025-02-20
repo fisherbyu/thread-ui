@@ -1,7 +1,7 @@
 {
 	"name": "thread-ui",
-	"version": "1.0.0",
-	"description": "Unified UI Library for React Applications.",
+	"version": "0.1.0",
+	"description": "UI Library for React Applications.",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
