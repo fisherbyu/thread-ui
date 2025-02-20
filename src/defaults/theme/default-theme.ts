@@ -54,7 +54,7 @@ export const DEFAULT_THEME: Theme = {
 		light: {
 			// Layers
 			background: '#ffffff',
-			structure: '#0a0a0a',
+			structure: '#e5e7eb',
 			surface: '#f8fafc',
 			elevated: '#f8fafc',
 
@@ -68,7 +68,7 @@ export const DEFAULT_THEME: Theme = {
 		dark: {
 			// Layers
 			background: '#0a0a0a',
-			structure: '#ffffff',
+			structure: '#e5e7eb',
 			surface: '#A9A9A9',
 			elevated: '#A9A9A9',
 
