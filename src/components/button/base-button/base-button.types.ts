@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
 import { ButtonProps } from '../button.types';
+import { UtilityColorOptions } from '../../../types';
 
 // Generic Button Requirements
 export type RootButtonProps = {
 	fullWidth?: boolean;
-	color?: 'primary' | 'secondary' | 'tertiary' | 'black' | 'grey' | 'success' | 'error' | 'info';
+	color?: UtilityColorOptions;
 	type?: 'button' | 'submit' | 'reset';
 	onClick?: () => void;
 	margin?: string;
