@@ -21,11 +21,6 @@ const meta: Meta<typeof IconButton> = {
 			options: iconNames,
 			description: 'Icon name from Phosphor Icons library',
 		},
-		size: {
-			control: 'radio',
-			options: ['sm', 'md', 'lg'],
-			description: 'Button size',
-		},
 		color: {
 			control: 'select',
 			options: ['primary', 'secondary', 'success', 'warning', 'danger'],
@@ -61,7 +56,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {
 		name: 'Heart',
-		size: 'md',
 		color: 'primary',
 		type: 'button',
 		children: 'Love',
