@@ -1,3 +1,5 @@
+'use client';
+import { useState } from 'react';
 import { getUtilitySizeValue } from '../../utils';
 import { BaseButton } from '../button/base-button/base-button';
 import { Icon } from '../icon/icon';
@@ -14,9 +16,19 @@ export const IconButton = ({
 	size,
 	name,
 }: IconButtonProps) => {
+	const [isHovered, setIsHovered] = useState(false);
+
 	return (
-		<BaseButton fullWidth={fullWidth} color={color} onClick={onClick} type={type} margin={margin} disabled={disabled}>
-			<Icon color={color} name={name} size={getUtilitySizeValue(size)} />
+		<BaseButton
+			fullWidth={fullWidth}
+			color={color}
+			onClick={onClick}
+			type={type}
+			margin={margin}
+			disabled={disabled}
+			onHoverStateChange={setIsHovered}
+		>
+			<Icon color={isHovered ? color : 'text'} name={name} size={getUtilitySizeValue(size)} />
 			{children}
 		</BaseButton>
 	);
