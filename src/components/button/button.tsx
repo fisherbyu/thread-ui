@@ -3,7 +3,7 @@ import { CSSProperties, useState } from 'react';
 import { getUtilityColorValue, useTheme } from '../../utils';
 import { ButtonProps } from './button.types';
 
-export const Button = ({ children, fullWidth, color = 'primary', onClick, type = 'button', margin }: ButtonProps) => {
+export const Button = ({ children, fullWidth, color = 'primary', onClick, type = 'button', margin, disabled }: ButtonProps) => {
 	const { theme } = useTheme();
 	const [isHovered, setIsHovered] = useState(false);
 

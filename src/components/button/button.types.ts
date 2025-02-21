@@ -7,4 +7,5 @@ export type ButtonProps = {
 	type?: 'button' | 'submit' | 'reset';
 	onClick?: () => void;
 	margin?: string;
+	disabled?: boolean;
 };
