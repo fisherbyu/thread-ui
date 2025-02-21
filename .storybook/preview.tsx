@@ -2,18 +2,10 @@ import type { Preview } from '@storybook/react';
 import '../src/styles/thread.css';
 import { createTheme, ThemeProvider } from '../src/utils';
 
-const threadConfig = {
-	colors: {
-		primary: {
-			light: '#4f46e5',
-			main: '#4338ca',
-			dark: '#3730a3',
-		},
-	},
-} as const;
+const threadConfig = {} as const;
 
 // Initialize Theme
-export const TestConfig = createTheme({});
+export const TestConfig = createTheme(threadConfig);
 
 const preview: Preview = {
 	decorators: [
