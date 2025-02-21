@@ -1,10 +1,12 @@
 'use client';
 import { CSSProperties } from 'react';
-import { useTheme } from '../../utils';
+import { getUtilityColorValue, useTheme } from '../../utils';
 import { ToggleProps } from './toggle.types';
 
-export const Toggle = ({ isOn, onToggle }: ToggleProps) => {
+export const Toggle = ({ isOn, onToggle, color = 'success' }: ToggleProps) => {
 	const { theme } = useTheme();
+
+	const colorValue = getUtilityColorValue(color);
 
 	const styles: Record<string, CSSProperties> = {
 		button: {
@@ -18,7 +20,7 @@ export const Toggle = ({ isOn, onToggle }: ToggleProps) => {
 			outline: 'none',
 		},
 		buttonOn: {
-			backgroundColor: theme.colors.primary.main,
+			backgroundColor: colorValue,
 		},
 		buttonOff: {
 			backgroundColor: theme.colors.gray.main,
