@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Toggle } from './toggle';
 
@@ -28,9 +28,15 @@ type Story = StoryObj<typeof Toggle>;
 export const Default: Story = {
 	args: {
 		color: 'success',
+		isOn: false,
 	},
 	render: (args) => {
-		const [isOn, setIsOn] = useState(false);
+		const [isOn, setIsOn] = useState(args.isOn);
+
+		useEffect(() => {
+			setIsOn(args.isOn);
+		}, [args.isOn]);
+
 		return <Toggle {...args} isOn={isOn} onToggle={() => setIsOn(!isOn)} />;
 	},
 };
