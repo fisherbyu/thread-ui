@@ -16,4 +16,4 @@ export * from './components/toggle';
 export * from './types';
 
 // Export Utility Functions
-export { createTheme, createAppliedTheme, ThemeProvider } from './utils';
+export { createTheme, createAppliedTheme, ThemeProvider, useTheme } from './utils';
