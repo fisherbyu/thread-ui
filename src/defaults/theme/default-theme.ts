@@ -61,7 +61,7 @@ export const DEFAULT_THEME: Theme = {
 			// Text
 			text: {
 				primary: '#18181b',
-				secondary: '#18181b',
+				secondary: '#fafafa',
 				disabled: '#71717a',
 			},
 		},
