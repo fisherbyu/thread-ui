@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MasonryLayout } from './masonry-layout';
 import '../../styles/thread.css';

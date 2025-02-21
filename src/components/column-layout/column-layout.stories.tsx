@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ColumnLayout } from './column-layout';
 
@@ -14,7 +15,9 @@ export default meta;
 type Story = StoryObj<typeof ColumnLayout>;
 
 // Helper function to generate colored cards
-const ColorCard = ({ color }: { color: string }) => <div className="thread-w-full thread-aspect-video thread-rounded" style={{ backgroundColor: color }} />;
+const ColorCard = ({ color }: { color: string }) => (
+	<div className="thread-w-full thread-aspect-video thread-rounded" style={{ backgroundColor: color }} />
+);
 
 export const Basic: Story = {
 	args: {
