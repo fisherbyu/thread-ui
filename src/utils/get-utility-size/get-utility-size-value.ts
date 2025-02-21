@@ -2,7 +2,7 @@
 
 import { UtilitySizes } from '../../types';
 
-export const getUtilitySizeValues = (size: UtilitySizes): 12 | 24 | 64 => {
+export const getUtilitySizeValue = (size: UtilitySizes): 12 | 24 | 64 => {
 	switch (size) {
 		case 'sm':
 			return 12;
