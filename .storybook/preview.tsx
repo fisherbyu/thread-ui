@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Preview } from '@storybook/react';
 import '../src/styles/thread.css';
 import { createTheme, ThemeProvider } from '../src/utils';
