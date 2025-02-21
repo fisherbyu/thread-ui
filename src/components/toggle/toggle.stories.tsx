@@ -31,6 +31,6 @@ export const Default: Story = {
 	},
 	render: (args) => {
 		const [isOn, setIsOn] = useState(false);
-		return <Toggle {...args} onToggle={() => setIsOn(!isOn)} />;
+		return <Toggle {...args} isOn={isOn} onToggle={() => setIsOn(!isOn)} />;
 	},
 };
