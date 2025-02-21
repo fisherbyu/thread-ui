@@ -9,6 +9,8 @@ export * from './components/masonry-layout';
 export * from './components/column-layout';
 export * from './components/button';
 export * from './components/icon';
+export * from './components/icon-button';
+export * from './components/toggle';
 
 // Export Types
 export * from './types';
