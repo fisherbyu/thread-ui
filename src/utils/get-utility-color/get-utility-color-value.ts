@@ -21,6 +21,8 @@ export const getUtilityColorValue = (color: UtilityColorOptions): string => {
 			return theme.colors.error.main;
 		case 'info':
 			return theme.colors.info.main;
+		case 'text':
+			return theme.colors.text.primary;
 		default:
 			return theme.colors.primary.main;
 	}
