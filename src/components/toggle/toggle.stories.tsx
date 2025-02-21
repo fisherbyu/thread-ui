@@ -14,6 +14,11 @@ const meta: Meta<typeof Toggle> = {
 		onToggle: {
 			description: 'Callback function when toggle is clicked',
 		},
+		color: {
+			control: 'select',
+			options: ['primary', 'secondary', 'tertiary', 'black', 'grey', 'success', 'error', 'info', 'text'],
+			description: 'Color theme for the toggle',
+		},
 	},
 };
 
@@ -21,8 +26,11 @@ export default meta;
 type Story = StoryObj<typeof Toggle>;
 
 export const Default: Story = {
-	render: () => {
+	args: {
+		color: 'success',
+	},
+	render: (args) => {
 		const [isOn, setIsOn] = useState(false);
-		return <Toggle isOn={isOn} onToggle={() => setIsOn(!isOn)} />;
+		return <Toggle {...args} onToggle={() => setIsOn(!isOn)} />;
 	},
 };
