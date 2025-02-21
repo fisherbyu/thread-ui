@@ -19,7 +19,7 @@
 		"build-css": "npx postcss src/styles/styles.css -o dist/styles/thread.css",
 		"build-tailwind": "npx tailwindcss -i ./src/styles/styles.css -o ./src/styles/thread.css --watch",
 		"pack": "npm pack",
-		"pack-dev": "npm pack && mkdir -p dist && mv thread-ui-*.tgz dist/",
+		"pack-dev": "npm run prepare-publish && npm pack && mkdir -p dist && mv thread-ui-*.tgz dist/",
 		"test": "jest",
 		"storybook": "concurrently \"npm run build-tailwind\" \"storybook dev -p 6006\"",
 		"storybook:build": "storybook build",
