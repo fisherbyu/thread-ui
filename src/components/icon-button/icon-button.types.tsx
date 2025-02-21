@@ -5,6 +5,5 @@ import { UtilitySizes } from '../../types';
 
 export type IconButtonProps = RootButtonProps & {
 	name: IconNames;
-	size: UtilitySizes;
 	children?: ReactNode;
 };
