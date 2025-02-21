@@ -3,7 +3,15 @@ import { CSSProperties, useState } from 'react';
 import { getUtilityColorValue, useTheme } from '../../utils';
 import { ButtonProps } from './button.types';
 
-export const Button = ({ children, fullWidth, color = 'primary', onClick, type = 'button', margin, disabled }: ButtonProps) => {
+export const Button = ({
+	children,
+	fullWidth,
+	color = 'primary',
+	onClick,
+	type = 'button',
+	margin,
+	disabled = false,
+}: ButtonProps) => {
 	const { theme } = useTheme();
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -23,12 +31,13 @@ export const Button = ({ children, fullWidth, color = 'primary', onClick, type =
 		alignItems: 'center',
 		cursor: 'pointer',
 		userSelect: 'none',
+		opacity: disabled ? 0.6 : 1,
 	};
 
 	const hoverButton: CSSProperties = {
 		...buttonStyles,
-		backgroundColor: theme.colors.white,
-		color: colorValue,
+		backgroundColor: disabled ? colorValue : theme.colors.white,
+		color: disabled ? theme.colors.white : colorValue,
 	};
 
 	return (
@@ -37,7 +46,7 @@ export const Button = ({ children, fullWidth, color = 'primary', onClick, type =
 			style={isHovered ? hoverButton : buttonStyles}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
-			onClick={onClick}
+			onClick={disabled ? undefined : onClick}
 		>
 			{children}
 		</button>

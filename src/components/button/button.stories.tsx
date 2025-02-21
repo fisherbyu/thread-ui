@@ -16,6 +16,9 @@ const meta = {
 	],
 	argTypes: {
 		onClick: { action: 'clicked' },
+		disabled: {
+			control: 'boolean',
+		},
 	},
 	tags: ['autodocs'],
 } satisfies Meta<typeof Button>;
@@ -30,5 +33,6 @@ export const Default: Story = {
 		color: 'primary',
 		fullWidth: false,
 		onClick: () => alert('Button clicked!'),
+		disabled: false,
 	},
 };
