@@ -1,11 +1,7 @@
 import { ReactNode } from 'react';
+import { RootButtonProps } from './base-button/base-button.types';
 
-export type ButtonProps = {
+// ButtonProps with required children
+export type ButtonProps = RootButtonProps & {
 	children: ReactNode;
-	fullWidth?: boolean;
-	color?: 'primary' | 'secondary' | 'tertiary' | 'black' | 'grey' | 'success' | 'error' | 'info';
-	type?: 'button' | 'submit' | 'reset';
-	onClick?: () => void;
-	margin?: string;
-	disabled?: boolean;
 };
