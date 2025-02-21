@@ -27,6 +27,8 @@ export const BaseButton = ({
 		backgroundColor: colorValue,
 		margin: margin ?? 'auto',
 		display: 'flex',
+		flexDirection: 'row',
+		gap: theme.space,
 		justifyContent: 'center',
 		alignItems: 'center',
 		cursor: 'pointer',
