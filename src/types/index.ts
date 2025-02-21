@@ -5,3 +5,6 @@ export { Theme, AppliedTheme, ThemeMode, ThemeContextType } from './theme/theme.
 
 // IMAGE TYPES
 export { ImageProps } from './image/image.types';
+
+// Sizes
+export { UtilitySizes } from './theme/size/themeSizes.types';
