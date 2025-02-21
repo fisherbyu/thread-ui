@@ -2,6 +2,7 @@
 import { CSSProperties, useState } from 'react';
 import { getUtilityColorValue, useTheme } from '../../utils';
 import { ButtonProps } from './button.types';
+import { BaseButton } from './base-button/base-button';
 
 export const Button = ({
 	children,
@@ -12,43 +13,9 @@ export const Button = ({
 	margin,
 	disabled = false,
 }: ButtonProps) => {
-	const { theme } = useTheme();
-	const [isHovered, setIsHovered] = useState(false);
-
-	const colorValue = getUtilityColorValue(color);
-
-	const buttonStyles: CSSProperties = {
-		padding: `${theme.space * 2}px`,
-		width: fullWidth ? '100%' : 'fit-content',
-		transition: 'background-color 0.2s ease',
-		border: `${theme.border.size.md}px ${colorValue} solid`,
-		borderRadius: `${theme.border.radius.md}px`,
-		color: theme.colors.white,
-		backgroundColor: colorValue,
-		margin: margin ?? 'auto',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		cursor: 'pointer',
-		userSelect: 'none',
-		opacity: disabled ? 0.6 : 1,
-	};
-
-	const hoverButton: CSSProperties = {
-		...buttonStyles,
-		backgroundColor: disabled ? colorValue : theme.colors.white,
-		color: disabled ? theme.colors.white : colorValue,
-	};
-
 	return (
-		<button
-			type={type}
-			style={isHovered ? hoverButton : buttonStyles}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-			onClick={disabled ? undefined : onClick}
-		>
+		<BaseButton fullWidth={fullWidth} color={color} onClick={onClick} type={type} margin={margin} disabled={disabled}>
 			{children}
-		</button>
+		</BaseButton>
 	);
 };
