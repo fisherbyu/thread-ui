@@ -2,9 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { useTheme } from './use-theme';
 import type { ThemeMode } from '../../types';
+import { Divider } from '../../';
 
 const ColorSwatch = ({ color, name }: { color: string; name: string }) => (
-	<div className="thread-flex thread-flex-col thread-items-center thread-mb-4">
+	<div className="thread-flex thread-flex-col thread-items-center thread-mb-1">
 		<div className="thread-w-16 thread-h-16 thread-rounded-lg thread-shadow-md thread-mb-2" style={{ backgroundColor: color }} />
 		<div className="thread-text-sm thread-font-medium">{name}</div>
 		<div className="thread-text-xs thread-text-gray-500">{color}</div>
@@ -26,7 +27,7 @@ const ColorGroup = ({ title, colors }: { title: string; colors: Record<string, s
 	});
 
 	return (
-		<div className="thread-mb-1 thread-w-64">
+		<div className=" thread-w-64">
 			<h3 className="thread-text-lg thread-font-semibold thread-mb-4">{title}</h3>
 			<div className="thread-flex thread-flex-row thread-justify-between thread-items-center thread-w-full">
 				{orderedColors.map(([name, color]) => (
@@ -48,38 +49,30 @@ const ThemeDisplay = () => {
 
 	return (
 		<div className="thread-p-4">
-			<div className="thread-flex thread-justify-between thread-items-center thread-mb-8">
-				<h2 className="thread-text-2xl thread-font-bold">Theme Preview</h2>
+			<div className="thread-flex thread-justify-between thread-items-center thread-mb-1">
+				<h2 className="thread-text-2xl thread-font-bold">Theme</h2>
 			</div>
-
-			{/* Brand Colors */}
-			<section className="thread-mb-6">
-				<h2 className="thread-text-xl thread-font-bold thread-mb-6">Brand Colors</h2>
-				<div className="thread-flex thread-flex-row thread-gap-8 thread-justify-around">
+			<Divider width="100%" />
+			<div className="thread-grid sm:thread-grid-cols-1 md:thread-grid-cols-2 thread-gap-6 px-2">
+				<section className="thread-flex-col thread-justify-center thread-mx-auto">
+					<h2 className="thread-text-xl thread-font-medium thread-mb-1">Brand Colors</h2>
 					<ColorGroup title="Primary" colors={theme.colors.primary} />
+					<Divider width="100%" />
 					<ColorGroup title="Secondary" colors={theme.colors.secondary} />
+					<Divider width="100%" />
 					<ColorGroup title="Tertiary" colors={theme.colors.tertiary} />
-				</div>
-			</section>
-
-			{/* Status Colors */}
-			<section className="thread-mb-12">
-				<h2 className="thread-text-xl thread-font-bold thread-mb-6">Status Colors</h2>
-				<div className="thread-grid thread-grid-cols-2 thread-gap-8 thread-w-10/12 thread-mx-auto">
-					<div className="thread-flex thread-justify-center">
-						<ColorGroup title="Success" colors={theme.colors.success} />
-					</div>
-					<div className="thread-flex thread-justify-center">
-						<ColorGroup title="Warning" colors={theme.colors.warning} />
-					</div>
-					<div className="thread-flex thread-justify-center">
-						<ColorGroup title="Error" colors={theme.colors.error} />
-					</div>
-					<div className="thread-flex thread-justify-center">
-						<ColorGroup title="Info" colors={theme.colors.info} />
-					</div>
-				</div>
-			</section>
+				</section>
+				<section className="thread-flex-col thread-justify-center">
+					<h2 className="thread-text-xl thread-font-medium thread-mb-1">Status Colors</h2>
+					<ColorGroup title="Success" colors={theme.colors.success} />
+					<Divider width="100%" />
+					<ColorGroup title="Warning" colors={theme.colors.warning} />
+					<Divider width="100%" />
+					<ColorGroup title="Error" colors={theme.colors.error} />
+					<Divider width="100%" />
+					<ColorGroup title="Info" colors={theme.colors.info} />
+				</section>
+			</div>
 
 			{/* Mode-specific Colors */}
 			<section className="thread-mb-12">
