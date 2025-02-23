@@ -10,18 +10,41 @@ export const TestConfig = createTheme(threadConfig);
 
 const preview: Preview = {
 	decorators: [
-		(Story) => (
-			<ThemeProvider initialTheme={TestConfig} initialMode="light">
-				{/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-				<Story />
-			</ThemeProvider>
-		),
+		(Story, context) => {
+			// Get the current theme mode from toolbar
+			const themeMode = context.globals.theme || 'light';
+
+			return (
+				<ThemeProvider initialTheme={TestConfig} initialMode={themeMode}>
+					<Story />
+				</ThemeProvider>
+			);
+		},
 	],
 	parameters: {
 		controls: {
 			matchers: {
 				color: /(background|color)$/i,
 				date: /Date$/i,
+			},
+		},
+	},
+	// Add global toolbar item for theme switching
+	globalTypes: {
+		theme: {
+			name: 'Theme',
+			description: 'Global theme for components',
+			defaultValue: 'light',
+			toolbar: {
+				icon: 'circlehollow',
+				items: [
+					{ value: 'light', icon: 'sun', title: 'Light' },
+					{ value: 'dark', icon: 'moon', title: 'Dark' },
+				],
+				// Show tool tip with current theme
+				showName: true,
+				// Change toolbar icon based on selected theme
+				dynamicTitle: true,
 			},
 		},
 	},
