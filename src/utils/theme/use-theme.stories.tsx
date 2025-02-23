@@ -77,23 +77,30 @@ const ThemeDisplay = () => {
 			{/* Mode-specific Colors */}
 			<section className="thread-mb-12">
 				<h2 className="thread-text-xl thread-font-bold thread-mb-6">Mode-Specific Colors</h2>
-				<div className="thread-grid thread-grid-cols-2 thread-gap-8">
-					<div>
-						<h3 className="thread-text-lg thread-font-semibold thread-mb-4">Layer Colors</h3>
-						<div className="thread-grid thread-grid-cols-3 thread-gap-4">
-							{getModeLayerColors('light').map(([name, color]) => (
-								<ColorSwatch key={name} color={color} name={name} />
-							))}
+				<div className="thread-space-y-8">
+					{(['light', 'dark'] as ThemeMode[]).map((mode) => (
+						<div key={mode} className="thread-space-y-6">
+							<h3 className="thread-text-lg thread-font-semibold thread-capitalize">{mode} Mode</h3>
+							<div className="thread-space-y-8">
+								<div>
+									<h4 className="thread-text-md thread-font-medium thread-mb-4">Layer Colors</h4>
+									<div className="thread-grid thread-grid-cols-6 thread-gap-4">
+										{getModeLayerColors(mode).map(([name, color]) => (
+											<ColorSwatch key={name} color={color} name={name} />
+										))}
+									</div>
+								</div>
+								<div>
+									<h4 className="thread-text-md thread-font-medium thread-mb-4">Text Colors</h4>
+									<div className="thread-grid thread-grid-cols-6 thread-gap-4">
+										{Object.entries(theme.colors[mode].text).map(([name, color]) => (
+											<ColorSwatch key={name} color={color} name={name} />
+										))}
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div>
-						<h3 className="thread-text-lg thread-font-semibold thread-mb-4">Text Colors</h3>
-						<div className="thread-grid thread-grid-cols-3 thread-gap-4">
-							{Object.entries(theme.colors.light.text).map(([name, color]) => (
-								<ColorSwatch key={name} color={color} name={name} />
-							))}
-						</div>
-					</div>
+					))}
 				</div>
 			</section>
 
@@ -110,10 +117,10 @@ const ThemeDisplay = () => {
 			{/* Border Information */}
 			<section className="thread-mt-12">
 				<h2 className="thread-text-xl thread-font-bold thread-mb-6">Border Specifications</h2>
-				<div className="thread-grid thread-grid-cols-2 thread-gap-8">
+				<div className="thread-space-y-8">
 					<div>
 						<h3 className="thread-text-lg thread-font-semibold thread-mb-4">Border Radius</h3>
-						<div className="thread-space-y-4">
+						<div className="thread-grid thread-grid-cols-4 thread-gap-8">
 							{Object.entries(theme.border.radius).map(([size, value]) => (
 								<div key={size} className="thread-flex thread-items-center thread-space-x-4">
 									<div
@@ -130,7 +137,7 @@ const ThemeDisplay = () => {
 					</div>
 					<div>
 						<h3 className="thread-text-lg thread-font-semibold thread-mb-4">Border Size</h3>
-						<div className="thread-space-y-4">
+						<div className="thread-grid thread-grid-cols-4 thread-gap-8">
 							{Object.entries(theme.border.size).map(([size, value]) => (
 								<div key={size} className="thread-flex thread-items-center thread-space-x-4">
 									<div
