@@ -33,27 +33,24 @@ const ThemeDisplay = () => {
 	};
 
 	return (
-		<div className="thread-p-8">
+		<div className="thread-p-4">
 			<div className="thread-flex thread-justify-between thread-items-center thread-mb-8">
 				<h2 className="thread-text-2xl thread-font-bold">Theme Preview</h2>
-				<select
-					value={mode}
-					onChange={(e) => setMode(e.target.value as ThemeMode)}
-					className="thread-px-4 thread-py-2 thread-border thread-rounded-md"
-				>
-					<option value="light">Light Mode</option>
-					<option value="dark">Dark Mode</option>
-				</select>
 			</div>
 
-			<div className="thread-space-y-12">
-				{/* Primary Colors */}
-				<section>
-					<h2 className="thread-text-xl thread-font-bold thread-mb-6">Brand Colors</h2>
+			<section className="thread-flex thread-flex-col">
+				<h2 className="thread-text-xl thread-font-bold thread-mb-6">Brand Colors</h2>
+				{/* Brand Colors */}
+				<div className="thread-w-full thread-flex thread-flex-row thread-items-center thread-justify-around">
 					<ColorGroup title="Primary" colors={theme.colors.primary} />
 					<ColorGroup title="Secondary" colors={theme.colors.secondary} />
 					<ColorGroup title="Tertiary" colors={theme.colors.tertiary} />
-				</section>
+				</div>
+			</section>
+
+			<div className="thread-space-y-12">
+				{/* Primary Colors */}
+				<section></section>
 
 				{/* Status Colors */}
 				<section>
