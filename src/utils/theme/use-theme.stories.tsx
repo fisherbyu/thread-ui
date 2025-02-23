@@ -78,29 +78,44 @@ const ThemeDisplay = () => {
 			<section className="thread-mb-12">
 				<h2 className="thread-text-xl thread-font-bold thread-mb-6">Mode-Specific Colors</h2>
 				<div className="thread-space-y-8">
-					{(['light', 'dark'] as ThemeMode[]).map((mode) => (
-						<div key={mode} className="thread-space-y-6">
-							<h3 className="thread-text-lg thread-font-semibold thread-capitalize">{mode} Mode</h3>
-							<div className="thread-space-y-8">
+					<div className="thread-space-y-6">
+						<h3 className="thread-text-lg thread-font-semibold thread-capitalize">Layer Colors</h3>
+						<div className="thread-space-y-8">
+							<div>
+								<h4 className="thread-text-md thread-font-medium thread-mb-2">Light Mode</h4>
+								<div className="thread-grid thread-grid-cols-6 thread-gap-4">
+									{getModeLayerColors('light').map(([name, color]) => (
+										<ColorSwatch key={name} color={color} name={name} />
+									))}
+								</div>
+								<h4 className="thread-text-md thread-font-medium thread-mb-2">Dark Mode</h4>
+								<div className="thread-grid thread-grid-cols-6 thread-gap-4">
+									{getModeLayerColors('dark').map(([name, color]) => (
+										<ColorSwatch key={name} color={color} name={name} />
+									))}
+								</div>
+							</div>
+							<Divider width="100%" />
+
+							<div>
+								<h3 className="thread-text-lg thread-font-semibold thread-capitalize">Text Colors</h3>
 								<div>
-									<h4 className="thread-text-md thread-font-medium thread-mb-4">Layer Colors</h4>
+									<h4 className="thread-text-md thread-font-medium thread-mb-2">Light Mode</h4>
 									<div className="thread-grid thread-grid-cols-6 thread-gap-4">
-										{getModeLayerColors(mode).map(([name, color]) => (
+										{Object.entries(theme.colors['light'].text).map(([name, color]) => (
 											<ColorSwatch key={name} color={color} name={name} />
 										))}
 									</div>
-								</div>
-								<div>
-									<h4 className="thread-text-md thread-font-medium thread-mb-4">Text Colors</h4>
+									<h4 className="thread-text-md thread-font-medium thread-mb-2">Dark Mode</h4>
 									<div className="thread-grid thread-grid-cols-6 thread-gap-4">
-										{Object.entries(theme.colors[mode].text).map(([name, color]) => (
+										{Object.entries(theme.colors['dark'].text).map(([name, color]) => (
 											<ColorSwatch key={name} color={color} name={name} />
 										))}
 									</div>
 								</div>
 							</div>
 						</div>
-					))}
+					</div>
 				</div>
 			</section>
 
