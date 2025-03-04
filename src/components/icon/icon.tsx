@@ -21,7 +21,7 @@ export const Icon: React.FC<IconProps> = ({ name, color, size = 24, weight = 're
 		weight?: IconWeight;
 	}>;
 
-	const colorValue = getUtilityColorValue(color);
+	const colorValue = color ? getUtilityColorValue(color) : undefined;
 
 	return <IconComponent color={colorValue} size={size} weight={filled ? 'fill' : weight} />;
 };
