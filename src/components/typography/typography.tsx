@@ -6,13 +6,14 @@ export type TypographyProps = {
 
 export type TitleProps = TypographyProps & {
 	align?: 'left' | 'center';
+	inline?: boolean;
 };
-export const Title = ({ children, align = 'left' }: TitleProps) => {
+export const Title = ({ children, align = 'left', inline = false }: TitleProps) => {
 	const styles: CSSProperties = {
-		fontSize: '2.5rem',
+		fontSize: '3rem',
 		fontWeight: 700,
-		lineHeight: 1.3,
-		margin: '0 0 40px 0',
+		lineHeight: 2,
+		margin: inline ? '0' : '0 0 40px 0',
 		textAlign: align,
 	};
 	return <h1 style={styles}>{children}</h1>;
