@@ -10,6 +10,7 @@ export * from './components/column-layout';
 export * from './components/button';
 export * from './components/icon';
 export * from './components/icon-button';
+export * from './components/image-panel';
 export * from './components/toggle';
 export * from './components/typography';
 
