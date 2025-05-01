@@ -19,12 +19,12 @@ export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayo
 				{items.map((item, index) => (
 					<div key={index}>
 						<div className="thread-mb-6 thread-w-full thread-h-auto thread-rounded thread-overflow-hidden">
-							{React.isValidElement(item.image)
-								? item.image
-								: 'src' in (item.image as { src: string }) && (
+							{React.isValidElement(item.content)
+								? item.content
+								: 'src' in (item.content as { src: string }) && (
 										<img
-											src={(item.image as { src: string }).src}
-											alt={(item.image as { alt: string }).alt}
+											src={(item.content as { src: string }).src}
+											alt={(item.content as { alt: string }).alt}
 											className="thread-w-full thread-h-auto thread-rounded"
 										/>
 									)}

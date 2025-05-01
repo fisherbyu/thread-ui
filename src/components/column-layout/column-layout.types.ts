@@ -11,5 +11,5 @@ export type ColumnLayoutProps = {
 export type ColumnItem = {
 	title?: string;
 	description?: string;
-	image: { src: string; alt: string } | ReactNode;
+	content: { src: string; alt: string } | ReactNode;
 };

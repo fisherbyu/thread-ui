@@ -29,22 +29,22 @@ export const Basic: Story = {
 			{
 				title: 'Web Development',
 				description: 'Building responsive and modern web applications',
-				image: <ColorCard color="#60A5FA" />,
+				content: <ColorCard color="#60A5FA" />,
 			},
 			{
 				title: 'Mobile Apps',
 				description: 'Native and cross-platform mobile solutions',
-				image: <ColorCard color="#34D399" />,
+				content: <ColorCard color="#34D399" />,
 			},
 			{
 				title: 'Cloud Services',
 				description: 'Scalable cloud infrastructure and deployment',
-				image: <ColorCard color="#F87171" />,
+				content: <ColorCard color="#F87171" />,
 			},
 			{
 				title: 'UI/UX Design',
 				description: 'User-centered design and prototyping',
-				image: <ColorCard color="#A78BFA" />,
+				content: <ColorCard color="#A78BFA" />,
 			},
 		],
 	},
@@ -59,12 +59,12 @@ export const TwoColumns: Story = {
 			{
 				title: 'Project Alpha',
 				description: 'An enterprise resource planning solution',
-				image: <ColorCard color="#2563EB" />,
+				content: <ColorCard color="#2563EB" />,
 			},
 			{
 				title: 'Project Beta',
 				description: 'E-commerce platform with AI recommendations',
-				image: <ColorCard color="#DC2626" />,
+				content: <ColorCard color="#DC2626" />,
 			},
 		],
 	},
@@ -76,13 +76,13 @@ export const NoTitles: Story = {
 		lgcol: 3,
 		items: [
 			{
-				image: <ColorCard color="#059669" />,
+				content: <ColorCard color="#059669" />,
 			},
 			{
-				image: <ColorCard color="#7C3AED" />,
+				content: <ColorCard color="#7C3AED" />,
 			},
 			{
-				image: <ColorCard color="#DB2777" />,
+				content: <ColorCard color="#DB2777" />,
 			},
 		],
 	},
@@ -99,7 +99,7 @@ export const WithImages: Story = {
 				title: 'Folsom',
 				description:
 					'I grew up in Folsom, California.    It was a great place to grow up with tons of friendly people and opportunities for me as a youth',
-				image: {
+				content: {
 					src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffolsom.18907cb6.jpg&w=3840&q=75',
 					alt: 'Rainbow Bridge',
 				},
@@ -108,7 +108,7 @@ export const WithImages: Story = {
 				title: 'Philippines',
 				description:
 					'I served a mission for The Church of Jesus Christ of Latter-day Saints in Isabela Philippines.    The people of the Philippines are the most friendly, kind and amazing people on Earth.',
-				image: {
+				content: {
 					src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphilippines.1c61a311.jpg&w=3840&q=75',
 					alt: 'Corn Field, Isabela Philippines',
 				},
@@ -117,7 +117,7 @@ export const WithImages: Story = {
 				title: 'BYU',
 				description:
 					"I'm currently studying at BYU.    I love learning in such a spiritual environment and I've made lifelong friends during my time here.",
-				image: {
+				content: {
 					src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhbll.902dbb81.jpg&w=3840&q=75',
 					alt: 'BYU Library and Y Mountain',
 				},
@@ -125,7 +125,7 @@ export const WithImages: Story = {
 			{
 				title: 'Utah',
 				description: "I'm lucky to live in Utah, its such a pretty place with so much to do.",
-				image: {
+				content: {
 					src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falpine-loop.1df0e6d7.jpg&w=3840&q=75',
 					alt: 'Alpine Loop, Provo, UT',
 				},
