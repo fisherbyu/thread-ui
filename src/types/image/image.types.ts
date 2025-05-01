@@ -1,8 +1,8 @@
-import { ImgHTMLAttributes } from 'react';
+import { ReactNode } from 'react';
 
-export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+export type HtmlImageProps = {
 	src: string;
 	alt: string;
-	layout?: 'fill' | 'fixed' | 'intrinsic' | 'responsive'; // Next.js specific
-	priority?: boolean; // Next.js specific
-}
+};
+
+export type ImageProps = HtmlImageProps | ReactNode;
