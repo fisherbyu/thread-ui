@@ -85,7 +85,7 @@ export const ImagePanel = ({
 			<div style={styles.imageBlock}>{renderPanelImage(image, smImage)}</div>
 			<div style={styles.textBlock}>
 				<div>
-					<Title inline>
+					<Title>
 						{title}
 						{subtitle && <Subtitle>{subtitle}</Subtitle>}
 					</Title>
