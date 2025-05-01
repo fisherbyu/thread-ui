@@ -21,7 +21,7 @@ export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayo
 			width: '100%',
 			marginRight: 'auto',
 			marginLeft: 'auto',
-			maxWidth: useResponsiveStyles({ sm: 'none', md: '1400px' }),
+			maxWidth: useResponsiveStyles({ sm: 'none', md: mdcol < 2 ? '800px' : 'none', lg: 'none' }),
 			paddingRight: '2rem',
 			paddingLeft: '2rem',
 			paddingTop: useResponsiveStyles({ sm: '2.5rem', md: '2rem', lg: '1.5rem' }),
