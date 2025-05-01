@@ -58,7 +58,7 @@ export const ImagePanel = ({
 			alignItems: 'stretch',
 			width: '100%',
 			marginRight: 'auto',
-			maxWidth: ' 1400px',
+			maxWidth: useResponsiveStyles({ sm: 'none', md: '800px', lg: '1400px' }),
 			marginLeft: 'auto',
 			paddingRight: '2rem',
 			paddingLeft: '2rem',
