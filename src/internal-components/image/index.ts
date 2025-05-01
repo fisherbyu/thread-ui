@@ -1,1 +1,1 @@
-export { Image } from './image';
+export { renderImage } from './render-image';
