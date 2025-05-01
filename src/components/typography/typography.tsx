@@ -12,8 +12,8 @@ export const Title = ({ children, align = 'left', inline = false }: TitleProps) 
 	const styles: CSSProperties = {
 		fontSize: '3rem',
 		fontWeight: 700,
-		lineHeight: 2,
-		margin: inline ? '0' : '0 0 40px 0',
+		lineHeight: 1.3,
+		marginBottom: inline ? 0 : '40px',
 		textAlign: align,
 	};
 	return <h1 style={styles}>{children}</h1>;
@@ -24,7 +24,7 @@ export const H1 = ({ children }: TypographyProps) => {
 		fontSize: '2rem',
 		fontWeight: 600,
 		lineHeight: 1.3,
-		margin: '0 0 32px 0',
+		marginBottom: '32px',
 	};
 	return <h1 style={styles}>{children}</h1>;
 };
@@ -34,7 +34,7 @@ export const H2 = ({ children }: TypographyProps) => {
 		fontSize: '1.5rem',
 		fontWeight: 600,
 		lineHeight: 1.3,
-		margin: '0 0 24px 0',
+		marginBottom: '24px',
 	};
 	return <h2 style={styles}>{children}</h2>;
 };
@@ -44,7 +44,7 @@ export const H3 = ({ children }: TypographyProps) => {
 		fontSize: '1.25rem',
 		fontWeight: 600,
 		lineHeight: 1.3,
-		margin: '0 0 16px 0',
+		marginBottom: '16px',
 	};
 	return <h3 style={styles}>{children}</h3>;
 };
