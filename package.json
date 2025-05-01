@@ -15,7 +15,7 @@
 	"sideEffects": false,
 	"scripts": {
 		"clean": "rm -rf dist",
-		"build": "tsc && npm run build-css",
+		"build": "npm run build-css && tsc",
 		"build-css": "npx postcss src/styles/styles.css -o dist/styles/thread.css",
 		"build-tailwind": "npx tailwindcss -i ./src/styles/styles.css -o ./src/styles/thread.css --watch",
 		"pack": "npm pack",
