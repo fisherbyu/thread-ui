@@ -16,7 +16,7 @@
 	"scripts": {
 		"clean": "rm -rf dist",
 		"build": "npm run build-css && tsc",
-		"build-css": "npx postcss src/styles/styles.css -o dist/styles/thread.css",
+		"build-css": "npx postcss src/styles/styles.css -o dist/styles/thread.css && npx postcss src/styles/styles.css -o src/styles/thread.css",
 		"build-tailwind": "npx tailwindcss -i ./src/styles/styles.css -o ./src/styles/thread.css --watch",
 		"pack": "npm pack",
 		"pack-dev": "npm run prepare-publish && npm pack && mkdir -p dist && mv thread-ui-*.tgz dist/",
