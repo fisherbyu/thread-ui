@@ -2,6 +2,17 @@ import React from 'react';
 import { ColumnSkeleton } from '../../internal-components';
 import { ColumnLayoutProps, ColumnItem } from './column-layout.types';
 
+/**
+ * A layout component that displays content in a responsive column grid.
+ *
+ * @component
+ * @param {string} title - Optional title displayed at the top of the layout
+ * @param {string} caption - Optional caption displayed below the title
+ * @param {number} mdcol - Number of columns to display at medium viewport sizes
+ * @param {number} lgcol - Number of columns to display at large viewport sizes
+ * @param {ColumnItem[]} items - Array of items to display in the grid
+ * @returns {JSX.Element} The column layout component
+ */
 export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayoutProps) => {
 	return (
 		<section className="thread-container thread-mx-auto thread-py-10 md:thread-py-8 lg:thread-py-6 thread-flex thread-flex-col thread-justify-center thread-flex-1 lg:thread-flex-none">
