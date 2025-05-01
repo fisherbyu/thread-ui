@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { ImageProps } from '../../types';
 /**
  * Props for the ColumnLayout component
  *
@@ -28,5 +29,5 @@ export type ColumnLayoutProps = {
 export type ColumnItem = {
 	title?: string;
 	description?: string;
-	content: { src: string; alt: string } | ReactNode;
+	content: ImageProps;
 };
