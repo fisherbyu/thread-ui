@@ -89,7 +89,7 @@ export const ImagePanel = ({
 						{title}
 						{subtitle && <Subtitle>{subtitle}</Subtitle>}
 					</Title>
-					{contents?.map((txt) => <Text>{txt}</Text>)}
+					{contents?.map((txt, _) => <Text key={_}>{txt}</Text>)}
 				</div>
 			</div>
 		</div>
