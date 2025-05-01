@@ -1,6 +1,8 @@
-import React from 'react';
-import { ColumnSkeleton } from '../../internal-components';
+import React, { CSSProperties } from 'react';
+import { ColumnSkeleton, renderImage } from '../../internal-components';
 import { ColumnLayoutProps, ColumnItem } from './column-layout.types';
+import { useResponsiveStyles } from '../../utils';
+import { H2, H3, Subtitle, Text } from '../typography';
 
 /**
  * A layout component that displays content in a responsive column grid.
@@ -14,41 +16,57 @@ import { ColumnLayoutProps, ColumnItem } from './column-layout.types';
  * @returns {JSX.Element} The column layout component
  */
 export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayoutProps) => {
+	const styles: Record<string, CSSProperties> = {
+		section: {
+			width: '100%',
+			marginRight: 'auto',
+			marginLeft: 'auto',
+			maxWidth: useResponsiveStyles({ sm: 'none', md: '1400px' }),
+			paddingRight: '2rem',
+			paddingLeft: '2rem',
+			paddingTop: useResponsiveStyles({ sm: '2.5rem', md: '2rem', lg: '1.5rem' }),
+			paddingBottom: useResponsiveStyles({ sm: '2.5rem', md: '2rem', lg: '1.5rem' }),
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+			flex: useResponsiveStyles({ sm: '1 1 0%', lg: 'none' }),
+		},
+		gridItem: {
+			borderRadius: '0.25rem',
+			marginBottom: '1.5rem',
+			width: '100%',
+			height: 'auto',
+			overflow: 'hidden',
+		},
+		gridPhoto: {
+			width: '100%',
+			height: 'auto',
+			borderRadius: '0.25rem',
+		},
+	};
 	return (
-		<section className="thread-container thread-mx-auto thread-py-10 md:thread-py-8 lg:thread-py-6 thread-flex thread-flex-col thread-justify-center thread-flex-1 lg:thread-flex-none">
+		<section style={styles.section}>
 			{(title || caption) && (
-				<div className="thread-pb-3">
+				<div>
 					{title && (
-						<h3 className="thread-text-2xl thread-font-medium thread-tracking-tight thread-text-black sm:thread-text-4xl">
-							{title}
-						</h3>
+						<>
+							<H2>
+								{title}
+								{caption && <Text>{caption}</Text>}
+							</H2>
+						</>
 					)}
-					{caption && <p className="thread-mt-4 thread-text-lg thread-tracking-tight thread-text-gray-600">{caption}</p>}
 				</div>
 			)}
 			<ColumnSkeleton mdcol={mdcol || 2} lgcol={lgcol || 4}>
 				{items.map((item, index) => (
 					<div key={index}>
-						<div className="thread-mb-6 thread-w-full thread-h-auto thread-rounded thread-overflow-hidden">
-							{React.isValidElement(item.content)
-								? item.content
-								: 'src' in (item.content as { src: string }) && (
-										<img
-											src={(item.content as { src: string }).src}
-											alt={(item.content as { alt: string }).alt}
-											className="thread-w-full thread-h-auto thread-rounded"
-										/>
-									)}
-						</div>
+						<div style={styles.gridItem}>{renderImage(item.content, styles.gridPhoto)}</div>
 						{(item.title || item.description) && (
-							<div className="thread-text-left">
-								{item.title && <h2 className="thread-text-2xl ">{item.title}</h2>}
-								{item.description && (
-									<div className="thread-mt-6">
-										<p className="thread-whitespace-pre-wrap thread-text-base">{item.description}</p>
-									</div>
-								)}
-							</div>
+							<>
+								{item.title && <H3>{item.title}</H3>}
+								{item.description && <Text>{item.description}</Text>}
+							</>
 						)}
 					</div>
 				))}
