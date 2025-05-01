@@ -4,7 +4,7 @@ export { UtilityColorOptions } from './colors/utility-color-options.types';
 export { Theme, AppliedTheme, ThemeMode, ThemeContextType } from './theme/theme.types';
 
 // IMAGE TYPES
-export { ImageProps } from './image/image.types';
+export * from './image';
 
 // Sizes
 export { UtilitySizes } from './theme/size/themeSizes.types';
