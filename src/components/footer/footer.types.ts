@@ -1,10 +1,7 @@
 import { ReactNode } from 'react';
 
 export type FooterProps = {
-	logo?: {
-		icon: ReactNode;
-		link: string | ReactNode;
-	};
+	logo?: ReactNode;
 	caption?: string | ReactNode;
 	facebookLink?: string;
 	instagramLink?: string;
