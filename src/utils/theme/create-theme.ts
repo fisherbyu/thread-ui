@@ -4,9 +4,13 @@ import { DEFAULT_THEME } from '../../defaults';
 import { deepMerge, DeepPartial } from '../deep-merge/deep-merge';
 
 // Create Theme Functions for SSR
-export function createTheme(userConfig: DeepPartial<Theme>): Theme {
-	const newTheme = deepMerge(DEFAULT_THEME, userConfig);
-	return newTheme;
+export function createTheme(userConfig?: DeepPartial<Theme>): Theme {
+	if (userConfig) {
+		const newTheme = deepMerge(DEFAULT_THEME, userConfig);
+		return newTheme;
+	} else {
+		return DEFAULT_THEME;
+	}
 }
 
 export function createAppliedTheme(theme: Theme, mode: 'light' | 'dark'): AppliedTheme {
