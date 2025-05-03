@@ -1,10 +1,9 @@
 // use-theme.ts
 'use client';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import type { Theme, AppliedTheme, ThemeMode, ThemeContextType } from '../../types';
 import { createAppliedTheme } from './create-theme';
 import { DEFAULT_THEME } from '../../defaults';
-import { setCurrentTheme } from './current-theme';
 
 // Create default context value
 const defaultContextValue: ThemeContextType = {
@@ -26,28 +25,26 @@ export function ThemeProvider({
 	initialMode?: ThemeMode;
 }) {
 	const [mode, setMode] = useState<ThemeMode>(initialMode);
-	const theme = createAppliedTheme(initialTheme, mode);
+	const theme = useMemo(() => createAppliedTheme(initialTheme, mode), [initialTheme, mode]);
 
-	useEffect(() => {
-		setCurrentTheme(theme);
-	}, [theme]);
+	const contextValue = useMemo(() => ({ theme, mode, setMode }), [theme, mode]);
 
-	return (
-		<ThemeContext.Provider
-			value={{
-				theme,
-				mode,
-				setMode,
-			}}
-		>
-			{children}
-		</ThemeContext.Provider>
-	);
+	return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
 }
 
 // Access Theme Values
 export function useTheme(): ThemeContextType {
 	return useContext(ThemeContext); // Will fall back to defaultContextValue
+}
+
+export function useThemeToggle() {
+	const { mode, setMode } = useTheme();
+
+	const toggleMode = () => {
+		setMode(mode === 'light' ? 'dark' : 'light');
+	};
+
+	return toggleMode;
 }
 
 export function useThemeMode(): [ThemeMode, (mode: ThemeMode) => void] {
