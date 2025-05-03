@@ -5,3 +5,5 @@ export { ThemeProvider, useTheme, useThemeMode } from './theme/use-theme';
 
 export { createTheme, createAppliedTheme } from './theme/create-theme';
 export { getCurrentTheme, setCurrentTheme } from './theme/current-theme';
+
+export * from './hooks';
