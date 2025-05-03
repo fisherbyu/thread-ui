@@ -22,7 +22,7 @@ export const getUtilityColorValue = (color: UtilityColorOptions): string => {
 		case 'info':
 			return theme.colors.info.main;
 		case 'text':
-			return theme.colors.text.secondary;
+			return theme.colors.text.primary;
 		default:
 			return theme.colors.primary.main;
 	}
