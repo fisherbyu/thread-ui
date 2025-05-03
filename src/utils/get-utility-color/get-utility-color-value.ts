@@ -1,9 +1,9 @@
 'use client';
 import { UtilityColorOptions } from '../../types';
-import { useTheme } from '../theme/use-theme';
+import { getCurrentTheme } from '../';
 
 export const getUtilityColorValue = (color: UtilityColorOptions): string => {
-	const { theme } = useTheme();
+	const theme = getCurrentTheme();
 	switch (color) {
 		case 'primary':
 			return theme.colors.primary.main;
