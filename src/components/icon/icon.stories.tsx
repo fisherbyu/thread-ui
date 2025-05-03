@@ -17,7 +17,7 @@ const meta: Meta<typeof Icon> = {
 		},
 		color: {
 			control: 'select',
-			options: ['primary', 'secondary', 'tertiary', 'black', 'grey', 'success', 'error', 'info'],
+			options: ['primary', 'secondary', 'tertiary', 'black', 'gray', 'success', 'error', 'info'],
 		},
 		weight: {
 			control: 'select',

@@ -1,1 +1,1 @@
-export type UtilityColorOptions = 'primary' | 'secondary' | 'tertiary' | 'black' | 'grey' | 'success' | 'error' | 'info' | 'text';
+export type UtilityColorOptions = 'primary' | 'secondary' | 'tertiary' | 'black' | 'gray' | 'success' | 'error' | 'info' | 'text';

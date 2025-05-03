@@ -17,7 +17,7 @@ const meta: Meta<typeof Toggle> = {
 		},
 		color: {
 			control: 'select',
-			options: ['primary', 'secondary', 'tertiary', 'black', 'grey', 'success', 'error', 'info', 'text'],
+			options: ['primary', 'secondary', 'tertiary', 'black', 'gray', 'success', 'error', 'info', 'text'],
 			description: 'Color theme for the toggle',
 		},
 	},

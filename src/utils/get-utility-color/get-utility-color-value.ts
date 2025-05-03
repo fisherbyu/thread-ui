@@ -13,7 +13,7 @@ export const getUtilityColorValue = (color: UtilityColorOptions): string => {
 			return theme.colors.tertiary.main;
 		case 'black':
 			return theme.colors.black;
-		case 'grey':
+		case 'gray':
 			return theme.colors.gray.main;
 		case 'success':
 			return theme.colors.success.main;
