@@ -1,9 +1,10 @@
 // use-theme.ts
 'use client';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import type { Theme, AppliedTheme, ThemeMode, ThemeContextType } from '../../types';
 import { createAppliedTheme } from './create-theme';
 import { DEFAULT_THEME } from '../../defaults';
+import { setCurrentTheme } from './current-theme';
 
 // Create default context value
 const defaultContextValue: ThemeContextType = {
@@ -26,6 +27,10 @@ export function ThemeProvider({
 }) {
 	const [mode, setMode] = useState<ThemeMode>(initialMode);
 	const theme = createAppliedTheme(initialTheme, mode);
+
+	useEffect(() => {
+		setCurrentTheme(theme);
+	}, [theme]);
 
 	return (
 		<ThemeContext.Provider
