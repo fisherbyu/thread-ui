@@ -6,7 +6,7 @@ type ColorShades = {
 };
 
 // Text Colors
-type TextColors = {
+export type TextColors = {
 	primary: string;
 	secondary: string;
 	disabled: string;
