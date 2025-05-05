@@ -1,3 +1,115 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+	/* Complete Theme Definition */
+
+	/* Theme Color Pallette */
+	/* Primary */
+	--primary-light: '#0ea5e9';
+	--primary-main: '#0284c7';
+	--primary-dark: '#0c4a6e';
+
+	/* Secondary */
+	--secondary-light: '#86efac';
+	--secondary-main: '#22c55e';
+	--secondary-dark: '#14532d';
+
+	/* Tertiary */
+	--tertiary-light: '#fbbf24';
+	--tertiary-main: '#f59e0b';
+	--tertiary-dark: '#78350f';
+
+	/* Neutrals */
+	--white: '#ffffff';
+	--black: '#0a0a0a';
+	--gray-light: '#f3f4f6';
+	--gray-main: '#6b7280';
+	--gray-dark: '#1f2937';
+
+	/* Status Colors */
+	/* Success */
+	--success-light: '#4ade80';
+	--success-main: '#16a34a';
+	--success-dark: '#14532d';
+
+	/* Warning */
+	--warning-light: '#fcd34d';
+	--warning-main: '#d97706';
+	--warning-dark: '#78350f';
+
+	/* Error */
+	--error-light: '#f87171';
+	--error-main: '#f87171';
+	--error-dark: '#7f1d1d';
+
+	/* Info */
+	--info-light: '#60a5fa';
+	--info-main: '#2563eb';
+	--info-dark: '#1e3a8a';
+
+	/* Mode-specific Layer Colors */
+
+	/* Light Mode Colors */
+	/* Surfaces */
+	--background-light-mode: '#ffffff';
+	--surface-light-mode: '#ffffff';
+	--elevated-light-mode: '#ffffff';
+
+	/* Text */
+	--text-primary-light-mode: '#18181b';
+	--text-secondary-light-mode: '#6b7280';
+	--text-disabled-light-mode: '#71717a';
+
+	/* Dark Mode Colors */
+	/* Surfaces */
+	--background-dark-mode: '#121212';
+	--surface-dark-mode: '#1E1E1E';
+	--elevated-dark-mode: '#2D2D2D';
+
+	/* Text */
+	--text-primary-dark-mode: '#fafafa';
+	--text-secondary-dark-mode: '#fafafa';
+	--text-disabled-dark-mode: '#71717a';
+
+	/* Spacing and Sizing Values */
+	/* Border Radius */
+	--border-radius-sm: '';
+	--border-radius-md: '';
+	--border-radius-lg: '';
+
+	/* Border Size */
+	--border-size-sm: '';
+	--border-size-md: '';
+	--border-size-lg: '';
+
+	/* Spacing Unit */
+	--spacing-unit: '';
+
+	/* Apply Light Mode Colors */
+	/* Surfaces */
+	--background: var(--background-light-mode);
+	--surface: var(--surface-light-mode);
+	--elevated: var(--elevated-light-mode);
+
+	/* Text */
+	--text-primary: var(--text-primary-light-mode);
+	--text-secondary: var(--text-secondary-light-mode);
+	--text-disabled: var(--text-disabled-light-mode);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Apply Dark Mode Colors */
+		/* Surfaces */
+		--background: var(--background-dark-mode);
+		--surface: var(--surface-dark-mode);
+		--elevated: var(--elevated-dark-mode);
+
+		/* Text */
+		--text-primary: var(--text-primary-dark-mode);
+		--text-secondary: var(--text-secondary-dark-mode);
+		--text-disabled: var(--text-disabled-dark-mode);
+	}
+}
