@@ -14,7 +14,7 @@ import { getUtilityColorValue, useTheme } from '../../utils';
  * @param filled Icon Fill
  * @returns ReactNode Icon
  */
-export const Icon: React.FC<IconProps> = ({ name, color, size = 24, weight = 'regular', filled = false }) => {
+export const Icon = ({ name, color, size = 24, weight = 'regular', filled = false }: IconProps) => {
 	const IconComponent = PhosphorIcons[name] as React.ComponentType<{
 		color?: string;
 		size?: number;
