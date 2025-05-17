@@ -11,9 +11,9 @@ const translateCSSProperties = (styles: CSSProperties): string => {
 		.join('\n');
 };
 
-interface MakeStylesProps extends CSSProperties {
+type MakeStylesProps = CSSProperties & {
 	hover?: CSSProperties;
-}
+};
 
 export const makeStyles = (styles: MakeStylesProps) => {
 	const { hover, ...baseProps } = styles;
