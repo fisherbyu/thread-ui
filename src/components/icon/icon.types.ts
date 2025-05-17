@@ -9,6 +9,5 @@ export type IconProps = {
 	size: IconSizes;
 	color?: UtilityColorOptions;
 	weight?: 'light' | 'regular' | 'bold';
-	square?: boolean;
 	filled?: boolean;
 };
