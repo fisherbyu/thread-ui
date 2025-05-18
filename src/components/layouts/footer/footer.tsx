@@ -3,9 +3,10 @@ import { FacebookLogo, GithubLogo, InstagramLogo, LinkedinLogo, TwitterLogo } fr
 import { CSSProperties } from 'react';
 import { CONTAINER_STYLES } from '../../../defaults';
 import { Divider } from '../../ui';
+import { makeStyleObject } from '../../../functions';
 
 export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink, githubLink, linkedInLink }: FooterProps) => {
-	const styles: Record<string, CSSProperties> = {
+	const styles = makeStyleObject({
 		footer: {
 			...CONTAINER_STYLES,
 			marginLeft: 'auto',
@@ -34,14 +35,14 @@ export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink
 			width: '48px',
 			height: '48px',
 		},
-	};
+	});
 	return (
-		<footer style={styles.footer}>
+		<footer className={styles.footer}>
 			<Divider />
-			<div style={styles.footerContents}>
+			<div className={styles.footerContents}>
 				{logo && logo}
 				{caption}
-				<div style={styles.logoBlock}>
+				<div className={styles.logoBlock}>
 					{facebookLink && (
 						<a href={facebookLink}>
 							<FacebookLogo size={32} weight="fill" />

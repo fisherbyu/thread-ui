@@ -1,4 +1,5 @@
 'use client';
+import { makeStyles } from '../../../functions';
 import { useTheme } from '../../../utils';
 import { DividerProps } from './divider.types';
 
@@ -20,7 +21,7 @@ export const Divider = ({ width, marginY, weight }: DividerProps) => {
 			dividerWeight = 1;
 	}
 
-	const styles: React.CSSProperties = {
+	const styles = makeStyles({
 		width: width || '75%',
 		marginTop: marginY || '16px',
 		marginBottom: marginY || '16px',
@@ -28,7 +29,7 @@ export const Divider = ({ width, marginY, weight }: DividerProps) => {
 		marginRight: 'auto',
 		height: `${dividerWeight}px`,
 		backgroundColor: theme.colors.structure,
-	};
+	});
 
-	return <div style={styles}></div>;
+	return <div className={styles}></div>;
 };
