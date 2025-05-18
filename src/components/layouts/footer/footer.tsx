@@ -1,8 +1,8 @@
 import { FooterProps } from './footer.types';
 import { FacebookLogo, GithubLogo, InstagramLogo, LinkedinLogo, TwitterLogo } from '@phosphor-icons/react';
 import { CSSProperties } from 'react';
-import { CONTAINER_STYLES } from '../../defaults';
-import { Divider } from '../divider';
+import { CONTAINER_STYLES } from '../../../defaults';
+import { Divider } from '../../ui';
 
 export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink, githubLink, linkedInLink }: FooterProps) => {
 	const styles: Record<string, CSSProperties> = {
