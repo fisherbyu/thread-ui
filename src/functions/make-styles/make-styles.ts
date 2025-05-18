@@ -106,12 +106,6 @@ export const makeStyles = (styles: MakeStylesProps) => {
 	`;
 };
 
-// Example usage:
-// makeStyles({
-//   width: { sm: '100%', md: '50%', lg: '33%' },
-//   color: 'red',
-//   fontSize: { sm: '14px', lg: '18px' },
-//   hover: {
-//     color: 'blue'
-//   }
-// });
+export const makeStyleObject = (styles: Record<string, MakeStylesProps>) => {
+	return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, makeStyles(value)]));
+};
