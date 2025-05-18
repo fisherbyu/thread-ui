@@ -1,4 +1,5 @@
-import { ThemeModeOption, useThemeOption } from '../../utils/theme/use-theme';
+import { useThemeOption } from '../../../utils/theme/use-theme';
+import { ThemeModeOption } from '../../../types';
 
 export const ModeController = () => {
 	const [option, setOption] = useThemeOption();

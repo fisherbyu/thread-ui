@@ -1,6 +1,6 @@
 'use client';
 import { CSSProperties } from 'react';
-import { getUtilityColorValue, useTheme } from '../../utils';
+import { getUtilityColorValue, useTheme } from '../../../utils';
 import { ToggleProps } from './toggle.types';
 
 export const Toggle = ({ isOn, onToggle, color = 'success' }: ToggleProps) => {

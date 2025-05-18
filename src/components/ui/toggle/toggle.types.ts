@@ -1,4 +1,4 @@
-import { UtilityColorOptions } from '../../types';
+import { UtilityColorOptions } from '../../../types';
 
 export type ToggleProps = {
 	isOn: boolean;
