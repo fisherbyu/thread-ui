@@ -25,9 +25,10 @@ export type AppliedTheme = BaseTheme & {
 };
 
 export type ThemeMode = 'light' | 'dark';
+export type ThemeModeOption = 'light' | 'dark' | 'system';
 
 export type ThemeContextType = {
 	theme: AppliedTheme;
 	mode: ThemeMode;
-	setMode: (mode: ThemeMode) => void;
+	setMode: (mode: ThemeMode | ThemeModeOption) => void;
 };

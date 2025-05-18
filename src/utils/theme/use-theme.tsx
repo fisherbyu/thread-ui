@@ -1,19 +1,9 @@
 // use-theme.ts
 'use client';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import type { Theme, AppliedTheme, ThemeMode } from '../../types';
+import type { Theme, AppliedTheme, ThemeMode, ThemeModeOption, ThemeContextType } from '../../types';
 import { createAppliedTheme } from './create-theme';
 import { DEFAULT_THEME } from '../../defaults';
-
-// Add this type
-export type ThemeModeOption = 'light' | 'dark' | 'system';
-
-// Update the context type to include both resolved and option setters
-export interface ThemeContextType {
-	theme: AppliedTheme;
-	mode: ThemeMode;
-	setMode: (mode: ThemeMode | ThemeModeOption) => void;
-}
 
 const STORAGE_KEY = 'theme-mode-preference';
 
