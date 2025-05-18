@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ImageProps } from '../../types';
+import { ImageProps } from '../../../types';
 /**
  * Props for the ColumnLayout component
  *

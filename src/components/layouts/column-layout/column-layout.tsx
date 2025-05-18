@@ -1,9 +1,7 @@
-import React, { CSSProperties } from 'react';
-import { ColumnSkeleton, renderImage } from '../../internal-components';
-import { ColumnLayoutProps, ColumnItem } from './column-layout.types';
-import { useResponsiveStyles } from '../../utils';
-import { H2, H3, Subtitle, Text } from '../typography';
-import { makeStyleObject } from '../../functions';
+import { ColumnSkeleton, renderImage } from '../../../internal-components';
+import { ColumnLayoutProps } from './column-layout.types';
+import { H2, H3, Text } from '../../typography';
+import { makeStyleObject } from '../../../functions';
 
 /**
  * A layout component that displays content in a responsive column grid.
