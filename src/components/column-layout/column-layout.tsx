@@ -3,6 +3,7 @@ import { ColumnSkeleton, renderImage } from '../../internal-components';
 import { ColumnLayoutProps, ColumnItem } from './column-layout.types';
 import { useResponsiveStyles } from '../../utils';
 import { H2, H3, Subtitle, Text } from '../typography';
+import { makeStyleObject } from '../../functions';
 
 /**
  * A layout component that displays content in a responsive column grid.
@@ -16,20 +17,20 @@ import { H2, H3, Subtitle, Text } from '../typography';
  * @returns {JSX.Element} The column layout component
  */
 export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayoutProps) => {
-	const styles: Record<string, CSSProperties> = {
+	const styles = makeStyleObject({
 		section: {
 			width: '100%',
 			marginRight: 'auto',
 			marginLeft: 'auto',
-			maxWidth: useResponsiveStyles({ sm: 'none', md: mdcol < 2 ? '800px' : 'none', lg: 'none' }),
+			maxWidth: { sm: 'none', md: mdcol < 2 ? '800px' : 'none', lg: 'none' },
 			paddingRight: '2rem',
 			paddingLeft: '2rem',
-			paddingTop: useResponsiveStyles({ sm: '2.5rem', md: '2rem', lg: '1.5rem' }),
-			paddingBottom: useResponsiveStyles({ sm: '2.5rem', md: '2rem', lg: '1.5rem' }),
+			paddingTop: { sm: '2.5rem', md: '2rem', lg: '1.5rem' },
+			paddingBottom: { sm: '2.5rem', md: '2rem', lg: '1.5rem' },
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'center',
-			flex: useResponsiveStyles({ sm: '1 1 0%', lg: 'none' }),
+			flex: { sm: '1 1 0%', lg: 'none' },
 		},
 		gridItem: {
 			borderRadius: '0.25rem',
@@ -43,9 +44,9 @@ export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayo
 			height: 'auto',
 			borderRadius: '0.25rem',
 		},
-	};
+	});
 	return (
-		<section style={styles.section}>
+		<section className={styles.section}>
 			{(title || caption) && (
 				<div>
 					{title && (
@@ -61,7 +62,7 @@ export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayo
 			<ColumnSkeleton mdcol={mdcol || 2} lgcol={lgcol || 4}>
 				{items.map((item, index) => (
 					<div key={index}>
-						<div style={styles.gridItem}>{renderImage(item.content, styles.gridPhoto)}</div>
+						<div className={styles.gridItem}>{renderImage(item.content, undefined, styles.gridPhoto)}</div>
 						{(item.title || item.description) && (
 							<>
 								{item.title && <H3>{item.title}</H3>}
