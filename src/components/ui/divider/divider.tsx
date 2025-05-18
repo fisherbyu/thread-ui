@@ -1,5 +1,5 @@
 'use client';
-import { useTheme } from '../../utils';
+import { useTheme } from '../../../utils';
 import { DividerProps } from './divider.types';
 
 export const Divider = ({ width, marginY, weight }: DividerProps) => {
