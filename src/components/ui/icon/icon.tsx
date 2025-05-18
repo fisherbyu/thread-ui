@@ -3,7 +3,7 @@ import React from 'react';
 import * as PhosphorIcons from '@phosphor-icons/react';
 import { IconProps } from './icon.types';
 import { IconWeight } from '@phosphor-icons/react';
-import { getUtilityColorValue, useTheme } from '../../utils';
+import { getUtilityColorValue } from '../../../utils';
 
 /**
  * Standard Icon Component from Phosphor
