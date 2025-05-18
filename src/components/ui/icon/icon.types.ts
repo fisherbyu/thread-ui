@@ -1,5 +1,5 @@
 import * as PhosphorIcons from '@phosphor-icons/react';
-import { UtilityColorOptions } from '../../types';
+import { UtilityColorOptions } from '../../../types';
 
 export type IconNames = keyof typeof PhosphorIcons;
 export type IconSizes = 8 | 12 | 16 | 24 | 32 | 48 | 64;
