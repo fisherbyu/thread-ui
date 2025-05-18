@@ -1,2 +1,2 @@
-export { MasonryLayoutProps } from './masonry-layout.types';
+export type { MasonryLayoutProps } from './masonry-layout.types';
 export { MasonryLayout } from './masonry-layout';
