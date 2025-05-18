@@ -1,1 +1,1 @@
-export { makeStyles } from './make-styles';
+export { makeStyles, makeStyleObject } from './make-styles';
