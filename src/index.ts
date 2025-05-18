@@ -19,5 +19,7 @@ export * from './components/typography';
 // Export Types
 export * from './types';
 
+export * from './functions';
+
 // Export Utility Functions
 export { createTheme, createAppliedTheme, ThemeProvider, useTheme } from './utils';
