@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { useTheme } from './use-theme';
 import type { ThemeMode } from '../../types';
 import { Divider } from '../../';

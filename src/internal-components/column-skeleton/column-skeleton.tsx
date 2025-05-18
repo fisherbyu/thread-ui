@@ -1,7 +1,5 @@
 'use client';
-import { CSSProperties } from 'react';
 import { ColumnSkeletonProps } from './column-skeleton.types';
-import { useResponsiveStyles } from '../../utils';
 import { makeStyles } from '../../functions';
 
 export const ColumnSkeleton = ({ mdcol, lgcol, children }: ColumnSkeletonProps) => {

@@ -1,7 +1,7 @@
 // use-theme.ts
 'use client';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import type { Theme, AppliedTheme, ThemeMode, ThemeModeOption, ThemeContextType } from '../../types';
+import type { Theme, ThemeMode, ThemeModeOption, ThemeContextType } from '../../types';
 import { createAppliedTheme } from './create-theme';
 import { DEFAULT_THEME } from '../../defaults';
 
