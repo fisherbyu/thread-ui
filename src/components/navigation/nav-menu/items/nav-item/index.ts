@@ -1,2 +1,2 @@
-export { NavItemProps } from './nav-item.types';
+export type { NavItemProps } from './nav-item.types';
 export { NavItem } from './nav-item';

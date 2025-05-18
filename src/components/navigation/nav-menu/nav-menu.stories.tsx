@@ -1,7 +1,5 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { NavMenu } from './nav-menu';
-import { NavMenuProps } from './nav-menu.types';
 
 const meta: Meta<typeof NavMenu> = {
 	title: 'Components/NavMenu',

@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 export type BaseItemProps = {
 	children: ReactNode;
