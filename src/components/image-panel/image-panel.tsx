@@ -5,12 +5,13 @@ import { Subtitle, Text, Title } from '../typography';
 import { CSSProperties } from 'react';
 import { useResponsiveStyles } from '../../utils';
 import { ImageProps } from '../../types';
+import { makeStyleObject } from '../../functions/make-styles/make-styles';
 
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
-	const styles: Record<string, CSSProperties> = {
+	const classes = makeStyleObject({
 		smImage: {
 			position: 'relative',
-			display: useResponsiveStyles({ sm: 'block', lg: 'none' }),
+			display: { sm: 'block', lg: 'none' },
 			borderRadius: '0.25rem',
 		},
 		standardImg: {
@@ -19,17 +20,17 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 			borderRadius: '0.25rem',
 		},
 		image: {
-			display: useResponsiveStyles({ sm: 'none', lg: 'block' }),
-			marginLeft: useResponsiveStyles({ sm: '0', md: 'auto' }),
-			marginRight: useResponsiveStyles({ sm: '0', md: 'auto' }),
+			display: { sm: 'none', lg: 'block' },
+			marginLeft: { sm: '0', md: 'auto' },
+			marginRight: { sm: '0', md: 'auto' },
 		},
-	};
+	});
 
 	if (smImage) {
 		return (
 			<>
-				{renderImage(smImage, { ...styles.smImage, ...styles.standardImg })}
-				{renderImage(image, { ...styles.image, ...styles.standardImg })}
+				{renderImage(smImage, undefined, `${classes.smImage} ${classes.standardImg}`)}
+				{renderImage(image, undefined, `${classes.image} ${classes.standardImg}`)}
 			</>
 		);
 	} else {
@@ -46,25 +47,25 @@ export const ImagePanel = ({
 	contentBelow = false,
 	contentLeft = false,
 }: ImagePanelProps) => {
-	const styles: Record<string, CSSProperties> = {
+	const styles = makeStyleObject({
 		container: {
 			display: 'flex',
-			flexDirection: useResponsiveStyles({
+			flexDirection: {
 				sm: contentBelow ? 'column' : 'column-reverse',
 				lg: contentLeft ? 'row-reverse' : 'row',
-			}),
-			gap: useResponsiveStyles({ sm: '12px', lg: '20px' }),
+			},
+			gap: { sm: '12px', lg: '20px' },
 			justifyContent: 'center',
 			alignItems: 'stretch',
 			width: '100%',
 			marginRight: 'auto',
-			maxWidth: useResponsiveStyles({ sm: 'none', md: '800px', lg: '1400px' }),
+			maxWidth: { sm: 'none', md: '800px', lg: '1400px' },
 			marginLeft: 'auto',
 			paddingRight: '2rem',
 			paddingLeft: '2rem',
 		},
 		imageBlock: {
-			width: useResponsiveStyles({ sm: '', lg: '66.666667%' }),
+			width: { sm: '', lg: '66.666667%' },
 		},
 		images: {
 			position: 'relative',
@@ -77,13 +78,14 @@ export const ImagePanel = ({
 			alignItems: 'center',
 			marginLeft: 'auto',
 			marginRight: 'auto',
-			width: useResponsiveStyles({ sm: '100%', lg: '41.666667%' }),
+			width: { sm: '100%', lg: '41.666667%' },
 		},
-	};
+	});
+
 	return (
-		<div style={styles.container}>
-			<div style={styles.imageBlock}>{renderPanelImage(image, smImage)}</div>
-			<div style={styles.textBlock}>
+		<div className={styles.container}>
+			<div className={styles.imageBlock}>{renderPanelImage(image, smImage)}</div>
+			<div className={styles.textBlock}>
 				<div>
 					<Title>
 						{title}
