@@ -1,8 +1,8 @@
 'use client';
 import { CSSProperties, useState } from 'react';
-import { getUtilityColorValue, useTheme } from '../../utils';
+import { getUtilityColorValue, useTheme } from '../../../utils';
 import { ButtonProps } from './button.types';
-import { makeStyles } from '../../functions';
+import { makeStyles } from '../../../functions';
 
 export const Button = ({
 	children,
