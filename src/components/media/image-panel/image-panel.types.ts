@@ -1,4 +1,4 @@
-import { ImageProps } from '../../types';
+import { ImageProps } from '../../../types';
 
 export type ImagePanelProps = {
 	title: string;

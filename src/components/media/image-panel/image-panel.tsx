@@ -1,11 +1,9 @@
 'use client';
 import { ImagePanelProps } from './image-panel.types';
-import { renderImage } from '../../internal-components';
-import { Subtitle, Text, Title } from '../typography';
-import { CSSProperties } from 'react';
-import { useResponsiveStyles } from '../../utils';
-import { ImageProps } from '../../types';
-import { makeStyleObject } from '../../functions/make-styles/make-styles';
+import { renderImage } from '../../../internal-components';
+import { Subtitle, Text, Title } from '../../typography';
+import { ImageProps } from '../../../types';
+import { makeStyleObject } from '../../../functions/make-styles/make-styles';
 
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	const classes = makeStyleObject({
