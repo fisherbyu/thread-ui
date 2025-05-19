@@ -1,18 +1,34 @@
+import { CONTAINER_STYLES } from '../../../defaults';
+import { makeStyleObject } from '../../../functions';
+import { H3, Subtitle } from '../../typography';
 import { MasonryLayoutProps } from './masonry-layout.types';
 
 export const MasonryLayout = ({ title, caption, components }: MasonryLayoutProps) => {
+	const styles = makeStyleObject({
+		container: CONTAINER_STYLES,
+		list: {
+			marginTop: '8px',
+			columnCount: { sm: 2, md: 3, lg: 4 },
+			columnGap: '8px',
+		},
+		item: {
+			width: '100%',
+			display: 'inline-block',
+			borderRadius: '4px',
+		},
+	});
 	return (
-		<section data-testid="masonry" className="thread-container">
+		<section className={styles.container}>
 			{title && (
-				<h3 className="thread-text-2xl thread-font-normal thread-tracking-tight thread-text-black sm:thread-text-4xl">
+				<H3>
 					{title}
-				</h3>
+					{caption && <Subtitle>{caption}</Subtitle>}
+				</H3>
 			)}
-			{caption && <p className="thread-mt-4 thread-text-lg thread-tracking-tight thread-text-gray-600">{caption}</p>}
 			<div>
-				<ol className=" thread-mt-2 thread-columns-2 md:thread-columns-3 lg:thread-columns-4 thread-gap-x-2">
+				<ol className={styles.list}>
 					{components.map((component, index) => (
-						<li key={index} className="thread-w-full thread-inline-block thread-rounded thread-overflow-hidden">
+						<li key={index} className={styles.item}>
 							{component}
 						</li>
 					))}
