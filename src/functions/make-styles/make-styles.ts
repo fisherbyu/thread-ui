@@ -19,22 +19,17 @@ type ResponsiveValue<T> = {
 	xxl?: T;
 };
 
+// Use a more flexible type for CSS properties
+type CSSPropertiesWithCustomValues = {
+	[K in keyof CSSProperties]: CSSProperties[K] | string | number;
+};
+
 type ResponsiveStyles = {
-	[K in keyof CSSProperties]?: CSSProperties[K] | ResponsiveValue<CSSProperties[K]>;
+	[K in keyof CSSProperties]?: CSSProperties[K] | ResponsiveValue<CSSProperties[K] | string | number>;
 };
 
 type MakeStylesProps = ResponsiveStyles & {
-	hover?: CSSProperties;
-};
-
-const translateCSSProperties = (styles: CSSProperties): string => {
-	return Object.entries(styles)
-		.map(([key, value]) => {
-			// Convert camelCase to kebab-case
-			const cssKey = key.replace(/([A-Z])/g, '-$1').toLowerCase();
-			return `${cssKey}: ${value};`;
-		})
-		.join('\n');
+	hover?: CSSPropertiesWithCustomValues;
 };
 
 // Check if a value is a responsive object
@@ -45,65 +40,61 @@ const isResponsiveValue = (value: any): value is ResponsiveValue<any> => {
 export const makeStyles = (styles: MakeStylesProps) => {
 	const { hover, ...baseStyles } = styles;
 
-	// Process base styles
-	let processedBaseStyles = '';
-	let mediaQueries: Record<BreakpointKey, string[]> = {
-		sm: [],
-		md: [],
-		lg: [],
-		xl: [],
-		xxl: [],
+	// Create the base style object - use any to bypass TypeScript restrictions
+	const baseStyleObject: Record<string, any> = {};
+
+	// Media query style objects
+	const mediaQueries: Record<BreakpointKey, Record<string, any>> = {
+		sm: {},
+		md: {},
+		lg: {},
+		xl: {},
+		xxl: {},
 	};
 
 	// Process each style property
 	Object.entries(baseStyles).forEach(([key, value]) => {
-		const cssKey = key.replace(/([A-Z])/g, '-$1').toLowerCase();
-
 		if (isResponsiveValue(value)) {
 			// Handle responsive values
 			Object.entries(value).forEach(([breakpoint, breakpointValue]) => {
 				const bpKey = breakpoint as BreakpointKey;
 				if (breakpointValue !== undefined) {
-					mediaQueries[bpKey].push(`${cssKey}: ${breakpointValue};`);
+					mediaQueries[bpKey][key] = breakpointValue;
 				}
 			});
 		} else {
 			// Handle direct values
-			processedBaseStyles += `${cssKey}: ${value};\n`;
+			baseStyleObject[key] = value;
 		}
 	});
 
-	// Build media queries string
-	let mediaQueriesString = '';
+	// Merge sm styles into base styles
+	Object.assign(baseStyleObject, mediaQueries.sm);
 
-	// Always include sm styles in the base (no media query)
-	if (mediaQueries.sm.length > 0) {
-		processedBaseStyles += mediaQueries.sm.join('\n') + '\n';
-	}
+	// Create the final style object with media queries
+	const emotionStyleObject: Record<string, any> = {
+		...baseStyleObject,
+	};
 
-	// Generate media queries for other breakpoints
+	// Add media queries for other breakpoints
 	Object.entries(BREAKPOINTS).forEach(([breakpoint, minWidth]) => {
 		if (breakpoint === 'sm') return; // Skip sm as it's included in base styles
 
 		const bpKey = breakpoint as BreakpointKey;
-		if (mediaQueries[bpKey].length > 0) {
-			mediaQueriesString += `
-        @media (min-width: ${minWidth}px) {
-          ${mediaQueries[bpKey].join('\n')}
-        }
-      `;
+		if (Object.keys(mediaQueries[bpKey]).length > 0) {
+			emotionStyleObject[`@media (min-width: ${minWidth}px)`] = mediaQueries[bpKey];
 		}
 	});
 
-	// Build hover styles
-	const hoverStyles = hover ? `&:hover { ${translateCSSProperties(hover)} }` : '';
+	// Add hover styles if provided
+	if (hover) {
+		emotionStyleObject['&:hover'] = hover;
+	}
 
-	// Combine everything
-	return css`
-		${processedBaseStyles}
-		${mediaQueriesString}
-    ${hoverStyles}
-	`;
+	// Generate the className using Emotion's css function
+	const className = css(emotionStyleObject);
+
+	return className;
 };
 
 export const makeStyleObject = (styles: Record<string, MakeStylesProps>) => {
