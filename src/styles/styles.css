@@ -1,112 +1,109 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 :root {
 	/* Complete Theme Definition */
 	/* Theme Color Pallette */
 	/* Primary */
-	--primary-light: #5a7d6a;
-	--primary-main: #3c5c49;
-	--primary-dark: #2a4535;
+	--thread-primary-light: #5a7d6a;
+	--thread-primary-main: #3c5c49;
+	--thread-primary-dark: #2a4535;
 
 	/* Secondary */
-	--secondary-light: #7a97b2;
-	--secondary-main: #546f8d;
-	--secondary-dark: #3b526a;
+	--thread-secondary-light: #7a97b2;
+	--thread-secondary-main: #546f8d;
+	--thread-secondary-dark: #3b526a;
 
 	/* Tertiary */
-	--tertiary-light: #8c7389;
-	--tertiary-main: #6a546a;
-	--tertiary-dark: #4a3a4a;
+	--thread-tertiary-light: #8c7389;
+	--thread-tertiary-main: #6a546a;
+	--thread-tertiary-dark: #4a3a4a;
 
 	/* Neutrals */
-	--white: #ffffff;
-	--black: #121212;
-	--gray-light: #e5e7eb;
-	--gray-main: #9ca3af;
-	--gray-dark: #4b5563;
+	--thread-white: #ffffff;
+	--thread-black: #121212;
+	--thread-gray-light: #e5e7eb;
+	--thread-gray-main: #9ca3af;
+	--thread-gray-dark: #4b5563;
 
 	/* Status Colors */
 	/* Success */
-	--success-light: #86efac;
-	--success-main: #22c55e;
-	--success-dark: #15803d;
+	--thread-success-light: #86efac;
+	--thread-success-main: #22c55e;
+	--thread-success-dark: #15803d;
 
 	/* Warning */
-	--warning-light: #fde68a;
-	--warning-main: #f59e0b;
-	--warning-dark: #b45309;
+	--thread-warning-light: #fde68a;
+	--thread-warning-main: #f59e0b;
+	--thread-warning-dark: #b45309;
 
 	/* Error */
-	--error-light: #fca5a5;
-	--error-main: #ef4444;
-	--error-dark: #b91c1c;
+	--thread-error-light: #fca5a5;
+	--thread-error-main: #ef4444;
+	--thread-error-dark: #b91c1c;
 
 	/* Info */
-	--info-light: #93c5fd;
-	--info-main: #3b82f6;
-	--info-dark: #1d4ed8;
+	--thread-info-light: #93c5fd;
+	--thread-info-main: #3b82f6;
+	--thread-info-dark: #1d4ed8;
 
 	/* Spacing and Sizing Values */
 	/* Border Radius */
-	--border-radius-sm: 0.25rem;
-	--border-radius-md: 0.375rem;
-	--border-radius-lg: 0.5rem;
+	--thread-border-radius-sm: 0.25rem;
+	--thread-border-radius-md: 0.375rem;
+	--thread-border-radius-lg: 0.5rem;
 
 	/* Border Size */
-	--border-size-sm: 1px;
-	--border-size-md: 2px;
-	--border-size-lg: 3px;
+	--thread-border-size-sm: 1px;
+	--thread-border-size-md: 2px;
+	--thread-border-size-lg: 3px;
 
 	/* Spacing Unit */
-	--spacing-unit: 8px;
+	--thread-spacing-unit: 8px;
 
 	/* Mode-specific Layer Colors */
 	/* Light Mode Colors */
 	/* Surfaces */
-	--background-light-mode: #ffffff;
-	--surface-light-mode: #f9fafb;
-	--elevated-light-mode: #f3f4f6;
+	--thread-background-light-mode: #ffffff;
+	--thread-surface-light-mode: #f9fafb;
+	--thread-elevated-light-mode: #f3f4f6;
 
 	/* Text */
-	--text-primary-light-mode: #1f2937;
-	--text-secondary-light-mode: #4b5563;
-	--text-disabled-light-mode: #9ca3af;
+	--thread-text-primary-light-mode: #1f2937;
+	--thread-text-secondary-light-mode: #4b5563;
+	--thread-text-disabled-light-mode: #9ca3af;
 
 	/* Dark Mode Colors */
 	/* Surfaces */
-	--background-dark-mode: #121212;
-	--surface-dark-mode: #1e1e1e;
-	--elevated-dark-mode: #2d2d2d;
+	--thread-background-dark-mode: #121212;
+	--thread-surface-dark-mode: #1e1e1e;
+	--thread-elevated-dark-mode: #2d2d2d;
 
 	/* Text */
-	--text-primary-dark-mode: #f9fafb;
-	--text-secondary-dark-mode: #e5e7eb;
-	--text-disabled-dark-mode: #6b7280;
+	--thread-text-primary-dark-mode: #f9fafb;
+	--thread-text-secondary-dark-mode: #e5e7eb;
+	--thread-text-disabled-dark-mode: #6b7280;
 
 	/* Apply Light Mode Colors */
 	/* Surfaces */
-	--background: var(--background-light-mode);
-	--surface: var(--surface-light-mode);
-	--elevated: var(--elevated-light-mode);
+	--thread-background: var(--thread-background-light-mode);
+	--thread-surface: var(--thread-surface-light-mode);
+	--thread-elevated: var(--thread-elevated-light-mode);
 
 	/* Text */
-	--text-primary: var(--text-primary-light-mode);
-	--text-secondary: var(--text-secondary-light-mode);
-	--text-disabled: var(--text-disabled-light-mode);
+	--thread-text-primary: var(--thread-text-primary-light-mode);
+	--thread-text-secondary: var(--thread-text-secondary-light-mode);
+	--thread-text-disabled: var(--thread-text-disabled-light-mode);
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
 		/* Apply Dark Mode Colors */
 		/* Surfaces */
-		--background: var(--background-dark-mode);
-		--surface: var(--surface-dark-mode);
-		--elevated: var(--elevated-dark-mode);
+		--thread-background: var(--thread-background-dark-mode);
+		--thread-surface: var(--thread-surface-dark-mode);
+		--thread-elevated: var(--thread-elevated-dark-mode);
 
 		/* Text */
-		--text-primary: var(--text-primary-dark-mode);
-		--text-secondary: var(--text-secondary-dark-mode);
-		--text-disabled: var(--text-disabled-dark-mode);
+		--thread-text-primary: var(--thread-text-primary-dark-mode);
+		--thread-text-secondary: var(--thread-text-secondary-dark-mode);
+		--thread-text-disabled: var(--thread-text-disabled-dark-mode);
 	}
 }
