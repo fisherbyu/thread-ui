@@ -1,3 +1,4 @@
+'use client';
 import { ColumnSkeleton, renderImage } from '../../../internal-components';
 import { ColumnLayoutProps } from './column-layout.types';
 import { H2, H3, Text } from '../../typography';

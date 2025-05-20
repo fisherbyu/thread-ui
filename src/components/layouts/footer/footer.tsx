@@ -1,3 +1,4 @@
+'use client';
 import { FooterProps } from './footer.types';
 import { FacebookLogo, GithubLogo, InstagramLogo, LinkedinLogo, TwitterLogo } from '@phosphor-icons/react';
 import { CSSProperties } from 'react';

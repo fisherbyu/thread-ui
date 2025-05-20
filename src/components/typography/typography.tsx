@@ -1,3 +1,4 @@
+'use client';
 import { CSSProperties, ReactNode } from 'react';
 
 export type TypographyProps = {

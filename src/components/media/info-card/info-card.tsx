@@ -1,3 +1,4 @@
+'use client';
 import { InfoCardProps } from './info-card.types';
 
 export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
@@ -6,7 +7,11 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 			<a href={url}>
 				<span className=" thread-cursor-pointer">
 					<div className="thread-overflow-hidden thread-w-full thread-h-5/6">
-						<img className="thread-h-auto thread-min-h-full thread-w-auto thread-min-w-full" src={img} alt="recipe cover" />
+						<img
+							className="thread-h-auto thread-min-h-full thread-w-auto thread-min-w-full"
+							src={img}
+							alt="recipe cover"
+						/>
 					</div>
 					<div className="thread-p-2 thread-h-1/6">
 						<span className="thread-flex thread-justify-start thread-items-center">
