@@ -9,6 +9,3 @@ export * from './types';
 
 // Export Functions
 export * from './functions';
-
-// Export Utility Functions
-export { createTheme, createAppliedTheme, ThemeProvider, useTheme } from './utils';
