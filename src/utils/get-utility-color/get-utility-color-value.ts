@@ -1,6 +1,6 @@
 'use client';
+import { getCurrentTheme } from '../../functions';
 import { UtilityColorOptions } from '../../types';
-import { getCurrentTheme } from '../';
 
 export const getUtilityColorValue = (color: UtilityColorOptions): string => {
 	const theme = getCurrentTheme();
