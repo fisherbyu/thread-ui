@@ -1,3 +1,4 @@
+'use client';
 import { CONTAINER_STYLES } from '../../../defaults';
 import { makeStyleObject } from '../../../functions';
 import { H3, Subtitle } from '../../typography';
@@ -15,6 +16,7 @@ export const MasonryLayout = ({ title, caption, components }: MasonryLayoutProps
 			width: '100%',
 			display: 'inline-block',
 			borderRadius: '4px',
+			overflow: 'hidden',
 		},
 	});
 	return (
