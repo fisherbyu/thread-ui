@@ -95,26 +95,16 @@ export const makeStyles = (styles: MakeStylesProps) => {
 	return className;
 };
 
-// New hook version that uses memoization
 export const useThreadStyles = (styles: MakeStylesProps) => {
-	return useMemo(
-		() => makeStyles(styles),
-		[
-			// Include all properties of styles in the dependency array
-			// This ensures the styles are recalculated only when they change
-			JSON.stringify(styles),
-		]
-	);
+	return useMemo(() => makeStyles(styles), [JSON.stringify(styles)]);
 };
 
-// Memoized version of makeStyleObject
 export const useThreadStyleObjects = (styles: Record<string, MakeStylesProps>) => {
 	return useMemo(() => {
 		return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, makeStyles(value)]));
 	}, [JSON.stringify(styles)]);
 };
 
-// Original non-hook version of makeStyleObject
 export const makeStyleObject = (styles: Record<string, MakeStylesProps>) => {
 	return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, makeStyles(value)]));
 };
