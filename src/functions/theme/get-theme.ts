@@ -1,3 +1,4 @@
+import { createContext } from 'react';
 import { deepMerge, DeepPartial } from '../../utils';
 
 type ColorShades = {
@@ -159,6 +160,15 @@ export const setTheme = (userTheme: DeepPartial<Theme>) => {
 
 	// We will need to add '-light-mode' to the end of the lightModeColors variable names
 };
+
+const ThemeContext = createContext<Theme>(theme);
+
+// export const ThemeProvider({
+//     children,
+//     initialTheme
+// }: {
+//     children: ReactNode
+// })
 
 export const getThemeValue = (): Theme => {
 	const wrapValue = (value: string): string => {
