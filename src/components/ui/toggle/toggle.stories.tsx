@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Toggle, ModeToggle } from './';
-import { useTheme, useThemeMode } from '../../utils';
+import { useTheme, useThemeMode } from '../../../functions';
 
 const meta: Meta<typeof Toggle> = {
 	component: Toggle,

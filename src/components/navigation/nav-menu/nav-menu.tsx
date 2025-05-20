@@ -1,11 +1,12 @@
 'use client';
 import { CSSProperties, useEffect, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
-import { useResponsiveStyles, useTheme } from '../../../utils';
+import { useResponsiveStyles } from '../../../utils';
 import { NavIconItem } from './items/nav-icon-item';
 import { NavItem, NavItemProps } from './items/nav-item';
 import { NavDropdownItemProps } from './items/nav-drop-down-item/nav-drop-down-item.types';
 import { NavDropdownItem } from './items/nav-drop-down-item';
+import { useTheme } from '../../../functions';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	// Navmenu Controls

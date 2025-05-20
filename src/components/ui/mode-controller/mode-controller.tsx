@@ -1,4 +1,4 @@
-import { useThemeOption } from '../../../utils/theme/use-theme';
+import { useThemeOption } from '../../../functions';
 import { ThemeModeOption } from '../../../types';
 
 export const ModeController = () => {

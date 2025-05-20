@@ -1,9 +1,10 @@
 'use client';
 import React, { CSSProperties } from 'react';
-import { useTheme, useResponsiveStyles } from '../../../../../utils';
+import { useResponsiveStyles } from '../../../../../utils';
 import { BaseItemProps } from './base-item.types';
 import { LinkWrapper } from '../../../../../internal-components';
 import { NavMenuStyles } from '../../nav-menu-styles';
+import { useTheme } from '../../../../../functions';
 
 export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, isDropdownItem }: BaseItemProps) => {
 	const { theme } = useTheme();

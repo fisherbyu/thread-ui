@@ -1,6 +1,6 @@
 'use client';
+import { useThemeMode } from '../../../../functions';
 import Toggle from '../toggle';
-import { useThemeMode } from '../../../../utils';
 
 export const ModeToggle = () => {
 	const [mode, setMode] = useThemeMode();
