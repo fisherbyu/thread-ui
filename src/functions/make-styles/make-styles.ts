@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { CSSProperties } from 'react';
+import { CSSProperties, useMemo } from 'react';
 
 const BREAKPOINTS = {
 	sm: 0,
@@ -37,10 +37,10 @@ const isResponsiveValue = (value: any): value is ResponsiveValue<any> => {
 	return value !== null && typeof value === 'object' && 'sm' in value;
 };
 
+// Original makeStyles function (for non-hook usage)
 export const makeStyles = (styles: MakeStylesProps) => {
 	const { hover, ...baseStyles } = styles;
-
-	// Create the base style object - use any to bypass TypeScript restrictions
+	// Create the base style object
 	const baseStyleObject: Record<string, any> = {};
 
 	// Media query style objects
@@ -79,7 +79,6 @@ export const makeStyles = (styles: MakeStylesProps) => {
 	// Add media queries for other breakpoints
 	Object.entries(BREAKPOINTS).forEach(([breakpoint, minWidth]) => {
 		if (breakpoint === 'sm') return; // Skip sm as it's included in base styles
-
 		const bpKey = breakpoint as BreakpointKey;
 		if (Object.keys(mediaQueries[bpKey]).length > 0) {
 			emotionStyleObject[`@media (min-width: ${minWidth}px)`] = mediaQueries[bpKey];
@@ -93,10 +92,29 @@ export const makeStyles = (styles: MakeStylesProps) => {
 
 	// Generate the className using Emotion's css function
 	const className = css(emotionStyleObject);
-
 	return className;
 };
 
+// New hook version that uses memoization
+export const useThreadStyles = (styles: MakeStylesProps) => {
+	return useMemo(
+		() => makeStyles(styles),
+		[
+			// Include all properties of styles in the dependency array
+			// This ensures the styles are recalculated only when they change
+			JSON.stringify(styles),
+		]
+	);
+};
+
+// Memoized version of makeStyleObject
+export const useThreadStyleObjects = (styles: Record<string, MakeStylesProps>) => {
+	return useMemo(() => {
+		return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, makeStyles(value)]));
+	}, [JSON.stringify(styles)]);
+};
+
+// Original non-hook version of makeStyleObject
 export const makeStyleObject = (styles: Record<string, MakeStylesProps>) => {
 	return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, makeStyles(value)]));
 };
