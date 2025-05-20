@@ -1,3 +1,5 @@
+import { deepMerge, DeepPartial } from '../../utils';
+
 type ColorShades = {
 	light: string;
 	main: string;
@@ -44,6 +46,20 @@ type Theme = {
 	// Sizing/Structure
 	borderRadius: UtilitySizes;
 	borderSize: UtilitySizes;
+};
+
+type DarkModeColors = {
+	// Surface Colors
+	background: string;
+	surface: string;
+	elevated: string;
+
+	// Text Colors
+	text: TextColors;
+};
+
+export type ThemeConfig = Theme & {
+	darkMode: DarkModeColors;
 };
 
 const theme: Theme = {
@@ -120,6 +136,18 @@ const theme: Theme = {
 	},
 };
 
+const darkVariables: DarkModeColors = {
+	// Surfaces
+	background: '--thread-background-dark-mode',
+	surface: '--thread-surface-dark-mode',
+	elevated: '--thread-elevated-dark-mode',
+	text: {
+		primary: '--thread-text-primary-dark-mode',
+		secondary: '--thread-text-secondary-dark-mode',
+		disabled: '--thread-text-disabled-dark-mode',
+	},
+};
+
 export const getThemeValue = (): Theme => {
 	const wrapValue = (value: string): string => {
 		return `var(${value})`;
@@ -149,3 +177,14 @@ export const getThemeValue = (): Theme => {
 
 	return createThemeProxy(theme);
 };
+
+export const setTheme = (userTheme: DeepPartial<Theme>) => {};
+
+// export const createTheme = (userTheme?: DeepPartial<Theme>) => {
+// 	if (userTheme) {
+// 		const newTheme = deepMerge(theme, userTheme);
+// 		return newTheme;
+// 	} else {
+// 		return theme;
+// 	}
+// };
