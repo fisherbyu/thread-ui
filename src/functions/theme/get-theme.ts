@@ -49,74 +49,74 @@ type Theme = {
 const theme: Theme = {
 	// Color Palette
 	primary: {
-		light: '--primary-light',
-		main: '--primary-main',
-		dark: '--primary-dark',
+		light: '--thread-primary-light',
+		main: '--thread-primary-main',
+		dark: '--thread-primary-dark',
 	},
 	secondary: {
-		light: '--secondary-light',
-		main: '--secondary-main',
-		dark: '--secondary-dark',
+		light: '--thread-secondary-light',
+		main: '--thread-secondary-main',
+		dark: '--thread-secondary-dark',
 	},
 	tertiary: {
-		light: '--tertiary-light',
-		main: '--tertiary-main',
-		dark: '	--tertiary-dark',
+		light: '--thread-tertiary-light',
+		main: '--thread-tertiary-main',
+		dark: '	--thread-tertiary-dark',
 	},
 
 	// Neutral Colors
-	white: '--white',
-	black: '--black',
+	white: '--thread-white',
+	black: '--thread-black',
 	gray: {
-		light: '--gray-light',
-		main: '--gray-main',
-		dark: '--gray-dark',
+		light: '--thread-gray-light',
+		main: '--thread-gray-main',
+		dark: '--thread-gray-dark',
 	},
 
 	// Status Colors
 	success: {
-		light: '--success-light',
-		main: '--success-main',
-		dark: '--success-dark',
+		light: '--thread-success-light',
+		main: '--thread-success-main',
+		dark: '--thread-success-dark',
 	},
 	warning: {
-		light: '--warning-light',
-		main: '--warning-main',
-		dark: '--warning-dark',
+		light: '--thread-warning-light',
+		main: '--thread-warning-main',
+		dark: '--thread-warning-dark',
 	},
 	error: {
-		light: '--error-light',
-		main: '--error-main',
-		dark: '--error-dark',
+		light: '--thread-error-light',
+		main: '--thread-error-main',
+		dark: '--thread-error-dark',
 	},
 	info: {
-		light: '--info-light',
-		main: '--info-main',
-		dark: '--info-dark',
+		light: '--thread-info-light',
+		main: '--thread-info-main',
+		dark: '--thread-info-dark',
 	},
 
 	// Surface Colors
-	background: '--background',
-	surface: '--surface',
-	elevated: '--elevated',
+	background: '--thread-background',
+	surface: '--thread-surface',
+	elevated: '--thread-elevated',
 
 	// Text Colors
 	text: {
-		primary: '--text-primary',
-		secondary: '--text-secondary',
-		disabled: '--text-disabled',
+		primary: '--thread-text-primary',
+		secondary: '--thread-text-secondary',
+		disabled: '--thread-text-disabled',
 	},
 
 	// Sizing/Structure
 	borderRadius: {
-		sm: '--border-radius-sm',
-		md: '--border-radius-md',
-		lg: '--border-radius-lg',
+		sm: '--thread-border-radius-sm',
+		md: '--thread-border-radius-md',
+		lg: '--thread-border-radius-lg',
 	},
 	borderSize: {
-		sm: '--border-size-sm',
-		md: '--border-size-md',
-		lg: '--border-size-lg',
+		sm: '--thread-border-size-sm',
+		md: '--thread-border-size-md',
+		lg: '--thread-border-size-lg',
 	},
 };
 
