@@ -148,6 +148,18 @@ const darkVariables: DarkModeColors = {
 	},
 };
 
+export const setTheme = (userTheme: DeepPartial<Theme>) => {
+	const { background, surface, elevated, text, ...staticStyles } = userTheme;
+	const lightModeColors = {
+		background,
+		surface,
+		elevated,
+		text,
+	};
+
+	// We will need to add '-light-mode' to the end of the lightModeColors variable names
+};
+
 export const getThemeValue = (): Theme => {
 	const wrapValue = (value: string): string => {
 		return `var(${value})`;
@@ -177,8 +189,6 @@ export const getThemeValue = (): Theme => {
 
 	return createThemeProxy(theme);
 };
-
-export const setTheme = (userTheme: DeepPartial<Theme>) => {};
 
 // export const createTheme = (userTheme?: DeepPartial<Theme>) => {
 // 	if (userTheme) {
