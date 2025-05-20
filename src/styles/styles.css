@@ -47,6 +47,20 @@
 	--info-main: #3b82f6;
 	--info-dark: #1d4ed8;
 
+	/* Spacing and Sizing Values */
+	/* Border Radius */
+	--border-radius-sm: 0.25rem;
+	--border-radius-md: 0.375rem;
+	--border-radius-lg: 0.5rem;
+
+	/* Border Size */
+	--border-size-sm: 1px;
+	--border-size-md: 2px;
+	--border-size-lg: 3px;
+
+	/* Spacing Unit */
+	--spacing-unit: 8px;
+
 	/* Mode-specific Layer Colors */
 	/* Light Mode Colors */
 	/* Surfaces */
@@ -69,20 +83,6 @@
 	--text-primary-dark-mode: #f9fafb;
 	--text-secondary-dark-mode: #e5e7eb;
 	--text-disabled-dark-mode: #6b7280;
-
-	/* Spacing and Sizing Values */
-	/* Border Radius */
-	--border-radius-sm: 0.25rem;
-	--border-radius-md: 0.375rem;
-	--border-radius-lg: 0.5rem;
-
-	/* Border Size */
-	--border-size-sm: 1px;
-	--border-size-md: 2px;
-	--border-size-lg: 3px;
-
-	/* Spacing Unit */
-	--spacing-unit: 8px;
 
 	/* Apply Light Mode Colors */
 	/* Surfaces */
