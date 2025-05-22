@@ -1,4 +1,3 @@
-import { createContext } from 'react';
 import { deepMerge, DeepPartial } from '../../utils';
 
 type ColorShades = {
@@ -59,9 +58,11 @@ type DarkModeColors = {
 	text: TextColors;
 };
 
-export type ThemeConfig = Theme & {
+export type ThemeConfigBase = Theme & {
 	darkMode: DarkModeColors;
 };
+
+export type ThemeConfig = DeepPartial<ThemeConfigBase>;
 
 const theme: Theme = {
 	// Color Palette
@@ -149,8 +150,11 @@ const darkVariables: DarkModeColors = {
 	},
 };
 
-export const setTheme = (userTheme: DeepPartial<Theme>) => {
-	const { background, surface, elevated, text, ...staticStyles } = userTheme;
+export const setTheme = (userTheme: ThemeConfig) => {
+	const { darkMode, ...staticStyles } = userTheme;
+	const { background, surface, elevated, text, ...otherStaticStyles } = staticStyles;
+
+	// Light mode colors need '-light-mode' suffix as mentioned in your comment
 	const lightModeColors = {
 		background,
 		surface,
@@ -158,10 +162,51 @@ export const setTheme = (userTheme: DeepPartial<Theme>) => {
 		text,
 	};
 
-	// We will need to add '-light-mode' to the end of the lightModeColors variable names
+	// Process non-mode-specific styles
+	processThemeObject(otherStaticStyles, theme);
+
+	// Process light mode colors with suffix
+	if (lightModeColors) {
+		processThemeObject(lightModeColors, theme, '-light-mode');
+	}
+
+	// Process dark mode styles if provided
+	if (darkMode) {
+		processThemeObject(darkMode, darkVariables);
+	}
 };
 
-const ThemeContext = createContext<Theme>(theme);
+/**
+ * Recursively processes a theme object, updating CSS variables
+ * @param userObject The partial theme object provided by the user
+ * @param themeObject The reference theme object containing CSS variable names
+ * @param suffix Optional suffix to add to CSS variable names (for mode-specific variables)
+ */
+function processThemeObject(userObject: DeepPartial<any>, themeObject: any, suffix: string = '') {
+	// Skip processing if the user object is null or undefined
+	if (userObject === null || userObject === undefined) return;
+
+	// Process each property in the user object
+	Object.entries(userObject).forEach(([key, value]) => {
+		// Get the corresponding theme value for this key
+		const themeValue = themeObject?.[key];
+
+		if (themeValue === undefined) return; // Skip if no matching theme property
+
+		// If value is another object, recursively process it
+		if (value !== null && typeof value === 'object' && typeof themeValue === 'object') {
+			processThemeObject(value, themeValue, suffix);
+		}
+		// If we have a leaf value and a corresponding CSS variable name
+		else if (value !== undefined && typeof themeValue === 'string') {
+			// Update the CSS variable, adding the suffix for light mode variables
+			console.log(themeValue, value.toString());
+			document.documentElement.style.setProperty(themeValue + suffix, value.toString());
+		}
+	});
+}
+
+// const ThemeContext = createContext<Theme>(theme);
 
 // export const ThemeProvider({
 //     children,
