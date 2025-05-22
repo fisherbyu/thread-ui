@@ -24,5 +24,4 @@ dist-ssr
 *.sw?
 
 *storybook.log
-src/styles/thread.css
-src/styles/test.css
+src/styles/styles.css
