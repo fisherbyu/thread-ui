@@ -1,6 +1,11 @@
 import { ThemeConfig } from '@/types';
 import { ThreadTheme, DarkModeVariables } from '../thread-theme';
 
+/**
+ * Overide default Thread Theme with custom imputs
+ * @param userTheme Partial of Theme Object
+ * @returns CSS String
+ */
 export const setTheme = (userTheme: ThemeConfig) => {
 	const cssVariables: string[] = [];
 

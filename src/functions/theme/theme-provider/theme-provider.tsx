@@ -30,6 +30,13 @@ const NO_FLASH_SCRIPT = `
 })();
 `;
 
+/**
+ * Thread Custom Theme Provider
+ * @param children      React Child Elements
+ * @param theme         Custom Theme Input
+ * @param defaultMode   Default Mode ('light' | 'dark' | 'system')
+ * @returns Thread Theme Context Provider
+ */
 export function ThemeProvider({ children, theme, defaultMode = 'system' }: ThemeProviderProps) {
 	const [mode, setModeState] = useState<'light' | 'dark' | 'system'>(defaultMode);
 	const [mounted, setMounted] = useState(false);
