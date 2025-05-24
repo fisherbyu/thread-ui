@@ -25,7 +25,7 @@ export const getUtilityColorValue = (color: UtilityColorOptions): string => {
 		case 'info':
 			return ThreadTheme.info.main;
 		case 'text':
-			return ThreadTheme.text.primary;
+			return ThreadTheme.text.standard;
 		default:
 			return ThreadTheme.primary.main;
 	}
