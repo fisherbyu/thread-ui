@@ -1,6 +1,5 @@
 'use client';
-import { getThemeValue } from '../../../functions';
-import { makeStyles } from '../../../functions';
+import { ThreadTheme, useThreadStyles } from '@/functions';
 import { DividerProps } from './divider.types';
 
 export const Divider = ({ width, marginY, weight }: DividerProps) => {
@@ -19,14 +18,14 @@ export const Divider = ({ width, marginY, weight }: DividerProps) => {
 			dividerWeight = 1;
 	}
 
-	const styles = makeStyles({
+	const styles = useThreadStyles({
 		width: width || '75%',
 		marginTop: marginY || '16px',
 		marginBottom: marginY || '16px',
 		marginLeft: 'auto',
 		marginRight: 'auto',
 		height: `${dividerWeight}px`,
-		backgroundColor: getThemeValue().structure,
+		backgroundColor: ThreadTheme.structure,
 	});
 
 	return <div className={styles}></div>;
