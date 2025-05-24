@@ -1,11 +1,11 @@
 'use client';
 import { CONTAINER_STYLES } from '../../../defaults';
-import { useThreadStyleObjects } from '../../../functions';
+import { makeStyleObject } from '../../../functions';
 import { H3, Subtitle } from '../../typography';
 import { MasonryLayoutProps } from './masonry-layout.types';
 
 export const MasonryLayout = ({ title, caption, components }: MasonryLayoutProps) => {
-	const styles = useThreadStyleObjects({
+	const styles = makeStyleObject({
 		container: CONTAINER_STYLES,
 		list: {
 			marginTop: '8px',
