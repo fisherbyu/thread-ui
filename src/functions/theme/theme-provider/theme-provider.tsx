@@ -1,10 +1,15 @@
 'use client';
-import { createContext, useContext, useEffect, useState } from 'react';
-import { ThemeConfig } from '@/types';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { setTheme } from './set-theme';
-import { ThemeContextType, ThemeProviderProps } from './theme-provider.types';
+import { ThemeConfig } from '@/types';
 
 // Minimal context for theme mode only
+type ThemeContextType = {
+	mode: 'light' | 'dark' | 'system';
+	setMode: (mode: 'light' | 'dark' | 'system') => void;
+	toggleMode: () => void;
+};
+
 const ThemeContext = createContext<ThemeContextType>({
 	mode: 'system',
 	setMode: () => {},
@@ -12,6 +17,7 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 // No-flash script as a string (will be injected)
+// Enhanced no-flash script for ThemeProvider
 const NO_FLASH_SCRIPT = `
 (function() {
   try {
@@ -23,20 +29,64 @@ const NO_FLASH_SCRIPT = `
     // Apply theme class to prevent flash
     document.documentElement.setAttribute('data-theme', actualMode);
     document.documentElement.style.colorScheme = actualMode;
+    
+    // ENHANCED: Also restore custom theme CSS immediately
+    try {
+      const storedThemeConfig = localStorage.getItem('thread-ui-theme-config');
+      if (storedThemeConfig) {
+        const themeConfig = JSON.parse(storedThemeConfig);
+        
+        // Quick and dirty CSS variable application
+        const applyThemeVariables = (config, selector = ':root') => {
+          const styles = [];
+          
+          const flatten = (obj, prefix = '--thread-') => {
+            Object.entries(obj).forEach(([key, value]) => {
+              if (value && typeof value === 'object' && !Array.isArray(value)) {
+                flatten(value, prefix + key + '-');
+              } else if (typeof value === 'string') {
+                styles.push(prefix + key + ': ' + value);
+              }
+            });
+          };
+          
+          flatten(config);
+          
+          if (styles.length > 0) {
+            const styleEl = document.createElement('style');
+            styleEl.id = 'thread-ui-no-flash-theme';
+            styleEl.textContent = selector + ' { ' + styles.join('; ') + ' }';
+            document.head.appendChild(styleEl);
+          }
+        };
+        
+        // Apply light mode variables
+        const { darkMode, ...lightMode } = themeConfig;
+        if (Object.keys(lightMode).length > 0) {
+          applyThemeVariables(lightMode, ':root');
+        }
+        
+        // Apply dark mode variables if in dark mode
+        if (darkMode && actualMode === 'dark') {
+          applyThemeVariables(darkMode, ':root[data-theme="dark"]');
+        }
+      }
+    } catch (themeError) {
+      console.warn('Failed to restore theme in no-flash script:', themeError);
+    }
+    
   } catch (e) {
-   consol.log('error here', e)
     document.documentElement.setAttribute('data-theme', 'light');
   }
 })();
 `;
 
-/**
- * Thread Custom Theme Provider
- * @param children      React Child Elements
- * @param theme         Custom Theme Input
- * @param defaultMode   Default Mode ('light' | 'dark' | 'system')
- * @returns Thread Theme Context Provider
- */
+interface ThemeProviderProps {
+	children: ReactNode;
+	theme?: ThemeConfig;
+	defaultMode?: 'light' | 'dark' | 'system';
+}
+
 export function ThemeProvider({ children, theme, defaultMode = 'system' }: ThemeProviderProps) {
 	const [mode, setModeState] = useState<'light' | 'dark' | 'system'>(defaultMode);
 	const [mounted, setMounted] = useState(false);
@@ -64,9 +114,22 @@ export function ThemeProvider({ children, theme, defaultMode = 'system' }: Theme
 				const initialMode = storedMode || defaultMode;
 				setModeState(initialMode);
 
-				// Apply custom theme if provided
+				// FIXED: Restore custom theme from localStorage first
+				let appliedTheme: ThemeConfig;
+				try {
+					const storedThemeConfig = localStorage.getItem('thread-ui-theme-config');
+					if (storedThemeConfig) {
+						appliedTheme = JSON.parse(storedThemeConfig);
+						setTheme(appliedTheme);
+					}
+				} catch (e) {
+					console.warn('Failed to restore stored theme config:', e);
+				}
+
+				// Apply theme prop if provided (this overrides stored theme)
 				if (theme) {
 					setTheme(theme);
+					appliedTheme = theme;
 				}
 
 				// Set up system theme listener for 'system' mode
@@ -126,7 +189,7 @@ export function ThemeProvider({ children, theme, defaultMode = 'system' }: Theme
 	return <ThemeContext.Provider value={{ mode, setMode, toggleMode }}>{children}</ThemeContext.Provider>;
 }
 
-// Theme Control Access Hook
+// Hook to access theme controls
 export function useTheme() {
 	const context = useContext(ThemeContext);
 	if (!context) {
@@ -135,13 +198,13 @@ export function useTheme() {
 	return context;
 }
 
-// Theme Toggling Hook
+// Hook for simple theme toggling
 export function useThemeToggle() {
 	const { toggleMode } = useTheme();
 	return toggleMode;
 }
 
-// Hook to update the theme configuration
+// Optional: Hook to update the theme configuration
 export function useThemeConfig() {
 	return {
 		updateTheme: (newTheme: ThemeConfig) => {

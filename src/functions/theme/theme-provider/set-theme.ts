@@ -2,14 +2,15 @@ import { ThemeConfig } from '@/types';
 import { ThreadTheme, DarkModeVariables } from '../thread-theme';
 
 /**
- * Overide default Thread Theme with custom imputs
+ * Override default Thread Theme with custom inputs
  * @param userTheme Partial of Theme Object
  * @returns CSS String
  */
 export const setTheme = (userTheme: ThemeConfig) => {
-	const cssVariables: string[] = [];
+	const lightVariables: string[] = [];
+	const darkVariables: string[] = [];
 
-	const collectCSSVariables = (userObject: any, themeObject: any, suffix: string = '') => {
+	const collectCSSVariables = (userObject: any, themeObject: any, targetArray: string[]) => {
 		if (!userObject) return;
 
 		Object.entries(userObject).forEach(([key, value]) => {
@@ -17,38 +18,51 @@ export const setTheme = (userTheme: ThemeConfig) => {
 			if (!themeValue) return;
 
 			if (value && typeof value === 'object' && typeof themeValue === 'object') {
-				collectCSSVariables(value, themeValue, suffix);
+				collectCSSVariables(value, themeValue, targetArray);
 			} else if (value !== undefined && typeof themeValue === 'string') {
-				cssVariables.push(`${themeValue}${suffix}: ${value}`);
+				targetArray.push(`${themeValue}: ${value}`);
 			}
 		});
 	};
 
-	const { darkMode, ...staticStyles } = userTheme;
-	const { background, surface, elevated, text, ...otherStaticStyles } = staticStyles;
+	const { darkMode, ...lightMode } = userTheme;
 
-	collectCSSVariables(otherStaticStyles, ThreadTheme);
-	collectCSSVariables({ background, surface, elevated, text }, ThreadTheme, '-light-mode');
+	// Collect light mode variables
+	collectCSSVariables(lightMode, ThreadTheme, lightVariables);
 
+	// FIXED: Collect dark mode variables with correct theme object
 	if (darkMode) {
-		collectCSSVariables(darkMode, DarkModeVariables);
+		collectCSSVariables(darkMode, DarkModeVariables, darkVariables);
 	}
 
-	// Create CSS string
-	const cssString = `:root { ${cssVariables.join('; ')} }`;
+	// Create CSS string with proper selectors
+	let cssString = '';
+
+	if (lightVariables.length > 0) {
+		cssString += `:root { ${lightVariables.join('; ')} }\n`;
+	}
+
+	if (darkVariables.length > 0) {
+		cssString += `:root[data-theme="dark"] { ${darkVariables.join('; ')} }\n`;
+	}
 
 	// Apply the CSS
 	if (typeof document !== 'undefined') {
-		// Client-side: inject into DOM
-		let styleElement = document.getElementById('theme-variables');
+		let styleElement = document.getElementById('thread-ui-custom-theme');
 		if (!styleElement) {
 			styleElement = document.createElement('style');
-			styleElement.id = 'theme-variables';
+			styleElement.id = 'thread-ui-custom-theme';
 			document.head.appendChild(styleElement);
 		}
 		styleElement.textContent = cssString;
+
+		// Persist theme config
+		try {
+			localStorage.setItem('thread-ui-theme-config', JSON.stringify(userTheme));
+		} catch (e) {
+			console.warn('Failed to persist theme:', e);
+		}
 	}
 
-	// Return CSS string so it can be used server-side if needed
 	return cssString;
 };
