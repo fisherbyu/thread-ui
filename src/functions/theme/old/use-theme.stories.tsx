@@ -114,13 +114,13 @@ const ThemeDisplay = () => {
 								<div>
 									<h4 className="thread-text-md thread-font-medium thread-mb-2">Light Mode</h4>
 									<div className="thread-grid thread-grid-cols-6 thread-gap-4">
-										{Object.entries(theme.colors.light.text as Record<string, string>).map(([name, color]) => (
+										{Object.entries(theme.colors.text as Record<string, string>).map(([name, color]) => (
 											<ColorSwatch key={name} color={color} name={name} />
 										))}
 									</div>
 									<h4 className="thread-text-md thread-font-medium thread-mb-2">Dark Mode</h4>
 									<div className="thread-grid thread-grid-cols-6 thread-gap-4">
-										{Object.entries(theme.colors.dark.text as Record<string, string>).map(([name, color]) => (
+										{Object.entries(theme.colors.text as Record<string, string>).map(([name, color]) => (
 											<ColorSwatch key={name} color={color} name={name} />
 										))}
 									</div>
