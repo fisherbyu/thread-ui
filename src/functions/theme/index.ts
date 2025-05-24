@@ -1,3 +1,3 @@
-export { setTheme, getThemeValue } from './get-theme';
-export { ThemeProvider } from './theme-provider';
-// export * from './old';
+export { ThreadTheme } from './thread-theme';
+export { ThemeProvider, useTheme, useThemeToggle } from './theme-provider/theme-provider';
+export type { ThemeContextType, ThemeProviderProps } from './theme-provider';
