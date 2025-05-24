@@ -1,158 +1,6 @@
 import { deepMerge, DeepPartial } from '../../utils';
-
-type ColorShades = {
-	light: string;
-	main: string;
-	dark: string;
-};
-
-export type TextColors = {
-	primary: string;
-	secondary: string;
-	disabled: string;
-};
-
-export type UtilitySizes = {
-	sm: string;
-	md: string;
-	lg: string;
-};
-
-type Theme = {
-	// Color Palette
-	primary: ColorShades;
-	secondary: ColorShades;
-	tertiary: ColorShades;
-
-	// Neutral Colors
-	white: string;
-	black: string;
-	gray: ColorShades;
-
-	// Status Colors
-	success: ColorShades;
-	warning: ColorShades;
-	error: ColorShades;
-	info: ColorShades;
-
-	// Surface Colors
-	background: string;
-	surface: string;
-	elevated: string;
-	structure: string;
-
-	// Text Colors
-	text: TextColors;
-
-	// Sizing/Structure
-	borderRadius: UtilitySizes;
-	borderSize: UtilitySizes;
-};
-
-type DarkModeColors = {
-	// Surface Colors
-	background: string;
-	surface: string;
-	elevated: string;
-	structure: string;
-
-	// Text Colors
-	text: TextColors;
-};
-
-export type ThemeConfigBase = Theme & {
-	darkMode: DarkModeColors;
-};
-
-export type ThemeConfig = DeepPartial<ThemeConfigBase>;
-
-const theme: Theme = {
-	// Color Palette
-	primary: {
-		light: '--thread-primary-light',
-		main: '--thread-primary-main',
-		dark: '--thread-primary-dark',
-	},
-	secondary: {
-		light: '--thread-secondary-light',
-		main: '--thread-secondary-main',
-		dark: '--thread-secondary-dark',
-	},
-	tertiary: {
-		light: '--thread-tertiary-light',
-		main: '--thread-tertiary-main',
-		dark: '	--thread-tertiary-dark',
-	},
-
-	// Neutral Colors
-	white: '--thread-white',
-	black: '--thread-black',
-	gray: {
-		light: '--thread-gray-light',
-		main: '--thread-gray-main',
-		dark: '--thread-gray-dark',
-	},
-
-	// Status Colors
-	success: {
-		light: '--thread-success-light',
-		main: '--thread-success-main',
-		dark: '--thread-success-dark',
-	},
-	warning: {
-		light: '--thread-warning-light',
-		main: '--thread-warning-main',
-		dark: '--thread-warning-dark',
-	},
-	error: {
-		light: '--thread-error-light',
-		main: '--thread-error-main',
-		dark: '--thread-error-dark',
-	},
-	info: {
-		light: '--thread-info-light',
-		main: '--thread-info-main',
-		dark: '--thread-info-dark',
-	},
-
-	// Surface Colors
-	background: '--thread-background',
-	surface: '--thread-surface',
-	elevated: '--thread-elevated',
-	structure: '--thread-structure',
-
-	// Text Colors
-	text: {
-		primary: '--thread-text-primary',
-		secondary: '--thread-text-secondary',
-		disabled: '--thread-text-disabled',
-	},
-
-	// Sizing/Structure
-	borderRadius: {
-		sm: '--thread-border-radius-sm',
-		md: '--thread-border-radius-md',
-		lg: '--thread-border-radius-lg',
-	},
-	borderSize: {
-		sm: '--thread-border-size-sm',
-		md: '--thread-border-size-md',
-		lg: '--thread-border-size-lg',
-	},
-};
-
-const darkVariables: DarkModeColors = {
-	// Surfaces
-	background: '--thread-background-dark-mode',
-	surface: '--thread-surface-dark-mode',
-	elevated: '--thread-elevated-dark-mode',
-	structure: '--thread-structure-dark-mode',
-	text: {
-		primary: '--thread-text-primary-dark-mode',
-		secondary: '--thread-text-secondary-dark-mode',
-		disabled: '--thread-text-disabled-dark-mode',
-	},
-};
+import { Theme, DarkModeColors, ThemeConfig } from './theme.types';
+import { ThreadTheme, DarkModeVariables } from './thread-theme';
 
 export const setTheme = (userTheme: ThemeConfig) => {
 	const cssVariables: string[] = [];
@@ -175,11 +23,11 @@ export const setTheme = (userTheme: ThemeConfig) => {
 	const { darkMode, ...staticStyles } = userTheme;
 	const { background, surface, elevated, text, ...otherStaticStyles } = staticStyles;
 
-	collectCSSVariables(otherStaticStyles, theme);
-	collectCSSVariables({ background, surface, elevated, text }, theme, '-light-mode');
+	collectCSSVariables(otherStaticStyles, ThreadTheme);
+	collectCSSVariables({ background, surface, elevated, text }, ThreadTheme, '-light-mode');
 
 	if (darkMode) {
-		collectCSSVariables(darkMode, darkVariables);
+		collectCSSVariables(darkMode, DarkModeVariables);
 	}
 
 	// Create CSS string
@@ -228,5 +76,5 @@ export const getThemeValue = (): Theme => {
 		});
 	};
 
-	return createThemeProxy(theme);
+	return createThemeProxy(ThreadTheme);
 };
