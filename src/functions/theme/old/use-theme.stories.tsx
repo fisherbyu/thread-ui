@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useTheme } from './use-theme';
-import type { ThemeMode } from '../../types';
-import { Divider } from '../../';
+import type { ThemeMode } from '../../../types';
+import { Divider } from '../../../';
 
 interface ColorSwatchProps {
 	color: string;

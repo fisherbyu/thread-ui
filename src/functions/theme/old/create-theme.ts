@@ -1,7 +1,7 @@
 // theme-provider.ts
-import { Theme, AppliedTheme } from '../../types';
-import { DEFAULT_THEME } from '../../defaults';
-import { deepMerge, DeepPartial } from '../../utils';
+import { Theme, AppliedTheme } from '../../../types';
+import { DEFAULT_THEME } from '../../../defaults';
+import { deepMerge, DeepPartial } from '../../../utils';
 
 // Create Theme Functions for SSR
 export function createTheme(userConfig?: DeepPartial<Theme>): Theme {

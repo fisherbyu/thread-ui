@@ -1,9 +1,9 @@
 // use-theme.ts
 'use client';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import type { Theme, ThemeMode, ThemeModeOption, ThemeContextType } from '../../types';
+import type { Theme, ThemeMode, ThemeModeOption, ThemeContextType } from '../../../types';
 import { createAppliedTheme } from './create-theme';
-import { DEFAULT_THEME } from '../../defaults';
+import { DEFAULT_THEME } from '../../../defaults';
 
 const STORAGE_KEY = 'theme-mode-preference';
 
