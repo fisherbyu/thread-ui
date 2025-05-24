@@ -1,12 +1,11 @@
 'use client';
 import { CSSProperties, useEffect, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
-import { useResponsiveStyles } from '../../../utils';
 import { NavIconItem } from './items/nav-icon-item';
 import { NavItem, NavItemProps } from './items/nav-item';
 import { NavDropdownItemProps } from './items/nav-drop-down-item/nav-drop-down-item.types';
 import { NavDropdownItem } from './items/nav-drop-down-item';
-import { getThemeValue } from '../../../functions';
+import { ThreadTheme, useThreadStyleObjects } from '@/functions';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	// Navmenu Controls
@@ -50,7 +49,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		};
 	}, []);
 
-	const style: Record<string, CSSProperties> = {
+	const style = useThreadStyleObjects({
 		header: {
 			position: 'sticky',
 			top: '0px',
@@ -60,9 +59,8 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			height: '80px',
 			backdropFilter: 'blur(24px)',
 			borderBottomWidth: '1px',
-			borderBottomColor: getThemeValue().structure,
+			borderBottomColor: ThreadTheme.structure,
 			zIndex: '40',
-			backgroundColor: getThemeValue().background,
 		},
 
 		nav: {
@@ -74,28 +72,28 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			position: 'relative',
 			display: 'flex',
 			columnGap: '20px',
-			justifyContent: useResponsiveStyles({ sm: 'space-between ', lg: 'flex-start' }),
+			justifyContent: { sm: 'space-between ', lg: 'flex-start' },
 			alignItems: 'center',
 		},
 
 		menuItemBlock: {
 			animationDuration: '300ms',
 			animationTimingFunction: 'linear',
-			position: useResponsiveStyles({ sm: 'absolute', lg: 'relative' }) as React.CSSProperties['position'],
-			top: useResponsiveStyles({ sm: '100%', lg: '0px' }),
+			position: { sm: 'absolute', lg: 'relative' },
+			top: { sm: '100%', lg: '0px' },
 			left: '0px',
 			borderBottomWidth: '1px',
-			backgroundColor: useResponsiveStyles({ sm: 'rgb(255 255 255 / 1)', lg: 'transparent' }),
+			backgroundColor: { sm: 'rgb(255 255 255 / 1)', lg: 'transparent' },
 			borderColor: '#e5e7eb',
-			paddingTop: useResponsiveStyles({ sm: '32px', lg: '0px' }),
-			paddingBottom: useResponsiveStyles({ sm: '32px', lg: '0px' }),
-			paddingLeft: useResponsiveStyles({ sm: '20px', md: '48px', lg: '0px' }),
-			paddingRight: useResponsiveStyles({ sm: '20px', md: '48px', lg: '0px' }),
-			borderStyle: useResponsiveStyles({ sm: 'solid', lg: 'none' }),
-			width: useResponsiveStyles({ sm: '100%', lg: 'max-content' }),
-			display: useResponsiveStyles({ sm: 'block', lg: 'flex' }),
+			paddingTop: { sm: '32px', lg: '0px' },
+			paddingBottom: { sm: '32px', lg: '0px' },
+			paddingLeft: { sm: '20px', md: '48px', lg: '0px' },
+			paddingRight: { sm: '20px', md: '48px', lg: '0px' },
+			borderStyle: { sm: 'solid', lg: 'none' },
+			width: { sm: '100%', lg: 'max-content' },
+			display: { sm: 'block', lg: 'flex' },
 			columnGap: '24px',
-			transitionProperty: useResponsiveStyles({ sm: '', md: 'none' }),
+			transitionProperty: { sm: '', md: 'none' },
 		},
 
 		menuOpenItemBlock: {
@@ -109,25 +107,25 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		menuCloseItemBlock: {
 			transitionDuration: '300ms',
 			transitionTimingFunction: 'linear',
-			transform: useResponsiveStyles({
+			transform: {
 				sm: 'translateY(2.5rem)', // translate-y-10 (10 * 0.25rem = 2.5rem)
 				lg: 'translateY(0)',
-			}),
-			opacity: useResponsiveStyles({ sm: '0', lg: '1' }),
-			visibility: useResponsiveStyles({ sm: 'hidden', lg: 'visible' }) as React.CSSProperties['visibility'],
+			},
+			opacity: { sm: '0', lg: '1' },
+			visibility: { sm: 'hidden', lg: 'visible' },
 		},
 
 		itemList: {
 			display: 'flex',
-			flexDirection: useResponsiveStyles({ sm: 'column', lg: 'row' }) as React.CSSProperties['flexDirection'],
+			flexDirection: { sm: 'column', lg: 'row' },
 			gap: '24px',
-			alignItems: useResponsiveStyles({ sm: 'stretch', lg: 'center' }),
-			width: useResponsiveStyles({ sm: 'auto', lg: '100%' }),
-			justifyContent: useResponsiveStyles({ sm: 'flex-center', lg: 'center' }),
+			alignItems: { sm: 'stretch', lg: 'center' },
+			width: { sm: 'auto', lg: '100%' },
+			justifyContent: { sm: 'flex-center', lg: 'center' },
 		},
 
 		menuControl: {
-			display: useResponsiveStyles({ sm: 'flex', lg: 'none' }),
+			display: { sm: 'flex', lg: 'none' },
 			alignItems: 'center',
 		},
 
@@ -135,7 +133,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			outline: '2px solid transparent',
 			outlineOffset: '2px',
 			borderLeftWidth: '1px',
-			borderLeftColor: getThemeValue().gray.main,
+			borderLeftColor: ThreadTheme.gray.main,
 			paddingLeft: '12px',
 			position: 'relative',
 			paddingTop: '12px',
@@ -147,8 +145,8 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			display: 'flex',
 			height: '2px',
 			width: '24px',
-			borderRadius: getThemeValue().borderRadius.sm,
-			backgroundColor: getThemeValue().gray.dark,
+			borderRadius: ThreadTheme.borderRadius.sm,
+			backgroundColor: ThreadTheme.gray.dark,
 			transitionProperty:
 				'color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
 			transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
@@ -170,7 +168,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		menuCrossBottomOpen: {
 			transform: 'translate(0, -0.324rem) rotate(-45deg)',
 		},
-	};
+	});
 
 	const _renderNavItem = ({ href, title }: NavItemProps) => {
 		return <NavItem key={title} href={href} title={title} />;
@@ -190,38 +188,23 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 
 	return (
 		<>
-			<header id="site-menu" style={style.header}>
-				<nav style={style.nav}>
+			<header id="site-menu" className={style.header}>
+				<nav className={style.nav}>
 					{logo && <NavIconItem href={logo.href} logo={logo.logo} />}
-					<div
-						style={{
-							...style.menuItemBlock,
-							...(navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock),
-						}}
-					>
-						<ul style={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
+					<div className={`${style.menuItemBlock} ${navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock}`}>
+						<ul className={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
 					</div>
-					<div style={style.menuControl}>
+					<div className={style.menuControl}>
 						<button
 							onClick={() => {
 								toggleNavbar();
 							}}
 							aria-label="toggle navbar"
 						>
+							<span aria-hidden={true} className={`${style.menuCross} ${navIsOpened ? style.menuCrossTopOpen : ''}`} />
 							<span
 								aria-hidden={true}
-								style={{
-									...style.menuCross,
-									...(navIsOpened ? style.menuCrossTopOpen : {}),
-								}}
-							/>
-							<span
-								aria-hidden={true}
-								style={{
-									...style.menuCross,
-									...style.menuCrossBottom,
-									...(navIsOpened ? style.menuCrossBottomOpen : {}),
-								}}
+								className={`${style.menuCross} ${style.menuCrossBottom} ${navIsOpened ? style.menuCrossBottomOpen : ''}`}
 							/>
 						</button>
 					</div>

@@ -3,17 +3,14 @@ import { CSSProperties, useState } from 'react';
 import { BaseItem } from '../base-item';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { NavMenuStyles } from '../../nav-menu-styles';
-import { useResponsiveStyles } from '../../../../../utils';
-import { getThemeValue } from '../../../../../functions';
+import { ThreadTheme, useThreadStyleObjects } from '@/functions';
 
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	const [isHovered, setIsHovered] = useState(false);
 
-	const targetSpacer = useResponsiveStyles({ sm: '0px', lg: '30px' });
-
-	const styles: Record<string, CSSProperties> = {
+	const styles = useThreadStyleObjects({
 		parentBlock: {
-			position: useResponsiveStyles({ sm: 'static', lg: 'relative' }) as React.CSSProperties['position'],
+			position: { sm: 'static', lg: 'relative' },
 		},
 		textBlock: {
 			display: 'flex',
@@ -23,54 +20,65 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			alignItems: 'center',
 		},
 
-		arrow: {
-			marginTop: '1px',
-			height: '12px',
-			width: '12px',
-			transition: 'all 200ms',
-			transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)',
-		},
-
 		targetArea: {
 			position: 'absolute',
 			width: `calc(100% + ${NavMenuStyles.paddingX * 2}px)`,
-			height: targetSpacer,
+			height: { sm: '0px', lg: '30px' },
 			left: '50%',
 			transform: 'translateX(-50%)',
-			bottom: `-${targetSpacer}`,
+			bottom: { sm: '-0px', lg: '-30px' },
 		},
 
 		dropdownContent: {
-			display: isHovered ? 'block' : 'none',
-			backgroundColor: getThemeValue().background,
+			display: 'none',
+			backgroundColor: ThreadTheme.background,
 			borderWidth: '1px',
-			boxShadow: `0 4px 8px ${getThemeValue().background}`,
+			boxShadow: `0 4px 8px ${ThreadTheme.background}`,
 			position: 'absolute',
 			width: 'fit-content',
-			borderRadius: getThemeValue().borderRadius.md,
+			borderRadius: ThreadTheme.borderRadius.md,
 			padding: `${NavMenuStyles.paddingY}px ${NavMenuStyles.paddingX}px`,
 			zIndex: 10,
-			top: `calc(100% + ${targetSpacer})`,
+			top: { sm: '', lg: 'calc(100% + 30px)' },
 			left: '50%',
 			transform: 'translateX(-50%)',
 		},
+		dropdownContentShow: {
+			display: { sm: 'none', lg: 'block' },
+		},
 
 		collapsedDropdownContent: {
-			display: isHovered ? 'flex' : 'none',
+			display: 'none',
 			justifyContent: 'center',
 			columnGap: '24px',
 			alignItems: 'center',
-			backgroundColor: getThemeValue().background,
+			backgroundColor: ThreadTheme.background,
 			width: '100%',
-			borderRadius: getThemeValue().borderRadius.md,
+			borderRadius: ThreadTheme.borderRadius.md,
 			zIndex: 10,
 		},
+
+		collapsedDropdownContentShow: {
+			display: { sm: 'flex', lg: 'none' },
+		},
+	});
+	const arrow: CSSProperties = {
+		marginTop: '1px',
+		height: '12px',
+		width: '12px',
+		transition: 'all 200ms',
+		transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)',
 	};
 
 	return (
-		<div style={styles.parentBlock} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+		<div
+			className={styles.parentBlock}
+			onMouseEnter={() => setIsHovered(true)}
+			onMouseLeave={() => setIsHovered(false)}
+			onClick={() => setIsHovered(false)}
+		>
 			<BaseItem href="#">
-				<div style={styles.textBlock}>
+				<div className={styles.textBlock}>
 					<span>{title}</span>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -82,14 +90,24 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 						strokeWidth="2"
 						strokeLinecap="round"
 						strokeLinejoin="round"
-						style={styles.arrow}
+						style={arrow}
 					>
 						<path d="m6 9 6 6 6-6"></path>
 					</svg>
 				</div>
 			</BaseItem>
-			{isHovered && <div style={styles.targetArea} />}
-			<div style={useResponsiveStyles({ sm: styles.collapsedDropdownContent, lg: styles.dropdownContent })}>
+			{isHovered && <div className={styles.targetArea} />}
+			{/* Swap menu based on size */}
+			{/* Screen SM */}
+			<div className={`${styles.collapsedDropdownContent} ${isHovered && styles.collapsedDropdownContentShow}`}>
+				{items.map((item) => (
+					<BaseItem key={item.title} href={item.href} isDropdownItem>
+						{item.title}
+					</BaseItem>
+				))}
+			</div>
+			{/* Screen LG */}
+			<div className={`${styles.dropdownContent} ${isHovered && styles.dropdownContentShow}`}>
 				{items.map((item) => (
 					<BaseItem key={item.title} href={item.href} isDropdownItem>
 						{item.title}

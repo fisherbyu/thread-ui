@@ -1,59 +1,44 @@
 'use client';
-import React, { CSSProperties } from 'react';
-import { useResponsiveStyles } from '../../../../../utils';
 import { BaseItemProps } from './base-item.types';
-import { LinkWrapper } from '../../../../../internal-components';
+import { LinkWrapper } from '@/internal-components';
 import { NavMenuStyles } from '../../nav-menu-styles';
-import { getThemeValue } from '../../../../../functions';
+import { ThreadTheme, useThreadStyleObjects } from '@/functions';
 
 export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, isDropdownItem }: BaseItemProps) => {
-	const styles: Record<string, CSSProperties> = {
+	const styles = useThreadStyleObjects({
 		li: {
 			display: 'flex',
 			alignItems: 'center',
 			listStyleType: 'none',
 		},
 		link: {
-			position: useResponsiveStyles({ sm: 'static', lg: 'relative' }) as React.CSSProperties['position'],
+			position: { sm: 'static', lg: 'relative' },
 			display: 'inline-flex',
 			flexDirection: 'column',
-			height: useResponsiveStyles({ sm: 'auto', lg: '2.5rem' }),
+			height: { sm: 'auto', lg: '2.5rem' },
 			alignItems: 'center',
 			justifyContent: 'center',
 			borderRadius: '0.375rem',
-			backgroundColor: getThemeValue().background,
-			color: getThemeValue().text.primary,
+			color: ThreadTheme.text.standard,
 			fontSize: '0.875rem',
 			fontWeight: 500,
 			padding: padding ?? `${NavMenuStyles.paddingY / 2}px ${NavMenuStyles.paddingX}px`,
-			width: isDropdownItem
-				? useResponsiveStyles({ sm: 'fit-content', lg: '100%' })
-				: useResponsiveStyles({ sm: '100%', lg: 'fit-content' }),
+			width: isDropdownItem ? { sm: 'fit-content', lg: '100%' } : { sm: '100%', lg: 'fit-content' },
 			textDecoration: 'none',
 			transition: 'all 150ms ease-in-out',
 			margin: 'auto',
+			hover: {
+				backgroundColor: ThreadTheme.elevated,
+				color: ThreadTheme.gray.dark,
+			},
 		},
-
-		linkHover: {
-			backgroundColor: getThemeValue().gray.light,
-			color: getThemeValue().gray.dark,
-		},
-	};
+	});
 
 	// Handle hover state
-	const [isHovered, setIsHovered] = React.useState(false);
 
 	return (
-		<li onMouseEnter={onMouseEnter} style={styles.li} onMouseLeave={onMouseLeave}>
-			<LinkWrapper
-				link={href}
-				style={{
-					...styles.link,
-					...(isHovered ? styles.linkHover : {}),
-				}}
-				onMouseEnter={() => setIsHovered(true)}
-				onMouseLeave={() => setIsHovered(false)}
-			>
+		<li className={styles.li}>
+			<LinkWrapper link={href} className={styles.link}>
 				{children}
 			</LinkWrapper>
 		</li>
