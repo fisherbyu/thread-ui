@@ -1,5 +1,5 @@
 'use client';
-import { getThemeValue } from '../../functions';
+import { getThemeValue } from '@/functions';
 import { UtilityColorOptions } from '../../types';
 
 export const getUtilityColorValue = (color: UtilityColorOptions): string => {
