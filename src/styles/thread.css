@@ -65,6 +65,7 @@
 	--thread-background-light-mode: #ffffff;
 	--thread-surface-light-mode: #f9fafb;
 	--thread-elevated-light-mode: #f3f4f6;
+	--thread-structure-light-mode: #374151;
 
 	/* Text */
 	--thread-text-primary-light-mode: #1f2937;
@@ -76,6 +77,7 @@
 	--thread-background-dark-mode: #121212;
 	--thread-surface-dark-mode: #1e1e1e;
 	--thread-elevated-dark-mode: #2d2d2d;
+	--thread-structure-dark-mode: #d1d5db;
 
 	/* Text */
 	--thread-text-primary-dark-mode: #f9fafb;
@@ -87,6 +89,7 @@
 	--thread-background: var(--thread-background-light-mode);
 	--thread-surface: var(--thread-surface-light-mode);
 	--thread-elevated: var(--thread-elevated-light-mode);
+	--thread-structure: var(--thread-structure-light-mode);
 
 	/* Text */
 	--thread-text-primary: var(--thread-text-primary-light-mode);
@@ -100,6 +103,7 @@
 	--thread-background: var(--thread-background-dark-mode);
 	--thread-surface: var(--thread-surface-dark-mode);
 	--thread-elevated: var(--thread-elevated-dark-mode);
+	--thread-structure: var(--thread-structure-dark-mode);
 
 	/* Text */
 	--thread-text-primary: var(--thread-text-primary-dark-mode);
@@ -114,6 +118,7 @@
 		--thread-background: var(--thread-background-dark-mode);
 		--thread-surface: var(--thread-surface-dark-mode);
 		--thread-elevated: var(--thread-elevated-dark-mode);
+		--thread-structure: var(--thread-structure-dark-mode);
 
 		/* Text */
 		--thread-text-primary: var(--thread-text-primary-dark-mode);
