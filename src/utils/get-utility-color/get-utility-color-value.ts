@@ -1,4 +1,3 @@
-'use client';
 import { ThreadTheme } from '@/functions';
 import { UtilityColorOptions } from '../../types';
 
