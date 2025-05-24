@@ -39,6 +39,7 @@ type Theme = {
 	background: string;
 	surface: string;
 	elevated: string;
+	structure: string;
 
 	// Text Colors
 	text: TextColors;
@@ -53,6 +54,7 @@ type DarkModeColors = {
 	background: string;
 	surface: string;
 	elevated: string;
+	structure: string;
 
 	// Text Colors
 	text: TextColors;
@@ -117,6 +119,7 @@ const theme: Theme = {
 	background: '--thread-background',
 	surface: '--thread-surface',
 	elevated: '--thread-elevated',
+	structure: '--thread-structure',
 
 	// Text Colors
 	text: {
@@ -143,6 +146,7 @@ const darkVariables: DarkModeColors = {
 	background: '--thread-background-dark-mode',
 	surface: '--thread-surface-dark-mode',
 	elevated: '--thread-elevated-dark-mode',
+	structure: '--thread-structure-dark-mode',
 	text: {
 		primary: '--thread-text-primary-dark-mode',
 		secondary: '--thread-text-secondary-dark-mode',
