@@ -1,6 +1,6 @@
-import { deepMerge, DeepPartial } from '../../utils';
-import { Theme, DarkModeColors, ThemeConfig } from './theme.types';
-import { ThreadTheme, DarkModeVariables } from './thread-theme';
+import { deepMerge, DeepPartial } from '@/utils';
+import { Theme, DarkModeColors, ThemeConfig } from '@/types';
+import { ThreadTheme, DarkModeVariables } from '../thread-theme';
 
 export const setTheme = (userTheme: ThemeConfig) => {
 	const cssVariables: string[] = [];
@@ -47,34 +47,4 @@ export const setTheme = (userTheme: ThemeConfig) => {
 
 	// Return CSS string so it can be used server-side if needed
 	return cssString;
-};
-
-export const getThemeValue = (): Theme => {
-	const wrapValue = (value: string): string => {
-		return `var(${value})`;
-	};
-
-	const createThemeProxy = (obj: any): any => {
-		if (typeof obj === 'string') {
-			return wrapValue(obj);
-		}
-
-		return new Proxy(obj, {
-			get(target, prop) {
-				const value = target[prop as string | symbol];
-
-				if (value !== null && typeof value === 'object') {
-					return createThemeProxy(value);
-				}
-
-				if (typeof value === 'string') {
-					return wrapValue(value);
-				}
-
-				return value;
-			},
-		});
-	};
-
-	return createThemeProxy(ThreadTheme);
 };
