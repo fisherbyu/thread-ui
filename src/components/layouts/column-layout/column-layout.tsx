@@ -5,7 +5,7 @@ import { H2, H3, Text } from '../../typography';
 import { makeStyleObject } from '../../../functions';
 
 /**
- * A layout component that displays content in a responsive column grid.
+ * A layout component that displays content in a responsive column grid with optional title and caption.
  *
  * @component
  * @param {string} title - Optional title displayed at the top of the layout
