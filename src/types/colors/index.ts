@@ -1,1 +1,1 @@
-export type { UtilityColorOptions } from './utility-color-options.types';
+export type { ColoredTextOptions, UtilityColorOptions } from './utility-color-options.types';
