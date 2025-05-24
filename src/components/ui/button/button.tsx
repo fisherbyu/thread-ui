@@ -1,9 +1,8 @@
 'use client';
-import { CSSProperties, useState } from 'react';
 import { getUtilityColorValue } from '../../../utils';
 import { ButtonProps } from './button.types';
 import { makeStyles } from '../../../functions';
-import { getThemeValue } from '../../../functions';
+import { ThreadTheme } from '@/functions';
 
 export const Button = ({
 	children,
@@ -20,9 +19,9 @@ export const Button = ({
 		padding: '8px',
 		width: fullWidth ? '100%' : 'fit-content',
 		transition: 'background-color 0.2s ease',
-		border: `${getThemeValue().borderSize.md}px ${colorValue} solid`,
-		borderRadius: `${getThemeValue().borderRadius.md}px`,
-		color: getThemeValue().white,
+		border: `${ThreadTheme.borderSize.md} ${colorValue} solid`,
+		borderRadius: ThreadTheme.borderRadius.md,
+		color: ThreadTheme.white,
 		backgroundColor: colorValue,
 		margin: margin ?? 'auto',
 		display: 'flex',
@@ -32,8 +31,8 @@ export const Button = ({
 		userSelect: 'none',
 		opacity: disabled ? 0.6 : 1,
 		hover: {
-			backgroundColor: disabled ? colorValue : getThemeValue().white,
-			color: disabled ? getThemeValue().white : colorValue,
+			backgroundColor: disabled ? colorValue : ThreadTheme.white,
+			color: disabled ? ThreadTheme.white : colorValue,
 		},
 	});
 
