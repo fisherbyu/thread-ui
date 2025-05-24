@@ -1,1 +1,1 @@
-export type { Theme, ThemeConfig, DarkModeColors } from './theme.types';
+export type { BreakpointKey, BreakpointSizes, Theme, TextColors, UtilitySizes, ThemeConfig, DarkModeColors } from './theme.types';
