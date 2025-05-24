@@ -1,6 +1,11 @@
 import { ThreadTheme } from '@/functions';
 import { UtilityColorOptions } from '../../types';
 
+/**
+ * Returns corresponding default theme color CSS Variable
+ * @param color Color Option
+ * @returns CSS Theme Variable string
+ */
 export const getUtilityColorValue = (color: UtilityColorOptions): string => {
 	switch (color) {
 		case 'primary':
