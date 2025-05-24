@@ -1,4 +1,4 @@
-import { DeepPartial } from '@/utils';
+import { DeepPartial } from '@/types';
 
 type ColorShades = {
 	light: string;
