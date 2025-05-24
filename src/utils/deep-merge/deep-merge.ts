@@ -1,8 +1,4 @@
-// Merge Partial Type
-export type DeepPartial<T> = {
-	[P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
-};
-
+import { DeepPartial } from '@/types';
 // Function with ability to merge two objects together
 export const deepMerge = <T extends Record<string, any>>(target: T, source: DeepPartial<T>): T => {
 	const result = { ...target };
