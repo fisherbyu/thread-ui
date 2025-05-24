@@ -73,6 +73,13 @@ export const ThreadTheme: Theme = {
 		md: 'var(--thread-border-size-md)',
 		lg: 'var(--thread-border-size-lg)',
 	},
+	breakpoints: {
+		sm: 'var(--thread-breakpoint-sm)',
+		md: 'var(--thread-breakpoint-md)',
+		lg: 'var(--thread-breakpoint-lg)',
+		xl: 'var(--thread-breakpoint-xl)',
+		xxl: 'var(--thread-breakpoint-xxl)',
+	},
 };
 
 export const DarkModeVariables: DarkModeColors = {

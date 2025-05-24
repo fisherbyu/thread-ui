@@ -56,6 +56,13 @@
 	--thread-border-size-md: 2px;
 	--thread-border-size-lg: 3px;
 
+	/* Breakpoints */
+	--thread-breakpoint-sm: 0;
+	--thread-breakpoint-md: 768;
+	--thread-breakpoint-lg: 1024;
+	--thread-breakpoint-xl: 1280;
+	--thread-breakpoint-xxl: 1536;
+
 	/* Spacing Unit */
 	--thread-spacing-unit: 8px;
 
