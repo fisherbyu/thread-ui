@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { ImageProps } from '../../../types';
 /**
  * Props for the ColumnLayout component
