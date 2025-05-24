@@ -1,9 +1,16 @@
 import { css } from '@emotion/css';
 import { CSSProperties, useMemo } from 'react';
 import { ThreadTheme } from '../theme';
-import { BreakpointKey } from '@/types';
 
-const BREAKPOINTS = ThreadTheme.breakpoints;
+const BREAKPOINTS = {
+	sm: 0,
+	md: 768,
+	lg: 1024,
+	xl: 1280,
+	xxl: 1536,
+} as const;
+
+type BreakpointKey = keyof typeof BREAKPOINTS;
 
 type ResponsiveValue<T> = {
 	sm: T;

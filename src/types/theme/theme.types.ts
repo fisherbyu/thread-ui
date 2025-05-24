@@ -51,7 +51,6 @@ export type Theme = {
 	// Sizing/Structure
 	borderRadius: UtilitySizes;
 	borderSize: UtilitySizes;
-	breakpoints: BreakpointSizes;
 };
 
 export type DarkModeColors = {
@@ -70,13 +69,3 @@ type ThemeConfigBase = Theme & {
 };
 
 export type ThemeConfig = DeepPartial<ThemeConfigBase>;
-
-export type BreakpointSizes = {
-	sm: string;
-	md: string;
-	lg: string;
-	xl: string;
-	xxl: string;
-};
-
-export type BreakpointKey = keyof BreakpointSizes;
