@@ -13,6 +13,8 @@ export type TextColors = {
 	disabled: string;
 };
 
+export type TextColorOptions = keyof TextColors;
+
 export type UtilitySizes = {
 	sm: string;
 	md: string;
