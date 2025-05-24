@@ -13,8 +13,13 @@
 		"strict": true,
 		"skipLibCheck": true,
 		"types": ["jest", "@testing-library/jest-dom"],
-		"rootDir": "./src"
+		"rootDir": "./src",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		}
 	},
+
 	"include": ["src/**/*.ts", "src/**/*.tsx"],
 	"exclude": ["node_modules", "dist", "**/*.test.*", "**/*.stories.*"]
 }

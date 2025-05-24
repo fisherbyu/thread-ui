@@ -14,7 +14,7 @@
 	},
 	"scripts": {
 		"clean": "rm -rf dist",
-		"build": "npm run build-css && tsc",
+		"build": "npm run build-css && tsc && tsc-alias",
 		"build-css": "npx postcss src/styles/styles.css -o dist/styles/styles.css && cp src/styles/thread.css dist/styles/thread.css",
 		"build-tailwind": "npx tailwindcss -i ./src/styles/styles.css -o ./src/styles/thread.css --watch",
 		"pack": "npm pack",
@@ -93,6 +93,7 @@
 		"storybook": "^8.4.7",
 		"tailwindcss": "^3.4.14",
 		"ts-loader": "^9.5.1",
+		"tsc-alias": "^1.8.16",
 		"typescript": "^5.7.2"
 	},
 	"peerDependencies": {
