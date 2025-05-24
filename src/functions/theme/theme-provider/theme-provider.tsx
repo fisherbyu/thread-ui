@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { ThemeConfig } from '@/types';
-import { setTheme } from '../get-theme';
+import { setTheme } from './set-theme';
 import { ThemeContextType, ThemeProviderProps } from './theme-provider.types';
 
 // Minimal context for theme mode only
