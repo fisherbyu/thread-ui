@@ -1,4 +1,4 @@
-import { DeepPartial } from '@/utils';
+import { DeepPartial } from '@/types';
 
 // Colors
 type ColorShades = {
