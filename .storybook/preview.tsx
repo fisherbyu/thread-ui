@@ -1,12 +1,13 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
 import '../src/styles/thread.css';
-import { createTheme, ThemeProvider } from '../src/utils';
+import '../src/styles/styles.css';
+// import { ThemeProvider } from '../src/utils';
 
 const threadConfig = {} as const;
 
 // Initialize Theme
-export const TestConfig = createTheme(threadConfig);
+// export const TestConfig = createTheme(threadConfig);
 
 const preview: Preview = {
 	decorators: [
@@ -15,9 +16,9 @@ const preview: Preview = {
 			const themeMode = context.globals.theme || 'light';
 
 			return (
-				<ThemeProvider initialTheme={TestConfig} initialMode={themeMode}>
-					<Story />
-				</ThemeProvider>
+				// <ThemeProvider initialTheme={TestConfig} initialMode={themeMode}>
+				<Story />
+				// </ThemeProvider>
 			);
 		},
 	],
