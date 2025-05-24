@@ -1,15 +1,14 @@
-import { CONTAINER_STYLES } from '../../../defaults';
-import { makeStyleObject } from '../../../functions';
-import { getThemeValue } from '../../../functions/theme/get-theme';
+import { CONTAINER_STYLES } from '@/defaults';
+import { useThreadStyleObjects, ThreadTheme } from '@/functions';
 
 export const TestComponent = () => {
-	const styles = makeStyleObject({
+	const styles = useThreadStyleObjects({
 		container: CONTAINER_STYLES,
 		block: {
-			backgroundColor: getThemeValue().background,
+			backgroundColor: ThreadTheme.background,
 		},
 		text: {
-			color: getThemeValue().primary.main,
+			color: ThreadTheme.primary.main,
 		},
 	});
 	return (

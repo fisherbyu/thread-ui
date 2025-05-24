@@ -1,8 +1,8 @@
 'use client';
 import { CSSProperties } from 'react';
-import { getUtilityColorValue } from '../../../utils';
+import { getUtilityColorValue } from '@/utils';
 import { ToggleProps } from './toggle.types';
-import { getThemeValue } from '../../../functions';
+import { ThreadTheme } from '@/functions';
 export const Toggle = ({ isOn, onToggle, color = 'success' }: ToggleProps) => {
 	const colorValue = getUtilityColorValue(color);
 
@@ -21,7 +21,7 @@ export const Toggle = ({ isOn, onToggle, color = 'success' }: ToggleProps) => {
 			backgroundColor: colorValue,
 		},
 		buttonOff: {
-			backgroundColor: getThemeValue().gray.main,
+			backgroundColor: ThreadTheme.gray.main,
 		},
 		knob: {
 			display: 'inline-block',
