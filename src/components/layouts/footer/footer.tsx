@@ -4,10 +4,10 @@ import { FacebookLogo, GithubLogo, InstagramLogo, LinkedinLogo, TwitterLogo } fr
 import { CSSProperties } from 'react';
 import { CONTAINER_STYLES } from '../../../defaults';
 import { Divider } from '../../ui';
-import { makeStyleObject } from '../../../functions';
+import { useThreadStyleObjects } from '../../../functions';
 
 export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink, githubLink, linkedInLink }: FooterProps) => {
-	const styles = makeStyleObject({
+	const styles = useThreadStyleObjects({
 		footer: {
 			...CONTAINER_STYLES,
 			marginLeft: 'auto',
