@@ -1,5 +1,5 @@
 'use client';
-import { CSSProperties, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
 import { NavIconItem } from './items/nav-icon-item';
 import { NavItem, NavItemProps } from './items/nav-item';
@@ -152,10 +152,6 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
 			transitionDuration: '300ms',
 		},
-
-		// menuCrossTop: {
-		// 	// margin-top: 0.5rem /* 8px */
-		// },
 
 		menuCrossBottom: {
 			marginTop: '8px',
