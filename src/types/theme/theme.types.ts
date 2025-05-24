@@ -8,7 +8,7 @@ type ColorShades = {
 };
 
 export type TextColors = {
-	primary: string;
+	standard: string;
 	secondary: string;
 	disabled: string;
 	accent: string;

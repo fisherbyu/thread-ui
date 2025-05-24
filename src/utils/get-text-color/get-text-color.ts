@@ -8,13 +8,13 @@ import { TextColorOptions } from '@/types';
  */
 export const getTextColor = (color: TextColorOptions) => {
 	switch (color) {
-		case 'primary':
-			return ThreadTheme.text.primary;
+		case 'standard':
+			return ThreadTheme.text.standard;
 		case 'secondary':
 			return ThreadTheme.text.secondary;
 		case 'disabled':
 			return ThreadTheme.text.disabled;
 		default:
-			return ThreadTheme.text.primary;
+			return ThreadTheme.text.standard;
 	}
 };

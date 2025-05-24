@@ -57,7 +57,7 @@ export const ThreadTheme: Theme = {
 
 	// Text Colors
 	text: {
-		primary: 'var(--thread-text-primary)',
+		standard: 'var(--thread-text-standard)',
 		secondary: 'var(--thread-text-secondary)',
 		disabled: 'var(--thread-text-disabled)',
 		accent: 'var(--thread-text-accent)',
@@ -90,7 +90,7 @@ export const DarkModeVariables: DarkModeColors = {
 	elevated: 'var(--thread-elevated-dark-mode)',
 	structure: 'var(--thread-structure-dark-mode)',
 	text: {
-		primary: 'var(--thread-text-primary-dark-mode)',
+		standard: 'var(--thread-text-standard-dark-mode)',
 		secondary: 'var(--thread-text-secondary-dark-mode)',
 		disabled: 'var(--thread-text-disabled-dark-mode)',
 		accent: 'var(--thread-text-accent-dark-mode)',

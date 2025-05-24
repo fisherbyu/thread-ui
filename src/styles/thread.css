@@ -72,7 +72,7 @@
 	--thread-structure-light-mode: #374151;
 
 	/* Text */
-	--thread-text-primary-light-mode: #1f2937;
+	--thread-text-standard-light-mode: #1f2937;
 	--thread-text-secondary-light-mode: #4b5563;
 	--thread-text-disabled-light-mode: #9ca3af;
 	--thread-text-accent-light-mode: var(--thread-primary-main);
@@ -85,7 +85,7 @@
 	--thread-structure-dark-mode: #d1d5db;
 
 	/* Text */
-	--thread-text-primary-dark-mode: #f9fafb;
+	--thread-text-standard-dark-mode: #f9fafb;
 	--thread-text-secondary-dark-mode: #e5e7eb;
 	--thread-text-disabled-dark-mode: #6b7280;
 	--thread-text-accent-dark-mode: var(--thread-primary-main);
@@ -98,7 +98,7 @@
 	--thread-structure: var(--thread-structure-light-mode);
 
 	/* Text */
-	--thread-text-primary: var(--thread-text-primary-light-mode);
+	--thread-text-standard: var(--thread-text-standard-light-mode);
 	--thread-text-secondary: var(--thread-text-secondary-light-mode);
 	--thread-text-disabled: var(--thread-text-disabled-light-mode);
 	--thread-text-accent: var(--thread-text-accent-light-mode);
@@ -113,7 +113,7 @@
 	--thread-structure: var(--thread-structure-dark-mode);
 
 	/* Text */
-	--thread-text-primary: var(--thread-text-primary-dark-mode);
+	--thread-text-standard: var(--thread-text-standard-dark-mode);
 	--thread-text-secondary: var(--thread-text-secondary-dark-mode);
 	--thread-text-disabled: var(--thread-text-disabled-dark-mode);
 	--thread-text-accent: var(--thread-text-accent-dark-mode);
@@ -129,7 +129,7 @@
 		--thread-structure: var(--thread-structure-dark-mode);
 
 		/* Text */
-		--thread-text-primary: var(--thread-text-primary-dark-mode);
+		--thread-text-standard: var(--thread-text-standard-dark-mode);
 		--thread-text-secondary: var(--thread-text-secondary-dark-mode);
 		--thread-text-disabled: var(--thread-text-disabled-dark-mode);
 		--thread-text-accent: var(--thread-text-accent-dark-mode);
