@@ -1,5 +1,8 @@
 import { CSSProperties } from 'react';
 
+/**
+ * Default Container
+ */
 export const CONTAINER_STYLES: CSSProperties = {
 	width: '100%',
 	marginRight: 'auto',
