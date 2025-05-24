@@ -1,5 +1,1 @@
-export * from './borders';
-export * from './colors';
-export * from './size';
-
-export type { Theme, AppliedTheme, ThemeMode, ThemeModeOption, ThemeContextType } from './theme.types';
+export type { Theme, ThemeConfig, DarkModeColors } from './theme.types';

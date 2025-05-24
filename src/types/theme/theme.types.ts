@@ -1,34 +1,76 @@
-import { BorderStyles } from './borders/borders.types';
+import { DeepPartial } from '@/utils';
 
-import { StructureColors, ModeStructureColors, ThemeColors } from './colors/colors.types';
-
-type BaseTheme = {
-	// Borders
-	border: BorderStyles;
-
-	// Spacing Constant
-	space: number;
+// Colors
+type ColorShades = {
+	light: string;
+	main: string;
+	dark: string;
 };
 
-type BaseThemeColors = ThemeColors & ModeStructureColors;
-
-type AppliedThemeColors = ThemeColors & StructureColors;
-
-export type Theme = BaseTheme & {
-	// Colors
-	colors: BaseThemeColors;
+export type TextColors = {
+	primary: string;
+	secondary: string;
+	disabled: string;
 };
 
-export type AppliedTheme = BaseTheme & {
-	// Colors
-	colors: AppliedThemeColors;
+export type UtilitySizes = {
+	sm: string;
+	md: string;
+	lg: string;
 };
 
-export type ThemeMode = 'light' | 'dark';
-export type ThemeModeOption = 'light' | 'dark' | 'system';
+export type Theme = {
+	// Color Palette
+	primary: ColorShades;
+	secondary: ColorShades;
+	tertiary: ColorShades;
 
-export type ThemeContextType = {
-	theme: AppliedTheme;
-	mode: ThemeMode;
-	setMode: (mode: ThemeMode | ThemeModeOption) => void;
+	// Neutral Colors
+	white: string;
+	black: string;
+	gray: ColorShades;
+
+	// Status Colors
+	success: ColorShades;
+	warning: ColorShades;
+	error: ColorShades;
+	info: ColorShades;
+
+	// Surface Colors
+	background: string;
+	surface: string;
+	elevated: string;
+	structure: string;
+
+	// Text Colors
+	text: TextColors;
+
+	// Sizing/Structure
+	borderRadius: UtilitySizes;
+	borderSize: UtilitySizes;
+};
+
+export type DarkModeColors = {
+	// Surface Colors
+	background: string;
+	surface: string;
+	elevated: string;
+	structure: string;
+
+	// Text Colors
+	text: TextColors;
+};
+
+export type ThemeConfigBase = Theme & {
+	darkMode: DarkModeColors;
+};
+
+export type ThemeConfig = DeepPartial<ThemeConfigBase>;
+
+export type ThemeSizes = {
+	sm: number;
+	md: number;
+	lg: number;
+	xl: number;
+	xxl: number;
 };
