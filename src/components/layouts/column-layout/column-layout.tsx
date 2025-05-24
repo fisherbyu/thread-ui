@@ -1,8 +1,8 @@
 'use client';
-import { ColumnSkeleton, renderImage } from '../../../internal-components';
+import { ColumnSkeleton, renderImage } from '@/internal-components';
 import { ColumnLayoutProps } from './column-layout.types';
-import { H2, H3, Text } from '../../typography';
-import { makeStyleObject } from '../../../functions';
+import { H2, H3, Text } from '@/components';
+import { makeStyleObject } from '@/functions';
 
 /**
  * A layout component that displays content in a responsive column grid with optional title and caption.
