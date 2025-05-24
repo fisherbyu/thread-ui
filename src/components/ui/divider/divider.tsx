@@ -1,5 +1,6 @@
 'use client';
-import { makeStyles, useTheme } from '../../../functions';
+import { useTheme } from '../../../functions/theme/old';
+import { makeStyles } from '../../../functions';
 import { DividerProps } from './divider.types';
 
 export const Divider = ({ width, marginY, weight }: DividerProps) => {

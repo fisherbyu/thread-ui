@@ -6,7 +6,7 @@ import { NavIconItem } from './items/nav-icon-item';
 import { NavItem, NavItemProps } from './items/nav-item';
 import { NavDropdownItemProps } from './items/nav-drop-down-item/nav-drop-down-item.types';
 import { NavDropdownItem } from './items/nav-drop-down-item';
-import { useTheme } from '../../../functions';
+import { useTheme } from '../../../functions/theme/old';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	// Navmenu Controls

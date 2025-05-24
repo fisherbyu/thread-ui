@@ -2,7 +2,8 @@
 import { CSSProperties, useState } from 'react';
 import { getUtilityColorValue } from '../../../utils';
 import { ButtonProps } from './button.types';
-import { makeStyles, useTheme } from '../../../functions';
+import { useTheme } from '../../../functions/theme/old';
+import { makeStyles } from '../../../functions';
 
 export const Button = ({
 	children,

@@ -4,7 +4,7 @@ import { BaseItem } from '../base-item';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { NavMenuStyles } from '../../nav-menu-styles';
 import { useResponsiveStyles } from '../../../../../utils';
-import { useTheme } from '../../../../../functions';
+import { useTheme } from '../../../../../functions/theme/old';
 
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	const { theme } = useTheme();

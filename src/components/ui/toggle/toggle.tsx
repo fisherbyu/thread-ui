@@ -2,7 +2,7 @@
 import { CSSProperties } from 'react';
 import { getUtilityColorValue } from '../../../utils';
 import { ToggleProps } from './toggle.types';
-import { useTheme } from '../../../functions';
+import { useTheme } from '../../../functions/theme/old';
 
 export const Toggle = ({ isOn, onToggle, color = 'success' }: ToggleProps) => {
 	const { theme } = useTheme();
