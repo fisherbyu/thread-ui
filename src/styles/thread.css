@@ -94,8 +94,21 @@
 	--thread-text-disabled: var(--thread-text-disabled-light-mode);
 }
 
+:root[data-theme='dark'] {
+	/* Apply Dark Mode Colors */
+	/* Surfaces */
+	--thread-background: var(--thread-background-dark-mode);
+	--thread-surface: var(--thread-surface-dark-mode);
+	--thread-elevated: var(--thread-elevated-dark-mode);
+
+	/* Text */
+	--thread-text-primary: var(--thread-text-primary-dark-mode);
+	--thread-text-secondary: var(--thread-text-secondary-dark-mode);
+	--thread-text-disabled: var(--thread-text-disabled-dark-mode);
+}
+
 @media (prefers-color-scheme: dark) {
-	:root {
+	:root:not([data-theme]) {
 		/* Apply Dark Mode Colors */
 		/* Surfaces */
 		--thread-background: var(--thread-background-dark-mode);
