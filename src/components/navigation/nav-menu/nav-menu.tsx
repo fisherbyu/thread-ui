@@ -6,7 +6,7 @@ import { NavIconItem } from './items/nav-icon-item';
 import { NavItem, NavItemProps } from './items/nav-item';
 import { NavDropdownItemProps } from './items/nav-drop-down-item/nav-drop-down-item.types';
 import { NavDropdownItem } from './items/nav-drop-down-item';
-import { useTheme } from '../../../functions/theme/old';
+import { getThemeValue } from '../../../functions';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	// Navmenu Controls
@@ -50,7 +50,6 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		};
 	}, []);
 
-	const { theme } = useTheme();
 	const style: Record<string, CSSProperties> = {
 		header: {
 			position: 'sticky',
@@ -61,9 +60,9 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			height: '80px',
 			backdropFilter: 'blur(24px)',
 			borderBottomWidth: '1px',
-			borderBottomColor: theme.colors.structure,
+			borderBottomColor: getThemeValue().structure,
 			zIndex: '40',
-			backgroundColor: theme.colors.background,
+			backgroundColor: getThemeValue().background,
 		},
 
 		nav: {
@@ -136,7 +135,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			outline: '2px solid transparent',
 			outlineOffset: '2px',
 			borderLeftWidth: '1px',
-			borderLeftColor: theme.colors.gray.main,
+			borderLeftColor: getThemeValue().gray.main,
 			paddingLeft: '12px',
 			position: 'relative',
 			paddingTop: '12px',
@@ -148,8 +147,8 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			display: 'flex',
 			height: '2px',
 			width: '24px',
-			borderRadius: theme.border.radius.sm,
-			backgroundColor: theme.colors.gray.dark,
+			borderRadius: getThemeValue().borderRadius.sm,
+			backgroundColor: getThemeValue().gray.dark,
 			transitionProperty:
 				'color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
 			transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',

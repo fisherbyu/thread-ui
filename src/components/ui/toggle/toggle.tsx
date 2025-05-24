@@ -2,11 +2,8 @@
 import { CSSProperties } from 'react';
 import { getUtilityColorValue } from '../../../utils';
 import { ToggleProps } from './toggle.types';
-import { useTheme } from '../../../functions/theme/old';
-
+import { getThemeValue } from '../../../functions';
 export const Toggle = ({ isOn, onToggle, color = 'success' }: ToggleProps) => {
-	const { theme } = useTheme();
-
 	const colorValue = getUtilityColorValue(color);
 
 	const styles: Record<string, CSSProperties> = {
@@ -24,7 +21,7 @@ export const Toggle = ({ isOn, onToggle, color = 'success' }: ToggleProps) => {
 			backgroundColor: colorValue,
 		},
 		buttonOff: {
-			backgroundColor: theme.colors.gray.main,
+			backgroundColor: getThemeValue().gray.main,
 		},
 		knob: {
 			display: 'inline-block',

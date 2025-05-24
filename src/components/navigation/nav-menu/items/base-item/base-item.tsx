@@ -4,11 +4,9 @@ import { useResponsiveStyles } from '../../../../../utils';
 import { BaseItemProps } from './base-item.types';
 import { LinkWrapper } from '../../../../../internal-components';
 import { NavMenuStyles } from '../../nav-menu-styles';
-import { useTheme } from '../../../../../functions/theme/old';
+import { getThemeValue } from '../../../../../functions';
 
 export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, isDropdownItem }: BaseItemProps) => {
-	const { theme } = useTheme();
-
 	const styles: Record<string, CSSProperties> = {
 		li: {
 			display: 'flex',
@@ -23,8 +21,8 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, 
 			alignItems: 'center',
 			justifyContent: 'center',
 			borderRadius: '0.375rem',
-			backgroundColor: theme.colors.background,
-			color: theme.colors.text.primary,
+			backgroundColor: getThemeValue().background,
+			color: getThemeValue().text.primary,
 			fontSize: '0.875rem',
 			fontWeight: 500,
 			padding: padding ?? `${NavMenuStyles.paddingY / 2}px ${NavMenuStyles.paddingX}px`,
@@ -37,8 +35,8 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, 
 		},
 
 		linkHover: {
-			backgroundColor: theme.colors.gray.light,
-			color: theme.colors.gray.dark,
+			backgroundColor: getThemeValue().gray.light,
+			color: getThemeValue().gray.dark,
 		},
 	};
 

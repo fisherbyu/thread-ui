@@ -1,29 +1,28 @@
 'use client';
-import { getCurrentTheme } from '../../functions/theme/old';
+import { getThemeValue } from '../../functions';
 import { UtilityColorOptions } from '../../types';
 
 export const getUtilityColorValue = (color: UtilityColorOptions): string => {
-	const theme = getCurrentTheme();
 	switch (color) {
 		case 'primary':
-			return theme.colors.primary.main;
+			return getThemeValue().primary.main;
 		case 'secondary':
-			return theme.colors.secondary.main;
+			return getThemeValue().secondary.main;
 		case 'tertiary':
-			return theme.colors.tertiary.main;
+			return getThemeValue().tertiary.main;
 		case 'black':
-			return theme.colors.black;
+			return getThemeValue().black;
 		case 'gray':
-			return theme.colors.gray.main;
+			return getThemeValue().gray.main;
 		case 'success':
-			return theme.colors.success.main;
+			return getThemeValue().success.main;
 		case 'error':
-			return theme.colors.error.main;
+			return getThemeValue().error.main;
 		case 'info':
-			return theme.colors.info.main;
+			return getThemeValue().info.main;
 		case 'text':
-			return theme.colors.text.primary;
+			return getThemeValue().text.primary;
 		default:
-			return theme.colors.primary.main;
+			return getThemeValue().primary.main;
 	}
 };

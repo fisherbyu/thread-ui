@@ -2,8 +2,8 @@
 import { CSSProperties, useState } from 'react';
 import { getUtilityColorValue } from '../../../utils';
 import { ButtonProps } from './button.types';
-import { useTheme } from '../../../functions/theme/old';
 import { makeStyles } from '../../../functions';
+import { getThemeValue } from '../../../functions';
 
 export const Button = ({
 	children,
@@ -14,16 +14,15 @@ export const Button = ({
 	margin,
 	disabled = false,
 }: ButtonProps) => {
-	const { theme } = useTheme();
 	const colorValue = getUtilityColorValue(color);
 
 	const buttonClasses = makeStyles({
-		padding: `${theme.space * 2}px`,
+		padding: '8px',
 		width: fullWidth ? '100%' : 'fit-content',
 		transition: 'background-color 0.2s ease',
-		border: `${theme.border.size.md}px ${colorValue} solid`,
-		borderRadius: `${theme.border.radius.md}px`,
-		color: theme.colors.white,
+		border: `${getThemeValue().borderSize.md}px ${colorValue} solid`,
+		borderRadius: `${getThemeValue().borderRadius.md}px`,
+		color: getThemeValue().white,
 		backgroundColor: colorValue,
 		margin: margin ?? 'auto',
 		display: 'flex',
@@ -33,8 +32,8 @@ export const Button = ({
 		userSelect: 'none',
 		opacity: disabled ? 0.6 : 1,
 		hover: {
-			backgroundColor: disabled ? colorValue : theme.colors.white,
-			color: disabled ? theme.colors.white : colorValue,
+			backgroundColor: disabled ? colorValue : getThemeValue().white,
+			color: disabled ? getThemeValue().white : colorValue,
 		},
 	});
 

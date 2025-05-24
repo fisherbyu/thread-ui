@@ -1,11 +1,9 @@
 'use client';
-import { useTheme } from '../../../functions/theme/old';
+import { getThemeValue } from '../../../functions';
 import { makeStyles } from '../../../functions';
 import { DividerProps } from './divider.types';
 
 export const Divider = ({ width, marginY, weight }: DividerProps) => {
-	const { theme } = useTheme();
-
 	let dividerWeight: number;
 	switch (weight) {
 		case 'light':
@@ -28,7 +26,7 @@ export const Divider = ({ width, marginY, weight }: DividerProps) => {
 		marginLeft: 'auto',
 		marginRight: 'auto',
 		height: `${dividerWeight}px`,
-		backgroundColor: theme.colors.structure,
+		backgroundColor: getThemeValue().structure,
 	});
 
 	return <div className={styles}></div>;

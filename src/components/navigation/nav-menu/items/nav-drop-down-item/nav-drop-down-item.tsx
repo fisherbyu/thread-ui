@@ -4,11 +4,9 @@ import { BaseItem } from '../base-item';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { NavMenuStyles } from '../../nav-menu-styles';
 import { useResponsiveStyles } from '../../../../../utils';
-import { useTheme } from '../../../../../functions/theme/old';
+import { getThemeValue } from '../../../../../functions';
 
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
-	const { theme } = useTheme();
-
 	const [isHovered, setIsHovered] = useState(false);
 
 	const targetSpacer = useResponsiveStyles({ sm: '0px', lg: '30px' });
@@ -44,12 +42,12 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 
 		dropdownContent: {
 			display: isHovered ? 'block' : 'none',
-			backgroundColor: theme.colors.background,
+			backgroundColor: getThemeValue().background,
 			borderWidth: '1px',
-			boxShadow: `0 4px 8px ${theme.colors.background}`,
+			boxShadow: `0 4px 8px ${getThemeValue().background}`,
 			position: 'absolute',
 			width: 'fit-content',
-			borderRadius: theme.border.radius.md,
+			borderRadius: getThemeValue().borderRadius.md,
 			padding: `${NavMenuStyles.paddingY}px ${NavMenuStyles.paddingX}px`,
 			zIndex: 10,
 			top: `calc(100% + ${targetSpacer})`,
@@ -62,9 +60,9 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			justifyContent: 'center',
 			columnGap: '24px',
 			alignItems: 'center',
-			backgroundColor: theme.colors.background,
+			backgroundColor: getThemeValue().background,
 			width: '100%',
-			borderRadius: theme.border.radius.md,
+			borderRadius: getThemeValue().borderRadius.md,
 			zIndex: 10,
 		},
 	};
