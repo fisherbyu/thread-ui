@@ -62,7 +62,7 @@ export type DarkModeColors = {
 	text: TextColors;
 };
 
-export type ThemeConfigBase = Theme & {
+type ThemeConfigBase = Theme & {
 	darkMode: DarkModeColors;
 };
 
