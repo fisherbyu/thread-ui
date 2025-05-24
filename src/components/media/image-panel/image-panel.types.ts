@@ -1,4 +1,4 @@
-import { ImageProps } from '../../../types';
+import { ImageProps, ColoredTextOptions } from '@/types';
 
 export type ImagePanelProps = {
 	title: string;
@@ -8,4 +8,5 @@ export type ImagePanelProps = {
 	smImage?: ImageProps;
 	contentBelow?: boolean;
 	contentLeft?: boolean;
+	titleColor?: ColoredTextOptions;
 };
