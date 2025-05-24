@@ -75,6 +75,7 @@
 	--thread-text-primary-light-mode: #1f2937;
 	--thread-text-secondary-light-mode: #4b5563;
 	--thread-text-disabled-light-mode: #9ca3af;
+	--thread-text-accent-light-mode: var(--thread-primary-main);
 
 	/* Dark Mode Colors */
 	/* Surfaces */
@@ -87,6 +88,7 @@
 	--thread-text-primary-dark-mode: #f9fafb;
 	--thread-text-secondary-dark-mode: #e5e7eb;
 	--thread-text-disabled-dark-mode: #6b7280;
+	--thread-text-accent-dark-mode: var(--thread-primary-main);
 
 	/* Apply Light Mode Colors */
 	/* Surfaces */
@@ -99,6 +101,7 @@
 	--thread-text-primary: var(--thread-text-primary-light-mode);
 	--thread-text-secondary: var(--thread-text-secondary-light-mode);
 	--thread-text-disabled: var(--thread-text-disabled-light-mode);
+	--thread-text-accent: var(--thread-text-accent-light-mode);
 }
 
 :root[data-theme='dark'] {
@@ -113,6 +116,7 @@
 	--thread-text-primary: var(--thread-text-primary-dark-mode);
 	--thread-text-secondary: var(--thread-text-secondary-dark-mode);
 	--thread-text-disabled: var(--thread-text-disabled-dark-mode);
+	--thread-text-accent: var(--thread-text-accent-dark-mode);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -128,5 +132,6 @@
 		--thread-text-primary: var(--thread-text-primary-dark-mode);
 		--thread-text-secondary: var(--thread-text-secondary-dark-mode);
 		--thread-text-disabled: var(--thread-text-disabled-dark-mode);
+		--thread-text-accent: var(--thread-text-accent-dark-mode);
 	}
 }
