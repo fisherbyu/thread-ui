@@ -36,7 +36,7 @@ export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink
 			height: '48px',
 		},
 		links: {
-			color: ThreadTheme.text.primary,
+			color: ThreadTheme.text.standard,
 		},
 	});
 	return (
