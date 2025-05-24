@@ -1,12 +1,13 @@
 'use client';
 import { ImagePanelProps } from './image-panel.types';
-import { renderImage } from '../../../internal-components';
-import { Subtitle, Text, Title } from '../../typography';
-import { ImageProps } from '../../../types';
-import { makeStyleObject } from '../../../functions/make-styles/make-styles';
+import { renderImage } from '@/internal-components';
+import { Subtitle, Text, Title } from '@/components';
+import { ImageProps } from '@/types';
+import { useThreadStyleObjects } from '@/functions';
+import { getUtilityColorValue } from '@/utils';
 
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
-	const classes = makeStyleObject({
+	const classes = useThreadStyleObjects({
 		smImage: {
 			position: 'relative',
 			display: { sm: 'block', lg: 'none' },
@@ -44,8 +45,9 @@ export const ImagePanel = ({
 	smImage,
 	contentBelow = false,
 	contentLeft = false,
+	titleColor = 'standard',
 }: ImagePanelProps) => {
-	const styles = makeStyleObject({
+	const styles = useThreadStyleObjects({
 		container: {
 			display: 'flex',
 			flexDirection: {
@@ -85,7 +87,7 @@ export const ImagePanel = ({
 			<div className={styles.imageBlock}>{renderPanelImage(image, smImage)}</div>
 			<div className={styles.textBlock}>
 				<div>
-					<Title>
+					<Title color={titleColor}>
 						{title}
 						{subtitle && <Subtitle>{subtitle}</Subtitle>}
 					</Title>
