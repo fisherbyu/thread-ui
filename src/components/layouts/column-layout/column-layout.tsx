@@ -1,5 +1,6 @@
 'use client';
-import { ColumnSkeleton, renderImage } from '@/internal-components';
+import { renderImage } from '@/internal-components';
+import { ColumnSkeleton } from './column-skeleton';
 import { ColumnLayoutProps } from './column-layout.types';
 import { H2, H3, Text } from '@/components';
 import { makeStyleObject } from '@/functions';
