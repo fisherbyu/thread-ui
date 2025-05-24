@@ -1,4 +1,4 @@
-import { AppliedTheme } from '../../types';
+import { AppliedTheme } from '../../../types';
 import { createAppliedTheme, createTheme } from './create-theme';
 
 let currentTheme: AppliedTheme = createAppliedTheme(createTheme(), 'light');
