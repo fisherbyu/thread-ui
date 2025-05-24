@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { InfoCard } from './info-card';
-import '../../styles/thread.css';
+import '../../../styles/thread.css';
 
 const meta: Meta<typeof InfoCard> = {
 	title: 'Components/InfoCard',

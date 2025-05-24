@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MasonryLayout } from './masonry-layout';
-import '../../styles/thread.css';
+import '../../../styles/thread.css';
 // Sample components for demonstration
 const SampleCard = ({ height, color }: { height: number; color: string }) => (
 	<div
