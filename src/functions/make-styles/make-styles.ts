@@ -18,10 +18,16 @@ type CSSPropertiesWithCustomValues = {
 	[K in keyof CSSProperties]: CSSProperties[K] | string | number;
 };
 
+/**
+ * Extenstion of CSSProperties, with option to pass in responsive object
+ */
 type ResponsiveStyles = {
 	[K in keyof CSSProperties]?: CSSProperties[K] | ResponsiveValue<CSSProperties[K] | string | number>;
 };
 
+/**
+ * Extension of ResponsiveStyles, with nested Hover Properties
+ */
 type MakeStylesProps = ResponsiveStyles & {
 	hover?: CSSPropertiesWithCustomValues;
 };
@@ -31,7 +37,11 @@ const isResponsiveValue = (value: any): value is ResponsiveValue<any> => {
 	return value !== null && typeof value === 'object' && 'sm' in value;
 };
 
-// Original makeStyles function (for non-hook usage)
+/**
+ * Generate CSS Classes through Emotion CSS
+ * @param styles Responsive CSSProperties
+ * @returns CSS Class Name
+ */
 export const makeStyles = (styles: MakeStylesProps) => {
 	const { hover, ...baseStyles } = styles;
 	// Create the base style object
@@ -89,16 +99,31 @@ export const makeStyles = (styles: MakeStylesProps) => {
 	return className;
 };
 
+/**
+ * Generate object CSS Classes through Emotion CSS
+ * @param styles Responsive CSSProperties
+ * @returns Dictionary of CSS Class Names
+ */
+export const makeStyleObject = (styles: Record<string, MakeStylesProps>) => {
+	return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, makeStyles(value)]));
+};
+
+/**
+ * Generate memoized CSS Classes through Emotion CSS
+ * @param styles Responsive CSSProperties
+ * @returns CSS Class Name
+ */
 export const useThreadStyles = (styles: MakeStylesProps) => {
 	return useMemo(() => makeStyles(styles), [JSON.stringify(styles)]);
 };
 
+/**
+ * Generate memoized object CSS Classes through Emotion CSS
+ * @param styles Responsive CSSProperties
+ * @returns Dictionary of CSS Class Names
+ */
 export const useThreadStyleObjects = (styles: Record<string, MakeStylesProps>) => {
 	return useMemo(() => {
 		return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, makeStyles(value)]));
 	}, [JSON.stringify(styles)]);
-};
-
-export const makeStyleObject = (styles: Record<string, MakeStylesProps>) => {
-	return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, makeStyles(value)]));
 };
