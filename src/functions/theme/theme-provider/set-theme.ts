@@ -1,5 +1,4 @@
-import { deepMerge, DeepPartial } from '@/utils';
-import { Theme, DarkModeColors, ThemeConfig } from '@/types';
+import { ThemeConfig } from '@/types';
 import { ThreadTheme, DarkModeVariables } from '../thread-theme';
 
 export const setTheme = (userTheme: ThemeConfig) => {
