@@ -1,10 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
-import { NavIconItem } from './items/nav-icon-item';
-import { NavItem, NavItemProps } from './items/nav-item';
-import { NavDropdownItemProps } from './items/nav-drop-down-item/nav-drop-down-item.types';
-import { NavDropdownItem } from './items/nav-drop-down-item';
+import { NavIconItem, NavItem, NavItemProps, NavDropdownItemProps, NavDropdownItem } from './items';
 import { ThreadTheme, useThreadStyleObjects } from '@/functions';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
@@ -57,7 +54,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			display: 'flex',
 			alignItems: 'center',
 			height: '80px',
-			backdropFilter: 'blur(24px)',
+			backgroundColor: ThreadTheme.background,
 			borderBottomWidth: '1px',
 			borderBottomColor: ThreadTheme.structure,
 			zIndex: '40',
@@ -83,8 +80,8 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			top: { sm: '100%', lg: '0px' },
 			left: '0px',
 			borderBottomWidth: '1px',
-			backgroundColor: { sm: 'rgb(255 255 255 / 1)', lg: 'transparent' },
-			borderColor: '#e5e7eb',
+			backgroundColor: { sm: ThreadTheme.background, lg: 'transparent' },
+			borderColor: ThreadTheme.structure,
 			paddingTop: { sm: '32px', lg: '0px' },
 			paddingBottom: { sm: '32px', lg: '0px' },
 			paddingLeft: { sm: '20px', md: '48px', lg: '0px' },
@@ -108,7 +105,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			transitionDuration: '300ms',
 			transitionTimingFunction: 'linear',
 			transform: {
-				sm: 'translateY(2.5rem)', // translate-y-10 (10 * 0.25rem = 2.5rem)
+				sm: 'translateY(2.5rem)',
 				lg: 'translateY(0)',
 			},
 			opacity: { sm: '0', lg: '1' },
