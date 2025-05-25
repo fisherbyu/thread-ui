@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { NavMenu } from './nav-menu';
+import { ThreadTheme } from '../../../functions';
 
 const meta: Meta<typeof NavMenu> = {
 	title: 'Components/NavMenu',
@@ -11,7 +12,7 @@ const meta: Meta<typeof NavMenu> = {
 	tags: ['autodocs'],
 	decorators: [
 		(Story) => (
-			<div style={{ minHeight: '100vh', backgroundColor: '#f9fafb' }}>
+			<div style={{ minHeight: '100vh', backgroundColor: ThreadTheme.background }}>
 				<Story />
 				<div style={{ padding: '20px' }}>
 					<h1 style={{ fontSize: '24px', marginBottom: '16px' }}>Page Content</h1>
@@ -21,7 +22,10 @@ const meta: Meta<typeof NavMenu> = {
 					</p>
 					{/* Add more content to make the page scrollable */}
 					{Array.from({ length: 5 }).map((_, i) => (
-						<div key={i} style={{ marginTop: '40px', padding: '20px', backgroundColor: 'white', borderRadius: '8px' }}>
+						<div
+							key={i}
+							style={{ marginTop: '40px', padding: '20px', backgroundColor: ThreadTheme.surface, borderRadius: '8px' }}
+						>
 							<h2 style={{ marginBottom: '12px' }}>Section {i + 1}</h2>
 							<p style={{ color: '#666' }}>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
