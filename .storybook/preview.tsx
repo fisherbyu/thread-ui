@@ -2,7 +2,7 @@ import React from 'react';
 import type { Preview } from '@storybook/react';
 import '../src/styles/thread.css';
 import '../src/styles/styles.css';
-// import { ThemeProvider } from '../src/utils';
+import { ThemeProvider, ThreadTheme } from '../src';
 
 const threadConfig = {} as const;
 
@@ -16,9 +16,11 @@ const preview: Preview = {
 			const themeMode = context.globals.theme || 'light';
 
 			return (
-				// <ThemeProvider initialTheme={TestConfig} initialMode={themeMode}>
-				<Story />
-				// </ThemeProvider>
+				<ThemeProvider>
+					<div style={{ backgroundColor: ThreadTheme.background }}>
+						<Story />
+					</div>
+				</ThemeProvider>
 			);
 		},
 	],
