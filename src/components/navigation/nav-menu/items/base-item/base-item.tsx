@@ -29,7 +29,6 @@ export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, 
 			margin: 'auto',
 			hover: {
 				backgroundColor: ThreadTheme.elevated,
-				color: ThreadTheme.gray.dark,
 			},
 		},
 	});
