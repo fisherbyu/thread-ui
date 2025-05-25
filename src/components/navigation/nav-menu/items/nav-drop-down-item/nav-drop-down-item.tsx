@@ -31,9 +31,8 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 
 		dropdownContent: {
 			display: 'none',
-			backgroundColor: ThreadTheme.background,
 			borderWidth: '1px',
-			boxShadow: `0 4px 8px ${ThreadTheme.background}`,
+			boxShadow: `0 4px 8px ${ThreadTheme.gray.light}`,
 			position: 'absolute',
 			width: 'fit-content',
 			borderRadius: ThreadTheme.borderRadius.md,
@@ -42,6 +41,11 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			top: { sm: '', lg: 'calc(100% + 30px)' },
 			left: '50%',
 			transform: 'translateX(-50%)',
+			dark: {
+				border: ThreadTheme.background,
+				backgroundColor: ThreadTheme.surface,
+				boxShadow: `0 4px 8px ${ThreadTheme.black}`,
+			},
 		},
 		dropdownContentShow: {
 			display: { sm: 'none', lg: 'block' },
