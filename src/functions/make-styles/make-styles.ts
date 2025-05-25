@@ -1,6 +1,5 @@
 import { css } from '@emotion/css';
 import { CSSProperties, useMemo } from 'react';
-import { ThreadTheme } from '../theme';
 
 const BREAKPOINTS = {
 	sm: 0,
@@ -26,17 +25,18 @@ type CSSPropertiesWithCustomValues = {
 };
 
 /**
- * Extenstion of CSSProperties, with option to pass in responsive object
+ * Extension of CSSProperties, with option to pass in responsive object
  */
 type ResponsiveStyles = {
 	[K in keyof CSSProperties]?: CSSProperties[K] | ResponsiveValue<CSSProperties[K] | string | number>;
 };
 
 /**
- * Extension of ResponsiveStyles, with nested Hover Properties
+ * Extension of ResponsiveStyles, with nested Hover and Dark mode Properties
  */
 type MakeStylesProps = ResponsiveStyles & {
 	hover?: CSSPropertiesWithCustomValues;
+	dark?: MakeStylesProps; // Recursive type allowing full nesting
 };
 
 // Check if a value is a responsive object
@@ -45,12 +45,11 @@ const isResponsiveValue = (value: any): value is ResponsiveValue<any> => {
 };
 
 /**
- * Generate CSS Classes through Emotion CSS
- * @param styles Responsive CSSProperties
- * @returns CSS Class Name
+ * Process styles into emotion-compatible object with media queries
  */
-export const makeStyles = (styles: MakeStylesProps) => {
+const processStyles = (styles: Omit<MakeStylesProps, 'dark'>) => {
 	const { hover, ...baseStyles } = styles;
+
 	// Create the base style object
 	const baseStyleObject: Record<string, any> = {};
 
@@ -90,6 +89,7 @@ export const makeStyles = (styles: MakeStylesProps) => {
 	// Add media queries for other breakpoints
 	Object.entries(BREAKPOINTS).forEach(([breakpoint, minWidth]) => {
 		if (breakpoint === 'sm') return; // Skip sm as it's included in base styles
+
 		const bpKey = breakpoint as BreakpointKey;
 		if (Object.keys(mediaQueries[bpKey]).length > 0) {
 			emotionStyleObject[`@media (min-width: ${minWidth}px)`] = mediaQueries[bpKey];
@@ -99,6 +99,33 @@ export const makeStyles = (styles: MakeStylesProps) => {
 	// Add hover styles if provided
 	if (hover) {
 		emotionStyleObject['&:hover'] = hover;
+	}
+
+	return emotionStyleObject;
+};
+
+/**
+ * Generate CSS Classes through Emotion CSS
+ * @param styles Responsive CSSProperties with optional dark mode support
+ * @returns CSS Class Name
+ */
+export const makeStyles = (styles: MakeStylesProps) => {
+	const { dark, ...lightStyles } = styles;
+
+	// Process light mode styles
+	const emotionStyleObject = processStyles(lightStyles);
+
+	// Process dark mode styles if provided
+	if (dark) {
+		const darkStyleObject = processStyles(dark);
+
+		// Add explicit dark theme selector (matches your [data-theme='dark'] approach)
+		emotionStyleObject['[data-theme="dark"] &'] = darkStyleObject;
+
+		// Add system preference dark mode selector (matches your prefers-color-scheme approach)
+		emotionStyleObject['@media (prefers-color-scheme: dark)'] = {
+			':root:not([data-theme]) &': darkStyleObject,
+		};
 	}
 
 	// Generate the className using Emotion's css function
