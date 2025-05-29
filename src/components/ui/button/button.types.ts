@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { UtilityColorOptions } from '../../../types';
+import { UtilityColorOptions, UtilitySizeOptions } from '@/types';
 
 // ButtonProps with required children
 export type ButtonProps = {
@@ -8,6 +8,7 @@ export type ButtonProps = {
 	type?: 'button' | 'submit' | 'reset';
 	onClick?: () => void;
 	margin?: string;
+	size?: UtilitySizeOptions;
 	disabled?: boolean;
 	children: ReactNode;
 };
