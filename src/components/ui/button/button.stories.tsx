@@ -10,7 +10,7 @@ const meta = {
 	},
 	decorators: [
 		(Story) => (
-			<div style={{ width: '300px' }}>
+			<div style={{ width: '300px', height: '150px', display: 'flex', alignItems: 'center' }}>
 				<Story />
 			</div>
 		),
