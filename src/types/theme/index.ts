@@ -1,1 +1,9 @@
-export type { Theme, TextColors, TextColorOptions, UtilitySizes, ThemeConfig, DarkModeColors } from './theme.types';
+export type {
+	Theme,
+	TextColors,
+	TextColorOptions,
+	UtilitySizes,
+	ThemeConfig,
+	DarkModeColors,
+	UtilitySizeOptions,
+} from './theme.types';

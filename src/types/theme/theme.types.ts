@@ -22,6 +22,8 @@ export type UtilitySizes = {
 	lg: string;
 };
 
+export type UtilitySizeOptions = keyof UtilitySizes;
+
 export type Theme = {
 	// Color Palette
 	primary: ColorShades;
