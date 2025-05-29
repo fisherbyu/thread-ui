@@ -69,7 +69,7 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 						) : (
 							<img className={styles.captionIcon} height={23} width={23} src={icon.content} alt="Article Icon" />
 						)}
-						<p className="thread-truncate thread-text-sm">{title}</p>
+						<p className={styles.captionText}>{title}</p>
 					</span>
 				</div>
 			</a>
