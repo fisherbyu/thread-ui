@@ -14,10 +14,9 @@ export const Button = ({
 	disabled = false,
 }: ButtonProps) => {
 	const colorValue = getUtilityColorValue(color);
-	const paddingSpace = getUtilitySizeValue(size);
 
 	const buttonClasses = useThreadStyles({
-		padding: `${paddingSpace}px`,
+		padding: `${getUtilitySizeValue(size)}px`,
 		fontSize: getUtilityFontSize(size),
 		width: fullWidth ? '100%' : 'fit-content',
 		transition: 'background-color 0.2s ease',
