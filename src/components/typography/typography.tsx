@@ -1,5 +1,5 @@
 'use client';
-import { ColoredTextOptions, UtilityColorOptions } from '@/types';
+import { ColoredTextOptions } from '@/types';
 import { getColoredTextColor } from '@/utils';
 import { CSSProperties, ReactNode } from 'react';
 
@@ -76,7 +76,7 @@ export const Text = ({ children, align = 'left', inline = false, color = 'standa
 	return <Component style={styles}>{children}</Component>;
 };
 
-export const Subtitle = ({ children, align = 'left', color = 'secondary' }: TypographyProps) => {
+export const Subtitle = ({ children, align = 'left', color = 'text-secondary' }: TypographyProps) => {
 	const styles: CSSProperties = {
 		display: 'block',
 		fontSize: 'clamp(0.875rem, 0.75em, 1.5rem)',
