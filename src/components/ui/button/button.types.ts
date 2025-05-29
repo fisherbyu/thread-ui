@@ -4,7 +4,7 @@ import { UtilityColorOptions } from '../../../types';
 // ButtonProps with required children
 export type ButtonProps = {
 	fullWidth?: boolean;
-	color?: UtilityColorOptions;
+	color?: Exclude<UtilityColorOptions, 'text'>;
 	type?: 'button' | 'submit' | 'reset';
 	onClick?: () => void;
 	margin?: string;
