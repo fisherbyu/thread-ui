@@ -1,0 +1,1 @@
+export { getUtilityFontSize } from './getUtilityFontSize';
