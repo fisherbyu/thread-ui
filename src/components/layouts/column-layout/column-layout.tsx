@@ -3,7 +3,7 @@ import { renderImage } from '@/internal-components';
 import { ColumnSkeleton } from './column-skeleton';
 import { ColumnLayoutProps } from './column-layout.types';
 import { H2, H3, Text } from '@/components';
-import { makeStyleObject } from '@/functions';
+import { useThreadStyleObjects } from '@/functions';
 
 /**
  * A layout component that displays content in a responsive column grid with optional title and caption.
@@ -17,7 +17,7 @@ import { makeStyleObject } from '@/functions';
  * @returns {JSX.Element} The column layout component
  */
 export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayoutProps) => {
-	const styles = makeStyleObject({
+	const styles = useThreadStyleObjects({
 		section: {
 			width: '100%',
 			marginRight: 'auto',
