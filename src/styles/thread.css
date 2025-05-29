@@ -86,7 +86,7 @@
 
 	/* Text */
 	--thread-text-standard-dark-mode: #f9fafb;
-	--thread-text-secondary-dark-mode: #e5e7eb;
+	--thread-text-secondary-dark-mode: #4b5563;
 	--thread-text-disabled-dark-mode: #6b7280;
 	--thread-text-accent-dark-mode: var(--thread-primary-main);
 
