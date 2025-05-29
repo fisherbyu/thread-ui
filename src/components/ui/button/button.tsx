@@ -1,25 +1,27 @@
 'use client';
-import { getUtilityColorValue } from '../../../utils';
+import { getUtilityColorValue, getUtilityFontSize, getUtilitySizeValue } from '@/utils';
 import { ButtonProps } from './button.types';
-import { makeStyles } from '../../../functions';
-import { ThreadTheme } from '@/functions';
+import { ThreadTheme, useThreadStyles } from '@/functions';
 
 export const Button = ({
 	children,
 	fullWidth,
 	color = 'primary',
+	size = 'md',
 	onClick,
 	type = 'button',
 	margin,
 	disabled = false,
 }: ButtonProps) => {
 	const colorValue = getUtilityColorValue(color);
+	const paddingSpace = getUtilitySizeValue(size);
 
-	const buttonClasses = makeStyles({
-		padding: '8px',
+	const buttonClasses = useThreadStyles({
+		padding: `${paddingSpace}px`,
+		fontSize: getUtilityFontSize(size),
 		width: fullWidth ? '100%' : 'fit-content',
 		transition: 'background-color 0.2s ease',
-		border: `${ThreadTheme.borderSize.md} ${colorValue} solid`,
+		border: `${ThreadTheme.borderSize.md} ${color == 'black' ? ThreadTheme.white : colorValue} solid`,
 		borderRadius: ThreadTheme.borderRadius.md,
 		color: ThreadTheme.white,
 		backgroundColor: colorValue,
@@ -31,8 +33,9 @@ export const Button = ({
 		userSelect: 'none',
 		opacity: disabled ? 0.6 : 1,
 		hover: {
-			backgroundColor: disabled ? colorValue : ThreadTheme.white,
-			color: disabled ? ThreadTheme.white : colorValue,
+			backgroundColor: disabled ? colorValue : color == 'black' ? ThreadTheme.white : ThreadTheme.background,
+			color: disabled ? ThreadTheme.background : colorValue,
+			borderColor: color == 'black' ? ThreadTheme.black : colorValue,
 		},
 	});
 
