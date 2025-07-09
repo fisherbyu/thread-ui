@@ -22,8 +22,7 @@
 		"test": "jest",
 		"storybook": "concurrently \"npm run build-tailwind\" \"storybook dev -p 6006\"",
 		"storybook:build": "storybook build",
-		"prepare": "panda codegen",
-		"prepare-publish": "npm run clean && npm run build",
+		"prepare-publish": "npm run clean && panda codegen && npm run build",
 		"weave": "npm run prepare-publish && yalc push"
 	},
 	"files": [
