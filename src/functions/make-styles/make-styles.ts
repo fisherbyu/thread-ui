@@ -130,16 +130,23 @@ export const transformStyleObjects = (styles: Record<string, MakeStylesProps>) =
 	return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, transformStyles(value)]));
 };
 
+const cache = new WeakMap<MakeStylesProps, any>();
+
 /**
  * Generate CSS Classes through Emotion CSS
  * @param styles Responsive CSSProperties with optional dark mode support
  * @returns CSS Class Name
  */
 export const makeStyles = (styles: MakeStylesProps) => {
+	if (cache.has(styles)) {
+		console.log('CACHE:', styles);
+		return cache.get(styles);
+	}
 	const emotionStyleObject = transformStyles(styles);
 
 	// Generate the className using Emotion's css function
 	const className = css(emotionStyleObject);
+	cache.set(styles, className);
 	return className;
 };
 

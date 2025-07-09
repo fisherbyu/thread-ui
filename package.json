@@ -102,6 +102,7 @@
 	},
 	"dependencies": {
 		"@emotion/css": "^11.13.5",
+		"@emotion/react": "^11.14.0",
 		"@phosphor-icons/react": "^2.1.7"
 	}
 }
