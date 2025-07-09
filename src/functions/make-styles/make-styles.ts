@@ -104,12 +104,7 @@ const processStyles = (styles: Omit<MakeStylesProps, 'dark'>) => {
 	return emotionStyleObject;
 };
 
-/**
- * Generate CSS Classes through Emotion CSS
- * @param styles Responsive CSSProperties with optional dark mode support
- * @returns CSS Class Name
- */
-export const makeStyles = (styles: MakeStylesProps) => {
+export const transformStyles = (styles: MakeStylesProps) => {
 	const { dark, ...lightStyles } = styles;
 
 	// Process light mode styles
@@ -127,6 +122,21 @@ export const makeStyles = (styles: MakeStylesProps) => {
 			':root:not([data-theme]) &': darkStyleObject,
 		};
 	}
+
+	return emotionStyleObject;
+};
+
+export const transformStyleObjects = (styles: Record<string, MakeStylesProps>) => {
+	return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, transformStyles(value)]));
+};
+
+/**
+ * Generate CSS Classes through Emotion CSS
+ * @param styles Responsive CSSProperties with optional dark mode support
+ * @returns CSS Class Name
+ */
+export const makeStyles = (styles: MakeStylesProps) => {
+	const emotionStyleObject = transformStyles(styles);
 
 	// Generate the className using Emotion's css function
 	const className = css(emotionStyleObject);
