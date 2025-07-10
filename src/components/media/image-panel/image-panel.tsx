@@ -3,11 +3,10 @@ import { ImagePanelProps } from './image-panel.types';
 import { renderImage } from '@/internal-components';
 import { Subtitle, Text, Title } from '@/components';
 import { ImageProps } from '@/types';
-import { useThreadStyleObjects } from '@/functions';
-import { getUtilityColorValue } from '@/utils';
+import { generateStyleObject } from '@/functions';
 
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
-	const classes = useThreadStyleObjects({
+	const classes = generateStyleObject({
 		smImage: {
 			position: 'relative',
 			display: { sm: 'block', lg: 'none' },
@@ -47,7 +46,7 @@ export const ImagePanel = ({
 	contentLeft = false,
 	titleColor = 'standard',
 }: ImagePanelProps) => {
-	const styles = useThreadStyleObjects({
+	const styles = generateStyleObject({
 		container: {
 			display: 'flex',
 			flexDirection: {

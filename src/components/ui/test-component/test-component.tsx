@@ -1,8 +1,8 @@
 import { CONTAINER_STYLES } from '@/defaults';
-import { useThreadStyleObjects, ThreadTheme } from '@/functions';
+import { generateStyleObject, ThreadTheme } from '@/functions';
 
 export const TestComponent = () => {
-	const styles = useThreadStyleObjects({
+	const styles = generateStyleObject({
 		container: CONTAINER_STYLES,
 		block: {
 			backgroundColor: ThreadTheme.background,

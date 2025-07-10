@@ -1,9 +1,8 @@
-'use client';
 import { renderImage } from '@/internal-components';
 import { ColumnSkeleton } from './column-skeleton';
 import { ColumnLayoutProps } from './column-layout.types';
 import { H2, H3, Text } from '@/components';
-import { useThreadStyleObjects } from '@/functions';
+import { generateStyleObject } from '@/functions';
 
 /**
  * A layout component that displays content in a responsive column grid with optional title and caption.
@@ -17,7 +16,7 @@ import { useThreadStyleObjects } from '@/functions';
  * @returns {JSX.Element} The column layout component
  */
 export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayoutProps) => {
-	const styles = useThreadStyleObjects({
+	const styles = generateStyleObject({
 		section: {
 			width: '100%',
 			marginRight: 'auto',

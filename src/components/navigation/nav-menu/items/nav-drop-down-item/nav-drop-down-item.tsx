@@ -3,12 +3,12 @@ import { CSSProperties, useState } from 'react';
 import { BaseItem } from '../base-item';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { NavMenuStyles } from '../../nav-menu-styles';
-import { ThreadTheme, useThreadStyleObjects } from '@/functions';
+import { ThreadTheme, generateStyleObject } from '@/functions';
 
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	const [isHovered, setIsHovered] = useState(false);
 
-	const styles = useThreadStyleObjects({
+	const styles = generateStyleObject({
 		parentBlock: {
 			position: { sm: 'static', lg: 'relative' },
 		},

@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
 import { NavIconItem, NavItem, NavItemProps, NavDropdownItemProps, NavDropdownItem } from './items';
-import { ThreadTheme, useThreadStyleObjects } from '@/functions';
+import { ThreadTheme, generateStyleObject } from '@/functions';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	// Navmenu Controls
@@ -46,7 +46,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		};
 	}, []);
 
-	const style = useThreadStyleObjects({
+	const style = generateStyleObject({
 		header: {
 			position: 'sticky',
 			top: '0px',

@@ -1,9 +1,9 @@
 'use client';
-import { ThreadTheme, useThreadStyleObjects } from '@/functions';
+import { ThreadTheme, generateStyleObject } from '@/functions';
 import { InfoCardProps } from './info-card.types';
 
 export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
-	const styles = useThreadStyleObjects({
+	const styles = generateStyleObject({
 		container: {
 			margin: 'auto',
 			borderRadius: ThreadTheme.borderRadius.lg,

@@ -1,7 +1,7 @@
 'use client';
 import { getUtilityColorValue, getUtilityFontSize, getUtilitySizeValue } from '@/utils';
 import { ButtonProps } from './button.types';
-import { ThreadTheme, useThreadStyles } from '@/functions';
+import { ThreadTheme, generateStyles } from '@/functions';
 
 export const Button = ({
 	children,
@@ -15,7 +15,7 @@ export const Button = ({
 }: ButtonProps) => {
 	const colorValue = getUtilityColorValue(color);
 
-	const buttonClasses = useThreadStyles({
+	const buttonClasses = generateStyles({
 		padding: `${getUtilitySizeValue(size)}px`,
 		fontSize: getUtilityFontSize(size),
 		width: fullWidth ? '100%' : 'fit-content',

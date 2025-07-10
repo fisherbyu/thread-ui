@@ -2,11 +2,11 @@
 import { FooterProps } from './footer.types';
 import { CONTAINER_STYLES } from '@/defaults';
 import { Divider, Subtitle } from '@/components';
-import { useThreadStyleObjects, ThreadTheme } from '@/functions';
+import { generateStyleObject, ThreadTheme } from '@/functions';
 import { FacebookLogo, GithubLogo, InstagramLogo, LinkedinLogo, TwitterLogo } from '@phosphor-icons/react';
 
 export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink, githubLink, linkedInLink }: FooterProps) => {
-	const styles = useThreadStyleObjects({
+	const styles = generateStyleObject({
 		footer: {
 			...CONTAINER_STYLES,
 			marginLeft: 'auto',

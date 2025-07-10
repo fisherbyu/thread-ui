@@ -1,6 +1,6 @@
 'use client';
 import { ColumnSkeletonProps } from './column-skeleton.types';
-import { useThreadStyles } from '@/functions';
+import { generateStyles } from '@/functions';
 
 /** Internal Column Skeleton Component */
 export const ColumnSkeleton = ({ mdcol, lgcol, children }: ColumnSkeletonProps) => {
@@ -8,7 +8,7 @@ export const ColumnSkeleton = ({ mdcol, lgcol, children }: ColumnSkeletonProps) 
 		return `repeat(${colNum}, minmax(0, 1fr))`;
 	};
 
-	const styles = useThreadStyles({
+	const styles = generateStyles({
 		display: 'grid',
 		gridTemplateColumns: { sm: getColumnCSS(1), md: getColumnCSS(mdcol), lg: getColumnCSS(lgcol) },
 		gap: { sm: '3rem', lg: '1.5rem' },

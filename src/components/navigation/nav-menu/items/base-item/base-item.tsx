@@ -2,10 +2,10 @@
 import { BaseItemProps } from './base-item.types';
 import { LinkWrapper } from '@/internal-components';
 import { NavMenuStyles } from '../../nav-menu-styles';
-import { ThreadTheme, useThreadStyleObjects } from '@/functions';
+import { ThreadTheme, generateStyleObject } from '@/functions';
 
 export const BaseItem = ({ children, href, padding, onMouseEnter, onMouseLeave, isDropdownItem }: BaseItemProps) => {
-	const styles = useThreadStyleObjects({
+	const styles = generateStyleObject({
 		li: {
 			display: 'flex',
 			alignItems: 'center',

@@ -2,7 +2,7 @@
 import { Icon, Button } from '@/components';
 import { IconButtonProps } from './icon-button.types';
 import { getUtilityFontSize, getUtilityIconSize, getUtilitySizeValue } from '@/utils';
-import { useThreadStyles } from '@/functions';
+import { generateStyles } from '@/functions';
 
 export const IconButton = ({
 	children,
@@ -15,7 +15,7 @@ export const IconButton = ({
 	disabled = false,
 	name,
 }: IconButtonProps) => {
-	const styles = useThreadStyles({
+	const styles = generateStyles({
 		marginLeft: `${getUtilitySizeValue(size) - 2}px`,
 		fontSize: getUtilityFontSize(size),
 	});
