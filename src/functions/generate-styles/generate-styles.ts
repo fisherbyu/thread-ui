@@ -1,4 +1,4 @@
-import { css as pandaCss } from '../../../styled-system/css'; // or '@pandacss/dev' for non-runtime builds
+import { css as pandaCss } from '../../styled-system/css'; // or '@pandacss/dev' for non-runtime builds
 import { CSSProperties } from 'react';
 
 const BREAKPOINTS = {
