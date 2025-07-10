@@ -9,4 +9,12 @@ export default defineConfig({
 
 	// The output directory for your css system
 	outdir: 'src/styled-system',
+
+	layers: {
+		reset: 'reset',
+		base: 'base',
+		tokens: 'tokens',
+		recipes: 'recipes',
+		utilities: 'utilities',
+	},
 });
