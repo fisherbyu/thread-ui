@@ -87,7 +87,7 @@ const newTransformStyles = (styles: MakeStylesProps) => {
 
 const newCache = new WeakMap<MakeStylesProps, string>();
 
-export const newMakeStyles = (styles: MakeStylesProps) => {
+export const generateStyles = (styles: MakeStylesProps) => {
 	if (newCache.has(styles)) {
 		return newCache.get(styles)!;
 	}
@@ -98,5 +98,5 @@ export const newMakeStyles = (styles: MakeStylesProps) => {
 };
 
 export const generateStyleObject = (styles: Record<string, MakeStylesProps>) => {
-	return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, newMakeStyles(value)]));
+	return Object.fromEntries(Object.entries(styles).map(([key, value]) => [key, generateStyles(value)]));
 };
