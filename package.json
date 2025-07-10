@@ -16,7 +16,7 @@
 		"clean": "rm -rf dist",
 		"panda:prepare": "panda codegen",
 		"panda:css": "panda cssgen --outfile src/styles/panda.css",
-		"build": "npm run panda:prepare && tsc && npm run panda:css && npm run build-css && tsc-alias",
+		"build": "npm run panda:prepare && npm run panda:css && tsc && npm run build-css && tsc-alias",
 		"build-css": "npx postcss src/styles/styles.css -o dist/styles/styles.css && cp src/styles/thread.css dist/styles/thread.css && cp src/styles/panda.css dist/styles/panda.css",
 		"build-tailwind": "npx tailwindcss -i ./src/styles/styles.css -o ./src/styles/styles.css --watch",
 		"pack": "npm pack",
