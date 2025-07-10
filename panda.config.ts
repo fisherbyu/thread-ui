@@ -12,4 +12,10 @@ export default defineConfig({
 
 	// The output directory for your css system
 	outdir: 'src/styled-system',
+
+	layers: {
+		base: 'panda_base',
+		recipes: 'panda_recipes',
+		utilities: 'panda_utilities',
+	},
 });
