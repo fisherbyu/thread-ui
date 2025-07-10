@@ -27,7 +27,6 @@
 	},
 	"files": [
 		"dist",
-		"!dist/package",
 		"!**/*.test.*",
 		"!**/*.stories.*"
 	],
