@@ -14,6 +14,8 @@
 	},
 	"scripts": {
 		"clean": "rm -rf dist",
+		"panda:prepare": "panda codegen",
+		"panda:css": "panda cssgen --outfile dist/styles.css",
 		"build": "npm run build-css && tsc && tsc-alias",
 		"build-css": "npx postcss src/styles/styles.css -o dist/styles/styles.css && cp src/styles/thread.css dist/styles/thread.css",
 		"build-tailwind": "npx tailwindcss -i ./src/styles/styles.css -o ./src/styles/styles.css --watch",
