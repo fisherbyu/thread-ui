@@ -75,7 +75,7 @@ export const ImagePanel = ({
 	});
 	const styles = {
 		imageBlock: css({
-			width: { sm: '', lg: '66.666667%' },
+			width: { lg: '66.666667%' },
 		}),
 		images: css({
 			position: 'relative',
@@ -101,7 +101,9 @@ export const ImagePanel = ({
 						{title}
 						{subtitle && <Subtitle>{subtitle}</Subtitle>}
 					</Title>
-					{contents?.map((txt, _) => <Text key={_}>{txt}</Text>)}
+					{contents?.map((txt, _) => (
+						<Text key={_}>{txt}</Text>
+					))}
 				</div>
 			</div>
 		</div>
