@@ -7,8 +7,15 @@ export default defineConfig({
 	outdir: 'src/styled-system',
 
 	// Patterns (Default Styles)
-	patterns: {},
-
+	patterns: {
+		container: {
+			description: 'Standard Container',
+			properties: {},
+			transform(props) {
+				return CONTAINER_STYLES as any;
+			},
+		},
+	},
 	// CSS Layering
 	layers: {
 		reset: 'thread-reset',
