@@ -1,13 +1,14 @@
 import React, { CSSProperties, isValidElement, ReactElement } from 'react';
 import { ImageProps } from '../../types';
 import { isHtmlImageProps } from './is-html-image-props';
+import { cx } from '@/styled-system/css'; // Add this import
 
 export const renderImage = (imageInput: ImageProps, styles?: CSSProperties, className?: string): ReactElement => {
 	if (isValidElement(imageInput)) {
 		const prevProps = imageInput.props as React.HTMLAttributes<HTMLElement>;
 		const newProps: React.HTMLAttributes<HTMLElement> = {
 			...prevProps,
-			className: className ? (prevProps.className ? `${prevProps.className} ${className}` : className) : prevProps.className,
+			className: cx(prevProps.className, className),
 			style: {
 				...prevProps.style,
 				...styles,
@@ -24,7 +25,7 @@ export const renderImage = (imageInput: ImageProps, styles?: CSSProperties, clas
 				alt={alt}
 				width={width}
 				height={height}
-				className={className ? (imgClassName ? `${imgClassName} ${className}` : className) : imgClassName}
+				className={cx(imgClassName, className)}
 				style={{ ...restProps.styles, ...styles }}
 				{...restProps}
 			/>
