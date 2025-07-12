@@ -4,6 +4,7 @@ import { renderImage } from '@/internal-components';
 import { Subtitle, Text, Title } from '@/components';
 import { ImageProps } from '@/types';
 import { generateStyleObject } from '@/functions';
+import { css, cva } from '@/styled-system/css';
 
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	const classes = generateStyleObject({
@@ -46,13 +47,9 @@ export const ImagePanel = ({
 	contentLeft = false,
 	titleColor = 'standard',
 }: ImagePanelProps) => {
-	const styles = generateStyleObject({
-		container: {
+	const panelStyles = cva({
+		base: {
 			display: 'flex',
-			flexDirection: {
-				sm: contentBelow ? 'column' : 'column-reverse',
-				lg: contentLeft ? 'row-reverse' : 'row',
-			},
 			gap: { sm: '12px', lg: '20px' },
 			justifyContent: 'center',
 			alignItems: 'stretch',
@@ -63,26 +60,42 @@ export const ImagePanel = ({
 			paddingRight: '2rem',
 			paddingLeft: '2rem',
 		},
-		imageBlock: {
-			width: { sm: '', lg: '66.666667%' },
+		variants: {
+			contentBelow: {
+				true: { flexDirection: { sm: 'column' } },
+				false: { flexDirection: { sm: 'column-reverse' } },
+			},
+			contentLeft: {
+				true: { flexDirection: { lg: 'row-reverse' } },
+				false: { flexDirection: { lg: 'row' } },
+			},
 		},
-		images: {
+		defaultVariants: {
+			contentBelow: false,
+			contentLeft: false,
+		},
+	});
+	const styles = {
+		imageBlock: css({
+			width: { sm: '', lg: '66.666667%' },
+		}),
+		images: css({
 			position: 'relative',
 			width: '100%',
 			height: '100%',
-		},
-		textBlock: {
+		}),
+		textBlock: css({
 			display: 'flex',
 			justifyContent: 'center',
 			alignItems: 'center',
 			marginLeft: 'auto',
 			marginRight: 'auto',
 			width: { sm: '100%', lg: '41.666667%' },
-		},
-	});
+		}),
+	};
 
 	return (
-		<div className={styles.container}>
+		<div className={panelStyles({ contentBelow, contentLeft })}>
 			<div className={styles.imageBlock}>{renderPanelImage(image, smImage)}</div>
 			<div className={styles.textBlock}>
 				<div>
