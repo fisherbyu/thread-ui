@@ -25,31 +25,19 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 		}),
 	};
 
-	// const standardImageDisplay = cva({
-	// 	variants: {
-	// 		hasSmallImage: {
-	// 			true: { display: 'block', hideBelow: 'md' },
-	// 			false: { display: 'block' },
-	// 		},
-	// 	},
-	// 	defaultVariants: {
-	// 		hasSmallImage: false,
-	// 	},
-	// });
-
 	if (smImage) {
 		return (
 			<>
-				<div
+				{/* <div
 					style={{ width: '100px', height: '100px', backgroundColor: 'red' }}
-					className={cx(classes.image, classes.smImage)}
-				></div>
-				<div
+					className={}
+				></div> */}
+				{/* <div
 					style={{ width: '100px', height: '100px', backgroundColor: 'blue' }}
 					className={cx(classes.image, classes.standardImg, classes.standardImageWSmall)}
-				></div>
-				{/* {renderImage(smImage, undefined, cx(classes.image, classes.smImage))} */}
-				{/* {renderImage(image, undefined, cx(classes.image, classes.standardImg, classes.standardImageWSmall))} */}
+				></div> */}
+				{renderImage(smImage, undefined, cx(classes.image, classes.smImage))}
+				{renderImage(image, undefined, cx(classes.image, classes.standardImg, classes.standardImageWSmall))}
 			</>
 		);
 	} else {
