@@ -7,8 +7,7 @@ import { css, cva, cx } from '@/styled-system/css';
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	const classes = {
 		image: css({
-			marginLeft: { base: '0', md: 'auto' },
-			marginRight: { base: '0', md: 'auto' },
+			marginX: { base: '0', md: 'auto' },
 		}),
 		smImage: css({
 			position: 'relative',
