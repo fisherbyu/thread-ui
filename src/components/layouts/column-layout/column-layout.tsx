@@ -6,46 +6,50 @@ import { css } from '@/styled-system/css';
 
 /**
  * A layout component that displays content in a responsive column grid with optional title and caption.
- *
- * @component
- * @param {string} title - Optional title displayed at the top of the layout
- * @param {string} caption - Optional caption displayed below the title
- * @param {number} mdcol - Number of columns to display at medium viewport sizes
- * @param {number} lgcol - Number of columns to display at large viewport sizes
- * @param {ColumnItem[]} items - Array of items to display in the grid
- * @returns {JSX.Element} The column layout component
  */
-export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayoutProps) => {
-	const styles = {
-		section: css({
-			width: '100%',
-			marginRight: 'auto',
-			marginLeft: 'auto',
-			maxWidth: { base: 'none', md: mdcol < 2 ? '800px' : 'none', lg: 'none' },
-			paddingRight: '2rem',
-			paddingLeft: '2rem',
-			paddingTop: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
-			paddingBottom: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
-			display: 'flex',
-			flexDirection: 'column',
-			justifyContent: 'center',
-			flex: { base: '1 1 0%', lg: 'none' },
-		}),
-		gridItem: css({
-			borderRadius: '0.25rem',
-			marginBottom: '1.5rem',
-			width: '100%',
-			height: 'auto',
-			overflow: 'hidden',
-		}),
-		gridPhoto: css({
-			width: '100%',
-			height: 'auto',
-			borderRadius: '0.25rem',
-		}),
-	};
+export const ColumnLayout = ({ title, caption, mdcol = 2, lgcol = 4, items }: ColumnLayoutProps) => {
+	const sectionStyles = css({
+		width: '100%',
+		marginRight: 'auto',
+		marginLeft: 'auto',
+		maxWidth: {
+			base: 'none',
+			md: 'var(--max-width, none)',
+			lg: 'none',
+		},
+		paddingRight: '2rem',
+		paddingLeft: '2rem',
+		paddingTop: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
+		paddingBottom: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		flex: { base: '1 1 0%', lg: 'none' },
+	});
+
+	const gridItemStyles = css({
+		borderRadius: '0.25rem',
+		marginBottom: '1.5rem',
+		width: '100%',
+		height: 'auto',
+		overflow: 'hidden',
+	});
+
+	const gridPhotoStyles = css({
+		width: '100%',
+		height: 'auto',
+		borderRadius: '0.25rem',
+	});
+
 	return (
-		<section className={styles.section}>
+		<section
+			className={sectionStyles}
+			style={
+				{
+					'--max-width': mdcol < 2 ? '800px' : 'none',
+				} as React.CSSProperties
+			}
+		>
 			{(title || caption) && (
 				<div>
 					{title && (
@@ -58,10 +62,10 @@ export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayo
 					)}
 				</div>
 			)}
-			<ColumnSkeleton mdcol={mdcol || 2} lgcol={lgcol || 4}>
+			<ColumnSkeleton mdcol={mdcol} lgcol={lgcol}>
 				{items.map((item, index) => (
 					<div key={index}>
-						<div className={styles.gridItem}>{renderImage(item.content, undefined, styles.gridPhoto)}</div>
+						<div className={gridItemStyles}>{renderImage(item.content, undefined, gridPhotoStyles)}</div>
 						{(item.title || item.description) && (
 							<>
 								{item.title && <H3>{item.title}</H3>}
