@@ -8,45 +8,52 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	const classes = {
 		image: css({
 			marginX: { base: '0', md: 'auto' },
+			borderRadius: '0.25rem',
 		}),
 		smImage: css({
 			position: 'relative',
 			display: 'block',
 			hideFrom: 'md',
-			borderRadius: '0.25rem',
 		}),
 		standardImg: css({
 			width: '100%',
 			height: '100%',
-			borderRadius: '0.25rem',
+		}),
+		standardImageWSmall: css({
+			display: 'block',
+			hideBelow: 'md',
 		}),
 	};
 
-	const standardImageDisplay = cva({
-		variants: {
-			hasSmallImage: {
-				true: { display: 'block', hideBelow: 'md' },
-				false: { display: 'block' },
-			},
-		},
-		defaultVariants: {
-			hasSmallImage: false,
-		},
-	});
+	// const standardImageDisplay = cva({
+	// 	variants: {
+	// 		hasSmallImage: {
+	// 			true: { display: 'block', hideBelow: 'md' },
+	// 			false: { display: 'block' },
+	// 		},
+	// 	},
+	// 	defaultVariants: {
+	// 		hasSmallImage: false,
+	// 	},
+	// });
 
 	if (smImage) {
 		return (
 			<>
-				{renderImage(smImage, undefined, cx(classes.image, classes.smImage))}
-				{renderImage(
-					image,
-					undefined,
-					cx(classes.image, classes.standardImg, standardImageDisplay({ hasSmallImage: !!smImage }))
-				)}
+				<div
+					style={{ width: '100px', height: '100px', backgroundColor: 'red' }}
+					className={cx(classes.image, classes.smImage)}
+				></div>
+				<div
+					style={{ width: '100px', height: '100px', backgroundColor: 'blue' }}
+					className={cx(classes.image, classes.standardImg, classes.standardImageWSmall)}
+				></div>
+				{/* {renderImage(smImage, undefined, cx(classes.image, classes.smImage))} */}
+				{/* {renderImage(image, undefined, cx(classes.image, classes.standardImg, classes.standardImageWSmall))} */}
 			</>
 		);
 	} else {
-		return renderImage(image);
+		return renderImage(image, undefined, cx(classes.image, classes.standardImg));
 	}
 };
 
