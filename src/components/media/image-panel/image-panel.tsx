@@ -12,7 +12,7 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 		}),
 		smImage: css({
 			position: 'relative',
-			display: 'block',
+			display: { base: 'block !important', md: 'none !important' },
 			hideFrom: 'md',
 		}),
 		standardImg: css({
@@ -20,7 +20,7 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 			height: '100%',
 		}),
 		standardImageWSmall: css({
-			display: 'block',
+			display: { base: 'none !important', md: 'block !important' },
 			hideBelow: 'md',
 		}),
 	};
@@ -28,14 +28,6 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	if (smImage) {
 		return (
 			<>
-				{/* <div
-					style={{ width: '100px', height: '100px', backgroundColor: 'red' }}
-					className={}
-				></div> */}
-				{/* <div
-					style={{ width: '100px', height: '100px', backgroundColor: 'blue' }}
-					className={cx(classes.image, classes.standardImg, classes.standardImageWSmall)}
-				></div> */}
 				{renderImage(smImage, undefined, cx(classes.image, classes.smImage))}
 				{renderImage(image, undefined, cx(classes.image, classes.standardImg, classes.standardImageWSmall))}
 			</>
