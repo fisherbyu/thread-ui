@@ -6,6 +6,10 @@ import { css, cva, cx } from '@/styled-system/css';
 
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	const classes = {
+		image: css({
+			marginLeft: { sm: '0', md: 'auto' },
+			marginRight: { sm: '0', md: 'auto' },
+		}),
 		smImage: css({
 			position: 'relative',
 			display: { sm: 'block', lg: 'none' },
@@ -16,18 +20,29 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 			height: '100%',
 			borderRadius: '0.25rem',
 		}),
-		image: css({
-			display: { sm: 'none', lg: 'block' },
-			marginLeft: { sm: '0', md: 'auto' },
-			marginRight: { sm: '0', md: 'auto' },
-		}),
 	};
+
+	const standardImageDisplay = cva({
+		variants: {
+			hasSmallImage: {
+				true: { display: { base: 'none', lg: 'block' } },
+				false: { display: { base: 'block' } },
+			},
+		},
+		defaultVariants: {
+			hasSmallImage: false,
+		},
+	});
 
 	if (smImage) {
 		return (
 			<>
-				{renderImage(smImage, undefined, cx(classes.smImage, classes.standardImg))}
-				{renderImage(image, undefined, cx(classes.image, classes.standardImg))}
+				{renderImage(smImage, undefined, cx(classes.image, classes.smImage))}
+				{renderImage(
+					image,
+					undefined,
+					cx(classes.image, classes.standardImg, standardImageDisplay({ hasSmallImage: !!smImage }))
+				)}
 			</>
 		);
 	} else {
