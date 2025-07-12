@@ -1,29 +1,27 @@
-'use client';
 import { ImagePanelProps } from './image-panel.types';
 import { renderImage } from '@/internal-components';
 import { Subtitle, Text, Title } from '@/components';
 import { ImageProps } from '@/types';
-import { generateStyleObject } from '@/functions';
 import { css, cva } from '@/styled-system/css';
 
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
-	const classes = generateStyleObject({
-		smImage: {
+	const classes = {
+		smImage: css({
 			position: 'relative',
 			display: { sm: 'block', lg: 'none' },
 			borderRadius: '0.25rem',
-		},
-		standardImg: {
+		}),
+		standardImg: css({
 			width: '100%',
 			height: '100%',
 			borderRadius: '0.25rem',
-		},
-		image: {
+		}),
+		image: css({
 			display: { sm: 'none', lg: 'block' },
 			marginLeft: { sm: '0', md: 'auto' },
 			marginRight: { sm: '0', md: 'auto' },
-		},
-	});
+		}),
+	};
 
 	if (smImage) {
 		return (
