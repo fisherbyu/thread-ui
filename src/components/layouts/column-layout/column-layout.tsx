@@ -2,7 +2,7 @@ import { renderImage } from '@/internal-components';
 import { ColumnSkeleton } from './column-skeleton';
 import { ColumnLayoutProps } from './column-layout.types';
 import { H2, H3, Text } from '@/components';
-import { generateStyleObject } from '@/functions';
+import { css } from '@/styled-system/css';
 
 /**
  * A layout component that displays content in a responsive column grid with optional title and caption.
@@ -16,34 +16,34 @@ import { generateStyleObject } from '@/functions';
  * @returns {JSX.Element} The column layout component
  */
 export const ColumnLayout = ({ title, caption, mdcol, lgcol, items }: ColumnLayoutProps) => {
-	const styles = generateStyleObject({
-		section: {
+	const styles = {
+		section: css({
 			width: '100%',
 			marginRight: 'auto',
 			marginLeft: 'auto',
-			maxWidth: { sm: 'none', md: mdcol < 2 ? '800px' : 'none', lg: 'none' },
+			maxWidth: { base: 'none', md: mdcol < 2 ? '800px' : 'none', lg: 'none' },
 			paddingRight: '2rem',
 			paddingLeft: '2rem',
-			paddingTop: { sm: '2.5rem', md: '2rem', lg: '1.5rem' },
-			paddingBottom: { sm: '2.5rem', md: '2rem', lg: '1.5rem' },
+			paddingTop: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
+			paddingBottom: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'center',
-			flex: { sm: '1 1 0%', lg: 'none' },
-		},
-		gridItem: {
+			flex: { base: '1 1 0%', lg: 'none' },
+		}),
+		gridItem: css({
 			borderRadius: '0.25rem',
 			marginBottom: '1.5rem',
 			width: '100%',
 			height: 'auto',
 			overflow: 'hidden',
-		},
-		gridPhoto: {
+		}),
+		gridPhoto: css({
 			width: '100%',
 			height: 'auto',
 			borderRadius: '0.25rem',
-		},
-	});
+		}),
+	};
 	return (
 		<section className={styles.section}>
 			{(title || caption) && (
