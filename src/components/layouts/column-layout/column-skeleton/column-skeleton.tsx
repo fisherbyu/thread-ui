@@ -1,4 +1,5 @@
 'use client';
+import { css } from '@/styled-system/css';
 import { ColumnSkeletonProps } from './column-skeleton.types';
 import { generateStyles } from '@/functions';
 
@@ -8,7 +9,7 @@ export const ColumnSkeleton = ({ mdcol, lgcol, children }: ColumnSkeletonProps) 
 		return `repeat(${colNum}, minmax(0, 1fr))`;
 	};
 
-	const styles = generateStyles({
+	const styles = css({
 		display: 'grid',
 		gridTemplateColumns: { sm: getColumnCSS(1), md: getColumnCSS(mdcol), lg: getColumnCSS(lgcol) },
 		gap: { sm: '3rem', lg: '1.5rem' },
