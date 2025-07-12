@@ -7,12 +7,13 @@ import { css, cva, cx } from '@/styled-system/css';
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	const classes = {
 		image: css({
-			marginLeft: { sm: '0', md: 'auto' },
-			marginRight: { sm: '0', md: 'auto' },
+			marginLeft: { base: '0', md: 'auto' },
+			marginRight: { base: '0', md: 'auto' },
 		}),
 		smImage: css({
 			position: 'relative',
-			display: { sm: 'block', lg: 'none' },
+			display: 'block',
+			hideFrom: 'md',
 			borderRadius: '0.25rem',
 		}),
 		standardImg: css({
@@ -25,8 +26,8 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	const standardImageDisplay = cva({
 		variants: {
 			hasSmallImage: {
-				true: { display: { base: 'none', lg: 'block' } },
-				false: { display: { base: 'block' } },
+				true: { display: 'block', hideBelow: 'md' },
+				false: { display: 'block' },
 			},
 		},
 		defaultVariants: {
@@ -63,20 +64,20 @@ export const ImagePanel = ({
 	const panelStyles = cva({
 		base: {
 			display: 'flex',
-			gap: { sm: '12px', lg: '20px' },
+			gap: { base: '12px', lg: '20px' },
 			justifyContent: 'center',
 			alignItems: 'stretch',
 			width: '100%',
 			marginRight: 'auto',
-			maxWidth: { sm: 'none', md: '800px', lg: '1400px' },
+			maxWidth: { base: 'none', md: '800px', lg: '1400px' },
 			marginLeft: 'auto',
 			paddingRight: '2rem',
 			paddingLeft: '2rem',
 		},
 		variants: {
 			contentBelow: {
-				true: { flexDirection: { sm: 'column' } },
-				false: { flexDirection: { sm: 'column-reverse' } },
+				true: { flexDirection: { base: 'column' } },
+				false: { flexDirection: { base: 'column-reverse' } },
 			},
 			contentLeft: {
 				true: { flexDirection: { lg: 'row-reverse' } },
@@ -104,7 +105,7 @@ export const ImagePanel = ({
 			alignItems: 'center',
 			marginLeft: 'auto',
 			marginRight: 'auto',
-			width: { sm: '100%', lg: '41.666667%' },
+			width: { base: '100%', lg: '41.666667%' },
 		}),
 	};
 
