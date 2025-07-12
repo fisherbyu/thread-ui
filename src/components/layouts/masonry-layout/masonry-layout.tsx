@@ -1,24 +1,23 @@
-'use client';
-import { CONTAINER_STYLES } from '@/defaults';
-import { generateStyleObject } from '@/functions';
 import { H3, Subtitle } from '@/components';
 import { MasonryLayoutProps } from './masonry-layout.types';
+import { container } from '@/styled-system/patterns';
+import { css, cx } from '@/styled-system/css';
 
 export const MasonryLayout = ({ title, caption, components }: MasonryLayoutProps) => {
-	const styles = generateStyleObject({
-		container: CONTAINER_STYLES,
-		list: {
+	const styles = {
+		container: cx(container()),
+		list: css({
 			marginTop: '8px',
-			columnCount: { sm: 2, md: 3, lg: 4 },
+			columnCount: { base: 2, md: 3, lg: 4 },
 			columnGap: '8px',
-		},
-		item: {
+		}),
+		item: css({
 			width: '100%',
 			display: 'inline-block',
 			borderRadius: '4px',
 			overflow: 'hidden',
-		},
-	});
+		}),
+	};
 	return (
 		<section className={styles.container}>
 			{title && (
