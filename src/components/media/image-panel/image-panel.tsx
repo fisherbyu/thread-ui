@@ -2,7 +2,7 @@ import { ImagePanelProps } from './image-panel.types';
 import { renderImage } from '@/internal-components';
 import { Subtitle, Text, Title } from '@/components';
 import { ImageProps } from '@/types';
-import { css, cva } from '@/styled-system/css';
+import { css, cva, cx } from '@/styled-system/css';
 
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	const classes = {
@@ -26,8 +26,8 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	if (smImage) {
 		return (
 			<>
-				{renderImage(smImage, undefined, `${classes.smImage} ${classes.standardImg}`)}
-				{renderImage(image, undefined, `${classes.image} ${classes.standardImg}`)}
+				{renderImage(smImage, undefined, cx(classes.smImage, classes.standardImg))}
+				{renderImage(image, undefined, cx(classes.image, classes.standardImg))}
 			</>
 		);
 	} else {
@@ -73,9 +73,10 @@ export const ImagePanel = ({
 			contentLeft: false,
 		},
 	});
+
 	const styles = {
 		imageBlock: css({
-			width: { lg: '66.666667%' },
+			width: { base: '100%', lg: '66.666667%' },
 		}),
 		images: css({
 			position: 'relative',
@@ -94,7 +95,9 @@ export const ImagePanel = ({
 
 	return (
 		<div className={panelStyles({ contentBelow, contentLeft })}>
-			<div className={styles.imageBlock}>{renderPanelImage(image, smImage)}</div>
+			<div className={styles.imageBlock}>
+				<div className={styles.images}>{renderPanelImage(image, smImage)}</div>
+			</div>
 			<div className={styles.textBlock}>
 				<div>
 					<Title color={titleColor}>
