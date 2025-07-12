@@ -1,18 +1,31 @@
-'use client';
-import { css } from '@/styled-system/css';
+import { cva } from '@/styled-system/css';
 import { ColumnSkeletonProps } from './column-skeleton.types';
-import { generateStyles } from '@/functions';
+
+const gridStyles = cva({
+	base: {
+		display: 'grid',
+		gap: { base: '3rem', lg: '1.5rem' },
+	},
+	variants: {
+		mdcol: {
+			1: { gridTemplateColumns: { md: 'repeat(1, minmax(0, 1fr))' } },
+			2: { gridTemplateColumns: { md: 'repeat(2, minmax(0, 1fr))' } },
+			3: { gridTemplateColumns: { md: 'repeat(3, minmax(0, 1fr))' } },
+		},
+		lgcol: {
+			3: { gridTemplateColumns: { lg: 'repeat(3, minmax(0, 1fr))' } },
+			4: { gridTemplateColumns: { lg: 'repeat(4, minmax(0, 1fr))' } },
+			5: { gridTemplateColumns: { lg: 'repeat(5, minmax(0, 1fr))' } },
+			6: { gridTemplateColumns: { lg: 'repeat(6, minmax(0, 1fr))' } },
+		},
+	},
+	defaultVariants: {
+		mdcol: 2,
+		lgcol: 3,
+	},
+});
 
 /** Internal Column Skeleton Component */
 export const ColumnSkeleton = ({ mdcol, lgcol, children }: ColumnSkeletonProps) => {
-	const getColumnCSS = (colNum: number) => {
-		return `repeat(${colNum}, minmax(0, 1fr))`;
-	};
-
-	const styles = css({
-		display: 'grid',
-		gridTemplateColumns: { sm: getColumnCSS(1), md: getColumnCSS(mdcol), lg: getColumnCSS(lgcol) },
-		gap: { sm: '3rem', lg: '1.5rem' },
-	});
-	return <div className={styles}>{children}</div>;
+	return <div className={gridStyles({ mdcol, lgcol })}>{children}</div>;
 };
