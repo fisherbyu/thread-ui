@@ -6,6 +6,9 @@ export default defineConfig({
 	include: ['./src/**/*.{ts,tsx,js,jsx}'],
 	outdir: 'src/styled-system',
 
+	// Prefix
+	prefix: 'thread-ui',
+
 	// Define Access to Theme Variables
 	theme: {
 		extend: {
