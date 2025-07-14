@@ -4,7 +4,7 @@ import { NavIconItemProps } from './nav-icon-item.types';
 export const NavIconItem = ({ href, logo }: NavIconItemProps) => {
 	return (
 		<>
-			<BaseItem href={href} padding="4px">
+			<BaseItem href={href} halfPadding>
 				{logo}
 			</BaseItem>
 		</>
