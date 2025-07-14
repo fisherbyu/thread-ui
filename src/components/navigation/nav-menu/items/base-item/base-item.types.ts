@@ -5,6 +5,6 @@ export type BaseItemProps = {
 	href: string;
 	onMouseEnter?: (event: React.MouseEvent<HTMLLIElement>) => void;
 	onMouseLeave?: (event: React.MouseEvent<HTMLLIElement>) => void;
-	halfPadding: boolean;
+	halfPadding?: boolean;
 	isDropdownItem?: boolean;
 };
