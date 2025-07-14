@@ -1,4 +1,3 @@
-import { ThreadTheme } from '@/functions';
 import { InfoCardProps } from './info-card.types';
 import { css } from '@/styled-system/css';
 
@@ -6,9 +5,10 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 	const styles = {
 		card: css({
 			margin: 'auto',
-			borderRadius: ThreadTheme.borderRadius.lg,
-			borderWidth: ThreadTheme.borderSize.md,
-			borderColor: ThreadTheme.structure,
+			border: 'solid',
+			borderRadius: 'md',
+			borderWidth: 'md',
+			borderColor: 'structure',
 			borderStyle: 'solid',
 			marginTop: '0.75rem',
 			marginBottom: '0.75rem',
@@ -16,7 +16,7 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 			overflow: 'hidden',
 			width: '391px',
 			height: '241px',
-			backgroundColor: { base: ThreadTheme.background, _hover: ThreadTheme.surface },
+			backgroundColor: { base: 'background', _hover: 'surface' },
 		}),
 		link: css({
 			cursor: 'pointer',
@@ -50,9 +50,10 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 			whiteSpace: 'nowrap',
 			fontSize: '0.875rem',
 			lineHeight: '1.25rem',
-			color: ThreadTheme.text.standard,
+			color: 'text.standard',
 		}),
 	};
+
 	return (
 		<div className={styles.card}>
 			<a href={url} className={styles.link}>
