@@ -1,71 +1,72 @@
-'use client';
 import { CSSProperties, useState } from 'react';
 import { BaseItem } from '../base-item';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { NavMenuStyles } from '../../nav-menu-styles';
 import { ThreadTheme, generateStyleObject } from '@/functions';
+import { css } from '@/styled-system/css';
 
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	const [isHovered, setIsHovered] = useState(false);
 
-	const styles = generateStyleObject({
-		parentBlock: {
-			position: { sm: 'static', lg: 'relative' },
-		},
-		textBlock: {
+	const styles = {
+		parentBlock: css({
+			position: { base: 'static', lg: 'relative' },
+		}),
+		textBlock: css({
 			display: 'flex',
 			flexDirection: 'row',
 			gap: '4px',
 			justifyContent: 'center',
 			alignItems: 'center',
-		},
+		}),
 
-		targetArea: {
+		targetArea: css({
 			position: 'absolute',
-			width: `calc(100% + ${NavMenuStyles.paddingX * 2}px)`,
-			height: { sm: '0px', lg: '30px' },
+			width: `calc(100% + 32px)`,
+			height: { base: '0px', lg: '30px' },
 			left: '50%',
 			transform: 'translateX(-50%)',
-			bottom: { sm: '-0px', lg: '-30px' },
-		},
+			bottom: { base: '-0px', lg: '-30px' },
+		}),
 
-		dropdownContent: {
+		dropdownContent: css({
 			display: 'none',
 			borderWidth: '1px',
-			boxShadow: `0 4px 8px ${ThreadTheme.gray.light}`,
+			boxShadow: '0 4px 8px',
+			boxShadowColor: 'gray.light',
 			position: 'absolute',
 			width: 'fit-content',
-			borderRadius: ThreadTheme.borderRadius.md,
-			padding: `${NavMenuStyles.paddingY}px ${NavMenuStyles.paddingX}px`,
+			borderRadius: 'md',
+			padding: '16px',
 			zIndex: 10,
-			top: { sm: '', lg: 'calc(100% + 30px)' },
+			top: { base: '', lg: 'calc(100% + 30px)' },
 			left: '50%',
 			transform: 'translateX(-50%)',
-			dark: {
-				border: ThreadTheme.background,
-				backgroundColor: ThreadTheme.surface,
-				boxShadow: `0 4px 8px ${ThreadTheme.black}`,
-			},
-		},
-		dropdownContentShow: {
-			display: { sm: 'none', lg: 'block' },
-		},
+			// dark: {
+			// 	border: ThreadTheme.background,
+			// 	backgroundColor: ThreadTheme.surface,
+			// 	boxShadow: `0 4px 8px ${ThreadTheme.black}`,
+			// },
+		}),
+		dropdownContentShow: css({
+			display: { base: 'none', lg: 'block' },
+		}),
 
-		collapsedDropdownContent: {
+		collapsedDropdownContent: css({
 			display: 'none',
 			justifyContent: 'center',
 			columnGap: '24px',
 			alignItems: 'center',
-			backgroundColor: ThreadTheme.background,
+			backgroundColor: 'background',
 			width: '100%',
-			borderRadius: ThreadTheme.borderRadius.md,
+			borderRadius: 'md',
 			zIndex: 10,
-		},
+		}),
 
-		collapsedDropdownContentShow: {
+		collapsedDropdownContentShow: css({
 			display: { sm: 'flex', lg: 'none' },
-		},
-	});
+		}),
+	};
 	const arrow: CSSProperties = {
 		marginTop: '1px',
 		height: '12px',
