@@ -32,7 +32,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			display: 'none',
 			borderWidth: '1px',
 			boxShadow: '0 4px 8px',
-			boxShadowColor: 'gray.light',
+			boxShadowColor: 'gray.200',
 			position: 'absolute',
 			width: 'fit-content',
 			borderRadius: 'md',
@@ -41,18 +41,18 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			top: { base: '', lg: 'calc(100% + 30px)' },
 			left: '50%',
 			transform: 'translateX(-50%)',
-			// dark: {
-			// 	border: ThreadTheme.background,
-			// 	backgroundColor: ThreadTheme.surface,
-			// 	boxShadow: `0 4px 8px ${ThreadTheme.black}`,
-			// },
+			background: 'background',
+			_dark: {
+				backgroundColor: 'surface',
+				boxShadow: '0 4px 8px',
+				boxShadowColor: 'black',
+			},
 		}),
 		dropdownContentShow: css({
 			display: { base: 'none', lg: 'block' },
 		}),
 
 		collapsedDropdownContent: css({
-			display: 'none',
 			justifyContent: 'center',
 			columnGap: '24px',
 			alignItems: 'center',
@@ -60,6 +60,10 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			width: '100%',
 			borderRadius: 'md',
 			zIndex: 10,
+		}),
+
+		dropdownContentNoShow: css({
+			display: 'none',
 		}),
 
 		collapsedDropdownContentShow: css({
@@ -103,7 +107,12 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			{isHovered && <div className={styles.targetArea} />}
 			{/* Swap menu based on size */}
 			{/* Screen SM */}
-			<div className={cx(styles.collapsedDropdownContent, isHovered && styles.collapsedDropdownContentShow)}>
+			<div
+				className={cx(
+					styles.collapsedDropdownContent,
+					isHovered ? styles.collapsedDropdownContentShow : styles.dropdownContentNoShow
+				)}
+			>
 				{items.map((item) => (
 					<BaseItem key={item.title} href={item.href} isDropdownItem>
 						{item.title}
@@ -111,7 +120,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 				))}
 			</div>
 			{/* Screen LG */}
-			<div className={cx(styles.dropdownContent, isHovered && styles.dropdownContentShow)}>
+			<div className={cx(styles.dropdownContent, isHovered ? styles.dropdownContentShow : styles.dropdownContentNoShow)}>
 				{items.map((item) => (
 					<BaseItem key={item.title} href={item.href} isDropdownItem>
 						{item.title}
