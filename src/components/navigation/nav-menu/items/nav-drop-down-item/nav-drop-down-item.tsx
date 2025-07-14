@@ -1,7 +1,8 @@
+'use client';
 import { CSSProperties, useState } from 'react';
 import { BaseItem } from '../base-item';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
-import { css } from '@/styled-system/css';
+import { css, cx } from '@/styled-system/css';
 
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	const [isHovered, setIsHovered] = useState(false);
@@ -62,7 +63,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 		}),
 
 		collapsedDropdownContentShow: css({
-			display: { sm: 'flex', lg: 'none' },
+			display: { base: 'flex', lg: 'none' },
 		}),
 	};
 	const arrow: CSSProperties = {
@@ -102,7 +103,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			{isHovered && <div className={styles.targetArea} />}
 			{/* Swap menu based on size */}
 			{/* Screen SM */}
-			<div className={`${styles.collapsedDropdownContent} ${isHovered && styles.collapsedDropdownContentShow}`}>
+			<div className={cx(styles.collapsedDropdownContent, isHovered && styles.collapsedDropdownContentShow)}>
 				{items.map((item) => (
 					<BaseItem key={item.title} href={item.href} isDropdownItem>
 						{item.title}
@@ -110,7 +111,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 				))}
 			</div>
 			{/* Screen LG */}
-			<div className={`${styles.dropdownContent} ${isHovered && styles.dropdownContentShow}`}>
+			<div className={cx(styles.dropdownContent, isHovered && styles.dropdownContentShow)}>
 				{items.map((item) => (
 					<BaseItem key={item.title} href={item.href} isDropdownItem>
 						{item.title}
