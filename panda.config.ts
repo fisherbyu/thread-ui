@@ -8,6 +8,7 @@ export default defineConfig({
 
 	// Prefix
 	prefix: 'thread-ui',
+	preflight: true,
 
 	// Define Access to Theme Variables
 	theme: {
