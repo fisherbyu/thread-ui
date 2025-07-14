@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
 import { NavIconItem, NavItem, NavItemProps, NavDropdownItemProps, NavDropdownItem } from './items';
-import { css } from '@/styled-system/css';
+import { css, cx } from '@/styled-system/css';
 
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	// Navmenu Controls
@@ -184,7 +184,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			<header id="site-menu" className={style.header}>
 				<nav className={style.nav}>
 					{logo && <NavIconItem href={logo.href} logo={logo.logo} />}
-					<div className={`${style.menuItemBlock} ${navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock}`}>
+					<div className={cx(style.menuItemBlock, navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock)}>
 						<ul className={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
 					</div>
 					<div className={style.menuControl}>
@@ -194,10 +194,10 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 							}}
 							aria-label="toggle navbar"
 						>
-							<span aria-hidden={true} className={`${style.menuCross} ${navIsOpened ? style.menuCrossTopOpen : ''}`} />
+							<span aria-hidden={true} className={cx(style.menuCross, navIsOpened && style.menuCrossTopOpen)} />
 							<span
 								aria-hidden={true}
-								className={`${style.menuCross} ${style.menuCrossBottom} ${navIsOpened ? style.menuCrossBottomOpen : ''}`}
+								className={cx(style.menuCross, style.menuCrossBottom, navIsOpened && style.menuCrossBottomOpen)}
 							/>
 						</button>
 					</div>
