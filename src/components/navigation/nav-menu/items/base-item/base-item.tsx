@@ -30,8 +30,8 @@ export const BaseItem = ({ children, href, halfPadding = false, onMouseEnter, on
 			},
 			variants: {
 				halfPadding: {
-					true: { padding: '8px' },
-					false: { padding: '4px' },
+					true: { padding: '4px 8px' },
+					false: { padding: '8px 16px' },
 				},
 				isDropdownItem: {
 					true: { width: { base: 'fit-content', lg: '100%' } },
