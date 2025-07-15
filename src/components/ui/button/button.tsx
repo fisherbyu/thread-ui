@@ -2,6 +2,7 @@ import { getUtilityColorValue, getUtilityFontSize, getUtilitySizeValue } from '@
 import { ButtonProps } from './button.types';
 import { ThreadTheme, generateStyles } from '@/functions';
 import { css } from '@/styled-system/css';
+import { CSSProperties } from 'react';
 
 export const Button = ({
 	children,
@@ -17,6 +18,9 @@ export const Button = ({
 
 	const styles = {
 		button: css({
+			borderRadius: 'md',
+			borderStyle: 'solid',
+			borderWidth: 'md',
 			transition: 'background-color 0.2s ease',
 			color: 'white',
 			display: 'flex',
@@ -27,16 +31,16 @@ export const Button = ({
 		}),
 	};
 
-	const buttonClasses = generateStyles({
-		padding: `${getUtilitySizeValue(size)}px`,
-		fontSize: getUtilityFontSize(size),
-		width: fullWidth ? '100%' : 'fit-content',
-		border: `${ThreadTheme.borderSize.md} ${color == 'black' ? ThreadTheme.white : colorValue} solid`,
-		borderRadius: ThreadTheme.borderRadius.md,
+	const staticStyles: CSSProperties = {
 		backgroundColor: colorValue,
-		margin: margin ?? 'auto',
-
+		borderColor: color == 'black' ? ThreadTheme.white : colorValue,
+		fontSize: getUtilityFontSize(size),
 		opacity: disabled ? 0.6 : 1,
+		padding: `${getUtilitySizeValue(size)}px`,
+		width: fullWidth ? '100%' : 'fit-content',
+	};
+
+	const buttonClasses = generateStyles({
 		hover: {
 			backgroundColor: disabled ? colorValue : color == 'black' ? ThreadTheme.white : ThreadTheme.background,
 			color: disabled ? ThreadTheme.background : colorValue,
