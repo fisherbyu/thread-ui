@@ -1,7 +1,7 @@
 'use client';
 import { ThreadTheme, generateStyles } from '@/functions';
 import { DividerProps } from './divider.types';
-import { cva } from '@/styled-system/css';
+import { css, cva } from '@/styled-system/css';
 
 const dividerWeight = cva({
 	variants: {
@@ -17,14 +17,17 @@ const dividerWeight = cva({
 });
 
 export const Divider = ({ width, marginY, weight }: DividerProps) => {
-	const styles = generateStyles({
+	const styles = css({
+		marginLeft: 'auto',
+		marginRight: 'auto',
+		backgroundColor: 'structure',
+	});
+
+	const ostyles = generateStyles({
 		width: width || '75%',
 		marginTop: marginY || '16px',
 		marginBottom: marginY || '16px',
-		marginLeft: 'auto',
-		marginRight: 'auto',
 		height: `${dividerWeight}px`,
-		backgroundColor: ThreadTheme.structure,
 	});
 
 	return <div className={styles}></div>;
