@@ -1,5 +1,5 @@
 import { ThemeConfig } from '@/types';
-import { ThreadTheme, DarkModeVariables } from '../thread-theme';
+import { ThreadTheme, DarkModeVariables } from '../../../theme/thread-theme';
 
 /**
  * Override default Thread Theme with custom inputs
