@@ -9,5 +9,5 @@ export * from './components';
 // Export Types
 export * from './types';
 
-// Export Functions
-export * from './functions';
+// Export Client Functionality
+export * from './client';
