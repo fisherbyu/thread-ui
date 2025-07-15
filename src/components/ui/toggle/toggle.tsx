@@ -1,4 +1,3 @@
-'use client';
 import { CSSProperties } from 'react';
 import { getUtilityColorValue } from '@/utils';
 import { ToggleProps } from './toggle.types';
