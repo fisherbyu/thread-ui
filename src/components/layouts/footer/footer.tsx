@@ -1,32 +1,29 @@
 'use client';
 import { FooterProps } from './footer.types';
-import { CONTAINER_STYLES } from '@/defaults';
 import { Divider, Subtitle } from '@/components';
-import { useThreadStyleObjects, ThreadTheme } from '@/functions';
+import { ThreadTheme } from '@/theme';
 import { FacebookLogo, GithubLogo, InstagramLogo, LinkedinLogo, TwitterLogo } from '@phosphor-icons/react';
+import { css, cx } from '@/styled-system/css';
+import { container } from '@/styled-system/patterns';
 
 export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink, githubLink, linkedInLink }: FooterProps) => {
-	const styles = useThreadStyleObjects({
-		footer: {
-			...CONTAINER_STYLES,
-			marginLeft: 'auto',
-			marginRight: 'auto',
-		},
-		footerContents: {
+	const styles = {
+		footer: cx(container(), css({ marginLeft: 'auto', marginRight: 'auto' })),
+		footerContents: css({
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'center',
 			alignItems: 'center',
-		},
-		logoBlock: {
+		}),
+		logoBlock: css({
 			display: 'flex',
 			flexDirection: 'row',
 			gap: '4px',
 			width: '100%',
 			justifyContent: 'center',
 			alignItems: 'center',
-		},
-		circleStyle: {
+		}),
+		circleStyle: css({
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'center',
@@ -34,11 +31,11 @@ export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink
 			borderRadius: '50%',
 			width: '48px',
 			height: '48px',
-		},
-		links: {
+		}),
+		links: css({
 			color: ThreadTheme.text.standard,
-		},
-	});
+		}),
+	};
 	return (
 		<footer className={styles.footer}>
 			<Divider />

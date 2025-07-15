@@ -1,4 +1,3 @@
-'use client';
 import { ColoredTextOptions } from '@/types';
 import { getColoredTextColor } from '@/utils';
 import { CSSProperties, ReactNode } from 'react';

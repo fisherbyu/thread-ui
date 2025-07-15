@@ -11,8 +11,8 @@ import { ImageProps } from '../../../types';
 export type ColumnLayoutProps = {
 	title?: string;
 	caption?: string;
-	mdcol: number;
-	lgcol: number;
+	mdcol: 1 | 2 | 3;
+	lgcol: 3 | 4 | 5;
 	items: ColumnItem[];
 };
 

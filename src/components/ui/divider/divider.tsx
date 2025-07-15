@@ -1,32 +1,41 @@
-'use client';
-import { ThreadTheme, useThreadStyles } from '@/functions';
 import { DividerProps } from './divider.types';
+import { css, cva, cx } from '@/styled-system/css';
+import { CSSProperties } from 'react';
+
+const dividerWeight = cva({
+	variants: {
+		weight: {
+			light: { height: '0.5px' },
+			standard: { height: '1px' },
+			heavy: { height: '2px' },
+		},
+	},
+	defaultVariants: {
+		weight: 'standard',
+	},
+});
 
 export const Divider = ({ width, marginY, weight }: DividerProps) => {
-	let dividerWeight: number;
-	switch (weight) {
-		case 'light':
-			dividerWeight = 0.5;
-			break;
-		case 'standard':
-			dividerWeight = 1;
-			break;
-		case 'bold':
-			dividerWeight = 2;
-			break;
-		default:
-			dividerWeight = 1;
-	}
+	const styles = {
+		base: css({
+			marginLeft: 'auto',
+			marginRight: 'auto',
+			backgroundColor: 'structure',
+		}),
+		marginY: css({
+			marginY: '16px',
+		}),
+		width: css({
+			width: '75%',
+		}),
+	};
 
-	const styles = useThreadStyles({
-		width: width || '75%',
-		marginTop: marginY || '16px',
-		marginBottom: marginY || '16px',
-		marginLeft: 'auto',
-		marginRight: 'auto',
-		height: `${dividerWeight}px`,
-		backgroundColor: ThreadTheme.structure,
-	});
+	const staticStyles: CSSProperties = {
+		...(width && { width }),
+		...(marginY && { marginTop: marginY, marginBottom: marginY }),
+	};
 
-	return <div className={styles}></div>;
+	const className = cx(styles.base, dividerWeight({ weight }), !marginY && styles.marginY, !width && styles.width);
+
+	return <div style={staticStyles} className={className} />;
 };

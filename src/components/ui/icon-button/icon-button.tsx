@@ -1,8 +1,7 @@
-'use client';
 import { Icon, Button } from '@/components';
 import { IconButtonProps } from './icon-button.types';
 import { getUtilityFontSize, getUtilityIconSize, getUtilitySizeValue } from '@/utils';
-import { useThreadStyles } from '@/functions';
+import { CSSProperties } from 'react';
 
 export const IconButton = ({
 	children,
@@ -15,14 +14,14 @@ export const IconButton = ({
 	disabled = false,
 	name,
 }: IconButtonProps) => {
-	const styles = useThreadStyles({
+	const styles: CSSProperties = {
 		marginLeft: `${getUtilitySizeValue(size) - 2}px`,
 		fontSize: getUtilityFontSize(size),
-	});
+	};
 	return (
 		<Button fullWidth={fullWidth} color={color} onClick={onClick} type={type} margin={margin} disabled={disabled}>
 			<Icon name={name} size={getUtilityIconSize(size)} />
-			<div className={styles}>{children}</div>
+			<div style={styles}>{children}</div>
 		</Button>
 	);
 };

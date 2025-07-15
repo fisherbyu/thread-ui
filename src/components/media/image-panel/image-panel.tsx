@@ -1,39 +1,39 @@
-'use client';
 import { ImagePanelProps } from './image-panel.types';
 import { renderImage } from '@/internal-components';
 import { Subtitle, Text, Title } from '@/components';
 import { ImageProps } from '@/types';
-import { useThreadStyleObjects } from '@/functions';
-import { getUtilityColorValue } from '@/utils';
+import { css, cva, cx } from '@/styled-system/css';
 
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
-	const classes = useThreadStyleObjects({
-		smImage: {
-			position: 'relative',
-			display: { sm: 'block', lg: 'none' },
+	const classes = {
+		image: css({
+			marginX: { base: '0', md: 'auto' },
 			borderRadius: '0.25rem',
-		},
-		standardImg: {
+		}),
+		smImage: css({
+			position: 'relative',
+			display: { base: 'block !important', md: 'none !important' },
+			hideFrom: 'md',
+		}),
+		standardImg: css({
 			width: '100%',
 			height: '100%',
-			borderRadius: '0.25rem',
-		},
-		image: {
-			display: { sm: 'none', lg: 'block' },
-			marginLeft: { sm: '0', md: 'auto' },
-			marginRight: { sm: '0', md: 'auto' },
-		},
-	});
+		}),
+		standardImageWSmall: css({
+			display: { base: 'none !important', md: 'block !important' },
+			hideBelow: 'md',
+		}),
+	};
 
 	if (smImage) {
 		return (
 			<>
-				{renderImage(smImage, undefined, `${classes.smImage} ${classes.standardImg}`)}
-				{renderImage(image, undefined, `${classes.image} ${classes.standardImg}`)}
+				{renderImage(smImage, undefined, cx(classes.image, classes.smImage))}
+				{renderImage(image, undefined, cx(classes.image, classes.standardImg, classes.standardImageWSmall))}
 			</>
 		);
 	} else {
-		return renderImage(image);
+		return renderImage(image, undefined, cx(classes.image, classes.standardImg));
 	}
 };
 
@@ -47,51 +47,68 @@ export const ImagePanel = ({
 	contentLeft = false,
 	titleColor = 'standard',
 }: ImagePanelProps) => {
-	const styles = useThreadStyleObjects({
-		container: {
+	const panelStyles = cva({
+		base: {
 			display: 'flex',
-			flexDirection: {
-				sm: contentBelow ? 'column' : 'column-reverse',
-				lg: contentLeft ? 'row-reverse' : 'row',
-			},
-			gap: { sm: '12px', lg: '20px' },
+			gap: { base: '12px', lg: '20px' },
 			justifyContent: 'center',
 			alignItems: 'stretch',
 			width: '100%',
 			marginRight: 'auto',
-			maxWidth: { sm: 'none', md: '800px', lg: '1400px' },
+			maxWidth: { base: 'none', md: '800px', lg: '1400px' },
 			marginLeft: 'auto',
 			paddingRight: '2rem',
 			paddingLeft: '2rem',
 		},
-		imageBlock: {
-			width: { sm: '', lg: '66.666667%' },
+		variants: {
+			contentBelow: {
+				true: { flexDirection: { base: 'column' } },
+				false: { flexDirection: { base: 'column-reverse' } },
+			},
+			contentLeft: {
+				true: { flexDirection: { lg: 'row-reverse' } },
+				false: { flexDirection: { lg: 'row' } },
+			},
 		},
-		images: {
+		defaultVariants: {
+			contentBelow: false,
+			contentLeft: false,
+		},
+	});
+
+	const styles = {
+		imageBlock: css({
+			width: { base: '100%', lg: '66.666667%' },
+		}),
+		images: css({
 			position: 'relative',
 			width: '100%',
 			height: '100%',
-		},
-		textBlock: {
+		}),
+		textBlock: css({
 			display: 'flex',
 			justifyContent: 'center',
 			alignItems: 'center',
 			marginLeft: 'auto',
 			marginRight: 'auto',
-			width: { sm: '100%', lg: '41.666667%' },
-		},
-	});
+			width: { base: '100%', lg: '41.666667%' },
+		}),
+	};
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.imageBlock}>{renderPanelImage(image, smImage)}</div>
+		<div className={panelStyles({ contentBelow, contentLeft })}>
+			<div className={styles.imageBlock}>
+				<div className={styles.images}>{renderPanelImage(image, smImage)}</div>
+			</div>
 			<div className={styles.textBlock}>
 				<div>
 					<Title color={titleColor}>
 						{title}
 						{subtitle && <Subtitle>{subtitle}</Subtitle>}
 					</Title>
-					{contents?.map((txt, _) => <Text key={_}>{txt}</Text>)}
+					{contents?.map((txt, _) => (
+						<Text key={_}>{txt}</Text>
+					))}
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 {
 	"name": "thread-ui",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "UI Library for React Applications.",
 	"main": "dist/index.js",
 	"module": "dist/index.js",
@@ -10,24 +10,30 @@
 			"types": "./dist/index.d.ts",
 			"module": "./dist/index.js",
 			"default": "./dist/index.js"
+		},
+		"./client": {
+			"types": "./dist/client/index.d.ts",
+			"default": "./dist/client/index.js"
 		}
 	},
 	"scripts": {
 		"clean": "rm -rf dist",
-		"build": "npm run build-css && tsc && tsc-alias",
-		"build-css": "npx postcss src/styles/styles.css -o dist/styles/styles.css && cp src/styles/thread.css dist/styles/thread.css",
+		"panda:prepare": "panda codegen",
+		"panda:css": "panda cssgen --outfile src/styles/panda.css",
+		"copy-styled-system": "cp -r src/styled-system dist/styled-system",
+		"build": "npm run panda:prepare && tsc && npm run copy-styled-system && npm run panda:css && npm run build-css && tsc-alias",
+		"build-css": "npx postcss src/styles/styles.css -o dist/styles/styles.css && cp src/styles/thread.css dist/styles/thread.css && cp src/styles/panda.css dist/styles/panda.css",
 		"build-tailwind": "npx tailwindcss -i ./src/styles/styles.css -o ./src/styles/styles.css --watch",
 		"pack": "npm pack",
 		"pack-dev": "npm run prepare-publish && npm pack && mkdir -p dist && mv thread-ui-*.tgz dist/",
 		"test": "jest",
 		"storybook": "concurrently \"npm run build-tailwind\" \"storybook dev -p 6006\"",
 		"storybook:build": "storybook build",
-		"prepare-publish": "npm run clean && npm run build",
+		"prepare-publish": "npm run clean && panda codegen && npm run build",
 		"weave": "npm run prepare-publish && yalc push"
 	},
 	"files": [
 		"dist",
-		"!dist/package",
 		"!**/*.test.*",
 		"!**/*.stories.*"
 	],
@@ -61,6 +67,7 @@
 		"@babel/preset-react": "^7.26.3",
 		"@babel/preset-typescript": "^7.26.0",
 		"@jest/globals": "^29.7.0",
+		"@pandacss/dev": "^0.54.0",
 		"@rollup/plugin-commonjs": "^28.0.1",
 		"@rollup/plugin-node-resolve": "^15.3.0",
 		"@storybook/addon-essentials": "^8.4.7",
@@ -86,8 +93,8 @@
 		"postcss-cli": "^11.0.0",
 		"postcss-prefix-selector": "^2.1.0",
 		"prettier": "^3.3.3",
-		"react": ">=18.0.0 <20.0.0",
-		"react-dom": ">=18.0.0 <20.0.0",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
 		"react-test-renderer": "^19.0.0",
 		"react-testing-library": "^8.0.1",
 		"storybook": "^8.4.7",
@@ -97,12 +104,11 @@
 		"typescript": "^5.7.2"
 	},
 	"peerDependencies": {
-		"react": ">=18.0.0 <20.0.0",
-		"react-dom": ">=18.0.0 <20.0.0"
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0"
 	},
 	"dependencies": {
 		"@emotion/css": "^11.13.5",
-		"@emotion/react": "^11.14.0",
 		"@phosphor-icons/react": "^2.1.7"
 	}
 }

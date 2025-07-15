@@ -1,2 +1,2 @@
 export * from './make-styles';
-export * from './theme/index';
+export * from './theme';

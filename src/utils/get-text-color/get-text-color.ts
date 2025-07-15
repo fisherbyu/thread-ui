@@ -1,4 +1,4 @@
-import { ThreadTheme } from '@/functions';
+import { ThreadTheme } from '@/theme';
 import { TextColorOptions } from '@/types';
 
 /**

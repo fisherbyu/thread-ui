@@ -25,3 +25,10 @@ dist-ssr
 
 *storybook.log
 src/styles/styles.css
+
+## Panda
+styled-system
+styled-system-studio
+src/styled-system
+src/styled-system-studio
+src/styles/panda.css

@@ -15,7 +15,7 @@ export const ThreadTheme: Theme = {
 	tertiary: {
 		light: 'var(--thread-tertiary-light)',
 		main: 'var(--thread-tertiary-main)',
-		dark: '	--thread-tertiary-dark)',
+		dark: 'var(--thread-tertiary-dark)',
 	},
 
 	// Neutral Colors

@@ -1,61 +1,61 @@
-'use client';
-import { ThreadTheme, useThreadStyleObjects } from '@/functions';
 import { InfoCardProps } from './info-card.types';
+import { css } from '@/styled-system/css';
 
 export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
-	const styles = useThreadStyleObjects({
-		container: {
+	const styles = {
+		card: css({
 			margin: 'auto',
-			borderRadius: ThreadTheme.borderRadius.lg,
-			border: `${ThreadTheme.borderSize.md} ${ThreadTheme.structure} solid`,
+			border: 'solid',
+			borderRadius: 'md',
+			borderWidth: 'md',
+			borderColor: 'structure',
+			borderStyle: 'solid',
 			marginTop: '0.75rem',
 			marginBottom: '0.75rem',
 			maxHeight: '15rem',
 			overflow: 'hidden',
 			width: '391px',
 			height: '241px',
-			backgroundColor: ThreadTheme.background,
-			hover: {
-				backgroundColor: ThreadTheme.surface,
-			},
-		},
-		link: {
+			backgroundColor: { base: 'background', _hover: 'surface' },
+		}),
+		link: css({
 			cursor: 'pointer',
-		},
-		imageWrapper: {
+		}),
+		imageWrapper: css({
 			overflow: 'hidden',
 			width: '100%',
 			height: '83.333333%',
-		},
-		image: {
+		}),
+		image: css({
 			height: 'auto',
 			minHeight: '100%',
 			width: 'auto',
 			minWidth: '100%',
-		},
-		captionBlock: {
+		}),
+		captionBlock: css({
 			padding: '0.5rem',
 			height: '16.666667%',
-		},
-		caption: {
+		}),
+		caption: css({
 			display: 'flex',
 			justifyContent: 'flex-start',
 			alignItems: 'center',
-		},
-		captionIcon: {
+		}),
+		captionIcon: css({
 			paddingRight: '0.25rem',
-		},
-		captionText: {
+		}),
+		captionText: css({
 			overflow: 'hidden',
 			textOverflow: 'ellipsis',
 			whiteSpace: 'nowrap',
 			fontSize: '0.875rem',
 			lineHeight: '1.25rem',
-			color: ThreadTheme.text.standard,
-		},
-	});
+			color: 'text.standard',
+		}),
+	};
+
 	return (
-		<div className={styles.container}>
+		<div className={styles.card}>
 			<a href={url} className={styles.link}>
 				<div className={styles.imageWrapper}>
 					<img className={styles.image} src={img} alt="Article Cover Image" />
