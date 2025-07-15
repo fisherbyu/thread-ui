@@ -1,7 +1,7 @@
-'use client';
 import { getUtilityColorValue, getUtilityFontSize, getUtilitySizeValue } from '@/utils';
 import { ButtonProps } from './button.types';
 import { ThreadTheme, generateStyles } from '@/functions';
+import { css } from '@/styled-system/css';
 
 export const Button = ({
 	children,
@@ -15,21 +15,27 @@ export const Button = ({
 }: ButtonProps) => {
 	const colorValue = getUtilityColorValue(color);
 
+	const styles = {
+		button: css({
+			transition: 'background-color 0.2s ease',
+			color: 'white',
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+			cursor: 'pointer',
+			userSelect: 'none',
+		}),
+	};
+
 	const buttonClasses = generateStyles({
 		padding: `${getUtilitySizeValue(size)}px`,
 		fontSize: getUtilityFontSize(size),
 		width: fullWidth ? '100%' : 'fit-content',
-		transition: 'background-color 0.2s ease',
 		border: `${ThreadTheme.borderSize.md} ${color == 'black' ? ThreadTheme.white : colorValue} solid`,
 		borderRadius: ThreadTheme.borderRadius.md,
-		color: ThreadTheme.white,
 		backgroundColor: colorValue,
 		margin: margin ?? 'auto',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		cursor: 'pointer',
-		userSelect: 'none',
+
 		opacity: disabled ? 0.6 : 1,
 		hover: {
 			backgroundColor: disabled ? colorValue : color == 'black' ? ThreadTheme.white : ThreadTheme.background,
