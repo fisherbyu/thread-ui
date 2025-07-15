@@ -1,5 +1,6 @@
 import { defineConfig } from '@pandacss/dev';
 import { CONTAINER_STYLES } from './src/defaults';
+import { buttonRecipe } from './src/components/ui/button/button-recipe';
 
 export default defineConfig({
 	// File Intake and Output
@@ -13,6 +14,9 @@ export default defineConfig({
 	// Define Access to Theme Variables
 	theme: {
 		extend: {
+			recipes: {
+				button: buttonRecipe,
+			},
 			tokens: {
 				colors: {
 					// Primary colors
