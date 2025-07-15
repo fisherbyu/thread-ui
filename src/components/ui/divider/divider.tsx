@@ -1,7 +1,6 @@
-'use client';
-import { ThreadTheme, generateStyles } from '@/functions';
 import { DividerProps } from './divider.types';
-import { css, cva } from '@/styled-system/css';
+import { css, cva, cx } from '@/styled-system/css';
+import { CSSProperties } from 'react';
 
 const dividerWeight = cva({
 	variants: {
@@ -17,18 +16,26 @@ const dividerWeight = cva({
 });
 
 export const Divider = ({ width, marginY, weight }: DividerProps) => {
-	const styles = css({
-		marginLeft: 'auto',
-		marginRight: 'auto',
-		backgroundColor: 'structure',
-	});
+	const styles = {
+		base: css({
+			marginLeft: 'auto',
+			marginRight: 'auto',
+			backgroundColor: 'structure',
+		}),
+		marginY: css({
+			marginY: '16px',
+		}),
+		width: css({
+			width: '75%',
+		}),
+	};
 
-	const ostyles = generateStyles({
-		width: width || '75%',
-		marginTop: marginY || '16px',
-		marginBottom: marginY || '16px',
-		height: `${dividerWeight}px`,
-	});
+	const staticStyles: CSSProperties = {
+		...(width && { width }),
+		...(marginY && { marginTop: marginY, marginBottom: marginY }),
+	};
 
-	return <div className={styles}></div>;
+	const className = cx(styles.base, dividerWeight({ weight }), !marginY && styles.marginY, !width && styles.width);
+
+	return <div style={staticStyles} className={className} />;
 };
