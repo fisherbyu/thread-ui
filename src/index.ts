@@ -8,6 +8,3 @@ export * from './components';
 
 // Export Types
 export * from './types';
-
-// Export Client Functionality
-export * from './client';
