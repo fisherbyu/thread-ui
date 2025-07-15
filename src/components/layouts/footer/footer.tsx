@@ -1,3 +1,4 @@
+'use client';
 import { FooterProps } from './footer.types';
 import { Divider, Subtitle } from '@/components';
 import { ThreadTheme } from '@/theme';
