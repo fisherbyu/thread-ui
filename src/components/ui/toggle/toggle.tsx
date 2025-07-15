@@ -1,7 +1,7 @@
 import { CSSProperties } from 'react';
 import { getUtilityColorValue } from '@/utils';
 import { ToggleProps } from './toggle.types';
-import { ThreadTheme } from '@/functions';
+import { ThreadTheme } from '@/theme';
 export const Toggle = ({ isOn, onToggle, color = 'success' }: ToggleProps) => {
 	const colorValue = getUtilityColorValue(color);
 

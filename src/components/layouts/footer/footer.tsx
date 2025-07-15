@@ -1,6 +1,6 @@
 import { FooterProps } from './footer.types';
 import { Divider, Subtitle } from '@/components';
-import { ThreadTheme } from '@/functions';
+import { ThreadTheme } from '@/theme';
 import { FacebookLogo, GithubLogo, InstagramLogo, LinkedinLogo, TwitterLogo } from '@phosphor-icons/react';
 import { css, cx } from '@/styled-system/css';
 import { container } from '@/styled-system/patterns';
