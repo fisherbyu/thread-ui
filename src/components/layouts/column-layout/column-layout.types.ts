@@ -12,7 +12,7 @@ export type ColumnLayoutProps = {
 	title?: string;
 	caption?: string;
 	mdcol: 1 | 2 | 3;
-	lgcol: 3 | 4 | 5;
+	lgcol: 2 | 3 | 4 | 5;
 	items: ColumnItem[];
 };
 

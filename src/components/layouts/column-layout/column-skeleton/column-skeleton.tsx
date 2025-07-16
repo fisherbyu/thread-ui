@@ -13,6 +13,7 @@ const gridStyles = cva({
 			3: { gridTemplateColumns: { md: 'repeat(3, minmax(0, 1fr))' } },
 		},
 		lgcol: {
+			2: { gridTemplateColumns: { lg: 'repeat(2, minmax(0, 1fr))' } },
 			3: { gridTemplateColumns: { lg: 'repeat(3, minmax(0, 1fr))' } },
 			4: { gridTemplateColumns: { lg: 'repeat(4, minmax(0, 1fr))' } },
 			5: { gridTemplateColumns: { lg: 'repeat(5, minmax(0, 1fr))' } },
