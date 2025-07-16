@@ -18,8 +18,7 @@ const dividerWeight = cva({
 export const Divider = ({ width, marginY, weight }: DividerProps) => {
 	const styles = {
 		base: css({
-			marginLeft: 'auto',
-			marginRight: 'auto',
+			marginX: 'auto',
 			backgroundColor: 'structure',
 		}),
 		marginY: css({
