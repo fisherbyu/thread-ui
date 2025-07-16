@@ -1,5 +1,4 @@
 import { defineConfig } from '@pandacss/dev';
-import { CONTAINER_STYLES } from './src/defaults';
 import { buttonRecipe } from './src/components/ui/button/button-recipe';
 
 export default defineConfig({
@@ -145,7 +144,14 @@ export default defineConfig({
 			description: 'Standard Container',
 			properties: {},
 			transform(props) {
-				return CONTAINER_STYLES as any;
+				return {
+					width: '100%',
+					marginRight: 'auto',
+					marginLeft: 'auto',
+					maxWidth: '1400px',
+					paddingRight: '2rem',
+					paddingLeft: '2rem',
+				} as any;
 			},
 		},
 	},
