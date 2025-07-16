@@ -1,12 +1,14 @@
 'use client';
 import { FooterProps } from './footer.types';
 import { Divider, Subtitle } from '@/components';
-import { ThreadTheme } from '@/theme';
 import { FacebookLogoIcon, GithubLogoIcon, InstagramLogoIcon, LinkedinLogoIcon, TwitterLogoIcon } from '@phosphor-icons/react';
 import { css, cx } from '@/styled-system/css';
 import { container } from '@/styled-system/patterns';
 
 export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink, githubLink, linkedInLink }: FooterProps) => {
+	const weight = 'bold';
+	const size = 24;
+
 	const styles = {
 		footer: cx(container(), css({ marginX: 'auto' })),
 		footerContents: css({
@@ -14,7 +16,7 @@ export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink
 			flexDirection: 'column',
 			justifyContent: 'center',
 			alignItems: 'center',
-			paddingY: '48px',
+			paddingY: '40px',
 			marginX: 'auto',
 			overflow: 'hidden',
 			maxWidth: '1280px',
@@ -25,10 +27,11 @@ export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink
 		logoBlock: css({
 			display: 'flex',
 			flexDirection: 'row',
-			gap: '4px',
+			gap: '12px',
 			width: '100%',
 			justifyContent: 'center',
 			alignItems: 'center',
+			paddingY: '16px',
 		}),
 		circleStyle: css({
 			display: 'flex',
@@ -41,7 +44,7 @@ export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink
 			height: '48px',
 		}),
 		links: css({
-			color: ThreadTheme.text.standard,
+			color: 'text.standard',
 		}),
 	};
 
@@ -54,27 +57,27 @@ export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink
 				<div className={styles.logoBlock}>
 					{facebookLink && (
 						<a className={styles.links} href={facebookLink}>
-							<FacebookLogoIcon size={32} weight="fill" />
+							<FacebookLogoIcon size={size} weight={weight} />
 						</a>
 					)}
 					{instagramLink && (
 						<a className={styles.links} href={instagramLink}>
-							<InstagramLogoIcon size={32} weight="fill" />
+							<InstagramLogoIcon size={size} weight={weight} />
 						</a>
 					)}
 					{twitterLink && (
 						<a className={styles.links} href={twitterLink}>
-							<TwitterLogoIcon size={32} weight="fill" />
+							<TwitterLogoIcon size={size} weight={weight} />
 						</a>
 					)}
 					{githubLink && (
 						<a className={styles.links} href={githubLink}>
-							<GithubLogoIcon size={32} weight="fill" />
+							<GithubLogoIcon size={size} weight={weight} />
 						</a>
 					)}
 					{linkedInLink && (
 						<a className={styles.links} href={linkedInLink}>
-							<LinkedinLogoIcon size={32} weight="fill" />
+							<LinkedinLogoIcon size={size} weight={weight} />
 						</a>
 					)}
 				</div>
