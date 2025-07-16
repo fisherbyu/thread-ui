@@ -61,6 +61,7 @@ export const ThreadTheme: Theme = {
 		secondary: 'var(--thread-text-secondary)',
 		disabled: 'var(--thread-text-disabled)',
 		accent: 'var(--thread-text-accent)',
+		inverted: 'var(--thread-text-inverted)',
 	},
 
 	// Sizing/Structure
@@ -87,5 +88,6 @@ export const DarkModeVariables: DarkModeColors = {
 		secondary: 'var(--thread-text-secondary-dark-mode)',
 		disabled: 'var(--thread-text-disabled-dark-mode)',
 		accent: 'var(--thread-text-accent-dark-mode)',
+		inverted: 'var(--thread-text-inverted-dark-mode)',
 	},
 };

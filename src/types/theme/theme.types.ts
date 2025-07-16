@@ -12,6 +12,7 @@ export type TextColors = {
 	secondary: string;
 	disabled: string;
 	accent: string;
+	inverted: string;
 };
 
 export type TextColorOptions = keyof TextColors;
