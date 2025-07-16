@@ -132,6 +132,12 @@ export default defineConfig({
 								_dark: 'var(--thread-text-accent-dark-mode)',
 							},
 						},
+						inverted: {
+							value: {
+								base: 'var(--thread-text-inverted)',
+								_dark: 'var(--thread-text-inverted-dark-mode)',
+							},
+						},
 					},
 				},
 			},
