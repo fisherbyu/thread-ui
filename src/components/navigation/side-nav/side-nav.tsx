@@ -10,7 +10,7 @@ import { SideNavProps } from './side-nav.types';
 export const SideNav = ({ logo, links, controls, basePath = '' }: SideNavProps) => {
 	const styles = {
 		navBar: css({
-			width: { base: '16px', lg: '288px' },
+			width: { base: '16px', lg: '175px' },
 			display: 'flex',
 			flexDirection: 'column',
 			gap: '16px',
@@ -18,6 +18,8 @@ export const SideNav = ({ logo, links, controls, basePath = '' }: SideNavProps) 
 		}),
 		linksBlock: css({
 			display: 'flex',
+			width: { base: '100%', lg: '95%' },
+			marginX: 'auto',
 			flexDirection: 'column',
 		}),
 	};
