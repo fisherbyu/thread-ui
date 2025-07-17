@@ -31,8 +31,6 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 		dropdownContent: css({
 			display: 'none',
 			borderWidth: '1px',
-			boxShadow: '0 4px 8px',
-			boxShadowColor: 'gray.200',
 			position: 'absolute',
 			width: 'fit-content',
 			borderRadius: 'md',
@@ -42,10 +40,9 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			left: '50%',
 			transform: 'translateX(-50%)',
 			background: 'background',
+			borderColor: 'structure',
 			_dark: {
 				backgroundColor: 'surface',
-				boxShadow: '0 4px 8px',
-				boxShadowColor: 'black',
 			},
 		}),
 		dropdownContentShow: css({
