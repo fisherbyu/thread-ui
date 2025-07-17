@@ -11,38 +11,51 @@ export const SideNavItem = ({ title, path, icon, onClick, basePath = '' }: SideN
 	const isActive = path === '/' ? currentPath === fullPath : currentPath.startsWith(fullPath);
 
 	const styles = {
-		link: css({
-			display: 'flex',
-			width: { sm: 'fit-content', md: '100%' },
-			alignItems: 'center',
-			paddingX: '16px',
-			paddingY: '12px',
-			borderRadius: 'md',
-			borderStyle: 'solid',
-			borderWidth: 'md',
-			borderColor: { _hover: 'primary.light' },
-		}),
-		linkContents: cva({
+		link: cva({
 			base: {
-				display: { sm: 'none', md: 'block' },
+				display: 'flex',
+				gap: '8px',
+				width: { base: 'fit-content', lg: '75%%' },
+				alignItems: 'center',
+				paddingX: '16px',
+				paddingY: '8px',
+				marginY: '4px',
+				marginX: 'auto',
+				borderWidth: 'md',
+				borderColor: 'background',
+				backgroundColor: 'background',
+				borderRadius: '20px',
+				borderStyle: 'solid',
+				_hover: {
+					borderColor: 'primary.main',
+					color: 'primary.main',
+				},
 			},
 			variants: {
 				isActive: {
 					true: {
-						color: 'primary.main',
+						color: 'text.inverted',
+						backgroundColor: 'primary.main',
+						borderColor: 'primary.main',
+						_hover: { backgroundColor: 'primary.light', color: 'text.inverted' },
 					},
 					false: {
-						color: 'black',
+						color: 'text.standard',
+						backgroundColor: 'background',
 					},
 				},
 			},
 		}),
+		linkContents: css({
+			display: { base: 'none', lg: 'block' },
+			color: 'inherit',
+		}),
 	};
 
 	return (
-		<LinkWrapper link={fullPath} className={styles.link} onClick={onClick}>
-			<Icon color={isActive ? 'primary' : 'black'} name={icon} size={24} />
-			<p className={styles.linkContents({ isActive })}>{title}</p>
+		<LinkWrapper link={fullPath} className={styles.link({ isActive })} onClick={onClick}>
+			<Icon name={icon} size={24} filled={isActive} />
+			<p className={styles.linkContents}>{title}</p>
 		</LinkWrapper>
 	);
 };
