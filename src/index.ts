@@ -8,3 +8,6 @@ export * from './components';
 
 // Export Types
 export * from './types';
+
+// Export Theme
+export * from './theme';
