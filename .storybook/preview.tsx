@@ -2,7 +2,8 @@ import React from 'react';
 import type { Preview } from '@storybook/react';
 import '../src/styles/thread.css';
 import '../src/styles/styles.css';
-import { ThemeProvider, ThreadTheme } from '../src';
+import { ThreadTheme } from '../src';
+import { ThemeProvider } from '../src/client';
 
 const threadConfig = {} as const;
 
