@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui';
 import { InfoCardProps } from './info-card.types';
 import { css } from '@/styled-system/css';
 
@@ -38,6 +39,7 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 		}),
 		caption: css({
 			display: 'flex',
+			gap: '8px',
 			justifyContent: 'flex-start',
 			alignItems: 'center',
 		}),
@@ -54,6 +56,18 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 		}),
 	};
 
+	const renderIcon = () => {
+		if (typeof icon === 'string') {
+			return <Icon name={icon} size={24} />;
+		} else if (icon.type === 'svg') {
+			return <img className={styles.captionIcon} height={23} width={23} src={icon.content} alt="Article Icon" />;
+		} else {
+			<span className={styles.captionIcon} role="img">
+				{JSON.parse(`"${icon.content}"`)}
+			</span>;
+		}
+	};
+
 	return (
 		<div className={styles.card}>
 			<a href={url} className={styles.link}>
@@ -62,13 +76,7 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 				</div>
 				<div className={styles.captionBlock}>
 					<span className={styles.caption}>
-						{icon.type === 'emoji' ? (
-							<span className={styles.captionIcon} role="img">
-								{JSON.parse(`"${icon.content}"`)}
-							</span>
-						) : (
-							<img className={styles.captionIcon} height={23} width={23} src={icon.content} alt="Article Icon" />
-						)}
+						{renderIcon()}
 						<p className={styles.captionText}>{title}</p>
 					</span>
 				</div>
