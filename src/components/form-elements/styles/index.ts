@@ -1,6 +1,6 @@
 import { cva } from '@/styled-system/css';
 
-const baseInputStyles = cva({
+export const baseInputStyles = cva({
 	base: {
 		paddingX: '16px',
 		paddingY: '8px',
