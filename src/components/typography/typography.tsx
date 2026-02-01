@@ -11,7 +11,12 @@ export type TypographyProps = {
 export type TitleProps = TypographyProps & {
 	inline?: boolean;
 };
-export const Title = ({ children, align = 'left', inline = false, color = 'standard' }: TitleProps) => {
+export const Title = ({
+	children,
+	align = 'left',
+	inline = false,
+	color = 'standard',
+}: TitleProps) => {
 	const styles: CSSProperties = {
 		fontSize: '3rem',
 		fontWeight: 700,
@@ -63,7 +68,12 @@ export type TextProps = TypographyProps & {
 	inline?: boolean;
 };
 
-export const Text = ({ children, align = 'left', inline = false, color = 'standard' }: TextProps) => {
+export const Text = ({
+	children,
+	align = 'left',
+	inline = false,
+	color = 'standard',
+}: TextProps) => {
 	const Component = inline ? 'span' : 'p';
 	const styles: CSSProperties = {
 		fontSize: '1rem',
@@ -75,7 +85,11 @@ export const Text = ({ children, align = 'left', inline = false, color = 'standa
 	return <Component style={styles}>{children}</Component>;
 };
 
-export const Subtitle = ({ children, align = 'left', color = 'text-secondary' }: TypographyProps) => {
+export const Subtitle = ({
+	children,
+	align = 'left',
+	color = 'text-secondary',
+}: TypographyProps) => {
 	const styles: CSSProperties = {
 		display: 'block',
 		fontSize: 'clamp(0.875rem, 0.75em, 1.5rem)',
