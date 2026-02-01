@@ -170,7 +170,7 @@ export const MediaCard = ({
 					<Divider />
 				</div>
 				<div className={styles.description}>
-					{detailsPosition === imagePosition && mediaDetails}
+					{detailsPosition !== imagePosition && mediaDetails}
 					<div className={styles.descriptionWrapper}>
 						{description.map((item, index) => (
 							<Text key={index}>{item}</Text>
