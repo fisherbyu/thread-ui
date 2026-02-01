@@ -82,6 +82,11 @@ export type TextProps = TypographyProps & {
 	size?: keyof Omit<UtilitySizes, 'lg'>;
 };
 
+const TEXT_SIZES = {
+	sm: '0.875rem',
+	md: '1rem',
+} as const;
+
 export const Text = ({
 	children,
 	align = 'left',
@@ -92,12 +97,13 @@ export const Text = ({
 }: TextProps) => {
 	const Component = inline ? 'span' : 'p';
 	const styles: CSSProperties = {
-		fontSize: '1rem',
-		fontWeight: 350,
+		fontSize: TEXT_SIZES[size],
+		fontWeight: bold ? 600 : 350,
 		lineHeight: 1.5,
 		textAlign: align,
 		color: getColoredTextColor(color),
 	};
+
 	return <Component style={styles}>{children}</Component>;
 };
 
