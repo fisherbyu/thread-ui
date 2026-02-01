@@ -8,7 +8,7 @@ import { isValidElement } from 'react';
 export const MediaCard = ({
 	description,
 	details,
-	detailsPosition,
+	detailsPosition = 'left',
 	image,
 	imagePosition = 'left',
 	links,
@@ -124,18 +124,35 @@ export const MediaCard = ({
 				lg: 'scroll',
 			},
 		}),
+		details: css({
+			display: 'flex',
+			flexDirection: 'column',
+			gap: '4px',
+		}),
 	};
 
 	const renderLinks = () =>
-		links.map((link, i) =>
+		links.map((link, index) =>
 			isValidElement(link) ? (
 				link
 			) : (
-				<LinkWrapper link={link.url} key={i}>
+				<LinkWrapper link={link.url} key={index}>
 					<Icon name={link.iconName} size={24} />
 				</LinkWrapper>
 			)
 		);
+
+	const mediaDetails = details && (
+		<div className={styles.details}>
+			{details.map((detail, index) => (
+				<span key={index}>
+					<Text>{detail.title}</Text>
+					<Text>{detail.details}</Text>
+				</span>
+			))}
+		</div>
+	);
+
 	return (
 		<div className={styles.container({ size })}>
 			<div className={styles.title}>
@@ -148,16 +165,16 @@ export const MediaCard = ({
 				<div className={styles.imageBlock}>
 					{renderImage(image, undefined, styles.image)}
 					<div className={styles.links}>{renderLinks()}</div>
-					{detailsPosition === imagePosition && <>DETAILS HERE</>}
+					{detailsPosition === imagePosition && mediaDetails}
 				</div>
 				<div className={styles.dividerWrapper}>
 					<Divider />
 				</div>
 				<div className={styles.description}>
-					{detailsPosition === imagePosition && <>DETAILS HERE</>}
+					{detailsPosition === imagePosition && mediaDetails}
 					<div className={styles.descriptionWrapper}>
 						{description.map((item, index) => (
-							<Text>{item}</Text>
+							<Text key={index}>{item}</Text>
 						))}
 					</div>
 				</div>
