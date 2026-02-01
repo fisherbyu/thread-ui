@@ -25,11 +25,11 @@ export const MediaCard = ({
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'center',
-				gap: 2,
+				gap: '12px',
 				marginX: 'auto',
 				padding: {
-					base: 2,
-					lg: 3,
+					base: '16px',
+					lg: '24px',
 				},
 				width: '83%',
 			},
@@ -141,9 +141,11 @@ export const MediaCard = ({
 	return (
 		<div className={styles.container({ size })}>
 			<div className={styles.title}>
-				<H1 align="center">{title}</H1>
+				<H1 align="center" inline>
+					{title}
+				</H1>
 			</div>
-			<Divider />
+			<Divider marginY="8px" />
 			<div className={styles.contents}>
 				<div className={styles.imageBlock}>
 					{renderImage(image, undefined, styles.image)}
