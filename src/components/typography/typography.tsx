@@ -6,17 +6,15 @@ export type TypographyProps = {
 	children: ReactNode;
 	align?: 'left' | 'center';
 	color?: ColoredTextOptions;
-};
-
-export type TitleProps = TypographyProps & {
 	inline?: boolean;
 };
+
 export const Title = ({
 	children,
 	align = 'left',
 	inline = false,
 	color = 'standard',
-}: TitleProps) => {
+}: TypographyProps) => {
 	const styles: CSSProperties = {
 		fontSize: '3rem',
 		fontWeight: 700,
@@ -28,44 +26,55 @@ export const Title = ({
 	return <h1 style={styles}>{children}</h1>;
 };
 
-export const H1 = ({ children, align = 'left', color = 'standard' }: TypographyProps) => {
+export const H1 = ({
+	children,
+	align = 'left',
+	color = 'standard',
+	inline = false,
+}: TypographyProps) => {
 	const styles: CSSProperties = {
 		fontSize: '2rem',
 		fontWeight: 600,
 		lineHeight: 1.3,
-		marginBottom: '32px',
+		marginBottom: inline ? 0 : '32px',
 		textAlign: align,
 		color: getColoredTextColor(color),
 	};
 	return <h1 style={styles}>{children}</h1>;
 };
 
-export const H2 = ({ children, align = 'left', color = 'standard' }: TypographyProps) => {
+export const H2 = ({
+	children,
+	align = 'left',
+	color = 'standard',
+	inline = false,
+}: TypographyProps) => {
 	const styles: CSSProperties = {
 		fontSize: '1.5rem',
 		fontWeight: 600,
 		lineHeight: 1.3,
-		marginBottom: '24px',
+		marginBottom: inline ? 0 : '24px',
 		textAlign: align,
 		color: getColoredTextColor(color),
 	};
 	return <h2 style={styles}>{children}</h2>;
 };
 
-export const H3 = ({ children, align = 'left', color = 'standard' }: TypographyProps) => {
+export const H3 = ({
+	children,
+	align = 'left',
+	color = 'standard',
+	inline = false,
+}: TypographyProps) => {
 	const styles: CSSProperties = {
 		fontSize: '1.25rem',
 		fontWeight: 600,
 		lineHeight: 1.3,
-		marginBottom: '16px',
+		marginBottom: inline ? 0 : '16px',
 		textAlign: align,
 		color: getColoredTextColor(color),
 	};
 	return <h3 style={styles}>{children}</h3>;
-};
-
-export type TextProps = TypographyProps & {
-	inline?: boolean;
 };
 
 export const Text = ({
@@ -73,7 +82,7 @@ export const Text = ({
 	align = 'left',
 	inline = false,
 	color = 'standard',
-}: TextProps) => {
+}: TypographyProps) => {
 	const Component = inline ? 'span' : 'p';
 	const styles: CSSProperties = {
 		fontSize: '1rem',
