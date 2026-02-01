@@ -25,6 +25,15 @@ export type UtilitySizes = {
 
 export type UtilitySizeOptions = keyof UtilitySizes;
 
+export type ExpandedUtilitySizes = UtilitySizes & {
+	xxs: string;
+	xs: string;
+	xl: string;
+	xxl: string;
+};
+
+export type ExpandedUtilitySizeOptions = keyof ExpandedUtilitySizes;
+
 export type Theme = {
 	// Color Palette
 	primary: ColorShades;
