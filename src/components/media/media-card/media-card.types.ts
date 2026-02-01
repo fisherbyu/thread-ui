@@ -1,5 +1,13 @@
+import { ReactElement } from 'react';
 import { IconNames } from '@/components/ui';
 import { ImageProps, UtilitySizeOptions } from '@/types';
+
+type MediaLink =
+	| {
+			iconName: IconNames;
+			url: string;
+	  }
+	| ReactElement;
 
 export type MediaCardProps = {
 	description: string[];
@@ -9,11 +17,8 @@ export type MediaCardProps = {
 	}[];
 	detailsPosition?: 'left' | 'right';
 	image: ImageProps;
-	imagePosition: 'left' | 'right';
-	links: {
-		icon: IconNames;
-		url: string;
-	};
-	size: UtilitySizeOptions;
+	imagePosition?: 'left' | 'right';
+	links: MediaLink[];
+	size?: UtilitySizeOptions;
 	title: string;
 };
