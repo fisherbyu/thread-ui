@@ -1,4 +1,4 @@
-import { ColoredTextOptions } from '@/types';
+import { ColoredTextOptions, UtilitySizeOptions, UtilitySizes } from '@/types';
 import { getColoredTextColor } from '@/utils';
 import { CSSProperties, ReactNode } from 'react';
 
@@ -77,12 +77,19 @@ export const H3 = ({
 	return <h3 style={styles}>{children}</h3>;
 };
 
+export type TextProps = TypographyProps & {
+	bold?: boolean;
+	size?: keyof Omit<UtilitySizes, 'lg'>;
+};
+
 export const Text = ({
 	children,
 	align = 'left',
 	inline = false,
 	color = 'standard',
-}: TypographyProps) => {
+	bold = false,
+	size = 'md',
+}: TextProps) => {
 	const Component = inline ? 'span' : 'p';
 	const styles: CSSProperties = {
 		fontSize: '1rem',
