@@ -124,7 +124,6 @@ export const MediaCard = ({
 				lg: 'scroll',
 			},
 		}),
-		descriptionBlock: css({}),
 	};
 
 	const renderLinks = () =>
