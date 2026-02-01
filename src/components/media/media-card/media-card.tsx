@@ -1,6 +1,5 @@
 import { css, cva } from '@/styled-system/css';
 import { MediaCardProps } from './media-card.types';
-import { center } from '@/styled-system/patterns';
 import { H1, Text } from '@/components/typography';
 import { Divider, Icon } from '@/components/ui';
 import { LinkWrapper, renderImage } from '@/internal-components';
