@@ -131,16 +131,15 @@ export const MediaCard = ({
 		}),
 	};
 
-	const renderLinks = () =>
-		links.map((link, index) =>
-			isValidElement(link) ? (
-				link
-			) : (
-				<LinkWrapper link={link.url} key={index}>
-					<Icon name={link.iconName} size={24} />
-				</LinkWrapper>
-			)
-		);
+	const linksSection = links.map((link, index) =>
+		isValidElement(link) ? (
+			link
+		) : (
+			<LinkWrapper link={link.url} key={index}>
+				<Icon name={link.iconName} size={24} />
+			</LinkWrapper>
+		)
+	);
 
 	const mediaDetails = details && (
 		<div className={styles.details}>
@@ -164,7 +163,7 @@ export const MediaCard = ({
 			<div className={styles.contents}>
 				<div className={styles.imageBlock}>
 					{renderImage(image, undefined, styles.image)}
-					<div className={styles.links}>{renderLinks()}</div>
+					<div className={styles.links}>{linksSection}</div>
 					{detailsPosition === imagePosition && mediaDetails}
 				</div>
 				<div className={styles.dividerWrapper}>
