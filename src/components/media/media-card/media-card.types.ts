@@ -15,7 +15,7 @@ export type MediaCardProps = {
 		title: string;
 		details: string;
 	}[];
-	detailsPosition?: 'left' | 'right';
+	detailsPosition?: 'text' | 'image';
 	image: ImageProps;
 	imagePosition?: 'left' | 'right';
 	links: MediaLink[];
