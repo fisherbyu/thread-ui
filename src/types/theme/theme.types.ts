@@ -76,8 +76,8 @@ export type DarkModeColors = {
 	text: TextColors;
 };
 
-type ThemeConfigBase = Theme & {
+type ThemeConfigFull = Theme & {
 	darkMode: DarkModeColors;
 };
 
-export type ThemeConfig = DeepPartial<ThemeConfigBase>;
+export type ThemeConfig = DeepPartial<ThemeConfigFull>;
