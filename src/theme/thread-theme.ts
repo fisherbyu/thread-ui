@@ -1,18 +1,18 @@
-import { Theme, DarkModeColors } from '@/types';
+import { Theme, ModeColors } from '@/types';
 import { ThemeConfigFull } from '@/types/theme/theme.types';
 
 // Helper Types and Functions
 // Recursivley transform all string values
-type WrapInVar<T> = T extends string
+type VariableWrapper<T> = T extends string
 	? `var(${T})`
 	: T extends object
-		? { [K in keyof T]: WrapInVar<T[K]> }
+		? { [K in keyof T]: VariableWrapper<T[K]> }
 		: T;
 
 // Wrap CSS variable names in var()
-function wrapInVar<T>(obj: T): WrapInVar<T> {
+function wrapInVar<T>(obj: T): VariableWrapper<T> {
 	if (typeof obj === 'string') {
-		return `var(${obj})` as WrapInVar<T>;
+		return `var(${obj})` as VariableWrapper<T>;
 	}
 
 	if (typeof obj === 'object' && obj !== null) {
@@ -23,10 +23,10 @@ function wrapInVar<T>(obj: T): WrapInVar<T> {
 		return result;
 	}
 
-	return obj as WrapInVar<T>;
+	return obj as VariableWrapper<T>;
 }
 
-const ThreadThemeCssNames: Theme = {
+export const ThreadThemeCssNames: Theme = {
 	// Color Palette
 	primary: {
 		light: '--thread-primary-light',
@@ -112,7 +112,7 @@ const ThreadThemeCssNames: Theme = {
 	},
 };
 
-export const DarkModeVariablesCssNames: DarkModeColors = {
+export const DarkModeVariablesCssNames: ModeColors = {
 	// Surfaces
 	background: '--thread-background-dark-mode',
 	surface: '--thread-surface-dark-mode',
@@ -135,5 +135,4 @@ export const ThreadTheme: Theme = wrapInVar<Theme>(ThreadThemeCssNames);
 /**
  * Access object to connect to explicit Dark Mode CSS Theme variables
  */
-export const DarkModeVariables: DarkModeColors =
-	wrapInVar<DarkModeColors>(DarkModeVariablesCssNames);
+export const DarkModeVariables: ModeColors = wrapInVar<ModeColors>(DarkModeVariablesCssNames);
