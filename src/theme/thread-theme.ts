@@ -9,8 +9,8 @@ type VariableWrapper<T> = T extends string
 		? { [K in keyof T]: VariableWrapper<T[K]> }
 		: T;
 
-// Wrap CSS variable names in var()
-function wrapInVar<T>(obj: T): VariableWrapper<T> {
+// Generate CSS Variable name
+function compileVariableName<T>(obj: T): VariableWrapper<T> {
 	if (typeof obj === 'string') {
 		return `var(${obj})` as VariableWrapper<T>;
 	}
@@ -18,7 +18,7 @@ function wrapInVar<T>(obj: T): VariableWrapper<T> {
 	if (typeof obj === 'object' && obj !== null) {
 		const result: any = {};
 		for (const key in obj) {
-			result[key] = wrapInVar(obj[key]);
+			result[key] = compileVariableName(obj[key]);
 		}
 		return result;
 	}
@@ -147,14 +147,16 @@ export const DarkModeVariablesCssNames: ModeColors = {
 /**
  * Access object to connect to active CSS Theme variables
  */
-export const ThreadTheme: Theme = wrapInVar<Theme>(ThreadThemeCssNames);
+export const ThreadTheme: Theme = compileVariableName<Theme>(ThreadThemeCssNames);
 
 /**
  * Access object to connect to explicit Light Mode CSS Theme variables
  */
-export const LightModeVariables: ModeColors = wrapInVar<ModeColors>(DarkModeVariablesCssNames);
+export const LightModeVariables: ModeColors =
+	compileVariableName<ModeColors>(DarkModeVariablesCssNames);
 
 /**
  * Access object to connect to explicit Dark Mode CSS Theme variables
  */
-export const DarkModeVariables: ModeColors = wrapInVar<ModeColors>(DarkModeVariablesCssNames);
+export const DarkModeVariables: ModeColors =
+	compileVariableName<ModeColors>(DarkModeVariablesCssNames);
