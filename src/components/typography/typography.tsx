@@ -1,4 +1,5 @@
-import { ColoredTextOptions, UtilitySizeOptions, UtilitySizes } from '@/types';
+import { ColoredTextOptions } from '@/types';
+import { ExpandedUtilitySizes } from '@/types/theme/theme.types';
 import { getColoredTextColor } from '@/utils';
 import { CSSProperties, ReactNode } from 'react';
 
@@ -79,10 +80,12 @@ export const H3 = ({
 
 export type TextProps = TypographyProps & {
 	bold?: boolean;
-	size?: keyof Omit<UtilitySizes, 'lg'>;
+	size?: keyof Pick<ExpandedUtilitySizes, 'xxs' | 'xs' | 'sm' | 'md'>;
 };
 
 const TEXT_SIZES = {
+	xxs: '0.625rem',
+	xs: '0.75rem',
 	sm: '0.875rem',
 	md: '1rem',
 } as const;
