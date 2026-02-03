@@ -112,12 +112,29 @@ export const ThreadThemeCssNames: Theme = {
 	},
 };
 
+export const LightModeVariablesCssNames: ModeColors = {
+	// Surfaces
+	background: '--thread-background-light-mode',
+	surface: '--thread-surface-light-mode',
+	elevated: '--thread-elevated-light-mode',
+	structure: '--thread-structure-light-mode',
+	// Text
+	text: {
+		standard: '--thread-text-standard-light-mode',
+		secondary: '--thread-text-secondary-light-mode',
+		disabled: '--thread-text-disabled-light-mode',
+		accent: '--thread-text-accent-light-mode',
+		inverted: '--thread-text-inverted-light-mode',
+	},
+};
+
 export const DarkModeVariablesCssNames: ModeColors = {
 	// Surfaces
 	background: '--thread-background-dark-mode',
 	surface: '--thread-surface-dark-mode',
 	elevated: '--thread-elevated-dark-mode',
 	structure: '--thread-structure-dark-mode',
+	// Text
 	text: {
 		standard: '--thread-text-standard-dark-mode',
 		secondary: '--thread-text-secondary-dark-mode',
@@ -131,6 +148,11 @@ export const DarkModeVariablesCssNames: ModeColors = {
  * Access object to connect to active CSS Theme variables
  */
 export const ThreadTheme: Theme = wrapInVar<Theme>(ThreadThemeCssNames);
+
+/**
+ * Access object to connect to explicit Light Mode CSS Theme variables
+ */
+export const LightModeVariables: ModeColors = wrapInVar<ModeColors>(DarkModeVariablesCssNames);
 
 /**
  * Access object to connect to explicit Dark Mode CSS Theme variables
