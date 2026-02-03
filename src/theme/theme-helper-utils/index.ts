@@ -1,24 +1,41 @@
-// Helper Types and Functions
-// Recursivley transform all string values
-type VariableWrapper<T> = T extends string
-	? `var(${T})`
+// Helper Types
+type PrefixedVariable<T, P extends string> = T extends string
+	? `${P}${T}`
 	: T extends object
-		? { [K in keyof T]: VariableWrapper<T[K]> }
+		? { [K in keyof T]: PrefixedVariable<T[K], P> }
 		: T;
 
-// Generate CSS Variable name
-export function compileVariableName<T>(obj: T): VariableWrapper<T> {
-	if (typeof obj === 'string') {
-		return `var(${obj})` as VariableWrapper<T>;
-	}
+type WrappedVariable<T, P extends string> = T extends string
+	? `var(${P}${T})`
+	: T extends object
+		? { [K in keyof T]: WrappedVariable<T[K], P> }
+		: T;
 
+// Separate implementations (no shared generic)
+export function prefixVariables<T, P extends string>(obj: T, prefix: P): PrefixedVariable<T, P> {
+	if (typeof obj === 'string') {
+		return `${prefix}${obj}` as PrefixedVariable<T, P>;
+	}
 	if (typeof obj === 'object' && obj !== null) {
 		const result: any = {};
 		for (const key in obj) {
-			result[key] = compileVariableName(obj[key]);
+			result[key] = prefixVariables(obj[key], prefix);
 		}
 		return result;
 	}
+	return obj as PrefixedVariable<T, P>;
+}
 
-	return obj as VariableWrapper<T>;
+export function wrapVariables<T, P extends string>(obj: T, prefix: P): WrappedVariable<T, P> {
+	if (typeof obj === 'string') {
+		return `var(${prefix}${obj})` as WrappedVariable<T, P>;
+	}
+	if (typeof obj === 'object' && obj !== null) {
+		const result: any = {};
+		for (const key in obj) {
+			result[key] = wrapVariables(obj[key], prefix);
+		}
+		return result;
+	}
+	return obj as WrappedVariable<T, P>;
 }
