@@ -1,108 +1,139 @@
 import { Theme, DarkModeColors } from '@/types';
+import { ThemeConfigFull } from '@/types/theme/theme.types';
 
-/**
- * Access object to connect to active CSS Theme variables
- */
-export const ThreadTheme: Theme = {
+// Helper Types and Functions
+// Recursivley transform all string values
+type WrapInVar<T> = T extends string
+	? `var(${T})`
+	: T extends object
+		? { [K in keyof T]: WrapInVar<T[K]> }
+		: T;
+
+// Wrap CSS variable names in var()
+function wrapInVar<T>(obj: T): WrapInVar<T> {
+	if (typeof obj === 'string') {
+		return `var(${obj})` as WrapInVar<T>;
+	}
+
+	if (typeof obj === 'object' && obj !== null) {
+		const result: any = {};
+		for (const key in obj) {
+			result[key] = wrapInVar(obj[key]);
+		}
+		return result;
+	}
+
+	return obj as WrapInVar<T>;
+}
+
+const ThreadThemeCssNames: Theme = {
 	// Color Palette
 	primary: {
-		light: 'var(--thread-primary-light)',
-		main: 'var(--thread-primary-main)',
-		dark: 'var(--thread-primary-dark)',
+		light: '--thread-primary-light',
+		main: '--thread-primary-main',
+		dark: '--thread-primary-dark',
 	},
 	secondary: {
-		light: 'var(--thread-secondary-light)',
-		main: 'var(--thread-secondary-main)',
-		dark: 'var(--thread-secondary-dark)',
+		light: '--thread-secondary-light',
+		main: '--thread-secondary-main',
+		dark: '--thread-secondary-dark',
 	},
 	tertiary: {
-		light: 'var(--thread-tertiary-light)',
-		main: 'var(--thread-tertiary-main)',
-		dark: 'var(--thread-tertiary-dark)',
+		light: '--thread-tertiary-light',
+		main: '--thread-tertiary-main',
+		dark: '--thread-tertiary-dark',
 	},
 
 	// Neutral Colors
-	white: 'var(--thread-white)',
-	black: 'var(--thread-black)',
+	white: '--thread-white',
+	black: '--thread-black',
 	gray: {
-		light: 'var(--thread-gray-light)',
-		main: 'var(--thread-gray-main)',
-		dark: 'var(--thread-gray-dark)',
+		light: '--thread-gray-light',
+		main: '--thread-gray-main',
+		dark: '--thread-gray-dark',
 	},
 
 	// Status Colors
 	success: {
-		light: 'var(--thread-success-light)',
-		main: 'var(--thread-success-main)',
-		dark: 'var(--thread-success-dark)',
+		light: '--thread-success-light',
+		main: '--thread-success-main',
+		dark: '--thread-success-dark',
 	},
 	warning: {
-		light: 'var(--thread-warning-light)',
-		main: 'var(--thread-warning-main)',
-		dark: 'var(--thread-warning-dark)',
+		light: '--thread-warning-light',
+		main: '--thread-warning-main',
+		dark: '--thread-warning-dark',
 	},
 	error: {
-		light: 'var(--thread-error-light)',
-		main: 'var(--thread-error-main)',
-		dark: 'var(--thread-error-dark)',
+		light: '--thread-error-light',
+		main: '--thread-error-main',
+		dark: '--thread-error-dark',
 	},
 	info: {
-		light: 'var(--thread-info-light)',
-		main: 'var(--thread-info-main)',
-		dark: 'var(--thread-info-dark)',
+		light: '--thread-info-light',
+		main: '--thread-info-main',
+		dark: '--thread-info-dark',
 	},
 
 	// Surface Colors
-	background: 'var(--thread-background)',
-	surface: 'var(--thread-surface)',
-	elevated: 'var(--thread-elevated)',
-	structure: 'var(--thread-structure)',
+	background: '--thread-background',
+	surface: '--thread-surface',
+	elevated: '--thread-elevated',
+	structure: '--thread-structure',
 
 	// Text Colors
 	text: {
-		standard: 'var(--thread-text-standard)',
-		secondary: 'var(--thread-text-secondary)',
-		disabled: 'var(--thread-text-disabled)',
-		accent: 'var(--thread-text-accent)',
-		inverted: 'var(--thread-text-inverted)',
+		standard: '--thread-text-standard',
+		secondary: '--thread-text-secondary',
+		disabled: '--thread-text-disabled',
+		accent: '--thread-text-accent',
+		inverted: '--thread-text-inverted',
 	},
 
 	// Structure
 	breakpoints: {
-		sm: 'var(--thread-breakpoint-sm)',
-		md: 'var(--thread-breakpoint-md)',
-		lg: 'var(--thread-breakpoint-lg)',
-		xl: 'var(--thread-breakpoint-xl)',
-		xxl: 'var(--thread-breakpoint-xxl)',
+		sm: '--thread-breakpoint-sm',
+		md: '--thread-breakpoint-md',
+		lg: '--thread-breakpoint-lg',
+		xl: '--thread-breakpoint-xl',
+		xxl: '--thread-breakpoint-xxl',
 	},
 
 	// Sizing
 	borderRadius: {
-		sm: 'var(--thread-border-radius-sm)',
-		md: 'var(--thread-border-radius-md)',
-		lg: 'var(--thread-border-radius-lg)',
+		sm: '--thread-border-radius-sm',
+		md: '--thread-border-radius-md',
+		lg: '--thread-border-radius-lg',
 	},
 	borderSize: {
-		sm: 'var(--thread-border-size-sm)',
-		md: 'var(--thread-border-size-md)',
-		lg: 'var(--thread-border-size-lg)',
+		sm: '--thread-border-size-sm',
+		md: '--thread-border-size-md',
+		lg: '--thread-border-size-lg',
+	},
+};
+
+export const DarkModeVariablesCssNames: DarkModeColors = {
+	// Surfaces
+	background: '--thread-background-dark-mode',
+	surface: '--thread-surface-dark-mode',
+	elevated: '--thread-elevated-dark-mode',
+	structure: '--thread-structure-dark-mode',
+	text: {
+		standard: '--thread-text-standard-dark-mode',
+		secondary: '--thread-text-secondary-dark-mode',
+		disabled: '--thread-text-disabled-dark-mode',
+		accent: '--thread-text-accent-dark-mode',
+		inverted: '--thread-text-inverted-dark-mode',
 	},
 };
 
 /**
+ * Access object to connect to active CSS Theme variables
+ */
+export const ThreadTheme: Theme = wrapInVar<Theme>(ThreadThemeCssNames);
+
+/**
  * Access object to connect to explicit Dark Mode CSS Theme variables
  */
-export const DarkModeVariables: DarkModeColors = {
-	// Surfaces
-	background: 'var(--thread-background-dark-mode)',
-	surface: 'var(--thread-surface-dark-mode)',
-	elevated: 'var(--thread-elevated-dark-mode)',
-	structure: 'var(--thread-structure-dark-mode)',
-	text: {
-		standard: 'var(--thread-text-standard-dark-mode)',
-		secondary: 'var(--thread-text-secondary-dark-mode)',
-		disabled: 'var(--thread-text-disabled-dark-mode)',
-		accent: 'var(--thread-text-accent-dark-mode)',
-		inverted: 'var(--thread-text-inverted-dark-mode)',
-	},
-};
+export const DarkModeVariables: DarkModeColors =
+	wrapInVar<DarkModeColors>(DarkModeVariablesCssNames);
