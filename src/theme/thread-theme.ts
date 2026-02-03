@@ -1,5 +1,4 @@
 import { Theme, ModeColors } from '@/types';
-import { ThemeConfigFull } from '@/types/theme/theme.types';
 import { wrapVariables } from './theme-helper-utils';
 
 export const THREAD_CSS_VARIABLE_PREFIX = '--thread-' as const;
