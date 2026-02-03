@@ -1,5 +1,6 @@
 import { Theme, DarkModeColors } from '@/types';
 
+// Access object to connect to CSS Variables
 export const ThreadTheme: Theme = {
 	// Color Palette
 	primary: {
@@ -64,7 +65,16 @@ export const ThreadTheme: Theme = {
 		inverted: 'var(--thread-text-inverted)',
 	},
 
-	// Sizing/Structure
+	// Structure
+	breakpoints: {
+		sm: 'var(--thread-breakpoint-sm)',
+		md: 'var(--thread-breakpoint-md)',
+		lg: 'var(--thread-breakpoint-lg)',
+		xl: 'var(--thread-breakpoint-xl)',
+		xxl: 'var(--thread-breakpoint-xxl)',
+	},
+
+	// Sizing
 	borderRadius: {
 		sm: 'var(--thread-border-radius-sm)',
 		md: 'var(--thread-border-radius-md)',

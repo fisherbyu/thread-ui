@@ -65,7 +65,10 @@ export type Theme = {
 	// Text Colors
 	text: TextColors;
 
-	// Sizing/Structure
+	// Structure
+	breakpoints: BreakpointOptions;
+
+	// Sizing
 	borderRadius: UtilitySizes;
 	borderSize: UtilitySizes;
 };
