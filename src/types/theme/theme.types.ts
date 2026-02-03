@@ -84,7 +84,7 @@ export type DarkModeColors = {
 	text: TextColors;
 };
 
-type ThemeConfigFull = Theme & {
+export type ThemeConfigFull = Theme & {
 	darkMode: DarkModeColors;
 };
 
