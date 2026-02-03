@@ -89,6 +89,9 @@ export const ThreadTheme: Theme = {
 	},
 };
 
+/**
+ * Access object to connect to explicit Dark Mode CSS Theme variables
+ */
 export const DarkModeVariables: DarkModeColors = {
 	// Surfaces
 	background: 'var(--thread-background-dark-mode)',
