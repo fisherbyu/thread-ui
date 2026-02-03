@@ -1,6 +1,8 @@
 import { Theme, DarkModeColors } from '@/types';
 
-// Access object to connect to CSS Variables
+/**
+ * Access object to connect to active CSS Theme variables
+ */
 export const ThreadTheme: Theme = {
 	// Color Palette
 	primary: {
