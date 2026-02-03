@@ -68,8 +68,6 @@
 		"@babel/preset-typescript": "^7.26.0",
 		"@jest/globals": "^29.7.0",
 		"@pandacss/dev": "^0.54.0",
-		"@rollup/plugin-commonjs": "^28.0.1",
-		"@rollup/plugin-node-resolve": "^15.3.0",
 		"@storybook/addon-essentials": "^8.4.7",
 		"@storybook/addon-interactions": "^8.4.7",
 		"@storybook/addon-onboarding": "^8.4.7",
