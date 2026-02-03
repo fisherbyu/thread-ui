@@ -3,12 +3,12 @@ import { MediaCardProps } from './media-card.types';
 import { H1, Text } from '@/components/typography';
 import { Divider, Icon } from '@/components/ui';
 import { LinkWrapper, renderImage } from '@/internal-components';
-import { isValidElement } from 'react';
+import { cloneElement, isValidElement } from 'react';
 
 export const MediaCard = ({
 	description,
 	details,
-	detailsPosition = 'left',
+	detailsPosition = 'text',
 	image,
 	imagePosition = 'left',
 	links,
@@ -106,7 +106,8 @@ export const MediaCard = ({
 			marginX: 'auto',
 			alignItems: 'center',
 			justifyContent: 'center',
-			gap: '0.5rem',
+			gap: '0.75rem',
+			display: 'flex',
 			flexDirection: {
 				base: 'column',
 				lg: 'column-reverse',
@@ -133,7 +134,7 @@ export const MediaCard = ({
 
 	const linksSection = links.map((link, index) =>
 		isValidElement(link) ? (
-			link
+			cloneElement(link, { key: index })
 		) : (
 			<LinkWrapper link={link.url} key={index}>
 				<Icon name={link.iconName} size={24} />
@@ -145,8 +146,12 @@ export const MediaCard = ({
 		<div className={styles.details}>
 			{details.map((detail, index) => (
 				<span key={index}>
-					<Text>{detail.title}</Text>
-					<Text>{detail.details}</Text>
+					<Text align="center" size="xs">
+						{detail.title}
+					</Text>
+					<Text align="center" size="xs" bold>
+						{detail.details}
+					</Text>
 				</span>
 			))}
 		</div>
@@ -164,16 +169,18 @@ export const MediaCard = ({
 				<div className={styles.imageBlock}>
 					{renderImage(image, undefined, styles.image)}
 					<div className={styles.links}>{linksSection}</div>
-					{detailsPosition === imagePosition && mediaDetails}
+					{detailsPosition === 'image' && mediaDetails}
 				</div>
 				<div className={styles.dividerWrapper}>
 					<Divider />
 				</div>
 				<div className={styles.description}>
-					{detailsPosition !== imagePosition && mediaDetails}
+					{detailsPosition === 'text' && mediaDetails}
 					<div className={styles.descriptionWrapper}>
 						{description.map((item, index) => (
-							<Text key={index}>{item}</Text>
+							<Text align="center" size="sm" key={index}>
+								{item}
+							</Text>
 						))}
 					</div>
 				</div>
