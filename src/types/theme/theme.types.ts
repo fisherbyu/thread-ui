@@ -39,7 +39,7 @@ export type ExpandedUtilitySizes = UtilitySizes & {
 
 export type ExpandedUtilitySizeOptions = keyof ExpandedUtilitySizes;
 
-export type Theme = {
+export type Theme = ModeColors & {
 	// Color Palette
 	primary: ColorShades;
 	secondary: ColorShades;
@@ -56,15 +56,6 @@ export type Theme = {
 	error: ColorShades;
 	info: ColorShades;
 
-	// Surface Colors
-	background: string;
-	surface: string;
-	elevated: string;
-	structure: string;
-
-	// Text Colors
-	text: TextColors;
-
 	// Structure
 	breakpoints: BreakpointOptions;
 
@@ -73,7 +64,7 @@ export type Theme = {
 	borderSize: UtilitySizes;
 };
 
-export type DarkModeColors = {
+export type ModeColors = {
 	// Surface Colors
 	background: string;
 	surface: string;
@@ -85,7 +76,7 @@ export type DarkModeColors = {
 };
 
 export type ThemeConfigFull = Theme & {
-	darkMode: DarkModeColors;
+	darkMode: ModeColors;
 };
 
 export type ThemeConfig = DeepPartial<ThemeConfigFull>;
