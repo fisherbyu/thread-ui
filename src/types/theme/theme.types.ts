@@ -25,6 +25,11 @@ export type UtilitySizes = {
 
 export type UtilitySizeOptions = keyof UtilitySizes;
 
+export type BreakpointOptions = UtilitySizes & {
+	xl: string;
+	xxl: string;
+};
+
 export type ExpandedUtilitySizes = UtilitySizes & {
 	xxs: string;
 	xs: string;
