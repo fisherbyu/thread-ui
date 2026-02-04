@@ -114,3 +114,4 @@ watch: watch-tailwind ## Alias for watch-tailwind
 .PHONY: theme-css
 theme-css: ## Generate theme CSS from TypeScript
 	$(TSX) $(SCRIPTS_DIR)/generate-default-theme-css.scripts.ts
+	$(PRETTIER) --write src/styles/thread.css
