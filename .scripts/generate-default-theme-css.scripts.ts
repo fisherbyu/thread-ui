@@ -1,10 +1,5 @@
-import { ModeColors, Theme, ThemeConfigFull } from '@/types/theme/theme.types';
-import { DefaultThreadThemeConfig } from '../src/theme/default-thread-theme-config';
-import {
-	ThreadThemeCssNames,
-	DarkModeVariablesCssNames,
-	ThreadTheme,
-} from '../src/theme/thread-theme';
+import { ModeColors, Theme, ThemeConfigFull } from '../src/types/theme/theme.types';
+import { ThreadTheme } from '../src/theme/thread-theme';
 
 const OUTPUT_PATH = 'src/styles/thread.css';
 
