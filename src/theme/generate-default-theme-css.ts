@@ -63,7 +63,7 @@ export const generateDefaultThemeCss = (
 				);
 			});
 		} else if (typeof value === 'string' && typeof variableName === 'string') {
-			genericThemeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`); // Fixed: added opening parenthesis
+			genericThemeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`);
 		}
 	});
 
@@ -84,7 +84,7 @@ export const generateDefaultThemeCss = (
 				);
 			});
 		} else if (typeof value === 'string' && typeof variableName === 'string') {
-			lightModeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`); // Fixed: added opening parenthesis
+			lightModeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`);
 		}
 	});
 
@@ -105,14 +105,76 @@ export const generateDefaultThemeCss = (
 				);
 			});
 		} else if (typeof value === 'string' && typeof variableName === 'string') {
-			darkModeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`); // Fixed: added opening parenthesis
+			darkModeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`);
 		}
 	});
 
 	// Apply Light Mode Colors
-	// modeColorsKeys.forEach((key) => )
+	const appliedLightModeVariables: string[] = [];
 
-	// Apply Dark Mode Colors when Dark Mode Active
+	modeColorsKeys.forEach((key) => {
+		const variableName = ThreadTheme[key];
+		const value = lightModeVariableNames[key];
 
-	// Apply Dark Mode Colors when Dark Mode Applied
+		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+			// Handle Nested Keys
+			Object.keys(value).forEach((nestedKey) => {
+				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
+				const nestedValue = (value as Record<string, string>)[nestedKey];
+				appliedLightModeVariables.push(
+					`${compileCssVariableContent(nestedVariableName, nestedValue, 1, true)}\n`
+				);
+			});
+		} else if (typeof value === 'string' && typeof variableName === 'string') {
+			appliedLightModeVariables.push(
+				`${compileCssVariableContent(variableName, value, 1, true)}\n`
+			);
+		}
+	});
+
+	// Apply Dark Mode Colors when Dark Mode Active or Applied
+	const appliedDarkModeVariables: string[] = [];
+
+	modeColorsKeys.forEach((key) => {
+		const variableName = ThreadTheme[key];
+		const value = lightModeVariableNames[key];
+
+		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+			// Handle Nested Keys
+			Object.keys(value).forEach((nestedKey) => {
+				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
+				const nestedValue = (value as Record<string, string>)[nestedKey];
+				appliedDarkModeVariables.push(
+					`${compileCssVariableContent(nestedVariableName, nestedValue, 1, true)}\n`
+				);
+			});
+		} else if (typeof value === 'string' && typeof variableName === 'string') {
+			appliedDarkModeVariables.push(
+				`${compileCssVariableContent(variableName, value, 1, true)}\n`
+			);
+		}
+	});
+
+	const ROOT_CONFIG = `:root{\n
+    /* Generic Theme Elements */\n
+    ${genericThemeVariables.join('')} \n
+
+    /* Light Mode Values */\n
+    ${lightModeVariables.join('')}\n
+
+    /* Apply Light Mode Colors */\n
+    ${appliedLightModeVariables.join('')}\n
+    }\n`;
+
+	const DARK_MODE_APPLIED = `root[data-theme='dark'] {\n
+    /* Apply Light Mode Colors */\n
+    ${appliedDarkModeVariables.join('')}\n
+    }\n`;
+
+	const DARK_MODE_PREFERRED = `@media (prefers-color-scheme: dark) {\n
+	:root:not([data-theme]) {\n
+		/* Apply Dark Mode Colors */
+		${appliedDarkModeVariables.join('')}\n
+	    }\n
+    }\n`;
 };
