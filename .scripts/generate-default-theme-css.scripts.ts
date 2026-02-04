@@ -169,6 +169,9 @@ export const generateDefaultThemeCss = (
     /* Light Mode Values */
     ${lightModeVariables.join('')}\n
 
+    /* Dark Mode Values */
+    ${darkModeVariables.join('')}\n
+
     /* Apply Light Mode Colors */
     ${appliedLightModeVariables.join('')}\n
     }\n`;
