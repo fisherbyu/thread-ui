@@ -9,7 +9,7 @@ STORYBOOK := $(NPX) storybook
 JEST := $(NPX) jest
 CONCURRENTLY := $(NPX) concurrently
 TSX := $(NPX) tsx
-SCRIPTS_DIR := .scripts
+PRETTIER := $(NPX) prettier
 
 # Directories
 DIST_DIR := dist
@@ -18,6 +18,7 @@ STYLED_SYSTEM_SRC := $(SRC_DIR)/styled-system
 STYLED_SYSTEM_DIST := $(DIST_DIR)/styled-system
 STYLES_SRC := $(SRC_DIR)/styles
 STYLES_DIST := $(DIST_DIR)/styles
+SCRIPTS_DIR := .scripts
 
 # Files
 PANDA_CSS := $(STYLES_SRC)/panda.css
