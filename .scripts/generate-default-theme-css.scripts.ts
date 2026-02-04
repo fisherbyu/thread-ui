@@ -181,7 +181,7 @@ export const generateDefaultThemeCss = (
     ${appliedDarkModeVariables.join('')}\n
     }\n`;
 
-	const DARK_MODE_PREFERRED = `@media (prefers-color-scheme: dark) {\n
+	const DARK_MODE_PREFERRED = `\n@media (prefers-color-scheme: dark) {\n
 	:root:not([data-theme]) {\n
 		/* Apply Dark Mode Colors */
 		${appliedDarkModeVariables.join('')}\n
