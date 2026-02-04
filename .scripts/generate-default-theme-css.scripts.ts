@@ -173,7 +173,7 @@ export const generateDefaultThemeCss = (
     ${appliedLightModeVariables.join('')}\n
     }\n`;
 
-	const DARK_MODE_APPLIED = `root[data-theme='dark'] {\n
+	const DARK_MODE_APPLIED = `:root[data-theme='dark'] {\n
     /* Apply Dark Mode Colors */
     ${appliedDarkModeVariables.join('')}\n
     }\n`;
