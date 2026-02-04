@@ -84,6 +84,25 @@ export const generateDefaultThemeCss = (
 	});
 
 	// Generate Dark Mode Variables
+	const darkModeVariables: string[] = [];
+
+	lightModeKeys.forEach((key) => {
+		const variableName = darkModeVariableNames[key];
+		const value = defaultThemeConfig[key];
+
+		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+			// Handle Nested Keys
+			Object.keys(value).forEach((nestedKey) => {
+				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
+				const nestedValue = (value as Record<string, string>)[nestedKey];
+				darkModeVariables.push(
+					`${compileCssVariableContent(nestedVariableName, nestedValue, 1)}\n`
+				);
+			});
+		} else if (typeof value === 'string' && typeof variableName === 'string') {
+			darkModeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`); // Fixed: added opening parenthesis
+		}
+	});
 
 	// Apply Light Mode Colors
 
