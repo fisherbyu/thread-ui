@@ -166,15 +166,15 @@ export const generateDefaultThemeCss = (
     /* Generic Theme Elements */
     ${genericThemeVariables.join('')} \n
 
-    /* Light Mode Values */\n
+    /* Light Mode Values */
     ${lightModeVariables.join('')}\n
 
-    /* Apply Light Mode Colors */\n
+    /* Apply Light Mode Colors */
     ${appliedLightModeVariables.join('')}\n
     }\n`;
 
 	const DARK_MODE_APPLIED = `root[data-theme='dark'] {\n
-    /* Apply Light Mode Colors */\n
+    /* Apply Dark Mode Colors */
     ${appliedDarkModeVariables.join('')}\n
     }\n`;
 
