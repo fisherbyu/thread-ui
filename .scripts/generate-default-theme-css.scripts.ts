@@ -1,6 +1,12 @@
+import { writeFileSync } from 'fs';
+
 import { ModeColors, Theme, ThemeConfigFull } from '../src/types/theme/theme.types';
 import { ThreadTheme } from '../src/theme/thread-theme';
-
+import { DefaultThreadThemeConfig } from '../src/theme/default-thread-theme-config.ts';
+import {
+	LightModeVariablesCssNames,
+	DarkModeVariablesCssNames,
+} from '../src/theme/thread-theme.ts';
 const OUTPUT_PATH = 'src/styles/thread.css';
 
 const compileCssVariableContent = (
@@ -179,5 +185,15 @@ export const generateDefaultThemeCss = (
 	    }\n
     }\n`;
 
-	const THREAD_CSS = ROOT_CONFIG + DARK_MODE_APPLIED + DARK_MODE_PREFERRED;
+	return ROOT_CONFIG + DARK_MODE_APPLIED + DARK_MODE_PREFERRED;
 };
+
+const css = generateDefaultThemeCss(
+	DefaultThreadThemeConfig,
+	ThreadTheme,
+	LightModeVariablesCssNames,
+	DarkModeVariablesCssNames
+);
+
+writeFileSync(OUTPUT_PATH, css, 'utf-8');
+console.log(`✓ Generated theme CSS at ${OUTPUT_PATH}`);
