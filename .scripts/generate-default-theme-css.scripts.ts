@@ -1,23 +1,21 @@
 import { writeFileSync } from 'fs';
 
 import { ModeColors, Theme, ThemeConfigFull } from '../src/types/theme/theme.types';
-import { ThreadTheme } from '../src/theme/thread-theme';
+import { PrefixedDarkModeVariables, PrefixedLightModeVariables } from '../src/theme/thread-theme';
 import { DefaultThreadThemeConfig } from '../src/theme/default-thread-theme-config.ts';
-import {
-	LightModeVariablesCssNames,
-	DarkModeVariablesCssNames,
-} from '../src/theme/thread-theme.ts';
+import { PrefixedThemeVariables } from '../src/theme/thread-theme.ts';
+
 const OUTPUT_PATH = 'src/styles/thread.css';
 
 const compileCssVariableContent = (
 	cssVariableName: string,
 	value: string,
 	indentLevel: number,
-	wrapVar = false
+	wrapVal = false
 ) => {
 	const indent = ' '.repeat(4 * indentLevel);
 
-	if (wrapVar) {
+	if (wrapVal) {
 		value = `var(${value})`;
 	}
 
@@ -120,7 +118,7 @@ export const generateDefaultThemeCss = (
 	const appliedLightModeVariables: string[] = [];
 
 	modeColorsKeys.forEach((key) => {
-		const variableName = ThreadTheme[key];
+		const variableName = PrefixedThemeVariables[key];
 		const value = lightModeVariableNames[key];
 
 		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
@@ -143,7 +141,7 @@ export const generateDefaultThemeCss = (
 	const appliedDarkModeVariables: string[] = [];
 
 	modeColorsKeys.forEach((key) => {
-		const variableName = ThreadTheme[key];
+		const variableName = PrefixedThemeVariables[key];
 		const value = lightModeVariableNames[key];
 
 		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
@@ -162,8 +160,10 @@ export const generateDefaultThemeCss = (
 		}
 	});
 
-	const ROOT_CONFIG = `:root{\n
-    /* Generic Theme Elements */\n
+	const ROOT_CONFIG = `
+    /* Custom Theme Implementation */
+    :root{
+    /* Generic Theme Elements */
     ${genericThemeVariables.join('')} \n
 
     /* Light Mode Values */\n
@@ -190,9 +190,9 @@ export const generateDefaultThemeCss = (
 
 const css = generateDefaultThemeCss(
 	DefaultThreadThemeConfig,
-	ThreadTheme,
-	LightModeVariablesCssNames,
-	DarkModeVariablesCssNames
+	PrefixedThemeVariables,
+	PrefixedLightModeVariables,
+	PrefixedDarkModeVariables
 );
 
 writeFileSync(OUTPUT_PATH, css, 'utf-8');
