@@ -89,7 +89,7 @@ export const ThreadThemeBaseCssNames: Theme = {
 	},
 };
 
-export const LightModeVariablesCssNames: ModeColors = {
+export const LightModeVariablesBaseCssNames: ModeColors = {
 	// Surfaces
 	background: 'background-light-mode',
 	surface: 'surface-light-mode',
@@ -105,7 +105,7 @@ export const LightModeVariablesCssNames: ModeColors = {
 	},
 };
 
-export const DarkModeVariablesCssNames: ModeColors = {
+export const DarkModeVariablesBaseCssNames: ModeColors = {
 	// Surfaces
 	background: 'background-dark-mode',
 	surface: 'surface-dark-mode',
@@ -129,18 +129,14 @@ export const ThreadTheme: Theme = wrapVariables(
 	THREAD_CSS_VARIABLE_PREFIX
 );
 
-/**
- * Access object to connect to explicit Light Mode CSS Theme variables
- */
+// Access object to connect to explicit Light Mode CSS Theme variables
 export const LightModeVariables: ModeColors = wrapVariables(
-	DarkModeVariablesCssNames,
+	DarkModeVariablesBaseCssNames,
 	THREAD_CSS_VARIABLE_PREFIX
 );
 
-/**
- * Access object to connect to explicit Dark Mode CSS Theme variables
- */
+// Access object to connect to explicit Dark Mode CSS Theme variables
 export const DarkModeVariables: ModeColors = wrapVariables(
-	DarkModeVariablesCssNames,
+	DarkModeVariablesBaseCssNames,
 	THREAD_CSS_VARIABLE_PREFIX
 );
