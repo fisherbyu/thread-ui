@@ -140,8 +140,18 @@ export const LightModeVariables: ModeColors = wrapVariables(
 	THREAD_CSS_VARIABLE_PREFIX
 );
 
+export const PrefixedLightModeVariables: ModeColors = prefixVariables(
+	DarkModeVariablesBaseCssNames,
+	THREAD_CSS_VARIABLE_PREFIX
+);
+
 // Access object to connect to explicit Dark Mode CSS Theme variables
 export const DarkModeVariables: ModeColors = wrapVariables(
+	DarkModeVariablesBaseCssNames,
+	THREAD_CSS_VARIABLE_PREFIX
+);
+
+export const PrefixedDarkModeVariables: ModeColors = prefixVariables(
 	DarkModeVariablesBaseCssNames,
 	THREAD_CSS_VARIABLE_PREFIX
 );
