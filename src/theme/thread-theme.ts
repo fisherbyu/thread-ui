@@ -3,7 +3,7 @@ import { wrapVariables } from './theme-helper-utils';
 
 export const THREAD_CSS_VARIABLE_PREFIX = '--thread-' as const;
 
-export const ThreadThemeCssNames: Theme = {
+export const ThreadThemeBaseCssNames: Theme = {
 	// Color Palette
 	primary: {
 		light: 'primary-light',
@@ -124,7 +124,10 @@ export const DarkModeVariablesCssNames: ModeColors = {
 /**
  * Access object to connect to active CSS Theme variables
  */
-export const ThreadTheme: Theme = wrapVariables(ThreadThemeCssNames, THREAD_CSS_VARIABLE_PREFIX);
+export const ThreadTheme: Theme = wrapVariables(
+	ThreadThemeBaseCssNames,
+	THREAD_CSS_VARIABLE_PREFIX
+);
 
 /**
  * Access object to connect to explicit Light Mode CSS Theme variables
