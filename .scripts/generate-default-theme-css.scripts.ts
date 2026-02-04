@@ -98,7 +98,7 @@ export const generateDefaultThemeCss = (
 
 	darkModeKeys.forEach((key) => {
 		const variableName = darkModeVariableNames[key];
-		const value = defaultThemeConfig[key];
+		const value = defaultThemeConfig['darkMode'][key];
 
 		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
 			// Handle Nested Keys
