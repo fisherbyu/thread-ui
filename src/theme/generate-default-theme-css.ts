@@ -5,9 +5,14 @@ import { ThreadThemeCssNames, DarkModeVariablesCssNames, ThreadTheme } from './t
 const compileCssVariableContent = (
 	cssVariableName: string,
 	value: string,
-	indentLevel: number = 1
+	indentLevel: number,
+	wrapVar = false
 ) => {
 	const indent = ' '.repeat(4 * indentLevel);
+
+	if (wrapVar) {
+		value = `var(${value})`;
+	}
 
 	return `${indent}${cssVariableName}: ${value};`;
 };
@@ -105,6 +110,7 @@ export const generateDefaultThemeCss = (
 	});
 
 	// Apply Light Mode Colors
+	// modeColorsKeys.forEach((key) => )
 
 	// Apply Dark Mode Colors when Dark Mode Active
 
