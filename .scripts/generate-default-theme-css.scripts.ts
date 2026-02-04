@@ -142,7 +142,7 @@ export const generateDefaultThemeCss = (
 
 	modeColorsKeys.forEach((key) => {
 		const variableName = PrefixedThemeVariables[key];
-		const value = lightModeVariableNames[key];
+		const value = darkModeVariableNames[key];
 
 		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
 			// Handle Nested Keys
