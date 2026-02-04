@@ -47,8 +47,8 @@
 	--thread-text-standard-light-mode: #1f2937;
 	--thread-text-secondary-light-mode: #4b5563;
 	--thread-text-disabled-light-mode: #9ca3af;
-	--thread-text-accent-light-mode: var(--thread-primary-main);
-	--thread-text-inverted-light-mode: var(--thread-text-standard-dark-mode);
+	--thread-text-accent-light-mode: #3c5c49;
+	--thread-text-inverted-light-mode: #f9fafb;
 
 	/* Dark Mode Colors */
 	--thread-background-dark-mode: #121212;
