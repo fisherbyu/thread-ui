@@ -1,6 +1,6 @@
 import { ModeColors, Theme, ThemeConfigFull } from '@/types/theme/theme.types';
 import { DefaultThreadThemeConfig } from './default-thread-theme-config';
-import { ThreadThemeCssNames, DarkModeVariablesCssNames } from './thread-theme';
+import { ThreadThemeCssNames, DarkModeVariablesCssNames, ThreadTheme } from './thread-theme';
 
 const compileCssVariableContent = (
 	cssVariableName: string,
@@ -27,6 +27,24 @@ export const generateDefaultThemeCss = (
 			!(key in lightModeVariableNames) && key !== 'darkMode'
 	);
 
+	genericThemeKeys.forEach((key) => {
+		const variableName = ThreadTheme[key];
+		const value = defaultThemeConfig[key];
+
+		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+			// Handle Nested Keys
+			Object.keys(value).forEach((nestedKey) => {
+				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
+				const nestedValue = (value as Record<string, string>)[nestedKey];
+				genericThemeVariables.push(
+					`${compileCssVariableContent(nestedVariableName, nestedValue, 1)}\n`
+				);
+			});
+		} else if (typeof value === 'string' && typeof variableName === 'string') {
+			genericThemeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`); // Fixed: added opening parenthesis
+		}
+	});
+
 	// Generate Light Mode Variables
 
 	// Generate Dark Mode Variables
@@ -37,15 +55,3 @@ export const generateDefaultThemeCss = (
 
 	// Apply Dark Mode Colors when Dark Mode Applied
 };
-
-const cssVarNames: ThemeConfigFull = {
-	...ThreadThemeCssNames,
-	darkMode: DarkModeVariablesCssNames,
-};
-
-// const css = generateDefaultThemeCss(
-// 	DefaultThreadThemeConfig,
-// 	cssVarNames,
-// 	['background', 'surface', 'elevated', 'structure', 'text'],
-// 	['darkMode']
-// );
