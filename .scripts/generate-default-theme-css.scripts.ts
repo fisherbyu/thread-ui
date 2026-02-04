@@ -96,7 +96,7 @@ export const generateDefaultThemeCss = (
 	// Generate Dark Mode Variables
 	const darkModeVariables: string[] = [];
 
-	lightModeKeys.forEach((key) => {
+	darkModeKeys.forEach((key) => {
 		const variableName = darkModeVariableNames[key];
 		const value = defaultThemeConfig[key];
 
