@@ -18,8 +18,7 @@ export const generateDefaultThemeCss = (
 	lightModeVariableNames: ModeColors,
 	darkModeVariableNames: ModeColors
 ) => {
-	// Generate Basic Theme Variables
-	const genericThemeVariables: string[] = []; // CSS Variable names and values. Ex: --thread-primary-light: #5a7d6a;
+	// Break Down Keys
 	const genericThemeKeys: Array<Exclude<keyof ThemeConfigFull, keyof ModeColors | 'darkMode'>> = (
 		Object.keys(defaultThemeConfig) as (keyof ThemeConfigFull)[]
 	).filter(
@@ -27,8 +26,26 @@ export const generateDefaultThemeCss = (
 			!(key in lightModeVariableNames) && key !== 'darkMode'
 	);
 
+	const lightModeKeys: Array<keyof ModeColors> = Object.keys(
+		lightModeVariableNames
+	) as (keyof ModeColors)[];
+
+	const darkModeKeys: Array<keyof ModeColors> = Object.keys(
+		darkModeVariableNames
+	) as (keyof ModeColors)[];
+
+	const modeColorsKeys: Array<Extract<keyof ThemeConfigFull, keyof ModeColors>> = (
+		Object.keys(defaultThemeConfig) as (keyof ThemeConfigFull)[]
+	).filter(
+		(key): key is Extract<keyof ThemeConfigFull, keyof ModeColors> =>
+			key in lightModeVariableNames
+	);
+
+	// Generate Basic Theme Variables
+	const genericThemeVariables: string[] = []; // CSS Variable names and values. Ex: --thread-primary-light: #5a7d6a;
+
 	genericThemeKeys.forEach((key) => {
-		const variableName = ThreadTheme[key];
+		const variableName = themeVariableNames[key];
 		const value = defaultThemeConfig[key];
 
 		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
@@ -46,6 +63,25 @@ export const generateDefaultThemeCss = (
 	});
 
 	// Generate Light Mode Variables
+	const lightModeVariables: string[] = [];
+
+	lightModeKeys.forEach((key) => {
+		const variableName = lightModeVariableNames[key];
+		const value = defaultThemeConfig[key];
+
+		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+			// Handle Nested Keys
+			Object.keys(value).forEach((nestedKey) => {
+				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
+				const nestedValue = (value as Record<string, string>)[nestedKey];
+				lightModeVariables.push(
+					`${compileCssVariableContent(nestedVariableName, nestedValue, 1)}\n`
+				);
+			});
+		} else if (typeof value === 'string' && typeof variableName === 'string') {
+			lightModeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`); // Fixed: added opening parenthesis
+		}
+	});
 
 	// Generate Dark Mode Variables
 
