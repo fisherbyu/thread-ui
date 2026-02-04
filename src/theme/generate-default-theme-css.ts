@@ -177,4 +177,6 @@ export const generateDefaultThemeCss = (
 		${appliedDarkModeVariables.join('')}\n
 	    }\n
     }\n`;
+
+	const THREAD_CSS = ROOT_CONFIG + DARK_MODE_APPLIED + DARK_MODE_PREFERRED;
 };
