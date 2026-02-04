@@ -1,5 +1,5 @@
 import { Theme, ModeColors } from '@/types';
-import { wrapVariables } from './theme-helper-utils';
+import { prefixVariables, wrapVariables } from './theme-helper-utils';
 
 export const THREAD_CSS_VARIABLE_PREFIX = '--thread-' as const;
 
@@ -120,6 +120,11 @@ export const DarkModeVariablesBaseCssNames: ModeColors = {
 		inverted: 'text-inverted-dark-mode',
 	},
 };
+
+export const PrefixedThemeVariables: Theme = prefixVariables(
+	ThreadThemeBaseCssNames,
+	THREAD_CSS_VARIABLE_PREFIX
+);
 
 /**
  * Access object to connect to active CSS Theme variables
