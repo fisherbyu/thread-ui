@@ -2,6 +2,8 @@ import { ModeColors, Theme, ThemeConfigFull } from '@/types/theme/theme.types';
 import { DefaultThreadThemeConfig } from './default-thread-theme-config';
 import { ThreadThemeCssNames, DarkModeVariablesCssNames, ThreadTheme } from './thread-theme';
 
+const OUTPUT_PATH = 'src/styles/thread.css';
+
 const compileCssVariableContent = (
 	cssVariableName: string,
 	value: string,
