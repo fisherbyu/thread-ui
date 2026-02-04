@@ -1,5 +1,6 @@
 /* Custom Theme Implementation */
 :root {
+	/* Generic Theme Elements */
 	--thread-primary-light: #5a7d6a;
 	--thread-primary-main: #3c5c49;
 	--thread-primary-dark: #2a4535;
