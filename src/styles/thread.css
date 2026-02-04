@@ -34,6 +34,11 @@
 	--thread-info-light: #93c5fd;
 	--thread-info-main: #3b82f6;
 	--thread-info-dark: #1d4ed8;
+	--thread-breakpoint-sm: 0;
+	--thread-breakpoint-md: 768;
+	--thread-breakpoint-lg: 1024;
+	--thread-breakpoint-xl: 1280;
+	--thread-breakpoint-xxl: 1536;
 
 	--thread-border-radius-sm: 0.25rem;
 	--thread-border-radius-md: 0.375rem;
@@ -42,12 +47,6 @@
 	--thread-border-size-sm: 1px;
 	--thread-border-size-md: 2px;
 	--thread-border-size-lg: 3px;
-
-	--thread-breakpoint-sm: 0;
-	--thread-breakpoint-md: 768;
-	--thread-breakpoint-lg: 1024;
-	--thread-breakpoint-xl: 1280;
-	--thread-breakpoint-xxl: 1536;
 
 	/* Light Mode Colors */
 	--thread-background-light-mode: #ffffff;
