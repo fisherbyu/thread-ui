@@ -8,6 +8,8 @@ TAILWIND := $(NPX) tailwindcss
 STORYBOOK := $(NPX) storybook
 JEST := $(NPX) jest
 CONCURRENTLY := $(NPX) concurrently
+TSX := $(NPX) tsx
+SCRIPTS_DIR := .scripts
 
 # Directories
 DIST_DIR := dist
@@ -65,7 +67,7 @@ build-css: | $(STYLES_DIST) ## Build and copy CSS files
 	cp $(PANDA_CSS) $(STYLES_DIST)/panda.css
 
 .PHONY: build
-build: clean panda-prepare typescript $(STYLED_SYSTEM_DIST) panda-css build-css ## Full build pipeline
+build: clean panda-prepare theme-css typescript $(STYLED_SYSTEM_DIST) panda-css build-css ## Full build pipeline
 	@echo "Build complete!"
 
 .PHONY: watch-tailwind
@@ -107,3 +109,7 @@ dev: clean build ## Clean build for development
 
 .PHONY: watch
 watch: watch-tailwind ## Alias for watch-tailwind
+
+.PHONY: theme-css
+theme-css: ## Generate theme CSS from TypeScript
+	$(TSX) $(SCRIPTS_DIR)/generate-default-theme-css.scripts.ts
