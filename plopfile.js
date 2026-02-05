@@ -24,10 +24,22 @@ module.exports = function (plop) {
             },
             {
                 type: 'list',
-                name: 'parentDir',
+                name: 'dirChoice',
                 message: 'Which components directory?',
-                choices: getComponentDirs,
+                choices: (answers) => [
+                    ...getComponentDirs(),
+                    '+ Create new directory',
+                ],
                 when: (answers) => answers.buildType === 'Component',
+            },
+            {
+                type: 'input',
+                name: 'newDirName',
+                message: 'New directory name (kebab-case):',
+                when: (answers) => answers.dirChoice === '+ Create new directory',
+                validate: (value) =>
+                    /^[a-z][a-z0-9]*(-[a-z0-9]+)*$/.test(value) ||
+                    'Directory name must be kebab-case',
             },
             {
                 type: 'input',
@@ -39,12 +51,29 @@ module.exports = function (plop) {
             },
         ],
         actions: (answers) => {
-            const { parentDir, componentName } = answers;
+            const { dirChoice, newDirName, componentName } = answers;
+
+            // Determine parent directory (either selected or new)
+            const parentDir = dirChoice === '+ Create new directory'
+                ? newDirName
+                : dirChoice;
 
             const kebabName = plop.getHelper('kebabCase')(componentName);
             const basePath = `src/components/${parentDir}/${kebabName}`;
+            const parentIndexPath = `src/components/${parentDir}/index.ts`;
 
-            return [
+            const actions = [];
+
+            // Create parent directory index.ts if it doesn't exist
+            actions.push({
+                type: 'add',
+                path: parentIndexPath,
+                templateFile: '.plop-templates/parent-index.hbs',
+                skipIfExists: true,
+            });
+
+            // Create component files
+            actions.push(
                 {
                     type: 'add',
                     path: `${basePath}/${kebabName}.types.ts`,
@@ -59,14 +88,18 @@ module.exports = function (plop) {
                     type: 'add',
                     path: `${basePath}/index.ts`,
                     templateFile: '.plop-templates/index.hbs',
-                },
-                {
-                    type: 'append',
-                    path: `src/components/${parentDir}/index.ts`,
-                    pattern: /$/,
-                    template: `export * from './${kebabName}';`,
-                },
-            ];
+                }
+            );
+
+            // Append export to parent index.ts
+            actions.push({
+                type: 'append',
+                path: parentIndexPath,
+                pattern: /$/,
+                template: `export * from './${kebabName}';`,
+            });
+
+            return actions;
         },
     });
 };
