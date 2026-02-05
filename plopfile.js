@@ -48,17 +48,17 @@ module.exports = function (plop) {
                 {
                     type: 'add',
                     path: `${basePath}/${kebabName}.types.ts`,
-                    templateFile: 'plop-templates/component.types.hbs',
+                    templateFile: '.plop-templates/component.types.hbs',
                 },
                 {
                     type: 'add',
                     path: `${basePath}/${kebabName}.tsx`,
-                    templateFile: 'plop-templates/component.tsx.hbs',
+                    templateFile: '.plop-templates/component.tsx.hbs',
                 },
                 {
                     type: 'add',
                     path: `${basePath}/index.ts`,
-                    templateFile: 'plop-templates/index.hbs',
+                    templateFile: '.plop-templates/index.hbs',
                 },
                 {
                     type: 'append',
