@@ -6,7 +6,6 @@ TSC_ALIAS := $(NPX) tsc-alias
 POSTCSS := $(NPX) postcss
 TAILWIND := $(NPX) tailwindcss
 STORYBOOK := $(NPX) storybook
-JEST := $(NPX) jest
 CONCURRENTLY := $(NPX) concurrently
 TSX := $(NPX) tsx
 PRETTIER := $(NPX) prettier
@@ -39,16 +38,15 @@ help: ## Show this help message
 clean: ## Remove build artifacts
 	rm -rf $(DIST_DIR)
 
-.PHONY: panda-prepare
-panda-prepare: ## Generate Panda CSS codegen
+.PHONY: prepare-panda
+prepare-panda: ## Generate Panda CSS codegen and copy to dist
 	$(PANDA) codegen
+	mkdir -p $(DIST_DIR)
+	cp -r $(STYLED_SYSTEM_SRC) $(STYLED_SYSTEM_DIST)
 
 .PHONY: panda-css
 panda-css: ## Generate Panda CSS output file
 	$(PANDA) cssgen --outfile $(PANDA_CSS)
-
-$(STYLED_SYSTEM_DIST): $(STYLED_SYSTEM_SRC) | $(DIST_DIR)
-	cp -r $(STYLED_SYSTEM_SRC) $(STYLED_SYSTEM_DIST)
 
 $(DIST_DIR):
 	mkdir -p $(DIST_DIR)
@@ -57,7 +55,7 @@ $(STYLES_DIST):
 	mkdir -p $(STYLES_DIST)
 
 .PHONY: typescript
-typescript: panda-prepare ## Compile TypeScript
+typescript: prepare-panda ## Compile TypeScript
 	$(TSC)
 	$(TSC_ALIAS)
 
@@ -68,34 +66,17 @@ build-css: | $(STYLES_DIST) ## Build and copy CSS files
 	cp $(PANDA_CSS) $(STYLES_DIST)/panda.css
 
 .PHONY: build
-build: clean panda-prepare theme-css typescript $(STYLED_SYSTEM_DIST) panda-css build-css ## Full build pipeline
+build: clean prepare-panda theme-css typescript panda-css build-css ## Full build pipeline
 	@echo "Build complete!"
 
 .PHONY: watch-tailwind
 watch-tailwind: ## Watch and build Tailwind CSS
 	$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch
 
-.PHONY: test
-test: ## Run Jest tests
-	$(JEST)
-
 .PHONY: storybook
 storybook: ## Run Storybook dev server (with Tailwind watch)
 	$(CONCURRENTLY) "make watch-tailwind" "$(STORYBOOK) dev -p 6006"
 
-.PHONY: storybook-build
-storybook-build: ## Build Storybook
-	$(STORYBOOK) build
-
-.PHONY: pack
-pack: ## Create npm package
-	npm pack
-
-.PHONY: pack-dev
-pack-dev: build ## Build and pack for development
-	npm pack
-	mkdir -p $(DIST_DIR)
-	mv thread-ui-*.tgz $(DIST_DIR)/
 
 .PHONY: prepare-publish
 prepare-publish: build ## Prepare for publishing
@@ -105,9 +86,6 @@ weave: prepare-publish ## Build and push to yalc
 	$(NPX) yalc push
 
 # Development helpers
-.PHONY: dev
-dev: clean build ## Clean build for development
-
 .PHONY: watch
 watch: watch-tailwind ## Alias for watch-tailwind
 
