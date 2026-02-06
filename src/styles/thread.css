@@ -1,105 +1,71 @@
 /* Custom Theme Implementation */
 :root {
-	/* Complete Theme Definition */
-	/* Theme Color Pallette */
-	/* Primary */
+	/* Generic Theme Elements */
 	--thread-primary-light: #5a7d6a;
 	--thread-primary-main: #3c5c49;
 	--thread-primary-dark: #2a4535;
-
-	/* Secondary */
 	--thread-secondary-light: #7a97b2;
 	--thread-secondary-main: #546f8d;
 	--thread-secondary-dark: #3b526a;
-
-	/* Tertiary */
 	--thread-tertiary-light: #8c7389;
 	--thread-tertiary-main: #6a546a;
 	--thread-tertiary-dark: #4a3a4a;
-
-	/* Neutrals */
 	--thread-white: #ffffff;
 	--thread-black: #121212;
 	--thread-gray-light: #e5e7eb;
 	--thread-gray-main: #9ca3af;
 	--thread-gray-dark: #4b5563;
-
-	/* Status Colors */
-	/* Success */
 	--thread-success-light: #86efac;
 	--thread-success-main: #22c55e;
 	--thread-success-dark: #15803d;
-
-	/* Warning */
 	--thread-warning-light: #fde68a;
 	--thread-warning-main: #f59e0b;
 	--thread-warning-dark: #b45309;
-
-	/* Error */
 	--thread-error-light: #fca5a5;
 	--thread-error-main: #ef4444;
 	--thread-error-dark: #b91c1c;
-
-	/* Info */
 	--thread-info-light: #93c5fd;
 	--thread-info-main: #3b82f6;
 	--thread-info-dark: #1d4ed8;
-
-	/* Spacing and Sizing Values */
-	/* Border Radius */
-	--thread-border-radius-sm: 0.25rem;
-	--thread-border-radius-md: 0.375rem;
-	--thread-border-radius-lg: 0.5rem;
-
-	/* Border Size */
-	--thread-border-size-sm: 1px;
-	--thread-border-size-md: 2px;
-	--thread-border-size-lg: 3px;
-
-	/* Breakpoints */
 	--thread-breakpoint-sm: 0;
 	--thread-breakpoint-md: 768;
 	--thread-breakpoint-lg: 1024;
 	--thread-breakpoint-xl: 1280;
 	--thread-breakpoint-xxl: 1536;
+	--thread-border-radius-sm: 0.25rem;
+	--thread-border-radius-md: 0.375rem;
+	--thread-border-radius-lg: 0.5rem;
+	--thread-border-size-sm: 1px;
+	--thread-border-size-md: 2px;
+	--thread-border-size-lg: 3px;
 
-	/* Mode-specific Layer Colors */
-	/* Light Mode Colors */
-	/* Surfaces */
+	/* Light Mode Values */
 	--thread-background-light-mode: #ffffff;
 	--thread-surface-light-mode: #f9fafb;
 	--thread-elevated-light-mode: #f3f4f6;
 	--thread-structure-light-mode: #e2e8f0;
-
-	/* Text */
 	--thread-text-standard-light-mode: #1f2937;
 	--thread-text-secondary-light-mode: #4b5563;
 	--thread-text-disabled-light-mode: #9ca3af;
-	--thread-text-accent-light-mode: var(--thread-primary-main);
-	--thread-text-inverted-light-mode: var(--thread-text-standard-dark-mode);
+	--thread-text-accent-light-mode: #3c5c49;
+	--thread-text-inverted-light-mode: #f9fafb;
 
-	/* Dark Mode Colors */
-	/* Surfaces */
+	/* Dark Mode Values */
 	--thread-background-dark-mode: #121212;
 	--thread-surface-dark-mode: #1e1e1e;
 	--thread-elevated-dark-mode: #2d2d2d;
 	--thread-structure-dark-mode: #4b5563;
-
-	/* Text */
 	--thread-text-standard-dark-mode: #f9fafb;
 	--thread-text-secondary-dark-mode: #4b5563;
 	--thread-text-disabled-dark-mode: #6b7280;
-	--thread-text-accent-dark-mode: var(--thread-primary-main);
-	--thread-text-inverted-dark-mode: var(--thread-text-standard-light-mode);
+	--thread-text-accent-dark-mode: #3c5c49;
+	--thread-text-inverted-dark-mode: #1f2937;
 
 	/* Apply Light Mode Colors */
-	/* Surfaces */
 	--thread-background: var(--thread-background-light-mode);
 	--thread-surface: var(--thread-surface-light-mode);
 	--thread-elevated: var(--thread-elevated-light-mode);
 	--thread-structure: var(--thread-structure-light-mode);
-
-	/* Text */
 	--thread-text-standard: var(--thread-text-standard-light-mode);
 	--thread-text-secondary: var(--thread-text-secondary-light-mode);
 	--thread-text-disabled: var(--thread-text-disabled-light-mode);
@@ -109,13 +75,10 @@
 
 :root[data-theme='dark'] {
 	/* Apply Dark Mode Colors */
-	/* Surfaces */
 	--thread-background: var(--thread-background-dark-mode);
 	--thread-surface: var(--thread-surface-dark-mode);
 	--thread-elevated: var(--thread-elevated-dark-mode);
 	--thread-structure: var(--thread-structure-dark-mode);
-
-	/* Text */
 	--thread-text-standard: var(--thread-text-standard-dark-mode);
 	--thread-text-secondary: var(--thread-text-secondary-dark-mode);
 	--thread-text-disabled: var(--thread-text-disabled-dark-mode);
@@ -126,13 +89,10 @@
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme]) {
 		/* Apply Dark Mode Colors */
-		/* Surfaces */
 		--thread-background: var(--thread-background-dark-mode);
 		--thread-surface: var(--thread-surface-dark-mode);
 		--thread-elevated: var(--thread-elevated-dark-mode);
 		--thread-structure: var(--thread-structure-dark-mode);
-
-		/* Text */
 		--thread-text-standard: var(--thread-text-standard-dark-mode);
 		--thread-text-secondary: var(--thread-text-secondary-dark-mode);
 		--thread-text-disabled: var(--thread-text-disabled-dark-mode);

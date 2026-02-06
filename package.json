@@ -30,7 +30,8 @@
 		"storybook": "concurrently \"npm run build-tailwind\" \"storybook dev -p 6006\"",
 		"storybook:build": "storybook build",
 		"prepare-publish": "npm run clean && panda codegen && npm run build",
-		"weave": "npm run prepare-publish && yalc push"
+		"weave": "npm run prepare-publish && yalc push",
+		"plop": "plop"
 	},
 	"files": [
 		"dist",
@@ -68,8 +69,6 @@
 		"@babel/preset-typescript": "^7.26.0",
 		"@jest/globals": "^29.7.0",
 		"@pandacss/dev": "^0.54.0",
-		"@rollup/plugin-commonjs": "^28.0.1",
-		"@rollup/plugin-node-resolve": "^15.3.0",
 		"@storybook/addon-essentials": "^8.4.7",
 		"@storybook/addon-interactions": "^8.4.7",
 		"@storybook/addon-onboarding": "^8.4.7",
@@ -89,6 +88,7 @@
 		"jest": "^29.7.0",
 		"jest-dom": "^4.0.0",
 		"jest-environment-jsdom": "^29.7.0",
+		"plop": "^4.0.5",
 		"postcss": "^8.4.49",
 		"postcss-cli": "^11.0.0",
 		"postcss-prefix-selector": "^2.1.0",
@@ -101,6 +101,7 @@
 		"tailwindcss": "^3.4.14",
 		"ts-loader": "^9.5.1",
 		"tsc-alias": "^1.8.16",
+		"tsx": "^4.21.0",
 		"typescript": "^5.7.2"
 	},
 	"peerDependencies": {

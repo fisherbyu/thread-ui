@@ -4,6 +4,6 @@ export type {
 	TextColorOptions,
 	UtilitySizes,
 	ThemeConfig,
-	DarkModeColors,
+	ModeColors,
 	UtilitySizeOptions,
 } from './theme.types';
