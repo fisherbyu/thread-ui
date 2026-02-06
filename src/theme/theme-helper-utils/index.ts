@@ -1,4 +1,3 @@
-// Helper Types
 type PrefixedVariable<T, P extends string> = T extends string
 	? `${P}${T}`
 	: T extends object
@@ -11,7 +10,6 @@ type WrappedVariable<T, P extends string> = T extends string
 		? { [K in keyof T]: WrappedVariable<T[K], P> }
 		: T;
 
-// Separate implementations (no shared generic)
 export function prefixVariables<T, P extends string>(obj: T, prefix: P): PrefixedVariable<T, P> {
 	if (typeof obj === 'string') {
 		return `${prefix}${obj}` as PrefixedVariable<T, P>;
