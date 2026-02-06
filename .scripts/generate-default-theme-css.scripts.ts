@@ -2,7 +2,7 @@ import { writeFileSync } from 'fs';
 
 import { ModeColors, Theme, ThemeConfigFull } from '../src/types/theme/theme.types';
 import { PrefixedDarkModeVariables, PrefixedLightModeVariables } from '../src/theme/thread-theme';
-import { DefaultThreadTheme } from '../src/theme/default-thread-theme-config.ts';
+import { DefaultThreadTheme } from '../src/theme/default-theme.ts';
 import { PrefixedThemeVariables } from '../src/theme/thread-theme.ts';
 
 const OUTPUT_PATH = 'src/styles/thread.css';
