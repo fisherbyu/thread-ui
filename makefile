@@ -69,6 +69,10 @@ build-css: | $(STYLES_DIST) ## Build and copy CSS files
 build: clean prepare-panda theme-css typescript panda-css build-css ## Full build pipeline
 	@echo "Build complete!"
 
+.PHONY: prepare-publish
+prepare-publish: build ## Prepare for publishing
+
+# Development helpers
 .PHONY: watch-tailwind
 watch-tailwind: ## Watch and build Tailwind CSS
 	$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch
@@ -77,15 +81,10 @@ watch-tailwind: ## Watch and build Tailwind CSS
 storybook: ## Run Storybook dev server (with Tailwind watch)
 	$(CONCURRENTLY) "make watch-tailwind" "$(STORYBOOK) dev -p 6006"
 
-
-.PHONY: prepare-publish
-prepare-publish: build ## Prepare for publishing
-
 .PHONY: weave
 weave: prepare-publish ## Build and push to yalc
 	$(NPX) yalc push
 
-# Development helpers
 .PHONY: watch
 watch: watch-tailwind ## Alias for watch-tailwind
 
