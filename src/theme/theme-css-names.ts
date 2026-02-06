@@ -129,7 +129,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 	},
 };
 
-const {
+export const {
 	lightMode: LightModeVariablesBaseCssNames,
 	darkMode: DarkModeVariablesBaseCssNames,
 	...ThemeBaseCssNames
@@ -139,11 +139,6 @@ export const ThemeCssVariableNames: Theme = prefixVariables(
 	ThemeBaseCssNames,
 	THREAD_CSS_VARIABLE_PREFIX
 );
-
-/**
- * Access object to connect to active CSS Theme variables
- */
-export const ThreadTheme: Theme = wrapVariables(ThemeBaseCssNames, THREAD_CSS_VARIABLE_PREFIX);
 
 export const LightModeVariables: ModeColors = wrapVariables(
 	LightModeVariablesBaseCssNames,

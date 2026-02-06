@@ -1,1 +1,1 @@
-export { ThreadTheme } from './theme-css-names';
+export { ThreadTheme } from './thread-theme';
