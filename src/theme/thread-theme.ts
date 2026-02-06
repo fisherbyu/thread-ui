@@ -1,9 +1,16 @@
-import { Theme, ModeColors } from '@/types';
+import { ThemeConfigFull, Theme, ModeColors } from '@/types';
 import { prefixVariables, wrapVariables } from './theme-helper-utils';
 
 export const THREAD_CSS_VARIABLE_PREFIX = '--thread-' as const;
 
-export const ThreadThemeBaseCssNames: Theme = {
+type AllThemeCssNames = ThemeConfigFull & {
+	lightMode: ModeColors;
+};
+
+/**
+ * Base CSS Names for Every Thread Theme Property
+ */
+export const AllBaseCssNames: AllThemeCssNames = {
 	// Color Palette
 	primary: {
 		light: 'primary-light',
@@ -87,54 +94,57 @@ export const ThreadThemeBaseCssNames: Theme = {
 		md: 'border-size-md',
 		lg: 'border-size-lg',
 	},
-};
 
-export const LightModeVariablesBaseCssNames: ModeColors = {
-	// Surfaces
-	background: 'background-light-mode',
-	surface: 'surface-light-mode',
-	elevated: 'elevated-light-mode',
-	structure: 'structure-light-mode',
-	// Text
-	text: {
-		standard: 'text-standard-light-mode',
-		secondary: 'text-secondary-light-mode',
-		disabled: 'text-disabled-light-mode',
-		accent: 'text-accent-light-mode',
-		inverted: 'text-inverted-light-mode',
+	// Light/Dark Mode Names
+	lightMode: {
+		// Surfaces
+		background: 'background-light-mode',
+		surface: 'surface-light-mode',
+		elevated: 'elevated-light-mode',
+		structure: 'structure-light-mode',
+		// Text
+		text: {
+			standard: 'text-standard-light-mode',
+			secondary: 'text-secondary-light-mode',
+			disabled: 'text-disabled-light-mode',
+			accent: 'text-accent-light-mode',
+			inverted: 'text-inverted-light-mode',
+		},
+	},
+
+	darkMode: {
+		// Surfaces
+		background: 'background-dark-mode',
+		surface: 'surface-dark-mode',
+		elevated: 'elevated-dark-mode',
+		structure: 'structure-dark-mode',
+		// Text
+		text: {
+			standard: 'text-standard-dark-mode',
+			secondary: 'text-secondary-dark-mode',
+			disabled: 'text-disabled-dark-mode',
+			accent: 'text-accent-dark-mode',
+			inverted: 'text-inverted-dark-mode',
+		},
 	},
 };
 
-export const DarkModeVariablesBaseCssNames: ModeColors = {
-	// Surfaces
-	background: 'background-dark-mode',
-	surface: 'surface-dark-mode',
-	elevated: 'elevated-dark-mode',
-	structure: 'structure-dark-mode',
-	// Text
-	text: {
-		standard: 'text-standard-dark-mode',
-		secondary: 'text-secondary-dark-mode',
-		disabled: 'text-disabled-dark-mode',
-		accent: 'text-accent-dark-mode',
-		inverted: 'text-inverted-dark-mode',
-	},
-};
+const {
+	lightMode: LightModeVariablesBaseCssNames,
+	darkMode: DarkModeVariablesBaseCssNames,
+	...ThemeBaseCssNames
+} = AllBaseCssNames;
 
-export const PrefixedThemeVariables: Theme = prefixVariables(
-	ThreadThemeBaseCssNames,
+export const ThemeCssVariableNames: Theme = prefixVariables(
+	ThemeBaseCssNames,
 	THREAD_CSS_VARIABLE_PREFIX
 );
 
 /**
  * Access object to connect to active CSS Theme variables
  */
-export const ThreadTheme: Theme = wrapVariables(
-	ThreadThemeBaseCssNames,
-	THREAD_CSS_VARIABLE_PREFIX
-);
+export const ThreadTheme: Theme = wrapVariables(ThemeBaseCssNames, THREAD_CSS_VARIABLE_PREFIX);
 
-// Access object to connect to explicit Light Mode CSS Theme variables
 export const LightModeVariables: ModeColors = wrapVariables(
 	LightModeVariablesBaseCssNames,
 	THREAD_CSS_VARIABLE_PREFIX
@@ -145,7 +155,6 @@ export const PrefixedLightModeVariables: ModeColors = prefixVariables(
 	THREAD_CSS_VARIABLE_PREFIX
 );
 
-// Access object to connect to explicit Dark Mode CSS Theme variables
 export const DarkModeVariables: ModeColors = wrapVariables(
 	DarkModeVariablesBaseCssNames,
 	THREAD_CSS_VARIABLE_PREFIX

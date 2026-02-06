@@ -3,7 +3,7 @@ import { writeFileSync } from 'fs';
 import { ModeColors, Theme, ThemeConfigFull } from '../src/types/theme/theme.types';
 import { PrefixedDarkModeVariables, PrefixedLightModeVariables } from '../src/theme/thread-theme';
 import { DefaultThreadTheme } from '../src/theme/default-theme.ts';
-import { PrefixedThemeVariables } from '../src/theme/thread-theme.ts';
+import { ThemeCssVariableNames } from '../src/theme/thread-theme.ts';
 
 const OUTPUT_PATH = 'src/styles/thread.css';
 
@@ -118,7 +118,7 @@ export const generateDefaultThemeCss = (
 	const appliedLightModeVariables: string[] = [];
 
 	modeColorsKeys.forEach((key) => {
-		const variableName = PrefixedThemeVariables[key];
+		const variableName = ThemeCssVariableNames[key];
 		const value = lightModeVariableNames[key];
 
 		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
@@ -141,7 +141,7 @@ export const generateDefaultThemeCss = (
 	const appliedDarkModeVariables: string[] = [];
 
 	modeColorsKeys.forEach((key) => {
-		const variableName = PrefixedThemeVariables[key];
+		const variableName = ThemeCssVariableNames[key];
 		const value = darkModeVariableNames[key];
 
 		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
@@ -193,7 +193,7 @@ export const generateDefaultThemeCss = (
 
 const css = generateDefaultThemeCss(
 	DefaultThreadTheme,
-	PrefixedThemeVariables,
+	ThemeCssVariableNames,
 	PrefixedLightModeVariables,
 	PrefixedDarkModeVariables
 );
