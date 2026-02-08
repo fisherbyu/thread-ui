@@ -6,7 +6,7 @@ import { Divider } from '../divider';
 export const Card = ({
 	surfaceColor = 'background',
 	children,
-	size,
+	size = 'md',
 	shadow = true,
 	title,
 }: CardProps) => {
