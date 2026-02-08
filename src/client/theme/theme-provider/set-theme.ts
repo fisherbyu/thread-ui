@@ -1,5 +1,5 @@
 import { ThemeConfig } from '@/types';
-import { DarkModeVariables } from '@/theme/theme-css-names';
+import { DarkModeVariables } from '@/theme/css-name-configurations/theme-css-names';
 import { ThreadTheme } from '@/theme';
 
 /**

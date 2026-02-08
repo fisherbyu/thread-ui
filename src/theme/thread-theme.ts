@@ -1,6 +1,9 @@
 import { Theme } from '@/types';
 import { wrapVariables } from './css-name-configurations/theme-helper-utils';
-import { ThemeBaseCssNames, THREAD_CSS_VARIABLE_PREFIX } from './theme-css-names';
+import {
+	ThemeBaseCssNames,
+	THREAD_CSS_VARIABLE_PREFIX,
+} from './css-name-configurations/theme-css-names';
 
 /**
  * Access object to connect to active CSS Theme variables
