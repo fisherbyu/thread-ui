@@ -54,7 +54,7 @@ export const DividerComparison: Story = {
 			<Divider weight="standard" />
 
 			<p>Bold weight divider:</p>
-			<Divider weight="bold" />
+			<Divider weight="heavy" />
 
 			<p>Custom width (40%) and large margins:</p>
 			<Divider width="40%" marginY="32px" />
