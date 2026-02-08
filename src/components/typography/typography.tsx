@@ -170,6 +170,8 @@ export const OrderedList = ({
 		lineHeight: 1.5,
 		textAlign: align,
 		color: getColoredTextColor(color),
+		listStyleType: 'decimal',
+		marginLeft: '1.5em',
 	};
 
 	return (
