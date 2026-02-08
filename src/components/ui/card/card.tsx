@@ -1,6 +1,7 @@
 import { cva } from '@/styled-system/css';
 import { CardProps } from './card.types';
 import { H3 } from '@/components/typography';
+import { Divider } from '../divider';
 
 export const Card = ({
 	surfaceColor = 'background',
@@ -17,9 +18,6 @@ export const Card = ({
 				padding: {
 					base: '6',
 				},
-				display: 'flex',
-				flexDirection: 'column',
-				gap: '1',
 				marginX: 'auto',
 				maxWidth: '850px',
 				width: {
@@ -31,16 +29,13 @@ export const Card = ({
 				size: {
 					sm: {
 						borderRadius: 'sm',
-						gap: '1',
 						maxWidth: '600px',
 					},
 					md: {
 						borderRadius: 'md',
-						gap: '1.5',
 					},
 					lg: {
 						borderRadius: 'lg',
-						gap: '2',
 					},
 				},
 				surfaceColor: {
@@ -69,12 +64,35 @@ export const Card = ({
 				shadow: true,
 			},
 		}),
+		content: cva({
+			variants: {
+				size: {
+					sm: {
+						marginTop: '1',
+					},
+					md: {
+						marginTop: '3',
+					},
+					lg: {
+						marginTop: '3',
+					},
+				},
+			},
+			defaultVariants: {
+				size: 'md',
+			},
+		}),
 	};
 
 	return (
 		<div className={styles.cardContainer({ size, surfaceColor, shadow })}>
-			{title && <H3 inline>{title}</H3>}
-			{children}
+			{title && (
+				<H3 align={title.align} inline>
+					{title.text}
+				</H3>
+			)}
+			{title?.divider && <Divider />}
+			<div className={styles.content({ size })}>{children}</div>
 		</div>
 	);
 };
