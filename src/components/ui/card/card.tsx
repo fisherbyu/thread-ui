@@ -1,8 +1,14 @@
-import { css, cva } from '@/styled-system/css';
+import { cva } from '@/styled-system/css';
 import { CardProps } from './card.types';
-import { H1, H3 } from '@/components/typography';
+import { H3 } from '@/components/typography';
 
-export const Card = ({ surfaceColor = 'background', children, size, title }: CardProps) => {
+export const Card = ({
+	surfaceColor = 'background',
+	children,
+	size,
+	shadow = true,
+	title,
+}: CardProps) => {
 	const styles = {
 		cardContainer: cva({
 			base: {
@@ -48,16 +54,25 @@ export const Card = ({ surfaceColor = 'background', children, size, title }: Car
 						backgroundColor: 'elevated',
 					},
 				},
+				shadow: {
+					true: {
+						boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+					},
+					false: {
+						boxShadow: 'none',
+					},
+				},
 			},
 			defaultVariants: {
 				size: 'md',
 				surfaceColor: 'background',
+				shadow: true,
 			},
 		}),
 	};
 
 	return (
-		<div className={styles.cardContainer({ size: size, surfaceColor: surfaceColor })}>
+		<div className={styles.cardContainer({ size, surfaceColor, shadow })}>
 			{title && <H3 inline>{title}</H3>}
 			{children}
 		</div>
