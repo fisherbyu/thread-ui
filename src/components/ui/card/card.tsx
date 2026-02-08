@@ -1,6 +1,6 @@
 import { css, cva } from '@/styled-system/css';
 import { CardProps } from './card.types';
-import { H1 } from '@/components/typography';
+import { H1, H3 } from '@/components/typography';
 
 export const Card = ({ surfaceColor = 'elevated', children, size, title }: CardProps) => {
 	const styles = {
@@ -9,7 +9,7 @@ export const Card = ({ surfaceColor = 'elevated', children, size, title }: CardP
 				borderWidth: 'sm',
 				borderColor: 'structure',
 				padding: {
-					base: '8px',
+					base: '3',
 				},
 				width: {
 					base: '100%',
@@ -25,15 +25,9 @@ export const Card = ({ surfaceColor = 'elevated', children, size, title }: CardP
 					},
 					md: {
 						borderRadius: 'md',
-						padding: {
-							md: '16px',
-						},
 					},
 					lg: {
 						borderRadius: 'lg',
-						padding: {
-							md: '20px',
-						},
 					},
 				},
 				surfaceColor: {
@@ -57,7 +51,7 @@ export const Card = ({ surfaceColor = 'elevated', children, size, title }: CardP
 
 	return (
 		<div className={styles.cardContainer({ size: size, surfaceColor: surfaceColor })}>
-			{title && <H1>{title}</H1>}
+			{title && <H3 inline={size === 'sm'}>{title}</H3>}
 			{children}
 		</div>
 	);
