@@ -88,6 +88,12 @@ module.exports = function (plop) {
                     type: 'add',
                     path: `${basePath}/index.ts`,
                     templateFile: '.plop-templates/index.hbs',
+                },
+                // In the actions array, after the component files:
+                {
+                    type: 'add',
+                    path: `${basePath}/${kebabName}.stories.tsx`,
+                    templateFile: '.plop-templates/component.stories.hbs',
                 }
             );
 
