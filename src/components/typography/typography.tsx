@@ -124,3 +124,46 @@ export const Subtitle = ({
 	};
 	return <span style={styles}>{children}</span>;
 };
+
+export type ListProps = Omit<TextProps, 'bold' | 'children' | 'inline'> & {
+	items: Array<string | ReactNode>;
+};
+
+export const List = ({ align = 'left', color = 'standard', size = 'md', items }: ListProps) => {
+	const styles: CSSProperties = {
+		fontSize: TEXT_SIZES[size],
+		lineHeight: 1.5,
+		textAlign: align,
+		color: getColoredTextColor(color),
+	};
+
+	return (
+		<ul>
+			{items.map((item) => (
+				<li style={styles}>{item}</li>
+			))}
+		</ul>
+	);
+};
+
+export const OrderedList = ({
+	align = 'left',
+	color = 'standard',
+	size = 'md',
+	items,
+}: ListProps) => {
+	const styles: CSSProperties = {
+		fontSize: TEXT_SIZES[size],
+		lineHeight: 1.5,
+		textAlign: align,
+		color: getColoredTextColor(color),
+	};
+
+	return (
+		<ol>
+			{items.map((item) => (
+				<li style={styles}>{item}</li>
+			))}
+		</ol>
+	);
+};
