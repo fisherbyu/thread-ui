@@ -11,23 +11,29 @@ export const Card = ({ surfaceColor = 'background', children, size, title }: Car
 				padding: {
 					base: '3',
 				},
+				display: 'flex',
+				flexDirection: 'column',
+				gap: '1',
+				maxWidth: '850px',
 				width: {
 					base: '100%',
 					md: '75%',
 				},
-				maxWidth: '850px',
 			},
 			variants: {
 				size: {
 					sm: {
 						borderRadius: 'sm',
+						gap: '1',
 						maxWidth: '600px',
 					},
 					md: {
 						borderRadius: 'md',
+						gap: '1.5',
 					},
 					lg: {
 						borderRadius: 'lg',
+						gap: '2',
 					},
 				},
 				surfaceColor: {
@@ -51,7 +57,7 @@ export const Card = ({ surfaceColor = 'background', children, size, title }: Car
 
 	return (
 		<div className={styles.cardContainer({ size: size, surfaceColor: surfaceColor })}>
-			{title && <H3 inline={size === 'sm'}>{title}</H3>}
+			{title && <H3 inline>{title}</H3>}
 			{children}
 		</div>
 	);
