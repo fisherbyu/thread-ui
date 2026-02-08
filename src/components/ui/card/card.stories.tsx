@@ -41,19 +41,3 @@ export const WithTitle: Story = {
 		children: <p>This card has a title and some content.</p>,
 	},
 };
-
-export const Small: Story = {
-	args: {
-		size: 'sm',
-		title: 'Small Card',
-		children: <p>This is a smaller card.</p>,
-	},
-};
-
-export const Large: Story = {
-	args: {
-		size: 'lg',
-		title: 'Large Card',
-		children: <p>This is a larger card with more padding.</p>,
-	},
-};
