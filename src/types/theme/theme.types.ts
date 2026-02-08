@@ -64,14 +64,16 @@ export type Theme = ModeColors & {
 	borderSize: UtilitySizes;
 };
 
-export type ModeColors = {
-	// Surface Colors
+export type SurfaceColors = {
 	background: string;
 	surface: string;
 	elevated: string;
 	structure: string;
+};
 
-	// Text Colors
+export type SurfaceColorOptions = keyof SurfaceColors;
+
+export type ModeColors = SurfaceColors & {
 	text: TextColors;
 };
 
