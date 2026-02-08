@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 export type CardProps = {
 	children: ReactNode;
-	size: UtilitySizeOptions;
+	size?: UtilitySizeOptions;
 	shadow?: boolean;
 	surfaceColor?: SurfaceColorOptions;
 	title?: {
