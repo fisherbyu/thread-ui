@@ -15,7 +15,7 @@ export const Card = ({
 				borderWidth: 'sm',
 				borderColor: 'structure',
 				padding: {
-					base: '3',
+					base: '6',
 				},
 				display: 'flex',
 				flexDirection: 'column',
