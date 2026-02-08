@@ -71,7 +71,7 @@ export type SurfaceColors = {
 	structure: string;
 };
 
-export type SurfaceColorOptions = keyof SurfaceColors;
+export type SurfaceColorOptions = keyof Omit<SurfaceColors, 'structure'>;
 
 export type ModeColors = SurfaceColors & {
 	text: TextColors;
