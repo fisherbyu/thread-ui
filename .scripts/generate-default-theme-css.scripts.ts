@@ -4,9 +4,9 @@ import { ModeColors, Theme, ThemeConfigFull } from '../src/types/theme/theme.typ
 import {
 	PrefixedDarkModeVariables,
 	PrefixedLightModeVariables,
-} from '../src/theme/theme-css-names.ts';
+	ThemeCssVariableNames,
+} from '../src/theme/css-name-configurations/theme-css-names.ts';
 import { DefaultThreadTheme } from '../src/theme/default-theme.ts';
-import { ThemeCssVariableNames } from '../src/theme/theme-css-names.ts';
 
 const OUTPUT_PATH = 'src/styles/thread.css';
 
