@@ -6,5 +6,9 @@ export type CardProps = {
 	size: UtilitySizeOptions;
 	shadow?: boolean;
 	surfaceColor?: SurfaceColorOptions;
-	title?: string;
+	title?: {
+		text: string;
+		divider?: boolean;
+		align?: 'left' | 'center';
+	};
 };
