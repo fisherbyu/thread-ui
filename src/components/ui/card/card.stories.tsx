@@ -29,7 +29,7 @@ type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
 	args: {
-		surfaceColor: 'elevated',
+		surfaceColor: 'background',
 		size: 'md',
 		children: <p>This is a card component with some content inside.</p>,
 	},
@@ -55,13 +55,5 @@ export const Large: Story = {
 		size: 'lg',
 		title: 'Large Card',
 		children: <p>This is a larger card with more padding.</p>,
-	},
-};
-
-export const BackgroundSurface: Story = {
-	args: {
-		surfaceColor: 'background',
-		title: 'Background Surface',
-		children: <p>This card uses the background surface color.</p>,
 	},
 };
