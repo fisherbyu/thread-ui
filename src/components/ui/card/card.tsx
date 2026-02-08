@@ -2,7 +2,7 @@ import { css, cva } from '@/styled-system/css';
 import { CardProps } from './card.types';
 import { H1, H3 } from '@/components/typography';
 
-export const Card = ({ surfaceColor = 'elevated', children, size, title }: CardProps) => {
+export const Card = ({ surfaceColor = 'background', children, size, title }: CardProps) => {
 	const styles = {
 		cardContainer: cva({
 			base: {
@@ -44,7 +44,7 @@ export const Card = ({ surfaceColor = 'elevated', children, size, title }: CardP
 			},
 			defaultVariants: {
 				size: 'md',
-				surfaceColor: 'surface',
+				surfaceColor: 'background',
 			},
 		}),
 	};
