@@ -14,6 +14,7 @@ export const Card = ({ surfaceColor = 'background', children, size, title }: Car
 				display: 'flex',
 				flexDirection: 'column',
 				gap: '1',
+				marginX: 'auto',
 				maxWidth: '850px',
 				width: {
 					base: '100%',
