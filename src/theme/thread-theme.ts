@@ -1,5 +1,5 @@
 import { Theme } from '@/types';
-import { wrapVariables } from './theme-helper-utils/theme-helper-utils';
+import { wrapVariables } from './css-name-configurations/theme-helper-utils';
 import { ThemeBaseCssNames, THREAD_CSS_VARIABLE_PREFIX } from './theme-css-names';
 
 /**
