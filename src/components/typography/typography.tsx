@@ -143,7 +143,7 @@ export const List = ({
 		textAlign: align,
 		color: getColoredTextColor(color),
 		listStyleType: decoration === 'blank' ? 'none' : decoration,
-		marginLeft: decoration !== 'none' ? '1.5em' : undefined,
+		marginLeft: decoration !== 'none' ? '1em' : undefined,
 	};
 
 	return (
@@ -171,7 +171,7 @@ export const OrderedList = ({
 		textAlign: align,
 		color: getColoredTextColor(color),
 		listStyleType: 'decimal',
-		marginLeft: '1.5em',
+		marginLeft: '1em',
 	};
 
 	return (
