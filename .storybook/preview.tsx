@@ -1,7 +1,8 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
-import '../src/styles/thread.css';
-import '../src/styles/styles.css';
+import '../src/styles/thread.css'; // Thread Theme Variables
+import '../src/styles/styles.css'; // Tailwind Output
+import '../src/styles/panda.css'; // Panda Compiled Code
 import { ThreadTheme } from '../src';
 import { ThemeProvider } from '../src/client';
 

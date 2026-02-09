@@ -77,16 +77,20 @@ prepare-publish: build ## Prepare for publishing
 watch-tailwind: ## Watch and build Tailwind CSS
 	$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch
 
+.PHONY: watch-panda
+watch-panda: ## Watch and regenerate Panda CSS
+	$(PANDA) --watch
+
+.PHONY: watch
+watch: watch-tailwind watch-panda ## Alias for watch-tailwind & watch-panda
+
 .PHONY: storybook
-storybook: ## Run Storybook dev server (with Tailwind watch)
-	$(CONCURRENTLY) "make watch-tailwind" "$(STORYBOOK) dev -p 6006"
+storybook: prepare-panda ## Run Storybook dev server (with Panda and Tailwind watch)
+	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p 6006"
 
 .PHONY: weave
 weave: prepare-publish ## Build and push to yalc
 	$(NPX) yalc push
-
-.PHONY: watch
-watch: watch-tailwind ## Alias for watch-tailwind
 
 .PHONY: theme-css
 theme-css: ## Generate theme CSS from TypeScript

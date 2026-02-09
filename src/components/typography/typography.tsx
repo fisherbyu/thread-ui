@@ -124,3 +124,63 @@ export const Subtitle = ({
 	};
 	return <span style={styles}>{children}</span>;
 };
+
+export type ListProps = Omit<TextProps, 'bold' | 'children' | 'inline'> & {
+	items: Array<string | ReactNode>;
+	decoration?: 'disc' | 'circle' | 'square' | 'blank' | 'none';
+};
+
+export const List = ({
+	align = 'left',
+	color = 'standard',
+	size = 'md',
+	items,
+	decoration = 'disc',
+}: ListProps) => {
+	const styles: CSSProperties = {
+		fontSize: TEXT_SIZES[size],
+		lineHeight: 1.5,
+		textAlign: align,
+		color: getColoredTextColor(color),
+		listStyleType: decoration === 'blank' ? 'none' : decoration,
+		marginLeft: decoration !== 'none' ? '1em' : undefined,
+	};
+
+	return (
+		<ul style={{ padding: 0 }}>
+			{items.map((item, index) => (
+				<li key={index} style={styles}>
+					{item}
+				</li>
+			))}
+		</ul>
+	);
+};
+
+export type OrderedListProps = Omit<ListProps, 'decoration'>;
+
+export const OrderedList = ({
+	align = 'left',
+	color = 'standard',
+	size = 'md',
+	items,
+}: OrderedListProps) => {
+	const styles: CSSProperties = {
+		fontSize: TEXT_SIZES[size],
+		lineHeight: 1.5,
+		textAlign: align,
+		color: getColoredTextColor(color),
+		listStyleType: 'decimal',
+		marginLeft: '1em',
+	};
+
+	return (
+		<ol style={{ padding: 0 }}>
+			{items.map((item, index) => (
+				<li key={index} style={styles}>
+					{item}
+				</li>
+			))}
+		</ol>
+	);
+};

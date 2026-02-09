@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Toggle, ModeToggle } from './';
-import { useTheme, useThemeMode } from '../../../functions';
+import { Toggle } from './';
 
 const meta: Meta<typeof Toggle> = {
 	component: Toggle,
@@ -17,7 +16,17 @@ const meta: Meta<typeof Toggle> = {
 		},
 		color: {
 			control: 'select',
-			options: ['primary', 'secondary', 'tertiary', 'black', 'gray', 'success', 'error', 'info', 'text'],
+			options: [
+				'primary',
+				'secondary',
+				'tertiary',
+				'black',
+				'gray',
+				'success',
+				'error',
+				'info',
+				'text',
+			],
 			description: 'Color theme for the toggle',
 		},
 	},
@@ -40,27 +49,4 @@ export const Default: Story = {
 
 		return <Toggle {...args} isOn={isOn} onToggle={() => setIsOn(!isOn)} />;
 	},
-};
-
-const ThemeModeWrapper = () => {
-	const [mode] = useThemeMode();
-	const { theme } = useTheme();
-
-	useEffect(() => {
-		console.log('Current theme mode:', mode);
-		console.log('Theme colors:', theme.colors);
-	}, [mode, theme]);
-
-	return (
-		<div
-			className="thread-space-y-4 thread-p-4 thread-h-16 thread-w-2/4 thread-border thread-flex thread-flex-row thread-justify-start thread-items-center thread-rounded"
-			style={{ backgroundColor: theme.colors.background }}
-		>
-			<ModeToggle />
-		</div>
-	);
-};
-
-export const ThemeMode: Story = {
-	render: () => <ThemeModeWrapper />,
 };

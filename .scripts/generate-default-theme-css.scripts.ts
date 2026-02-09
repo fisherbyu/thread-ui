@@ -1,9 +1,12 @@
 import { writeFileSync } from 'fs';
 
 import { ModeColors, Theme, ThemeConfigFull } from '../src/types/theme/theme.types';
-import { PrefixedDarkModeVariables, PrefixedLightModeVariables } from '../src/theme/thread-theme';
-import { DefaultThreadThemeConfig } from '../src/theme/default-thread-theme-config.ts';
-import { PrefixedThemeVariables } from '../src/theme/thread-theme.ts';
+import {
+	PrefixedDarkModeVariables,
+	PrefixedLightModeVariables,
+	ThemeCssVariableNames,
+} from '../src/theme/css-name-configurations/theme-css-names.ts';
+import { DefaultThreadTheme } from '../src/theme/default-theme.ts';
 
 const OUTPUT_PATH = 'src/styles/thread.css';
 
@@ -118,7 +121,7 @@ export const generateDefaultThemeCss = (
 	const appliedLightModeVariables: string[] = [];
 
 	modeColorsKeys.forEach((key) => {
-		const variableName = PrefixedThemeVariables[key];
+		const variableName = ThemeCssVariableNames[key];
 		const value = lightModeVariableNames[key];
 
 		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
@@ -141,7 +144,7 @@ export const generateDefaultThemeCss = (
 	const appliedDarkModeVariables: string[] = [];
 
 	modeColorsKeys.forEach((key) => {
-		const variableName = PrefixedThemeVariables[key];
+		const variableName = ThemeCssVariableNames[key];
 		const value = darkModeVariableNames[key];
 
 		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
@@ -192,8 +195,8 @@ export const generateDefaultThemeCss = (
 };
 
 const css = generateDefaultThemeCss(
-	DefaultThreadThemeConfig,
-	PrefixedThemeVariables,
+	DefaultThreadTheme,
+	ThemeCssVariableNames,
 	PrefixedLightModeVariables,
 	PrefixedDarkModeVariables
 );

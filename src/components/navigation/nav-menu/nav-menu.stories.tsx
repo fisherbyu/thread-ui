@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { NavMenu } from './nav-menu';
-import { ThreadTheme } from '../../../functions';
+import { ThreadTheme } from '../../../theme';
 
 const meta: Meta<typeof NavMenu> = {
 	title: 'Components/NavMenu',
@@ -17,20 +17,26 @@ const meta: Meta<typeof NavMenu> = {
 				<div style={{ padding: '20px' }}>
 					<h1 style={{ fontSize: '24px', marginBottom: '16px' }}>Page Content</h1>
 					<p style={{ color: '#666' }}>
-						This is sample page content to demonstrate the navigation in context. Scroll down to see how the sticky
-						navigation behaves.
+						This is sample page content to demonstrate the navigation in context. Scroll
+						down to see how the sticky navigation behaves.
 					</p>
 					{/* Add more content to make the page scrollable */}
 					{Array.from({ length: 5 }).map((_, i) => (
 						<div
 							key={i}
-							style={{ marginTop: '40px', padding: '20px', backgroundColor: ThreadTheme.surface, borderRadius: '8px' }}
+							style={{
+								marginTop: '40px',
+								padding: '20px',
+								backgroundColor: ThreadTheme.surface,
+								borderRadius: '8px',
+							}}
 						>
 							<h2 style={{ marginBottom: '12px' }}>Section {i + 1}</h2>
 							<p style={{ color: '#666' }}>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-								ex ea commodo consequat.
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+								ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+								aliquip ex ea commodo consequat.
 							</p>
 						</div>
 					))}

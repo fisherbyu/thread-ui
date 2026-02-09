@@ -1,6 +1,6 @@
 import { ThemeConfigFull } from '@/types/theme/theme.types';
 
-export const DefaultThreadThemeConfig: ThemeConfigFull = {
+export const DefaultThreadTheme: ThemeConfigFull = {
 	// Color Palette
 	primary: {
 		light: '#5a7d6a',
