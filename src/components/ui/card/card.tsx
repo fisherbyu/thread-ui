@@ -16,7 +16,7 @@ export const Card = ({
 				borderWidth: 'sm',
 				borderColor: 'structure',
 				padding: {
-					base: '6',
+					base: '5',
 				},
 				marginX: 'auto',
 				maxWidth: '850px',
@@ -64,17 +64,17 @@ export const Card = ({
 				shadow: true,
 			},
 		}),
-		content: cva({
+		title: cva({
 			variants: {
 				size: {
 					sm: {
-						marginTop: '1',
+						marginBottom: '1',
 					},
 					md: {
-						marginTop: '3',
+						marginBottom: '3',
 					},
 					lg: {
-						marginTop: '3',
+						marginBottom: '3',
 					},
 				},
 			},
@@ -87,12 +87,14 @@ export const Card = ({
 	return (
 		<div className={styles.cardContainer({ size, surfaceColor, shadow })}>
 			{title && (
-				<H3 align={title.align} inline>
-					{title.text}
-				</H3>
+				<div className={styles.title({ size })}>
+					<H3 align={title.align} inline>
+						{title.text}
+					</H3>
+					{title?.divider && <Divider />}
+				</div>
 			)}
-			{title?.divider && <Divider />}
-			<div className={styles.content({ size })}>{children}</div>
+			<div>{children}</div>
 		</div>
 	);
 };
