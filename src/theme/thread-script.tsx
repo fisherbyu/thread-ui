@@ -1,9 +1,9 @@
-export type ThemeMode = 'light' | 'dark' | 'system';
+import { ThreadMode, THREAD_MODE_STORAGE_KEY, VALID_MODES } from './theme-mode';
 
-export const THREAD_MODE_STORAGE_KEY = 'thread-mode' as const;
+export type { ThreadMode };
 
 interface ThreadScriptProps {
-	defaultMode?: ThemeMode;
+	defaultMode?: ThreadMode;
 }
 
 /**
@@ -14,10 +14,15 @@ interface ThreadScriptProps {
  * For 'system' mode (either saved or default), no data-theme is set and the CSS
  * media query (prefers-color-scheme) handles the correct mode natively.
  *
- * Usage:
- *   Next.js App Router — place in your root layout.tsx inside <head>
- *   Next.js Pages Router — place in _document.tsx inside <Head>
- *   Vite/CRA — place in index.html inside <head> using the raw script output
+ * Add suppressHydrationWarning to your <html> tag — the inline script mutates
+ * data-theme before React hydrates, which causes an expected mismatch warning.
+ *
+ * Next.js App Router:
+ *   <html suppressHydrationWarning>
+ *     <head><ThreadScript defaultMode="system" /></head>
+ *
+ * Next.js Pages Router:
+ *   // _document.tsx <Head><ThreadScript defaultMode="system" /></Head>
  */
 export function ThreadScript({ defaultMode = 'system' }: ThreadScriptProps) {
 	const scriptContent = buildScriptContent(defaultMode);
@@ -25,29 +30,24 @@ export function ThreadScript({ defaultMode = 'system' }: ThreadScriptProps) {
 	return <script dangerouslySetInnerHTML={{ __html: scriptContent }} />;
 }
 
-const buildScriptContent = (defaultMode: ThemeMode): string => {
-	// The script is serialized to a string and injected inline.
-	// Using string interpolation for defaultMode means no external fetch needed.
-	// Wrapped in an IIFE to avoid polluting the global scope.
+const buildScriptContent = (defaultMode: ThreadMode): string => {
+	// Serialized as an IIFE so it doesn't pollute the global scope.
+	// defaultMode and the storage key are interpolated at render time on the server.
 	return `(function(){
   try {
     var stored = localStorage.getItem('${THREAD_MODE_STORAGE_KEY}');
-    var mode = (stored === 'light' || stored === 'dark' || stored === 'system')
-      ? stored
-      : '${defaultMode}';
+    var validModes = ${JSON.stringify(VALID_MODES)};
+    var mode = validModes.indexOf(stored) !== -1 ? stored : '${defaultMode}';
 
     if (mode === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
     } else if (mode === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
     } else {
-      // 'system' — remove any existing data-theme and let the CSS
-      // prefers-color-scheme media query handle the correct mode
       document.documentElement.removeAttribute('data-theme');
     }
   } catch (e) {
-    // localStorage may be unavailable (SSR, private browsing restrictions, etc.)
-    // In that case the CSS default (light mode) will apply
+    // localStorage unavailable — CSS default (light mode) applies
   }
 })();`;
 };
