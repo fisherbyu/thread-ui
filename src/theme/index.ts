@@ -1,2 +1,2 @@
 export { ThreadTheme } from './thread-theme';
-export { ThreadScript, ThemeMode } from './thread-script';
+export { ThreadScript } from './thread-script';
