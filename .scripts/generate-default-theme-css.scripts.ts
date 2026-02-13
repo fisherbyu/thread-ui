@@ -140,6 +140,29 @@ export const generateDefaultThemeCss = (
 		}
 	});
 
+	// Apply Light Mode Colors when Light Mode Overrides System
+	const overrideLightModeVariables: string[] = [];
+
+	modeColorsKeys.forEach((key) => {
+		const variableName = ThemeCssVariableNames[key];
+		const value = lightModeVariableNames[key];
+
+		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+			// Handle Nested Keys
+			Object.keys(value).forEach((nestedKey) => {
+				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
+				const nestedValue = (value as Record<string, string>)[nestedKey];
+				overrideLightModeVariables.push(
+					`${compileCssVariableContent(nestedVariableName, nestedValue, 1, true)}\n`
+				);
+			});
+		} else if (typeof value === 'string' && typeof variableName === 'string') {
+			overrideLightModeVariables.push(
+				`${compileCssVariableContent(variableName, value, 1, true)}\n`
+			);
+		}
+	});
+
 	// Apply Dark Mode Colors when Dark Mode Active or Applied
 	const appliedDarkModeVariables: string[] = [];
 
@@ -164,7 +187,7 @@ export const generateDefaultThemeCss = (
 	});
 
 	const ROOT_CONFIG = `
-    /* Custom Theme Implementation */
+    /* Thread Theme Implementation */
     :root{
     /* Generic Theme Elements */
     ${genericThemeVariables.join('')} \n
@@ -179,8 +202,13 @@ export const generateDefaultThemeCss = (
     ${appliedLightModeVariables.join('')}\n
     }\n`;
 
-	const DARK_MODE_APPLIED = `\n:root[data-theme='dark'] {\n
-    /* Apply Dark Mode Colors */
+	const LIGHT_MODE_OVERRIDE = `\n:root[data-theme='light'] {\n
+    /* Light Mode Color Override */
+    ${overrideLightModeVariables.join('')}\n
+    }\n`;
+
+	const DARK_MODE_OVERRIDE = `\n:root[data-theme='dark'] {\n
+    /* Dark Mode Color Override */
     ${appliedDarkModeVariables.join('')}\n
     }\n`;
 
@@ -191,7 +219,7 @@ export const generateDefaultThemeCss = (
 	    }\n
     }\n`;
 
-	return ROOT_CONFIG + DARK_MODE_APPLIED + DARK_MODE_PREFERRED;
+	return ROOT_CONFIG + LIGHT_MODE_OVERRIDE + DARK_MODE_OVERRIDE + DARK_MODE_PREFERRED;
 };
 
 const css = generateDefaultThemeCss(
