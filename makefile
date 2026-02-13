@@ -79,7 +79,7 @@ watch-tailwind: ## Watch and build Tailwind CSS
 
 .PHONY: watch-panda
 watch-panda: ## Watch and regenerate Panda CSS
-	$(PANDA) --watch
+	$(PANDA) cssgen --outfile $(PANDA_CSS) --watch
 
 .PHONY: watch
 watch: watch-tailwind watch-panda ## Alias for watch-tailwind & watch-panda
