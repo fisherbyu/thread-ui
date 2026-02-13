@@ -65,9 +65,12 @@ watch: ## Watch CSS files. Use CSS=tailwind|panda to limit (default: both)
 	@if [ "$(CSS)" = "tailwind" ]; then \
 		$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch; \
 	elif [ "$(CSS)" = "panda" ]; then \
-		$(PANDA) --watch; \
+		$(CONCURRENTLY) "$(PANDA) --watch" "$(PANDA) cssgen --outfile $(PANDA_CSS) --watch"; \
 	else \
-		$(CONCURRENTLY) "$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch" "$(PANDA) --watch"; \
+		$(CONCURRENTLY) \
+			"$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch" \
+			"$(PANDA) --watch" \
+			"$(PANDA) cssgen --outfile $(PANDA_CSS) --watch"; \
 	fi
 
 .PHONY: theme-css
