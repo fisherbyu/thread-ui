@@ -7,14 +7,14 @@ export const MasonryLayout = ({ title, caption, components }: MasonryLayoutProps
 	const styles = {
 		container: cx(container()),
 		list: css({
-			marginTop: '8px',
+			marginTop: '2',
 			columnCount: { base: 2, md: 3, lg: 4 },
-			columnGap: '8px',
+			columnGap: '2',
 		}),
 		item: css({
 			width: '100%',
 			display: 'inline-block',
-			borderRadius: '4px',
+			borderRadius: 'sm',
 			overflow: 'hidden',
 		}),
 	};

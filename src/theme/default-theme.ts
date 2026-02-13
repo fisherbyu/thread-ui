@@ -69,9 +69,9 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	},
 	// Sizing
 	borderRadius: {
-		sm: '0.25rem',
-		md: '0.375rem',
-		lg: '0.5rem',
+		sm: '0.25rem', // 4px
+		md: '0.375rem', // 6px
+		lg: '0.5rem', // 8px
 	},
 	borderSize: {
 		sm: '1px',

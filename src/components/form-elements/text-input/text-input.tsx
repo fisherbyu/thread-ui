@@ -4,11 +4,21 @@ import { InputWrapper } from '../input-wrapper';
 import { baseInputStyles } from '../styles';
 import { cx, css } from '@/styled-system/css';
 
-export const TextInput = ({ name, id = name, title, value, required, placeholder, multiline = false, onChange }: TextInputProps) => {
+export const TextInput = ({
+	name,
+	id = name,
+	title,
+	value,
+	required,
+	placeholder,
+	multiline = false,
+	onChange,
+}: TextInputProps) => {
 	const style = css({
-		minHeight: '100px',
+		minHeight: '25',
 		resize: 'vertical',
 	});
+
 	return (
 		<InputWrapper>
 			{title && <FormLabel id={id} name={name} title={title} />}

@@ -4,7 +4,6 @@ import '../src/styles/thread.css'; // Thread Theme Variables
 import '../src/styles/styles.css'; // Tailwind Output
 import '../src/styles/panda.css'; // Panda Compiled Code
 import { ThreadTheme } from '../src';
-import { ThemeProvider } from '../src/client';
 
 const threadConfig = {} as const;
 
@@ -18,11 +17,9 @@ const preview: Preview = {
 			const themeMode = context.globals.theme || 'light';
 
 			return (
-				<ThemeProvider>
-					<div style={{ backgroundColor: ThreadTheme.background }}>
-						<Story />
-					</div>
-				</ThemeProvider>
+				<div style={{ backgroundColor: ThreadTheme.background }}>
+					<Story />
+				</div>
 			);
 		},
 	],

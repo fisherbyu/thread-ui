@@ -4,7 +4,7 @@ import { ColumnSkeletonProps } from './column-skeleton.types';
 const gridStyles = cva({
 	base: {
 		display: 'grid',
-		gap: { base: '3rem', lg: '1.5rem' },
+		gap: { base: '12', lg: '6' },
 	},
 	variants: {
 		mdcol: {
