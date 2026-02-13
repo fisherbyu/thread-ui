@@ -7,6 +7,7 @@ export const baseInputStyles = cva({
 		borderWidth: '1px',
 		borderStyle: 'solid',
 		borderColor: 'structure',
+		borderRadius: 'md',
 		transition: 'colors',
 		_focus: {
 			outline: 'none',
