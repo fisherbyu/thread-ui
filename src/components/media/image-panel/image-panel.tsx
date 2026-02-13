@@ -8,7 +8,7 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	const classes = {
 		image: css({
 			marginX: { base: '0', md: 'auto' },
-			borderRadius: '0.25rem',
+			borderRadius: 'sm',
 		}),
 		smImage: css({
 			position: 'relative',
@@ -29,7 +29,11 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 		return (
 			<>
 				{renderImage(smImage, undefined, cx(classes.image, classes.smImage))}
-				{renderImage(image, undefined, cx(classes.image, classes.standardImg, classes.standardImageWSmall))}
+				{renderImage(
+					image,
+					undefined,
+					cx(classes.image, classes.standardImg, classes.standardImageWSmall)
+				)}
 			</>
 		);
 	} else {
