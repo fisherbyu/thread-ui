@@ -5,7 +5,6 @@ import { InputWrapper } from '../input-wrapper';
 import { NumberInputProps } from './number-input.types';
 import { useState, useEffect } from 'react';
 import { css, cva, cx } from '@/styled-system/css';
-import { container } from '@/styled-system/patterns';
 
 const valueWithinRange = (value: number, min?: number, max?: number): boolean => {
 	if (min !== undefined && value < min) {
