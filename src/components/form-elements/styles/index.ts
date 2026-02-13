@@ -26,6 +26,6 @@ export const baseInputStyles = cva({
 		},
 	},
 	defaultVariants: {
-		alt: true,
+		alt: false,
 	},
 });
