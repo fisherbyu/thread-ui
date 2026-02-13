@@ -27,25 +27,19 @@ THREAD_CSS := $(STYLES_SRC)/thread.css
 # Default target
 .DEFAULT_GOAL := help
 
-.PHONY: help
-help: ## Show this help message
-	@echo 'Usage: make [target]'
-	@echo ''
-	@echo 'Available targets:'
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
-
+# Internal Helpers
 .PHONY: clean
-clean: ## Remove build artifacts
+clean: # Remove previous build
 	rm -rf $(DIST_DIR)
 
-.PHONY: prepare-panda
-prepare-panda: ## Generate Panda CSS codegen and copy to dist
+.PHONY: prepare-panda-code
+prepare-panda-code: # Generate Panda CSS codegen and copy to dist
 	$(PANDA) codegen
 	mkdir -p $(DIST_DIR)
 	cp -r $(STYLED_SYSTEM_SRC) $(STYLED_SYSTEM_DIST)
 
-.PHONY: panda-css
-panda-css: ## Generate Panda CSS output file
+.PHONY: prepare-panda-css
+prepare-panda-css: # Generate Panda CSS output file
 	$(PANDA) cssgen --outfile $(PANDA_CSS)
 
 $(DIST_DIR):
@@ -54,61 +48,66 @@ $(DIST_DIR):
 $(STYLES_DIST):
 	mkdir -p $(STYLES_DIST)
 
-.PHONY: typescript
-typescript: prepare-panda ## Compile TypeScript
-	$(TSC)
-	$(TSC_ALIAS)
-
 .PHONY: build-css
-build-css: | $(STYLES_DIST) ## Build and copy CSS files
+build-css: | $(STYLES_DIST) # Build and copy CSS files
 	$(POSTCSS) $(STYLES_CSS) -o $(STYLES_DIST)/styles.css
 	cp $(THREAD_CSS) $(STYLES_DIST)/thread.css
 	cp $(PANDA_CSS) $(STYLES_DIST)/panda.css
 
-.PHONY: build
-build: clean prepare-panda theme-css typescript panda-css build-css ## Full build pipeline
-	@echo "Build complete!"
+.PHONY: prepare-typescript
+prepare-typescript: prepare-panda-code # Compile TypeScript into JavaScript
+	$(TSC)
+	$(TSC_ALIAS)
 
-.PHONY: prepare-publish
-prepare-publish: build ## Prepare for publishing
-
-# Development helpers
-.PHONY: watch-tailwind
-watch-tailwind: ## Watch and build Tailwind CSS
-	$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch
-
-.PHONY: watch-panda
-watch-panda: ## Watch and regenerate Panda CSS
-	$(PANDA) cssgen --outfile $(PANDA_CSS) --watch
-
+# Developer Helpers
 .PHONY: watch
-watch: watch-tailwind watch-panda ## Alias for watch-tailwind & watch-panda
-
-.PHONY: storybook
-storybook: prepare-panda ## Run Storybook dev server (with Panda and Tailwind watch)
-	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p 6006"
-
-.PHONY: weave
-weave: prepare-publish ## Build and push to yalc
-	$(NPX) yalc push
+watch: ## Watch CSS files. Use CSS=tailwind|panda to limit (default: both)
+	@if [ "$(CSS)" = "tailwind" ]; then \
+		$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch; \
+	elif [ "$(CSS)" = "panda" ]; then \
+		$(PANDA) --watch; \
+	else \
+		$(CONCURRENTLY) "$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch" "$(PANDA) --watch"; \
+	fi
 
 .PHONY: theme-css
 theme-css: ## Generate theme CSS from TypeScript
 	$(TSX) $(SCRIPTS_DIR)/generate-default-theme-css.scripts.ts
 	$(PRETTIER) --write src/styles/thread.css
 
+# Build Targets
+.PHONY: help
+help: ## Show this help message
+	@echo 'Usage: make [target]'
+	@echo ''
+	@echo 'Available targets:'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: storybook
+storybook: prepare-panda-code ## Run Storybook dev server (with Panda and Tailwind watch)
+	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p 6006"
+
+.PHONY: build
+build: clean prepare-panda-code theme-css prepare-typescript prepare-panda-css build-css ## Full build pipeline
+	@echo "Build complete!"
+
+.PHONY: weave
+weave: build ## Build and push to yalc
+	$(NPX) yalc push
+
+
 # Publish Package to npm
 .PHONY: publish publish.patch publish.minor publish.major
-publish: prepare-publish ## Build and publish to npm (interactive)
+publish: build ## Build and publish to npm (interactive)
 	@$(call do_publish_prompt)
 
-publish.patch: prepare-publish ## Build and publish patch version (1.0.0 → 1.0.1)
+publish.patch: build ## Build and publish patch version (1.0.0 → 1.0.1)
 	@$(call do_publish,patch)
 
-publish.minor: prepare-publish ## Build and publish minor version (1.0.0 → 1.1.0)
+publish.minor: build ## Build and publish minor version (1.0.0 → 1.1.0)
 	@$(call do_publish,minor)
 
-publish.major: prepare-publish ## Build and publish major version (1.0.0 → 2.0.0)
+publish.major: build ## Build and publish major version (1.0.0 → 2.0.0)
 	@$(call do_publish,major)
 
 define do_publish_prompt
