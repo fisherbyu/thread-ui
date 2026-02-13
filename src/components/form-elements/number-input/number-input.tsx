@@ -5,6 +5,7 @@ import { InputWrapper } from '../input-wrapper';
 import { NumberInputProps } from './number-input.types';
 import { useState, useEffect } from 'react';
 import { css, cva, cx } from '@/styled-system/css';
+import { container } from '@/styled-system/patterns';
 
 const valueWithinRange = (value: number, min?: number, max?: number): boolean => {
 	if (min !== undefined && value < min) {
@@ -95,9 +96,11 @@ export const NumberInput = ({
 				backgroundColor: { base: 'gray.light', _hover: 'gray.100' },
 				borderWidth: 'md',
 				borderColor: 'gray.light',
-				// _focus: {
-				//     ring:
-				// }
+				_focus: {
+					ring: '2',
+					ringColor: 'gray.100',
+					outline: 'none',
+				},
 			},
 			variants: {
 				direction: {
@@ -113,6 +116,8 @@ export const NumberInput = ({
 			},
 		}),
 		baseSegment: css({
+			borderWidth: 'md',
+			borderColor: 'gray.light',
 			padding: '3',
 			height: '11',
 			textAlign: 'center',
@@ -120,17 +125,30 @@ export const NumberInput = ({
 		}),
 		centerSegment: css({
 			width: '16',
+			appearance: 'none',
+			'&::-webkit-outer-spin-button': {
+				appearance: 'none',
+			},
+			'&::-webkit-inner-spin-button': {
+				appearance: 'none',
+			},
+			_focus: {
+				ringColor: 'blue.500',
+				borderColor: 'blue.500',
+			},
 		}),
-		focus: 'focus:ring-gray-100 focus:ring-2 focus:outline-none',
-		inputFocus: 'focus:ring-blue-500 focus:border-blue-500',
-		alterInput:
-			'appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield]',
+		container: css({
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+			alignSelf: 'start',
+		}),
 	};
 
 	return (
 		<InputWrapper>
 			{title && <FormLabel id={id} name={name} title={title} />}
-			<div className="flex self-start justify-center items-center">
+			<div className={styles.container}>
 				<button
 					type="button"
 					className={cx(styles.arrowButton({ direction: 'left' }), styles.baseSegment)}
@@ -145,7 +163,7 @@ export const NumberInput = ({
 					placeholder={placeholder}
 					value={num ?? ''}
 					onChange={handleInputChange}
-					className={cx(styles.baseSegment)}
+					className={cx(styles.baseSegment, styles.centerSegment)}
 					onKeyDown={(e) => {
 						// Allow minus sign as first character if negative values are allowed
 						if (
