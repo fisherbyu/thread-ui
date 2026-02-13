@@ -30,7 +30,9 @@
 	},
 	"keywords": [
 		"React",
-		"UI"
+		"UI",
+		"Thread",
+		"UX"
 	],
 	"author": "Andrew Fisher",
 	"license": "MIT",

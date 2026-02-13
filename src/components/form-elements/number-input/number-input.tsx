@@ -4,7 +4,7 @@ import { FormLabel } from '../form-label';
 import { InputWrapper } from '../input-wrapper';
 import { NumberInputProps } from './number-input.types';
 import { useState, useEffect } from 'react';
-import { css } from '@/styled-system/css';
+import { css, cva, cx } from '@/styled-system/css';
 
 const valueWithinRange = (value: number, min?: number, max?: number): boolean => {
 	if (min !== undefined && value < min) {
@@ -16,7 +16,18 @@ const valueWithinRange = (value: number, min?: number, max?: number): boolean =>
 	return true;
 };
 
-export const NumberInput = ({ name, id = name, title, value, placeholder, required, dark, min, max, onChange }: NumberInputProps) => {
+export const NumberInput = ({
+	name,
+	id = name,
+	title,
+	value,
+	placeholder,
+	required,
+	dark,
+	min,
+	max,
+	onChange,
+}: NumberInputProps) => {
 	// Initialize state with the value from props or null
 	const [num, setNum] = useState<number | undefined>(value);
 
@@ -79,31 +90,69 @@ export const NumberInput = ({ name, id = name, title, value, placeholder, requir
 	};
 
 	const styles = {
-		bttnBg: css({
-			backgroundColor: { base: 'gray.light', _hover: 'gray.main' },
+		arrowButton: cva({
+			base: {
+				backgroundColor: { base: 'gray.light', _hover: 'gray.100' },
+				borderWidth: 'md',
+				borderColor: 'gray.light',
+				_focus: {
+					ring: '2',
+					ringColor: 'gray.100',
+					outline: 'none',
+				},
+			},
+			variants: {
+				direction: {
+					left: {
+						borderStartStartRadius: 'lg',
+						borderEndStartRadius: 'lg',
+					},
+					right: {
+						borderStartEndRadius: 'lg',
+						borderEndEndRadius: 'lg',
+					},
+				},
+			},
 		}),
-		border: 'border border-gray-300',
-		layout: 'p-3 h-11',
-		focus: 'focus:ring-gray-100 focus:ring-2 focus:outline-none',
-		dark: 'dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 dark:focus:ring-gray-700',
-		left: 'rounded-s-lg',
-		right: 'rounded-e-lg',
-		inputBorder: 'border-y border-gray-300',
-		inputBg: 'bg-gray-50',
-		text: 'text-center text-gray-900 text-sm',
-		inputFocus: 'focus:ring-blue-500 focus:border-blue-500',
-		alterInput:
-			'appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [-moz-appearance:textfield]',
+		baseSegment: css({
+			borderWidth: 'md',
+			borderColor: 'gray.light',
+			padding: '3',
+			height: '11',
+			textAlign: 'center',
+			fontSize: 'sm',
+		}),
+		centerSegment: css({
+			width: '16',
+			appearance: 'none',
+			'&::-webkit-outer-spin-button': {
+				appearance: 'none',
+			},
+			'&::-webkit-inner-spin-button': {
+				appearance: 'none',
+			},
+			_focus: {
+				ringColor: 'blue.500',
+				borderColor: 'blue.500',
+			},
+		}),
+		container: css({
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+			alignSelf: 'start',
+		}),
 	};
-
-	const bttnLeft = `${styles.bttnBg} ${styles.border} ${styles.layout} ${styles.focus} ${styles.dark} ${styles.left}`;
-	const bttnRight = `${styles.bttnBg} ${styles.border} ${styles.layout} ${styles.focus} ${styles.dark} ${styles.right}`;
 
 	return (
 		<InputWrapper>
 			{title && <FormLabel id={id} name={name} title={title} />}
-			<div className="flex self-start justify-center items-center">
-				<button type="button" className={bttnLeft} onClick={handleIncrement(-1)}>
+			<div className={styles.container}>
+				<button
+					type="button"
+					className={cx(styles.arrowButton({ direction: 'left' }), styles.baseSegment)}
+					onClick={handleIncrement(-1)}
+				>
 					<Icon name="CaretLeft" color="gray" size={12} />
 				</button>
 				<input
@@ -113,10 +162,14 @@ export const NumberInput = ({ name, id = name, title, value, placeholder, requir
 					placeholder={placeholder}
 					value={num ?? ''}
 					onChange={handleInputChange}
-					className={`w-16  ${styles.layout} ${styles.border} ${styles.text} ${styles.inputFocus} ${styles.alterInput} ${dark ? styles.inputBg : ''}`}
+					className={cx(styles.baseSegment, styles.centerSegment)}
 					onKeyDown={(e) => {
 						// Allow minus sign as first character if negative values are allowed
-						if (e.key === '-' && e.currentTarget.value.length === 0 && (min === undefined || min < 0)) {
+						if (
+							e.key === '-' &&
+							e.currentTarget.value.length === 0 &&
+							(min === undefined || min < 0)
+						) {
 							return; // Allow the minus sign
 						}
 
@@ -125,7 +178,15 @@ export const NumberInput = ({ name, id = name, title, value, placeholder, requir
 							!/[0-9]/.test(e.key) &&
 							!e.ctrlKey &&
 							!e.metaKey &&
-							!['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Home', 'End'].includes(e.key)
+							![
+								'Backspace',
+								'Delete',
+								'ArrowLeft',
+								'ArrowRight',
+								'Tab',
+								'Home',
+								'End',
+							].includes(e.key)
 						) {
 							e.preventDefault();
 						}
@@ -134,7 +195,11 @@ export const NumberInput = ({ name, id = name, title, value, placeholder, requir
 					min={min}
 					max={max}
 				/>
-				<button type="button" className={bttnRight} onClick={handleIncrement(1)}>
+				<button
+					type="button"
+					className={cx(styles.arrowButton({ direction: 'right' }), styles.baseSegment)}
+					onClick={handleIncrement(1)}
+				>
 					<Icon name="CaretRight" color="gray" size={12} />
 				</button>
 			</div>

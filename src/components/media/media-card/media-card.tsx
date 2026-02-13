@@ -19,16 +19,16 @@ export const MediaCard = ({
 		container: cva({
 			base: {
 				alignItems: 'center',
-				borderRadius: '6px',
-				borderWidth: '1px',
+				borderRadius: 'md',
+				borderWidth: 'md',
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'center',
-				gap: '12px',
+				gap: '3',
 				marginX: 'auto',
 				padding: {
-					base: '16px',
-					lg: '24px',
+					base: '4',
+					lg: '6',
 				},
 				width: '83%',
 			},
@@ -128,7 +128,7 @@ export const MediaCard = ({
 		details: css({
 			display: 'flex',
 			flexDirection: 'column',
-			gap: '4px',
+			gap: '1',
 		}),
 	};
 

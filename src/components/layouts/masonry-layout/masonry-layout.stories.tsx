@@ -16,7 +16,7 @@ const SampleCard = ({ height, color }: { height: number; color: string }) => (
 // Create different sized components for visual variety
 const sampleComponents = [
 	<SampleCard height={200} color="#FDA4AF" />,
-	<SampleCard height={300} color="#FCA5A5" />,
+	<SampleCard height={300} color="#FAC898" />,
 	<SampleCard height={250} color="#FBBF24" />,
 	<SampleCard height={180} color="#34D399" />,
 	<SampleCard height={220} color="#60A5FA" />,

@@ -39,7 +39,7 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 		}),
 		caption: css({
 			display: 'flex',
-			gap: '8px',
+			gap: '2',
 			justifyContent: 'flex-start',
 			alignItems: 'center',
 		}),
@@ -60,7 +60,15 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 		if (typeof icon === 'string') {
 			return <Icon name={icon} size={24} />;
 		} else if (icon.type === 'svg') {
-			return <img className={styles.captionIcon} height={23} width={23} src={icon.content} alt="Article Icon" />;
+			return (
+				<img
+					className={styles.captionIcon}
+					height={23}
+					width={23}
+					src={icon.content}
+					alt="Article Icon"
+				/>
+			);
 		} else {
 			<span className={styles.captionIcon} role="img">
 				{JSON.parse(`"${icon.content}"`)}
