@@ -6,10 +6,11 @@ export const FormLabel = ({ name, id = name, title }: FormLabelProps) => {
 	const styles = css({
 		display: 'block',
 		alignSelf: 'flex-start',
-		marginBottom: '8px',
+		marginBottom: '2',
 	});
+
 	return (
-		<label id={id} htmlFor={name} className="block self-start font-medium text-gray-700 mb-2">
+		<label id={id} htmlFor={name} className={styles}>
 			<H3>{title}</H3>
 		</label>
 	);
