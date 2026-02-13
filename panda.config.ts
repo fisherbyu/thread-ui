@@ -1,6 +1,5 @@
 import { defineConfig } from '@pandacss/dev';
 import { buttonRecipe } from './src/components/ui/button/button-recipe';
-import { ThreadTheme } from './src/theme/thread-theme';
 
 export default defineConfig({
 	// File Intake and Output
@@ -21,79 +20,77 @@ export default defineConfig({
 				colors: {
 					// Primary colors
 					primary: {
-						light: { value: ThreadTheme.primary.light },
-						main: { value: ThreadTheme.primary.main },
-						dark: { value: ThreadTheme.primary.dark },
+						light: { value: 'var(--thread-primary-light)' },
+						main: { value: 'var(--thread-primary-main)' },
+						dark: { value: 'var(--thread-primary-dark)' },
 					},
 					// Secondary colors
 					secondary: {
-						light: { value: ThreadTheme.secondary.light },
-						main: { value: ThreadTheme.secondary.main },
-						dark: { value: ThreadTheme.secondary.dark },
+						light: { value: 'var(--thread-secondary-light)' },
+						main: { value: 'var(--thread-secondary-main)' },
+						dark: { value: 'var(--thread-secondary-dark)' },
 					},
 					// Tertiary colors
 					tertiary: {
-						light: { value: ThreadTheme.tertiary.light },
-						main: { value: ThreadTheme.tertiary.main },
-						dark: { value: ThreadTheme.tertiary.dark },
+						light: { value: 'var(--thread-tertiary-light)' },
+						main: { value: 'var(--thread-tertiary-main)' },
+						dark: { value: 'var(--thread-tertiary-dark)' },
 					},
 					// Neutral colors
-					white: { value: ThreadTheme.white },
-					black: { value: ThreadTheme.black },
+					white: { value: 'var(--thread-white)' },
+					black: { value: 'var(--thread-black)' },
 					gray: {
-						light: { value: ThreadTheme.gray.light },
-						main: { value: ThreadTheme.gray.main },
-						dark: { value: ThreadTheme.gray.dark },
+						light: { value: 'var(--thread-gray-light)' },
+						main: { value: 'var(--thread-gray-main)' },
+						dark: { value: 'var(--thread-gray-dark)' },
 					},
 					// Status colors
 					success: {
-						light: { value: ThreadTheme.success.light },
-						main: { value: ThreadTheme.success.main },
-						dark: { value: ThreadTheme.success.dark },
+						light: { value: 'var(--thread-success-light)' },
+						main: { value: 'var(--thread-success-main)' },
+						dark: { value: 'var(--thread-success-dark)' },
 					},
 					warning: {
-						light: { value: ThreadTheme.warning.light },
-						main: { value: ThreadTheme.warning.main },
-						dark: { value: ThreadTheme.warning.dark },
+						light: { value: 'var(--thread-warning-light)' },
+						main: { value: 'var(--thread-warning-main)' },
+						dark: { value: 'var(--thread-warning-dark)' },
 					},
 					error: {
-						light: { value: ThreadTheme.error.light },
-						main: { value: ThreadTheme.error.main },
-						dark: { value: ThreadTheme.error.dark },
+						light: { value: 'var(--thread-error-light)' },
+						main: { value: 'var(--thread-error-main)' },
+						dark: { value: 'var(--thread-error-dark)' },
 					},
 					info: {
-						light: { value: ThreadTheme.info.light },
-						main: { value: ThreadTheme.info.main },
-						dark: { value: ThreadTheme.info.dark },
+						light: { value: 'var(--thread-info-light)' },
+						main: { value: 'var(--thread-info-main)' },
+						dark: { value: 'var(--thread-info-dark)' },
 					},
 				},
 				// Border radius tokens
 				radii: {
-					sm: { value: ThreadTheme.borderRadius.sm },
-					md: { value: ThreadTheme.borderRadius.md },
-					lg: { value: ThreadTheme.borderRadius.lg },
+					sm: { value: 'var(--thread-border-radius-sm)' },
+					md: { value: 'var(--thread-border-radius-md)' },
+					lg: { value: 'var(--thread-border-radius-lg)' },
 				},
 				// Border size tokens
 				borderWidths: {
-					sm: { value: ThreadTheme.borderSize.sm },
-					md: { value: ThreadTheme.borderSize.md },
-					lg: { value: ThreadTheme.borderSize.lg },
+					sm: { value: 'var(--thread-border-size-sm)' },
+					md: { value: 'var(--thread-border-size-md)' },
+					lg: { value: 'var(--thread-border-size-lg)' },
 				},
 			},
 			semanticTokens: {
 				colors: {
-					// Surface colors — active variable already handles light/dark switching
-					background: { value: ThreadTheme.background },
-					surface: { value: ThreadTheme.surface },
-					elevated: { value: ThreadTheme.elevated },
-					structure: { value: ThreadTheme.structure },
-					// Text colors — active variable already handles light/dark switching
+					background: { value: 'var(--thread-background)' },
+					surface: { value: 'var(--thread-surface)' },
+					elevated: { value: 'var(--thread-elevated)' },
+					structure: { value: 'var(--thread-structure)' },
 					text: {
-						standard: { value: ThreadTheme.text.standard },
-						secondary: { value: ThreadTheme.text.secondary },
-						disabled: { value: ThreadTheme.text.disabled },
-						accent: { value: ThreadTheme.text.accent },
-						inverted: { value: ThreadTheme.text.inverted },
+						standard: { value: 'var(--thread-text-standard)' },
+						secondary: { value: 'var(--thread-text-secondary)' },
+						disabled: { value: 'var(--thread-text-disabled)' },
+						accent: { value: 'var(--thread-text-accent)' },
+						inverted: { value: 'var(--thread-text-inverted)' },
 					},
 				},
 			},
@@ -124,5 +121,12 @@ export default defineConfig({
 		tokens: 'thread-tokens',
 		recipes: 'thread-recipes',
 		utilities: 'thread-utilities',
+	},
+
+	// Static CSS Generation
+	staticCss: {
+		recipes: {
+			button: ['*'], // Generate ALL variant combinations
+		},
 	},
 });
