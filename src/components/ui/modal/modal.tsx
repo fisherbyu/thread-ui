@@ -33,7 +33,7 @@ export const Modal = ({
 	if (open) {
 		return (
 			<div className={styles.overlay}>
-				<ModalContent title={title} size={size}>
+				<ModalContent title={title} size={size} onClose={onClose}>
 					{children}
 				</ModalContent>
 			</div>
