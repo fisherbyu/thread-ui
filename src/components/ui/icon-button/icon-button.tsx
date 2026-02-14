@@ -19,9 +19,16 @@ export const IconButton = ({
 		fontSize: getUtilityFontSize(size),
 	};
 	return (
-		<Button fullWidth={fullWidth} color={color} onClick={onClick} type={type} margin={margin} disabled={disabled}>
+		<Button
+			fullWidth={fullWidth}
+			color={color}
+			onClick={onClick}
+			type={type}
+			margin={margin}
+			disabled={disabled}
+		>
 			<Icon name={name} size={getUtilityIconSize(size)} />
-			<div style={styles}>{children}</div>
+			{children && <div style={styles}>{children}</div>}
 		</Button>
 	);
 };
