@@ -1,5 +1,5 @@
 import { ThreadTheme } from '@/theme';
-import { UtilityColorOptions } from '../../types';
+import { UtilityColorOptions } from '../../../types';
 
 /**
  * Returns corresponding default theme color CSS Variable
