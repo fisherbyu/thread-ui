@@ -16,9 +16,7 @@
 			"default": "./dist/client/index.js"
 		}
 	},
-	"scripts": {
-		"plop": "plop"
-	},
+	"scripts": {},
 	"files": [
 		"dist",
 		"!**/*.test.*",
