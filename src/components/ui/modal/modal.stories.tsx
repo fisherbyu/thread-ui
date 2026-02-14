@@ -46,6 +46,7 @@ export const Default: Story = {
 		open: true,
 		onClose: () => {},
 		size: 'md',
+		title: 'Modal Title',
 		children: <ModalContent />,
 	},
 };
