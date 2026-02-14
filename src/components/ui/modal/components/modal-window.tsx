@@ -4,9 +4,9 @@ import { IconButton } from '../../icon-button';
 import { title } from 'process';
 import { H2, H3 } from '@/components/typography';
 
-type ModalContentProps = Pick<ModalProps, 'children' | 'size' | 'title' | 'footer'>;
+type ModalContentProps = Pick<ModalProps, 'children' | 'size' | 'title' | 'footer' | 'onClose'>;
 
-export const ModalContent = ({ children, size, title, footer }: ModalContentProps) => {
+export const ModalContent = ({ children, size, title, footer, onClose }: ModalContentProps) => {
 	const styles = {
 		outline: cva({
 			base: {
@@ -99,7 +99,7 @@ export const ModalContent = ({ children, size, title, footer }: ModalContentProp
 		<div className={styles.outline({ size })}>
 			<div className={styles.internalContent({ size })}>
 				<div className={styles.outerItems}>
-					<IconButton color="primary" size={'sm'} name="X" />
+					<IconButton onClick={onClose} color="primary" size={'sm'} name="X" />
 					{TitleContent}
 				</div>
 				{children}
