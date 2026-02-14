@@ -1,5 +1,5 @@
 import { css } from '@/styled-system/css';
-import { ModalWindow } from './components/modal-window';
+import { ModalContent } from './components/modal-window';
 import { ModalProps } from './modal.types';
 
 export const Modal = ({
@@ -33,7 +33,9 @@ export const Modal = ({
 	if (open) {
 		return (
 			<div className={styles.overlay}>
-				<ModalWindow size={size}>{children}</ModalWindow>
+				<ModalContent title={title} size={size}>
+					{children}
+				</ModalContent>
 			</div>
 		);
 	}
