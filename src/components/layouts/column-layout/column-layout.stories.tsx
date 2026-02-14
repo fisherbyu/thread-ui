@@ -52,44 +52,6 @@ export const Basic: Story = {
 	},
 };
 
-export const TwoColumns: Story = {
-	args: {
-		title: 'Featured Projects',
-		mdcol: 1,
-		lgcol: 2,
-		items: [
-			{
-				title: 'Project Alpha',
-				description: 'An enterprise resource planning solution',
-				content: <ColorCard color="#2563EB" />,
-			},
-			{
-				title: 'Project Beta',
-				description: 'E-commerce platform with AI recommendations',
-				content: <ColorCard color="#DC2626" />,
-			},
-		],
-	},
-};
-
-export const NoTitles: Story = {
-	args: {
-		mdcol: 2,
-		lgcol: 3,
-		items: [
-			{
-				content: <ColorCard color="#059669" />,
-			},
-			{
-				content: <ColorCard color="#7C3AED" />,
-			},
-			{
-				content: <ColorCard color="#DB2777" />,
-			},
-		],
-	},
-};
-
 export const WithImages: Story = {
 	args: {
 		title: 'About Me',

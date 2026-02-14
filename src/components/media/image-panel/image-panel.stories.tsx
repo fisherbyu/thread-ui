@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ImagePanel } from './image-panel';
 
 const meta: Meta<typeof ImagePanel> = {
-	title: 'Components/ImagePanel',
+	title: 'Media/ImagePanel',
 	component: ImagePanel,
 	tags: ['autodocs'],
 	argTypes: {
