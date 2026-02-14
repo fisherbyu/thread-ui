@@ -1,10 +1,10 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { {{pascalCase componentName}} } from './{{kebabCase componentName}}';
+import { {{itemName}} } from './{{itemKebab}}';
 
-const meta = {
-  title: 'Components/{{pascalCase componentName}}',
-  component: {{pascalCase componentName}},
+const meta: Meta<typeof {{itemName}}> = {
+  title: 'Components/{{itemName}}',
+  component: {{itemName}},
   parameters: {
     layout: 'centered',
   },
@@ -12,13 +12,12 @@ const meta = {
   argTypes: {
     // Add your prop controls here
   },
-} satisfies Meta<typeof {{pascalCase componentName}}>;
+};
 
 export default meta;
-type Story = StoryObj<typeof {{pascalCase componentName}}>;
+
+type Story = StoryObj<typeof {{itemName}}>;
 
 export const Default: Story = {
-  args: {
-    // Add your default props here
-  },
+  args: {},
 };
