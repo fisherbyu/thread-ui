@@ -15,7 +15,7 @@ export const SideNavItem = ({ title, path, icon, onClick, basePath = '' }: SideN
 			base: {
 				display: 'flex',
 				gap: '8px',
-				width: { base: 'fit-content', lg: '75%%' },
+				width: '100%',
 				alignItems: 'center',
 				paddingX: '16px',
 				paddingY: '8px',
