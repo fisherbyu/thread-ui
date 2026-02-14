@@ -1,11 +1,14 @@
-import { cva } from '@/styled-system/css';
+import { css, cva, cx } from '@/styled-system/css';
 import { ModalProps } from '../modal.types';
+import { IconButton } from '../../icon-button';
+import { title } from 'process';
+import { H2, H3 } from '@/components/typography';
 
-type ModalWindowProps = Pick<ModalProps, 'children' | 'size'>;
+type ModalContentProps = Pick<ModalProps, 'children' | 'size' | 'title' | 'footer'>;
 
-export const ModalWindow = ({ children, size }: ModalWindowProps) => {
+export const ModalContent = ({ children, size, title, footer }: ModalContentProps) => {
 	const styles = {
-		container: cva({
+		outline: cva({
 			base: {
 				background: 'background',
 				width: '100%',
@@ -45,7 +48,63 @@ export const ModalWindow = ({ children, size }: ModalWindowProps) => {
 				size: 'md',
 			},
 		}),
+		internalContent: cva({
+			base: {
+				height: '100%',
+				width: '100%',
+				display: 'flex',
+				flexDirection: 'column',
+				padding: '2',
+			},
+			variants: {
+				size: {
+					sm: {
+						padding: '2',
+					},
+					md: {
+						padding: '4',
+					},
+					lg: {
+						padding: '6',
+					},
+					full: {
+						padding: '8',
+					},
+				},
+			},
+		}),
+		modalContent: css({
+			flex: 1,
+			overflowY: 'auto',
+		}),
+		outerItems: css({
+			flexShrink: 0,
+			minHeight: '4',
+			width: '100%',
+			alignItems: 'center',
+			display: 'flex',
+			flexDirection: 'row-reverse',
+			justifyContent: 'space-between',
+		}),
 	};
 
-	return <div className={styles.container({ size })}>{children}</div>;
+	const TitleContent = title ? (
+		size === 'sm' ? (
+			<H3 inline>{title}</H3>
+		) : (
+			<H2 inline>{title}</H2>
+		)
+	) : null;
+	return (
+		<div className={styles.outline({ size })}>
+			<div className={styles.internalContent({ size })}>
+				<div className={styles.outerItems}>
+					<IconButton color="primary" size={'sm'} name="X" />
+					{TitleContent}
+				</div>
+				{children}
+				{footer && <div className={styles.outerItems}></div>}
+			</div>
+		</div>
+	);
 };
