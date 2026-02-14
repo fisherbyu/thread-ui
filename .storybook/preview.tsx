@@ -30,7 +30,21 @@ const preview: Preview = {
 				date: /Date$/i,
 			},
 		},
+		options: {
+			storySort: {
+				order: [
+					'UI Components',
+					'Media',
+					'Typography',
+					'Navigation',
+					'Layouts',
+					'Form Elements',
+					'*',
+				],
+			},
+		},
 	},
+
 	// Add global toolbar item for theme switching
 	globalTypes: {
 		theme: {
