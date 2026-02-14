@@ -4,7 +4,7 @@ import { Toggle } from './';
 
 const meta: Meta<typeof Toggle> = {
 	component: Toggle,
-	title: 'Components/Toggle',
+	title: 'UI Components/Toggle',
 	tags: ['autodocs'],
 	argTypes: {
 		isOn: {

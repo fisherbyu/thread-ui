@@ -4,7 +4,7 @@ import { Title, H1, H2, H3, Text, Subtitle } from './index'; // Adjust import pa
 
 // Define the Meta for the Typography components
 const meta = {
-	title: 'Components/Typography',
+	title: 'Typography/Typography',
 	tags: ['autodocs'],
 	parameters: {
 		layout: 'padded',
