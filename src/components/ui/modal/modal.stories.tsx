@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Modal } from './modal';
+import { Button } from '../button';
 
 const meta = {
 	title: 'Components/Modal',
@@ -10,7 +11,16 @@ const meta = {
 	},
 	decorators: [
 		(Story) => (
-			<div style={{ background: '#f0f0f0', width: '740px', minHeight: '50vh' }}>
+			<div
+				style={{
+					background: '#f0f0f0',
+					width: '740px',
+					minHeight: '50vh',
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+				}}
+			>
 				<Story />
 			</div>
 		),
@@ -33,7 +43,6 @@ type Story = StoryObj<typeof Modal>;
 
 const ModalContent = () => (
 	<div style={{ padding: '24px' }}>
-		<h2 style={{ margin: '0 0 8px' }}>Modal Title</h2>
 		<p style={{ margin: 0, color: '#666' }}>
 			This is some placeholder content so you can see the modal shape and sizing as you build
 			it out.
@@ -41,39 +50,30 @@ const ModalContent = () => (
 	</div>
 );
 
+const ModalTrigger = ({ size, title }: { size?: 'sm' | 'md' | 'lg' | 'full'; title?: string }) => {
+	const [open, setOpen] = useState(false);
+	return (
+		<>
+			<Button onClick={() => setOpen(true)}>Open Modal</Button>
+			<Modal open={open} onClose={() => setOpen(false)} size={size} title={title}>
+				<ModalContent />
+			</Modal>
+		</>
+	);
+};
+
 export const Default: Story = {
-	args: {
-		open: true,
-		onClose: () => {},
-		size: 'md',
-		title: 'Modal Title',
-		children: <ModalContent />,
-	},
+	render: () => <ModalTrigger size="md" title="Modal Title" />,
 };
 
 export const Small: Story = {
-	args: {
-		open: true,
-		onClose: () => {},
-		size: 'sm',
-		children: <ModalContent />,
-	},
+	render: () => <ModalTrigger size="sm" title="Small Modal" />,
 };
 
 export const Large: Story = {
-	args: {
-		open: true,
-		onClose: () => {},
-		size: 'lg',
-		children: <ModalContent />,
-	},
+	render: () => <ModalTrigger size="lg" title="Large Modal" />,
 };
 
 export const Full: Story = {
-	args: {
-		open: true,
-		onClose: () => {},
-		size: 'full',
-		children: <ModalContent />,
-	},
+	render: () => <ModalTrigger size="full" title="Full Modal" />,
 };
