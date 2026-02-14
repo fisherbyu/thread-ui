@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ColumnLayout } from './column-layout';
 
 const meta: Meta<typeof ColumnLayout> = {
-	title: 'Components/ColumnLayout',
+	title: 'Layouts/ColumnLayout',
 	component: ColumnLayout,
 	parameters: {
 		layout: 'fullscreen',
@@ -15,7 +15,10 @@ type Story = StoryObj<typeof ColumnLayout>;
 
 // Helper function to generate colored cards
 const ColorCard = ({ color }: { color: string }) => (
-	<div className="thread-w-full thread-aspect-video thread-rounded" style={{ backgroundColor: color }} />
+	<div
+		className="thread-w-full thread-aspect-video thread-rounded"
+		style={{ backgroundColor: color }}
+	/>
 );
 
 export const Basic: Story = {
@@ -123,7 +126,8 @@ export const WithImages: Story = {
 			},
 			{
 				title: 'Utah',
-				description: "I'm lucky to live in Utah, its such a pretty place with so much to do.",
+				description:
+					"I'm lucky to live in Utah, its such a pretty place with so much to do.",
 				content: {
 					src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falpine-loop.1df0e6d7.jpg&w=3840&q=75',
 					alt: 'Alpine Loop, Provo, UT',

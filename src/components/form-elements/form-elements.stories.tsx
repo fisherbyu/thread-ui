@@ -5,7 +5,7 @@ import { TextInput } from './text-input';
 import { NumberInput } from './number-input';
 
 const meta = {
-	title: 'Components/Form Elements',
+	title: 'Form Elements/Collection',
 	tags: ['autodocs'],
 } satisfies Meta;
 

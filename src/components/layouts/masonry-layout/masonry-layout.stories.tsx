@@ -26,7 +26,7 @@ const sampleComponents = [
 ];
 
 const meta: Meta<typeof MasonryLayout> = {
-	title: 'Components/MasonryLayout',
+	title: 'Layouts/MasonryLayout',
 	component: MasonryLayout,
 	tags: ['autodocs'],
 	parameters: {
