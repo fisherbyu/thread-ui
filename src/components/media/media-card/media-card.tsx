@@ -21,6 +21,7 @@ export const MediaCard = ({
 				alignItems: 'center',
 				borderRadius: 'md',
 				borderWidth: 'md',
+				borderColor: 'structure',
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'center',
