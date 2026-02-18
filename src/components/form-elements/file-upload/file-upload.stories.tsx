@@ -1,6 +1,8 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { FileUpload } from './file-upload';
+import { UploadableFile } from './file-upload.types';
 
 const meta = {
 	title: 'Components/FileUpload',
@@ -10,7 +12,16 @@ const meta = {
 	},
 	tags: ['autodocs'],
 	argTypes: {
-		// Add your prop controls here
+		size: {
+			control: 'select',
+			options: ['sm', 'md', 'lg'],
+		},
+		maxNumberFiles: {
+			control: 'number',
+		},
+		maxFileSize: {
+			control: 'number',
+		},
 	},
 } satisfies Meta<typeof FileUpload>;
 
@@ -18,7 +29,32 @@ export default meta;
 type Story = StoryObj<typeof FileUpload>;
 
 export const Default: Story = {
+	render: (args) => {
+		const [files, setFiles] = useState<UploadableFile[]>([]);
+		return <FileUpload {...args} files={files} setFiles={setFiles} />;
+	},
 	args: {
-		// Add your default props here
+		name: 'file-upload',
+		title: 'Upload a File',
+		size: 'md',
+		allowedFileTypes: ['*/*'],
+		supportedFormatsText: 'Supports all file types',
+	},
+};
+
+export const ImageOnly: Story = {
+	render: (args) => {
+		const [files, setFiles] = useState<UploadableFile[]>([]);
+		return <FileUpload {...args} files={files} setFiles={setFiles} />;
+	},
+	args: {
+		name: 'image-upload',
+		title: 'Upload an Image',
+		size: 'lg',
+		allowedFileTypes: ['image/*'],
+		maxFileSize: 5 * 1024 * 1024, // 5MB
+		maxNumberFiles: 3,
+		supportedFormatsText: 'PNG, JPG, GIF up to 5MB',
+		required: true,
 	},
 };
