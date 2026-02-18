@@ -33,6 +33,7 @@ export const FileUploadContent = () => {
 					<div className={styles.fileWrapper}>
 						{files.map((file, index) => (
 							<FilePreview
+								key={index}
 								file={file}
 								actions={
 									<IconButton
