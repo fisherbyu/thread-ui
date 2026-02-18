@@ -42,6 +42,7 @@ export const FileUploadPreview = () => {
 			display: 'flex',
 			flexDirection: 'row',
 			justifyContent: 'start',
+			gap: '2',
 		}),
 		item: css({
 			width: '100%',
