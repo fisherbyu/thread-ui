@@ -15,7 +15,6 @@ export const FileUploadPreview = () => {
 		setCustomFilename,
 		alt,
 		setAlt,
-		status,
 		handleClearFile,
 		saveFile,
 	} = useFileUploadContext();
