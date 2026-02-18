@@ -37,11 +37,4 @@ export type FileUploadContext = FileUploadProps & {
 	handleClearFile: () => void;
 	saveFile: () => void;
 	removeFile: (index: number) => void;
-	handleDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
-	handleDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
-	handleDrop: (e: React.DragEvent<HTMLDivElement>) => void;
-	handleFileUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
-
-	// Derived values
-	isMaxFilesReached: boolean;
 };
