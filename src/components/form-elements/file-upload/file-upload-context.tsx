@@ -1,5 +1,5 @@
 import { createComponentContext } from '@/utils';
-import { FileUploadProps } from './file-upload.types';
+import { FileUploadContext } from './file-upload.types';
 
 export const [FileUploadProvider, useFileUploadContext] =
-	createComponentContext<FileUploadProps>('FileUpload');
+	createComponentContext<FileUploadContext>('FileUpload');

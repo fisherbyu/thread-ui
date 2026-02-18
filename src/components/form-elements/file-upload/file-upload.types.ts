@@ -14,3 +14,34 @@ export type FileUploadProps = {
 export type UploadableFile = File & {
 	alt?: string;
 };
+
+export type FileUploadContext = FileUploadProps & {
+	// State
+	isDragging: boolean;
+	selectedFile: UploadableFile | null;
+	preview: string | null;
+	status: string;
+	customFilename: string;
+	alt: string;
+
+	// State setters
+	setIsDragging: (isDragging: boolean) => void;
+	setSelectedFile: (file: UploadableFile | null) => void;
+	setPreview: (preview: string | null) => void;
+	setStatus: (status: string) => void;
+	setCustomFilename: (filename: string) => void;
+	setAlt: (alt: string) => void;
+
+	// Actions/handlers
+	processFile: (file: File) => void;
+	handleClearFile: () => void;
+	saveFile: () => void;
+	removeFile: (index: number) => void;
+	handleDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+	handleDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
+	handleDrop: (e: React.DragEvent<HTMLDivElement>) => void;
+	handleFileUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+	// Derived values
+	isMaxFilesReached: boolean;
+};
