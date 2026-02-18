@@ -17,6 +17,9 @@ export const FileUploadContent = () => {
 		}),
 		fileWrapper: css({
 			marginBottom: '2',
+			display: 'flex',
+			gap: '1',
+			flexDirection: 'column',
 		}),
 	};
 
@@ -35,7 +38,7 @@ export const FileUploadContent = () => {
 									<IconButton
 										onClick={() => removeFile(index)}
 										name="XSquare"
-										size="md"
+										size="sm"
 										color="error"
 									/>
 								}
