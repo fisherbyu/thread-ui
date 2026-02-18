@@ -8,18 +8,7 @@ import { FilePreview } from './item-previews';
 import { FileUploadPreview } from './file-upload-preview';
 
 export const FileUploadContent = () => {
-	const {
-		files,
-		name,
-		title,
-		removeFile,
-		saveFile,
-		setAlt,
-		preview,
-		selectedFile,
-		setCustomFilename,
-		handleClearFile,
-	} = useFileUploadContext();
+	const { files, name, title, removeFile, selectedFile } = useFileUploadContext();
 
 	const styles = {
 		container: css({
