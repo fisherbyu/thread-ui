@@ -42,7 +42,7 @@ const styles = {
 	}),
 	button: cva({
 		base: {
-			color: 'blue.600',
+			color: 'info.main',
 			_hover: { textDecoration: 'underline' },
 		},
 		variants: {
@@ -52,6 +52,9 @@ const styles = {
 				lg: {},
 			},
 		},
+	}),
+	input: css({
+		display: 'none',
 	}),
 };
 
@@ -108,13 +111,9 @@ export const FileInput = () => {
 			<Icon name="UploadSimple" size={size === 'sm' ? 24 : 48} color="gray" />
 			<div className={styles.contents({ size })}>
 				<span>
-					{!(size === 'sm') && (
-						<Text color="text-secondary" size="xs">
-							Drag and drop your file here
-						</Text>
-					)}
+					{!(size === 'sm') && <Text align="center">Drag and drop your file here</Text>}
 					{supportedFormatsText && (
-						<Text color="text-secondary" size="xs">
+						<Text align="center" color="text-secondary" size="xxs">
 							{supportedFormatsText}
 						</Text>
 					)}
@@ -123,7 +122,7 @@ export const FileInput = () => {
 					<input
 						type="file"
 						id="file-upload-input"
-						className="hidden"
+						className={styles.input}
 						accept={allowedFileTypes?.join(',')}
 						onChange={handleFileUpload}
 						required={required}
