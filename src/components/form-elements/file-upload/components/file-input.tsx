@@ -31,6 +31,7 @@ const styles = {
 			display: 'flex',
 			gap: '2',
 			flexDirection: 'column',
+			alignItems: 'center',
 		},
 		variants: {
 			size: {
@@ -118,28 +119,26 @@ export const FileInput = () => {
 						</Text>
 					)}
 				</span>
-				<div>
-					<input
-						type="file"
-						id="file-upload-input"
-						className={styles.input}
-						accept={allowedFileTypes?.join(',')}
-						onChange={handleFileUpload}
-						required={required}
-					/>
-					<button
-						className={styles.button({ size })}
-						type="button"
-						onClick={() => {
-							const fileInput = document.getElementById('file-upload-input');
-							if (fileInput) {
-								fileInput.click();
-							}
-						}}
-					>
-						Select a File
-					</button>
-				</div>
+				<input
+					type="file"
+					id="file-upload-input"
+					className={styles.input}
+					accept={allowedFileTypes?.join(',')}
+					onChange={handleFileUpload}
+					required={required}
+				/>
+				<button
+					className={styles.button({ size })}
+					type="button"
+					onClick={() => {
+						const fileInput = document.getElementById('file-upload-input');
+						if (fileInput) {
+							fileInput.click();
+						}
+					}}
+				>
+					Select a File
+				</button>
 			</div>
 		</div>
 	);
