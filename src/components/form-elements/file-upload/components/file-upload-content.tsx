@@ -1,11 +1,10 @@
+'use client';
 import { css } from '@/styled-system/css';
 import { FormLabel } from '../../form-label';
 import { useFileUploadContext } from '../file-upload-context';
-import { Button, Divider, Icon, IconButton } from '@/components/ui';
+import { Divider, IconButton } from '@/components/ui';
 import { FileInput } from './file-input';
-import { isFileImageType } from '@/utils';
-import { TextInput } from '../../text-input';
-import { FilePreview, ImageDisplay } from './item-previews';
+import { FilePreview } from './item-previews';
 import { FileUploadPreview } from './file-upload-preview';
 
 export const FileUploadContent = () => {

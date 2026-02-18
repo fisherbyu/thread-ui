@@ -1,3 +1,4 @@
+'use client';
 import { useCallback } from 'react';
 import { Icon } from '@/components/ui';
 import { useFileUploadContext } from '../file-upload-context';

@@ -1,3 +1,4 @@
+'use client';
 import { isFileImageType } from '@/utils';
 import { TextInput } from '../../text-input';
 import { useFileUploadContext } from '../file-upload-context';
