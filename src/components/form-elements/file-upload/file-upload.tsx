@@ -98,10 +98,20 @@ export const FileUpload = ({
 
 	// Save Selected file
 	const saveFile = () => {
-		// Save File
 		if (selectedFile) {
-			selectedFile.alt = alt;
-			setFiles([...files, selectedFile]);
+			// Create new file with custom name
+			const extension = selectedFile.name.split('.').pop() || '';
+			const newFileName = `${customFilename}.${extension}`;
+
+			const renamedFile = new File([selectedFile], newFileName, {
+				type: selectedFile.type,
+				lastModified: selectedFile.lastModified,
+			});
+
+			// Add alt text
+			(renamedFile as UploadableFile).alt = alt;
+
+			setFiles([...files, renamedFile as UploadableFile]);
 			handleClearFile();
 		}
 	};
