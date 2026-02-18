@@ -25,7 +25,7 @@ const styles = {
 			},
 		},
 	}),
-	isDragging: css({ borderColor: 'blue.500', bg: 'blue.50' }),
+	isDragging: css({ borderColor: 'blue.500', bg: 'surface' }),
 	contents: cva({
 		base: {
 			display: 'flex',
