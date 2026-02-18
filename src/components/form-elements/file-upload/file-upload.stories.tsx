@@ -5,7 +5,7 @@ import { FileUpload } from './file-upload';
 import { UploadableFile } from './file-upload.types';
 
 const meta = {
-	title: 'Components/FileUpload',
+	title: 'Form Elements/FileUpload',
 	component: FileUpload,
 	parameters: {
 		layout: 'centered',
