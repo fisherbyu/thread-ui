@@ -69,6 +69,7 @@ export const FileInput = () => {
 		required,
 		setIsDragging,
 		size,
+		status,
 		supportedFormatsText,
 		processFile,
 	} = useFileUploadContext();
@@ -116,6 +117,11 @@ export const FileInput = () => {
 					{supportedFormatsText && (
 						<Text align="center" color="text-secondary" size="xxs">
 							{supportedFormatsText}
+						</Text>
+					)}
+					{status && (
+						<Text align="center" color="error" size="xxs">
+							{status}
 						</Text>
 					)}
 				</span>

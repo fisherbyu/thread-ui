@@ -74,11 +74,6 @@ export const FileUploadPreview = () => {
 					<Text color="text-secondary" size="xs">
 						Extension: .{selectedFile.name.split('.').pop()}
 					</Text>
-					{status && (
-						<Text color="text-secondary" size="sm">
-							{status}
-						</Text>
-					)}
 				</div>
 				{isFileImageType(selectedFile) && (
 					<div className={styles.item}>
