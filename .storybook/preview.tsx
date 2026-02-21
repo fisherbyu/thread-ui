@@ -17,7 +17,16 @@ const preview: Preview = {
 			const themeMode = context.globals.theme || 'light';
 
 			return (
-				<div style={{ backgroundColor: ThreadTheme.background }}>
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						minWidth: '700px',
+						minHeight: '450px',
+						backgroundColor: ThreadTheme.background,
+						padding: '24px',
+					}}
+				>
 					<Story />
 				</div>
 			);
