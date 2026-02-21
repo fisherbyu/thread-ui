@@ -13,7 +13,6 @@ const meta = {
 		(Story) => (
 			<div
 				style={{
-					background: '#f0f0f0',
 					width: '740px',
 					minHeight: '50vh',
 					display: 'flex',
