@@ -123,6 +123,7 @@ export const NumberInput = ({
 			fontSize: 'sm',
 		}),
 		centerSegment: css({
+			color: 'text.standard',
 			width: '16',
 			appearance: 'none',
 			'&::-webkit-outer-spin-button': {
