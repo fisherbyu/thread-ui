@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { useOutsideCloseClick } from '@/utils';
 import { css, cva } from '@/styled-system/css';
 import { IconButton } from '../../icon-button';
 import { H2, H3 } from '@/components/typography';
@@ -5,7 +7,12 @@ import { useModalContext } from '../modal-context';
 
 export const ModalContent = () => {
 	// Extract Properties from Context
-	const { children, size, title, footer, onClose } = useModalContext();
+	const { children, size, title, footer, onClose, closeOnOverlayClick, open } = useModalContext();
+
+	// Manage Modal Closure
+	const modalContentRef = useRef<HTMLDivElement>(null);
+
+	useOutsideCloseClick(closeOnOverlayClick ?? true, modalContentRef, open, onClose);
 
 	const styles = {
 		outline: cva({
@@ -97,7 +104,7 @@ export const ModalContent = () => {
 	) : null;
 
 	return (
-		<div className={styles.outline({ size })}>
+		<div className={styles.outline({ size })} ref={modalContentRef}>
 			<div className={styles.internalContent({ size })}>
 				<div className={styles.outerItems}>
 					<IconButton onClick={onClose} color="primary" size={'sm'} name="X" />
