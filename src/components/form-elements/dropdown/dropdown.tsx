@@ -5,6 +5,7 @@ import { FormLabel } from '../form-label';
 import { Icon } from '@/components/ui';
 import { css, cva, cx } from '@/styled-system/css';
 import { baseInputStyles } from '../styles';
+import { useOutsideCloseClick } from '@/utils';
 
 export const Dropdown = ({
 	label,
@@ -15,7 +16,7 @@ export const Dropdown = ({
 }: DropdownProps) => {
 	// UI State Controls
 	const [isOpen, setIsOpen] = useState(false);
-	const dropdownRef = useRef<HTMLDivElement>(null);
+	const dropdownRef = useRef<HTMLUListElement>(null);
 
 	// Map Value to Dropdown Option
 	const selected = options.find((opt) => opt.value === value);
@@ -27,6 +28,8 @@ export const Dropdown = ({
 	};
 
 	const toggleDropdown = () => setIsOpen(!isOpen);
+
+	useOutsideCloseClick(true, dropdownRef, isOpen, () => setIsOpen(false));
 
 	// Styles
 	const styles = {
@@ -75,7 +78,7 @@ export const Dropdown = ({
 	};
 
 	return (
-		<div className={styles.container} ref={dropdownRef}>
+		<div className={styles.container}>
 			<InputWrapper>
 				{label && <FormLabel name={label} title={label} />}
 				<div className={styles.interior}>
@@ -88,7 +91,7 @@ export const Dropdown = ({
 						<Icon name={isOpen ? 'CaretUp' : 'CaretDown'} size={16} color="black" />
 					</button>
 					{isOpen && (
-						<ul className={styles.list}>
+						<ul className={styles.list} ref={dropdownRef}>
 							{options.map((option, index) => (
 								<li
 									key={index}
