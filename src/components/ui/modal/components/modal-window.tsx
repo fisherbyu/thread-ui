@@ -1,11 +1,11 @@
 import { css, cva } from '@/styled-system/css';
 import { IconButton } from '../../icon-button';
 import { H2, H3 } from '@/components/typography';
-import { useModalProvider } from '../modal-context';
+import { useModalContext } from '../modal-context';
 
 export const ModalContent = () => {
 	// Extract Properties from Context
-	const { children, size, title, footer, onClose } = useModalProvider();
+	const { children, size, title, footer, onClose } = useModalContext();
 
 	const styles = {
 		outline: cva({
