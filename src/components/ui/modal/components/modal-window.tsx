@@ -1,12 +1,12 @@
-import { css, cva, cx } from '@/styled-system/css';
-import { ModalProps } from '../modal.types';
+import { css, cva } from '@/styled-system/css';
 import { IconButton } from '../../icon-button';
-import { title } from 'process';
 import { H2, H3 } from '@/components/typography';
+import { useModalProvider } from '../modal-context';
 
-type ModalContentProps = Pick<ModalProps, 'children' | 'size' | 'title' | 'footer' | 'onClose'>;
+export const ModalContent = () => {
+	// Extract Properties from Context
+	const { children, size, title, footer, onClose } = useModalProvider();
 
-export const ModalContent = ({ children, size, title, footer, onClose }: ModalContentProps) => {
 	const styles = {
 		outline: cva({
 			base: {

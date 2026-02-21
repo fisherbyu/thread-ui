@@ -1,21 +1,11 @@
 import { css } from '@/styled-system/css';
 import { ModalContent } from './components/modal-window';
 import { ModalProps } from './modal.types';
+import { ModalProvider } from './modal-context';
 
-export const Modal = ({
-	open,
-	onClose,
-	title,
-	children,
-	footer,
-	size,
-	placement,
-	closeOnOverlayClick = true,
-	closeOnEsc,
-	preventScroll,
-	initialFocus,
-	portalTarget,
-}: ModalProps) => {
+export const Modal = (props: ModalProps) => {
+	const { open, children } = props;
+
 	const styles = {
 		overlay: css({
 			position: 'fixed',
@@ -30,11 +20,11 @@ export const Modal = ({
 
 	if (open) {
 		return (
-			<div className={styles.overlay}>
-				<ModalContent title={title} size={size} onClose={onClose} footer={footer}>
-					{children}
-				</ModalContent>
-			</div>
+			<ModalProvider value={props}>
+				<div className={styles.overlay}>
+					<ModalContent />
+				</div>
+			</ModalProvider>
 		);
 	}
 };
