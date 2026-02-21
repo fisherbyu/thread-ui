@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 export const Modal = (props: ModalProps) => {
-	const { open, portalTarget, preventScroll = true } = props;
+	const { open, portalTarget, preventScroll = true, placement = 'center' } = props;
 
 	useEffect(() => {
 		if (open && preventScroll) {
@@ -23,9 +23,10 @@ export const Modal = (props: ModalProps) => {
 			inset: 0,
 			background: 'rgba(0, 0, 0, 0.5)',
 			display: 'flex',
-			alignItems: 'center',
+			alignItems: placement === 'top' ? 'flex-start' : 'center',
 			justifyContent: 'center',
 			zIndex: 50,
+			paddingTop: placement === 'top' ? '10' : '0',
 		}),
 	};
 
