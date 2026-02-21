@@ -15,7 +15,6 @@ export type ModalProps = {
 	placement?: 'center' | 'top';
 
 	closeOnOverlayClick?: boolean;
-	closeOnEsc?: boolean;
 	preventScroll?: boolean;
 
 	initialFocus?: RefObject<HTMLElement>;
