@@ -1,18 +1,28 @@
-export type FileUploadProps = {
-	title?: string;
-	name: string;
-	files: UploadableFile[];
-	setFiles: (files: UploadableFile[]) => Promise<void> | void;
-	allowedFileTypes?: string[];
-	maxFileSize?: number; // in bytes
-	maxNumberFiles?: number;
-	supportedFormatsText?: string;
-	required?: boolean;
-	size?: 'sm' | 'md' | 'lg';
+export type UploadableFile = File & {
+	/** Alt text for image files */
+	alt?: string;
 };
 
-export type UploadableFile = File & {
-	alt?: string;
+export type FileUploadProps = {
+	/** Heading displayed in the upload area @default `'Upload a File'` */
+	title?: string;
+	/** Form field name */
+	name: string;
+	/** Current list of uploaded files */
+	files: UploadableFile[];
+	/** Called with the updated file list when files are added or removed */
+	setFiles: (files: UploadableFile[]) => Promise<void> | void;
+	/** MIME types accepted. Supports wildcards like `image/*` @default `['*\/*']` */
+	allowedFileTypes?: string[];
+	/** Maximum file size in bytes */
+	maxFileSize?: number;
+	/** Maximum number of files that can be uploaded */
+	maxNumberFiles?: number;
+	/** Custom text describing supported formats, shown in the upload area */
+	supportedFormatsText?: string;
+	required?: boolean;
+	/** Controls the size of the upload area @default `'md'` */
+	size?: 'sm' | 'md' | 'lg';
 };
 
 export type FileUploadContext = FileUploadProps & {

@@ -5,6 +5,23 @@ import { FileUploadProvider } from './file-upload-context';
 import { isFileImageType } from '@/utils';
 import { FileUploadContent } from './components/file-upload-content';
 
+/**
+ * File upload component with drag-and-drop, file validation, image preview,
+ * and optional filename/alt text editing before saving.
+ *
+ * Validates against allowed MIME types, max file size, and max file count.
+ * Image files generate a preview; non-image files show a generic indicator.
+ *
+ * @example
+ * <FileUpload
+ *   name="attachments"
+ *   files={files}
+ *   setFiles={setFiles}
+ *   allowedFileTypes={['image/*', 'application/pdf']}
+ *   maxFileSize={5 * 1024 * 1024}
+ *   maxNumberFiles={3}
+ * />
+ */
 export const FileUpload = ({
 	title = 'Upload a File',
 	name,

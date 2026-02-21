@@ -7,6 +7,17 @@ import { css, cva, cx } from '@/styled-system/css';
 import { baseInputStyles } from '../styles';
 import { useOutsideCloseClick } from '@/utils';
 
+/**
+ * Single-select dropdown with an option list and outside-click dismissal.
+ *
+ * @example
+ * <Dropdown
+ *   label="Status"
+ *   value={status}
+ *   options={[{ label: 'Active', value: 'active' }, { label: 'Inactive', value: 'inactive' }]}
+ *   onSelect={(val) => setStatus(val)}
+ * />
+ */
 export const Dropdown = ({
 	label,
 	value,
