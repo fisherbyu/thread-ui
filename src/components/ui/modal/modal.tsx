@@ -1,9 +1,9 @@
-import { css } from '@/styled-system/css';
-import { ModalContent } from './components/modal-window';
-import { ModalProps } from './modal.types';
-import { ModalProvider } from './modal-context';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { ModalProps } from './modal.types';
+import { ModalProvider } from './modal-context';
+import { ModalContent } from './components/modal-content';
+import { css } from '@/styled-system/css';
 
 export const Modal = (props: ModalProps) => {
 	const { open, portalTarget, preventScroll = true, placement = 'center' } = props;
