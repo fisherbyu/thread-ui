@@ -17,6 +17,5 @@ export type ModalProps = {
 	closeOnOverlayClick?: boolean;
 	preventScroll?: boolean;
 
-	initialFocus?: RefObject<HTMLElement>;
 	portalTarget?: HTMLElement;
 };

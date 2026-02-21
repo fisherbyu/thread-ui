@@ -3,9 +3,10 @@ import { ModalContent } from './components/modal-window';
 import { ModalProps } from './modal.types';
 import { ModalProvider } from './modal-context';
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 export const Modal = (props: ModalProps) => {
-	const { open, preventScroll = true } = props;
+	const { open, portalTarget, preventScroll = true } = props;
 
 	useEffect(() => {
 		if (open && preventScroll) {
@@ -29,12 +30,15 @@ export const Modal = (props: ModalProps) => {
 	};
 
 	if (open) {
-		return (
+		const target = portalTarget ?? document.body;
+
+		return createPortal(
 			<ModalProvider value={props}>
 				<div className={styles.overlay}>
 					<ModalContent />
 				</div>
-			</ModalProvider>
+			</ModalProvider>,
+			target
 		);
 	}
 };
