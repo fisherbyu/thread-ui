@@ -6,10 +6,8 @@ type ModalSizeOptions = UtilitySizeOptions & 'full';
 export type ModalProps = {
 	open: boolean;
 	onClose: () => void;
-	defaultOpen?: boolean;
 
 	title?: ReactNode;
-	description?: ReactNode;
 	children: ReactNode;
 	footer?: ReactNode;
 

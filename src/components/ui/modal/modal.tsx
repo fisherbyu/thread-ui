@@ -5,14 +5,12 @@ import { ModalProps } from './modal.types';
 export const Modal = ({
 	open,
 	onClose,
-	defaultOpen,
 	title,
-	description,
 	children,
 	footer,
 	size,
 	placement,
-	closeOnOverlayClick,
+	closeOnOverlayClick = true,
 	closeOnEsc,
 	preventScroll,
 	initialFocus,
@@ -33,7 +31,7 @@ export const Modal = ({
 	if (open) {
 		return (
 			<div className={styles.overlay}>
-				<ModalContent title={title} size={size} onClose={onClose}>
+				<ModalContent title={title} size={size} onClose={onClose} footer={footer}>
 					{children}
 				</ModalContent>
 			</div>
