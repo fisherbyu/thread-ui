@@ -4,7 +4,7 @@ import { ModalProps } from './modal.types';
 import { ModalProvider } from './modal-context';
 
 export const Modal = (props: ModalProps) => {
-	const { open, children } = props;
+	const { open } = props;
 
 	const styles = {
 		overlay: css({
