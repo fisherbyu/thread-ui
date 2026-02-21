@@ -21,7 +21,7 @@ const preview: Preview = {
 					style={{
 						display: 'flex',
 						justifyContent: 'center',
-						minWidth: '700px',
+						minWidth: '320px',
 						minHeight: '450px',
 						backgroundColor: ThreadTheme.background,
 						padding: '24px',
