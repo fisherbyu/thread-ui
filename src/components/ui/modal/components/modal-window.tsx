@@ -95,6 +95,7 @@ export const ModalContent = ({ children, size, title, footer, onClose }: ModalCo
 			<H2 inline>{title}</H2>
 		)
 	) : null;
+
 	return (
 		<div className={styles.outline({ size })}>
 			<div className={styles.internalContent({ size })}>
