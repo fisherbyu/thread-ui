@@ -32,6 +32,7 @@ export const Dropdown = ({
 	const styles = {
 		container: css({
 			width: '100%',
+			color: 'text.standard',
 		}),
 		interior: css({
 			width: '100%',
@@ -44,6 +45,7 @@ export const Dropdown = ({
 			alignItems: 'center',
 		}),
 		list: css({
+			backgroundColor: 'background',
 			position: 'absolute',
 			width: '100%',
 			borderWidth: 'md',
