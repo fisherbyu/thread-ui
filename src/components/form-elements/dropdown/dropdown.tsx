@@ -20,6 +20,7 @@ import { useOutsideCloseClick } from '@/utils';
  * />
  */
 export const Dropdown = ({
+	id,
 	title,
 	value,
 	options,
@@ -90,7 +91,7 @@ export const Dropdown = ({
 	};
 
 	return (
-		<div className={styles.container}>
+		<div id={id} className={styles.container}>
 			<InputWrapper>
 				{title && <FormLabel name={title} title={title} />}
 				<div className={styles.interior}>
