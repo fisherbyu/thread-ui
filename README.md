@@ -1,6 +1,6 @@
 # Thread UI
 
-Thread is a React component library I built to create my [personal website](http://fisherandrew.org). It's designed around a clean, token-based theme system with full SSR support, dark mode, and easy customization.
+Thread is a React component library I built to create my [personal website](https://fisherandrew.org). It's designed around a clean, token-based theme system with full SSR support, dark mode, and easy customization.
 
 ## Get Started
 
