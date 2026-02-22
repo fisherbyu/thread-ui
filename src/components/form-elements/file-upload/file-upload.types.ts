@@ -1,19 +1,14 @@
+import { InputProps } from '../input-props.types';
+
 export type UploadableFile = File & {
 	/** Alt text for image files */
 	alt?: string;
 };
 
-export type FileUploadProps = {
-	/** Defaults to `name` if not provided */
-	id?: string;
-	/** Heading displayed in the upload area @default `'Upload a File'` */
-	title?: string;
-	/** Form field name */
-	name: string;
-	/** Current list of uploaded files */
-	value: UploadableFile[];
-	/** Called with the updated file list when files are added or removed */
-	onChange: (files: UploadableFile[]) => Promise<void> | void;
+export type FileUploadProps = Omit<
+	InputProps<UploadableFile[], UploadableFile[]>,
+	'placeholder'
+> & {
 	/** MIME types accepted. Supports wildcards like `image/*` @default `['*\/*']` */
 	allowedFileTypes?: string[];
 	/** Maximum file size in bytes */
@@ -22,7 +17,6 @@ export type FileUploadProps = {
 	maxNumberFiles?: number;
 	/** Custom text describing supported formats, shown in the upload area */
 	supportedFormatsText?: string;
-	required?: boolean;
 	/** Controls the size of the upload area @default `'md'` */
 	size?: 'sm' | 'md' | 'lg';
 };
