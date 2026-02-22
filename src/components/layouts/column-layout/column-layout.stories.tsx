@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ColumnLayout } from './column-layout';
 
 const meta: Meta<typeof ColumnLayout> = {
-	title: 'Components/ColumnLayout',
+	title: 'Layouts/ColumnLayout',
 	component: ColumnLayout,
 	parameters: {
 		layout: 'fullscreen',
@@ -15,7 +15,10 @@ type Story = StoryObj<typeof ColumnLayout>;
 
 // Helper function to generate colored cards
 const ColorCard = ({ color }: { color: string }) => (
-	<div className="thread-w-full thread-aspect-video thread-rounded" style={{ backgroundColor: color }} />
+	<div
+		className="thread-w-full thread-aspect-video thread-rounded"
+		style={{ backgroundColor: color }}
+	/>
 );
 
 export const Basic: Story = {
@@ -44,44 +47,6 @@ export const Basic: Story = {
 				title: 'UI/UX Design',
 				description: 'User-centered design and prototyping',
 				content: <ColorCard color="#A78BFA" />,
-			},
-		],
-	},
-};
-
-export const TwoColumns: Story = {
-	args: {
-		title: 'Featured Projects',
-		mdcol: 1,
-		lgcol: 2,
-		items: [
-			{
-				title: 'Project Alpha',
-				description: 'An enterprise resource planning solution',
-				content: <ColorCard color="#2563EB" />,
-			},
-			{
-				title: 'Project Beta',
-				description: 'E-commerce platform with AI recommendations',
-				content: <ColorCard color="#DC2626" />,
-			},
-		],
-	},
-};
-
-export const NoTitles: Story = {
-	args: {
-		mdcol: 2,
-		lgcol: 3,
-		items: [
-			{
-				content: <ColorCard color="#059669" />,
-			},
-			{
-				content: <ColorCard color="#7C3AED" />,
-			},
-			{
-				content: <ColorCard color="#DB2777" />,
 			},
 		],
 	},
@@ -123,7 +88,8 @@ export const WithImages: Story = {
 			},
 			{
 				title: 'Utah',
-				description: "I'm lucky to live in Utah, its such a pretty place with so much to do.",
+				description:
+					"I'm lucky to live in Utah, its such a pretty place with so much to do.",
 				content: {
 					src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falpine-loop.1df0e6d7.jpg&w=3840&q=75',
 					alt: 'Alpine Loop, Provo, UT',

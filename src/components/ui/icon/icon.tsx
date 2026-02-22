@@ -6,13 +6,11 @@ import { IconWeight } from '@phosphor-icons/react';
 import { getUtilityColorValue } from '../../../utils';
 
 /**
- * Standard Icon Component from Phosphor
- * @param name Icon Name from Phosphor Icons
- * @param color Icon Color
- * @param size Icon Size [8 | 12 | 16 | 24 | 32 | 48 | 64]
- * @param weight Icon Weight ['light' | 'regular' | 'bold']
- * @param filled Icon Fill
- * @returns ReactNode Icon
+ * Standard Icon component with utility color and size support.
+ * (Based on PhosphorIcons)
+ *
+ * @example
+ * <Icon name="Star" size={24} color="primary" filled />
  */
 export const Icon = ({ name, color, size = 24, weight = 'regular', filled = false }: IconProps) => {
 	const IconComponent = PhosphorIcons[name] as React.ComponentType<{

@@ -2,6 +2,13 @@ import { CSSProperties } from 'react';
 import { getUtilityColorValue } from '@/utils';
 import { ToggleProps } from './toggle.types';
 import { ThreadTheme } from '@/theme';
+
+/**
+ * Accessible toggle switch with a sliding knob and configurable active color.
+ *
+ * @example
+ * <Toggle isOn={enabled} onToggle={() => setEnabled(!enabled)} color="primary" />
+ */
 export const Toggle = ({ isOn, onToggle, color = 'success' }: ToggleProps) => {
 	const colorValue = getUtilityColorValue(color);
 
@@ -66,5 +73,3 @@ export const Toggle = ({ isOn, onToggle, color = 'success' }: ToggleProps) => {
 		</button>
 	);
 };
-
-export default Toggle;

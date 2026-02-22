@@ -3,6 +3,12 @@ import { PageHeaderProps } from './page-header.types';
 import { container } from '@/styled-system/patterns';
 import { Divider, Subtitle, Title } from '@/components';
 
+/**
+ * Page-level header with a title, optional caption, and a divider.
+ *
+ * @example
+ * <PageHeader title="Our Team" caption="Meet the people behind the product." center />
+ */
 export const PageHeader = ({ title, caption, center }: PageHeaderProps) => {
 	const styles = {
 		container: cx(

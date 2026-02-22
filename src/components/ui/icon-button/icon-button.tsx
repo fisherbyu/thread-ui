@@ -3,6 +3,14 @@ import { IconButtonProps } from './icon-button.types';
 import { getUtilityFontSize, getUtilityIconSize, getUtilitySizeValue } from '@/utils';
 import { CSSProperties } from 'react';
 
+/**
+ * Button with a leading icon and optional text label.
+ *
+ * @example
+ * <IconButton name="Plus" color="primary" size="md" onClick={handleAdd}>
+ *   Add Item
+ * </IconButton>
+ */
 export const IconButton = ({
 	children,
 	fullWidth,
@@ -19,9 +27,16 @@ export const IconButton = ({
 		fontSize: getUtilityFontSize(size),
 	};
 	return (
-		<Button fullWidth={fullWidth} color={color} onClick={onClick} type={type} margin={margin} disabled={disabled}>
+		<Button
+			fullWidth={fullWidth}
+			color={color}
+			onClick={onClick}
+			type={type}
+			margin={margin}
+			disabled={disabled}
+		>
 			<Icon name={name} size={getUtilityIconSize(size)} />
-			<div style={styles}>{children}</div>
+			{children && <div style={styles}>{children}</div>}
 		</Button>
 	);
 };

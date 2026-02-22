@@ -16,6 +16,20 @@ const valueWithinRange = (value: number, min?: number, max?: number): boolean =>
 	return true;
 };
 
+/**
+ * Number input with increment/decrement buttons and optional min/max range enforcement.
+ * Blocks non-numeric keyboard input and respects range bounds on both direct input and stepping.
+ *
+ * @example
+ * <NumberInput
+ *   name="quantity"
+ *   title="Quantity"
+ *   value={qty}
+ *   min={1}
+ *   max={99}
+ *   onChange={handleChange}
+ * />
+ */
 export const NumberInput = ({
 	name,
 	id = name,
@@ -123,6 +137,7 @@ export const NumberInput = ({
 			fontSize: 'sm',
 		}),
 		centerSegment: css({
+			color: 'text.standard',
 			width: '16',
 			appearance: 'none',
 			'&::-webkit-outer-spin-button': {

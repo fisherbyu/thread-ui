@@ -4,7 +4,9 @@ import { buttonRecipe } from './src/components/ui/button/button-recipe';
 export default defineConfig({
 	// File Intake and Output
 	include: ['./src/**/*.{ts,tsx,js,jsx}'],
+	exclude: ['./src/styled-system/**'],
 	outdir: 'src/styled-system',
+	minify: true,
 
 	// Prefix
 	prefix: 'thread-ui',

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { InfoCard } from './info-card';
 
 const meta: Meta<typeof InfoCard> = {
-	title: 'Components/InfoCard',
+	title: 'Media/InfoCard',
 	component: InfoCard,
 	parameters: {
 		layout: 'centered',
@@ -85,47 +85,5 @@ const infoCard = {
 export const Default: Story = {
 	args: {
 		...recipesData[0],
-	},
-};
-
-export const WithEmojiIcon: Story = {
-	args: {
-		...recipesData[1],
-	},
-};
-
-export const LongTitle: Story = {
-	args: {
-		...infoCard,
-	},
-};
-
-// Grid layout with multiple different recipes
-export const GridLayout: Story = {
-	decorators: [
-		(Story) => (
-			<div
-				style={{
-					display: 'grid',
-					gridTemplateColumns: 'repeat(2, 1fr)',
-					gap: '1rem',
-					padding: '1rem',
-					maxWidth: '900px',
-				}}
-			>
-				{recipesData.map((recipe, index) => (
-					<InfoCard
-						key={index}
-						title={recipe.title}
-						url={recipe.url}
-						icon={recipe.icon}
-						img={recipe.img}
-					/>
-				))}
-			</div>
-		),
-	],
-	parameters: {
-		controls: { hideNoControlsWarning: true },
 	},
 };

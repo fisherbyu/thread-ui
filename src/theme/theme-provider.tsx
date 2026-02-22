@@ -22,6 +22,17 @@ interface ThemeProviderProps {
 	theme?: ThemeConfig;
 }
 
+/**
+ * Provides custom Thread theme configuration.
+ * - Accepts `ThemeConfig` partial object to override default ThreadTheme
+ * - Provides theme-mode state to component tree
+ * - Syncs with the `data-theme` attribute set by `ThreadScript` on mount.
+ *
+ * @example
+ * <ThemeProvider theme={customTheme}>
+ *   <App />
+ * </ThemeProvider>
+ */
 export function ThemeProvider({ children, theme }: ThemeProviderProps) {
 	const [mode, setModeState] = useState<ThreadMode>('system'); // Init as 'system' — sync to applied value on mount
 
@@ -83,11 +94,19 @@ export function ThemeProvider({ children, theme }: ThemeProviderProps) {
 	);
 }
 
-// ─── Internal context accessor (used by useThreadTheme) ───────────────────────
-export function useThreadContext(): ThreadContextValue {
+/**
+ * Returns the current theme mode and controls for updating it.
+ * Must be used within a `<ThemeProvider>`.
+ *
+ * @throws If used outside of `<ThemeProvider>`
+ *
+ * @example
+ * const { mode, setMode, toggleMode } = useThemeMode();
+ */
+export const useThemeMode = (): ThreadContextValue => {
 	const context = useContext(ThreadContext);
 	if (!context) {
-		throw new Error('useThreadTheme must be used within a <ThemeProvider>');
+		throw new Error('useThemeMode must be used within a <ThemeProvider>');
 	}
 	return context;
-}
+};

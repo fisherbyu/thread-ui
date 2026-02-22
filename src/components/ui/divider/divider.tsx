@@ -15,6 +15,12 @@ const dividerWeight = cva({
 	},
 });
 
+/**
+ * Horizontal rule with configurable width, vertical margin, and weight.
+ *
+ * @example
+ * <Divider width="50%" marginY="12px" weight="light" />
+ */
 export const Divider = ({ width, marginY, weight }: DividerProps) => {
 	const styles = {
 		base: css({
@@ -34,7 +40,12 @@ export const Divider = ({ width, marginY, weight }: DividerProps) => {
 		...(marginY && { marginTop: marginY, marginBottom: marginY }),
 	};
 
-	const className = cx(styles.base, dividerWeight({ weight }), !marginY && styles.marginY, !width && styles.width);
+	const className = cx(
+		styles.base,
+		dividerWeight({ weight }),
+		!marginY && styles.marginY,
+		!width && styles.width
+	);
 
 	return <div style={staticStyles} className={className} />;
 };
