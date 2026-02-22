@@ -104,6 +104,7 @@ export const MediaCard = ({
 			alignItems: 'center',
 			justifyContent: 'center',
 			gap: '0.5rem',
+			color: 'text.standard',
 		}),
 		dividerWrapper: css({
 			display: {
