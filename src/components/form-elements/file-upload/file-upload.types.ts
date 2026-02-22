@@ -11,7 +11,7 @@ export type FileUploadProps = {
 	/** Form field name */
 	name: string;
 	/** Current list of uploaded files */
-	files: UploadableFile[];
+	value: UploadableFile[];
 	/** Called with the updated file list when files are added or removed */
 	onChange: (files: UploadableFile[]) => Promise<void> | void;
 	/** MIME types accepted. Supports wildcards like `image/*` @default `['*\/*']` */

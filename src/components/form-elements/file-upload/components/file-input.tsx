@@ -64,7 +64,7 @@ export const FileInput = () => {
 	const {
 		id,
 		allowedFileTypes,
-		files,
+		value,
 		maxNumberFiles,
 		isDragging,
 		required,
@@ -100,7 +100,7 @@ export const FileInput = () => {
 	};
 
 	// If Maximum FIles Reached, return empty
-	if (maxNumberFiles !== undefined && files.length >= maxNumberFiles) {
+	if (maxNumberFiles !== undefined && value.length >= maxNumberFiles) {
 		return;
 	}
 

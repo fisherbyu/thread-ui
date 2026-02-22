@@ -8,7 +8,7 @@ import { FilePreview } from './item-previews';
 import { FileUploadPreview } from './file-upload-preview';
 
 export const FileUploadContent = () => {
-	const { files, name, title, removeFile, selectedFile } = useFileUploadContext();
+	const { value, name, title, removeFile, selectedFile } = useFileUploadContext();
 
 	const styles = {
 		container: css({
@@ -29,9 +29,9 @@ export const FileUploadContent = () => {
 			<Divider width="100%" marginY="2px" />
 			<div>
 				{/* Current Files */}
-				{files && (
+				{value && (
 					<div className={styles.fileWrapper}>
-						{files.map((file, index) => (
+						{value.map((file, index) => (
 							<FilePreview
 								key={index}
 								file={file}
