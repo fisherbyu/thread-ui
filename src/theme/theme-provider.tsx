@@ -94,11 +94,19 @@ export function ThemeProvider({ children, theme }: ThemeProviderProps) {
 	);
 }
 
-// ─── Internal context accessor (used by useThreadTheme) ───────────────────────
-const useThreadContext = (): ThreadContextValue => {
+/**
+ * Returns the current theme mode and controls for updating it.
+ * Must be used within a `<ThemeProvider>`.
+ *
+ * @throws If used outside of `<ThemeProvider>`
+ *
+ * @example
+ * const { mode, setMode, toggleMode } = useThemeMode();
+ */
+export const useThemeMode = (): ThreadContextValue => {
 	const context = useContext(ThreadContext);
 	if (!context) {
-		throw new Error('useThreadTheme must be used within a <ThemeProvider>');
+		throw new Error('useThemeMode must be used within a <ThemeProvider>');
 	}
 	return context;
 };
