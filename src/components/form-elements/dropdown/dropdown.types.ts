@@ -1,5 +1,5 @@
 export type DropdownProps = {
-	/** Defaults to `name` if not provided */
+	/** Dropdown ID */
 	id?: string;
 	/** Optional title rendered above the dropdown */
 	title?: string;
