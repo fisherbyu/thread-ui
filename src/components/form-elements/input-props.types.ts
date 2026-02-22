@@ -10,7 +10,9 @@ export type InputProps<
 	title?: string;
 	/** Controlled value */
 	value: TValue;
+	/** Require value for form submission */
 	required?: boolean;
+	/** Descriptive text rendered within input */
 	placeholder?: string;
 	/** Called when the input value changes */
 	onChange: (e: TChange) => void | Promise<void>;
