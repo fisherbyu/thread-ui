@@ -1,5 +1,5 @@
 'use client';
-import { useCallback } from 'react';
+import { useCallback, useRef } from 'react';
 import { Icon } from '@/components/ui';
 import { useFileUploadContext } from '../file-upload-context';
 import { css, cva, cx } from '@/styled-system/css';
@@ -44,6 +44,7 @@ const styles = {
 	button: cva({
 		base: {
 			color: 'info.main',
+			cursor: 'pointer',
 			_hover: { textDecoration: 'underline' },
 		},
 		variants: {
@@ -63,6 +64,7 @@ export const FileInput = () => {
 	// Extract Context
 	const {
 		id,
+		name,
 		allowedFileTypes,
 		value,
 		maxNumberFiles,
@@ -74,6 +76,8 @@ export const FileInput = () => {
 		supportedFormatsText,
 		processFile,
 	} = useFileUploadContext();
+
+	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	// Drag UI Reactions
 	const handleDragOver = useCallback((e: React.DragEvent<HTMLDivElement>) => {
@@ -129,20 +133,17 @@ export const FileInput = () => {
 				<input
 					type="file"
 					id={id}
+					name={name}
 					className={styles.input}
 					accept={allowedFileTypes?.join(',')}
 					onChange={handleFileUpload}
 					required={required}
+					ref={fileInputRef}
 				/>
 				<button
 					className={styles.button({ size })}
 					type="button"
-					onClick={() => {
-						const fileInput = document.getElementById('file-upload-input');
-						if (fileInput) {
-							fileInput.click();
-						}
-					}}
+					onClick={() => fileInputRef.current?.click()}
 				>
 					Select a File
 				</button>
