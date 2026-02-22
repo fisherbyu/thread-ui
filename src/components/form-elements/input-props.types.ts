@@ -13,5 +13,5 @@ export type InputProps<
 	required?: boolean;
 	placeholder?: string;
 	/** Called when the input value changes */
-	onChange: (e: TChange) => void;
+	onChange: (e: TChange) => void | Promise<void>;
 };
