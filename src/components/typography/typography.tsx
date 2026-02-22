@@ -5,11 +5,20 @@ import { CSSProperties, ReactNode } from 'react';
 
 export type TypographyProps = {
 	children: ReactNode;
+	/** Text alignment @default `'left'` */
 	align?: 'left' | 'center';
+	/** Text color variant @default `'standard'` */
 	color?: ColoredTextOptions;
+	/** Removes bottom margin when true @default `false` */
 	inline?: boolean;
 };
 
+/**
+ * Display-level heading. Renders as `h1` at 3rem/700 weight.
+ *
+ * @example
+ * <Title align="center">Welcome</Title>
+ */
 export const Title = ({
 	children,
 	align = 'left',
@@ -27,6 +36,12 @@ export const Title = ({
 	return <h1 style={styles}>{children}</h1>;
 };
 
+/**
+ * Primary heading. Renders as `h1` at 2rem/600 weight.
+ *
+ * @example
+ * <H1>Page Title</H1>
+ */
 export const H1 = ({
 	children,
 	align = 'left',
@@ -44,6 +59,12 @@ export const H1 = ({
 	return <h1 style={styles}>{children}</h1>;
 };
 
+/**
+ * Secondary heading. Renders as `h2` at 1.5rem/600 weight.
+ *
+ * @example
+ * <H2>Section Title</H2>
+ */
 export const H2 = ({
 	children,
 	align = 'left',
@@ -61,6 +82,12 @@ export const H2 = ({
 	return <h2 style={styles}>{children}</h2>;
 };
 
+/**
+ * Tertiary heading. Renders as `h3` at 1.25rem/600 weight.
+ *
+ * @example
+ * <H3>Subsection Title</H3>
+ */
 export const H3 = ({
 	children,
 	align = 'left',
@@ -79,7 +106,9 @@ export const H3 = ({
 };
 
 export type TextProps = TypographyProps & {
+	/** Applies semibold weight @default `false` */
 	bold?: boolean;
+	/** Font size @default `'md'` */
 	size?: keyof Pick<ExpandedUtilitySizes, 'xxs' | 'xs' | 'sm' | 'md'>;
 };
 
@@ -90,6 +119,12 @@ const TEXT_SIZES = {
 	md: '1rem',
 } as const;
 
+/**
+ * Body text. Renders as `p` by default or `span` when `inline` is true.
+ *
+ * @example
+ * <Text size="sm" bold>Important note</Text>
+ */
 export const Text = ({
 	children,
 	align = 'left',
@@ -110,6 +145,12 @@ export const Text = ({
 	return <Component style={styles}>{children}</Component>;
 };
 
+/**
+ * Secondary text rendered as an inline `span`. Fluid font size between 0.875rem and 1.5rem.
+ *
+ * @example
+ * <Subtitle>Last updated March 2025</Subtitle>
+ */
 export const Subtitle = ({
 	children,
 	align = 'left',
@@ -126,10 +167,18 @@ export const Subtitle = ({
 };
 
 export type ListProps = Omit<TextProps, 'bold' | 'children' | 'inline'> & {
+	/** Items to render in the list */
 	items: Array<string | ReactNode>;
+	/** List marker style @default `'disc'` */
 	decoration?: 'disc' | 'circle' | 'square' | 'blank' | 'none';
 };
 
+/**
+ * Unordered list with configurable marker style, size, and color.
+ *
+ * @example
+ * <List items={['Apples', 'Oranges', 'Bananas']} decoration="circle" />
+ */
 export const List = ({
 	align = 'left',
 	color = 'standard',
@@ -159,6 +208,12 @@ export const List = ({
 
 export type OrderedListProps = Omit<ListProps, 'decoration'>;
 
+/**
+ * Ordered list with decimal numbering.
+ *
+ * @example
+ * <OrderedList items={['First', 'Second', 'Third']} />
+ */
 export const OrderedList = ({
 	align = 'left',
 	color = 'standard',

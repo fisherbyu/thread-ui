@@ -17,7 +17,16 @@ const preview: Preview = {
 			const themeMode = context.globals.theme || 'light';
 
 			return (
-				<div style={{ backgroundColor: ThreadTheme.background }}>
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						minWidth: '320px',
+						minHeight: '450px',
+						backgroundColor: ThreadTheme.background,
+						padding: '24px',
+					}}
+				>
 					<Story />
 				</div>
 			);
@@ -30,7 +39,21 @@ const preview: Preview = {
 				date: /Date$/i,
 			},
 		},
+		options: {
+			storySort: {
+				order: [
+					'UI Components',
+					'Media',
+					'Typography',
+					'Navigation',
+					'Layouts',
+					'Form Elements',
+					'*',
+				],
+			},
+		},
 	},
+
 	// Add global toolbar item for theme switching
 	globalTypes: {
 		theme: {

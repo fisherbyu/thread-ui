@@ -1,9 +1,5 @@
-export * from './deep-merge';
-export * from './get-colored-text-color';
-export * from './get-text-color';
-export * from './get-utility-color';
-export * from './get-utility-font-size';
-export * from './get-utility-icon-size';
-export * from './get-utility-size-value';
-
-export * from './use-pathname';
+export * from './context';
+export * from './data-manipulation';
+export * from './hooks';
+export * from './misc';
+export * from './theme-utilities';

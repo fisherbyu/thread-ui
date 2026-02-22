@@ -13,6 +13,7 @@ export const buttonRecipe = defineRecipe({
 		alignItems: 'center',
 		cursor: 'pointer',
 		userSelect: 'none',
+		height: 'fit-content',
 	},
 	variants: {
 		color: {

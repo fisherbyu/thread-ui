@@ -9,6 +9,7 @@ STORYBOOK := $(NPX) storybook
 CONCURRENTLY := $(NPX) concurrently
 TSX := $(NPX) tsx
 PRETTIER := $(NPX) prettier
+PLOP := $(NPX) plop
 
 # Directories
 DIST_DIR := dist
@@ -77,6 +78,10 @@ watch: ## Watch CSS files. Use CSS=tailwind|panda to limit (default: both)
 theme-css: ## Generate theme CSS from TypeScript
 	$(TSX) $(SCRIPTS_DIR)/generate-default-theme-css.scripts.ts
 	$(PRETTIER) --write src/styles/thread.css
+
+.PHONY: new-item
+new-item: ## Generate New Items using Plop.js
+	$(PLOP)
 
 # Build Targets
 .PHONY: help

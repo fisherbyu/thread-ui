@@ -74,9 +74,9 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		lg: '0.5rem', // 8px
 	},
 	borderSize: {
-		sm: '1px',
-		md: '2px',
-		lg: '3px',
+		sm: '0.5px',
+		md: '1px',
+		lg: '1.5px',
 	},
 	// Dark Mode Colors
 	darkMode: {

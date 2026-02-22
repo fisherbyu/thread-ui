@@ -2,6 +2,7 @@ import { cva } from '@/styled-system/css';
 
 export const baseInputStyles = cva({
 	base: {
+		color: 'text.standard',
 		paddingX: '16px',
 		paddingY: '8px',
 		borderWidth: '1px',

@@ -3,6 +3,15 @@ import { MasonryLayoutProps } from './masonry-layout.types';
 import { container } from '@/styled-system/patterns';
 import { css, cx } from '@/styled-system/css';
 
+/**
+ * Masonry-style grid layout that arranges items into columns (2 on mobile, 3 on medium, 4 on large).
+ *
+ * @example
+ * <MasonryLayout
+ *   title="Gallery"
+ *   components={images.map((img) => <img src={img.src} alt={img.alt} />)}
+ * />
+ */
 export const MasonryLayout = ({ title, caption, components }: MasonryLayoutProps) => {
 	const styles = {
 		container: cx(container()),

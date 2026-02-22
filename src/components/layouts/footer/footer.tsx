@@ -1,11 +1,37 @@
 'use client';
 import { FooterProps } from './footer.types';
 import { Divider, Subtitle } from '@/components';
-import { FacebookLogoIcon, GithubLogoIcon, InstagramLogoIcon, LinkedinLogoIcon, TwitterLogoIcon } from '@phosphor-icons/react';
+import {
+	FacebookLogoIcon,
+	GithubLogoIcon,
+	InstagramLogoIcon,
+	LinkedinLogoIcon,
+	TwitterLogoIcon,
+} from '@phosphor-icons/react';
 import { css, cx } from '@/styled-system/css';
 import { container } from '@/styled-system/patterns';
 
-export const Footer = ({ logo, caption, facebookLink, instagramLink, twitterLink, githubLink, linkedInLink }: FooterProps) => {
+/**
+ * Site footer with optional logo, caption, and social media icon links.
+ * Only social icons with a provided URL are rendered.
+ *
+ * @example
+ * <Footer
+ *   logo={<Logo />}
+ *   caption="© 2025 Acme Co."
+ *   githubLink="https://github.com/acme"
+ *   linkedInLink="https://linkedin.com/company/acme"
+ * />
+ */
+export const Footer = ({
+	logo,
+	caption,
+	facebookLink,
+	instagramLink,
+	twitterLink,
+	githubLink,
+	linkedInLink,
+}: FooterProps) => {
 	const weight = 'bold';
 	const size = 24;
 

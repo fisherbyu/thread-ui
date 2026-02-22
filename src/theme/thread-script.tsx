@@ -7,22 +7,24 @@ interface ThreadScriptProps {
 }
 
 /**
- * Inject this component into your <head> to prevent a flash of unstyled/wrong-mode content.
- * It runs synchronously before the first paint, reading the user's saved mode preference
- * from localStorage, falling back to defaultMode, and setting data-theme on :root.
+ * Inline script to prevent flash of wrong-mode content on first paint.
+ * Reads the user's saved mode from localStorage and sets `data-theme` on `:root`
+ * before React hydrates. For `'system'` mode, no attribute is set and the
+ * `prefers-color-scheme` media query handles it natively.
  *
- * For 'system' mode (either saved or default), no data-theme is set and the CSS
- * media query (prefers-color-scheme) handles the correct mode natively.
+ * Add `suppressHydrationWarning` to your `<html>` tag to suppress the expected hydration mismatch.
  *
- * Add suppressHydrationWarning to your <html> tag — the inline script mutates
- * data-theme before React hydrates, which causes an expected mismatch warning.
- *
- * Next.js App Router:
- *   <html suppressHydrationWarning>
- *     <head><ThreadScript defaultMode="system" /></head>
- *
- * Next.js Pages Router:
- *   // _document.tsx <Head><ThreadScript defaultMode="system" /></Head>
+ * @example
+ * // Next.js App Router (layout.tsx)
+ *  <html suppressHydrationWarning>
+ *      <head>
+ *          <ThreadScript defaultMode="system" />
+ *      </head>
+ *      <body>{children}</body>
+ *  </html>
+ * @example
+ * // Next.js Pages Router (_document.tsx)
+ * <Head><ThreadScript defaultMode="system" /></Head>
  */
 export function ThreadScript({ defaultMode = 'system' }: ThreadScriptProps) {
 	const scriptContent = buildScriptContent(defaultMode);

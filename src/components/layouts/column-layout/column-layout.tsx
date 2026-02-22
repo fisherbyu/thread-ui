@@ -5,9 +5,24 @@ import { H2, H3, Text } from '@/components';
 import { css } from '@/styled-system/css';
 
 /**
- * A layout component that displays content in a responsive column grid with optional title and caption.
+ * Responsive image grid with an optional title and caption.
+ * Column count is controlled separately for medium and large viewports.
+ *
+ * @example
+ * <ColumnLayout
+ *   title="Our Work"
+ *   mdcol={2}
+ *   lgcol={4}
+ *   items={[{ content: { src: '/img.jpg', alt: 'Example' }, title: 'Item' }]}
+ * />
  */
-export const ColumnLayout = ({ title, caption, mdcol = 2, lgcol = 4, items }: ColumnLayoutProps) => {
+export const ColumnLayout = ({
+	title,
+	caption,
+	mdcol = 2,
+	lgcol = 4,
+	items,
+}: ColumnLayoutProps) => {
 	const sectionStyles = css({
 		width: '100%',
 		marginRight: 'auto',
@@ -65,7 +80,9 @@ export const ColumnLayout = ({ title, caption, mdcol = 2, lgcol = 4, items }: Co
 			<ColumnSkeleton mdcol={mdcol} lgcol={lgcol}>
 				{items.map((item, index) => (
 					<div key={index}>
-						<div className={gridItemStyles}>{renderImage(item.content, undefined, gridPhotoStyles)}</div>
+						<div className={gridItemStyles}>
+							{renderImage(item.content, undefined, gridPhotoStyles)}
+						</div>
 						{(item.title || item.description) && (
 							<>
 								{item.title && <H3>{item.title}</H3>}

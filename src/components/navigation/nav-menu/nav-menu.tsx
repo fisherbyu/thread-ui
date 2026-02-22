@@ -4,6 +4,19 @@ import { NavMenuProps } from './nav-menu.types';
 import { NavIconItem, NavItem, NavItemProps, NavDropdownItemProps, NavDropdownItem } from './items';
 import { css, cx } from '@/styled-system/css';
 
+/**
+ * Sticky site navigation with a logo, nav links, dropdown menus, and a mobile hamburger toggle.
+ * Closes on outside click and on viewport resize.
+ *
+ * @example
+ * <NavMenu
+ *   logo={{ href: '/', logo: <Logo /> }}
+ *   items={[
+ *     { href: '/about', title: 'About' },
+ *     { title: 'Work', items: [{ href: '/work/web', title: 'Web' }] },
+ *   ]}
+ * />
+ */
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	// Navmenu Controls
 	const [navIsOpened, setNavIsOpened] = useState(false);
@@ -184,7 +197,12 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 			<header id="site-menu" className={style.header}>
 				<nav className={style.nav}>
 					{logo && <NavIconItem href={logo.href} logo={logo.logo} />}
-					<div className={cx(style.menuItemBlock, navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock)}>
+					<div
+						className={cx(
+							style.menuItemBlock,
+							navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
+						)}
+					>
 						<ul className={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
 					</div>
 					<div className={style.menuControl}>
@@ -194,10 +212,20 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 							}}
 							aria-label="toggle navbar"
 						>
-							<span aria-hidden={true} className={cx(style.menuCross, navIsOpened && style.menuCrossTopOpen)} />
 							<span
 								aria-hidden={true}
-								className={cx(style.menuCross, style.menuCrossBottom, navIsOpened && style.menuCrossBottomOpen)}
+								className={cx(
+									style.menuCross,
+									navIsOpened && style.menuCrossTopOpen
+								)}
+							/>
+							<span
+								aria-hidden={true}
+								className={cx(
+									style.menuCross,
+									style.menuCrossBottom,
+									navIsOpened && style.menuCrossBottomOpen
+								)}
 							/>
 						</button>
 					</div>

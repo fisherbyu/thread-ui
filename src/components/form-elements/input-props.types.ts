@@ -1,9 +1,19 @@
-export type InputProps<T> = {
-    id?: string;
-    name: string;
-    title?: string;
-    value?: T;
-    required?: boolean;
-    placeholder?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+export type InputProps<
+	TValue,
+	TChange = React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
+> = {
+	/** Defaults to `name` if not provided */
+	id?: string;
+	/** Form field name */
+	name: string;
+	/** Label text rendered above the input */
+	title?: string;
+	/** Controlled value */
+	value: TValue;
+	/** Require value for form submission */
+	required?: boolean;
+	/** Descriptive text rendered within input */
+	placeholder?: string;
+	/** Called when the input value changes */
+	onChange: (e: TChange) => void | Promise<void>;
 };

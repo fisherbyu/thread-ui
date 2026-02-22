@@ -3,13 +3,24 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Icon } from './icon';
 
 const meta: Meta<typeof Icon> = {
-	title: 'Components/Icon',
+	title: 'UI Components/Icon',
 	component: Icon,
 	tags: ['autodocs'],
 	argTypes: {
 		name: {
 			control: 'select',
-			options: ['Heart', 'House', 'User', 'Gear', 'Bell', 'ArrowRight', 'Check', 'Warning', 'CaretRight', 'Stack'],
+			options: [
+				'Heart',
+				'House',
+				'User',
+				'Gear',
+				'Bell',
+				'ArrowRight',
+				'Check',
+				'Warning',
+				'CaretRight',
+				'Stack',
+			],
 		},
 		size: {
 			control: 'select',
@@ -17,7 +28,16 @@ const meta: Meta<typeof Icon> = {
 		},
 		color: {
 			control: 'select',
-			options: ['primary', 'secondary', 'tertiary', 'black', 'gray', 'success', 'error', 'info'],
+			options: [
+				'primary',
+				'secondary',
+				'tertiary',
+				'black',
+				'gray',
+				'success',
+				'error',
+				'info',
+			],
 		},
 		weight: {
 			control: 'select',

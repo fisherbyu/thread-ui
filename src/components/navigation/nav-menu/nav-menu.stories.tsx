@@ -4,7 +4,7 @@ import { NavMenu } from './nav-menu';
 import { ThreadTheme } from '../../../theme';
 
 const meta: Meta<typeof NavMenu> = {
-	title: 'Components/NavMenu',
+	title: 'Navigation/NavMenu',
 	component: NavMenu,
 	parameters: {
 		layout: 'fullscreen',

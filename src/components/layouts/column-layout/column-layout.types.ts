@@ -1,32 +1,23 @@
 import { ImageProps } from '../../../types';
-/**
- * Props for the ColumnLayout component
- *
- * @property {string} [title] - Optional title displayed at the top of the layout
- * @property {string} [caption] - Optional caption displayed below the title
- * @property {number} mdcol - Number of columns to display at medium viewport sizes
- * @property {number} lgcol - Number of columns to display at large viewport sizes
- * @property {ColumnItem[]} items - Array of items to display in the grid
- */
+
 export type ColumnLayoutProps = {
+	/** Optional title displayed at the top of the layout */
 	title?: string;
+	/** Optional caption rendered alongside the title */
 	caption?: string;
+	/** Number of columns at medium viewport sizes @default `2` */
 	mdcol: 1 | 2 | 3;
+	/** Number of columns at large viewport sizes @default `4` */
 	lgcol: 2 | 3 | 4 | 5;
+	/** Items to display in the grid */
 	items: ColumnItem[];
 };
 
-/**
- * Represents an item to be displayed in the column layout
- *
- * @property {string} [title] - Optional title for the item
- * @property {string} [description] - Optional description text for the item
- * @property {Object|ReactNode} content - Content to display for the item
- * @property {string} [content.src] - Source URL for image content (when content is an image)
- * @property {string} [content.alt] - Alt text for image content (when content is an image)
- */
 export type ColumnItem = {
+	/** Optional title rendered below the image */
 	title?: string;
+	/** Optional description rendered below the title */
 	description?: string;
+	/** Image to display in the column */
 	content: ImageProps;
 };

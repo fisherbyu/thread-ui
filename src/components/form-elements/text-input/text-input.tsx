@@ -4,6 +4,12 @@ import { InputWrapper } from '../input-wrapper';
 import { baseInputStyles } from '../styles';
 import { cx, css } from '@/styled-system/css';
 
+/**
+ * Text input that renders either a single-line `input` or a resizable `textarea`.
+ *
+ * @example
+ * <TextInput name="bio" title="Bio" value={bio} multiline onChange={handleChange} />
+ */
 export const TextInput = ({
 	name,
 	id = name,

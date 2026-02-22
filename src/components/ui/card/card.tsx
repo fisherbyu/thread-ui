@@ -3,6 +3,14 @@ import { CardProps } from './card.types';
 import { H3 } from '@/components/typography';
 import { Divider } from '../divider';
 
+/**
+ * General-purpose content card container with optional title, divider, shadow, and surface color variants.
+ *
+ * @example
+ * <Card title={{ text: 'Details', divider: true }} size="md" shadow>
+ *   <div>Card content here</div>
+ * </Card>
+ */
 export const Card = ({
 	surfaceColor = 'background',
 	children,

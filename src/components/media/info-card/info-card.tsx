@@ -2,6 +2,17 @@ import { Icon } from '@/components/ui';
 import { InfoCardProps } from './info-card.types';
 import { css } from '@/styled-system/css';
 
+/**
+ * Linked card displaying a cover image, title, and icon. Supports named icons, emojis, and SVGs.
+ *
+ * @example
+ * <InfoCard
+ *   title="Getting Started"
+ *   url="/docs/getting-started"
+ *   icon="BookOpen"
+ *   img="/images/cover.jpg"
+ * />
+ */
 export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 	const styles = {
 		card: css({

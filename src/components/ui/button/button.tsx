@@ -1,6 +1,14 @@
 import { button } from '@/styled-system/recipes';
 import { ButtonProps } from './button.types';
 
+/**
+ * Button with color, size, and full-width variants.
+ *
+ * @example
+ * <Button color="primary" size="md" onClick={handleSubmit}>
+ *   Save Changes
+ * </Button>
+ */
 export const Button = ({
 	children,
 	fullWidth = false,
@@ -19,7 +27,12 @@ export const Button = ({
 	});
 
 	return (
-		<button type={type} className={buttonClasses} onClick={disabled ? undefined : onClick} style={margin ? { margin } : undefined}>
+		<button
+			type={type}
+			className={buttonClasses}
+			onClick={disabled ? undefined : onClick}
+			style={margin ? { margin } : undefined}
+		>
 			{children}
 		</button>
 	);
