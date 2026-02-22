@@ -1,3 +1,4 @@
+'use client';
 import { useRef, useState } from 'react';
 import { DropdownOption, DropdownProps } from './dropdown.types';
 import { InputWrapper } from '../input-wrapper';

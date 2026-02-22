@@ -1,3 +1,4 @@
+'use client';
 import { useRef } from 'react';
 import { useOutsideCloseClick } from '@/utils';
 import { css, cva } from '@/styled-system/css';
