@@ -41,6 +41,20 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	}
 };
 
+/**
+ * Two-column panel with an image and a text block. Supports responsive image swapping,
+ * flexible content positioning, and colored title variants.
+ *
+ * @example
+ * <ImagePanel
+ *   title="Our Story"
+ *   subtitle="How it started"
+ *   contents={['Founded in 2020...', 'We believe in...']}
+ *   image={{ src: '/hero.jpg', alt: 'Hero' }}
+ *   smImage={{ src: '/hero-sm.jpg', alt: 'Hero' }}
+ *   contentLeft
+ * />
+ */
 export const ImagePanel = ({
 	title,
 	subtitle,

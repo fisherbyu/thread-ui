@@ -4,8 +4,14 @@ import { SideNavItem } from './side-nav-item';
 import { SideNavProps } from './side-nav.types';
 
 /**
- * Standard User Dashboard for navigating between application views
- * @returns {JSX.Element} Standard Dashboard Menu
+ * Vertical side navigation for dashboards. Collapses to a narrow icon-only rail on small screens.
+ *
+ * @example
+ * <SideNav
+ *   logo={<Logo />}
+ *   links={[{ title: 'Dashboard', href: '/dashboard', icon: 'House' }]}
+ *   basePath="/app"
+ * />
  */
 export const SideNav = ({ logo, links, controls, basePath = '' }: SideNavProps) => {
 	const styles = {

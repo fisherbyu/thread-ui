@@ -5,6 +5,15 @@ import { ModalProvider } from './modal-context';
 import { ModalContent } from './components/modal-content';
 import { css } from '@/styled-system/css';
 
+/**
+ * Modal dialog rendered in a portal with a backdrop overlay. Supports top and center placement,
+ * scroll locking, and optional overlay-click dismissal.
+ *
+ * @example
+ * <Modal open={isOpen} onClose={() => setIsOpen(false)} title="Confirm" size="md">
+ *   <p>Are you sure?</p>
+ * </Modal>
+ */
 export const Modal = (props: ModalProps) => {
 	const { open, portalTarget, preventScroll = true, placement = 'center' } = props;
 

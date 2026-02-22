@@ -3,6 +3,14 @@ import { IconButtonProps } from './icon-button.types';
 import { getUtilityFontSize, getUtilityIconSize, getUtilitySizeValue } from '@/utils';
 import { CSSProperties } from 'react';
 
+/**
+ * Button with a leading icon and optional text label.
+ *
+ * @example
+ * <IconButton name="Plus" color="primary" size="md" onClick={handleAdd}>
+ *   Add Item
+ * </IconButton>
+ */
 export const IconButton = ({
 	children,
 	fullWidth,

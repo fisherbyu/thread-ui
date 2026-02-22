@@ -5,6 +5,19 @@ import { Divider, Icon } from '@/components/ui';
 import { LinkWrapper, renderImage } from '@/internal-components';
 import { cloneElement, isValidElement } from 'react';
 
+/**
+ * Media card with an image, title, description, detail pairs, and icon links.
+ * Supports flexible image positioning and placing details in either the image or text column.
+ *
+ * @example
+ * <MediaCard
+ *   title="Jane Doe"
+ *   description={['Software engineer based in NYC.', 'Passionate about open source.']}
+ *   image={{ src: '/jane.jpg', alt: 'Jane Doe' }}
+ *   links={[{ iconName: 'GithubLogo', url: 'https://github.com/jane' }]}
+ *   details={[{ title: 'Role', details: 'Engineer' }]}
+ * />
+ */
 export const MediaCard = ({
 	description,
 	details,
