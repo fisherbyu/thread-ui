@@ -1,30 +1,75 @@
 # Thread UI
 
-Thread is a UI Library I created for use in my [personal website](http://fisherandrew.org).
+Thread is a React component library I built to create my [personal website](http://fisherandrew.org). It's designed around a clean, token-based theme system with full SSR support, dark mode, and easy customization.
 
-# Get Started
+## Get Started
 
-All components work out of the box. Documentation coming soon to thread.fisherandrew.org
+All components work out of the box. Full documentation coming soon at thread.fisherandrew.org.
 
-# Features
-
-## SSR
-
-All CSS is pre-generated using `panda-css`, so most components can easily be rendered server-side.
-
-## Custom Themes
-
-Thread-UI supports custom themes created by the user that override the default theme, even when using SSR in Next.js. To implement a custom theme, simply wrap the application contents in the `ThemeProvider` Component. The provider can be configured with a partial of the `Theme` type, to allow you to customize as much or as little as you want!
-
-For Example:
-
+```bash
+npm install thread-ui
 ```
-const ThreadTheme: ThemeConfig = {
-    primary: {
-        light: '#4f46e5',
-        main: '#4338ca',
-        dark: '#3730a3',
-    },
+
+## Features
+
+### SSR Compatible
+
+Component CSS is pre-generated using Panda CSS, so components render correctly server-side without any runtime style injection. Most components are SSR compatible, and all work out of the box with `Next.js`.
+
+### Dark Mode
+
+Thread includes a built-in light/dark/system mode system. The `ThreadScript` component injects an inline script into your `<head>` that reads the user's saved preference from `localStorage` and sets `data-theme` on `:root` before the first paint — eliminating any flash of wrong-mode content.
+
+```tsx
+// Next.js App Router
+<html suppressHydrationWarning>
+	<head>
+		<ThreadScript defaultMode="system" />
+	</head>
+	<body>
+		<ThemeProvider>{children}</ThemeProvider>
+	</body>
+</html>
+```
+
+### Custom Themes
+
+Thread supports custom themes that override the default design tokens, including when using SSR. Wrap your app in `ThemeProvider` and pass a partial `ThemeConfig` — customize as much or as little as you want.
+
+```tsx
+const customTheme: ThemeConfig = {
+	primary: {
+		light: '#4f46e5',
+		main: '#4338ca',
+		dark: '#3730a3',
+	},
 };
-return <ThemeProvider theme={ThreadTheme}>{children}</ThemeProvider>;
+
+return <ThemeProvider theme={customTheme}>{children}</ThemeProvider>;
 ```
+
+## Components
+
+### UI Elements
+
+`Button` `Card` `Divider` `Icon` `IconButton` `Modal` `Toggle`
+
+### Media Display
+
+`ImagePanel` `InfoCard` `MediaCard`
+
+### Typography Elements
+
+`Title` `H1` `H2` `H3` `Text` `Subtitle` `List` `OrderedList` `PageHeader`
+
+### Navigation Components
+
+`NavMenu` `SideNav`
+
+### Form Elements
+
+`Dropdown` `FileUpload` `FormLabel` `NumberInput` `TextInput`
+
+### Layout Components
+
+`ColumnLayout` `Footer` `MasonryLayout`
