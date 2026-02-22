@@ -6,11 +6,11 @@ export type InputProps<T> = {
 	/** Label text rendered above the input */
 	title?: string;
 	/** Controlled value */
-	value?: T;
+	value: T;
 	required?: boolean;
 	placeholder?: string;
 	/** Called when the input value changes */
-	onChange?: (
+	onChange: (
 		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
 	) => void;
 };
