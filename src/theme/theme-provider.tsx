@@ -84,10 +84,10 @@ export function ThemeProvider({ children, theme }: ThemeProviderProps) {
 }
 
 // ─── Internal context accessor (used by useThreadTheme) ───────────────────────
-export function useThreadContext(): ThreadContextValue {
+const useThreadContext = (): ThreadContextValue => {
 	const context = useContext(ThreadContext);
 	if (!context) {
 		throw new Error('useThreadTheme must be used within a <ThemeProvider>');
 	}
 	return context;
-}
+};
