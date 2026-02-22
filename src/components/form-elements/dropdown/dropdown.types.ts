@@ -1,6 +1,6 @@
 export type DropdownProps = {
-	/** Optional label rendered above the dropdown */
-	label?: string;
+	/** Optional title rendered above the dropdown */
+	title?: string;
 	/** Currently selected value — matched against `options` to display the selected label */
 	value?: string | number | null;
 	/** List of options to display */

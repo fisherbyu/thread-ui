@@ -13,14 +13,14 @@ import { useOutsideCloseClick } from '@/utils';
  *
  * @example
  * <Dropdown
- *   label="Status"
+ *   title="Status"
  *   value={status}
  *   options={[{ label: 'Active', value: 'active' }, { label: 'Inactive', value: 'inactive' }]}
  *   onSelect={(val) => setStatus(val)}
  * />
  */
 export const Dropdown = ({
-	label,
+	title,
 	value,
 	options,
 	onSelect,
@@ -92,7 +92,7 @@ export const Dropdown = ({
 	return (
 		<div className={styles.container}>
 			<InputWrapper>
-				{label && <FormLabel name={label} title={label} />}
+				{title && <FormLabel name={title} title={title} />}
 				<div className={styles.interior}>
 					<button
 						className={cx(styles.surfaceButton, baseInputStyles({ alt: true }))}
