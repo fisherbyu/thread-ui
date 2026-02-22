@@ -12,9 +12,21 @@ npm install thread-ui
 
 ## Features
 
-### SSR Compatible
+### Custom Themes
 
-Component CSS is pre-generated using Panda CSS, so components render correctly server-side without any runtime style injection. Most components are SSR compatible, and all work out of the box with `Next.js`.
+Thread supports custom themes that override the default design tokens, including when using SSR. Wrap your app in `ThemeProvider` and pass a partial `ThemeConfig` — customize as much or as little as you want.
+
+```tsx
+const customTheme: ThemeConfig = {
+	primary: {
+		light: '#4f46e5',
+		main: '#4338ca',
+		dark: '#3730a3',
+	},
+};
+
+return <ThemeProvider theme={customTheme}>{children}</ThemeProvider>;
+```
 
 ### Dark Mode
 
@@ -32,21 +44,9 @@ Thread includes a built-in light/dark/system mode system. The `ThreadScript` com
 </html>
 ```
 
-### Custom Themes
+### SSR Compatible
 
-Thread supports custom themes that override the default design tokens, including when using SSR. Wrap your app in `ThemeProvider` and pass a partial `ThemeConfig` — customize as much or as little as you want.
-
-```tsx
-const customTheme: ThemeConfig = {
-	primary: {
-		light: '#4f46e5',
-		main: '#4338ca',
-		dark: '#3730a3',
-	},
-};
-
-return <ThemeProvider theme={customTheme}>{children}</ThemeProvider>;
-```
+Component CSS is pre-generated using Panda CSS, so components render correctly server-side without any runtime style injection. Most components are SSR compatible, and all work out of the box with `Next.js`.
 
 ## Components
 
