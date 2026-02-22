@@ -16,7 +16,7 @@ import { FileUploadContent } from './components/file-upload-content';
  * <FileUpload
  *   name="attachments"
  *   files={files}
- *   setFiles={setFiles}
+ *   onChange={onChange}
  *   allowedFileTypes={['image/*', 'application/pdf']}
  *   maxFileSize={5 * 1024 * 1024}
  *   maxNumberFiles={3}
@@ -27,7 +27,7 @@ export const FileUpload = ({
 	name,
 	id = name,
 	files,
-	setFiles,
+	onChange,
 	allowedFileTypes = ['*/*'],
 	maxFileSize,
 	maxNumberFiles,
@@ -129,7 +129,7 @@ export const FileUpload = ({
 			// Add alt text
 			(renamedFile as UploadableFile).alt = alt;
 
-			setFiles([...files, renamedFile as UploadableFile]);
+			onChange([...files, renamedFile as UploadableFile]);
 			handleClearFile();
 		}
 	};
@@ -139,7 +139,7 @@ export const FileUpload = ({
 		const updatedFiles = files.filter((_, i) => i !== index);
 
 		// Save Changes
-		setFiles(updatedFiles);
+		onChange(updatedFiles);
 	};
 
 	return (
@@ -148,7 +148,7 @@ export const FileUpload = ({
 				id,
 				title,
 				name,
-				setFiles,
+				onChange,
 				allowedFileTypes,
 				maxFileSize,
 				maxNumberFiles,

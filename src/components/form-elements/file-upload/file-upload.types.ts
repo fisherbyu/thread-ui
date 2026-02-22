@@ -13,7 +13,7 @@ export type FileUploadProps = {
 	/** Current list of uploaded files */
 	files: UploadableFile[];
 	/** Called with the updated file list when files are added or removed */
-	setFiles: (files: UploadableFile[]) => Promise<void> | void;
+	onChange: (files: UploadableFile[]) => Promise<void> | void;
 	/** MIME types accepted. Supports wildcards like `image/*` @default `['*\/*']` */
 	allowedFileTypes?: string[];
 	/** Maximum file size in bytes */

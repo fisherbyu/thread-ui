@@ -30,8 +30,8 @@ type Story = StoryObj<typeof FileUpload>;
 
 export const Default: Story = {
 	render: (args) => {
-		const [files, setFiles] = useState<UploadableFile[]>([]);
-		return <FileUpload {...args} files={files} setFiles={setFiles} />;
+		const [files, onChange] = useState<UploadableFile[]>([]);
+		return <FileUpload {...args} files={files} onChange={onChange} />;
 	},
 	args: {
 		name: 'file-upload',
@@ -44,8 +44,8 @@ export const Default: Story = {
 
 export const ImageOnly: Story = {
 	render: (args) => {
-		const [files, setFiles] = useState<UploadableFile[]>([]);
-		return <FileUpload {...args} files={files} setFiles={setFiles} />;
+		const [files, onChange] = useState<UploadableFile[]>([]);
+		return <FileUpload {...args} files={files} onChange={onChange} />;
 	},
 	args: {
 		name: 'image-upload',
