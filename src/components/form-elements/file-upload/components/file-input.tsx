@@ -62,6 +62,7 @@ const styles = {
 export const FileInput = () => {
 	// Extract Context
 	const {
+		id,
 		allowedFileTypes,
 		files,
 		maxNumberFiles,
@@ -127,7 +128,7 @@ export const FileInput = () => {
 				</span>
 				<input
 					type="file"
-					id="file-upload-input"
+					id={id}
 					className={styles.input}
 					accept={allowedFileTypes?.join(',')}
 					onChange={handleFileUpload}

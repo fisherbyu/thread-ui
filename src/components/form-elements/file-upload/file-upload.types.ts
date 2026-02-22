@@ -4,6 +4,8 @@ export type UploadableFile = File & {
 };
 
 export type FileUploadProps = {
+	/** Defaults to `name` if not provided */
+	id?: string;
 	/** Heading displayed in the upload area @default `'Upload a File'` */
 	title?: string;
 	/** Form field name */
