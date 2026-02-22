@@ -22,6 +22,17 @@ interface ThemeProviderProps {
 	theme?: ThemeConfig;
 }
 
+/**
+ * Provides custom Thread theme configuration.
+ * - Accepts `ThemeConfig` partial object to override default ThreadTheme
+ * - Provides theme-mode state to component tree
+ * - Syncs with the `data-theme` attribute set by `ThreadScript` on mount.
+ *
+ * @example
+ * <ThemeProvider theme={customTheme}>
+ *   <App />
+ * </ThemeProvider>
+ */
 export function ThemeProvider({ children, theme }: ThemeProviderProps) {
 	const [mode, setModeState] = useState<ThreadMode>('system'); // Init as 'system' — sync to applied value on mount
 
