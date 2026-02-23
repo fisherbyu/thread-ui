@@ -1,23 +1,9 @@
 {
 	"name": "thread-ui",
 	"version": "0.4.0",
+	"author": "Andrew Fisher",
 	"description": "UI Library for React Applications.",
-	"main": "dist/index.js",
-	"module": "dist/index.js",
-	"types": "dist/index.d.ts",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"module": "./dist/index.js",
-			"default": "./dist/index.js"
-		}
-	},
-	"scripts": {},
-	"files": [
-		"dist",
-		"!**/*.test.*",
-		"!**/*.stories.*"
-	],
+	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/fisherbyu/thread-ui.git"
@@ -28,8 +14,28 @@
 		"Thread",
 		"UX"
 	],
-	"author": "Andrew Fisher",
-	"license": "MIT",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"module": "./dist/index.js",
+			"default": "./dist/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"!**/*.test.*",
+		"!**/*.stories.*"
+	],
+	"dependencies": {
+		"@phosphor-icons/react": "^2.1.10"
+	},
+	"peerDependencies": {
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0"
+	},
 	"devDependencies": {
 		"@pandacss/dev": "^0.54.0",
 		"@storybook/addon-essentials": "^8.4.7",
@@ -56,12 +62,5 @@
 		"tsc-alias": "^1.8.16",
 		"tsx": "^4.21.0",
 		"typescript": "^5.7.2"
-	},
-	"peerDependencies": {
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0"
-	},
-	"dependencies": {
-		"@phosphor-icons/react": "^2.1.10"
 	}
 }
