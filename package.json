@@ -43,7 +43,7 @@
 		"react-dom": "^19.1.0"
 	},
 	"devDependencies": {
-		"@pandacss/dev": "^0.54.0",
+		"@pandacss/dev": "^1.8.2",
 		"@storybook/addon-essentials": "^8.6.17",
 		"@storybook/addon-interactions": "^8.6.17",
 		"@storybook/addon-onboarding": "^8.4.7",
@@ -67,5 +67,8 @@
 		"tsc-alias": "^1.8.16",
 		"tsx": "^4.21.0",
 		"typescript": "^5.7.2"
+	},
+	"overrides": {
+		"minimatch": "^10.2.1"
 	}
 }
