@@ -12,7 +12,9 @@
 		"React",
 		"UI",
 		"Thread",
-		"UX"
+		"UX",
+		"Component Library",
+		"typescript"
 	],
 	"main": "dist/index.js",
 	"module": "dist/index.js",
