@@ -1,27 +1,9 @@
 {
 	"name": "thread-ui",
-	"version": "0.4.0",
+	"version": "0.4.1",
+	"author": "Andrew Fisher",
 	"description": "UI Library for React Applications.",
-	"main": "dist/index.js",
-	"module": "dist/index.js",
-	"types": "dist/index.d.ts",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"module": "./dist/index.js",
-			"default": "./dist/index.js"
-		},
-		"./client": {
-			"types": "./dist/client/index.d.ts",
-			"default": "./dist/client/index.js"
-		}
-	},
-	"scripts": {},
-	"files": [
-		"dist",
-		"!**/*.test.*",
-		"!**/*.stories.*"
-	],
+	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/fisherbyu/thread-ui.git"
@@ -30,30 +12,37 @@
 		"React",
 		"UI",
 		"Thread",
-		"UX"
+		"UX",
+		"Component Library",
+		"typescript",
+		"design-system"
 	],
-	"author": "Andrew Fisher",
-	"license": "MIT",
-	"jest": {
-		"modulePaths": [
-			"node_modules"
-		],
-		"moduleFileExtensions": [
-			"js",
-			"jsx",
-			"ts",
-			"tsx"
-		],
-		"moduleDirectories": [
-			"node_modules"
-		],
-		"testEnvironment": "jsdom"
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"default": "./dist/index.js"
+		}
+	},
+	"sideEffects": [
+		"**/*.css"
+	],
+	"files": [
+		"dist",
+		"!**/*.test.*",
+		"!**/*.stories.*"
+	],
+	"dependencies": {
+		"@phosphor-icons/react": "^2.1.10"
+	},
+	"peerDependencies": {
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0"
 	},
 	"devDependencies": {
-		"@babel/preset-env": "^7.26.0",
-		"@babel/preset-react": "^7.26.3",
-		"@babel/preset-typescript": "^7.26.0",
-		"@jest/globals": "^29.7.0",
 		"@pandacss/dev": "^0.54.0",
 		"@storybook/addon-essentials": "^8.4.7",
 		"@storybook/addon-interactions": "^8.4.7",
@@ -63,38 +52,21 @@
 		"@storybook/react": "^8.4.7",
 		"@storybook/react-webpack5": "^8.4.7",
 		"@storybook/test": "^8.4.7",
-		"@testing-library/jest-dom": "^6.6.3",
-		"@testing-library/react": "^16.1.0",
 		"@types/node": "^22.4.1",
 		"@types/react": "^19.0.1",
 		"@types/react-dom": "^19.0.2",
 		"autoprefixer": "^10.4.20",
-		"babel-jest": "^29.7.0",
 		"concurrently": "^9.1.0",
-		"jest": "^29.7.0",
-		"jest-dom": "^4.0.0",
-		"jest-environment-jsdom": "^29.7.0",
 		"plop": "^4.0.5",
 		"postcss": "^8.4.49",
 		"postcss-cli": "^11.0.0",
-		"postcss-prefix-selector": "^2.1.0",
 		"prettier": "^3.3.3",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
-		"react-test-renderer": "^19.0.0",
-		"react-testing-library": "^8.0.1",
 		"storybook": "^8.4.7",
 		"tailwindcss": "^3.4.14",
-		"ts-loader": "^9.5.1",
 		"tsc-alias": "^1.8.16",
 		"tsx": "^4.21.0",
 		"typescript": "^5.7.2"
-	},
-	"peerDependencies": {
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0"
-	},
-	"dependencies": {
-		"@phosphor-icons/react": "^2.1.10"
 	}
 }
