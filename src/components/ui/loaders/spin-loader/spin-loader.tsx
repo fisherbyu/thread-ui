@@ -1,6 +1,12 @@
 import type { SpinLoaderProps } from './spin-loader.types';
 import { cva } from '../../../../styled-system/css';
 
+/**
+ * Spinning circular loader with configurable label, size and color.
+ *
+ * @example
+ * <SpinLoader size="md" color="primary" />
+ */
 export const SpinLoader = ({ size = 'md', color, label = 'Loading...' }: SpinLoaderProps) => {
 	const styles = cva({
 		base: {
