@@ -14,7 +14,12 @@ import { ColumnItem, ColumnLayout } from '@/components/layouts';
  *   itemConfig={{ w: '100%', h: '120px' }}
  * />
  */
-export const SkeletonLayout = ({ itemConfig, lgcol, mdcol, rows = 3 }: SkeletonLayoutProps) => {
+export const SkeletonLayout = ({
+	itemConfig,
+	mdcol,
+	lgcol = mdcol,
+	rows = 3,
+}: SkeletonLayoutProps) => {
 	const itemCount = lgcol * rows;
 
 	const items: ColumnItem[] = [...Array(itemCount)].map((_, i) => ({
