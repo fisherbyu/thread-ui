@@ -28,6 +28,6 @@ const gridStyles = cva({
 });
 
 /** Internal Column Skeleton Component */
-export const ColumnSkeleton = ({ mdcol, lgcol, children }: ColumnSkeletonProps) => {
+export const ColumnSkeleton = ({ mdcol, lgcol = mdcol, children }: ColumnSkeletonProps) => {
 	return <div className={gridStyles({ mdcol, lgcol })}>{children}</div>;
 };
