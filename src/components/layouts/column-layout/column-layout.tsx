@@ -19,8 +19,8 @@ import { css } from '@/styled-system/css';
 export const ColumnLayout = ({
 	title,
 	caption,
-	mdcol = 2,
-	lgcol = 4,
+	mdcol,
+	lgcol = mdcol,
 	items,
 }: ColumnLayoutProps) => {
 	const sectionStyles = css({

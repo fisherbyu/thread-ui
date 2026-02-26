@@ -19,10 +19,11 @@ const preview: Preview = {
 			return (
 				<div
 					style={{
+						alignItems: 'center',
 						display: 'flex',
 						justifyContent: 'center',
 						minWidth: '320px',
-						minHeight: '450px',
+						minHeight: '250px',
 						backgroundColor: ThreadTheme.background,
 						padding: '24px',
 					}}
@@ -42,6 +43,7 @@ const preview: Preview = {
 		options: {
 			storySort: {
 				order: [
+					'Components',
 					'UI Components',
 					'Media',
 					'Typography',

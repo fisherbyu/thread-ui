@@ -13,6 +13,7 @@ const gridStyles = cva({
 			3: { gridTemplateColumns: { md: 'repeat(3, minmax(0, 1fr))' } },
 		},
 		lgcol: {
+			1: { gridTemplateColumns: { lg: 'repeat(1, minmax(0, 1fr))' } },
 			2: { gridTemplateColumns: { lg: 'repeat(2, minmax(0, 1fr))' } },
 			3: { gridTemplateColumns: { lg: 'repeat(3, minmax(0, 1fr))' } },
 			4: { gridTemplateColumns: { lg: 'repeat(4, minmax(0, 1fr))' } },
@@ -27,6 +28,6 @@ const gridStyles = cva({
 });
 
 /** Internal Column Skeleton Component */
-export const ColumnSkeleton = ({ mdcol, lgcol, children }: ColumnSkeletonProps) => {
+export const ColumnSkeleton = ({ mdcol, lgcol = mdcol, children }: ColumnSkeletonProps) => {
 	return <div className={gridStyles({ mdcol, lgcol })}>{children}</div>;
 };
