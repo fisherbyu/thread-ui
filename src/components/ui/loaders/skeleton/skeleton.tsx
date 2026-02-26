@@ -11,16 +11,10 @@ import type { SkeletonProps } from './skeleton.types';
  * <Skeleton w="10" h="10" round />
  */
 export const Skeleton = ({ w = '100%', h = '3rem', round = false }: SkeletonProps) => {
-	const shimmerConfig = {
-		angle: '90deg',
-		bg: ThreadTheme.elevated,
-		highlight: ThreadTheme.structure,
-	};
-
 	const styles = cva({
 		base: {
 			display: 'block',
-			backgroundImage: `linear-gradient(${shimmerConfig.angle}, ${shimmerConfig.bg} 25%, ${shimmerConfig.highlight} 50%, ${shimmerConfig.bg} 75%)`,
+			backgroundImage: `linear-gradient(90deg, var(--thread-elevated) 25%, var(--thread-structure) 50%, var(--thread-elevated) 75%)`,
 			backgroundSize: '200% 100%',
 			animation: 'shimmer 1.5s linear infinite',
 		},
