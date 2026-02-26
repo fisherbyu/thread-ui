@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { SkeletonLayout } from './skeleton-layout';
 
 const meta: Meta<typeof SkeletonLayout> = {
-	title: 'Components/SkeletonLayout',
+	title: 'UI Components/Loaders/SkeletonLayout',
 	component: SkeletonLayout,
 	parameters: {
 		layout: 'centered',

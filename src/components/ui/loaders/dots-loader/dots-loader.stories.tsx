@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { DotsLoader } from './dots-loader';
 
 const meta: Meta<typeof DotsLoader> = {
-	title: 'Components/DotsLoader',
+	title: 'UI Components/Loaders/DotsLoader',
 	component: DotsLoader,
 	parameters: {
 		layout: 'centered',

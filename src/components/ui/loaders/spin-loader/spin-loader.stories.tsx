@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { SpinLoader } from './spin-loader';
 
 const meta: Meta<typeof SpinLoader> = {
-	title: 'Components/SpinLoader',
+	title: 'UI Components/Loaders/SpinLoader',
 	component: SpinLoader,
 	parameters: {
 		layout: 'centered',
