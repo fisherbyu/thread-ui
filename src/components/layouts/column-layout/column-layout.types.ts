@@ -8,7 +8,7 @@ export type ColumnLayoutProps = {
 	/** Number of columns at medium viewport sizes @default `2` */
 	mdcol: 1 | 2 | 3;
 	/** Number of columns at large viewport sizes @default `4` */
-	lgcol: 2 | 3 | 4 | 5;
+	lgcol: 1 | 2 | 3 | 4 | 5;
 	/** Items to display in the grid */
 	items: ColumnItem[];
 };
