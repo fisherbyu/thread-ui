@@ -1,8 +1,7 @@
 import { UtilityColorOptions, UtilitySizeOptions } from '@/types';
 
 export type LoaderProps = {
-	size?: UtilitySizeOptions;
-	className?: string;
+	color?: Exclude<UtilityColorOptions, 'success' | 'error' | 'info'>;
 	label?: string;
-	color?: Omit<UtilityColorOptions, 'success' | 'error' | 'info'>;
+	size?: UtilitySizeOptions;
 };
