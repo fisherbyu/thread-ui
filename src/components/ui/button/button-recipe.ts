@@ -98,6 +98,16 @@ export const buttonRecipe = defineRecipe({
 					borderColor: 'text.standard',
 				},
 			},
+			neutral: {
+				backgroundColor: 'background',
+				borderColor: 'structure',
+				color: 'text.standard',
+				_hover: {
+					backgroundColor: 'elevated',
+					color: 'text.standard',
+					borderColor: 'structure',
+				},
+			},
 		},
 		size: {
 			sm: {

@@ -23,7 +23,7 @@ const meta: Meta<typeof IconButton> = {
 		},
 		color: {
 			control: 'select',
-			options: ['primary', 'secondary', 'success', 'warning', 'danger'],
+			options: ['primary', 'secondary', 'success', 'warning', 'danger', 'neutral'],
 			description: 'Button color theme',
 		},
 		fullWidth: {
