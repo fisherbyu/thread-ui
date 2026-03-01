@@ -1,6 +1,6 @@
 'use client';
 import { useRef } from 'react';
-import { useOutsideCloseClick } from '@/utils';
+import { useOutsideCloseClick } from '@/hooks';
 import { css, cva } from '@/styled-system/css';
 import { IconButton } from '../../icon-button';
 import { H2, H3 } from '@/components/typography';

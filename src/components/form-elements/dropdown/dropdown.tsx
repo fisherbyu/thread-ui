@@ -6,7 +6,7 @@ import { FormLabel } from '../form-label';
 import { Icon } from '@/components/ui';
 import { css, cva, cx } from '@/styled-system/css';
 import { baseInputStyles } from '../styles';
-import { useOutsideCloseClick } from '@/utils';
+import { useOutsideCloseClick } from '@/hooks';
 
 /**
  * Single-select dropdown with an option list and outside-click dismissal.
