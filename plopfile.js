@@ -5,6 +5,7 @@ module.exports = function (plop) {
     const componentsPath = path.resolve(__dirname, 'src/components');
     const utilsPath = path.resolve(__dirname, 'src/utils');
     const hooksPath = path.resolve(__dirname, 'src/hooks');
+    const readmePath = path.resolve(__dirname, 'README.md');
 
     const getComponentDirs = () =>
         fs.readdirSync(componentsPath, { withFileTypes: true })
@@ -52,6 +53,93 @@ module.exports = function (plop) {
 
         return actions;
     };
+
+    // --- Normalize a string for loose matching ---
+    const normalize = (str) => str.toLowerCase().replace(/[-_]/g, ' ').trim();
+
+    // --- Find the ### section header under ## Components that best matches dirName ---
+    const findComponentSection = (readmeContent, dirName) => {
+        const normalizedDir = normalize(dirName);
+
+        // Collect all ### headers that fall under ## Components
+        const componentBlockMatch = readmeContent.match(/^## Components$([\s\S]*?)^## /m);
+        if (!componentBlockMatch) return null;
+
+        const componentBlock = componentBlockMatch[1];
+        const sectionHeaders = [...componentBlock.matchAll(/^### (.+)$/gm)].map((m) => m[1]);
+
+        // Find the first header whose normalized text contains the normalized dir name
+        const match = sectionHeaders.find((header) =>
+            normalize(header).includes(normalizedDir) || normalizedDir.includes(normalize(header))
+        );
+
+        return match || null;
+    };
+
+    // --- Parse the backtick list line under a given ### header ---
+    const parseReadmeListLine = (readmeContent, sectionHeader) => {
+        // Match the line of backtick items directly after the header
+        const pattern = new RegExp(`^### ${sectionHeader}\\n+(.*?)$`, 'm');
+        const match = readmeContent.match(pattern);
+        if (!match) return null;
+
+        const line = match[1];
+        const items = [...line.matchAll(/`([^`]+)`/g)].map((m) => m[1]);
+        return { line, items };
+    };
+
+    // --- Build a sorted backtick list line from an array of names ---
+    const buildListLine = (items) =>
+        items
+            .slice()
+            .sort((a, b) => a.localeCompare(b))
+            .map((name) => `\`${name}\``)
+            .join(' ');
+
+    // --- Register custom action type ---
+    plop.setActionType('updateReadme', (answers, config) => {
+        const { itemName, sectionDir } = config;
+
+        let readme = fs.readFileSync(readmePath, 'utf8');
+
+        if (sectionDir) {
+            // Component path: find the right ### subsection
+            const sectionHeader = findComponentSection(readme, sectionDir);
+            if (!sectionHeader) {
+                throw new Error(
+                    `Could not find a matching ### section for directory "${sectionDir}" in README.md`
+                );
+            }
+
+            const parsed = parseReadmeListLine(readme, sectionHeader);
+            if (!parsed) {
+                throw new Error(
+                    `Could not find a backtick list line under "### ${sectionHeader}" in README.md`
+                );
+            }
+
+            const updatedLine = buildListLine([...parsed.items, itemName]);
+            readme = readme.replace(parsed.line, updatedLine);
+        } else {
+            // Flat list path: hooks (and future flat sections)
+            // Find the section header passed via config.flatSection e.g. '## Hooks'
+            const flatSection = config.flatSection || '## Hooks';
+            const pattern = new RegExp(`^${flatSection}\\n+(.*?)$`, 'm');
+            const match = readme.match(pattern);
+
+            if (!match) {
+                throw new Error(`Could not find "${flatSection}" in README.md`);
+            }
+
+            const line = match[1];
+            const items = [...line.matchAll(/`([^`]+)`/g)].map((m) => m[1]);
+            const updatedLine = buildListLine([...items, itemName]);
+            readme = readme.replace(line, updatedLine);
+        }
+
+        fs.writeFileSync(readmePath, readme, 'utf8');
+        return `README.md updated with \`${itemName}\``;
+    });
 
     plop.setGenerator('setup', {
         description: 'Project scaffolding',
@@ -203,6 +291,12 @@ module.exports = function (plop) {
                     template: `export * from './${kebabName}';`,
                 });
 
+                actions.push({
+                    type: 'updateReadme',
+                    itemName: componentName,
+                    sectionDir: parentDir,
+                });
+
                 return actions;
             }
 
@@ -234,6 +328,9 @@ module.exports = function (plop) {
                 //     kebabName,
                 //     itemName: hookName,
                 // });
+                // also update the updateReadme action below:
+                // sectionDir: parentDir,
+                // flatSection: undefined,
 
                 return [
                     {
@@ -259,6 +356,12 @@ module.exports = function (plop) {
                         path: `src/hooks/index.ts`,
                         pattern: /$/,
                         template: `export * from './${kebabName}';`,
+                    },
+                    {
+                        type: 'updateReadme',
+                        itemName: hookName,
+                        sectionDir: null,
+                        flatSection: '## Hooks',
                     },
                 ];
             }
