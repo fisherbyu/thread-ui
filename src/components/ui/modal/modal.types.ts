@@ -23,6 +23,8 @@ export type ModalProps = {
 
 	/** Close the modal when the overlay is clicked @default `true` */
 	closeOnOverlayClick?: boolean;
+	/** Close the modal when the Escape key is pressed @default `true` */
+	closeOnEsc?: boolean;
 	/** Prevents body scroll while the modal is open @default `true` */
 	preventScroll?: boolean;
 	/** DOM element to portal the modal into. Defaults to `document.body` */
