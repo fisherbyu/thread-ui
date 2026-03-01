@@ -13,7 +13,7 @@ export const ModalContent = () => {
 	// Manage Modal Closure
 	const modalContentRef = useRef<HTMLDivElement>(null);
 
-	useOutsideCloseClick(closeOnOverlayClick ?? true, modalContentRef, open, onClose);
+	useOutsideCloseClick(modalContentRef, open, onClose, closeOnOverlayClick);
 
 	const styles = {
 		outline: cva({

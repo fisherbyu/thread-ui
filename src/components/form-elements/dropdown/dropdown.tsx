@@ -42,7 +42,7 @@ export const Dropdown = ({
 
 	const toggleDropdown = () => setIsOpen(!isOpen);
 
-	useOutsideCloseClick(true, dropdownRef, isOpen, () => setIsOpen(false));
+	useOutsideCloseClick(dropdownRef, isOpen, () => setIsOpen(false), true);
 
 	// Styles
 	const styles = {

@@ -2,13 +2,13 @@
 import { useEffect, RefObject } from 'react';
 
 export const useOutsideCloseClick = (
-	enabled: boolean,
 	elementRef: RefObject<HTMLElement | null>,
 	isOpen: boolean,
-	onClose: () => void
+	onClose: () => void,
+	disabled: boolean = false
 ) => {
 	useEffect(() => {
-		if (!isOpen || !enabled) return;
+		if (!isOpen || disabled) return;
 
 		const handleClickOutside = (e: MouseEvent) => {
 			if (elementRef.current && !elementRef.current.contains(e.target as Node)) {
