@@ -1,6 +1,6 @@
 'use client';
 import { useRef } from 'react';
-import { useClickOutside } from '@/hooks';
+import { useDismiss } from '@/hooks';
 import { css, cva } from '@/styled-system/css';
 import { IconButton } from '../../icon-button';
 import { H2, H3 } from '@/components/typography';
@@ -8,12 +8,13 @@ import { useModalContext } from '../modal-context';
 
 export const ModalContent = () => {
 	// Extract Properties from Context
-	const { children, size, title, footer, onClose, closeOnOverlayClick, open } = useModalContext();
+	const { children, size, title, footer, onClose, closeOnOverlayClick, closeOnEsc, open } =
+		useModalContext();
 
 	// Manage Modal Closure
 	const modalContentRef = useRef<HTMLDivElement>(null);
 
-	useClickOutside(modalContentRef, open, onClose, closeOnOverlayClick);
+	useDismiss(modalContentRef, open, onClose, closeOnOverlayClick, closeOnEsc);
 
 	const styles = {
 		outline: cva({
