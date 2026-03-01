@@ -16,7 +16,14 @@ import { css } from '@/styled-system/css';
  * </Modal>
  */
 export const Modal = (props: ModalProps) => {
-	const { open, portalTarget, preventScroll = true, placement = 'center' } = props;
+	const {
+		open,
+		portalTarget,
+		preventScroll = true,
+		placement = 'center',
+		closeOnOverlayClick = true,
+		closeOnEsc = true,
+	} = props;
 
 	useEffect(() => {
 		if (open && preventScroll) {
@@ -44,7 +51,15 @@ export const Modal = (props: ModalProps) => {
 		const target = portalTarget ?? document.body;
 
 		return createPortal(
-			<ModalProvider value={props}>
+			<ModalProvider
+				value={{
+					...props,
+					placement,
+					closeOnOverlayClick,
+					closeOnEsc,
+					preventScroll,
+				}}
+			>
 				<div className={styles.overlay}>
 					<ModalContent />
 				</div>
