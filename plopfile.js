@@ -4,25 +4,53 @@ const path = require('path');
 module.exports = function (plop) {
     const componentsPath = path.resolve(__dirname, 'src/components');
     const utilsPath = path.resolve(__dirname, 'src/utils');
+    const hooksPath = path.resolve(__dirname, 'src/hooks');
 
-    /**
-     * Get directories inside src/components
-     */
     const getComponentDirs = () =>
-        fs
-            .readdirSync(componentsPath, { withFileTypes: true })
-            .filter((dirent) => dirent.isDirectory())
-            .map((dirent) => dirent.name);
+        fs.readdirSync(componentsPath, { withFileTypes: true })
+            .filter((d) => d.isDirectory())
+            .map((d) => d.name);
 
-    /**
-     * Get directories inside src/utils
-     */
-    const getUtilDirs = () => {
-        if (!fs.existsSync(utilsPath)) return [];
-        return fs
-            .readdirSync(utilsPath, { withFileTypes: true })
-            .filter((dirent) => dirent.isDirectory())
-            .map((dirent) => dirent.name);
+    const getDirs = (dirPath) => {
+        if (!fs.existsSync(dirPath)) return [];
+        return fs.readdirSync(dirPath, { withFileTypes: true })
+            .filter((d) => d.isDirectory())
+            .map((d) => d.name);
+    };
+
+    const buildSimpleActions = ({ basePath, parentIndexPath, kebabName, itemName }) => {
+        const actions = [];
+
+        actions.push({
+            type: 'add',
+            path: parentIndexPath,
+            templateFile: '.plop-templates/parent-index.hbs',
+            skipIfExists: true,
+        });
+
+        actions.push(
+            {
+                type: 'add',
+                path: `${basePath}/${kebabName}.ts`,
+                templateFile: '.plop-templates/util.hbs',
+                data: { itemName, itemKebab: kebabName },
+            },
+            {
+                type: 'add',
+                path: `${basePath}/index.ts`,
+                templateFile: '.plop-templates/util-index.hbs',
+                data: { itemName, itemKebab: kebabName },
+            }
+        );
+
+        actions.push({
+            type: 'append',
+            path: parentIndexPath,
+            pattern: /$/,
+            template: `export * from './${kebabName}';`,
+        });
+
+        return actions;
     };
 
     plop.setGenerator('setup', {
@@ -32,7 +60,7 @@ module.exports = function (plop) {
                 type: 'list',
                 name: 'buildType',
                 message: 'What would you like to build?',
-                choices: ['Component', 'Util'],
+                choices: ['Component', 'Util', 'Hook'],
             },
 
             // --- Component prompts ---
@@ -69,7 +97,7 @@ module.exports = function (plop) {
                 type: 'list',
                 name: 'utilDirChoice',
                 message: 'Which utils directory?',
-                choices: () => [...getUtilDirs(), '+ Create new directory'],
+                choices: () => [...getDirs(utilsPath), '+ Create new directory'],
                 when: (answers) => answers.buildType === 'Util',
             },
             {
@@ -91,6 +119,36 @@ module.exports = function (plop) {
                 validate: (value) =>
                     /^[a-z][a-zA-Z0-9]*$/.test(value) || 'Util name must be camelCase',
             },
+
+            // --- Hook prompts ---
+            // TODO: Subdirectory support - when hooks grow, uncomment these two prompts:
+            // {
+            //     type: 'list',
+            //     name: 'hookDirChoice',
+            //     message: 'Which hooks directory?',
+            //     choices: () => [...getDirs(hooksPath), '+ Create new directory'],
+            //     when: (answers) => answers.buildType === 'Hook',
+            // },
+            // {
+            //     type: 'input',
+            //     name: 'newHookDirName',
+            //     message: 'New directory name (kebab-case):',
+            //     when: (answers) =>
+            //         answers.buildType === 'Hook' &&
+            //         answers.hookDirChoice === '+ Create new directory',
+            //     validate: (value) =>
+            //         /^[a-z][a-z0-9]*(-[a-z0-9]+)*$/.test(value) ||
+            //         'Directory name must be kebab-case',
+            // },
+            {
+                type: 'input',
+                name: 'hookName',
+                message: 'Hook name (camelCase, e.g. useMyHook):',
+                when: (answers) => answers.buildType === 'Hook',
+                validate: (value) =>
+                    /^use[A-Z][a-zA-Z0-9]*$/.test(value) ||
+                    'Hook name must be camelCase starting with "use"',
+            },
         ],
 
         actions: (answers) => {
@@ -98,13 +156,10 @@ module.exports = function (plop) {
 
             if (buildType === 'Component') {
                 const { dirChoice, newDirName, componentName } = answers;
-
-                const parentDir =
-                    dirChoice === '+ Create new directory' ? newDirName : dirChoice;
+                const parentDir = dirChoice === '+ Create new directory' ? newDirName : dirChoice;
                 const kebabName = plop.getHelper('kebabCase')(componentName);
                 const basePath = `src/components/${parentDir}/${kebabName}`;
                 const parentIndexPath = `src/components/${parentDir}/index.ts`;
-
                 const actions = [];
 
                 actions.push({
@@ -153,47 +208,59 @@ module.exports = function (plop) {
 
             if (buildType === 'Util') {
                 const { utilDirChoice, newUtilDirName, utilName } = answers;
-
-                const parentDir =
-                    utilDirChoice === '+ Create new directory'
-                        ? newUtilDirName
-                        : utilDirChoice;
+                const parentDir = utilDirChoice === '+ Create new directory' ? newUtilDirName : utilDirChoice;
                 const kebabName = plop.getHelper('kebabCase')(utilName);
-                const basePath = `src/utils/${parentDir}/${kebabName}`;
-                const parentIndexPath = `src/utils/${parentDir}/index.ts`;
 
-                const actions = [];
-
-                actions.push({
-                    type: 'add',
-                    path: parentIndexPath,
-                    templateFile: '.plop-templates/parent-index.hbs',
-                    skipIfExists: true,
+                return buildSimpleActions({
+                    basePath: `src/utils/${parentDir}/${kebabName}`,
+                    parentIndexPath: `src/utils/${parentDir}/index.ts`,
+                    kebabName,
+                    itemName: utilName,
                 });
+            }
 
-                actions.push(
+            if (buildType === 'Hook') {
+                const { hookName } = answers;
+                const kebabName = plop.getHelper('kebabCase')(hookName);
+                const basePath = `src/hooks/${kebabName}`;
+
+                // TODO: Subdirectory support - when hooks grow, replace this entire block with:
+                // const { hookName, hookDirChoice, newHookDirName } = answers;
+                // const parentDir = hookDirChoice === '+ Create new directory' ? newHookDirName : hookDirChoice;
+                // const kebabName = plop.getHelper('kebabCase')(hookName);
+                // return buildSimpleActions({
+                //     basePath: `src/hooks/${parentDir}/${kebabName}`,
+                //     parentIndexPath: `src/hooks/${parentDir}/index.ts`,
+                //     kebabName,
+                //     itemName: hookName,
+                // });
+
+                return [
+                    {
+                        type: 'add',
+                        path: `src/hooks/index.ts`,
+                        templateFile: '.plop-templates/parent-index.hbs',
+                        skipIfExists: true,
+                    },
                     {
                         type: 'add',
                         path: `${basePath}/${kebabName}.ts`,
                         templateFile: '.plop-templates/util.hbs',
-                        data: { itemName: utilName, itemKebab: kebabName },
+                        data: { itemName: hookName, itemKebab: kebabName },
                     },
                     {
                         type: 'add',
                         path: `${basePath}/index.ts`,
                         templateFile: '.plop-templates/util-index.hbs',
-                        data: { itemName: utilName, itemKebab: kebabName },
-                    }
-                );
-
-                actions.push({
-                    type: 'append',
-                    path: parentIndexPath,
-                    pattern: /$/,
-                    template: `export * from './${kebabName}';`,
-                });
-
-                return actions;
+                        data: { itemName: hookName, itemKebab: kebabName },
+                    },
+                    {
+                        type: 'append',
+                        path: `src/hooks/index.ts`,
+                        pattern: /$/,
+                        template: `export * from './${kebabName}';`,
+                    },
+                ];
             }
 
             return [];
