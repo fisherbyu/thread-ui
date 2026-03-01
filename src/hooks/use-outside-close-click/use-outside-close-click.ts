@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, RefObject } from 'react';
 
-export const useOutsideCloseClick = (
+export const useClickOutside = (
 	elementRef: RefObject<HTMLElement | null>,
 	isOpen: boolean,
 	onClose: () => void,

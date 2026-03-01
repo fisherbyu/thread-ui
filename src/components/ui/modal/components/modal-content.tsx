@@ -1,6 +1,6 @@
 'use client';
 import { useRef } from 'react';
-import { useOutsideCloseClick } from '@/hooks';
+import { useClickOutside } from '@/hooks';
 import { css, cva } from '@/styled-system/css';
 import { IconButton } from '../../icon-button';
 import { H2, H3 } from '@/components/typography';
@@ -13,7 +13,7 @@ export const ModalContent = () => {
 	// Manage Modal Closure
 	const modalContentRef = useRef<HTMLDivElement>(null);
 
-	useOutsideCloseClick(modalContentRef, open, onClose, closeOnOverlayClick);
+	useClickOutside(modalContentRef, open, onClose, closeOnOverlayClick);
 
 	const styles = {
 		outline: cva({
