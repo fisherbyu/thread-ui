@@ -1,5 +1,6 @@
 import { CSSProperties, ReactNode } from 'react';
 
+/** Props for a standard HTML `<img>` element */
 export type HtmlImageProps = {
 	src: string;
 	alt: string;
@@ -9,4 +10,5 @@ export type HtmlImageProps = {
 	styles?: CSSProperties;
 };
 
+/** Accepts either a standard image definition or a custom React element for full rendering control (ex: Next.js optimized image) */
 export type ImageProps = HtmlImageProps | ReactNode;
