@@ -61,14 +61,12 @@ module.exports = function (plop) {
     const findComponentSection = (readmeContent, dirName) => {
         const normalizedDir = normalize(dirName);
 
-        // Collect all ### headers that fall under ## Components
         const componentBlockMatch = readmeContent.match(/^## Components$([\s\S]*?)^## /m);
         if (!componentBlockMatch) return null;
 
         const componentBlock = componentBlockMatch[1];
         const sectionHeaders = [...componentBlock.matchAll(/^### (.+)$/gm)].map((m) => m[1]);
 
-        // Find the first header whose normalized text contains the normalized dir name
         const match = sectionHeaders.find((header) =>
             normalize(header).includes(normalizedDir) || normalizedDir.includes(normalize(header))
         );
@@ -78,7 +76,6 @@ module.exports = function (plop) {
 
     // --- Parse the backtick list line under a given ### header ---
     const parseReadmeListLine = (readmeContent, sectionHeader) => {
-        // Match the line of backtick items directly after the header
         const pattern = new RegExp(`^### ${sectionHeader}\\n+(.*?)$`, 'm');
         const match = readmeContent.match(pattern);
         if (!match) return null;
@@ -98,23 +95,30 @@ module.exports = function (plop) {
 
     // --- Register custom action type ---
     plop.setActionType('updateReadme', (answers, config) => {
-        const { itemName, sectionDir } = config;
+        const { itemName, sectionDir, sectionTitle, flatSection } = config;
 
         let readme = fs.readFileSync(readmePath, 'utf8');
 
         if (sectionDir) {
-            // Component path: find the right ### subsection
-            const sectionHeader = findComponentSection(readme, sectionDir);
-            if (!sectionHeader) {
-                throw new Error(
-                    `Could not find a matching ### section for directory "${sectionDir}" in README.md`
-                );
+            const existingSection = findComponentSection(readme, sectionDir);
+
+            if (!existingSection) {
+                // New directory - insert a new ### section before the next ## heading
+                if (!sectionTitle) {
+                    throw new Error(
+                        `No matching README section found for "${sectionDir}" and no sectionTitle was provided.`
+                    );
+                }
+                const newSection = `\n### ${sectionTitle}\n\`${itemName}\`\n`;
+                readme = readme.replace(/(^## Components[\s\S]*?)(^## )/m, `$1${newSection}\n$2`);
+                fs.writeFileSync(readmePath, readme, 'utf8');
+                return `README.md — created new section "### ${sectionTitle}" with \`${itemName}\``;
             }
 
-            const parsed = parseReadmeListLine(readme, sectionHeader);
+            const parsed = parseReadmeListLine(readme, existingSection);
             if (!parsed) {
                 throw new Error(
-                    `Could not find a backtick list line under "### ${sectionHeader}" in README.md`
+                    `Could not find a backtick list line under "### ${existingSection}" in README.md`
                 );
             }
 
@@ -122,13 +126,12 @@ module.exports = function (plop) {
             readme = readme.replace(parsed.line, updatedLine);
         } else {
             // Flat list path: hooks (and future flat sections)
-            // Find the section header passed via config.flatSection e.g. '## Hooks'
-            const flatSection = config.flatSection || '## Hooks';
-            const pattern = new RegExp(`^${flatSection}\\n+(.*?)$`, 'm');
+            const section = flatSection || '## Hooks';
+            const pattern = new RegExp(`^${section}\\n+(.*?)$`, 'm');
             const match = readme.match(pattern);
 
             if (!match) {
-                throw new Error(`Could not find "${flatSection}" in README.md`);
+                throw new Error(`Could not find "${section}" in README.md`);
             }
 
             const line = match[1];
@@ -169,6 +172,15 @@ module.exports = function (plop) {
                 validate: (value) =>
                     /^[a-z][a-z0-9]*(-[a-z0-9]+)*$/.test(value) ||
                     'Directory name must be kebab-case',
+            },
+            {
+                type: 'input',
+                name: 'newDirSectionTitle',
+                message: 'README section title for this new directory (e.g. "My New Elements"):',
+                when: (answers) =>
+                    answers.buildType === 'Component' &&
+                    answers.dirChoice === '+ Create new directory',
+                validate: (value) => value.trim().length > 0 || 'Section title is required',
             },
             {
                 type: 'input',
@@ -228,6 +240,15 @@ module.exports = function (plop) {
             //         /^[a-z][a-z0-9]*(-[a-z0-9]+)*$/.test(value) ||
             //         'Directory name must be kebab-case',
             // },
+            // {
+            //     type: 'input',
+            //     name: 'newHookDirSectionTitle',
+            //     message: 'README section title for this new directory (e.g. "My New Hooks"):',
+            //     when: (answers) =>
+            //         answers.buildType === 'Hook' &&
+            //         answers.hookDirChoice === '+ Create new directory',
+            //     validate: (value) => value.trim().length > 0 || 'Section title is required',
+            // },
             {
                 type: 'input',
                 name: 'hookName',
@@ -243,7 +264,7 @@ module.exports = function (plop) {
             const { buildType } = answers;
 
             if (buildType === 'Component') {
-                const { dirChoice, newDirName, componentName } = answers;
+                const { dirChoice, newDirName, newDirSectionTitle, componentName } = answers;
                 const parentDir = dirChoice === '+ Create new directory' ? newDirName : dirChoice;
                 const kebabName = plop.getHelper('kebabCase')(componentName);
                 const basePath = `src/components/${parentDir}/${kebabName}`;
@@ -295,6 +316,7 @@ module.exports = function (plop) {
                     type: 'updateReadme',
                     itemName: componentName,
                     sectionDir: parentDir,
+                    sectionTitle: newDirSectionTitle || null,
                 });
 
                 return actions;
@@ -319,18 +341,23 @@ module.exports = function (plop) {
                 const basePath = `src/hooks/${kebabName}`;
 
                 // TODO: Subdirectory support - when hooks grow, replace this entire block with:
-                // const { hookName, hookDirChoice, newHookDirName } = answers;
+                // const { hookName, hookDirChoice, newHookDirName, newHookDirSectionTitle } = answers;
                 // const parentDir = hookDirChoice === '+ Create new directory' ? newHookDirName : hookDirChoice;
                 // const kebabName = plop.getHelper('kebabCase')(hookName);
-                // return buildSimpleActions({
-                //     basePath: `src/hooks/${parentDir}/${kebabName}`,
-                //     parentIndexPath: `src/hooks/${parentDir}/index.ts`,
-                //     kebabName,
-                //     itemName: hookName,
-                // });
-                // also update the updateReadme action below:
-                // sectionDir: parentDir,
-                // flatSection: undefined,
+                // return [
+                //     ...buildSimpleActions({
+                //         basePath: `src/hooks/${parentDir}/${kebabName}`,
+                //         parentIndexPath: `src/hooks/${parentDir}/index.ts`,
+                //         kebabName,
+                //         itemName: hookName,
+                //     }),
+                //     {
+                //         type: 'updateReadme',
+                //         itemName: hookName,
+                //         sectionDir: parentDir,
+                //         sectionTitle: newHookDirSectionTitle || null,
+                //     },
+                // ];
 
                 return [
                     {
