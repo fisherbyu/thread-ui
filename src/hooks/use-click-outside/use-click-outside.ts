@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, RefObject } from 'react';
+import { useEffect, useRef, RefObject } from 'react';
 
 export const useClickOutside = (
 	elementRef: RefObject<HTMLElement | null>,
@@ -7,16 +7,19 @@ export const useClickOutside = (
 	onClose: () => void,
 	disabled: boolean = false
 ) => {
+	const onCloseRef = useRef(onClose);
+	onCloseRef.current = onClose;
+
 	useEffect(() => {
 		if (!isOpen || disabled) return;
 
 		const handleClickOutside = (e: MouseEvent) => {
 			if (elementRef.current && !elementRef.current.contains(e.target as Node)) {
-				onClose();
+				onCloseRef.current();
 			}
 		};
 
 		document.addEventListener('mousedown', handleClickOutside);
 		return () => document.removeEventListener('mousedown', handleClickOutside);
-	}, [isOpen, elementRef, onClose]);
+	}, [isOpen, disabled, elementRef]);
 };
