@@ -72,7 +72,7 @@ Component CSS is pre-generated using Panda CSS, so components render correctly s
 
 ### Layout Components
 
-`ColumnLayout` `Footer` `MasonryLayout`
+`Container` `ColumnLayout` `Footer` `MasonryLayout`
 
 ## Hooks
 
