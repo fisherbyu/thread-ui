@@ -2,7 +2,14 @@ import { BaseItemProps } from './base-item.types';
 import { LinkWrapper } from '@/internal-components';
 import { css, cva } from '@/styled-system/css';
 
-export const BaseItem = ({ children, href, halfPadding = false, onMouseEnter, onMouseLeave, isDropdownItem }: BaseItemProps) => {
+export const BaseItem = ({
+	children,
+	href,
+	halfPadding = false,
+	onMouseEnter,
+	onMouseLeave,
+	isDropdownItem,
+}: BaseItemProps) => {
 	const styles = {
 		li: css({
 			display: 'flex',
