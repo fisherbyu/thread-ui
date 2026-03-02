@@ -62,7 +62,7 @@ prepare-typescript: prepare-panda-code # Compile TypeScript into JavaScript
 
 # Developer Helpers
 .PHONY: watch
-watch: ## Watch CSS files. Use CSS=tailwind|panda to limit (default: both)
+watch: # Watch CSS files. Use CSS=tailwind|panda to limit (default: both)
 	@if [ "$(CSS)" = "tailwind" ]; then \
 		$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch; \
 	elif [ "$(CSS)" = "panda" ]; then \
