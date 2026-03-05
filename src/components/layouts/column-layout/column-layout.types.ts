@@ -1,6 +1,7 @@
 import { ImageProps } from '../../../types';
+import { LayoutComponentProps } from '../layout-component.types';
 
-export type ColumnLayoutProps = {
+export type ColumnLayoutProps = LayoutComponentProps & {
 	/** Optional title displayed at the top of the layout */
 	title?: string;
 	/** Optional caption rendered alongside the title */
