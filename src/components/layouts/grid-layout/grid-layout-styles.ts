@@ -60,29 +60,14 @@ export const gridLayoutStyles = cva({
 			stretch: { justifyItems: 'stretch' },
 		},
 		gap: {
-			sm: { gap: { base: '4px', lg: '8px' } },
-			md: { gap: { base: '16px', lg: '24px' } },
-			lg: { gap: { base: '24px', lg: '40px' } },
+			sm: { gap: { base: '1', lg: '2' } },
+			md: { gap: { base: '4', lg: '6' } },
+			lg: { gap: { base: '6', lg: '10' } },
 		},
-		// gap: {
-		// 	sm: {
-		// 		gap: {
-		// 			base: 0,
-		// 			lg: 0,
-		// 		},
-		// 	},
-		// 	md: {
-		// 		gap: {
-		// 			base: 12,
-		// 			lg: 6,
-		// 		},
-		// 	},
-		// 	lg: {
-		// 		gap: {
-		// 			base: 0,
-		// 			lg: 0,
-		// 		},
-		// 	},
-		// },
+		tightenedGap: {
+			sm: { gap: { base: '2', lg: '1' } },
+			md: { gap: { base: '6', lg: '4' } },
+			lg: { gap: { base: '12', lg: '6' } },
+		},
 	},
 });

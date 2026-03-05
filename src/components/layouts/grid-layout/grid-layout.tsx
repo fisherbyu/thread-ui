@@ -1,7 +1,14 @@
 import { GridLayoutProps } from './grid-layout.types';
 import { gridLayoutStyles } from './grid-layout-styles';
 
-export const GridLayout = ({ cols, gap, align, justify, children }: GridLayoutProps) => {
+export const GridLayout = ({
+	cols,
+	gap = 'md',
+	align,
+	justify,
+	tighten,
+	children,
+}: GridLayoutProps) => {
 	const baseCols = typeof cols === 'number' ? cols : cols.base;
 	const mdCols = typeof cols === 'number' ? undefined : cols.md;
 	const lgCols = typeof cols === 'number' ? undefined : cols.lg;
@@ -16,7 +23,8 @@ export const GridLayout = ({ cols, gap, align, justify, children }: GridLayoutPr
 				lgCols,
 				align,
 				justify,
-				gap: isNumericGap ? undefined : gap,
+				gap: isNumericGap || tighten ? undefined : gap,
+				tightenedGap: !isNumericGap && tighten ? gap : undefined,
 			})}
 			style={isNumericGap ? { gap: `${gap * 4}px` } : undefined}
 		>
