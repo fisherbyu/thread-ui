@@ -1,9 +1,6 @@
 import { ReactNode } from 'react';
 import { LayoutComponentProps, ResponsiveValue } from '../layout-component.types';
-import type { SystemStyleObject } from '@pandacss/dev';
 import type { UtilitySizeOptions } from '@/types';
-import { ConditionalValue } from '@/styled-system/types';
-import { Property } from '@/styled-system/types/csstype';
 
 type ColCount = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
