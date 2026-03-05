@@ -8,6 +8,11 @@ const meta: Meta<typeof ColumnLayout> = {
 		layout: 'fullscreen',
 	},
 	tags: ['autodocs'],
+	argTypes: {
+		container: {
+			control: 'boolean',
+		},
+	},
 };
 
 export default meta;
@@ -27,6 +32,7 @@ export const Basic: Story = {
 		caption: 'Explore our range of solutions',
 		mdcol: 2,
 		lgcol: 4,
+		container: true,
 		items: [
 			{
 				title: 'Web Development',
@@ -58,6 +64,7 @@ export const WithImages: Story = {
 		caption: "Some of the places I've lived!",
 		mdcol: 2,
 		lgcol: 4,
+		container: true,
 		items: [
 			{
 				title: 'Folsom',
