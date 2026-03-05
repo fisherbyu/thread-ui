@@ -16,6 +16,7 @@ export type GridLayoutProps = LayoutComponentProps & {
 	rows?: ResponsiveValue<number>;
 	/** Gap value or sm | md | lg */
 	gap?: number | UtilitySizeOptions;
+	responsiveTightening?: boolean;
 
 	/** Alignment */
 	align?: SimpleAlignItems;
