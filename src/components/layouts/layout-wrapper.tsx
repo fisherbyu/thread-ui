@@ -8,9 +8,8 @@ type LayoutWrapperProps = LayoutComponentProps & {
 };
 
 export const LayoutWrapper = ({ container, children }: LayoutWrapperProps) => {
+	const wrapperProps = typeof container === 'object' ? container : {};
 	const wrapper = container ? Container : 'fragment';
-	const { children: _, ...wrapperProps } =
-		typeof container === 'object' ? container : { children: null };
 
 	return (
 		<ConditionalWrapper wrapper={wrapper} wrapperProps={wrapperProps}>
