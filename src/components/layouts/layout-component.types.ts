@@ -7,5 +7,5 @@ export type ResponsiveValue<T> = T | Partial<Record<BreakpointToken, T>>;
 
 export type LayoutComponentProps = {
 	/** Wraps the layout in a container */
-	container?: boolean | ContainerProps;
+	container?: boolean | Omit<ContainerProps, 'children'>;
 };
