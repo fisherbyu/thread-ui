@@ -14,13 +14,8 @@ export type GridLayoutProps = LayoutComponentProps & {
 	cols: ResponsiveValue<ColCount>;
 	/** Row count, rarely needed but supported */
 	rows?: ResponsiveValue<number>;
-	/** Gap shorthand, or use colGap/rowGap for separate control */
-	gap?:
-		| ResponsiveValue<UtilitySizeOptions>
-		| {
-				colGap: ResponsiveValue<string | number>;
-				rowGap: ResponsiveValue<string | number>;
-		  };
+	/** Gap value or sm | md | lg */
+	gap?: number | UtilitySizeOptions;
 
 	/** Alignment */
 	align?: SimpleAlignItems;
