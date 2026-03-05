@@ -59,5 +59,30 @@ export const gridLayoutStyles = cva({
 			end: { justifyItems: 'end' },
 			stretch: { justifyItems: 'stretch' },
 		},
+		gap: {
+			sm: { gap: { base: '4px', lg: '8px' } },
+			md: { gap: { base: '16px', lg: '24px' } },
+			lg: { gap: { base: '24px', lg: '40px' } },
+		},
+		// gap: {
+		// 	sm: {
+		// 		gap: {
+		// 			base: 0,
+		// 			lg: 0,
+		// 		},
+		// 	},
+		// 	md: {
+		// 		gap: {
+		// 			base: 12,
+		// 			lg: 6,
+		// 		},
+		// 	},
+		// 	lg: {
+		// 		gap: {
+		// 			base: 0,
+		// 			lg: 0,
+		// 		},
+		// 	},
+		// },
 	},
 });
