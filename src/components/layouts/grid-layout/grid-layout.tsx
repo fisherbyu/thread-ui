@@ -1,5 +1,7 @@
 import { GridLayoutProps } from './grid-layout.types';
 import { gridLayoutStyles } from './grid-layout-styles';
+import { ConditionalWrapper } from '@/internal-components';
+import { Container } from '../container';
 
 /**
  * CSS grid layout with responsive column counts, configurable gap, and alignment controls.
@@ -18,7 +20,7 @@ export const GridLayout = ({
 	justify,
 	tighten,
 	children,
-	container,
+	container = true,
 }: GridLayoutProps) => {
 	const baseCols = typeof cols === 'number' ? cols : cols.base;
 	const mdCols = typeof cols === 'number' ? undefined : cols.md;
@@ -26,20 +28,25 @@ export const GridLayout = ({
 
 	const isNumericGap = typeof gap === 'number';
 
+	const wrapper = container ? Container : 'fragment';
+	const wrapperProps = typeof container === 'object' ? container : {};
+
 	return (
-		<div
-			className={gridLayoutStyles({
-				cols: baseCols,
-				mdCols,
-				lgCols,
-				align,
-				justify,
-				gap: isNumericGap || tighten ? undefined : gap,
-				tightenedGap: !isNumericGap && tighten ? gap : undefined,
-			})}
-			style={isNumericGap ? { gap: `${gap * 4}px` } : undefined}
-		>
-			{children}
-		</div>
+		<ConditionalWrapper wrapper={wrapper} wrapperProps={wrapperProps}>
+			<div
+				className={gridLayoutStyles({
+					cols: baseCols,
+					mdCols,
+					lgCols,
+					align,
+					justify,
+					gap: isNumericGap || tighten ? undefined : gap,
+					tightenedGap: !isNumericGap && tighten ? gap : undefined,
+				})}
+				style={isNumericGap ? { gap: `${gap * 4}px` } : undefined}
+			>
+				{children}
+			</div>
+		</ConditionalWrapper>
 	);
 };
