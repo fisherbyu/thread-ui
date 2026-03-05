@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { GridLayout } from './grid-layout';
 
 const meta: Meta<typeof GridLayout> = {
-	title: 'Components/GridLayout',
+	title: 'Layouts/GridLayout',
 	component: GridLayout,
 	parameters: {
 		layout: 'centered',
