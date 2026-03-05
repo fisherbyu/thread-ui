@@ -2,6 +2,7 @@ import { GridLayoutProps } from './grid-layout.types';
 import { gridLayoutStyles } from './grid-layout-styles';
 import { ConditionalWrapper } from '@/internal-components';
 import { Container } from '../container';
+import { LayoutWrapper } from '../layout-wrapper';
 
 /**
  * CSS grid layout with responsive column counts, configurable gap, and alignment controls.
@@ -28,11 +29,8 @@ export const GridLayout = ({
 
 	const isNumericGap = typeof gap === 'number';
 
-	const wrapper = container ? Container : 'fragment';
-	const wrapperProps = typeof container === 'object' ? container : {};
-
 	return (
-		<ConditionalWrapper wrapper={wrapper} wrapperProps={wrapperProps}>
+		<LayoutWrapper container={container}>
 			<div
 				className={gridLayoutStyles({
 					cols: baseCols,
@@ -47,6 +45,6 @@ export const GridLayout = ({
 			>
 				{children}
 			</div>
-		</ConditionalWrapper>
+		</LayoutWrapper>
 	);
 };
