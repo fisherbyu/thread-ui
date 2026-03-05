@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MasonryLayout } from './masonry-layout';
 import '../../../styles/thread.css';
+
 // Sample components for demonstration
 const SampleCard = ({ height, color }: { height: number; color: string }) => (
 	<div
@@ -32,6 +33,11 @@ const meta: Meta<typeof MasonryLayout> = {
 	parameters: {
 		layout: 'fullscreen',
 	},
+	argTypes: {
+		container: {
+			control: 'boolean',
+		},
+	},
 };
 
 export default meta;
@@ -39,6 +45,7 @@ type Story = StoryObj<typeof MasonryLayout>;
 
 export const Default: Story = {
 	args: {
+		container: true,
 		components: sampleComponents,
 	},
 };
@@ -47,12 +54,14 @@ export const WithTitleAndCaption: Story = {
 	args: {
 		title: 'Photo Gallery',
 		caption: 'A beautiful collection of photographs arranged in a masonry layout',
+		container: true,
 		components: sampleComponents,
 	},
 };
 
 export const TwoColumns: Story = {
 	args: {
+		container: true,
 		components: sampleComponents.slice(0, 4),
 	},
 	parameters: {
@@ -64,6 +73,7 @@ export const TwoColumns: Story = {
 
 export const ThreeColumns: Story = {
 	args: {
+		container: true,
 		components: sampleComponents,
 	},
 	parameters: {
@@ -75,6 +85,14 @@ export const ThreeColumns: Story = {
 
 export const FourColumns: Story = {
 	args: {
+		container: true,
+		components: sampleComponents,
+	},
+};
+
+export const NoContainer: Story = {
+	args: {
+		container: false,
 		components: sampleComponents,
 	},
 };
