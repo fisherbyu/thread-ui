@@ -24,8 +24,9 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 			borderStyle: 'solid',
 			maxHeight: '15rem',
 			overflow: 'hidden',
-			width: '391px',
-			height: '241px',
+			maxWidth: '391px',
+			aspectRatio: '8 / 5',
+			width: '100%',
 			backgroundColor: { base: 'background', _hover: 'surface' },
 		}),
 		link: css({
