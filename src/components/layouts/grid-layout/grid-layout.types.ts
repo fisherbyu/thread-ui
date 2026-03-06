@@ -14,9 +14,9 @@ export type GridLayoutProps = LayoutComponentProps & {
 	gap?: number | UtilitySizeOptions;
 	/** Reduces the gap to a tighter variant of the current size token */
 	tighten?: boolean;
-	/** Vertical alignment of grid items */
+	/** Vertical alignment of grid items @default `'center'` */
 	align?: SimpleAlignItems;
-	/** Horizontal justification of grid items */
+	/** Horizontal justification of grid items @default `'center'` */
 	justify?: SimpleAlignItems;
 	/** Grid Content */
 	children?: ReactNode;

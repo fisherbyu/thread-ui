@@ -17,8 +17,8 @@ import { LayoutWrapper } from '../layout-wrapper';
 export const GridLayout = ({
 	cols,
 	gap = 'md',
-	align,
-	justify,
+	align = 'center',
+	justify = 'center',
 	tighten,
 	children,
 	container = true,
