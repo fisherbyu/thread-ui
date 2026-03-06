@@ -22,8 +22,6 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 			borderWidth: 'md',
 			borderColor: 'structure',
 			borderStyle: 'solid',
-			marginTop: '0.75rem',
-			marginBottom: '0.75rem',
 			maxHeight: '15rem',
 			overflow: 'hidden',
 			width: '391px',
