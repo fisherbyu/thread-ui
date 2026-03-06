@@ -21,4 +21,6 @@ export type ColumnItem = {
 	description?: string;
 	/** Image to display in the column */
 	content: ImageProps;
+	/** Optional key prop to ensure items render correctly */
+	key?: string;
 };

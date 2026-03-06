@@ -82,7 +82,7 @@ export const ColumnLayout = ({
 				)}
 				<ColumnSkeleton mdcol={mdcol} lgcol={lgcol}>
 					{items.map((item, index) => (
-						<div key={index}>
+						<div key={item.key ?? index}>
 							<div className={gridItemStyles}>
 								{renderImage(item.content, undefined, gridPhotoStyles)}
 							</div>
