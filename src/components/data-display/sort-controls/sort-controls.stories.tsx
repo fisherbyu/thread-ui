@@ -32,9 +32,9 @@ export const Default: Story = {
 		const { sortedData, sortControlsProps } = useSortControls({
 			data: SAMPLE_DATA,
 			fields: [
-				{ key: 'title', label: 'Title' },
-				{ key: 'type', label: 'Type' },
-				{ key: 'rating', label: 'Rating' },
+				{ key: 'title', label: 'Title', icon: 'TextAa' },
+				{ key: 'type', label: 'Type', icon: 'ExcludeIcon' },
+				{ key: 'rating', label: 'Rating', icon: 'RankingIcon' },
 			],
 		});
 
