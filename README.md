@@ -74,6 +74,10 @@ Component CSS is pre-generated using Panda CSS, so components render correctly s
 
 `Container` `ColumnLayout` `Footer` `MasonryLayout`
 
+### Data Display
+
+`SortControls`
+
 ## Hooks
 
 `useClickOutside` `useDismiss` `usePathname`
