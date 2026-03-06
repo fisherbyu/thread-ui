@@ -1,8 +1,11 @@
+import { IconNames } from '@/components/ui';
+
 export type SortDirection = 'asc' | 'desc';
 
 export type SortField<T> = {
 	key: keyof T;
 	label: string;
+	icon?: IconNames;
 };
 
 export type ActiveSort<T> = {
