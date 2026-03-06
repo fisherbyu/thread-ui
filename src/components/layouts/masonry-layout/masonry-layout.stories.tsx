@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { MasonryLayout } from './masonry-layout';
 import '../../../styles/thread.css';
 
-// Sample components for demonstration
+// Sample items for demonstration
 const SampleCard = ({ height, color }: { height: number; color: string }) => (
 	<div
 		className="thread-w-full thread-rounded-lg"
@@ -14,8 +14,8 @@ const SampleCard = ({ height, color }: { height: number; color: string }) => (
 	/>
 );
 
-// Create different sized components for visual variety
-const sampleComponents = [
+// Create different sized items for visual variety
+const sampleitems = [
 	<SampleCard height={200} color="#FDA4AF" />,
 	<SampleCard height={300} color="#FAC898" />,
 	<SampleCard height={250} color="#FBBF24" />,
@@ -46,7 +46,7 @@ type Story = StoryObj<typeof MasonryLayout>;
 export const Default: Story = {
 	args: {
 		container: true,
-		components: sampleComponents,
+		items: sampleitems,
 	},
 };
 
@@ -55,14 +55,14 @@ export const WithTitleAndCaption: Story = {
 		title: 'Photo Gallery',
 		caption: 'A beautiful collection of photographs arranged in a masonry layout',
 		container: true,
-		components: sampleComponents,
+		items: sampleitems,
 	},
 };
 
 export const TwoColumns: Story = {
 	args: {
 		container: true,
-		components: sampleComponents.slice(0, 4),
+		items: sampleitems.slice(0, 4),
 	},
 	parameters: {
 		viewport: {
@@ -74,7 +74,7 @@ export const TwoColumns: Story = {
 export const ThreeColumns: Story = {
 	args: {
 		container: true,
-		components: sampleComponents,
+		items: sampleitems,
 	},
 	parameters: {
 		viewport: {
@@ -86,13 +86,13 @@ export const ThreeColumns: Story = {
 export const FourColumns: Story = {
 	args: {
 		container: true,
-		components: sampleComponents,
+		items: sampleitems,
 	},
 };
 
 export const NoContainer: Story = {
 	args: {
 		container: false,
-		components: sampleComponents,
+		items: sampleitems,
 	},
 };

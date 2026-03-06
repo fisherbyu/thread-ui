@@ -12,7 +12,7 @@ import { LayoutWrapper } from '../layout-wrapper';
  *   components={images.map((img) => <img src={img.src} alt={img.alt} />)}
  * />
  */
-export const MasonryLayout = ({ title, caption, components, container }: MasonryLayoutProps) => {
+export const MasonryLayout = ({ title, caption, items, container }: MasonryLayoutProps) => {
 	const styles = {
 		container: css({ width: 'full' }),
 		list: css({
@@ -38,7 +38,7 @@ export const MasonryLayout = ({ title, caption, components, container }: Masonry
 					</H3>
 				)}
 				<ol className={styles.list}>
-					{components.map((component, index) => (
+					{items.map((component, index) => (
 						<li key={index} className={styles.item}>
 							{component}
 						</li>

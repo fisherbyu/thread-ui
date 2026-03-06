@@ -7,5 +7,5 @@ export type MasonryLayoutProps = LayoutComponentProps & {
 	/** Optional caption rendered alongside the title */
 	caption?: string;
 	/** Items to render in the masonry grid */
-	components: ReactNode[];
+	items: ReactNode[];
 };
