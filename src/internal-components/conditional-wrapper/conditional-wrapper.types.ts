@@ -1,6 +1,6 @@
 import { ComponentType, ReactNode } from 'react';
 
-type WrapperType = ComponentType<{ children: ReactNode }> | 'div' | 'fragment';
+type WrapperType = ComponentType<any> | 'div' | 'fragment';
 
 export type ConditionalWrapperProps = {
 	children: ReactNode;
