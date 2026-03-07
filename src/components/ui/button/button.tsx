@@ -17,6 +17,7 @@ export const Button = ({
 	onClick,
 	type = 'button',
 	margin,
+	text = false,
 	disabled = false,
 }: ButtonProps) => {
 	const buttonClasses = button({
@@ -24,6 +25,7 @@ export const Button = ({
 		size,
 		fullWidth,
 		disabled,
+		textVariant: text,
 	});
 
 	return (
