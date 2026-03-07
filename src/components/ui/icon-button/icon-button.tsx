@@ -10,27 +10,10 @@ import { getUtilityIconSize } from '@/utils';
  *   Add Item
  * </IconButton>
  */
-export const IconButton = ({
-	children,
-	fullWidth,
-	color = 'primary',
-	size = 'md',
-	onClick,
-	type = 'button',
-	margin,
-	disabled = false,
-	name,
-}: IconButtonProps) => {
+export const IconButton = (props: IconButtonProps) => {
+	const { name, size = 'md', children, ...buttonProps } = props;
 	return (
-		<Button
-			fullWidth={fullWidth}
-			color={color}
-			onClick={onClick}
-			type={type}
-			margin={margin}
-			disabled={disabled}
-			size={size}
-		>
+		<Button size={size} {...buttonProps}>
 			<Icon name={name} size={getUtilityIconSize(size)} />
 			{children}
 		</Button>
