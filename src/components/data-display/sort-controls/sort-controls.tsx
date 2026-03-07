@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import { css } from '@/styled-system/css';
 import { SortControlsProps, ActiveSort } from './sort-controls.types';
 import { Button, Icon, IconButton, Text } from '@/components';
@@ -27,13 +28,12 @@ export const SortControls = <T,>({
 			{fields.map(({ key, label, icon }) => {
 				const state = getState(key);
 				return (
-					<>
+					<React.Fragment key={String(key)}>
 						{icon ? (
 							<IconButton
 								color="tertiary"
 								size="sm"
 								name={icon}
-								key={String(key)}
 								onClick={() => onToggle(key)}
 							>
 								{label}
@@ -45,7 +45,7 @@ export const SortControls = <T,>({
 								{state && <SortIndicator direction={state.direction} />}
 							</Button>
 						)}
-					</>
+					</React.Fragment>
 				);
 			})}
 
