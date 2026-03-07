@@ -58,6 +58,6 @@ export const useSortControls = <T>({
 		activeSort,
 		toggleSort,
 		clearSort,
-		sortControlsProps: { fields, activeSort, onToggle: toggleSort, onClear: clearSort, multi },
+		sortControlsProps: { fields, activeSort, onToggle: toggleSort, onClear: clearSort },
 	};
 };
