@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
-import { css, cva } from '@/styled-system/css';
+import { cva } from '@/styled-system/css';
 import { SortControlsProps, ActiveSort } from './sort-controls.types';
 import { Button, Icon, IconButton, Text } from '@/components';
+import { ConditionalWrapper } from '@/internal-components';
 
 const styles = {
 	controlsContainer: cva({
@@ -42,24 +43,31 @@ export const SortControls = <T,>({
 		<div className={styles.controlsContainer({ size })}>
 			{fields.map(({ key, label, icon, color: fieldColor }) => {
 				const state = getState(key);
+
+				const buttonProps = {
+					color: fieldColor ?? color,
+					size,
+					onClick: () => onToggle(key),
+				};
+
+				const iconButtonProps = icon ? { ...buttonProps, name: icon } : undefined;
+
+				const content = (
+					<>
+						{label}
+						{state && <SortIndicator direction={state.direction} />}
+					</>
+				);
+
 				return (
 					<React.Fragment key={String(key)}>
-						{icon ? (
-							<IconButton
-								color={fieldColor ?? color}
-								size={size}
-								name={icon}
-								onClick={() => onToggle(key)}
-							>
-								{label}
-								{state && <SortIndicator direction={state.direction} />}
-							</IconButton>
-						) : (
-							<Button color="tertiary" size={size} onClick={() => onToggle(key)}>
-								{label}
-								{state && <SortIndicator direction={state.direction} />}
-							</Button>
-						)}
+						<ConditionalWrapper
+							wrapper={iconButtonProps ? IconButton : undefined}
+							wrapperProps={iconButtonProps}
+							fallbackWrapper={{ wrapper: Button, wrapperProps: buttonProps }}
+						>
+							{content}
+						</ConditionalWrapper>
 					</React.Fragment>
 				);
 			})}
