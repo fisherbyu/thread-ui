@@ -6,7 +6,7 @@ import { useSortControls } from './use-sort-controls';
 import { Text } from '../../typography';
 
 const meta: Meta<typeof SortControls> = {
-	title: 'Components/SortControls',
+	title: 'Data Display/SortControls',
 	component: SortControls,
 	parameters: {
 		layout: 'centered',
