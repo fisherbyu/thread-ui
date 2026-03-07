@@ -14,6 +14,8 @@ export type ButtonProps = {
 	margin?: string;
 	/** Size variant @default `'md'` */
 	size?: UtilitySizeOptions;
+	/** Render as text variant @default `'false'` */
+	text?: boolean;
 	/** Disables the button and suppresses click events @default `false` */
 	disabled?: boolean;
 	children: ReactNode;
