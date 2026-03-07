@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Dropdown } from './dropdown';
+import { Dropdown } from './dropdown/dropdown';
+import { MultiDropdown } from './multi-dropdown/multi-dropdown';
 
 const meta: Meta<typeof Dropdown> = {
 	title: 'Form Elements/Dropdown',
@@ -25,11 +26,34 @@ const ControlledDropdown = (args: any) => {
 	return <Dropdown {...args} value={value} onSelect={setValue} />;
 };
 
+const ControlledMultiDropdown = (args: any) => {
+	const [values, setValues] = useState<(string | number)[]>([]);
+	const handleToggle = (val: string | number) =>
+		setValues((prev) => (prev.includes(val) ? prev.filter((v) => v !== val) : [...prev, val]));
+	return (
+		<MultiDropdown
+			{...args}
+			values={values}
+			onToggle={handleToggle}
+			onClear={() => setValues([])}
+		/>
+	);
+};
+
 export const Default: Story = {
 	render: (args) => <ControlledDropdown {...args} />,
 	args: {
-		label: 'Fruit',
+		title: 'Fruit',
 		options,
 		placeholder: 'Select a fruit...',
+	},
+};
+
+export const Multi: Story = {
+	render: (args) => <ControlledMultiDropdown {...args} />,
+	args: {
+		title: 'Fruits',
+		options,
+		placeholder: 'Select fruits...',
 	},
 };
