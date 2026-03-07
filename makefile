@@ -93,7 +93,7 @@ help: ## Show this help message
 
 .PHONY: storybook
 storybook: prepare-panda-code ## Run Storybook dev server (with Panda and Tailwind watch)
-	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p 6006"
+	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p 6006 --no-open"
 
 .PHONY: build
 build: clean prepare-panda-code theme-css prepare-typescript prepare-panda-css build-css ## Full build pipeline
