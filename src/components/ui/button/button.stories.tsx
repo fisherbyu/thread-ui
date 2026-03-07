@@ -20,6 +20,10 @@ const meta = {
 		disabled: {
 			control: 'boolean',
 		},
+		text: {
+			control: 'boolean',
+			description: 'Renders the button as a text-only variant with no background or border',
+		},
 	},
 	tags: ['autodocs'],
 } satisfies Meta<typeof Button>;
@@ -27,12 +31,21 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-// Default story with primary color
 export const Default: Story = {
 	args: {
 		children: 'Default Button',
 		color: 'primary',
 		fullWidth: false,
+		onClick: () => alert('Button clicked!'),
+		disabled: false,
+	},
+};
+
+export const Text: Story = {
+	args: {
+		children: 'Text Button',
+		color: 'primary',
+		text: true,
 		onClick: () => alert('Button clicked!'),
 		disabled: false,
 	},
