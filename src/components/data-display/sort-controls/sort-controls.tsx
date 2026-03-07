@@ -71,9 +71,15 @@ export const SortControls = <T,>({
 			})}
 
 			{activeSort.length > 0 && (
-				<button onClick={onClear} aria-label="Clear all sorting">
-					<Text size="xs">Clear</Text>
-				</button>
+				<Button
+					color="text"
+					onClick={onClear}
+					size={size}
+					text
+					aria-label="Clear all sorting"
+				>
+					Clear
+				</Button>
 			)}
 		</div>
 	);
