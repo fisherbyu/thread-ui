@@ -93,9 +93,9 @@ export const MultiSort: Story = {
 		const { sortedData, sortControlsProps } = useSortControls({
 			data: PLAYER_DATA,
 			fields: [
-				{ key: 'team', label: 'Team' },
-				{ key: 'position', label: 'Position' },
-				{ key: 'goals', label: 'Goals' },
+				{ key: 'team', label: 'Team', icon: 'UsersThree', color: 'primary' },
+				{ key: 'position', label: 'Position', icon: 'Nut', color: 'secondary' },
+				{ key: 'goals', label: 'Goals', icon: 'Trophy', color: 'info' },
 			],
 			multi: true,
 		});
