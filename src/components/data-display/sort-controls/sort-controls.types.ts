@@ -1,4 +1,5 @@
 import { IconNames } from '@/components/ui';
+import { UtilityColorOptions } from '@/types';
 
 export type SortDirection = 'asc' | 'desc';
 
@@ -6,6 +7,7 @@ export type SortField<T> = {
 	key: keyof T;
 	label: string;
 	icon?: IconNames;
+	color?: UtilityColorOptions;
 };
 
 export type ActiveSort<T> = {
@@ -28,6 +30,7 @@ export type SortControlsData<T> = {
 };
 
 export type SortControlsProps<T> = {
+	color?: UtilityColorOptions;
 	fields: SortField<T>[];
 	activeSort: ActiveSort<T>[];
 	onToggle: (key: keyof T) => void;
