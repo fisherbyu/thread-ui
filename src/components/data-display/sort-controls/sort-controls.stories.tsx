@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { SortControls } from './sort-controls';
@@ -23,6 +24,20 @@ const SAMPLE_DATA = [
 	{ title: 'Caesar Salad', type: 'Lunch', rating: 4.2 },
 	{ title: 'Beef Tacos', type: 'Dinner', rating: 4.6 },
 	{ title: 'Blueberry Pancakes', type: 'Breakfast', rating: 4.5 },
+];
+
+// Multi-sort data: many rows share the same team/position, so secondary sorts are meaningful
+const PLAYER_DATA = [
+	{ name: 'Jordan Mills', team: 'Alpha', position: 'Forward', goals: 12 },
+	{ name: 'Casey Brooks', team: 'Beta', position: 'Forward', goals: 9 },
+	{ name: 'Riley Shaw', team: 'Alpha', position: 'Midfield', goals: 6 },
+	{ name: 'Morgan Lee', team: 'Beta', position: 'Forward', goals: 14 },
+	{ name: 'Taylor Quinn', team: 'Alpha', position: 'Forward', goals: 7 },
+	{ name: 'Drew Hanson', team: 'Gamma', position: 'Defense', goals: 2 },
+	{ name: 'Avery Cole', team: 'Beta', position: 'Midfield', goals: 5 },
+	{ name: 'Cameron Fox', team: 'Gamma', position: 'Forward', goals: 11 },
+	{ name: 'Jamie Reyes', team: 'Alpha', position: 'Defense', goals: 3 },
+	{ name: 'Quinn Torres', team: 'Gamma', position: 'Midfield', goals: 8 },
 ];
 
 // ─── Stories ───────────────────────────────────────────────────────────────
@@ -76,22 +91,22 @@ export const Default: Story = {
 export const MultiSort: Story = {
 	render: () => {
 		const { sortedData, sortControlsProps } = useSortControls({
-			data: SAMPLE_DATA,
+			data: PLAYER_DATA,
 			fields: [
-				{ key: 'title', label: 'Title' },
-				{ key: 'type', label: 'Type' },
-				{ key: 'rating', label: 'Rating' },
+				{ key: 'team', label: 'Team' },
+				{ key: 'position', label: 'Position' },
+				{ key: 'goals', label: 'Goals' },
 			],
 			multi: true,
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 480 }}>
+			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 520 }}>
 				<SortControls {...sortControlsProps} />
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
 						<tr>
-							{['Title', 'Type', 'Rating'].map((h) => (
+							{['Name', 'Team', 'Position', 'Goals'].map((h) => (
 								<th
 									key={h}
 									style={{
@@ -107,10 +122,11 @@ export const MultiSort: Story = {
 					</thead>
 					<tbody>
 						{sortedData.map((row) => (
-							<tr key={row.title}>
-								<td style={{ padding: '4px 8px' }}>{row.title}</td>
-								<td style={{ padding: '4px 8px' }}>{row.type}</td>
-								<td style={{ padding: '4px 8px' }}>{row.rating}</td>
+							<tr key={row.name}>
+								<td style={{ padding: '4px 8px' }}>{row.name}</td>
+								<td style={{ padding: '4px 8px' }}>{row.team}</td>
+								<td style={{ padding: '4px 8px' }}>{row.position}</td>
+								<td style={{ padding: '4px 8px' }}>{row.goals}</td>
 							</tr>
 						))}
 					</tbody>
