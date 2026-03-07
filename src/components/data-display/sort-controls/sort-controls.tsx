@@ -14,6 +14,7 @@ const styles = {
 };
 
 export const SortControls = <T,>({
+	color = 'tertiary',
 	fields,
 	activeSort,
 	onToggle,
@@ -25,13 +26,13 @@ export const SortControls = <T,>({
 
 	return (
 		<div className={styles.controlsContainer}>
-			{fields.map(({ key, label, icon }) => {
+			{fields.map(({ key, label, icon, color: fieldColor }) => {
 				const state = getState(key);
 				return (
 					<React.Fragment key={String(key)}>
 						{icon ? (
 							<IconButton
-								color="tertiary"
+								color={fieldColor ?? color}
 								size="sm"
 								name={icon}
 								onClick={() => onToggle(key)}
