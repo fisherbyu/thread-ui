@@ -45,17 +45,6 @@ export const SortControls = <T,>({
 								{state && <SortIndicator direction={state.direction} />}
 							</Button>
 						)}
-						{/* <button
-							key={String(key)}
-							onClick={() => onToggle(key)}
-							data-active={!!state}
-							data-direction={state?.direction}
-							aria-pressed={!!state}
-							aria-label={`Sort by ${label}${state ? `, currently ${state.direction}ending` : ''}`}
-						>
-							{label}
-							{state && <SortIndicator direction={state.direction} />}
-						</button> */}
 					</>
 				);
 			})}
