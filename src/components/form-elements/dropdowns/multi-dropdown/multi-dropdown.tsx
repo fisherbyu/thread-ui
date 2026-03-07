@@ -61,11 +61,7 @@ export const MultiDropdown = ({
 	const [isOpen, setIsOpen] = useState(false);
 
 	const triggerLabel =
-		values.length === 0
-			? placeholder
-			: values.length === 1
-				? String(options.find((o) => o.value === values[0])?.label ?? values[0])
-				: `${title ?? 'Selected'} (${values.length})`;
+		values.length === 0 ? placeholder : `${title ?? 'Selected'} (${values.length})`;
 
 	return (
 		<DropdownBase
