@@ -48,11 +48,11 @@ export const DropdownBase = ({
 	renderItem,
 	options,
 }: DropdownBaseProps) => {
-	const containerRef = useRef<HTMLDivElement>(null);
-	useClickOutside(containerRef, isOpen, onClose, false);
+	const listRef = useRef<HTMLUListElement>(null);
+	useClickOutside(listRef, isOpen, onClose, false);
 
 	return (
-		<div id={id} className={styles.container} ref={containerRef}>
+		<div id={id} className={styles.container}>
 			<InputWrapper>
 				{title && <FormLabel name={title} title={title} />}
 				<div className={styles.interior}>
@@ -65,7 +65,7 @@ export const DropdownBase = ({
 						<Icon name={isOpen ? 'CaretUp' : 'CaretDown'} size={16} color="black" />
 					</button>
 					{isOpen && (
-						<ul className={styles.list}>
+						<ul className={styles.list} ref={listRef}>
 							{options.map((option, index) => renderItem(option, index))}
 						</ul>
 					)}
