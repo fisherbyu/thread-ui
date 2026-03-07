@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 import type {
-	UseSortOptions,
+	SortControlsConfig,
 	SortControlsData,
 	ActiveSort,
 	SortDirection,
@@ -11,7 +11,7 @@ export const useSortControls = <T>({
 	data,
 	fields,
 	multi = false,
-}: UseSortOptions<T>): SortControlsData<T> => {
+}: SortControlsConfig<T>): SortControlsData<T> => {
 	const [activeSort, setActiveSort] = useState<ActiveSort<T>[]>([]);
 
 	const toggleSort = (key: keyof T) => {

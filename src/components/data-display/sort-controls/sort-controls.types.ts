@@ -13,7 +13,7 @@ export type ActiveSort<T> = {
 	direction: SortDirection;
 };
 
-export type UseSortOptions<T> = {
+export type SortControlsConfig<T> = {
 	data: T[];
 	fields: SortField<T>[];
 	multi?: boolean; // allow multi-field sorting
