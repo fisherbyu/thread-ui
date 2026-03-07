@@ -7,7 +7,7 @@ import { getUtilityColorValue } from '../../../utils';
 
 /**
  * Standard Icon component with utility color and size support.
- * (Based on PhosphorIcons)
+ * Utilizes PhosphorIcons (https://phosphoricons.com)
  *
  * @example
  * <Icon name="Star" size={24} color="primary" filled />
