@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import { cva } from '@/styled-system/css';
 import { SortControlsProps, ActiveSort } from './sort-controls.types';
 import { Button, Icon, IconButton, Text } from '@/components';
@@ -60,15 +59,14 @@ export const SortControls = <T,>({
 				);
 
 				return (
-					<React.Fragment key={String(key)}>
-						<ConditionalWrapper
-							wrapper={iconButtonProps ? IconButton : undefined}
-							wrapperProps={iconButtonProps}
-							fallbackWrapper={{ wrapper: Button, wrapperProps: buttonProps }}
-						>
-							{content}
-						</ConditionalWrapper>
-					</React.Fragment>
+					<ConditionalWrapper
+						key={String(key)}
+						wrapper={iconButtonProps ? IconButton : undefined}
+						wrapperProps={iconButtonProps}
+						fallbackWrapper={{ wrapper: Button, wrapperProps: buttonProps }}
+					>
+						{content}
+					</ConditionalWrapper>
 				);
 			})}
 
