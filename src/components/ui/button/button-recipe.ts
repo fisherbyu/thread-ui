@@ -14,6 +14,7 @@ export const buttonRecipe = defineRecipe({
 		cursor: 'pointer',
 		userSelect: 'none',
 		height: 'fit-content',
+		whiteSpace: 'nowrap',
 	},
 	variants: {
 		color: {
