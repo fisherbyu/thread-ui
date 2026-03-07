@@ -142,6 +142,16 @@ export const buttonRecipe = defineRecipe({
 			},
 			false: {},
 		},
+		textVariant: {
+			true: {
+				backgroundColor: 'background',
+				borderColor: 'transparent',
+				border: 'none',
+				_hover: {
+					textDecoration: 'underline',
+				},
+			},
+		},
 	},
 	compoundVariants: [
 		// Disabled state overrides for all colors except black
@@ -244,6 +254,66 @@ export const buttonRecipe = defineRecipe({
 					borderColor: 'white',
 				},
 			},
+		},
+		{
+			textVariant: true,
+			disabled: true,
+			css: {
+				_hover: {
+					textDecoration: 'none',
+				},
+			},
+		},
+		// textVariant color overrides — inherit the color's main value as text color
+		{
+			textVariant: true,
+			color: 'primary',
+			css: { color: 'primary.main', _hover: { color: 'primary.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'secondary',
+			css: { color: 'secondary.main', _hover: { color: 'secondary.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'tertiary',
+			css: { color: 'tertiary.main', _hover: { color: 'tertiary.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'gray',
+			css: { color: 'gray.main', _hover: { color: 'gray.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'success',
+			css: { color: 'success.main', _hover: { color: 'success.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'error',
+			css: { color: 'error.main', _hover: { color: 'error.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'info',
+			css: { color: 'info.main', _hover: { color: 'info.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'neutral',
+			css: { color: 'text.standard', _hover: { color: 'text.standard' } },
+		},
+		{
+			textVariant: true,
+			color: 'black',
+			css: { color: 'black', _hover: { color: 'black' } },
+		},
+		{
+			textVariant: true,
+			color: 'text',
+			css: { color: 'text.standard', _hover: { color: 'text.standard' } },
 		},
 	],
 	defaultVariants: {
