@@ -113,17 +113,17 @@ export const buttonRecipe = defineRecipe({
 			sm: {
 				gap: '1', // 4px
 				fontSize: '0.5rem', // 8px
-				padding: '1',
+				padding: '1', // 4px
 			},
 			md: {
 				gap: '2', // 8px
 				fontSize: '1rem', // 16px
-				padding: '2',
+				padding: '2', // 8px
 			},
 			lg: {
 				gap: '3', // 12px
 				fontSize: '1.5rem', // 24px
-				padding: '3',
+				padding: '3', // 12px
 			},
 		},
 		fullWidth: {
