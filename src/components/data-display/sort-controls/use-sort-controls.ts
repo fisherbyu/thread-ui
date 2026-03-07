@@ -39,19 +39,34 @@ export const useSortControls = <T>({
 
 	const sortedData = useMemo(() => {
 		if (activeSort.length === 0) return data;
-
 		return [...data].sort((a, b) => {
 			for (const { key, direction } of activeSort) {
 				const aVal = a[key];
 				const bVal = b[key];
 				const dir = direction === 'asc' ? 1 : -1;
 
-				if (aVal < bVal) return -1 * dir;
-				if (aVal > bVal) return 1 * dir;
+				const field = fields.find((f) => f.key === key);
+				const { sortOrder } = field ?? {};
+
+				let cmp = 0;
+				if (typeof sortOrder === 'function') {
+					cmp = sortOrder(aVal, bVal);
+				} else if (Array.isArray(sortOrder)) {
+					const aIdx = sortOrder.indexOf(aVal);
+					const bIdx = sortOrder.indexOf(bVal);
+					// unknowns sort to the end
+					const aNorm = aIdx === -1 ? Infinity : aIdx;
+					const bNorm = bIdx === -1 ? Infinity : bIdx;
+					cmp = aNorm - bNorm;
+				} else {
+					cmp = aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
+				}
+
+				if (cmp !== 0) return cmp * dir;
 			}
 			return 0;
 		});
-	}, [data, activeSort]);
+	}, [data, activeSort, fields]);
 
 	return {
 		sortedData,

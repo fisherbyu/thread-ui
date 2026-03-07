@@ -8,6 +8,7 @@ export type SortField<T> = {
 	label: string;
 	icon?: IconNames;
 	color?: UtilityColorOptions;
+	sortOrder?: T[keyof T][] | ((a: T[keyof T], b: T[keyof T]) => number);
 };
 
 export type ActiveSort<T> = {
