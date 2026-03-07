@@ -84,7 +84,7 @@ export const Default: Story = {
 										borderBottom: '1px solid #e2e8f0',
 									}}
 								>
-									{h}
+									<Text bold>{h}</Text>
 								</th>
 							))}
 						</tr>
@@ -92,9 +92,15 @@ export const Default: Story = {
 					<tbody>
 						{sortedData.map((row) => (
 							<tr key={row.title}>
-								<td style={{ padding: '4px 8px' }}>{row.title}</td>
-								<td style={{ padding: '4px 8px' }}>{row.type}</td>
-								<td style={{ padding: '4px 8px' }}>{row.rating}</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.title}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.type}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{String(row.rating)}</Text>
+								</td>
 							</tr>
 						))}
 					</tbody>
@@ -131,7 +137,7 @@ export const MultiSort: Story = {
 										borderBottom: '1px solid #e2e8f0',
 									}}
 								>
-									{h}
+									<Text bold>{h}</Text>
 								</th>
 							))}
 						</tr>
@@ -139,10 +145,18 @@ export const MultiSort: Story = {
 					<tbody>
 						{sortedData.map((row) => (
 							<tr key={row.name}>
-								<td style={{ padding: '4px 8px' }}>{row.name}</td>
-								<td style={{ padding: '4px 8px' }}>{row.team}</td>
-								<td style={{ padding: '4px 8px' }}>{row.position}</td>
-								<td style={{ padding: '4px 8px' }}>{row.goals}</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.name}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.team}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.position}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{String(row.goals)}</Text>
+								</td>
 							</tr>
 						))}
 					</tbody>
