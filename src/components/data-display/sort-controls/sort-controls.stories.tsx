@@ -3,6 +3,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { SortControls } from './sort-controls';
 import { useSortControls } from './use-sort-controls';
+import { Text } from '../../typography';
 
 const meta: Meta<typeof SortControls> = {
 	title: 'Components/SortControls',
@@ -11,6 +12,22 @@ const meta: Meta<typeof SortControls> = {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
+	argTypes: {
+		size: {
+			control: { type: 'select' },
+			options: ['sm', 'md', 'lg'],
+			description: 'Size applied to all sort control buttons',
+		},
+		color: {
+			control: { type: 'select' },
+			options: ['primary', 'secondary', 'tertiary', 'info', 'success', 'error'],
+			description: 'Fallback color for buttons that do not have a field-level color',
+		},
+	},
+	args: {
+		size: 'sm',
+		color: 'tertiary',
+	},
 };
 
 export default meta;
@@ -26,7 +43,6 @@ const SAMPLE_DATA = [
 	{ title: 'Blueberry Pancakes', type: 'Breakfast', rating: 4.5 },
 ];
 
-// Multi-sort data: many rows share the same team/position, so secondary sorts are meaningful
 const PLAYER_DATA = [
 	{ name: 'Jordan Mills', team: 'Alpha', position: 'Forward', goals: 12 },
 	{ name: 'Casey Brooks', team: 'Beta', position: 'Forward', goals: 9 },
@@ -43,7 +59,7 @@ const PLAYER_DATA = [
 // ─── Stories ───────────────────────────────────────────────────────────────
 
 export const Default: Story = {
-	render: () => {
+	render: (args) => {
 		const { sortedData, sortControlsProps } = useSortControls({
 			data: SAMPLE_DATA,
 			fields: [
@@ -55,7 +71,7 @@ export const Default: Story = {
 
 		return (
 			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 480 }}>
-				<SortControls {...sortControlsProps} />
+				<SortControls {...sortControlsProps} size={args.size} color={args.color} />
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
 						<tr>
@@ -89,7 +105,7 @@ export const Default: Story = {
 };
 
 export const MultiSort: Story = {
-	render: () => {
+	render: (args) => {
 		const { sortedData, sortControlsProps } = useSortControls({
 			data: PLAYER_DATA,
 			fields: [
@@ -102,7 +118,7 @@ export const MultiSort: Story = {
 
 		return (
 			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 520 }}>
-				<SortControls {...sortControlsProps} />
+				<SortControls {...sortControlsProps} size={args.size} color={args.color} />
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
 						<tr>
