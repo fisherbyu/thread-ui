@@ -1,15 +1,29 @@
 'use client';
 import React from 'react';
-import { css } from '@/styled-system/css';
+import { css, cva } from '@/styled-system/css';
 import { SortControlsProps, ActiveSort } from './sort-controls.types';
 import { Button, Icon, IconButton, Text } from '@/components';
 
 const styles = {
-	controlsContainer: css({
-		display: 'flex',
-		flexDirection: 'row',
-		alignItems: 'center',
-		gap: '1',
+	controlsContainer: cva({
+		base: {
+			display: 'flex',
+			flexDirection: 'row',
+			alignItems: 'center',
+		},
+		variants: {
+			size: {
+				sm: {
+					gap: '1',
+				},
+				md: {
+					gap: '2',
+				},
+				lg: {
+					gap: '3',
+				},
+			},
+		},
 	}),
 };
 
@@ -19,13 +33,13 @@ export const SortControls = <T,>({
 	activeSort,
 	onToggle,
 	onClear,
-	multi,
+	size = 'sm',
 }: SortControlsProps<T>) => {
 	const getState = (key: keyof T): ActiveSort<T> | undefined =>
 		activeSort.find((s) => s.key === key);
 
 	return (
-		<div className={styles.controlsContainer}>
+		<div className={styles.controlsContainer({ size })}>
 			{fields.map(({ key, label, icon, color: fieldColor }) => {
 				const state = getState(key);
 				return (
@@ -33,7 +47,7 @@ export const SortControls = <T,>({
 						{icon ? (
 							<IconButton
 								color={fieldColor ?? color}
-								size="sm"
+								size={size}
 								name={icon}
 								onClick={() => onToggle(key)}
 							>
@@ -41,7 +55,7 @@ export const SortControls = <T,>({
 								{state && <SortIndicator direction={state.direction} />}
 							</IconButton>
 						) : (
-							<Button color="tertiary" size="sm" onClick={() => onToggle(key)}>
+							<Button color="tertiary" size={size} onClick={() => onToggle(key)}>
 								{label}
 								{state && <SortIndicator direction={state.direction} />}
 							</Button>
