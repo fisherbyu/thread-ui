@@ -2,12 +2,15 @@ import { ConditionalWrapperProps } from './conditional-wrapper.types';
 
 export const ConditionalWrapper = ({
 	children,
-	wrapper = 'fragment',
+	wrapper,
 	wrapperProps = {},
+	fallbackWrapper,
 }: ConditionalWrapperProps) => {
-	if (wrapper === 'fragment') return <>{children}</>;
-	if (wrapper === 'div') return <div {...wrapperProps}>{children}</div>;
+	const resolved = wrapper ?? fallbackWrapper?.wrapper ?? 'fragment';
+	const resolvedProps = wrapper ? wrapperProps : (fallbackWrapper?.wrapperProps ?? {});
 
-	const Wrapper = wrapper;
-	return <Wrapper {...(wrapperProps as any)}>{children}</Wrapper>;
+	if (resolved === 'fragment') return <>{children}</>;
+	if (resolved === 'div') return <div {...resolvedProps}>{children}</div>;
+	const Wrapper = resolved;
+	return <Wrapper {...(resolvedProps as any)}>{children}</Wrapper>;
 };
