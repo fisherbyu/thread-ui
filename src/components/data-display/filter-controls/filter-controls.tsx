@@ -41,6 +41,7 @@ export const FilterControls = <T,>({
 
 				return (
 					<MultiDropdown
+						size={size}
 						key={String(key)}
 						id={String(key)}
 						title={label}
