@@ -3,10 +3,10 @@ import { useRef } from 'react';
 import { DropdownBaseProps } from './dropdown-base.types';
 import { InputWrapper } from '../../input-wrapper';
 import { FormLabel } from '../../form-label';
-import { Icon } from '@/components/ui';
-import { css, cx } from '@/styled-system/css';
-import { baseInputStyles } from '../../styles';
+import { Button, Icon } from '@/components/ui';
+import { css } from '@/styled-system/css';
 import { useClickOutside } from '@/hooks';
+import { getUtilityIconSize } from '@/utils';
 
 export const styles = {
 	container: css({
@@ -49,7 +49,7 @@ export const DropdownBase = ({
 	renderItem,
 	options,
 	listHeader,
-	size,
+	size = 'md',
 }: DropdownBaseProps) => {
 	const listRef = useRef<HTMLUListElement>(null);
 	useClickOutside(listRef, isOpen, onClose, false);
@@ -59,14 +59,13 @@ export const DropdownBase = ({
 			<InputWrapper>
 				{title && <FormLabel size={size} name={title} title={title} />}
 				<div className={styles.interior}>
-					<button
-						className={cx(styles.surfaceButton, baseInputStyles({ alt: true }))}
-						onClick={onToggle}
-						type="button"
-					>
-						<span>{triggerLabel}</span>
-						<Icon name={isOpen ? 'CaretUp' : 'CaretDown'} size={16} color="black" />
-					</button>
+					<Button size={size} color="neutral" onClick={onToggle} type="button">
+						{triggerLabel}
+						<Icon
+							name={isOpen ? 'CaretUp' : 'CaretDown'}
+							size={getUtilityIconSize(size)}
+						/>
+					</Button>
 					{isOpen && (
 						<ul className={styles.list} ref={listRef}>
 							{listHeader && <li>{listHeader}</li>}
