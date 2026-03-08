@@ -10,6 +10,13 @@ const meta: Meta<typeof Dropdown> = {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
+	argTypes: {
+		size: {
+			control: { type: 'select' },
+			options: ['sm', 'md', 'lg'],
+			description: 'Size applied to all filter dropdowns',
+		},
+	},
 };
 
 export default meta;
@@ -46,6 +53,7 @@ export const Default: Story = {
 		title: 'Fruit',
 		options,
 		placeholder: 'Select a fruit...',
+		size: 'md',
 	},
 };
 
@@ -55,5 +63,6 @@ export const Multi: Story = {
 		title: 'Fruits',
 		options,
 		placeholder: 'Select fruits...',
+		size: 'md',
 	},
 };
