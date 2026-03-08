@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { cva, css, cx } from '@/styled-system/css';
 import { MultiDropdownProps } from './multi-dropdown.types';
 import { DropdownBase } from '../dropdown-base/dropdown-base';
-import { Icon } from '@/components/ui';
+import { Icon, IconButton } from '@/components/ui';
 
 const styles = {
 	itemStyles: cva({
@@ -21,6 +21,12 @@ const styles = {
 				true: { backgroundColor: 'elevated' },
 			},
 		},
+	}),
+	headerStyles: css({
+		height: '5',
+		paddingX: 4,
+		display: 'flex',
+		flexDirection: 'row-reverse',
 	}),
 };
 
@@ -61,6 +67,15 @@ export const MultiDropdown = ({
 			onClose={() => {
 				setIsOpen(false);
 			}}
+			listHeader={
+				<div className={styles.headerStyles}>
+					{values.length > 0 && (
+						<IconButton onClick={onClear} color="text" name="X" text size="sm">
+							Clear
+						</IconButton>
+					)}
+				</div>
+			}
 			triggerLabel={triggerLabel}
 			renderItem={(option, index) => {
 				const isSelected = values.includes(option.value);
