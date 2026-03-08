@@ -8,13 +8,7 @@ const meta = {
 	parameters: {
 		layout: 'centered',
 	},
-	decorators: [
-		(Story) => (
-			<div style={{ width: '300px', height: '150px', display: 'flex', alignItems: 'center' }}>
-				<Story />
-			</div>
-		),
-	],
+	decorators: [(Story) => <Story />],
 	argTypes: {
 		onClick: { action: 'clicked' },
 		disabled: {
