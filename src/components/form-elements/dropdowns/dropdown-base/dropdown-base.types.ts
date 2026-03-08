@@ -18,4 +18,5 @@ export type DropdownBaseProps = {
 	onToggle: () => void;
 	triggerLabel: string;
 	renderItem: (option: DropdownOption, index: number) => React.ReactNode;
+	listHeader?: React.ReactNode;
 };
