@@ -1,3 +1,5 @@
+import { UtilitySizeOptions } from '@/types';
+
 export type FormLabelProps = {
 	/** Defaults to `name` if not provided */
 	id?: string;
@@ -5,4 +7,6 @@ export type FormLabelProps = {
 	name: string;
 	/** Text displayed in the label */
 	title?: string;
+	/** Label Size @default `'md'`` */
+	size?: UtilitySizeOptions;
 };
