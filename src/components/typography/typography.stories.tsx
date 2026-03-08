@@ -14,7 +14,7 @@ type TypographyArgs = {
 };
 
 // Define the Meta for the Typography components
-const meta = {
+const meta: Meta<TypographyArgs> = {
 	title: 'Typography/Typography',
 	tags: ['autodocs'],
 	parameters: {
