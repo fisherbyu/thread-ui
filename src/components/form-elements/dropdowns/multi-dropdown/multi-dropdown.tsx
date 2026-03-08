@@ -5,36 +5,24 @@ import { MultiDropdownProps } from './multi-dropdown.types';
 import { DropdownBase } from '../dropdown-base/dropdown-base';
 import { Icon } from '@/components/ui';
 
-const itemStyles = cva({
-	base: {
-		cursor: 'pointer',
-		paddingX: '4',
-		paddingY: '2',
-		display: 'flex',
-		alignItems: 'center',
-		gap: '2',
-		_hover: { backgroundColor: 'surface' },
-	},
-	variants: {
-		isSelected: {
-			true: { backgroundColor: 'elevated' },
+const styles = {
+	itemStyles: cva({
+		base: {
+			cursor: 'pointer',
+			paddingX: '4',
+			paddingY: '2',
+			display: 'flex',
+			alignItems: 'center',
+			gap: '2',
+			_hover: { backgroundColor: 'surface' },
 		},
-	},
-});
-
-const badgeStyles = css({
-	display: 'inline-flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-	backgroundColor: 'accent',
-	color: 'accent.fg',
-	borderRadius: 'full',
-	fontSize: 'xs',
-	lineHeight: '1',
-	minWidth: '4',
-	height: '4',
-	paddingX: '1',
-});
+		variants: {
+			isSelected: {
+				true: { backgroundColor: 'elevated' },
+			},
+		},
+	}),
+};
 
 /**
  * Multi-select dropdown — stays open on selection, renders a count badge
@@ -79,7 +67,7 @@ export const MultiDropdown = ({
 				return (
 					<li
 						key={index}
-						className={itemStyles({ isSelected })}
+						className={styles.itemStyles({ isSelected })}
 						onClick={() => onToggle(option.value)}
 					>
 						<Icon name={isSelected ? 'CheckSquare' : 'Square'} size={12} />
