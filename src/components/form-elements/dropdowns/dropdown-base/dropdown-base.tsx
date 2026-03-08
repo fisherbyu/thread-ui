@@ -47,6 +47,7 @@ export const DropdownBase = ({
 	triggerLabel,
 	renderItem,
 	options,
+	listHeader,
 }: DropdownBaseProps) => {
 	const listRef = useRef<HTMLUListElement>(null);
 	useClickOutside(listRef, isOpen, onClose, false);
@@ -66,6 +67,7 @@ export const DropdownBase = ({
 					</button>
 					{isOpen && (
 						<ul className={styles.list} ref={listRef}>
+							{listHeader && <li>{listHeader}</li>}
 							{options.map((option, index) => renderItem(option, index))}
 						</ul>
 					)}
