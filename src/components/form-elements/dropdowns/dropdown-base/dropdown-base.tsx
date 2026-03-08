@@ -49,6 +49,7 @@ export const DropdownBase = ({
 	renderItem,
 	options,
 	listHeader,
+	size,
 }: DropdownBaseProps) => {
 	const listRef = useRef<HTMLUListElement>(null);
 	useClickOutside(listRef, isOpen, onClose, false);
@@ -56,7 +57,7 @@ export const DropdownBase = ({
 	return (
 		<div id={id} className={styles.container}>
 			<InputWrapper>
-				{title && <FormLabel name={title} title={title} />}
+				{title && <FormLabel size={size} name={title} title={title} />}
 				<div className={styles.interior}>
 					<button
 						className={cx(styles.surfaceButton, baseInputStyles({ alt: true }))}

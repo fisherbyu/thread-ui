@@ -1,3 +1,4 @@
+import { UtilitySizeOptions } from '@/types';
 import { DropdownOption } from '../dropdown-base/dropdown-base.types';
 
 export type DropdownProps = {
@@ -13,4 +14,6 @@ export type DropdownProps = {
 	onSelect: (value: string | number) => void;
 	/** Placeholder text shown when no value is selected @default 'Select an option...' */
 	placeholder?: string;
+	/** Size of Form Label @default `'md'`` */
+	size?: UtilitySizeOptions;
 };

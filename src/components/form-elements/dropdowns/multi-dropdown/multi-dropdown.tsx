@@ -51,6 +51,7 @@ export const MultiDropdown = ({
 	values,
 	onToggle,
 	onClear,
+	size,
 }: MultiDropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -90,6 +91,7 @@ export const MultiDropdown = ({
 					</li>
 				);
 			}}
+			size={size}
 		/>
 	);
 };

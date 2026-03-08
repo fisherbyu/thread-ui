@@ -37,6 +37,7 @@ export const Dropdown = ({
 	options,
 	onSelect,
 	placeholder = 'Select an option...',
+	size,
 }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const selected = options.find((opt) => opt.value === value);
@@ -66,6 +67,7 @@ export const Dropdown = ({
 					{option.label}
 				</li>
 			)}
+			size={size}
 		/>
 	);
 };

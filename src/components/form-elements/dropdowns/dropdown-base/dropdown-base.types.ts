@@ -1,3 +1,5 @@
+import { UtilitySizeOptions } from '@/types';
+
 /**
  * A single option in the Dropdown list.
  */
@@ -19,4 +21,5 @@ export type DropdownBaseProps = {
 	triggerLabel: string;
 	renderItem: (option: DropdownOption, index: number) => React.ReactNode;
 	listHeader?: React.ReactNode;
+	size?: UtilitySizeOptions;
 };
