@@ -168,7 +168,7 @@ export const Text = ({
 		fontSize: TEXT_SIZES[size],
 		fontWeight: bold ? 600 : 400,
 		lineHeight: 1.5,
-		marginBottom: inline ? 0 : '0.75em',
+		marginBottom: inline ? 0 : '0.25em',
 		textAlign: align,
 		color: getColoredTextColor(color),
 		...(truncate && {
