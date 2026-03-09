@@ -243,3 +243,68 @@ export const CustomSort: Story = {
 		);
 	},
 };
+
+// ─── DefaultSort Story ─────────────────────────────────────────────────────
+
+export const DefaultSort: Story = {
+	argTypes: {
+		useDefaultSort: {
+			control: { type: 'boolean' },
+			description: 'Toggle whether a default sort is applied on mount',
+		},
+	},
+	args: {
+		useDefaultSort: true,
+	},
+	render: (args) => {
+		const { sortedData, sortControlsProps } = useSortControls({
+			data: SAMPLE_DATA,
+			fields: [
+				{ key: 'title', label: 'Title', icon: 'TextAa' },
+				{ key: 'type', label: 'Type', icon: 'ExcludeIcon' },
+				{ key: 'rating', label: 'Rating', icon: 'RankingIcon' },
+			],
+			// @ts-ignore -- args.useDefaultSort is a story-level arg, not part of SortControlsProps
+			defaultSort: args.useDefaultSort ? [{ key: 'rating', direction: 'desc' }] : undefined,
+		});
+
+		return (
+			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 480 }}>
+				<SortControls {...sortControlsProps} size={args.size} color={args.color} />
+				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+					<thead>
+						<tr>
+							{['Title', 'Type', 'Rating'].map((h) => (
+								<th
+									key={h}
+									style={{
+										textAlign: 'left',
+										padding: '4px 8px',
+										borderBottom: '1px solid #e2e8f0',
+									}}
+								>
+									<Text bold>{h}</Text>
+								</th>
+							))}
+						</tr>
+					</thead>
+					<tbody>
+						{sortedData.map((row) => (
+							<tr key={row.title}>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.title}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.type}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{String(row.rating)}</Text>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+		);
+	},
+};
