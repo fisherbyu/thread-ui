@@ -10,9 +10,10 @@ import type {
 export const useFilterControls = <T>({
 	data,
 	fields,
+	defaultFilters,
 	mode = 'and',
 }: FilterControlsConfig<T>): FilterControlsData<T> => {
-	const [activeFilters, setActiveFilters] = useState<ActiveFilter<T>[]>([]);
+	const [activeFilters, setActiveFilters] = useState<ActiveFilter<T>[]>(defaultFilters ?? []);
 
 	const resolvedFields = useMemo<ResolvedFilterField<T>[]>(
 		() =>
@@ -26,6 +27,17 @@ export const useFilterControls = <T>({
 			}),
 		[data, fields]
 	);
+
+	const isDefault = useMemo(() => {
+		if (!defaultFilters) return activeFilters.length === 0;
+		if (activeFilters.length !== defaultFilters.length) return false; // was comparing activeFilters.length to itself
+		return activeFilters.every(
+			(f, i) =>
+				f.key === defaultFilters[i].key &&
+				f.values.length === defaultFilters[i].values.length &&
+				f.values.every((v) => defaultFilters[i].values.includes(v))
+		);
+	}, [activeFilters, defaultFilters]);
 
 	const toggleFilter = (key: keyof T, value: T[keyof T]) => {
 		setActiveFilters((prev) => {
@@ -47,7 +59,7 @@ export const useFilterControls = <T>({
 	const clearFilter = (key: keyof T) =>
 		setActiveFilters((prev) => prev.filter((f) => f.key !== key));
 
-	const clearAllFilters = () => setActiveFilters([]);
+	const clearAllFilters = () => setActiveFilters(defaultFilters ?? []);
 
 	const filteredData = useMemo(() => {
 		if (activeFilters.length === 0) return data;
@@ -71,6 +83,7 @@ export const useFilterControls = <T>({
 			onToggle: toggleFilter,
 			onClear: clearFilter,
 			onClearAll: clearAllFilters,
+			isDefault,
 		},
 	};
 };

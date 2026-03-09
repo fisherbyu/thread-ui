@@ -256,3 +256,74 @@ export const ExplicitOptions: Story = {
 		);
 	},
 };
+
+// ─── DefaultFilters Story ───────────────────────────────────────────────────
+
+type DefaultFiltersStory = StoryObj<typeof FilterControls & { useDefaultFilters: boolean }>;
+
+export const DefaultFilters: DefaultFiltersStory = {
+	argTypes: {
+		useDefaultFilters: {
+			control: { type: 'boolean' },
+			description: 'Toggle whether default filters are applied on mount',
+		},
+	},
+	args: {
+		useDefaultFilters: true,
+	},
+	render: (args) => {
+		const { filteredData, filterControlsProps } = useFilterControls({
+			data: PLAYER_DATA,
+			fields: [
+				{ key: 'team', label: 'Team', color: 'primary', icon: 'UsersThree' },
+				{ key: 'position', label: 'Position', color: 'secondary', icon: 'Nut' },
+			],
+			// @ts-ignore -- useDefaultFilters is a story-level arg
+			defaultFilters: args.useDefaultFilters
+				? [{ key: 'team', values: ['Alpha'] }]
+				: undefined,
+		});
+
+		return (
+			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 520 }}>
+				<FilterControls {...filterControlsProps} size={args.size} color={args.color} />
+				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+					<thead>
+						<tr>
+							{['Name', 'Team', 'Position', 'Goals'].map((h) => (
+								<th
+									key={h}
+									style={{
+										textAlign: 'left',
+										padding: '4px 8px',
+										borderBottom: '1px solid #e2e8f0',
+									}}
+								>
+									<Text bold>{h}</Text>
+								</th>
+							))}
+						</tr>
+					</thead>
+					<tbody>
+						{filteredData.map((row) => (
+							<tr key={row.name}>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.name}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.team}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.position}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{String(row.goals)}</Text>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+		);
+	},
+};

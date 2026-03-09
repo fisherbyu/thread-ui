@@ -23,13 +23,13 @@ const styles = {
 };
 
 export const FilterControls = <T,>({
-	color = 'tertiary',
 	fields,
 	activeFilters,
 	onToggle,
 	onClear,
 	onClearAll,
 	size = 'sm',
+	isDefault,
 }: FilterControlsProps<T>) => {
 	const getActive = (key: keyof T): ActiveFilter<T> | undefined =>
 		activeFilters.find((f) => f.key === key);
@@ -54,7 +54,7 @@ export const FilterControls = <T,>({
 					/>
 				);
 			})}
-			{activeFilters.length > 0 && (
+			{!isDefault && (
 				<Button
 					color="text"
 					onClick={onClearAll}
@@ -62,7 +62,7 @@ export const FilterControls = <T,>({
 					text
 					aria-label="Clear all filters"
 				>
-					Clear
+					Reset
 				</Button>
 			)}
 		</div>

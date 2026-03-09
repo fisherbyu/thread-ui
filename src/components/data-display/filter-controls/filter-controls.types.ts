@@ -26,6 +26,7 @@ export type ActiveFilter<T> = {
 export type FilterControlsConfig<T> = {
 	data: T[];
 	fields: FilterField<T>[];
+	defaultFilters?: ActiveFilter<T>[];
 	mode?: 'and' | 'or';
 };
 
@@ -43,6 +44,7 @@ export type FilterControlsProps<T> = {
 	color?: UtilityColorOptions;
 	fields: ResolvedFilterField<T>[];
 	activeFilters: ActiveFilter<T>[];
+	isDefault?: boolean;
 	onToggle: (key: keyof T, value: T[keyof T]) => void;
 	onClear: (key: keyof T) => void;
 	onClearAll: () => void;
