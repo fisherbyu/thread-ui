@@ -19,7 +19,7 @@ export type ActiveSort<T> = {
 export type SortControlsConfig<T> = {
 	data: T[];
 	fields: SortField<T>[];
-	defaultSort: ActiveSort<T>[];
+	defaultSort?: ActiveSort<T>[];
 	multi?: boolean; // allow multi-field sorting
 };
 
