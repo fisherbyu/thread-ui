@@ -11,8 +11,9 @@ export const useSortControls = <T>({
 	data,
 	fields,
 	multi = false,
+	defaultSort,
 }: SortControlsConfig<T>): SortControlsData<T> => {
-	const [activeSort, setActiveSort] = useState<ActiveSort<T>[]>([]);
+	const [activeSort, setActiveSort] = useState<ActiveSort<T>[]>(defaultSort ?? []);
 
 	const toggleSort = (key: keyof T) => {
 		setActiveSort((prev) => {
@@ -35,7 +36,7 @@ export const useSortControls = <T>({
 		});
 	};
 
-	const clearSort = () => setActiveSort([]);
+	const clearSort = () => setActiveSort(defaultSort ?? []);
 
 	const sortedData = useMemo(() => {
 		if (activeSort.length === 0) return data;
