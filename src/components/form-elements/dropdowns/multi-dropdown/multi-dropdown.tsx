@@ -24,9 +24,9 @@ const styles = {
 	}),
 	headerStyles: css({
 		height: '5',
-		paddingX: 4,
+		paddingX: 3,
 		display: 'flex',
-		flexDirection: 'row-reverse',
+		flexDirection: 'row',
 	}),
 };
 
