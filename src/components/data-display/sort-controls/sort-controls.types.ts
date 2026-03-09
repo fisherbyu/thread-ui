@@ -38,4 +38,5 @@ export type SortControlsProps<T> = {
 	activeSort: ActiveSort<T>[];
 	onToggle: (key: keyof T) => void;
 	onClear: () => void;
+	isDefault?: boolean;
 };

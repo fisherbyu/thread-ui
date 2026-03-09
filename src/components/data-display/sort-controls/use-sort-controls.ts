@@ -69,11 +69,25 @@ export const useSortControls = <T>({
 		});
 	}, [data, activeSort, fields]);
 
+	const isDefault = useMemo(() => {
+		if (!defaultSort) return activeSort.length === 0;
+		if (activeSort.length !== defaultSort.length) return false;
+		return activeSort.every(
+			(s, i) => s.key === defaultSort[i].key && s.direction === defaultSort[i].direction
+		);
+	}, [activeSort, defaultSort]);
+
 	return {
 		sortedData,
 		activeSort,
 		toggleSort,
 		clearSort,
-		sortControlsProps: { fields, activeSort, onToggle: toggleSort, onClear: clearSort },
+		sortControlsProps: {
+			fields,
+			activeSort,
+			onToggle: toggleSort,
+			onClear: clearSort,
+			isDefault,
+		},
 	};
 };
