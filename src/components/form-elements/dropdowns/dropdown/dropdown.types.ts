@@ -1,3 +1,6 @@
+import { UtilitySizeOptions } from '@/types';
+import { DropdownOption } from '../dropdown-base/dropdown-base.types';
+
 export type DropdownProps = {
 	/** Dropdown ID */
 	id?: string;
@@ -11,14 +14,6 @@ export type DropdownProps = {
 	onSelect: (value: string | number) => void;
 	/** Placeholder text shown when no value is selected @default 'Select an option...' */
 	placeholder?: string;
-};
-
-/**
- * A single option in the Dropdown list.
- */
-export type DropdownOption = {
-	/** Display text shown in the list */
-	label: string;
-	/** Value passed to `onSelect` when this option is chosen */
-	value: string | number;
+	/** Size of Form Label @default `'md'`` */
+	size?: UtilitySizeOptions;
 };

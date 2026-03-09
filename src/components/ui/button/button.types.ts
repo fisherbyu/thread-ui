@@ -5,7 +5,7 @@ export type ButtonProps = {
 	/** Stretches the button to fill its container @default `false` */
 	fullWidth?: boolean;
 	/** Color variant @default `'primary'` */
-	color?: Exclude<UtilityColorOptions, 'text'>;
+	color?: UtilityColorOptions | 'neutral';
 	/** HTML button type @default `'button'` */
 	type?: 'button' | 'submit' | 'reset';
 	/** Click handler. Not called when `disabled` is true */
@@ -14,6 +14,8 @@ export type ButtonProps = {
 	margin?: string;
 	/** Size variant @default `'md'` */
 	size?: UtilitySizeOptions;
+	/** Render as text variant @default `'false'` */
+	text?: boolean;
 	/** Disables the button and suppresses click events @default `false` */
 	disabled?: boolean;
 	children: ReactNode;

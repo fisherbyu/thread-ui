@@ -1,3 +1,5 @@
 // Export Internal Components
-export * from './link-wrapper';
+export * from './conditional-wrapper';
 export * from './image';
+export * from './link-wrapper';
+export * from './optional-icon-button';

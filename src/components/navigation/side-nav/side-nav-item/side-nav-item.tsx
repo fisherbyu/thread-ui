@@ -1,6 +1,6 @@
 'use client';
 import { LinkWrapper } from '@/internal-components';
-import { usePathname } from '@/utils';
+import { usePathname } from '@/hooks';
 import { Icon } from '@/components';
 import { SideNavItemProps } from './side-nav-item.types';
 import { css, cva } from '@/styled-system/css';

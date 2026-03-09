@@ -1,7 +1,6 @@
-import { Icon, Button } from '@/components';
 import { IconButtonProps } from './icon-button.types';
-import { getUtilityFontSize, getUtilityIconSize, getUtilitySizeValue } from '@/utils';
-import { CSSProperties } from 'react';
+import { Icon, Button } from '@/components';
+import { getUtilityIconSize } from '@/utils';
 
 /**
  * Button with a leading icon and optional text label.
@@ -11,32 +10,12 @@ import { CSSProperties } from 'react';
  *   Add Item
  * </IconButton>
  */
-export const IconButton = ({
-	children,
-	fullWidth,
-	color = 'primary',
-	size = 'md',
-	onClick,
-	type = 'button',
-	margin,
-	disabled = false,
-	name,
-}: IconButtonProps) => {
-	const styles: CSSProperties = {
-		marginLeft: `${getUtilitySizeValue(size) - 2}px`,
-		fontSize: getUtilityFontSize(size),
-	};
+export const IconButton = (props: IconButtonProps) => {
+	const { name, size = 'md', children, ...buttonProps } = props;
 	return (
-		<Button
-			fullWidth={fullWidth}
-			color={color}
-			onClick={onClick}
-			type={type}
-			margin={margin}
-			disabled={disabled}
-		>
+		<Button size={size} {...buttonProps}>
 			<Icon name={name} size={getUtilityIconSize(size)} />
-			{children && <div style={styles}>{children}</div>}
+			{children}
 		</Button>
 	);
 };

@@ -18,6 +18,7 @@ const preview: Preview = {
 
 			return (
 				<div
+					id="STORYBOOK_ROOT"
 					style={{
 						alignItems: 'center',
 						display: 'flex',

@@ -14,6 +14,7 @@ export const buttonRecipe = defineRecipe({
 		cursor: 'pointer',
 		userSelect: 'none',
 		height: 'fit-content',
+		whiteSpace: 'nowrap',
 	},
 	variants: {
 		color: {
@@ -98,19 +99,32 @@ export const buttonRecipe = defineRecipe({
 					borderColor: 'text.standard',
 				},
 			},
+			neutral: {
+				backgroundColor: 'background',
+				borderColor: 'structure',
+				color: 'text.standard',
+				_hover: {
+					backgroundColor: 'elevated',
+					color: 'text.standard',
+					borderColor: 'structure',
+				},
+			},
 		},
 		size: {
 			sm: {
-				fontSize: '0.75rem',
-				padding: '4px',
+				gap: '1', // 4px
+				fontSize: '0.5rem', // 8px
+				padding: '1', // 4px
 			},
 			md: {
-				fontSize: '1rem',
-				padding: '8px',
+				gap: '2', // 8px
+				fontSize: '1rem', // 16px
+				padding: '2', // 8px
 			},
 			lg: {
-				fontSize: '1.25rem',
-				padding: '12px',
+				gap: '3', // 12px
+				fontSize: '1.5rem', // 24px
+				padding: '3', // 12px
 			},
 		},
 		fullWidth: {
@@ -127,6 +141,16 @@ export const buttonRecipe = defineRecipe({
 				cursor: 'not-allowed',
 			},
 			false: {},
+		},
+		textVariant: {
+			true: {
+				backgroundColor: 'background',
+				borderColor: 'transparent',
+				border: 'none',
+				_hover: {
+					textDecoration: 'underline',
+				},
+			},
 		},
 	},
 	compoundVariants: [
@@ -230,6 +254,66 @@ export const buttonRecipe = defineRecipe({
 					borderColor: 'white',
 				},
 			},
+		},
+		{
+			textVariant: true,
+			disabled: true,
+			css: {
+				_hover: {
+					textDecoration: 'none',
+				},
+			},
+		},
+		// textVariant color overrides — inherit the color's main value as text color
+		{
+			textVariant: true,
+			color: 'primary',
+			css: { color: 'primary.main', _hover: { color: 'primary.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'secondary',
+			css: { color: 'secondary.main', _hover: { color: 'secondary.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'tertiary',
+			css: { color: 'tertiary.main', _hover: { color: 'tertiary.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'gray',
+			css: { color: 'gray.main', _hover: { color: 'gray.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'success',
+			css: { color: 'success.main', _hover: { color: 'success.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'error',
+			css: { color: 'error.main', _hover: { color: 'error.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'info',
+			css: { color: 'info.main', _hover: { color: 'info.main' } },
+		},
+		{
+			textVariant: true,
+			color: 'neutral',
+			css: { color: 'text.standard', _hover: { color: 'text.standard' } },
+		},
+		{
+			textVariant: true,
+			color: 'black',
+			css: { color: 'black', _hover: { color: 'black' } },
+		},
+		{
+			textVariant: true,
+			color: 'text',
+			css: { color: 'text.standard', _hover: { color: 'text.standard' } },
 		},
 	],
 	defaultVariants: {

@@ -8,17 +8,15 @@ const meta = {
 	parameters: {
 		layout: 'centered',
 	},
-	decorators: [
-		(Story) => (
-			<div style={{ width: '300px', height: '150px', display: 'flex', alignItems: 'center' }}>
-				<Story />
-			</div>
-		),
-	],
+	decorators: [(Story) => <Story />],
 	argTypes: {
 		onClick: { action: 'clicked' },
 		disabled: {
 			control: 'boolean',
+		},
+		text: {
+			control: 'boolean',
+			description: 'Renders the button as a text-only variant with no background or border',
 		},
 	},
 	tags: ['autodocs'],
@@ -27,12 +25,21 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-// Default story with primary color
 export const Default: Story = {
 	args: {
 		children: 'Default Button',
 		color: 'primary',
 		fullWidth: false,
+		onClick: () => alert('Button clicked!'),
+		disabled: false,
+	},
+};
+
+export const Text: Story = {
+	args: {
+		children: 'Text Button',
+		color: 'primary',
+		text: true,
 		onClick: () => alert('Button clicked!'),
 		disabled: false,
 	},

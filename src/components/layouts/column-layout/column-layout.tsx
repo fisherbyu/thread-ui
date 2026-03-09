@@ -3,6 +3,7 @@ import { ColumnSkeleton } from './column-skeleton';
 import { ColumnLayoutProps } from './column-layout.types';
 import { H2, H3, Text } from '@/components';
 import { css } from '@/styled-system/css';
+import { LayoutWrapper } from '../layout-wrapper';
 
 /**
  * Responsive image grid with an optional title and caption.
@@ -22,6 +23,7 @@ export const ColumnLayout = ({
 	mdcol,
 	lgcol = mdcol,
 	items,
+	container = true,
 }: ColumnLayoutProps) => {
 	const sectionStyles = css({
 		width: '100%',
@@ -57,41 +59,43 @@ export const ColumnLayout = ({
 	});
 
 	return (
-		<section
-			className={sectionStyles}
-			style={
-				{
-					'--max-width': mdcol < 2 ? '800px' : 'none',
-				} as React.CSSProperties
-			}
-		>
-			{(title || caption) && (
-				<div>
-					{title && (
-						<>
-							<H2>
-								{title}
-								{caption && <Text>{caption}</Text>}
-							</H2>
-						</>
-					)}
-				</div>
-			)}
-			<ColumnSkeleton mdcol={mdcol} lgcol={lgcol}>
-				{items.map((item, index) => (
-					<div key={index}>
-						<div className={gridItemStyles}>
-							{renderImage(item.content, undefined, gridPhotoStyles)}
-						</div>
-						{(item.title || item.description) && (
+		<LayoutWrapper container={container}>
+			<section
+				className={sectionStyles}
+				style={
+					{
+						'--max-width': mdcol < 2 ? '800px' : 'none',
+					} as React.CSSProperties
+				}
+			>
+				{(title || caption) && (
+					<div>
+						{title && (
 							<>
-								{item.title && <H3>{item.title}</H3>}
-								{item.description && <Text>{item.description}</Text>}
+								<H2>
+									{title}
+									{caption && <Text>{caption}</Text>}
+								</H2>
 							</>
 						)}
 					</div>
-				))}
-			</ColumnSkeleton>
-		</section>
+				)}
+				<ColumnSkeleton mdcol={mdcol} lgcol={lgcol}>
+					{items.map((item, index) => (
+						<div key={item.key ?? index}>
+							<div className={gridItemStyles}>
+								{renderImage(item.content, undefined, gridPhotoStyles)}
+							</div>
+							{(item.title || item.description) && (
+								<>
+									{item.title && <H3>{item.title}</H3>}
+									{item.description && <Text>{item.description}</Text>}
+								</>
+							)}
+						</div>
+					))}
+				</ColumnSkeleton>
+			</section>
+		</LayoutWrapper>
 	);
 };

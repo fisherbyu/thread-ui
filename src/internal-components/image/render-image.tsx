@@ -3,7 +3,11 @@ import { ImageProps } from '../../types';
 import { isHtmlImageProps } from './is-html-image-props';
 import { cx } from '@/styled-system/css'; // Add this import
 
-export const renderImage = (imageInput: ImageProps, styles?: CSSProperties, className?: string): ReactElement => {
+export const renderImage = (
+	imageInput: ImageProps,
+	styles?: CSSProperties,
+	className?: string
+): ReactElement => {
 	if (isValidElement(imageInput)) {
 		const prevProps = imageInput.props as React.HTMLAttributes<HTMLElement>;
 		const newProps: React.HTMLAttributes<HTMLElement> = {

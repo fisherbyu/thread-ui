@@ -11,6 +11,8 @@ export type TypographyProps = {
 	color?: ColoredTextOptions;
 	/** Removes bottom margin when true @default `false` */
 	inline?: boolean;
+	/** Truncates text to a single line with ellipsis @default `false` */
+	truncate?: boolean;
 };
 
 /**
@@ -24,6 +26,7 @@ export const Title = ({
 	align = 'left',
 	inline = false,
 	color = 'standard',
+	truncate = false,
 }: TypographyProps) => {
 	const styles: CSSProperties = {
 		fontSize: '3rem',
@@ -32,6 +35,11 @@ export const Title = ({
 		marginBottom: inline ? 0 : '40px',
 		textAlign: align,
 		color: getColoredTextColor(color),
+		...(truncate && {
+			overflow: 'hidden',
+			whiteSpace: 'nowrap',
+			textOverflow: 'ellipsis',
+		}),
 	};
 	return <h1 style={styles}>{children}</h1>;
 };
@@ -47,6 +55,7 @@ export const H1 = ({
 	align = 'left',
 	color = 'standard',
 	inline = false,
+	truncate = false,
 }: TypographyProps) => {
 	const styles: CSSProperties = {
 		fontSize: '2rem',
@@ -55,6 +64,11 @@ export const H1 = ({
 		marginBottom: inline ? 0 : '32px',
 		textAlign: align,
 		color: getColoredTextColor(color),
+		...(truncate && {
+			overflow: 'hidden',
+			whiteSpace: 'nowrap',
+			textOverflow: 'ellipsis',
+		}),
 	};
 	return <h1 style={styles}>{children}</h1>;
 };
@@ -70,6 +84,7 @@ export const H2 = ({
 	align = 'left',
 	color = 'standard',
 	inline = false,
+	truncate = false,
 }: TypographyProps) => {
 	const styles: CSSProperties = {
 		fontSize: '1.5rem',
@@ -78,6 +93,11 @@ export const H2 = ({
 		marginBottom: inline ? 0 : '24px',
 		textAlign: align,
 		color: getColoredTextColor(color),
+		...(truncate && {
+			overflow: 'hidden',
+			whiteSpace: 'nowrap',
+			textOverflow: 'ellipsis',
+		}),
 	};
 	return <h2 style={styles}>{children}</h2>;
 };
@@ -93,6 +113,7 @@ export const H3 = ({
 	align = 'left',
 	color = 'standard',
 	inline = false,
+	truncate = false,
 }: TypographyProps) => {
 	const styles: CSSProperties = {
 		fontSize: '1.25rem',
@@ -101,6 +122,11 @@ export const H3 = ({
 		marginBottom: inline ? 0 : '16px',
 		textAlign: align,
 		color: getColoredTextColor(color),
+		...(truncate && {
+			overflow: 'hidden',
+			whiteSpace: 'nowrap',
+			textOverflow: 'ellipsis',
+		}),
 	};
 	return <h3 style={styles}>{children}</h3>;
 };
@@ -109,15 +135,18 @@ export type TextProps = TypographyProps & {
 	/** Applies semibold weight @default `false` */
 	bold?: boolean;
 	/** Font size @default `'md'` */
-	size?: keyof Pick<ExpandedUtilitySizes, 'xxs' | 'xs' | 'sm' | 'md'>;
+	size?: keyof ExpandedUtilitySizes;
 };
 
-const TEXT_SIZES = {
+const TEXT_SIZES: ExpandedUtilitySizes = {
 	xxs: '0.625rem',
 	xs: '0.75rem',
 	sm: '0.875rem',
 	md: '1rem',
-} as const;
+	lg: '1.125rem',
+	xl: '1.25rem',
+	xxl: '1.375rem',
+};
 
 /**
  * Body text. Renders as `p` by default or `span` when `inline` is true.
@@ -132,14 +161,21 @@ export const Text = ({
 	color = 'standard',
 	bold = false,
 	size = 'md',
+	truncate = false,
 }: TextProps) => {
 	const Component = inline ? 'span' : 'p';
 	const styles: CSSProperties = {
 		fontSize: TEXT_SIZES[size],
-		fontWeight: bold ? 600 : 350,
+		fontWeight: bold ? 600 : 400,
 		lineHeight: 1.5,
+		marginBottom: inline ? 0 : '0.25em',
 		textAlign: align,
 		color: getColoredTextColor(color),
+		...(truncate && {
+			overflow: 'hidden',
+			whiteSpace: 'nowrap',
+			textOverflow: 'ellipsis',
+		}),
 	};
 
 	return <Component style={styles}>{children}</Component>;
@@ -155,18 +191,24 @@ export const Subtitle = ({
 	children,
 	align = 'left',
 	color = 'text-secondary',
+	truncate = false,
 }: TypographyProps) => {
 	const styles: CSSProperties = {
 		display: 'block',
-		fontSize: 'clamp(0.875rem, 0.75em, 1.5rem)',
+		fontSize: '0.875rem',
 		marginTop: '0.2em',
 		textAlign: align,
 		color: getColoredTextColor(color),
+		...(truncate && {
+			overflow: 'hidden',
+			whiteSpace: 'nowrap',
+			textOverflow: 'ellipsis',
+		}),
 	};
 	return <span style={styles}>{children}</span>;
 };
 
-export type ListProps = Omit<TextProps, 'bold' | 'children' | 'inline'> & {
+export type ListProps = Omit<TextProps, 'bold' | 'children' | 'inline' | 'truncate'> & {
 	/** Items to render in the list */
 	items: Array<string | ReactNode>;
 	/** List marker style @default `'disc'` */

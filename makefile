@@ -62,7 +62,7 @@ prepare-typescript: prepare-panda-code # Compile TypeScript into JavaScript
 
 # Developer Helpers
 .PHONY: watch
-watch: ## Watch CSS files. Use CSS=tailwind|panda to limit (default: both)
+watch: # Watch CSS files. Use CSS=tailwind|panda to limit (default: both)
 	@if [ "$(CSS)" = "tailwind" ]; then \
 		$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch; \
 	elif [ "$(CSS)" = "panda" ]; then \
@@ -93,7 +93,7 @@ help: ## Show this help message
 
 .PHONY: storybook
 storybook: prepare-panda-code ## Run Storybook dev server (with Panda and Tailwind watch)
-	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p 6006"
+	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p 6006 --no-open"
 
 .PHONY: build
 build: clean prepare-panda-code theme-css prepare-typescript prepare-panda-css build-css ## Full build pipeline
@@ -105,17 +105,27 @@ weave: build ## Build and push to yalc
 
 
 # Publish Package to npm
+.PHONY: npm-login-check
+npm-login-check: # Ensure user is logged in to npm before publishing
+	@echo "🔐 Checking npm login status..."; \
+	if ! npm whoami > /dev/null 2>&1; then \
+		echo "Not logged in. Running npm login..."; \
+		npm login; \
+	else \
+		echo "✅ Logged in as $$(npm whoami)"; \
+	fi
+
 .PHONY: publish publish.patch publish.minor publish.major
-publish: build ## Build and publish to npm (interactive)
+publish: npm-login-check build ## Build and publish to npm (interactive)
 	@$(call do_publish_prompt)
 
-publish.patch: build ## Build and publish patch version (1.0.0 → 1.0.1)
+publish.patch: npm-login-check build ## Build and publish patch version (1.0.0 → 1.0.1)
 	@$(call do_publish,patch)
 
-publish.minor: build ## Build and publish minor version (1.0.0 → 1.1.0)
+publish.minor: npm-login-check build ## Build and publish minor version (1.0.0 → 1.1.0)
 	@$(call do_publish,minor)
 
-publish.major: build ## Build and publish major version (1.0.0 → 2.0.0)
+publish.major: npm-login-check build ## Build and publish major version (1.0.0 → 2.0.0)
 	@$(call do_publish,major)
 
 define do_publish_prompt
