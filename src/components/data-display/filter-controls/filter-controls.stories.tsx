@@ -127,8 +127,8 @@ export const MultiField: Story = {
 		const { filteredData, filterControlsProps } = useFilterControls({
 			data: PLAYER_DATA,
 			fields: [
-				{ key: 'team', label: 'Team', color: 'primary' },
-				{ key: 'position', label: 'Position', color: 'secondary' },
+				{ key: 'team', label: 'Team', color: 'primary', icon: 'UsersThree' },
+				{ key: 'position', label: 'Position', color: 'secondary', icon: 'Nut' },
 			],
 		});
 
