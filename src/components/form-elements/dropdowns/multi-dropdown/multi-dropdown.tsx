@@ -46,15 +46,17 @@ const styles = {
 export const MultiDropdown = ({
 	id,
 	title,
-	placeholder = 'Select...',
 	options,
 	values,
 	onToggle,
 	onClear,
 	size,
 	icon,
+	showLabel = true,
 }: MultiDropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
+
+	const placeholder = !showLabel && title ? title : 'Select...';
 
 	const triggerLabel =
 		values.length === 0 ? placeholder : `${title ?? 'Selected'} (${values.length})`;
@@ -62,7 +64,7 @@ export const MultiDropdown = ({
 	return (
 		<DropdownBase
 			id={id}
-			title={title}
+			title={showLabel ? title : undefined}
 			options={options}
 			isOpen={isOpen}
 			onToggle={() => setIsOpen((prev) => !prev)}

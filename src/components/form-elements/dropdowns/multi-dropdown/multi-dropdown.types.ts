@@ -5,7 +5,6 @@ import { IconNames } from '@/components/ui';
 export type MultiDropdownProps = {
 	id?: string;
 	title?: string;
-	placeholder?: string;
 	options: DropdownOption[];
 	values: (string | number)[];
 	onToggle: (value: string | number) => void;
@@ -13,4 +12,5 @@ export type MultiDropdownProps = {
 	icon?: IconNames;
 	color?: UtilityColorOptions;
 	size?: UtilitySizeOptions;
+	showLabel?: boolean;
 };
