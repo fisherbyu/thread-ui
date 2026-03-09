@@ -51,6 +51,7 @@ export const FilterControls = <T,>({
 						onToggle={(value) => onToggle(key, value as T[keyof T])}
 						onClear={() => onClear(key)}
 						icon={icon}
+						showLabel={false}
 					/>
 				);
 			})}
