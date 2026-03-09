@@ -66,7 +66,7 @@ export const SortControls = <T,>({
 					text
 					aria-label="Clear all sorting"
 				>
-					Clear
+					Reset
 				</Button>
 			)}
 		</div>
