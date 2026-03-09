@@ -2,7 +2,7 @@
 import { cva } from '@/styled-system/css';
 import { SortControlsProps, ActiveSort } from './sort-controls.types';
 import { Button, Icon, IconButton, Text } from '@/components';
-import { ConditionalWrapper } from '@/internal-components';
+import { ConditionalWrapper, OptionalIconButton } from '@/internal-components';
 
 const styles = {
 	controlsContainer: cva({
@@ -47,26 +47,14 @@ export const SortControls = <T,>({
 					color: fieldColor ?? color,
 					size,
 					onClick: () => onToggle(key),
+					name: icon,
 				};
 
-				const iconButtonProps = icon ? { ...buttonProps, name: icon } : undefined;
-
-				const content = (
-					<>
+				return (
+					<OptionalIconButton key={String(key)} {...buttonProps}>
 						{label}
 						{state && <SortIndicator direction={state.direction} />}
-					</>
-				);
-
-				return (
-					<ConditionalWrapper
-						key={String(key)}
-						wrapper={iconButtonProps ? IconButton : undefined}
-						wrapperProps={iconButtonProps}
-						fallbackWrapper={{ wrapper: Button, wrapperProps: buttonProps }}
-					>
-						{content}
-					</ConditionalWrapper>
+					</OptionalIconButton>
 				);
 			})}
 
