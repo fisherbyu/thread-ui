@@ -7,6 +7,27 @@ import type {
 	ResolvedFilterField,
 } from './filter-controls.types';
 
+/**
+ * Manages filter state for a dataset and returns filtered data alongside
+ * pre-assembled props for `FilterControls`.
+ *
+ * Options for each field are derived automatically from the data if not provided.
+ * Supports AND and OR filter logic across multiple active fields.
+ *
+ * @example
+ * const { filteredData, filterControlsProps } = useFilterControls({
+ *   data: products,
+ *   fields: [{ key: 'category', label: 'Category' }],
+ *   mode: 'or',
+ * });
+ *
+ * return (
+ *   <>
+ *     <FilterControls {...filterControlsProps} />
+ *     <ProductList data={filteredData} />
+ *   </>
+ * );
+ */
 export const useFilterControls = <T>({
 	data,
 	fields,

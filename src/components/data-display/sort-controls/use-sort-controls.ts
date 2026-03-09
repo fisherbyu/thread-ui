@@ -7,6 +7,27 @@ import type {
 	SortDirection,
 } from './sort-controls.types';
 
+/**
+ * Manages sort state for a dataset and returns sorted data alongside
+ * pre-assembled props for `SortControls`.
+ *
+ * Supports single and multi-field sorting, custom sort orders, and comparator functions.
+ * Each field cycles through asc → desc → off on toggle.
+ *
+ * @example
+ * const { sortedData, sortControlsProps } = useSortControls({
+ *   data: products,
+ *   fields: [{ key: 'price', label: 'Price' }],
+ *   multi: true,
+ * });
+ *
+ * return (
+ *   <>
+ *     <SortControls {...sortControlsProps} />
+ *     <ProductList data={sortedData} />
+ *   </>
+ * );
+ */
 export const useSortControls = <T>({
 	data,
 	fields,

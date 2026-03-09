@@ -1,8 +1,8 @@
 'use client';
 import { cva } from '@/styled-system/css';
 import { SortControlsProps, ActiveSort } from './sort-controls.types';
-import { Button, Icon, IconButton, Text } from '@/components';
-import { ConditionalWrapper, OptionalIconButton } from '@/internal-components';
+import { Button, Icon } from '@/components';
+import { OptionalIconButton } from '@/internal-components';
 
 const styles = {
 	controlsContainer: cva({
@@ -27,6 +27,15 @@ const styles = {
 	}),
 };
 
+/**
+ * Renders a row of sort toggle buttons and a reset button.
+ * Each button cycles through asc → desc → off with a directional arrow indicator.
+ * Designed to be used with `useSortControls` via `sortControlsProps`.
+ *
+ * @example
+ * const { sortedData, sortControlsProps } = useSortControls({ data, fields });
+ * <SortControls {...sortControlsProps} />
+ */
 export const SortControls = <T,>({
 	color = 'tertiary',
 	fields,

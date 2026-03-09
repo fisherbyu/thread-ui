@@ -22,6 +22,14 @@ const styles = {
 	}),
 };
 
+/**
+ * Renders a row of multi-select dropdown filters and a reset button.
+ * Designed to be used with `useFilterControls` via `filterControlsProps`.
+ *
+ * @example
+ * const { filteredData, filterControlsProps } = useFilterControls({ data, fields });
+ * <FilterControls {...filterControlsProps} />
+ */
 export const FilterControls = <T,>({
 	fields,
 	activeFilters,
