@@ -7,7 +7,7 @@ import { Button, Icon } from '@/components/ui';
 import { css } from '@/styled-system/css';
 import { useClickOutside } from '@/hooks';
 import { getUtilityIconSize } from '@/utils';
-import { OptionalIconButton } from '@/internal-components';
+import { ConditionalWrapper, OptionalIconButton } from '@/internal-components';
 
 export const styles = {
 	container: css({
@@ -58,7 +58,7 @@ export const DropdownBase = ({
 
 	return (
 		<div id={id} className={styles.container}>
-			<InputWrapper>
+			<ConditionalWrapper wrapper={title ? InputWrapper : 'fragment'}>
 				{title && <FormLabel size={size} name={title} title={title} />}
 				<div className={styles.interior}>
 					<OptionalIconButton
@@ -81,7 +81,7 @@ export const DropdownBase = ({
 						</ul>
 					)}
 				</div>
-			</InputWrapper>
+			</ConditionalWrapper>
 		</div>
 	);
 };
