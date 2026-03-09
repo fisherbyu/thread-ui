@@ -52,6 +52,7 @@ export const MultiDropdown = ({
 	onToggle,
 	onClear,
 	size,
+	icon,
 }: MultiDropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -92,6 +93,7 @@ export const MultiDropdown = ({
 				);
 			}}
 			size={size}
+			icon={icon}
 		/>
 	);
 };
