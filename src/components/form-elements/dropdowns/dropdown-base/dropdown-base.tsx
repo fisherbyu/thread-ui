@@ -7,6 +7,7 @@ import { Button, Icon } from '@/components/ui';
 import { css } from '@/styled-system/css';
 import { useClickOutside } from '@/hooks';
 import { getUtilityIconSize } from '@/utils';
+import { OptionalIconButton } from '@/internal-components';
 
 export const styles = {
 	container: css({
@@ -50,6 +51,7 @@ export const DropdownBase = ({
 	options,
 	listHeader,
 	size = 'md',
+	icon,
 }: DropdownBaseProps) => {
 	const listRef = useRef<HTMLUListElement>(null);
 	useClickOutside(listRef, isOpen, onClose, false);
@@ -59,13 +61,19 @@ export const DropdownBase = ({
 			<InputWrapper>
 				{title && <FormLabel size={size} name={title} title={title} />}
 				<div className={styles.interior}>
-					<Button size={size} color="neutral" onClick={onToggle} type="button">
+					<OptionalIconButton
+						size={size}
+						color="neutral"
+						onClick={onToggle}
+						type="button"
+						name={icon}
+					>
 						{triggerLabel}
 						<Icon
 							name={isOpen ? 'CaretUp' : 'CaretDown'}
 							size={getUtilityIconSize(size)}
 						/>
-					</Button>
+					</OptionalIconButton>
 					{isOpen && (
 						<ul className={styles.list} ref={listRef}>
 							{listHeader && <li>{listHeader}</li>}

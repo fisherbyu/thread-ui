@@ -1,3 +1,4 @@
+import { IconNames } from '@/components/ui';
 import { UtilitySizeOptions } from '@/types';
 
 /**
@@ -22,4 +23,5 @@ export type DropdownBaseProps = {
 	renderItem: (option: DropdownOption, index: number) => React.ReactNode;
 	listHeader?: React.ReactNode;
 	size?: UtilitySizeOptions;
+	icon?: IconNames;
 };
