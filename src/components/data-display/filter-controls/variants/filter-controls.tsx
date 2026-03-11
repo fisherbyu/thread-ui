@@ -39,6 +39,7 @@ export const FilterControls = <T,>({
 	size = 'sm',
 	isDefault,
 	color,
+	hideReset = false,
 }: FilterControlsProps<T>) => {
 	const getActive = (key: keyof T): ActiveFilter<T> | undefined =>
 		activeFilters.find((f) => f.key === key);
@@ -65,7 +66,7 @@ export const FilterControls = <T,>({
 					/>
 				);
 			})}
-			{!isDefault && (
+			{!isDefault && !hideReset && (
 				<Button
 					color="text"
 					onClick={onClearAll}

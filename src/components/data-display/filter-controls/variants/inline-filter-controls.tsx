@@ -67,6 +67,7 @@ export const InlineFilterControls = <T,>({
 	isDefault,
 	color = 'tertiary',
 	fieldTitleDisplay: titleDisplay = 'inline',
+	hideReset = false,
 }: InlineFilterControlsProps<T>) => {
 	return (
 		<div className={styles.container({ size })}>
@@ -108,19 +109,21 @@ export const InlineFilterControls = <T,>({
 					</div>
 				</div>
 			))}
-			<div className={css({ minHeight: '6', display: 'flex', alignItems: 'center' })}>
-				{!isDefault && (
-					<Button
-						color="text"
-						onClick={onClearAll}
-						size={size}
-						text
-						aria-label="Clear all filters"
-					>
-						Reset
-					</Button>
-				)}
-			</div>
+			{!hideReset && (
+				<div className={css({ minHeight: '6', display: 'flex', alignItems: 'center' })}>
+					{!isDefault && (
+						<Button
+							color="text"
+							onClick={onClearAll}
+							size={size}
+							text
+							aria-label="Clear all filters"
+						>
+							Reset
+						</Button>
+					)}
+				</div>
+			)}
 		</div>
 	);
 };
