@@ -59,10 +59,10 @@ export type FilterControlsData<T> = {
 	/** Clears all active filters across all fields */
 	clearAllFilters: () => void;
 	/** Pre-assembled props to spread directly onto `FilterControls` */
-	filterControlsProps: FilterControlsProps<T>;
+	filterControlsProps: FilterControlsBaseProps<T>;
 };
 
-export type FilterControlsProps<T> = {
+export type FilterControlsBaseProps<T> = {
 	/** Size variant for the filter controls @default `'sm'` */
 	size?: UtilitySizeOptions;
 	/** Color accent applied to the controls */
@@ -83,7 +83,9 @@ export type FilterControlsProps<T> = {
 	isActive: (key: keyof T, value: T[keyof T]) => boolean;
 };
 
-export type InlineFilterControlsProps<T> = FilterControlsProps<T> & {
+export type FilterControlsProps<T> = FilterControlsBaseProps<T>;
+
+export type InlineFilterControlsProps<T> = FilterControlsBaseProps<T> & {
 	/** Determines where field Title is displayed */
 	fieldTitleDisplay?: 'none' | 'inline' | 'block';
 };
