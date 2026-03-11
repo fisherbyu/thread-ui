@@ -32,7 +32,7 @@ export const useFilterControls = <T>({
 	data,
 	fields,
 	defaultFilters,
-	mode = 'and',
+	filterMode = 'and',
 }: FilterControlsConfig<T>): FilterControlsData<T> => {
 	const [activeFilters, setActiveFilters] = useState<ActiveFilter<T>[]>(defaultFilters ?? []);
 
@@ -90,12 +90,12 @@ export const useFilterControls = <T>({
 	const filteredData = useMemo(() => {
 		if (activeFilters.length === 0) return data;
 		return data.filter((row) => {
-			if (mode === 'and') {
+			if (filterMode === 'and') {
 				return activeFilters.every((f) => f.values.includes(row[f.key]));
 			}
 			return activeFilters.some((f) => f.values.includes(row[f.key]));
 		});
-	}, [data, activeFilters, mode]);
+	}, [data, activeFilters, filterMode]);
 
 	const activeSet = useMemo(() => {
 		const set = new Set<string>();

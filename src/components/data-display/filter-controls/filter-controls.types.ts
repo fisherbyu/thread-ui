@@ -43,7 +43,7 @@ export type FilterControlsConfig<T> = {
 	/** Filters applied on initial render */
 	defaultFilters?: ActiveFilter<T>[];
 	/** Whether multiple active filters combine with AND or OR logic @default `'and'` */
-	mode?: 'and' | 'or';
+	filtermode?: 'and' | 'or';
 };
 
 /** Return value of `useFilterControls` — filtered data plus props to pass to `FilterControls` */
