@@ -1,2 +1,2 @@
-export type { FilterControlsProps } from './filter-controls.types'; 
-export { FilterControls } from './filter-controls';
+export type { FilterControlsProps } from './filter-controls.types';
+export { FilterControls } from './variants/filter-controls';

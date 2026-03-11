@@ -1,8 +1,8 @@
 'use client';
 import { cva } from '@/styled-system/css';
-import { FilterControlsProps, ActiveFilter } from './filter-controls.types';
+import { FilterControlsProps, ActiveFilter } from '../filter-controls.types';
 import { Button } from '@/components';
-import { MultiDropdown } from '../../form-elements';
+import { MultiDropdown } from '../../../form-elements';
 
 const styles = {
 	controlsContainer: cva({
