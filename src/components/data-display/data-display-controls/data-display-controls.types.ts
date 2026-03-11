@@ -25,5 +25,8 @@ export type DataDisplayControlsData<T> = {
 };
 
 export type DataDisplayControlsProps<T> = Prettify<
-	Omit<SortControlsProps<T> & FilterControlsBaseProps<T>, 'fields'> & {}
+	Omit<
+		SortControlsProps<T> & FilterControlsBaseProps<T>,
+		'fields' | 'hideReset' | 'onToggle' | 'onClear'
+	> & {}
 >;
