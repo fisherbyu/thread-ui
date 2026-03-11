@@ -39,8 +39,8 @@ export const useFilterControls = <T>({
 	const resolvedFields = useMemo<ResolvedFilterField<T>[]>(
 		() =>
 			fields.map((field) => {
-				if (field.options) {
-					const options = field.options.map((o) =>
+				if (field.filterOptions) {
+					const options = field.filterOptions.map((o) =>
 						typeof o === 'string' ? { value: o as T[keyof T], label: o } : o
 					);
 					return { ...field, options };

@@ -18,7 +18,7 @@ export type FilterField<T> = {
 	/** Optional color accent for the filter control */
 	color?: UtilityColorOptions;
 	/** Customize options for this field (order or display label). If omitted, options are derived from the data */
-	options?: (string | { label: string; value: T[keyof T] })[];
+	filterOptions?: (string | { label: string; value: T[keyof T] })[];
 };
 
 /** `FilterField` with `options` guaranteed to be present after resolution */

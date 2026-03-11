@@ -223,12 +223,12 @@ export const ExplicitOptions: Story = {
 				{
 					key: 'course',
 					label: 'Course',
-					options: COURSE_OPTIONS,
+					filterOptions: COURSE_OPTIONS,
 				},
 				{
 					key: 'diet',
 					label: 'Diet',
-					options: DIET_OPTIONS,
+					filterOptions: DIET_OPTIONS,
 				},
 			],
 		});
