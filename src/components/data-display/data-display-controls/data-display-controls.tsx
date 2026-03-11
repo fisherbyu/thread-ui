@@ -1,4 +1,4 @@
-import { FilterControls } from '../filter-controls';
+import { FilterControls, InlineFilterControls } from '../filter-controls';
 import { SortControls } from '../sort-controls';
 import { DataDisplayControlsProps } from './data-display-controls.types';
 
@@ -14,6 +14,7 @@ export const DataDisplayControls = <T,>({
 	onToggleSort,
 	size,
 	color,
+	filterVariant = 'inline',
 }: DataDisplayControlsProps<T>) => {
 	const sharedProps = {
 		color,
@@ -37,9 +38,10 @@ export const DataDisplayControls = <T,>({
 		onClear: onClearAll,
 		isDefault,
 	};
+	const Filter = filterVariant === 'standard' ? FilterControls : InlineFilterControls;
 	return (
 		<div>
-			<FilterControls {...sharedProps} {...filterProps} />
+			<Filter {...sharedProps} {...filterProps} />
 			<SortControls {...sharedProps} {...sortProps} />
 		</div>
 	);

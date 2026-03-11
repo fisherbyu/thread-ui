@@ -33,5 +33,6 @@ export type DataDisplayControlsProps<T> = Prettify<
 		onToggleSort: SortControlsProps<T>['onToggle'];
 		onClearFilter: FilterControlsBaseProps<T>['onClear'];
 		onToggleFilter: FilterControlsBaseProps<T>['onToggle'];
+		filterVariant?: 'standard' | 'inline';
 	}
 >;
