@@ -8,8 +8,8 @@ const styles = {
 	container: cva({
 		base: {
 			display: 'flex',
-			flexDirection: 'row',
-			alignItems: 'center',
+			flexDirection: 'column',
+			alignItems: 'start',
 			flexWrap: 'wrap',
 		},
 		variants: {
@@ -17,6 +17,13 @@ const styles = {
 				sm: { gap: '1' },
 				md: { gap: '2' },
 				lg: { gap: '3' },
+			},
+			filterGroup: {
+				true: {
+					alignItems: 'center',
+					flexDirection: 'row',
+					flexWrap: 'inherit',
+				},
 			},
 		},
 	}),
@@ -59,7 +66,7 @@ export const InlineFilterControls = <T,>({
 	return (
 		<div className={styles.container({ size })}>
 			{fields.map(({ key, label, icon, color: fieldColor, options }) => (
-				<div key={String(key)} className={styles.container({ size })}>
+				<div key={String(key)} className={styles.container({ size, filterGroup: true })}>
 					<span className={styles.groupLabel({ size })}>{label}</span>
 					{options.map((option) => {
 						const active = isActive(key, option.value);
