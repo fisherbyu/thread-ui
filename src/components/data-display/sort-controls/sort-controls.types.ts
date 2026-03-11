@@ -33,7 +33,7 @@ export type SortControlsConfig<T> = {
 	/** Sort applied on initial render */
 	defaultSort?: ActiveSort<T>[];
 	/** Allows multiple fields to be sorted simultaneously @default `false` */
-	multi?: boolean;
+	multiSort?: boolean;
 };
 
 /** Return value of `useSortControls` — sorted data plus props to pass to `SortControls` */

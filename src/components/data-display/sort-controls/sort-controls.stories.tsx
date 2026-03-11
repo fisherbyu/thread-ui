@@ -128,7 +128,7 @@ export const MultiSort: Story = {
 				{ key: 'position', label: 'Position', icon: 'Nut', color: 'secondary' },
 				{ key: 'goals', label: 'Goals', icon: 'Trophy', color: 'info' },
 			],
-			multi: true,
+			multiSort: true,
 		});
 
 		return (

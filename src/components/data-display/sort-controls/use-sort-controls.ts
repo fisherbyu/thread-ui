@@ -31,7 +31,7 @@ import type {
 export const useSortControls = <T>({
 	data,
 	fields,
-	multi = false,
+	multiSort = false,
 	defaultSort,
 }: SortControlsConfig<T>): SortControlsData<T> => {
 	const [activeSort, setActiveSort] = useState<ActiveSort<T>[]>(defaultSort ?? []);
@@ -42,7 +42,7 @@ export const useSortControls = <T>({
 
 			if (!existing) {
 				const next: ActiveSort<T> = { key, direction: 'asc' };
-				return multi ? [...prev, next] : [next];
+				return multiSort ? [...prev, next] : [next];
 			}
 
 			if (existing.direction === 'asc') {
