@@ -24,21 +24,16 @@ const meta: Meta<typeof FilterControls> = {
 			options: ['primary', 'secondary', 'tertiary', 'info', 'success', 'error'],
 			description: 'Fallback color for dropdowns that do not have a field-level color',
 		},
-		fieldTitleDisplay: {
-			control: { type: 'select' },
-			options: ['none', 'inline', 'block'],
-			description: 'Controls how field labels are displayed in InlineFilterControls',
-		},
 	},
 	args: {
 		size: 'sm',
 		color: 'tertiary',
-		fieldTitleDisplay: 'inline',
 	},
 };
 
 export default meta;
 type Story = StoryObj<typeof FilterControls>;
+type InlineStory = StoryObj<typeof InlineFilterControls>;
 
 // ─── Sample data ───────────────────────────────────────────────────────────
 
@@ -89,7 +84,16 @@ export const Default: Story = {
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 480 }}>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '1rem',
+					width: '100%',
+					minWidth: 480,
+					minHeight: 500,
+				}}
+			>
 				<FilterControls {...filterControlsProps} size={args.size} color={args.color} />
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
@@ -140,7 +144,16 @@ export const MultiField: Story = {
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 520 }}>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '1rem',
+					width: '100%',
+					minWidth: 520,
+					minHeight: 500,
+				}}
+			>
 				<FilterControls {...filterControlsProps} size={args.size} color={args.color} />
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
@@ -221,7 +234,16 @@ export const ExplicitOptions: Story = {
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 520 }}>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '1rem',
+					width: '100%',
+					minWidth: 520,
+					minHeight: 500,
+				}}
+			>
 				<FilterControls {...filterControlsProps} size={args.size} color={args.color} />
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
@@ -280,7 +302,16 @@ export const DefaultFilters: DefaultFiltersStory = {
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 520 }}>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '1rem',
+					width: '100%',
+					minWidth: 520,
+					minHeight: 500,
+				}}
+			>
 				<FilterControls {...filterControlsProps} size={args.size} color={args.color} />
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
@@ -325,7 +356,17 @@ export const DefaultFilters: DefaultFiltersStory = {
 
 // ─── InlineFilterControls Stories ─────────────────────────────────────────────────────
 
-export const Bar: Story = {
+export const Bar: InlineStory = {
+	argTypes: {
+		fieldTitleDisplay: {
+			control: { type: 'select' },
+			options: ['none', 'inline', 'block'],
+			description: 'Controls how field labels are displayed',
+		},
+	},
+	args: {
+		fieldTitleDisplay: 'inline',
+	},
 	render: (args) => {
 		const { filteredData, filterControlsProps } = useFilterControls({
 			data: RECIPE_DATA,
@@ -333,7 +374,16 @@ export const Bar: Story = {
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 480 }}>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '1rem',
+					width: '100%',
+					minWidth: 480,
+					minHeight: 500,
+				}}
+			>
 				<InlineFilterControls
 					{...filterControlsProps}
 					size={args.size}
@@ -378,7 +428,17 @@ export const Bar: Story = {
 	},
 };
 
-export const BarMultiField: Story = {
+export const BarMultiField: InlineStory = {
+	argTypes: {
+		fieldTitleDisplay: {
+			control: { type: 'select' },
+			options: ['none', 'inline', 'block'],
+			description: 'Controls how field labels are displayed',
+		},
+	},
+	args: {
+		fieldTitleDisplay: 'inline',
+	},
 	render: (args) => {
 		const { filteredData, filterControlsProps } = useFilterControls({
 			data: PLAYER_DATA,
@@ -389,7 +449,16 @@ export const BarMultiField: Story = {
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 520 }}>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '1rem',
+					width: '100%',
+					minWidth: 520,
+					minHeight: 500,
+				}}
+			>
 				<InlineFilterControls
 					{...filterControlsProps}
 					size={args.size}
