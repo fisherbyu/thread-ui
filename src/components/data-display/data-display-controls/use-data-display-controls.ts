@@ -26,6 +26,11 @@ export const useDataDisplayControls = <T>({
 		defaultFilters,
 	});
 
+	const sortFields = filterControlsProps.fields.filter((field) => {
+		const unique = new Set(filteredData.map((row) => row[field.key]));
+		return unique.size > 1;
+	});
+
 	const {
 		sortedData: refinedData,
 		activeSort,
@@ -34,7 +39,7 @@ export const useDataDisplayControls = <T>({
 		sortControlsProps,
 	} = useSortControls({
 		data: filteredData,
-		fields: filterControlsProps.fields,
+		fields: sortFields,
 		defaultSort,
 		multiSort,
 	});
