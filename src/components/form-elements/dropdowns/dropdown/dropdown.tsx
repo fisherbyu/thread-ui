@@ -38,6 +38,7 @@ export const Dropdown = ({
 	onSelect,
 	placeholder = 'Select an option...',
 	size,
+	color,
 }: DropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const selected = options.find((opt) => opt.value === value);
@@ -68,6 +69,7 @@ export const Dropdown = ({
 				</li>
 			)}
 			size={size}
+			color={color}
 		/>
 	);
 };

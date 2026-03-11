@@ -52,6 +52,7 @@ export const DropdownBase = ({
 	listHeader,
 	size = 'md',
 	icon,
+	color = 'neutral',
 }: DropdownBaseProps) => {
 	const listRef = useRef<HTMLUListElement>(null);
 	useClickOutside(listRef, isOpen, onClose, false);
@@ -63,7 +64,7 @@ export const DropdownBase = ({
 				<div className={styles.interior}>
 					<OptionalIconButton
 						size={size}
-						color="neutral"
+						color={color}
 						onClick={onToggle}
 						type="button"
 						name={icon}

@@ -53,6 +53,7 @@ export const MultiDropdown = ({
 	size,
 	icon,
 	showLabel = true,
+	color,
 }: MultiDropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -96,6 +97,7 @@ export const MultiDropdown = ({
 			}}
 			size={size}
 			icon={icon}
+			color={color}
 		/>
 	);
 };
