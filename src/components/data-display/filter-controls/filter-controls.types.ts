@@ -79,4 +79,6 @@ export type FilterControlsProps<T> = {
 	onClear: (key: keyof T) => void;
 	/** Called when all active filters are cleared */
 	onClearAll: () => void;
+	/** Checks whether a specific value is active for a given field */
+	isActive: (key: keyof T, value: T[keyof T]) => boolean;
 };
