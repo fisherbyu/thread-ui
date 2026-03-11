@@ -30,6 +30,7 @@ export type DataDisplayControlsProps<T> = Prettify<
 		'fields' | 'hideReset' | 'onToggle' | 'onClear'
 	> & {
 		fields: DataField<T>[];
+		sortFields: DataField<T>[];
 		onToggleSort: SortControlsProps<T>['onToggle'];
 		onClearFilter: FilterControlsBaseProps<T>['onClear'];
 		onToggleFilter: FilterControlsBaseProps<T>['onToggle'];

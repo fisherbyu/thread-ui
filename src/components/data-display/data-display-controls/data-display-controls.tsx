@@ -21,6 +21,7 @@ const styles = cva({
 
 export const DataDisplayControls = <T,>({
 	fields,
+	sortFields,
 	activeSort,
 	activeFilters,
 	onClearAll,
@@ -50,7 +51,7 @@ export const DataDisplayControls = <T,>({
 	};
 
 	const sortProps = {
-		fields,
+		fields: sortFields,
 		activeSort,
 		onToggle: onToggleSort,
 		onClear: onClearAll,

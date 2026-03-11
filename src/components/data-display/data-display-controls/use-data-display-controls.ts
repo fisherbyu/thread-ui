@@ -53,6 +53,7 @@ export const useDataDisplayControls = <T>({
 		refinedData,
 		dataDisplayControlsProps: {
 			fields: filterControlsProps.fields,
+			sortFields,
 			activeSort,
 			activeFilters,
 			isDefault: filterControlsProps.isDefault && sortControlsProps.isDefault,
