@@ -70,7 +70,16 @@ export const Default: Story = {
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 480 }}>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '1rem',
+					width: '100%',
+					minWidth: 480,
+					minHeight: 500,
+				}}
+			>
 				<SortControls {...sortControlsProps} size={args.size} color={args.color} />
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
@@ -123,7 +132,16 @@ export const MultiSort: Story = {
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 520 }}>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '1rem',
+					width: '100%',
+					minWidth: 520,
+					minHeight: 500,
+				}}
+			>
 				<SortControls {...sortControlsProps} size={args.size} color={args.color} />
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
@@ -204,7 +222,16 @@ export const CustomSort: Story = {
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 480 }}>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '1rem',
+					width: '100%',
+					minWidth: 480,
+					minHeight: 500,
+				}}
+			>
 				<SortControls {...sortControlsProps} size={args.size} color={args.color} />
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
@@ -247,15 +274,6 @@ export const CustomSort: Story = {
 // ─── DefaultSort Story ─────────────────────────────────────────────────────
 
 export const DefaultSort: Story = {
-	argTypes: {
-		useDefaultSort: {
-			control: { type: 'boolean' },
-			description: 'Toggle whether a default sort is applied on mount',
-		},
-	},
-	args: {
-		useDefaultSort: true,
-	},
 	render: (args) => {
 		const { sortedData, sortControlsProps } = useSortControls({
 			data: SAMPLE_DATA,
@@ -265,11 +283,20 @@ export const DefaultSort: Story = {
 				{ key: 'rating', label: 'Rating', icon: 'RankingIcon' },
 			],
 			// @ts-ignore -- args.useDefaultSort is a story-level arg, not part of SortControlsProps
-			defaultSort: args.useDefaultSort ? [{ key: 'rating', direction: 'desc' }] : undefined,
+			defaultSort: [{ key: 'rating', direction: 'desc' }],
 		});
 
 		return (
-			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 480 }}>
+			<div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '1rem',
+					width: '100%',
+					minWidth: 480,
+					minHeight: 500,
+				}}
+			>
 				<SortControls {...sortControlsProps} size={args.size} color={args.color} />
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
