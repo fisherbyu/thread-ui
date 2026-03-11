@@ -92,6 +92,17 @@ export const useFilterControls = <T>({
 		});
 	}, [data, activeFilters, mode]);
 
+	const activeSet = useMemo(() => {
+		const set = new Set<string>();
+		activeFilters.forEach((f) =>
+			f.values.forEach((v) => set.add(`${String(f.key)}:${String(v)}`))
+		);
+		return set;
+	}, [activeFilters]);
+
+	const isActive = (key: keyof T, value: T[keyof T]): boolean =>
+		activeSet.has(`${String(key)}:${String(value)}`);
+
 	return {
 		filteredData,
 		activeFilters,
@@ -105,6 +116,7 @@ export const useFilterControls = <T>({
 			onClear: clearFilter,
 			onClearAll: clearAllFilters,
 			isDefault,
+			isActive,
 		},
 	};
 };
