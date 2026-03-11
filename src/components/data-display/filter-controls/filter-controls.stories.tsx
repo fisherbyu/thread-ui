@@ -263,15 +263,6 @@ export const ExplicitOptions: Story = {
 type DefaultFiltersStory = StoryObj<typeof FilterControls & { useDefaultFilters: boolean }>;
 
 export const DefaultFilters: DefaultFiltersStory = {
-	argTypes: {
-		useDefaultFilters: {
-			control: { type: 'boolean' },
-			description: 'Toggle whether default filters are applied on mount',
-		},
-	},
-	args: {
-		useDefaultFilters: true,
-	},
 	render: (args) => {
 		const { filteredData, filterControlsProps } = useFilterControls({
 			data: PLAYER_DATA,
@@ -279,10 +270,7 @@ export const DefaultFilters: DefaultFiltersStory = {
 				{ key: 'team', label: 'Team', color: 'primary', icon: 'UsersThree' },
 				{ key: 'position', label: 'Position', color: 'secondary', icon: 'Nut' },
 			],
-			// @ts-ignore -- useDefaultFilters is a story-level arg
-			defaultFilters: args.useDefaultFilters
-				? [{ key: 'team', values: ['Alpha'] }]
-				: undefined,
+			defaultFilters: [{ key: 'team', values: ['Alpha'] }],
 		});
 
 		return (
