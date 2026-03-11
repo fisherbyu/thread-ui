@@ -82,3 +82,8 @@ export type FilterControlsProps<T> = {
 	/** Checks whether a specific value is active for a given field */
 	isActive: (key: keyof T, value: T[keyof T]) => boolean;
 };
+
+export type InlineFilterControlsProps<T> = FilterControlsProps<T> & {
+	/** Determines where field Title is displayed */
+	fieldTitleDisplay?: 'none' | 'inline' | 'block';
+};
