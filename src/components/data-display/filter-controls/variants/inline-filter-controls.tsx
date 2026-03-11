@@ -1,6 +1,6 @@
 'use client';
-import { css, cva, cx } from '@/styled-system/css';
-import { FilterControlsProps, InlineFilterControlsProps } from '../filter-controls.types';
+import { css, cva } from '@/styled-system/css';
+import { InlineFilterControlsProps } from '../filter-controls.types';
 import { Button, ButtonProps } from '@/components';
 import { OptionalIconButton } from '@/internal-components';
 
