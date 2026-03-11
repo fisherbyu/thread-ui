@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { FilterControls } from './filter-controls';
+import { FilterControls } from './variants/filter-controls';
+import { InlineFilterControls } from './variants/inline-filter-controls';
 import { useFilterControls } from './use-filter-controls';
 import { Text } from '../../typography';
 
@@ -287,6 +288,118 @@ export const DefaultFilters: DefaultFiltersStory = {
 		return (
 			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 520 }}>
 				<FilterControls {...filterControlsProps} size={args.size} color={args.color} />
+				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+					<thead>
+						<tr>
+							{['Name', 'Team', 'Position', 'Goals'].map((h) => (
+								<th
+									key={h}
+									style={{
+										textAlign: 'left',
+										padding: '4px 8px',
+										borderBottom: '1px solid #e2e8f0',
+									}}
+								>
+									<Text bold>{h}</Text>
+								</th>
+							))}
+						</tr>
+					</thead>
+					<tbody>
+						{filteredData.map((row) => (
+							<tr key={row.name}>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.name}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.team}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.position}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{String(row.goals)}</Text>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+		);
+	},
+};
+
+// ─── InlineFilterControls Stories ─────────────────────────────────────────────────────
+
+export const Bar: Story = {
+	render: (args) => {
+		const { filteredData, filterControlsProps } = useFilterControls({
+			data: RECIPE_DATA,
+			fields: [{ key: 'type', label: 'Meal Type' }],
+		});
+
+		return (
+			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 480 }}>
+				<InlineFilterControls
+					{...filterControlsProps}
+					size={args.size}
+					color={args.color}
+				/>
+				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+					<thead>
+						<tr>
+							{['Title', 'Type', 'Rating'].map((h) => (
+								<th
+									key={h}
+									style={{
+										textAlign: 'left',
+										padding: '4px 8px',
+										borderBottom: '1px solid #e2e8f0',
+									}}
+								>
+									<Text bold>{h}</Text>
+								</th>
+							))}
+						</tr>
+					</thead>
+					<tbody>
+						{filteredData.map((row) => (
+							<tr key={row.title}>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.title}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{row.type}</Text>
+								</td>
+								<td style={{ padding: '4px 8px' }}>
+									<Text>{String(row.rating)}</Text>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+		);
+	},
+};
+
+export const BarMultiField: Story = {
+	render: (args) => {
+		const { filteredData, filterControlsProps } = useFilterControls({
+			data: PLAYER_DATA,
+			fields: [
+				{ key: 'team', label: 'Team', color: 'primary' },
+				{ key: 'position', label: 'Position', color: 'secondary' },
+			],
+		});
+
+		return (
+			<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: 520 }}>
+				<InlineFilterControls
+					{...filterControlsProps}
+					size={args.size}
+					color={args.color}
+				/>
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
 						<tr>
