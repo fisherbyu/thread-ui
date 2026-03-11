@@ -1,8 +1,9 @@
 'use client';
 import { cva } from '@/styled-system/css';
 import { SortControlsProps, ActiveSort } from './sort-controls.types';
-import { Button, Icon } from '@/components';
+import { Button, ButtonProps, Icon } from '@/components';
 import { OptionalIconButton } from '@/internal-components';
+import { UtilityColorOptions } from '@/types';
 
 const styles = {
 	controlsContainer: cva({
@@ -45,6 +46,7 @@ export const SortControls = <T,>({
 	size = 'sm',
 	isDefault,
 	hideReset = false,
+	neutralWhenInactive = false,
 }: SortControlsProps<T>) => {
 	const getState = (key: keyof T): ActiveSort<T> | undefined =>
 		activeSort.find((s) => s.key === key);
@@ -54,8 +56,11 @@ export const SortControls = <T,>({
 			{fields.map(({ key, label, icon, color: fieldColor }) => {
 				const state = getState(key);
 
+				const resolvedFieldColor: ButtonProps['color'] =
+					!state && neutralWhenInactive ? 'neutral' : (fieldColor ?? color);
+
 				const buttonProps = {
-					color: fieldColor ?? color,
+					color: resolvedFieldColor,
 					size,
 					onClick: () => onToggle(key),
 					name: icon,

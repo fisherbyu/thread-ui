@@ -67,4 +67,6 @@ export type SortControlsProps<T> = {
 	isDefault?: boolean;
 	/** Optionally hide button to reset sorts */
 	hideReset?: boolean;
+	/** Display Sort Buttons as neutral when no sort is applied @default `'false'`` */
+	neutralWhenInactive?: boolean;
 };

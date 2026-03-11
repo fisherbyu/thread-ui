@@ -83,6 +83,8 @@ export type FilterControlsBaseProps<T> = {
 	isActive: (key: keyof T, value: T[keyof T]) => boolean;
 	/** Optionally hide button to reset filters */
 	hideReset?: boolean;
+	/** Display Filter Dropdown Buttons as neutral when no sort is applied @default `'false'`` */
+	neutralWhenInactive?: boolean;
 };
 
 export type FilterControlsProps<T> = FilterControlsBaseProps<T>;

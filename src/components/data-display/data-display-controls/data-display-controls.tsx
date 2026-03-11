@@ -38,6 +38,7 @@ export const DataDisplayControls = <T,>({
 		color,
 		size,
 		hideReset: true,
+		neutralWhenInactive: true,
 	};
 
 	const filterProps = {
