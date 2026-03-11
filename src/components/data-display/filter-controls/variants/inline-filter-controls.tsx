@@ -83,7 +83,10 @@ export const InlineFilterControls = <T,>({
 						};
 
 						return (
-							<OptionalIconButton key={String(key)} {...buttonProps}>
+							<OptionalIconButton
+								key={`${String(key)}-${option.value}`}
+								{...buttonProps}
+							>
 								{option.label}
 							</OptionalIconButton>
 						);
