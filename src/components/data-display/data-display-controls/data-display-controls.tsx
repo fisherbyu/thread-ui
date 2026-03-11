@@ -1,6 +1,23 @@
+import { cva } from '@/styled-system/css';
 import { FilterControls, InlineFilterControls } from '../filter-controls';
 import { SortControls } from '../sort-controls';
 import { DataDisplayControlsProps } from './data-display-controls.types';
+import { Button } from '@/components/ui';
+
+const styles = cva({
+	base: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'start',
+	},
+	variants: {
+		size: {
+			sm: { gap: 1 },
+			md: { gap: 2 },
+			lg: { gap: 3 },
+		},
+	},
+});
 
 export const DataDisplayControls = <T,>({
 	fields,
@@ -19,7 +36,9 @@ export const DataDisplayControls = <T,>({
 	const sharedProps = {
 		color,
 		size,
+		hideReset: true,
 	};
+
 	const filterProps = {
 		isDefault,
 		fields: fields.map((f) => ({ ...f })),
@@ -27,7 +46,6 @@ export const DataDisplayControls = <T,>({
 		onClear: onClearFilter,
 		onClearAll,
 		onToggle: onToggleFilter,
-		hideReset: true,
 		isActive,
 	};
 
@@ -38,11 +56,18 @@ export const DataDisplayControls = <T,>({
 		onClear: onClearAll,
 		isDefault,
 	};
+
 	const Filter = filterVariant === 'standard' ? FilterControls : InlineFilterControls;
+
 	return (
-		<div>
+		<div className={styles({ size })}>
 			<Filter {...sharedProps} {...filterProps} />
 			<SortControls {...sharedProps} {...sortProps} />
+			{!isDefault && (
+				<Button size="sm" onClick={onClearAll} text>
+					Reset
+				</Button>
+			)}
 		</div>
 	);
 };
