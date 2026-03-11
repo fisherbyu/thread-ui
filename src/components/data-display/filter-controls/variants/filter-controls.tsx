@@ -38,6 +38,7 @@ export const FilterControls = <T,>({
 	onClearAll,
 	size = 'sm',
 	isDefault,
+	color,
 }: FilterControlsProps<T>) => {
 	const getActive = (key: keyof T): ActiveFilter<T> | undefined =>
 		activeFilters.find((f) => f.key === key);
@@ -60,6 +61,7 @@ export const FilterControls = <T,>({
 						onClear={() => onClear(key)}
 						icon={icon}
 						showLabel={false}
+						color={color}
 					/>
 				);
 			})}
