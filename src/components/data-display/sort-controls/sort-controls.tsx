@@ -44,6 +44,7 @@ export const SortControls = <T,>({
 	onClear,
 	size = 'sm',
 	isDefault,
+	hideReset = false,
 }: SortControlsProps<T>) => {
 	const getState = (key: keyof T): ActiveSort<T> | undefined =>
 		activeSort.find((s) => s.key === key);
@@ -68,7 +69,7 @@ export const SortControls = <T,>({
 				);
 			})}
 
-			{!isDefault && (
+			{!isDefault && !hideReset && (
 				<Button
 					color="text"
 					onClick={onClear}

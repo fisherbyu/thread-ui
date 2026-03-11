@@ -65,4 +65,6 @@ export type SortControlsProps<T> = {
 	onClear: () => void;
 	/** Hides the reset button when true, indicating sort is in its default state */
 	isDefault?: boolean;
+	/** Optionally hide button to reset sorts */
+	hideReset?: boolean;
 };
