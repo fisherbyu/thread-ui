@@ -1,6 +1,6 @@
 'use client';
-import { cva, cx } from '@/styled-system/css';
-import { FilterControlsProps } from '../filter-controls.types';
+import { css, cva, cx } from '@/styled-system/css';
+import { FilterControlsProps, InlineFilterControlsProps } from '../filter-controls.types';
 import { Button, ButtonProps } from '@/components';
 import { OptionalIconButton } from '@/internal-components';
 
@@ -20,9 +20,13 @@ const styles = {
 			},
 			filterGroup: {
 				true: {
+					flexWrap: 'inherit',
+				},
+			},
+			titleInline: {
+				true: {
 					alignItems: 'center',
 					flexDirection: 'row',
-					flexWrap: 'inherit',
 				},
 			},
 		},
@@ -62,48 +66,61 @@ export const InlineFilterControls = <T,>({
 	size = 'sm',
 	isDefault,
 	color = 'tertiary',
-}: FilterControlsProps<T>) => {
+	fieldTitleDisplay: titleDisplay = 'inline',
+}: InlineFilterControlsProps<T>) => {
 	return (
 		<div className={styles.container({ size })}>
 			{fields.map(({ key, label, icon, color: fieldColor, options }) => (
-				<div key={String(key)} className={styles.container({ size, filterGroup: true })}>
-					<span className={styles.groupLabel({ size })}>{label}</span>
-					{options.map((option) => {
-						const active = isActive(key, option.value);
-
-						const resolvedFieldColor: ButtonProps['color'] = active
-							? (fieldColor ?? color)
-							: 'neutral';
-
-						const buttonProps = {
-							color: resolvedFieldColor,
-							size,
-							onClick: () => onToggle(key, option.value),
-							name: icon,
-						};
-
-						return (
-							<OptionalIconButton
-								key={`${String(key)}-${option.value}`}
-								{...buttonProps}
-							>
-								{option.label}
-							</OptionalIconButton>
-						);
+				<div
+					key={String(key)}
+					className={styles.container({
+						size,
+						filterGroup: true,
+						titleInline: titleDisplay === 'inline',
 					})}
+				>
+					{titleDisplay !== 'none' && (
+						<span className={styles.groupLabel({ size })}>{label}</span>
+					)}
+					<div
+						className={styles.container({ size, filterGroup: true, titleInline: true })}
+					>
+						{options.map((option) => {
+							const active = isActive(key, option.value);
+							const resolvedFieldColor: ButtonProps['color'] = active
+								? (fieldColor ?? color)
+								: 'neutral';
+							const buttonProps = {
+								color: resolvedFieldColor,
+								size,
+								onClick: () => onToggle(key, option.value),
+								name: icon,
+							};
+							return (
+								<OptionalIconButton
+									key={`${String(key)}-${option.value}`}
+									{...buttonProps}
+								>
+									{option.label}
+								</OptionalIconButton>
+							);
+						})}
+					</div>
 				</div>
 			))}
-			{!isDefault && (
-				<Button
-					color="text"
-					onClick={onClearAll}
-					size={size}
-					text
-					aria-label="Clear all filters"
-				>
-					Reset
-				</Button>
-			)}
+			<div className={css({ minHeight: '6', display: 'flex', alignItems: 'center' })}>
+				{!isDefault && (
+					<Button
+						color="text"
+						onClick={onClearAll}
+						size={size}
+						text
+						aria-label="Clear all filters"
+					>
+						Reset
+					</Button>
+				)}
+			</div>
 		</div>
 	);
 };
