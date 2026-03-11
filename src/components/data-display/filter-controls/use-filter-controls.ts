@@ -39,7 +39,12 @@ export const useFilterControls = <T>({
 	const resolvedFields = useMemo<ResolvedFilterField<T>[]>(
 		() =>
 			fields.map((field) => {
-				if (field.options) return field as ResolvedFilterField<T>;
+				if (field.options) {
+					const options = field.options.map((o) =>
+						typeof o === 'string' ? { value: o as T[keyof T], label: o } : o
+					);
+					return { ...field, options };
+				}
 				const unique = [...new Set(data.map((row) => row[field.key]))];
 				const options = unique
 					.map((value) => ({ value, label: String(value) }))
