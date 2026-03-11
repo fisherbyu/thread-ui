@@ -24,10 +24,16 @@ const meta: Meta<typeof FilterControls> = {
 			options: ['primary', 'secondary', 'tertiary', 'info', 'success', 'error'],
 			description: 'Fallback color for dropdowns that do not have a field-level color',
 		},
+		fieldTitleDisplay: {
+			control: { type: 'select' },
+			options: ['none', 'inline', 'block'],
+			description: 'Controls how field labels are displayed in InlineFilterControls',
+		},
 	},
 	args: {
 		size: 'sm',
 		color: 'tertiary',
+		fieldTitleDisplay: 'inline',
 	},
 };
 
@@ -332,6 +338,7 @@ export const Bar: Story = {
 					{...filterControlsProps}
 					size={args.size}
 					color={args.color}
+					fieldTitleDisplay={args.fieldTitleDisplay}
 				/>
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
@@ -387,6 +394,7 @@ export const BarMultiField: Story = {
 					{...filterControlsProps}
 					size={args.size}
 					color={args.color}
+					fieldTitleDisplay={args.fieldTitleDisplay}
 				/>
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
