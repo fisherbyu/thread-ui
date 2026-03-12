@@ -210,7 +210,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 							onClick={() => {
 								toggleNavbar();
 							}}
-							ariaLabel="toggle navbar"
+							aria-label="toggle navbar"
 						>
 							<span
 								aria-hidden={true}
