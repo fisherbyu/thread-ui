@@ -27,7 +27,7 @@ export type UtilitySizes = {
 };
 
 /** Key union of the base size scale */
-export type UtilitySizeOptions = keyof UtilitySizes;
+export type UtilitySizeOptions = Prettify<keyof UtilitySizes>;
 
 /** Full size scale including sub-small and extra-large steps */
 export type ExpandedUtilitySizes = Prettify<
@@ -40,7 +40,7 @@ export type ExpandedUtilitySizes = Prettify<
 >;
 
 /** Key union of the full expanded size scale */
-export type ExpandedUtilitySizeOptions = keyof ExpandedUtilitySizes;
+export type ExpandedUtilitySizeOptions = Prettify<keyof ExpandedUtilitySizes>;
 
 /** Size scale extended with responsive breakpoint steps */
 export type BreakpointOptions = UtilitySizes & {
