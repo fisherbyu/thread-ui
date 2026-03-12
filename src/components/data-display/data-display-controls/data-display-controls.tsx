@@ -66,7 +66,12 @@ export const DataDisplayControls = <T,>({
 			<Filter {...sharedProps} {...filterProps} />
 			<SortControls {...sharedProps} {...sortProps} />
 			{!isDefault && (
-				<Button size="sm" onClick={onClearAll} text>
+				<Button
+					aria-label="Clear all filters and Sorting"
+					size="sm"
+					onClick={onClearAll}
+					text
+				>
 					Reset
 				</Button>
 			)}
