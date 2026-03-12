@@ -59,14 +59,13 @@ const styles = {
  */
 export const InlineFilterControls = <T,>({
 	fields,
-	activeFilters,
 	isActive,
 	onToggle,
 	onClearAll,
 	size = 'sm',
 	isDefault,
 	color = 'tertiary',
-	fieldTitleDisplay: titleDisplay = 'inline',
+	fieldTitleDisplay = 'inline',
 	hideReset = false,
 }: InlineFilterControlsProps<T>) => {
 	return (
@@ -77,10 +76,10 @@ export const InlineFilterControls = <T,>({
 					className={styles.container({
 						size,
 						filterGroup: true,
-						titleInline: titleDisplay === 'inline',
+						titleInline: fieldTitleDisplay === 'inline',
 					})}
 				>
-					{titleDisplay !== 'none' && (
+					{fieldTitleDisplay !== 'none' && (
 						<span className={styles.groupLabel({ size })}>{label}</span>
 					)}
 					<div
