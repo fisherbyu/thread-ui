@@ -51,6 +51,7 @@ export const DataDisplayControls = <T,>({
 		onClearAll,
 		onToggle: onToggleFilter,
 		isActive,
+		showFilterLabel,
 	};
 
 	const sortProps = {
@@ -59,6 +60,7 @@ export const DataDisplayControls = <T,>({
 		onToggle: onToggleSort,
 		onClear: onClearAll,
 		isDefault,
+		showSortLabel,
 	};
 
 	const Filter = filterVariant === 'standard' ? FilterControls : InlineFilterControls;
