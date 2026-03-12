@@ -38,9 +38,9 @@ const styles = {
 		},
 		variants: {
 			size: {
-				sm: { fontSize: 'xs' },
-				md: { fontSize: 'sm' },
-				lg: { fontSize: 'md' },
+				sm: { fontSize: 'xs', marginRight: '1' },
+				md: { fontSize: 'sm', marginRight: '2' },
+				lg: { fontSize: 'md', marginRight: '2' },
 			},
 		},
 	}),
