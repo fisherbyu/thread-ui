@@ -33,6 +33,8 @@ export const DataDisplayControls = <T,>({
 	size,
 	color,
 	filterVariant = 'inline',
+	showFilterLabel,
+	showSortLabel,
 }: DataDisplayControlsProps<T>) => {
 	const sharedProps = {
 		color,

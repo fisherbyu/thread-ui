@@ -53,14 +53,14 @@ export const SortControls = <T,>({
 	isDefault,
 	hideReset = false,
 	neutralWhenInactive = false,
-	showSortTitle = false,
+	showSortLabel = false,
 }: SortControlsProps<T>) => {
 	const getState = (key: keyof T): ActiveSort<T> | undefined =>
 		activeSort.find((s) => s.key === key);
 
 	return (
 		<div className={styles.container({ inner: false, size })}>
-			{showSortTitle && <Text bold>Sort</Text>}
+			{showSortLabel && <Text bold>Sort</Text>}
 			<div className={styles.container({ inner: true, size })}>
 				{fields.map(({ key, label, icon, color: fieldColor }) => {
 					const state = getState(key);

@@ -70,5 +70,5 @@ export type SortControlsProps<T> = {
 	/** Display Sort Buttons as neutral when no sort is applied @default `'false'`` */
 	neutralWhenInactive?: boolean;
 	/** Optionally display title `Sort` above filters */
-	showSortTitle?: boolean;
+	showSortLabel?: boolean;
 };
