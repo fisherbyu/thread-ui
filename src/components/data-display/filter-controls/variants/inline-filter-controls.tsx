@@ -1,7 +1,7 @@
 'use client';
 import { css, cva } from '@/styled-system/css';
 import { InlineFilterControlsProps } from '../filter-controls.types';
-import { Button, ButtonProps } from '@/components';
+import { Button, ButtonProps, Text } from '@/components';
 import { OptionalIconButton } from '@/internal-components';
 
 const styles = {
@@ -67,9 +67,11 @@ export const InlineFilterControls = <T,>({
 	color = 'tertiary',
 	fieldTitleDisplay = 'inline',
 	hideReset = false,
+	showFilterLabel = false,
 }: InlineFilterControlsProps<T>) => {
 	return (
 		<div className={styles.container({ size })}>
+			{showFilterLabel && <Text bold>Filters</Text>}
 			{fields.map(({ key, label, icon, color: fieldColor, options }) => (
 				<div
 					key={String(key)}
