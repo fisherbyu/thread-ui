@@ -1,4 +1,4 @@
-import { DeepPartial } from '@/types';
+import { DeepPartial, Prettify } from '@/types';
 
 /** Three-step color scale for brand and semantic colors */
 type ColorShades = {
@@ -36,12 +36,14 @@ export type BreakpointOptions = UtilitySizes & {
 };
 
 /** Full size scale including sub-small and extra-large steps */
-export type ExpandedUtilitySizes = UtilitySizes & {
-	xxs: string;
-	xs: string;
-	xl: string;
-	xxl: string;
-};
+export type ExpandedUtilitySizes = Prettify<
+	UtilitySizes & {
+		xxs: string;
+		xs: string;
+		xl: string;
+		xxl: string;
+	}
+>;
 
 /** Key union of the full expanded size scale */
 export type ExpandedUtilitySizeOptions = keyof ExpandedUtilitySizes;
