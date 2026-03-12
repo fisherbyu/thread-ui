@@ -1,18 +1,24 @@
 'use client';
 import { cva } from '@/styled-system/css';
 import { SortControlsProps, ActiveSort } from './sort-controls.types';
-import { Button, ButtonProps, Icon } from '@/components';
+import { Button, ButtonProps, Icon, Text } from '@/components';
 import { OptionalIconButton } from '@/internal-components';
 import { UtilityColorOptions } from '@/types';
 
 const styles = {
-	controlsContainer: cva({
+	container: cva({
 		base: {
 			display: 'flex',
 			flexDirection: 'row',
-			alignItems: 'center',
 		},
 		variants: {
+			inner: {
+				true: {},
+				false: {
+					alignItems: 'start',
+					flexDirection: 'column',
+				},
+			},
 			size: {
 				sm: {
 					gap: '1',
@@ -47,44 +53,48 @@ export const SortControls = <T,>({
 	isDefault,
 	hideReset = false,
 	neutralWhenInactive = false,
+	showSortTitle = false,
 }: SortControlsProps<T>) => {
 	const getState = (key: keyof T): ActiveSort<T> | undefined =>
 		activeSort.find((s) => s.key === key);
 
 	return (
-		<div className={styles.controlsContainer({ size })}>
-			{fields.map(({ key, label, icon, color: fieldColor }) => {
-				const state = getState(key);
+		<div className={styles.container({ inner: false, size })}>
+			{showSortTitle && <Text bold>Sort</Text>}
+			<div className={styles.container({ inner: true, size })}>
+				{fields.map(({ key, label, icon, color: fieldColor }) => {
+					const state = getState(key);
 
-				const resolvedFieldColor: ButtonProps['color'] =
-					!state && neutralWhenInactive ? 'neutral' : (fieldColor ?? color);
+					const resolvedFieldColor: ButtonProps['color'] =
+						!state && neutralWhenInactive ? 'neutral' : (fieldColor ?? color);
 
-				const buttonProps = {
-					color: resolvedFieldColor,
-					size,
-					onClick: () => onToggle(key),
-					name: icon,
-				};
+					const buttonProps = {
+						color: resolvedFieldColor,
+						size,
+						onClick: () => onToggle(key),
+						name: icon,
+					};
 
-				return (
-					<OptionalIconButton key={String(key)} {...buttonProps}>
-						{label}
-						{state && <SortIndicator direction={state.direction} />}
-					</OptionalIconButton>
-				);
-			})}
+					return (
+						<OptionalIconButton key={String(key)} {...buttonProps}>
+							{label}
+							{state && <SortIndicator direction={state.direction} />}
+						</OptionalIconButton>
+					);
+				})}
 
-			{!isDefault && !hideReset && (
-				<Button
-					color="text"
-					onClick={onClear}
-					size={size}
-					text
-					ariaLabel="Clear all sorting"
-				>
-					Reset
-				</Button>
-			)}
+				{!isDefault && !hideReset && (
+					<Button
+						color="text"
+						onClick={onClear}
+						size={size}
+						text
+						ariaLabel="Clear all sorting"
+					>
+						Reset
+					</Button>
+				)}
+			</div>
 		</div>
 	);
 };
