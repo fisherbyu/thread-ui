@@ -48,10 +48,7 @@ export type ExpandedUtilitySizes = Prettify<
 export type ExpandedUtilitySizeOptions = Prettify<keyof ExpandedUtilitySizes>;
 
 /** Size scale extended with responsive breakpoint steps */
-export type BreakpointOptions = UtilitySizes & {
-	xl: string;
-	xxl: string;
-};
+export type BreakpointOptions = Omit<ExpandedUtilitySizes, keyof ExpandedSmallOptions>;
 
 /** Surface and text color tokens that shift between light and dark mode */
 export type SurfaceColors = {
@@ -65,36 +62,42 @@ export type SurfaceColors = {
 export type SurfaceColorOptions = keyof Omit<SurfaceColors, 'structure'>;
 
 /** Mode-aware color tokens combining surface colors with text roles */
-export type ModeColors = SurfaceColors & {
-	text: TextColors;
-};
+export type ModeColors = Prettify<
+	SurfaceColors & {
+		text: TextColors;
+	}
+>;
 
 /** Full design token set for the Thread theme */
-export type Theme = ModeColors & {
-	// Color Palette
-	primary: ColorShades;
-	secondary: ColorShades;
-	tertiary: ColorShades;
-	// Neutral Colors
-	white: string;
-	black: string;
-	gray: ColorShades;
-	// Status Colors
-	success: ColorShades;
-	warning: ColorShades;
-	error: ColorShades;
-	info: ColorShades;
-	// Structure
-	breakpoints: BreakpointOptions;
-	// Sizing
-	borderRadius: UtilitySizes;
-	borderSize: UtilitySizes;
-};
+export type Theme = Prettify<
+	ModeColors & {
+		// Color Palette
+		primary: ColorShades;
+		secondary: ColorShades;
+		tertiary: ColorShades;
+		// Neutral Colors
+		white: string;
+		black: string;
+		gray: ColorShades;
+		// Status Colors
+		success: ColorShades;
+		warning: ColorShades;
+		error: ColorShades;
+		info: ColorShades;
+		// Structure
+		breakpoints: BreakpointOptions;
+		// Sizing
+		borderRadius: UtilitySizes;
+		borderSize: UtilitySizes;
+	}
+>;
 
 /** Complete theme including dark mode surface and text overrides */
-export type ThemeConfigFull = Theme & {
-	darkMode: ModeColors;
-};
+export type ThemeConfigFull = Prettify<
+	Theme & {
+		darkMode: ModeColors;
+	}
+>;
 
 /** Partial theme config passed to `ThemeProvider` to override specific tokens */
-export type ThemeConfig = DeepPartial<ThemeConfigFull>;
+export type ThemeConfig = Prettify<DeepPartial<ThemeConfigFull>>;
