@@ -29,14 +29,19 @@ export type UtilitySizes = {
 /** Key union of the base size scale */
 export type UtilitySizeOptions = Prettify<keyof UtilitySizes>;
 
+type ExpandedSmallOptions = {
+	xxs: string;
+	xs: string;
+};
+
+type ExpandedLargeOptions = {
+	xl: string;
+	xxl: string;
+};
+
 /** Full size scale including sub-small and extra-large steps */
 export type ExpandedUtilitySizes = Prettify<
-	UtilitySizes & {
-		xxs: string;
-		xs: string;
-		xl: string;
-		xxl: string;
-	}
+	ExpandedSmallOptions & UtilitySizes & ExpandedLargeOptions
 >;
 
 /** Key union of the full expanded size scale */
