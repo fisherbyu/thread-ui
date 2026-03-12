@@ -29,12 +29,6 @@ export type UtilitySizes = {
 /** Key union of the base size scale */
 export type UtilitySizeOptions = keyof UtilitySizes;
 
-/** Size scale extended with responsive breakpoint steps */
-export type BreakpointOptions = UtilitySizes & {
-	xl: string;
-	xxl: string;
-};
-
 /** Full size scale including sub-small and extra-large steps */
 export type ExpandedUtilitySizes = Prettify<
 	UtilitySizes & {
@@ -47,6 +41,12 @@ export type ExpandedUtilitySizes = Prettify<
 
 /** Key union of the full expanded size scale */
 export type ExpandedUtilitySizeOptions = keyof ExpandedUtilitySizes;
+
+/** Size scale extended with responsive breakpoint steps */
+export type BreakpointOptions = UtilitySizes & {
+	xl: string;
+	xxl: string;
+};
 
 /** Surface and text color tokens that shift between light and dark mode */
 export type SurfaceColors = {
