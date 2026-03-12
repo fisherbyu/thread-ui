@@ -1,10 +1,23 @@
 'use client';
 import { cva } from '@/styled-system/css';
 import { FilterControlsProps, ActiveFilter } from '../filter-controls.types';
-import { Button } from '@/components';
+import { Button, Text } from '@/components';
 import { MultiDropdown } from '../../../form-elements';
 
 const styles = {
+	container: cva({
+		base: {
+			display: 'flex',
+			flexDirection: 'column',
+		},
+		variants: {
+			size: {
+				sm: { gap: '1' },
+				md: { gap: '2' },
+				lg: { gap: '3' },
+			},
+		},
+	}),
 	controlsContainer: cva({
 		base: {
 			display: 'flex',
@@ -40,44 +53,47 @@ export const FilterControls = <T,>({
 	isDefault,
 	color,
 	hideReset = false,
-	neutralWhenInactive = false,
+	showFilterLabel = false,
 }: FilterControlsProps<T>) => {
 	const getActive = (key: keyof T): ActiveFilter<T> | undefined =>
 		activeFilters.find((f) => f.key === key);
 
 	return (
-		<div className={styles.controlsContainer({ size })}>
-			{fields.map(({ key, label, icon, color: fieldColor, options }) => {
-				const active = getActive(key);
-				const selectedValues = (active?.values ?? []) as (string | number)[];
+		<div className={styles.container({ size })}>
+			{showFilterLabel && <Text bold>Filters</Text>}
+			<div className={styles.controlsContainer({ size })}>
+				{fields.map(({ key, label, icon, color: fieldColor, options }) => {
+					const active = getActive(key);
+					const selectedValues = (active?.values ?? []) as (string | number)[];
 
-				return (
-					<MultiDropdown
+					return (
+						<MultiDropdown
+							size={size}
+							key={String(key)}
+							id={String(key)}
+							title={label}
+							options={options as { label: string; value: string | number }[]}
+							values={selectedValues}
+							onToggle={(value) => onToggle(key, value as T[keyof T])}
+							onClear={() => onClear(key)}
+							icon={icon}
+							showLabel={false}
+							color={active ? color : undefined}
+						/>
+					);
+				})}
+				{!isDefault && !hideReset && (
+					<Button
+						color="text"
+						onClick={onClearAll}
 						size={size}
-						key={String(key)}
-						id={String(key)}
-						title={label}
-						options={options as { label: string; value: string | number }[]}
-						values={selectedValues}
-						onToggle={(value) => onToggle(key, value as T[keyof T])}
-						onClear={() => onClear(key)}
-						icon={icon}
-						showLabel={false}
-						color={active ? color : undefined}
-					/>
-				);
-			})}
-			{!isDefault && !hideReset && (
-				<Button
-					color="text"
-					onClick={onClearAll}
-					size={size}
-					text
-					ariaLabel="Clear all filters"
-				>
-					Reset
-				</Button>
-			)}
+						text
+						ariaLabel="Clear all filters"
+					>
+						Reset
+					</Button>
+				)}
+			</div>
 		</div>
 	);
 };

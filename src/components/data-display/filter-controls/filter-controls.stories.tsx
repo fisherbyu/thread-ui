@@ -244,7 +244,12 @@ export const ExplicitOptions: Story = {
 					minHeight: 500,
 				}}
 			>
-				<FilterControls {...filterControlsProps} size={args.size} color={args.color} />
+				<FilterControls
+					showFilterLabel
+					{...filterControlsProps}
+					size={args.size}
+					color={args.color}
+				/>
 				<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
 					<thead>
 						<tr>
