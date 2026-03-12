@@ -80,7 +80,7 @@ export const SortControls = <T,>({
 					onClick={onClear}
 					size={size}
 					text
-					aria-label="Clear all sorting"
+					ariaLabel="Clear all sorting"
 				>
 					Reset
 				</Button>

@@ -73,7 +73,7 @@ export const FilterControls = <T,>({
 					onClick={onClearAll}
 					size={size}
 					text
-					aria-label="Clear all filters"
+					ariaLabel="Clear all filters"
 				>
 					Reset
 				</Button>

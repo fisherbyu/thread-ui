@@ -37,5 +37,5 @@ export const SpinLoader = ({ size = 'md', color, label = 'Loading...' }: SpinLoa
 		},
 	});
 
-	return <div role="status" aria-label={label} className={styles({ size, color })} />;
+	return <div role="status" ariaLabel={label} className={styles({ size, color })} />;
 };

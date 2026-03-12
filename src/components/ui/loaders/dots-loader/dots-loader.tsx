@@ -58,7 +58,7 @@ export const DotsLoader = ({ size = 'md', color, label = 'Loading...' }: DotsLoa
 	const dotClass = styles.dot({ size, color });
 
 	return (
-		<div role="status" aria-label={label} className={styles.container({ size })}>
+		<div role="status" ariaLabel={label} className={styles.container({ size })}>
 			<span className={dotClass} style={{ animationDelay: '0s' }} />
 			<span className={dotClass} style={{ animationDelay: '0.2s' }} />
 			<span className={dotClass} style={{ animationDelay: '0.4s' }} />

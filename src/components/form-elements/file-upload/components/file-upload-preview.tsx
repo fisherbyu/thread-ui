@@ -88,10 +88,20 @@ export const FileUploadPreview = () => {
 			<div className={styles.actionBlock}>
 				<div className={styles.actionContent}>
 					<>
-						<Button type="button" color="error" onClick={handleClearFile}>
+						<Button
+							ariaLabel="Remove File from Upload"
+							type="button"
+							color="error"
+							onClick={handleClearFile}
+						>
 							Remove
 						</Button>
-						<Button type="button" onClick={saveFile} fullWidth>
+						<Button
+							ariaLabel="Add file to upload"
+							type="button"
+							onClick={saveFile}
+							fullWidth
+						>
 							Add File
 						</Button>
 					</>

@@ -109,7 +109,13 @@ export const ModalContent = () => {
 		<div className={styles.outline({ size })} ref={modalContentRef}>
 			<div className={styles.internalContent({ size })}>
 				<div className={styles.outerItems}>
-					<IconButton onClick={onClose} color="primary" size={'sm'} name="X" />
+					<IconButton
+						ariaLabel="Close modal"
+						onClick={onClose}
+						color="primary"
+						size={'sm'}
+						name="X"
+					/>
 					{TitleContent}
 				</div>
 				{children}
