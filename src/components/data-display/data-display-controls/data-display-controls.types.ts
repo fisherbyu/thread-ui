@@ -1,3 +1,4 @@
+import { Override, Prettify } from '@/types';
 import {
 	SortControlsConfig,
 	SortField,
@@ -8,10 +9,6 @@ import {
 	ResolvedFilterField,
 	FilterControlsBaseProps,
 } from '../filter-controls/filter-controls.types';
-
-type Override<T, U> = Omit<T, keyof U> & U;
-
-type Prettify<T> = { [K in keyof T]: T[K] } & {};
 
 export type DataField<T> = Prettify<Override<SortField<T> & ResolvedFilterField<T>, {}>>;
 
