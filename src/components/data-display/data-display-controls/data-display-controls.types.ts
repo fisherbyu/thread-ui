@@ -13,7 +13,7 @@ type Override<T, U> = Omit<T, keyof U> & U;
 
 type Prettify<T> = { [K in keyof T]: T[K] } & {};
 
-export type DataField<T> = Override<SortField<T> & ResolvedFilterField<T>, {}>;
+export type DataField<T> = Prettify<Override<SortField<T> & ResolvedFilterField<T>, {}>>;
 
 export type DataDisplayControlsConfig<T> = Prettify<
 	Override<SortControlsConfig<T> & FilterControlsConfig<T>, { fields: DataField<T>[] }>
