@@ -75,7 +75,14 @@ export const MultiDropdown = ({
 			listHeader={
 				<div className={styles.headerStyles}>
 					{values.length > 0 && (
-						<IconButton onClick={onClear} color="text" name="X" text size="sm">
+						<IconButton
+							ariaLabel="Clear selected filters"
+							onClick={onClear}
+							color="text"
+							name="X"
+							text
+							size="sm"
+						>
 							Clear
 						</IconButton>
 					)}
