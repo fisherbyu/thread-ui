@@ -112,7 +112,7 @@ export const ModalContent = () => {
 					<IconButton
 						ariaLabel="Close modal"
 						onClick={onClose}
-						color="primary"
+						color="neutral"
 						size={'sm'}
 						name="X"
 					/>
