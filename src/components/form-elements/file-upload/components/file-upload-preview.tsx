@@ -7,6 +7,41 @@ import { Button } from '@/components/ui';
 import { css } from '@/styled-system/css';
 import { Text } from '@/components/typography';
 
+const styles = {
+	container: css({
+		display: 'flex',
+		gap: '4',
+		flexDirection: 'column',
+		width: '100%',
+		marginX: 'auto',
+		justifyContent: {
+			base: 'normal',
+			md: 'space-between',
+		},
+		alignItems: 'center',
+	}),
+	contents: css({
+		width: '100%',
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'start',
+		gap: '2',
+	}),
+	item: css({
+		width: '100%',
+	}),
+	actionBlock: css({
+		alignSelf: 'flex-end',
+		display: 'flex',
+		gap: '3',
+		flexDirection: 'column',
+	}),
+	actionContent: css({
+		display: 'flex',
+		gap: '2',
+	}),
+};
+
 export const FileUploadPreview = () => {
 	const {
 		selectedFile,
@@ -22,41 +57,6 @@ export const FileUploadPreview = () => {
 	if (!selectedFile) {
 		return;
 	}
-
-	const styles = {
-		container: css({
-			display: 'flex',
-			gap: '4',
-			flexDirection: 'column',
-			width: '100%',
-			marginX: 'auto',
-			justifyContent: {
-				base: 'normal',
-				md: 'space-between',
-			},
-			alignItems: 'center',
-		}),
-		contents: css({
-			width: '100%',
-			display: 'flex',
-			flexDirection: 'row',
-			justifyContent: 'start',
-			gap: '2',
-		}),
-		item: css({
-			width: '100%',
-		}),
-		actionBlock: css({
-			alignSelf: 'flex-end',
-			display: 'flex',
-			gap: '3',
-			flexDirection: 'column',
-		}),
-		actionContent: css({
-			display: 'flex',
-			gap: '2',
-		}),
-	};
 
 	return (
 		<div className={styles.container}>

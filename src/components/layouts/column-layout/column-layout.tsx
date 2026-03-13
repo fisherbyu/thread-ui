@@ -5,6 +5,39 @@ import { H2, H3, Text } from '@/components';
 import { css } from '@/styled-system/css';
 import { LayoutWrapper } from '../layout-wrapper';
 
+const styles = {
+	section: css({
+		width: '100%',
+		marginRight: 'auto',
+		marginLeft: 'auto',
+		maxWidth: {
+			base: 'none',
+			md: 'var(--max-width, none)',
+			lg: 'none',
+		},
+		paddingRight: '2rem',
+		paddingLeft: '2rem',
+		paddingTop: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
+		paddingBottom: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		flex: { base: '1 1 0%', lg: 'none' },
+	}),
+	gridItem: css({
+		borderRadius: '0.25rem',
+		marginBottom: '1.5rem',
+		width: '100%',
+		height: 'auto',
+		overflow: 'hidden',
+	}),
+	gridItemContent: css({
+		width: '100%',
+		height: 'auto',
+		borderRadius: '0.25rem',
+	}),
+};
+
 /**
  * Responsive image grid with an optional title and caption.
  * Column count is controlled separately for medium and large viewports.
@@ -25,43 +58,10 @@ export const ColumnLayout = ({
 	items,
 	container = true,
 }: ColumnLayoutProps) => {
-	const sectionStyles = css({
-		width: '100%',
-		marginRight: 'auto',
-		marginLeft: 'auto',
-		maxWidth: {
-			base: 'none',
-			md: 'var(--max-width, none)',
-			lg: 'none',
-		},
-		paddingRight: '2rem',
-		paddingLeft: '2rem',
-		paddingTop: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
-		paddingBottom: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'center',
-		flex: { base: '1 1 0%', lg: 'none' },
-	});
-
-	const gridItemStyles = css({
-		borderRadius: '0.25rem',
-		marginBottom: '1.5rem',
-		width: '100%',
-		height: 'auto',
-		overflow: 'hidden',
-	});
-
-	const gridPhotoStyles = css({
-		width: '100%',
-		height: 'auto',
-		borderRadius: '0.25rem',
-	});
-
 	return (
 		<LayoutWrapper container={container}>
 			<section
-				className={sectionStyles}
+				className={styles.section}
 				style={
 					{
 						'--max-width': mdcol < 2 ? '800px' : 'none',
@@ -83,8 +83,8 @@ export const ColumnLayout = ({
 				<ColumnSkeleton mdcol={mdcol} lgcol={lgcol}>
 					{items.map((item, index) => (
 						<div key={item.key ?? index}>
-							<div className={gridItemStyles}>
-								{renderImage(item.content, undefined, gridPhotoStyles)}
+							<div className={styles.gridItem}>
+								{renderImage(item.content, undefined, styles.gridItemContent)}
 							</div>
 							{(item.title || item.description) && (
 								<>

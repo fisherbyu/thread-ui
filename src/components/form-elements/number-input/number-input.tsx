@@ -6,6 +6,62 @@ import { NumberInputProps } from './number-input.types';
 import { useState, useEffect } from 'react';
 import { css, cva, cx } from '@/styled-system/css';
 
+const styles = {
+	arrowButton: cva({
+		base: {
+			backgroundColor: { base: 'gray.light', _hover: 'gray.100' },
+			borderWidth: 'md',
+			borderColor: 'gray.light',
+			_focus: {
+				ring: '2',
+				ringColor: 'gray.100',
+				outline: 'none',
+			},
+		},
+		variants: {
+			direction: {
+				left: {
+					borderStartStartRadius: 'lg',
+					borderEndStartRadius: 'lg',
+				},
+				right: {
+					borderStartEndRadius: 'lg',
+					borderEndEndRadius: 'lg',
+				},
+			},
+		},
+	}),
+	baseSegment: css({
+		borderWidth: 'md',
+		borderColor: 'gray.light',
+		padding: '3',
+		height: '11',
+		textAlign: 'center',
+		fontSize: 'sm',
+	}),
+	centerSegment: css({
+		color: 'text.standard',
+		width: '16',
+		appearance: 'none',
+		'&::-webkit-outer-spin-button': {
+			appearance: 'none',
+		},
+		'&::-webkit-inner-spin-button': {
+			appearance: 'none',
+		},
+		_focus: {
+			ringColor: 'blue.500',
+			borderColor: 'blue.500',
+		},
+	}),
+	container: css({
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		alignSelf: 'start',
+	}),
+};
+
 const valueWithinRange = (value: number, min?: number, max?: number): boolean => {
 	if (min !== undefined && value < min) {
 		return false;
@@ -101,62 +157,6 @@ export const NumberInput = ({
 				onChange(e);
 			}
 		}
-	};
-
-	const styles = {
-		arrowButton: cva({
-			base: {
-				backgroundColor: { base: 'gray.light', _hover: 'gray.100' },
-				borderWidth: 'md',
-				borderColor: 'gray.light',
-				_focus: {
-					ring: '2',
-					ringColor: 'gray.100',
-					outline: 'none',
-				},
-			},
-			variants: {
-				direction: {
-					left: {
-						borderStartStartRadius: 'lg',
-						borderEndStartRadius: 'lg',
-					},
-					right: {
-						borderStartEndRadius: 'lg',
-						borderEndEndRadius: 'lg',
-					},
-				},
-			},
-		}),
-		baseSegment: css({
-			borderWidth: 'md',
-			borderColor: 'gray.light',
-			padding: '3',
-			height: '11',
-			textAlign: 'center',
-			fontSize: 'sm',
-		}),
-		centerSegment: css({
-			color: 'text.standard',
-			width: '16',
-			appearance: 'none',
-			'&::-webkit-outer-spin-button': {
-				appearance: 'none',
-			},
-			'&::-webkit-inner-spin-button': {
-				appearance: 'none',
-			},
-			_focus: {
-				ringColor: 'blue.500',
-				borderColor: 'blue.500',
-			},
-		}),
-		container: css({
-			display: 'flex',
-			justifyContent: 'center',
-			alignItems: 'center',
-			alignSelf: 'start',
-		}),
 	};
 
 	return (

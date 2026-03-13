@@ -7,21 +7,21 @@ import { FileInput } from './file-input';
 import { FilePreview } from './item-previews';
 import { FileUploadPreview } from './file-upload-preview';
 
+const styles = {
+	container: css({
+		width: '100%',
+		padding: '1',
+	}),
+	fileWrapper: css({
+		marginBottom: '2',
+		display: 'flex',
+		gap: '1',
+		flexDirection: 'column',
+	}),
+};
+
 export const FileUploadContent = () => {
 	const { value, name, title, removeFile, selectedFile } = useFileUploadContext();
-
-	const styles = {
-		container: css({
-			width: '100%',
-			padding: '1',
-		}),
-		fileWrapper: css({
-			marginBottom: '2',
-			display: 'flex',
-			gap: '1',
-			flexDirection: 'column',
-		}),
-	};
 
 	return (
 		<div className={styles.container}>

@@ -4,67 +4,68 @@ import { BaseItem } from '../base-item';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { css, cx } from '@/styled-system/css';
 
+const styles = {
+	parentBlock: css({
+		position: 'relative',
+	}),
+	textBlock: css({
+		display: 'flex',
+		flexDirection: 'row',
+		gap: '4px',
+		justifyContent: 'center',
+		alignItems: 'center',
+	}),
+	targetArea: css({
+		position: 'absolute',
+		width: `calc(100% + 32px)`,
+		height: { base: '0px', lg: '30px' },
+		left: '50%',
+		transform: 'translateX(-50%)',
+		bottom: { base: '-0px', lg: '-30px' },
+	}),
+	dropdownContent: css({
+		display: 'none',
+		borderWidth: '1px',
+		position: { base: 'static', lg: 'absolute' },
+		width: 'fit-content',
+		borderRadius: 'md',
+		padding: '16px',
+		zIndex: 10,
+		top: { lg: 'calc(100% + 30px)' },
+		left: { lg: '50%' },
+		transform: { lg: 'translateX(-50%)' },
+		background: 'background',
+		borderColor: 'structure',
+		_dark: {
+			backgroundColor: 'surface',
+		},
+	}),
+	dropdownContentShow: css({
+		display: { base: 'none', lg: 'block' },
+	}),
+	collapsedDropdownContent: css({
+		justifyContent: 'center',
+		columnGap: '24px',
+		alignItems: 'center',
+		backgroundColor: 'background',
+		width: '100vw',
+		position: 'relative',
+		left: '50%',
+		transform: 'translateX(-50%)',
+		borderRadius: 'md',
+		zIndex: 10,
+	}),
+	dropdownContentNoShow: css({
+		display: 'none',
+	}),
+	collapsedDropdownContentShow: css({
+		display: { base: 'flex', lg: 'none' },
+	}),
+};
+
 export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 	const [isHovered, setIsHovered] = useState(false);
 
-	const styles = {
-		parentBlock: css({
-			position: 'relative',
-		}),
-		textBlock: css({
-			display: 'flex',
-			flexDirection: 'row',
-			gap: '4px',
-			justifyContent: 'center',
-			alignItems: 'center',
-		}),
-		targetArea: css({
-			position: 'absolute',
-			width: `calc(100% + 32px)`,
-			height: { base: '0px', lg: '30px' },
-			left: '50%',
-			transform: 'translateX(-50%)',
-			bottom: { base: '-0px', lg: '-30px' },
-		}),
-		dropdownContent: css({
-			display: 'none',
-			borderWidth: '1px',
-			position: { base: 'static', lg: 'absolute' },
-			width: 'fit-content',
-			borderRadius: 'md',
-			padding: '16px',
-			zIndex: 10,
-			top: { lg: 'calc(100% + 30px)' },
-			left: { lg: '50%' },
-			transform: { lg: 'translateX(-50%)' },
-			background: 'background',
-			borderColor: 'structure',
-			_dark: {
-				backgroundColor: 'surface',
-			},
-		}),
-		dropdownContentShow: css({
-			display: { base: 'none', lg: 'block' },
-		}),
-		collapsedDropdownContent: css({
-			justifyContent: 'center',
-			columnGap: '24px',
-			alignItems: 'center',
-			backgroundColor: 'background',
-			width: '100vw',
-			position: 'relative',
-			left: '50%',
-			transform: 'translateX(-50%)',
-			borderRadius: 'md',
-			zIndex: 10,
-		}),
-		dropdownContentNoShow: css({
-			display: 'none',
-		}),
-		collapsedDropdownContentShow: css({
-			display: { base: 'flex', lg: 'none' },
-		}),
-	};
 	const arrow: CSSProperties = {
 		marginTop: '1px',
 		height: '12px',

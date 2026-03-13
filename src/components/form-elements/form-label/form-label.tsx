@@ -1,7 +1,26 @@
-import { css, cva } from '@/styled-system/css';
+import { cva } from '@/styled-system/css';
 import { FormLabelProps } from './form-label.types';
-import { H3, Text } from '@/components/typography';
-import { ExpandedUtilitySizeOptions, UtilitySizeOptions } from '@/types';
+import { Text } from '@/components/typography';
+
+const styles = cva({
+	base: {
+		display: 'block',
+		alignSelf: 'flex-start',
+	},
+	variants: {
+		size: {
+			sm: {
+				marginBottom: '1',
+			},
+			md: {
+				marginBottom: '1.5',
+			},
+			lg: {
+				marginBottom: '2',
+			},
+		},
+	},
+});
 
 /**
  * Form label linked to a control by `name`. Renders as an `H3` typographic style.
@@ -10,26 +29,6 @@ import { ExpandedUtilitySizeOptions, UtilitySizeOptions } from '@/types';
  * <FormLabel name="email" title="Email Address" />
  */
 export const FormLabel = ({ name, id = name, title, size = 'md' }: FormLabelProps) => {
-	const styles = cva({
-		base: {
-			display: 'block',
-			alignSelf: 'flex-start',
-		},
-		variants: {
-			size: {
-				sm: {
-					marginBottom: '1',
-				},
-				md: {
-					marginBottom: '1.5',
-				},
-				lg: {
-					marginBottom: '2',
-				},
-			},
-		},
-	});
-
 	const textSizeFromSizeProp = (() => {
 		switch (size) {
 			case 'sm':

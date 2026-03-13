@@ -2,6 +2,58 @@ import { Icon } from '@/components/ui';
 import { InfoCardProps } from './info-card.types';
 import { css } from '@/styled-system/css';
 
+const styles = {
+	card: css({
+		margin: 'auto',
+		border: 'solid',
+		borderRadius: 'md',
+		borderWidth: 'md',
+		borderColor: 'structure',
+		borderStyle: 'solid',
+		maxHeight: '15rem',
+		overflow: 'hidden',
+		maxWidth: '391px',
+		aspectRatio: '8 / 5',
+		width: '100%',
+		backgroundColor: { base: 'background', _hover: 'surface' },
+	}),
+	link: css({
+		cursor: 'pointer',
+	}),
+	imageWrapper: css({
+		overflow: 'hidden',
+		width: '100%',
+		height: '83.333333%',
+	}),
+	image: css({
+		height: 'auto',
+		minHeight: '100%',
+		width: 'auto',
+		minWidth: '100%',
+	}),
+	captionBlock: css({
+		padding: '0.5rem',
+		height: '16.666667%',
+	}),
+	caption: css({
+		display: 'flex',
+		gap: '2',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+	}),
+	captionIcon: css({
+		paddingRight: '0.25rem',
+	}),
+	captionText: css({
+		overflow: 'hidden',
+		textOverflow: 'ellipsis',
+		whiteSpace: 'nowrap',
+		fontSize: '0.875rem',
+		lineHeight: '1.25rem',
+		color: 'text.standard',
+	}),
+};
+
 /**
  * Linked card displaying a cover image, title, and icon. Supports named icons, emojis, and SVGs.
  *
@@ -14,58 +66,6 @@ import { css } from '@/styled-system/css';
  * />
  */
 export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
-	const styles = {
-		card: css({
-			margin: 'auto',
-			border: 'solid',
-			borderRadius: 'md',
-			borderWidth: 'md',
-			borderColor: 'structure',
-			borderStyle: 'solid',
-			maxHeight: '15rem',
-			overflow: 'hidden',
-			maxWidth: '391px',
-			aspectRatio: '8 / 5',
-			width: '100%',
-			backgroundColor: { base: 'background', _hover: 'surface' },
-		}),
-		link: css({
-			cursor: 'pointer',
-		}),
-		imageWrapper: css({
-			overflow: 'hidden',
-			width: '100%',
-			height: '83.333333%',
-		}),
-		image: css({
-			height: 'auto',
-			minHeight: '100%',
-			width: 'auto',
-			minWidth: '100%',
-		}),
-		captionBlock: css({
-			padding: '0.5rem',
-			height: '16.666667%',
-		}),
-		caption: css({
-			display: 'flex',
-			gap: '2',
-			justifyContent: 'flex-start',
-			alignItems: 'center',
-		}),
-		captionIcon: css({
-			paddingRight: '0.25rem',
-		}),
-		captionText: css({
-			overflow: 'hidden',
-			textOverflow: 'ellipsis',
-			whiteSpace: 'nowrap',
-			fontSize: '0.875rem',
-			lineHeight: '1.25rem',
-			color: 'text.standard',
-		}),
-	};
-
 	const renderIcon = () => {
 		if (typeof icon === 'string') {
 			return <Icon name={icon} size={24} />;

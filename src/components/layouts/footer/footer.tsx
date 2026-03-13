@@ -11,6 +11,45 @@ import {
 import { css, cx } from '@/styled-system/css';
 import { container } from '@/styled-system/patterns';
 
+const styles = {
+	footer: cx(container(), css({ marginX: 'auto' })),
+	footerContents: css({
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
+		paddingY: '40px',
+		marginX: 'auto',
+		overflow: 'hidden',
+		maxWidth: '1280px',
+	}),
+	textBlock: css({
+		marginTop: '8px',
+	}),
+	logoBlock: css({
+		display: 'flex',
+		flexDirection: 'row',
+		gap: '12px',
+		width: '100%',
+		justifyContent: 'center',
+		alignItems: 'center',
+		paddingY: '16px',
+	}),
+	circleStyle: css({
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		marginTop: '36px',
+		backgroundColor: 'black',
+		borderRadius: '50%',
+		width: '48px',
+		height: '48px',
+	}),
+	links: css({
+		color: 'text.standard',
+	}),
+};
+
 /**
  * Site footer with optional logo, caption, and social media icon links.
  * Only social icons with a provided URL are rendered.
@@ -34,45 +73,6 @@ export const Footer = ({
 }: FooterProps) => {
 	const weight = 'bold';
 	const size = 24;
-
-	const styles = {
-		footer: cx(container(), css({ marginX: 'auto' })),
-		footerContents: css({
-			display: 'flex',
-			flexDirection: 'column',
-			justifyContent: 'center',
-			alignItems: 'center',
-			paddingY: '40px',
-			marginX: 'auto',
-			overflow: 'hidden',
-			maxWidth: '1280px',
-		}),
-		textBlock: css({
-			marginTop: '8px',
-		}),
-		logoBlock: css({
-			display: 'flex',
-			flexDirection: 'row',
-			gap: '12px',
-			width: '100%',
-			justifyContent: 'center',
-			alignItems: 'center',
-			paddingY: '16px',
-		}),
-		circleStyle: css({
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'center',
-			marginTop: '36px',
-			backgroundColor: 'black',
-			borderRadius: '50%',
-			width: '48px',
-			height: '48px',
-		}),
-		links: css({
-			color: 'text.standard',
-		}),
-	};
 
 	return (
 		<footer className={styles.footer}>
