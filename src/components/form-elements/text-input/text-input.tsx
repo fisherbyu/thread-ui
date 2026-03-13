@@ -4,6 +4,11 @@ import { InputWrapper } from '../input-wrapper';
 import { baseInputStyles } from '../styles';
 import { cx, css } from '@/styled-system/css';
 
+const style = css({
+	minHeight: '25',
+	resize: 'vertical',
+});
+
 /**
  * Text input that renders either a single-line `input` or a resizable `textarea`.
  *
@@ -20,11 +25,6 @@ export const TextInput = ({
 	multiline = false,
 	onChange,
 }: TextInputProps) => {
-	const style = css({
-		minHeight: '25',
-		resize: 'vertical',
-	});
-
 	return (
 		<InputWrapper>
 			{title && <FormLabel id={id} name={name} title={title} />}

@@ -1,5 +1,6 @@
 import { UtilitySizeOptions } from '@/types';
 import { DropdownOption } from '../dropdown-base/dropdown-base.types';
+import { ButtonProps } from '@/components/ui';
 
 export type DropdownProps = {
 	/** Dropdown ID */
@@ -16,4 +17,6 @@ export type DropdownProps = {
 	placeholder?: string;
 	/** Size of Form Label @default `'md'`` */
 	size?: UtilitySizeOptions;
+	/** Dropdown Color @default 'neutral' */
+	color?: ButtonProps['color'];
 };

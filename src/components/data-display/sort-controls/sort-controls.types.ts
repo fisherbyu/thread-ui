@@ -33,7 +33,7 @@ export type SortControlsConfig<T> = {
 	/** Sort applied on initial render */
 	defaultSort?: ActiveSort<T>[];
 	/** Allows multiple fields to be sorted simultaneously @default `false` */
-	multi?: boolean;
+	multiSort?: boolean;
 };
 
 /** Return value of `useSortControls` — sorted data plus props to pass to `SortControls` */
@@ -65,4 +65,10 @@ export type SortControlsProps<T> = {
 	onClear: () => void;
 	/** Hides the reset button when true, indicating sort is in its default state */
 	isDefault?: boolean;
+	/** Optionally hide button to reset sorts */
+	hideReset?: boolean;
+	/** Display Sort Buttons as neutral when no sort is applied @default `'false'`` */
+	neutralWhenInactive?: boolean;
+	/** Optionally display title `Sort` above filters */
+	showSortLabel?: boolean;
 };

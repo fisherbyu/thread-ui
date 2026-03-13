@@ -16,6 +16,10 @@ const meta: Meta<typeof Dropdown> = {
 			options: ['sm', 'md', 'lg'],
 			description: 'Size applied to all filter dropdowns',
 		},
+		color: {
+			control: { type: 'select' },
+			options: ['neutral', 'primary'],
+		},
 	},
 };
 

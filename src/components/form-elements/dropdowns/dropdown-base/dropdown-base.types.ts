@@ -1,5 +1,5 @@
-import { IconNames } from '@/components/ui';
-import { UtilitySizeOptions } from '@/types';
+import { ButtonProps, IconNames } from '@/components/ui';
+import { UtilityColorOptions, UtilitySizeOptions } from '@/types';
 
 /**
  * A single option in the Dropdown list.
@@ -24,4 +24,5 @@ export type DropdownBaseProps = {
 	listHeader?: React.ReactNode;
 	size?: UtilitySizeOptions;
 	icon?: IconNames;
+	color?: ButtonProps['color'];
 };

@@ -21,7 +21,7 @@ const meta: Meta<typeof Divider> = {
 		},
 		weight: {
 			control: 'select',
-			options: ['light', 'standard', 'bold'],
+			options: ['light', 'standard', 'heavy'],
 			description: 'Thickness of the divider',
 		},
 	},

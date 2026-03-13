@@ -17,8 +17,8 @@ export type FilterField<T> = {
 	icon?: IconNames;
 	/** Optional color accent for the filter control */
 	color?: UtilityColorOptions;
-	/** Selectable options for this field. If omitted, options are derived from the data */
-	options?: FilterOption<T[keyof T]>[];
+	/** Customize options for this field (order or display label). If omitted, options are derived from the data */
+	filterOptions?: (string | { label: string; value: T[keyof T] })[];
 };
 
 /** `FilterField` with `options` guaranteed to be present after resolution */
@@ -43,7 +43,7 @@ export type FilterControlsConfig<T> = {
 	/** Filters applied on initial render */
 	defaultFilters?: ActiveFilter<T>[];
 	/** Whether multiple active filters combine with AND or OR logic @default `'and'` */
-	mode?: 'and' | 'or';
+	filterMode?: 'and' | 'or';
 };
 
 /** Return value of `useFilterControls` — filtered data plus props to pass to `FilterControls` */
@@ -59,10 +59,10 @@ export type FilterControlsData<T> = {
 	/** Clears all active filters across all fields */
 	clearAllFilters: () => void;
 	/** Pre-assembled props to spread directly onto `FilterControls` */
-	filterControlsProps: FilterControlsProps<T>;
+	filterControlsProps: FilterControlsBaseProps<T>;
 };
 
-export type FilterControlsProps<T> = {
+export type FilterControlsBaseProps<T> = {
 	/** Size variant for the filter controls @default `'sm'` */
 	size?: UtilitySizeOptions;
 	/** Color accent applied to the controls */
@@ -79,4 +79,19 @@ export type FilterControlsProps<T> = {
 	onClear: (key: keyof T) => void;
 	/** Called when all active filters are cleared */
 	onClearAll: () => void;
+	/** Checks whether a specific value is active for a given field */
+	isActive: (key: keyof T, value: T[keyof T]) => boolean;
+	/** Optionally hide button to reset filters */
+	hideReset?: boolean;
+	/** Optionally display title `Filter` above filters */
+	showFilterLabel?: boolean;
+	/** Display Filter Dropdown Buttons as neutral when no sort is applied @default `'false'`` */
+	neutralWhenInactive?: boolean;
+};
+
+export type FilterControlsProps<T> = Omit<FilterControlsBaseProps<T>, 'neutralWhenInactive'>;
+
+export type InlineFilterControlsProps<T> = FilterControlsBaseProps<T> & {
+	/** Determines where field Title is displayed */
+	fieldTitleDisplay?: 'none' | 'inline' | 'block';
 };

@@ -4,7 +4,32 @@ import { createPortal } from 'react-dom';
 import { ModalProps } from './modal.types';
 import { ModalProvider } from './modal-context';
 import { ModalContent } from './components/modal-content';
-import { css } from '@/styled-system/css';
+import { css, cva } from '@/styled-system/css';
+
+const styles = {
+	overlay: cva({
+		base: {
+			position: 'fixed',
+			inset: 0,
+			background: 'rgba(0, 0, 0, 0.5)',
+			display: 'flex',
+			justifyContent: 'center',
+			zIndex: 50,
+		},
+		variants: {
+			placement: {
+				center: {
+					alignItems: 'center',
+					paddingTop: '0',
+				},
+				top: {
+					alignItems: 'top',
+					paddingTop: '10',
+				},
+			},
+		},
+	}),
+};
 
 /**
  * Modal dialog rendered in a portal with a backdrop overlay. Supports top and center placement,
@@ -34,19 +59,6 @@ export const Modal = (props: ModalProps) => {
 		};
 	}, [open, preventScroll]);
 
-	const styles = {
-		overlay: css({
-			position: 'fixed',
-			inset: 0,
-			background: 'rgba(0, 0, 0, 0.5)',
-			display: 'flex',
-			alignItems: placement === 'top' ? 'flex-start' : 'center',
-			justifyContent: 'center',
-			zIndex: 50,
-			paddingTop: placement === 'top' ? '10' : '0',
-		}),
-	};
-
 	if (open) {
 		const target = portalTarget ?? document.body;
 
@@ -60,7 +72,7 @@ export const Modal = (props: ModalProps) => {
 					preventScroll,
 				}}
 			>
-				<div className={styles.overlay}>
+				<div className={styles.overlay({ placement })}>
 					<ModalContent />
 				</div>
 			</ModalProvider>,

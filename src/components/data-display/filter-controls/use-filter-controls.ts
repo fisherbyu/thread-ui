@@ -32,14 +32,19 @@ export const useFilterControls = <T>({
 	data,
 	fields,
 	defaultFilters,
-	mode = 'and',
+	filterMode = 'and',
 }: FilterControlsConfig<T>): FilterControlsData<T> => {
 	const [activeFilters, setActiveFilters] = useState<ActiveFilter<T>[]>(defaultFilters ?? []);
 
 	const resolvedFields = useMemo<ResolvedFilterField<T>[]>(
 		() =>
 			fields.map((field) => {
-				if (field.options) return field as ResolvedFilterField<T>;
+				if (field.filterOptions) {
+					const options = field.filterOptions.map((o) =>
+						typeof o === 'string' ? { value: o as T[keyof T], label: o } : o
+					);
+					return { ...field, options };
+				}
 				const unique = [...new Set(data.map((row) => row[field.key]))];
 				const options = unique
 					.map((value) => ({ value, label: String(value) }))
@@ -85,12 +90,23 @@ export const useFilterControls = <T>({
 	const filteredData = useMemo(() => {
 		if (activeFilters.length === 0) return data;
 		return data.filter((row) => {
-			if (mode === 'and') {
+			if (filterMode === 'and') {
 				return activeFilters.every((f) => f.values.includes(row[f.key]));
 			}
 			return activeFilters.some((f) => f.values.includes(row[f.key]));
 		});
-	}, [data, activeFilters, mode]);
+	}, [data, activeFilters, filterMode]);
+
+	const activeSet = useMemo(() => {
+		const set = new Set<string>();
+		activeFilters.forEach((f) =>
+			f.values.forEach((v) => set.add(`${String(f.key)}:${String(v)}`))
+		);
+		return set;
+	}, [activeFilters]);
+
+	const isActive = (key: keyof T, value: T[keyof T]): boolean =>
+		activeSet.has(`${String(key)}:${String(value)}`);
 
 	return {
 		filteredData,
@@ -105,6 +121,7 @@ export const useFilterControls = <T>({
 			onClear: clearFilter,
 			onClearAll: clearAllFilters,
 			isDefault,
+			isActive,
 		},
 	};
 };

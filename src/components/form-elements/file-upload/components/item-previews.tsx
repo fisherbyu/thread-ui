@@ -4,36 +4,36 @@ import { css } from '@/styled-system/css';
 import { isFileImageType } from '@/utils';
 import { ReactNode } from 'react';
 
+const styles = {
+	image: css({
+		width: '100%',
+		height: '100%',
+		objectFit: 'cover',
+		borderRadius: 'md',
+		maxHeight: '6rem',
+		maxWidth: '6rem',
+	}),
+	wrapper: css({
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'center',
+		gap: '3',
+	}),
+};
+
+const fixedImageStyles = {
+	height: 'auto',
+	width: 'auto',
+	maxWidth: '256px',
+	maxHeight: '400px',
+};
+
 export type ImageDisplayProps = {
 	src: string;
 	action?: () => void;
 };
 
 export const ImageDisplay = ({ src, action }: ImageDisplayProps) => {
-	const styles = {
-		image: css({
-			width: '100%',
-			height: '100%',
-			objectFit: 'cover',
-			borderRadius: 'md',
-			maxHeight: '6rem',
-			maxWidth: '6rem',
-		}),
-		wrapper: css({
-			display: 'flex',
-			flexDirection: 'row',
-			justifyContent: 'center',
-			gap: '3',
-		}),
-	};
-
-	const fixedImageStyles = {
-		height: 'auto',
-		width: 'auto',
-		maxWidth: '256px',
-		maxHeight: '400px',
-	};
-
 	if (action) {
 		return (
 			<div className={styles.wrapper}>

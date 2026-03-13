@@ -76,7 +76,7 @@ Component CSS is pre-generated using Panda CSS, so components render correctly s
 
 ### Data Display
 
-`FilterControls` `SortControls`
+`DataDisplayControls` `FilterControls` `SortControls`
 
 ## Hooks
 

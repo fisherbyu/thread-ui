@@ -3,6 +3,80 @@ import { CardProps } from './card.types';
 import { H3 } from '@/components/typography';
 import { Divider } from '../divider';
 
+const styles = {
+	cardContainer: cva({
+		base: {
+			borderWidth: 'sm',
+			borderColor: 'structure',
+			padding: {
+				base: '5',
+			},
+			marginX: 'auto',
+			maxWidth: '850px',
+			width: {
+				base: '100%',
+				md: '75%',
+			},
+		},
+		variants: {
+			size: {
+				sm: {
+					borderRadius: 'sm',
+					maxWidth: '600px',
+				},
+				md: {
+					borderRadius: 'md',
+				},
+				lg: {
+					borderRadius: 'lg',
+				},
+			},
+			surfaceColor: {
+				background: {
+					backgroundColor: 'background',
+				},
+				surface: {
+					backgroundColor: 'surface',
+				},
+				elevated: {
+					backgroundColor: 'elevated',
+				},
+			},
+			shadow: {
+				true: {
+					boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+				},
+				false: {
+					boxShadow: 'none',
+				},
+			},
+		},
+		defaultVariants: {
+			size: 'md',
+			surfaceColor: 'background',
+			shadow: true,
+		},
+	}),
+	title: cva({
+		variants: {
+			size: {
+				sm: {
+					marginBottom: '1',
+				},
+				md: {
+					marginBottom: '3',
+				},
+				lg: {
+					marginBottom: '3',
+				},
+			},
+		},
+		defaultVariants: {
+			size: 'md',
+		},
+	}),
+};
+
 /**
  * General-purpose content card container with optional title, divider, shadow, and surface color variants.
  *
@@ -18,80 +92,6 @@ export const Card = ({
 	shadow = true,
 	title,
 }: CardProps) => {
-	const styles = {
-		cardContainer: cva({
-			base: {
-				borderWidth: 'sm',
-				borderColor: 'structure',
-				padding: {
-					base: '5',
-				},
-				marginX: 'auto',
-				maxWidth: '850px',
-				width: {
-					base: '100%',
-					md: '75%',
-				},
-			},
-			variants: {
-				size: {
-					sm: {
-						borderRadius: 'sm',
-						maxWidth: '600px',
-					},
-					md: {
-						borderRadius: 'md',
-					},
-					lg: {
-						borderRadius: 'lg',
-					},
-				},
-				surfaceColor: {
-					background: {
-						backgroundColor: 'background',
-					},
-					surface: {
-						backgroundColor: 'surface',
-					},
-					elevated: {
-						backgroundColor: 'elevated',
-					},
-				},
-				shadow: {
-					true: {
-						boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-					},
-					false: {
-						boxShadow: 'none',
-					},
-				},
-			},
-			defaultVariants: {
-				size: 'md',
-				surfaceColor: 'background',
-				shadow: true,
-			},
-		}),
-		title: cva({
-			variants: {
-				size: {
-					sm: {
-						marginBottom: '1',
-					},
-					md: {
-						marginBottom: '3',
-					},
-					lg: {
-						marginBottom: '3',
-					},
-				},
-			},
-			defaultVariants: {
-				size: 'md',
-			},
-		}),
-	};
-
 	return (
 		<div className={styles.cardContainer({ size, surfaceColor, shadow })}>
 			{title && (

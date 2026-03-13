@@ -10,6 +10,7 @@ import { ButtonProps } from './button.types';
  * </Button>
  */
 export const Button = ({
+	ariaLabel,
 	children,
 	fullWidth = false,
 	color = 'primary',
@@ -30,6 +31,7 @@ export const Button = ({
 
 	return (
 		<button
+			aria-label={ariaLabel}
 			type={type}
 			className={buttonClasses}
 			onClick={disabled ? undefined : onClick}

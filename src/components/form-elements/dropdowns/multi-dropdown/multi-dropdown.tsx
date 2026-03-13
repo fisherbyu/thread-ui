@@ -53,6 +53,7 @@ export const MultiDropdown = ({
 	size,
 	icon,
 	showLabel = true,
+	color,
 }: MultiDropdownProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -74,7 +75,14 @@ export const MultiDropdown = ({
 			listHeader={
 				<div className={styles.headerStyles}>
 					{values.length > 0 && (
-						<IconButton onClick={onClear} color="text" name="X" text size="sm">
+						<IconButton
+							ariaLabel="Clear selected filters"
+							onClick={onClear}
+							color="text"
+							name="X"
+							text
+							size="sm"
+						>
 							Clear
 						</IconButton>
 					)}
@@ -96,6 +104,7 @@ export const MultiDropdown = ({
 			}}
 			size={size}
 			icon={icon}
+			color={color}
 		/>
 	);
 };

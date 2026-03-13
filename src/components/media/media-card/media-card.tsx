@@ -5,6 +5,139 @@ import { Divider, Icon } from '@/components/ui';
 import { LinkWrapper, renderImage } from '@/internal-components';
 import { cloneElement, isValidElement } from 'react';
 
+const styles = {
+	container: cva({
+		base: {
+			alignItems: 'center',
+			borderRadius: 'md',
+			borderWidth: 'md',
+			borderColor: 'structure',
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+			gap: '3',
+			marginX: 'auto',
+			padding: {
+				base: '4',
+				lg: '6',
+			},
+			width: '83%',
+		},
+		variants: {
+			size: {
+				sm: { maxWidth: '576px' },
+				md: { maxWidth: '672px' },
+				lg: { maxWidth: '896px' },
+			},
+		},
+		defaultVariants: {
+			size: 'md',
+		},
+	}),
+	title: css({
+		width: '100%',
+		marginX: 'auto',
+	}),
+	contents: cva({
+		base: {
+			width: '100%',
+			marginX: 'auto',
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			gap: '0.5rem',
+		},
+		variants: {
+			imagePosition: {
+				left: {
+					flexDirection: {
+						base: 'column',
+						lg: 'row',
+					},
+				},
+				right: {
+					flexDirection: {
+						base: 'column',
+						lg: 'row-reverse',
+					},
+				},
+			},
+		},
+	}),
+	imageBlock: css({
+		width: {
+			base: '100%',
+			lg: '4/12',
+		},
+		marginX: 'auto',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: {
+			base: '0.5rem',
+			lg: '0.75rem',
+		},
+		flexDirection: 'column',
+	}),
+	image: css({
+		borderRadius: 'md',
+		borderWidth: 'sm',
+		width: '100%',
+		maxWidth: '16rem',
+		marginX: 'auto',
+		marginTop: {
+			lg: '0.75rem',
+		},
+	}),
+	links: css({
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: '0.5rem',
+		color: 'text.standard',
+	}),
+	dividerWrapper: css({
+		display: {
+			lg: 'none',
+		},
+		marginY: '0.5rem',
+		width: '9/12',
+	}),
+	description: css({
+		width: {
+			base: '10/12',
+			lg: '7/12',
+		},
+		marginX: 'auto',
+		alignItems: 'center',
+		justifyContent: 'center',
+		gap: '0.75rem',
+		display: 'flex',
+		flexDirection: {
+			base: 'column',
+			lg: 'column-reverse',
+		},
+	}),
+	descriptionWrapper: css({
+		maxHeight: {
+			base: '300px',
+			md: 'none',
+			lg: '500px',
+		},
+		overflowY: {
+			base: 'auto',
+			md: 'visible',
+			lg: 'scroll',
+		},
+	}),
+	details: css({
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '1',
+	}),
+};
+
 /**
  * Media card with an image, title, description, detail pairs, and icon links.
  * Supports flexible image positioning and placing details in either the image or text column.
@@ -28,125 +161,6 @@ export const MediaCard = ({
 	size = 'md',
 	title,
 }: MediaCardProps) => {
-	const styles = {
-		container: cva({
-			base: {
-				alignItems: 'center',
-				borderRadius: 'md',
-				borderWidth: 'md',
-				borderColor: 'structure',
-				display: 'flex',
-				flexDirection: 'column',
-				justifyContent: 'center',
-				gap: '3',
-				marginX: 'auto',
-				padding: {
-					base: '4',
-					lg: '6',
-				},
-				width: '83%',
-			},
-			variants: {
-				size: {
-					sm: { maxWidth: '576px' },
-					md: { maxWidth: '672px' },
-					lg: { maxWidth: '896px' },
-				},
-			},
-			defaultVariants: {
-				size: 'md',
-			},
-		}),
-		title: css({
-			width: '100%',
-			marginX: 'auto',
-		}),
-		contents: css({
-			width: '100%',
-			marginX: 'auto',
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'center',
-			gap: '0.5rem',
-			flexDirection: {
-				base: 'column',
-				lg: imagePosition === 'left' ? 'row' : 'row-reverse',
-			},
-		}),
-		imageBlock: css({
-			width: {
-				base: '100%',
-				lg: '4/12',
-			},
-			marginX: 'auto',
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'center',
-			gap: {
-				base: '0.5rem',
-				lg: '0.75rem',
-			},
-			flexDirection: 'column',
-		}),
-		image: css({
-			borderRadius: 'md',
-			borderWidth: 'sm',
-			width: '100%',
-			maxWidth: '16rem',
-			marginX: 'auto',
-			marginTop: {
-				lg: '0.75rem',
-			},
-		}),
-		links: css({
-			display: 'flex',
-			flexDirection: 'row',
-			alignItems: 'center',
-			justifyContent: 'center',
-			gap: '0.5rem',
-			color: 'text.standard',
-		}),
-		dividerWrapper: css({
-			display: {
-				lg: 'none',
-			},
-			marginY: '0.5rem',
-			width: '9/12',
-		}),
-		description: css({
-			width: {
-				base: '10/12',
-				lg: '7/12',
-			},
-			marginX: 'auto',
-			alignItems: 'center',
-			justifyContent: 'center',
-			gap: '0.75rem',
-			display: 'flex',
-			flexDirection: {
-				base: 'column',
-				lg: 'column-reverse',
-			},
-		}),
-		descriptionWrapper: css({
-			maxHeight: {
-				base: '300px',
-				md: 'none',
-				lg: '500px',
-			},
-			overflowY: {
-				base: 'auto',
-				md: 'visible',
-				lg: 'scroll',
-			},
-		}),
-		details: css({
-			display: 'flex',
-			flexDirection: 'column',
-			gap: '1',
-		}),
-	};
-
 	const linksSection = links.map((link, index) =>
 		isValidElement(link) ? (
 			cloneElement(link, { key: index })
@@ -180,7 +194,7 @@ export const MediaCard = ({
 				</H1>
 			</div>
 			<Divider marginY="8px" />
-			<div className={styles.contents}>
+			<div className={styles.contents({ imagePosition })}>
 				<div className={styles.imageBlock}>
 					{renderImage(image, undefined, styles.image)}
 					<div className={styles.links}>{linksSection}</div>

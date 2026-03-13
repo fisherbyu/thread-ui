@@ -18,5 +18,7 @@ export type ButtonProps = {
 	text?: boolean;
 	/** Disables the button and suppresses click events @default `false` */
 	disabled?: boolean;
+	/** Accessibility Label to be added to Button  */
+	ariaLabel?: string;
 	children: ReactNode;
 };
