@@ -2,7 +2,11 @@
 
 import { useFilterControls } from '../filter-controls';
 import { useSortControls } from '../sort-controls';
-import { DataDisplayControlsConfig, DataDisplayControlsData } from './data-display-controls.types';
+import {
+	DataDisplayControlsConfig,
+	DataDisplayControlsData,
+	ResolvedDataField,
+} from './data-display-controls.types';
 
 /**
  * Composes `useFilterControls` and `useSortControls` into a single hook.
@@ -31,6 +35,7 @@ export const useDataDisplayControls = <T>({
 	filterMode,
 	multiSort,
 	fields,
+	alwaysSortedFields,
 }: DataDisplayControlsConfig<T>): DataDisplayControlsData<T> => {
 	const {
 		filteredData,
@@ -46,10 +51,15 @@ export const useDataDisplayControls = <T>({
 		defaultFilters,
 	});
 
-	const sortFields = filterControlsProps.fields.filter((field) => {
-		const unique = new Set(filteredData.map((row) => row[field.key]));
-		return unique.size > 1;
-	});
+	const sortFields = [
+		...filterControlsProps.fields.filter((field) => {
+			const unique = new Set(filteredData.map((row) => row[field.key]));
+			return unique.size > 1;
+		}),
+		...(alwaysSortedFields ?? []).filter(
+			(af) => !filterControlsProps.fields.some((f) => f.key === af.key)
+		),
+	] as ResolvedDataField<T>[];
 
 	const {
 		sortedData: refinedData,

@@ -19,7 +19,14 @@ export type ResolvedDataField<T> = Prettify<Override<SortField<T> & ResolvedFilt
 
 /** Configuration passed to `useDataDisplayControls` combining sort and filter config */
 export type DataDisplayControlsConfig<T> = Prettify<
-	Override<SortControlsConfig<T> & FilterControlsConfig<T>, { fields: DataField<T>[] }>
+	Override<
+		SortControlsConfig<T> & FilterControlsConfig<T>,
+		{
+			fields: DataField<T>[];
+			/** Additional sorted fields */
+			alwaysSortedFields?: SortField<T>[];
+		}
+	>
 >;
 
 /** Return value of `useDataDisplayControls` — refined data plus props to pass to `DataDisplayControls` */
