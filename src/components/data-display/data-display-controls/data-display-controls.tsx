@@ -19,6 +19,15 @@ const styles = cva({
 	},
 });
 
+/**
+ * Combined filter and sort control bar. Renders filter controls (standard or inline)
+ * alongside sort controls, with a single reset button that clears both.
+ * Designed to be used with `useDataDisplayControls` via `dataDisplayControlsProps`.
+ *
+ * @example
+ * const { refinedData, dataDisplayControlsProps } = useDataDisplayControls({ data, fields });
+ * <DataDisplayControls {...dataDisplayControlsProps} />
+ */
 export const DataDisplayControls = <T,>({
 	fields,
 	sortFields,

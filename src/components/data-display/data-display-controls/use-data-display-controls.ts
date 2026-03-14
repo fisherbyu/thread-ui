@@ -4,6 +4,26 @@ import { useFilterControls } from '../filter-controls';
 import { useSortControls } from '../sort-controls';
 import { DataDisplayControlsConfig, DataDisplayControlsData } from './data-display-controls.types';
 
+/**
+ * Composes `useFilterControls` and `useSortControls` into a single hook.
+ * Sorting is applied after filtering, and sort fields are automatically narrowed
+ * to fields with more than one unique value in the filtered dataset.
+ *
+ * @example
+ * const { refinedData, dataDisplayControlsProps } = useDataDisplayControls({
+ *   data: products,
+ *   fields: [{ key: 'category', label: 'Category' }, { key: 'price', label: 'Price' }],
+ *   filterMode: 'or',
+ *   multiSort: true,
+ * });
+ *
+ * return (
+ *   <>
+ *     <DataDisplayControls {...dataDisplayControlsProps} />
+ *     <ProductList data={refinedData} />
+ *   </>
+ * );
+ */
 export const useDataDisplayControls = <T>({
 	data,
 	defaultSort,
