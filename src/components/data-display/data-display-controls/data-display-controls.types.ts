@@ -8,10 +8,14 @@ import {
 	FilterControlsConfig,
 	ResolvedFilterField,
 	FilterControlsBaseProps,
+	FilterField,
 } from '../filter-controls/filter-controls.types';
 
 /** A field that supports both sorting and filtering */
-export type DataField<T> = Prettify<Override<SortField<T> & ResolvedFilterField<T>, {}>>;
+export type DataField<T> = Prettify<Override<SortField<T> & FilterField<T>, {}>>;
+
+/** Resolved field type — options are always present */
+export type ResolvedDataField<T> = Prettify<Override<SortField<T> & ResolvedFilterField<T>, {}>>;
 
 /** Configuration passed to `useDataDisplayControls` combining sort and filter config */
 export type DataDisplayControlsConfig<T> = Prettify<
@@ -32,9 +36,9 @@ export type DataDisplayControlsProps<T> = Prettify<
 		'fields' | 'hideReset' | 'onToggle' | 'onClear'
 	> & {
 		/** Fields for both filtering and sorting */
-		fields: DataField<T>[];
+		fields: ResolvedDataField<T>[];
 		/** Fields available for sorting, derived from fields with more than one unique value in the filtered data */
-		sortFields: DataField<T>[];
+		sortFields: ResolvedDataField<T>[];
 		/** Called when a sort field is toggled */
 		onToggleSort: SortControlsProps<T>['onToggle'];
 		/** Called when a filter field is cleared */
