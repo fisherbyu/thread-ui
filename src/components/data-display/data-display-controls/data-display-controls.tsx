@@ -39,7 +39,7 @@ export const DataDisplayControls = <T,>({
 	onClearFilter,
 	onToggleFilter,
 	onToggleSort,
-	size,
+	size = 'sm',
 	color,
 	filterVariant = 'inline',
 	showFilterLabel,
