@@ -1,23 +1,28 @@
-import { cva } from '@/styled-system/css';
+import { css, cva } from '@/styled-system/css';
 import { FilterControls, InlineFilterControls } from '../filter-controls';
 import { SortControls } from '../sort-controls';
 import { DataDisplayControlsProps } from './data-display-controls.types';
 import { Button } from '@/components/ui';
 
-const styles = cva({
-	base: {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'start',
-	},
-	variants: {
-		size: {
-			sm: { gap: 1 },
-			md: { gap: 2 },
-			lg: { gap: 3 },
+const styles = {
+	container: cva({
+		base: {
+			display: 'flex',
+			flexDirection: 'column',
+			alignItems: 'start',
 		},
-	},
-});
+		variants: {
+			size: {
+				sm: { gap: 1 },
+				md: { gap: 2 },
+				lg: { gap: 3 },
+			},
+		},
+	}),
+	resetSpacer: css({
+		height: 5,
+	}),
+};
 
 /**
  * Combined filter and sort control bar. Renders filter controls (standard or inline)
@@ -75,19 +80,21 @@ export const DataDisplayControls = <T,>({
 	const Filter = filterVariant === 'standard' ? FilterControls : InlineFilterControls;
 
 	return (
-		<div className={styles({ size })}>
+		<div className={styles.container({ size })}>
 			<Filter {...sharedProps} {...filterProps} />
 			<SortControls {...sharedProps} {...sortProps} />
-			{!isDefault && (
-				<Button
-					ariaLabel="Clear all filters and Sorting"
-					size="sm"
-					onClick={onClearAll}
-					text
-				>
-					Reset
-				</Button>
-			)}
+			<div className={styles.resetSpacer}>
+				{!isDefault && (
+					<Button
+						ariaLabel="Clear all filters and Sorting"
+						size="sm"
+						onClick={onClearAll}
+						text
+					>
+						Reset
+					</Button>
+				)}
+			</div>
 		</div>
 	);
 };
