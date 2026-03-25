@@ -1,3 +1,4 @@
+'use client';
 import { Icon } from '@/components/ui';
 import { InfoCardProps } from './info-card.types';
 import { css, cx } from '@/styled-system/css';
