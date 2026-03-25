@@ -63,13 +63,12 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 	const renderIcon = () => {
 		if (typeof icon === 'string') {
 			return <Icon name={icon} size={24} />;
-		} else if (icon.type === 'svg') {
+		} else if (icon.type === 'svg' && icon.content) {
 			return (
 				<img
 					height={24}
 					width={24}
 					src={icon.content}
-					alt="Article Icon"
 					onError={(e) => {
 						e.currentTarget.style.display = 'none';
 					}}
