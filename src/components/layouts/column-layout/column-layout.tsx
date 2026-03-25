@@ -15,8 +15,6 @@ const styles = {
 			md: 'var(--max-width, none)',
 			lg: 'none',
 		},
-		paddingRight: '2rem',
-		paddingLeft: '2rem',
 		paddingTop: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
 		paddingBottom: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
 		display: 'flex',
@@ -30,6 +28,7 @@ const styles = {
 		width: '100%',
 		height: 'auto',
 		overflow: 'hidden',
+		minWidth: '0',
 	}),
 	gridItemContent: css({
 		width: '100%',

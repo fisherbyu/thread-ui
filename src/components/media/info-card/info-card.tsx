@@ -1,6 +1,7 @@
 import { Icon } from '@/components/ui';
 import { InfoCardProps } from './info-card.types';
-import { css } from '@/styled-system/css';
+import { css, cx } from '@/styled-system/css';
+import { Text } from '@/components/typography';
 
 const styles = {
 	card: css({
@@ -17,40 +18,33 @@ const styles = {
 		width: '100%',
 		backgroundColor: { base: 'background', _hover: 'surface' },
 	}),
+	cardContent: css({
+		display: 'flex',
+		flexDirection: 'column',
+	}),
 	link: css({
 		cursor: 'pointer',
 	}),
 	imageWrapper: css({
 		overflow: 'hidden',
 		width: '100%',
-		height: '83.333333%',
+		flex: '1',
+		minHeight: '0',
 	}),
 	image: css({
-		height: 'auto',
-		minHeight: '100%',
-		width: 'auto',
-		minWidth: '100%',
-	}),
-	captionBlock: css({
-		padding: '0.5rem',
-		height: '16.666667%',
+		height: '100%',
+		width: '100%',
+		objectFit: 'cover',
 	}),
 	caption: css({
+		padding: '2.5',
+		height: '10',
 		display: 'flex',
 		gap: '2',
 		justifyContent: 'flex-start',
+		flexDirection: 'row',
 		alignItems: 'center',
-	}),
-	captionIcon: css({
-		paddingRight: '0.25rem',
-	}),
-	captionText: css({
-		overflow: 'hidden',
-		textOverflow: 'ellipsis',
-		whiteSpace: 'nowrap',
-		fontSize: '0.875rem',
-		lineHeight: '1.25rem',
-		color: 'text.standard',
+		flexShrink: 0,
 	}),
 };
 
@@ -69,36 +63,31 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 	const renderIcon = () => {
 		if (typeof icon === 'string') {
 			return <Icon name={icon} size={24} />;
-		} else if (icon.type === 'svg') {
+		} else if (icon.type === 'svg' && icon.content) {
 			return (
 				<img
-					className={styles.captionIcon}
-					height={23}
-					width={23}
+					height={24}
+					width={24}
 					src={icon.content}
-					alt="Article Icon"
+					onError={(e) => {
+						e.currentTarget.style.display = 'none';
+					}}
 				/>
 			);
-		} else {
-			<span className={styles.captionIcon} role="img">
-				{JSON.parse(`"${icon.content}"`)}
-			</span>;
 		}
 	};
 
 	return (
-		<div className={styles.card}>
-			<a href={url} className={styles.link}>
-				<div className={styles.imageWrapper}>
-					<img className={styles.image} src={img} alt="Article Cover Image" />
-				</div>
-				<div className={styles.captionBlock}>
-					<span className={styles.caption}>
-						{renderIcon()}
-						<p className={styles.captionText}>{title}</p>
-					</span>
-				</div>
-			</a>
-		</div>
+		<a href={url} className={cx(styles.cardContent, styles.link, styles.card)}>
+			<div className={styles.imageWrapper}>
+				<img className={styles.image} src={img} alt="Article Cover Image" />
+			</div>
+			<div className={styles.caption}>
+				{renderIcon()}
+				<Text size="sm" truncate inline>
+					{title}
+				</Text>
+			</div>
+		</a>
 	);
 };
