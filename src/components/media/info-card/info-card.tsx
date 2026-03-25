@@ -1,6 +1,7 @@
 import { Icon } from '@/components/ui';
 import { InfoCardProps } from './info-card.types';
 import { css } from '@/styled-system/css';
+import { Text } from '@/components/typography';
 
 const styles = {
 	card: css({
@@ -26,31 +27,23 @@ const styles = {
 		height: '83.333333%',
 	}),
 	image: css({
-		height: 'auto',
-		minHeight: '100%',
-		width: 'auto',
-		minWidth: '100%',
+		height: '100%',
+		width: '100%',
+		objectFit: 'cover',
 	}),
 	captionBlock: css({
-		padding: '0.5rem',
-		height: '16.666667%',
+		padding: '2.5',
+		height: '10',
 	}),
 	caption: css({
 		display: 'flex',
 		gap: '2',
 		justifyContent: 'flex-start',
+		flexDirection: 'row',
 		alignItems: 'center',
 	}),
 	captionIcon: css({
 		paddingRight: '0.25rem',
-	}),
-	captionText: css({
-		overflow: 'hidden',
-		textOverflow: 'ellipsis',
-		whiteSpace: 'nowrap',
-		fontSize: '0.875rem',
-		lineHeight: '1.25rem',
-		color: 'text.standard',
 	}),
 };
 
@@ -95,7 +88,9 @@ export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 				<div className={styles.captionBlock}>
 					<span className={styles.caption}>
 						{renderIcon()}
-						<p className={styles.captionText}>{title}</p>
+						<Text size="sm" truncate inline>
+							{title}
+						</Text>
 					</span>
 				</div>
 			</a>
