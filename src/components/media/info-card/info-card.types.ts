@@ -12,7 +12,7 @@ export type InfoCardProps = {
 	 * icon={{ type: 'emoji', content: '1F4C4' }}
 	 * icon={{ type: 'svg', content: '/icons/article.svg' }}
 	 */
-	icon: IconNames | { type: 'emoji' | 'svg'; content: string };
+	icon?: IconNames | { type: 'emoji' | 'svg'; content: string };
 	/** Cover image URL displayed in the card */
 	img: string;
 };
