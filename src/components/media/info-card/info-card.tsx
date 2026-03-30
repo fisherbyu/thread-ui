@@ -3,6 +3,7 @@ import { Icon } from '@/components/ui';
 import { InfoCardProps } from './info-card.types';
 import { css, cx } from '@/styled-system/css';
 import { Text } from '@/components/typography';
+import { DynamicIcon } from '@/internal-components';
 
 const styles = {
 	card: css({
@@ -61,35 +62,13 @@ const styles = {
  * />
  */
 export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
-	const renderIcon = () => {
-		if (!icon) {
-			return;
-		}
-		if (typeof icon === 'string') {
-			return <Icon name={icon} size={24} />;
-		} else if (icon.type === 'emoji' && icon.content) {
-			return <span style={{ fontSize: 20, lineHeight: 1 }}>{icon.content}</span>;
-		} else if (icon.type === 'svg' && icon.content) {
-			return (
-				<img
-					height={24}
-					width={24}
-					src={icon.content}
-					onError={(e) => {
-						e.currentTarget.style.display = 'none';
-					}}
-				/>
-			);
-		}
-	};
-
 	return (
 		<a href={url} className={cx(styles.cardContent, styles.link, styles.card)}>
 			<div className={styles.imageWrapper}>
 				<img className={styles.image} src={img} alt="Article Cover Image" />
 			</div>
 			<div className={styles.caption}>
-				{renderIcon()}
+				<DynamicIcon icon={icon} size={24} />
 				<Text size="sm" truncate inline>
 					{title}
 				</Text>
