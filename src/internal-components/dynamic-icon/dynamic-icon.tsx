@@ -3,6 +3,7 @@ import { Icon } from '@/components';
 import { DynamicIconProps } from './dynamic-icon.types';
 
 const emoji = (code: string) => {
+	if (code.codePointAt(0)! > 255) return code;
 	return String.fromCodePoint(parseInt(code.replace('U+', ''), 16));
 };
 
