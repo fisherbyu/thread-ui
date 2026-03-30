@@ -51,15 +51,15 @@ const styles = {
 };
 
 /**
- * Linked card displaying a cover image, title, and icon. Supports named icons, emojis, and SVGs.
+ * Linked card displaying a cover image, title, and icon. Supports named icons, emojis, and external SVGs.
  *
  * @example
- * <InfoCard
- *   title="Getting Started"
- *   url="/docs/getting-started"
- *   icon="BookOpen"
- *   img="/images/cover.jpg"
- * />
+ * // Named icon
+ * <InfoCard title="Getting Started" url="/docs" icon="BookOpen" img="/cover.jpg" />
+ *
+ * @example
+ * // Emoji
+ * <InfoCard title="Recipes" url="/recipes" icon={{ type: 'emoji', emoji: '🍋' }} img="/cover.jpg" />
  */
 export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
 	return (
