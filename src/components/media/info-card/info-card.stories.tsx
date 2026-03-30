@@ -69,3 +69,18 @@ export const Default: Story = {
 		...recipesData[0],
 	},
 };
+
+export const WithEmoji: Story = {
+	args: {
+		...recipesData[1],
+	},
+};
+
+export const WithIconName: Story = {
+	args: {
+		title: 'Photography',
+		url: 'https://fisherandrew.org/photo',
+		icon: 'Camera',
+		img: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falpine-loop-1.98af1205.jpg&w=3840&q=75',
+	},
+};
