@@ -11,3 +11,13 @@ export type OptionalKey<T, K extends string> = T extends (infer U)[]
 				}
 			>
 		: T;
+
+export type ReplaceKey<T, K extends string, R> = T extends (infer U)[]
+	? ReplaceKey<U, K, R>[]
+	: T extends object
+		? Prettify<
+				{ [P in Exclude<keyof T, K>]: ReplaceKey<T[P], K, R> } & {
+					[P in Extract<keyof T, K>]: R;
+				}
+			>
+		: T;
