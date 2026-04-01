@@ -7,6 +7,7 @@ const styles = {
 		base: css({
 			marginX: 'auto',
 			backgroundColor: 'structure',
+			borderRadius: '9999px',
 		}),
 		marginY: css({
 			marginY: '16px',
