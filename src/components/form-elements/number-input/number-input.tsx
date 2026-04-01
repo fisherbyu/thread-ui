@@ -99,7 +99,7 @@ export const NumberInput = ({
 	onChange,
 }: NumberInputProps) => {
 	// Initialize state with the value from props or null
-	const [num, setNum] = useState<number | undefined>(value);
+	const [num, setNum] = useState<number | null>(value);
 
 	// Update internal state
 	useEffect(() => {
@@ -136,7 +136,7 @@ export const NumberInput = ({
 
 		// Allow empty input
 		if (inputValue === '') {
-			setNum(undefined);
+			setNum(null);
 			if (onChange) {
 				onChange(e);
 			}
