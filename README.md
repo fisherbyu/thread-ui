@@ -4,7 +4,7 @@ Thread is a React component library I built to create my [personal website](http
 
 ## Get Started
 
-All components work out of the box. Full documentation coming soon at thread.fisherandrew.org.
+All items work out of the box. Explore thread components at [thread.fisherandrew.org](https://thread.fisherandrew.org)!
 
 ```bash
 npm install thread-ui
