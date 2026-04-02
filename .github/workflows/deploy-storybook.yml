@@ -46,6 +46,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: 2222
+          debug: true
           script: |
             cd /srv/thread-ui-docs/
             docker compose pull
