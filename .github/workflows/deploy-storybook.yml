@@ -1,6 +1,7 @@
 name: Deploy thread-ui Docs
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
