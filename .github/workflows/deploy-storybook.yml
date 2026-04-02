@@ -1,78 +1,56 @@
-name: Deploy Thread-UI Docs
+name: Deploy thread-ui Docs
 
 on:
     push:
-        branches: ['null']
+        branches: [main]
         paths:
             - 'package.json'
 
+env:
+    REGISTRY: ghcr.io
+    IMAGE_NAME: fisherbyu/thread-ui
+
 jobs:
-    version-check:
+    build-and-deploy:
         runs-on: ubuntu-latest
-        outputs:
-            changed: ${{ steps.check.outputs.changed }}
+        permissions:
+            contents: read
+            packages: write
+
         steps:
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 2
-
-            - name: Check if version changed
-              id: check
-              run: |
-                  OLD_VERSION=$(git show HEAD~1:package.json | jq -r .version)
-                  NEW_VERSION=$(node -p "require('./package.json').version")
-                  if [ "$OLD_VERSION" != "$NEW_VERSION" ]; then
-                    echo "changed=true" >> $GITHUB_OUTPUT
-                    echo "Version changed: $OLD_VERSION → $NEW_VERSION"
-                  else
-                    echo "changed=false" >> $GITHUB_OUTPUT
-                    echo "Version unchanged, skipping deploy"
-                  fi
-
-    deploy-storybook:
-        needs: version-check
-        if: needs.version-check.outputs.changed == 'true'
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-
-            - name: Setup Node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-                  cache: npm
+            - name: Checkout
+              uses: actions/checkout@v4
 
             - name: Install dependencies
               run: npm ci
-
+              
             - name: Build Storybook
               run: make storybook-build
 
-            - name: Build Docker image
-              run: |
-                  docker build -f Dockerfile.storybook -t thread-storybook:latest .
-                  docker save thread-storybook:latest | gzip > thread-storybook.tar.gz
-
-            - name: Transfer files to server
-              uses: appleboy/scp-action@v0.1.7
+            - name: Log in to GHCR
+              uses: docker/login-action@v3
               with:
-                  host: ${{ secrets.SERVER_HOST }}
-                  username: ${{ secrets.SERVER_USER }}
-                  key: ${{ secrets.SERVER_SSH_KEY }}
-                  port: 2222
-                  source: thread-storybook.tar.gz,docker-compose.storybook.yml
-                  target: /srv/thread-ui-docs/
-                  strip_components: 0
+                  registry: ${{ env.REGISTRY }}
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+
+            - name: Build and Push image
+              uses: docker/build-push-action@v5
+              with:
+                  context: .
+                  file: Dockerfile.storybook
+                  push: true
+                  tags: ghcr.io/${{ env.IMAGE_NAME }}:latest
 
             - name: Deploy to server
               uses: appleboy/ssh-action@v1
               with:
-                  host: ${{ secrets.SERVER_HOST }}
-                  username: ${{ secrets.SERVER_USER }}
-                  key: ${{ secrets.SERVER_SSH_KEY }}
-                  port: 2222
-                  script: |
-                      cd /srv/thread-ui-docs/
-                      docker load < thread-storybook.tar.gz
-                      docker compose up -d
-                      rm thread-storybook.tar.gz
+                host: ${{ secrets.SERVER_HOST }}
+                username: ${{ secrets.SERVER_USER }}
+                key: ${{ secrets.SERVER_SSH_KEY }}
+                port: 2222
+                script: |
+                  cd /srv/thread-ui-docs/
+                  docker compose pull
+                  docker compose up -d
