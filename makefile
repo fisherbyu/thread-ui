@@ -110,7 +110,7 @@ weave: build ## Build and push to yalc
 	$(NPX) yalc push
 
 .PHONY: storybook-build
-storybook-build: clean-storybook-build ## Build Static Storybook Server
+storybook-build: clean-storybook-build build ## Build Static Storybook Server
 	$(NPX) $(STORYBOOK) build -o $(STATIC_STORYBOOK) 
 	
 .PHONY: storybook-run
