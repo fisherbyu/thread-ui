@@ -3,6 +3,8 @@ name: Deploy thread-ui Docs
 on:
   push:
     branches: [main]
+    paths:
+        - 'package.json'
 
 env:
   REGISTRY: ghcr.io
