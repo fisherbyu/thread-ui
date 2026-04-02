@@ -1,0 +1,6 @@
+services:
+    storybook:
+        image: thread-storybook:latest
+        ports:
+            - '3002:80'
+        restart: unless-stopped
