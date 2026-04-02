@@ -1,0 +1,6 @@
+services:
+    storybook:
+        image: ghcr.io/fisherbyu/thread-ui:latest
+        ports:
+            - '3002:80'
+        restart: unless-stopped

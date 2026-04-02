@@ -3,6 +3,7 @@ import { Icon } from '@/components/ui';
 import { InfoCardProps } from './info-card.types';
 import { css, cx } from '@/styled-system/css';
 import { Text } from '@/components/typography';
+import { DynamicIcon } from '@/internal-components';
 
 const styles = {
 	card: css({
@@ -50,41 +51,24 @@ const styles = {
 };
 
 /**
- * Linked card displaying a cover image, title, and icon. Supports named icons, emojis, and SVGs.
+ * Linked card displaying a cover image, title, and icon. Supports named icons, emojis, and external SVGs.
  *
  * @example
- * <InfoCard
- *   title="Getting Started"
- *   url="/docs/getting-started"
- *   icon="BookOpen"
- *   img="/images/cover.jpg"
- * />
+ * // Named icon
+ * <InfoCard title="Getting Started" url="/docs" icon="BookOpen" img="/cover.jpg" />
+ *
+ * @example
+ * // Emoji
+ * <InfoCard title="Recipes" url="/recipes" icon={{ type: 'emoji', emoji: '🍋' }} img="/cover.jpg" />
  */
 export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
-	const renderIcon = () => {
-		if (typeof icon === 'string') {
-			return <Icon name={icon} size={24} />;
-		} else if (icon.type === 'svg' && icon.content) {
-			return (
-				<img
-					height={24}
-					width={24}
-					src={icon.content}
-					onError={(e) => {
-						e.currentTarget.style.display = 'none';
-					}}
-				/>
-			);
-		}
-	};
-
 	return (
 		<a href={url} className={cx(styles.cardContent, styles.link, styles.card)}>
 			<div className={styles.imageWrapper}>
 				<img className={styles.image} src={img} alt="Article Cover Image" />
 			</div>
 			<div className={styles.caption}>
-				{renderIcon()}
+				<DynamicIcon icon={icon} size={24} />
 				<Text size="sm" truncate inline>
 					{title}
 				</Text>

@@ -18,6 +18,16 @@ const config: StorybookConfig = {
 					'@': path.resolve(__dirname, '../src'),
 				},
 			},
+			build: {
+				rollupOptions: {
+					output: {
+						manualChunks(id: any) {
+							// Keep all src modules in one chunk, let Rollup only split node_modules
+							if (id.includes('/src/')) return 'components';
+						},
+					},
+				},
+			},
 		});
 	},
 };

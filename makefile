@@ -10,6 +10,7 @@ CONCURRENTLY := $(NPX) concurrently
 TSX := $(NPX) tsx
 PRETTIER := $(NPX) prettier
 PLOP := $(NPX) plop
+HTTP_SERVER := http-server
 
 # Directories
 DIST_DIR := dist
@@ -19,6 +20,7 @@ STYLED_SYSTEM_DIST := $(DIST_DIR)/styled-system
 STYLES_SRC := $(SRC_DIR)/styles
 STYLES_DIST := $(DIST_DIR)/styles
 SCRIPTS_DIR := .scripts
+STATIC_STORYBOOK := .storybook/.static
 
 # Files
 PANDA_CSS := $(STYLES_SRC)/panda.css
@@ -32,6 +34,10 @@ THREAD_CSS := $(STYLES_SRC)/thread.css
 .PHONY: clean
 clean: # Remove previous build
 	rm -rf $(DIST_DIR)
+	
+.PHONY: clean-storybook-build
+clean-storybook-build: # Remove previous storybook build
+	rm -rf $(STATIC_STORYBOOK)
 
 .PHONY: prepare-panda-code
 prepare-panda-code: # Generate Panda CSS codegen and copy to dist
@@ -102,6 +108,14 @@ build: clean prepare-panda-code theme-css prepare-typescript prepare-panda-css b
 .PHONY: weave
 weave: build ## Build and push to yalc
 	$(NPX) yalc push
+
+.PHONY: storybook-build
+storybook-build: clean-storybook-build ## Build Static Storybook Server
+	$(NPX) $(STORYBOOK) build -o $(STATIC_STORYBOOK) 
+	
+.PHONY: storybook-run
+storybook-run: ## Start Storybook Server
+	$(NPX) $(HTTP_SERVER) $(STATIC_STORYBOOK)
 
 
 # Publish Package to npm
