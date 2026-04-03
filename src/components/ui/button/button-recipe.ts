@@ -101,12 +101,13 @@ export const buttonRecipe = defineRecipe({
 			},
 			neutral: {
 				backgroundColor: 'background',
-				borderColor: 'structure',
+				borderColor: 'text.standard',
 				color: 'text.standard',
 				_hover: {
-					backgroundColor: 'elevated',
+					backgroundColor: 'background',
 					color: 'text.standard',
-					borderColor: 'structure',
+					borderColor: 'text.standard',
+					borderWidth: 'lg',
 				},
 			},
 		},
@@ -240,6 +241,18 @@ export const buttonRecipe = defineRecipe({
 					backgroundColor: 'text.standard',
 					color: 'background',
 					borderColor: 'text.standard',
+				},
+			},
+		},
+		{
+			color: 'neutral',
+			disabled: true,
+			css: {
+				_hover: {
+					backgroundColor: 'background',
+					color: 'text.standard',
+					borderColor: 'text.standard',
+					borderWidth: 'md',
 				},
 			},
 		},
