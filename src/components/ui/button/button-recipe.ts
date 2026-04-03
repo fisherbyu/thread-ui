@@ -72,6 +72,15 @@ export const buttonRecipe = defineRecipe({
 					borderColor: 'success.main',
 				},
 			},
+			warning: {
+				backgroundColor: 'warning.main',
+				borderColor: 'warning.main',
+				_hover: {
+					backgroundColor: 'background',
+					color: 'warning.main',
+					borderColor: 'warning.main',
+				},
+			},
 			error: {
 				backgroundColor: 'error.main',
 				borderColor: 'error.main',
@@ -217,6 +226,17 @@ export const buttonRecipe = defineRecipe({
 			},
 		},
 		{
+			color: 'warning',
+			disabled: true,
+			css: {
+				_hover: {
+					backgroundColor: 'warning.main',
+					color: 'background',
+					borderColor: 'warning.main',
+				},
+			},
+		},
+		{
 			color: 'error',
 			disabled: true,
 			css: {
@@ -311,6 +331,11 @@ export const buttonRecipe = defineRecipe({
 		},
 		{
 			textVariant: true,
+			color: 'warning',
+			css: { color: 'warning.main', _hover: { color: 'warning.main' } },
+		},
+		{
+			textVariant: true,
 			color: 'error',
 			css: { color: 'error.main', _hover: { color: 'error.main' } },
 		},
@@ -369,6 +394,13 @@ export const buttonRecipe = defineRecipe({
 			textVariant: false,
 			color: 'success',
 			css: { _hover: { backgroundColor: 'success.light', borderColor: 'success.main' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'warning',
+			css: { _hover: { backgroundColor: 'warning.light', borderColor: 'warning.main' } },
 		},
 		{
 			highlightOnHover: true,
