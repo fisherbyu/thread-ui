@@ -365,21 +365,39 @@ export const buttonRecipe = defineRecipe({
 			disabled: false,
 			textVariant: false,
 			color: 'primary',
-			css: { _hover: { backgroundColor: 'primary.light', borderColor: 'primary.main' } },
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'primary.light',
+					borderColor: 'primary.main',
+				},
+			},
 		},
 		{
 			highlightOnHover: true,
 			disabled: false,
 			textVariant: false,
 			color: 'secondary',
-			css: { _hover: { backgroundColor: 'secondary.light', borderColor: 'secondary.main' } },
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'secondary.light',
+					borderColor: 'secondary.main',
+				},
+			},
 		},
 		{
 			highlightOnHover: true,
 			disabled: false,
 			textVariant: false,
 			color: 'tertiary',
-			css: { _hover: { backgroundColor: 'tertiary.light', borderColor: 'tertiary.main' } },
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'tertiary.light',
+					borderColor: 'tertiary.main',
+				},
+			},
 		},
 		{
 			highlightOnHover: true,
@@ -393,28 +411,48 @@ export const buttonRecipe = defineRecipe({
 			disabled: false,
 			textVariant: false,
 			color: 'success',
-			css: { _hover: { backgroundColor: 'success.light', borderColor: 'success.main' } },
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'success.light',
+					borderColor: 'success.main',
+				},
+			},
 		},
 		{
 			highlightOnHover: true,
 			disabled: false,
 			textVariant: false,
 			color: 'warning',
-			css: { _hover: { backgroundColor: 'warning.light', borderColor: 'warning.main' } },
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'warning.light',
+					borderColor: 'warning.main',
+				},
+			},
 		},
 		{
 			highlightOnHover: true,
 			disabled: false,
 			textVariant: false,
 			color: 'error',
-			css: { _hover: { backgroundColor: 'error.light', borderColor: 'error.main' } },
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'error.light',
+					borderColor: 'error.main',
+				},
+			},
 		},
 		{
 			highlightOnHover: true,
 			disabled: false,
 			textVariant: false,
 			color: 'info',
-			css: { _hover: { backgroundColor: 'info.light', borderColor: 'info.main' } },
+			css: {
+				_hover: { color: 'white', backgroundColor: 'info.light', borderColor: 'info.main' },
+			},
 		},
 		{
 			highlightOnHover: true,
