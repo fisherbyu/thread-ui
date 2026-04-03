@@ -154,6 +154,10 @@ export const buttonRecipe = defineRecipe({
 				},
 			},
 		},
+		highlightOnHover: {
+			true: {},
+			false: {},
+		},
 	},
 	compoundVariants: [
 		// Disabled state overrides for all colors except black
@@ -329,6 +333,77 @@ export const buttonRecipe = defineRecipe({
 			textVariant: true,
 			color: 'text',
 			css: { color: 'text.standard', _hover: { color: 'text.standard' } },
+		},
+		// highlightOnHover overrides
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'primary',
+			css: { _hover: { backgroundColor: 'primary.light', borderColor: 'primary.main' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'secondary',
+			css: { _hover: { backgroundColor: 'secondary.light', borderColor: 'secondary.main' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'tertiary',
+			css: { _hover: { backgroundColor: 'tertiary.light', borderColor: 'tertiary.main' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'gray',
+			css: { _hover: { backgroundColor: 'gray.light', borderColor: 'gray.main' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'success',
+			css: { _hover: { backgroundColor: 'success.light', borderColor: 'success.main' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'error',
+			css: { _hover: { backgroundColor: 'error.light', borderColor: 'error.main' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'info',
+			css: { _hover: { backgroundColor: 'info.light', borderColor: 'info.main' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'black',
+			css: { _hover: { backgroundColor: 'gray.light', borderColor: 'white' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'text',
+			css: { _hover: { backgroundColor: 'surface', borderColor: 'text.standard' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'neutral',
+			css: { _hover: { backgroundColor: 'surface', borderColor: 'text.standard' } },
 		},
 	],
 	defaultVariants: {
