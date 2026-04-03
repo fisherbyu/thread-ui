@@ -21,4 +21,6 @@ export type ButtonProps = {
 	/** Accessibility Label to be added to Button  */
 	ariaLabel?: string;
 	children: ReactNode;
+	/** Highlight background on hover @default `false` */
+	highlightOnHover?: boolean;
 };

@@ -18,6 +18,9 @@ const meta = {
 			control: 'boolean',
 			description: 'Renders the button as a text-only variant with no background or border',
 		},
+		highlightOnHover: {
+			control: 'boolean',
+		},
 	},
 	tags: ['autodocs'],
 } satisfies Meta<typeof Button>;
