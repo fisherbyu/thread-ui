@@ -275,6 +275,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					textDecoration: 'none',
+					backgroundColor: 'transparent',
 				},
 			},
 		},
