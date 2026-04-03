@@ -72,6 +72,15 @@ export const buttonRecipe = defineRecipe({
 					borderColor: 'success.main',
 				},
 			},
+			warning: {
+				backgroundColor: 'warning.main',
+				borderColor: 'warning.main',
+				_hover: {
+					backgroundColor: 'background',
+					color: 'warning.main',
+					borderColor: 'warning.main',
+				},
+			},
 			error: {
 				backgroundColor: 'error.main',
 				borderColor: 'error.main',
@@ -92,6 +101,7 @@ export const buttonRecipe = defineRecipe({
 			},
 			text: {
 				backgroundColor: 'text.standard',
+				color: 'text.inverted',
 				borderColor: 'text.standard',
 				_hover: {
 					backgroundColor: 'background',
@@ -101,12 +111,13 @@ export const buttonRecipe = defineRecipe({
 			},
 			neutral: {
 				backgroundColor: 'background',
-				borderColor: 'structure',
+				borderColor: 'text.standard',
 				color: 'text.standard',
 				_hover: {
-					backgroundColor: 'elevated',
+					backgroundColor: 'background',
 					color: 'text.standard',
-					borderColor: 'structure',
+					borderColor: 'text.standard',
+					borderWidth: 'lg',
 				},
 			},
 		},
@@ -151,6 +162,10 @@ export const buttonRecipe = defineRecipe({
 					textDecoration: 'underline',
 				},
 			},
+		},
+		highlightOnHover: {
+			true: {},
+			false: {},
 		},
 	},
 	compoundVariants: [
@@ -211,6 +226,17 @@ export const buttonRecipe = defineRecipe({
 			},
 		},
 		{
+			color: 'warning',
+			disabled: true,
+			css: {
+				_hover: {
+					backgroundColor: 'warning.main',
+					color: 'background',
+					borderColor: 'warning.main',
+				},
+			},
+		},
+		{
 			color: 'error',
 			disabled: true,
 			css: {
@@ -243,6 +269,18 @@ export const buttonRecipe = defineRecipe({
 				},
 			},
 		},
+		{
+			color: 'neutral',
+			disabled: true,
+			css: {
+				_hover: {
+					backgroundColor: 'background',
+					color: 'text.standard',
+					borderColor: 'text.standard',
+					borderWidth: 'md',
+				},
+			},
+		},
 		// Special case for black when disabled
 		{
 			color: 'black',
@@ -261,6 +299,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					textDecoration: 'none',
+					backgroundColor: 'transparent',
 				},
 			},
 		},
@@ -292,6 +331,11 @@ export const buttonRecipe = defineRecipe({
 		},
 		{
 			textVariant: true,
+			color: 'warning',
+			css: { color: 'warning.main', _hover: { color: 'warning.main' } },
+		},
+		{
+			textVariant: true,
 			color: 'error',
 			css: { color: 'error.main', _hover: { color: 'error.main' } },
 		},
@@ -314,6 +358,122 @@ export const buttonRecipe = defineRecipe({
 			textVariant: true,
 			color: 'text',
 			css: { color: 'text.standard', _hover: { color: 'text.standard' } },
+		},
+		// highlightOnHover overrides
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'primary',
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'primary.light',
+					borderColor: 'primary.main',
+				},
+			},
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'secondary',
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'secondary.light',
+					borderColor: 'secondary.main',
+				},
+			},
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'tertiary',
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'tertiary.light',
+					borderColor: 'tertiary.main',
+				},
+			},
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'gray',
+			css: { _hover: { backgroundColor: 'gray.light', borderColor: 'gray.main' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'success',
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'success.light',
+					borderColor: 'success.main',
+				},
+			},
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'warning',
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'warning.light',
+					borderColor: 'warning.main',
+				},
+			},
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'error',
+			css: {
+				_hover: {
+					color: 'white',
+					backgroundColor: 'error.light',
+					borderColor: 'error.main',
+				},
+			},
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'info',
+			css: {
+				_hover: { color: 'white', backgroundColor: 'info.light', borderColor: 'info.main' },
+			},
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'black',
+			css: { _hover: { backgroundColor: 'gray.light', borderColor: 'white' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'text',
+			css: { _hover: { backgroundColor: 'surface', borderColor: 'text.standard' } },
+		},
+		{
+			highlightOnHover: true,
+			disabled: false,
+			textVariant: false,
+			color: 'neutral',
+			css: { _hover: { backgroundColor: 'surface', borderColor: 'text.standard' } },
 		},
 	],
 	defaultVariants: {

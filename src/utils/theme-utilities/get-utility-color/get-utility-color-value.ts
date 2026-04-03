@@ -22,11 +22,15 @@ export const getUtilityColorValue = (color: UtilityColorOptions): string => {
 			return ThreadTheme.success.main;
 		case 'error':
 			return ThreadTheme.error.main;
+		case 'warning':
+			return ThreadTheme.warning.main;
 		case 'info':
 			return ThreadTheme.info.main;
 		case 'text':
 			return ThreadTheme.text.standard;
-		default:
+		default: {
+			const _exhaustive: never = color;
 			return ThreadTheme.primary.main;
+		}
 	}
 };

@@ -9,6 +9,7 @@ export type UtilityColorOptions =
 	| 'gray'
 	| 'success'
 	| 'error'
+	| 'warning'
 	| 'info'
 	| 'text';
 

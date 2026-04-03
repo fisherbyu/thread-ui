@@ -20,6 +20,7 @@ export const Button = ({
 	margin,
 	text = false,
 	disabled = false,
+	highlightOnHover = false,
 }: ButtonProps) => {
 	const buttonClasses = button({
 		color,
@@ -27,6 +28,7 @@ export const Button = ({
 		fullWidth,
 		disabled,
 		textVariant: text,
+		highlightOnHover,
 	});
 
 	return (
