@@ -92,6 +92,7 @@ export const buttonRecipe = defineRecipe({
 			},
 			text: {
 				backgroundColor: 'text.standard',
+				color: 'text.inverted',
 				borderColor: 'text.standard',
 				_hover: {
 					backgroundColor: 'background',
