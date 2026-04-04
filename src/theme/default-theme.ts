@@ -52,6 +52,8 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	surface: '#FFFFFF',
 	elevated: '#FFFFFF',
 	overlay: '#FFFFFF',
+
+	active: '#F3F4F6',
 	hover: '#F3F4F6',
 
 	// Light Mode Structure Colors
@@ -92,6 +94,8 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		surface: '#1E1E1E',
 		elevated: '#252525',
 		overlay: '#2D2D2D',
+
+		active: '#333333',
 		hover: '#333333',
 
 		// Dark Mode Structure Colors
