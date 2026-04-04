@@ -23,7 +23,7 @@ const styles = cva({
  * Renders as `div` by default but can be swapped for `section`.
  *
  * @example
- * <Container as="section" bgColor="xsurfacex">
+ * <Container as="section" bgColor="surface">
  *   <PageHeader title="About" />
  * </Container>
  */

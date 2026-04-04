@@ -27,7 +27,7 @@ const meta: Meta<typeof NavMenu> = {
 							style={{
 								marginTop: '40px',
 								padding: '20px',
-								backgroundColor: ThreadTheme.xsurfacex,
+								backgroundColor: ThreadTheme.surface,
 								borderRadius: '8px',
 							}}
 						>
