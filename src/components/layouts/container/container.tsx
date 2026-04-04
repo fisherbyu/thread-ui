@@ -5,13 +5,16 @@ import { ContainerProps } from './container.types';
 const styles = cva({
 	variants: {
 		bgColor: {
-			background: { backgroundColor: 'xbackgroundx' },
-			surface: { backgroundColor: 'xsurfacex' },
-			xelevatedx: { backgroundColor: 'xelevatedx' },
+			none: { backgroundColor: 'transparent' },
+			canvas: { backgroundColor: 'canvas' },
+			inset: { backgroundColor: 'inset' },
+			surface: { backgroundColor: 'surface' },
+			elevated: { backgroundColor: 'elevated' },
+			overlay: { backgroundColor: 'overlay' },
 		},
 	},
 	defaultVariants: {
-		bgColor: 'xbackgroundx',
+		bgColor: 'none',
 	},
 });
 
@@ -24,10 +27,6 @@ const styles = cva({
  *   <PageHeader title="About" />
  * </Container>
  */
-export const Container = ({
-	as: Tag = 'div',
-	bgColor = 'xbackgroundx',
-	children,
-}: ContainerProps) => {
+export const Container = ({ as: Tag = 'div', bgColor = 'none', children }: ContainerProps) => {
 	return <Tag className={cx(styles({ bgColor }), container())}>{children}</Tag>;
 };
