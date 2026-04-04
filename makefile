@@ -98,7 +98,7 @@ help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: storybook
-storybook: prepare-panda-code ## Run Storybook dev server (with Panda and Tailwind watch)
+storybook: prepare-panda-code build ## Run Storybook dev server (with Panda and Tailwind watch)
 	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p 6006 --no-open"
 
 .PHONY: build
