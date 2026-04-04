@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from './card';
+import { Text } from '../../typography';
 
 const meta = {
 	title: 'UI Components/Card',
@@ -32,7 +33,7 @@ export const Default: Story = {
 		surfaceColor: 'surface',
 		size: 'md',
 		shadow: true,
-		children: <p>This is a card component with some content inside.</p>,
+		children: <Text>This is a card component with some content inside.</Text>,
 	},
 };
 
@@ -42,7 +43,7 @@ export const WithTitle: Story = {
 			text: 'Card Title',
 			align: 'left',
 		},
-		children: <p>This card has a title and some content.</p>,
+		children: <Text>This card has a title and some content.</Text>,
 	},
 };
 
@@ -58,23 +59,23 @@ export const AllVariants: Story = {
 			}}
 		>
 			<Card size="sm" title={{ text: 'Small Card', align: 'left' }}>
-				<p>Small card with default background</p>
+				<Text>Small card with default background</Text>
 			</Card>
 			<Card
 				size="md"
 				title={{ text: 'Medium Card with Divider', align: 'left', divider: true }}
 			>
-				<p>Medium card with divider</p>
+				<Text>Medium card with divider</Text>
 			</Card>
 			<Card
 				size="lg"
 				surfaceColor="elevated"
 				title={{ text: 'Large Elevated Card', align: 'center' }}
 			>
-				<p>Large card with elevated surface and centered title</p>
+				<Text>Large card with elevated surface and centered title</Text>
 			</Card>
 			<Card shadow={false} title={{ text: 'Card Without Shadow', align: 'left' }}>
-				<p>Card with no shadow</p>
+				<Text>Card with no shadow</Text>
 			</Card>
 		</div>
 	),
