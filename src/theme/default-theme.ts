@@ -103,11 +103,11 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 
 		// Dark Mode Text Colors
 		text: {
-			standard: '#f9fafb',
-			secondary: '#4b5563',
-			disabled: '#6b7280',
-			accent: '#3c5c49', // resolves to primary.main
-			inverted: '#1f2937', // resolves to light mode text.standard
+			standard: '#F9FAFB',
+			secondary: '#9CA3AF',
+			disabled: '#6B7280',
+			accent: '#7DA88E',
+			inverted: '#1F2937',
 		},
 	},
 };
