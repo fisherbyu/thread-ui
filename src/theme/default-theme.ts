@@ -47,10 +47,15 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		dark: '#1d4ed8',
 	},
 	// Light Mode Surface Colors
-	xbackgroundx: '#32CD32',
-	xsurfacex: '#FFC0CB',
-	xelevatedx: '#FF0000',
-	structure: '#FFA500',
+	canvas: '#F5F6F8',
+	inset: '#EDEEF1',
+	surface: '#FFFFFF',
+	elevated: '#FFFFFF',
+	overlay: '#FFFFFF',
+
+	// Structure Colors
+	structure: '',
+
 	// Light Mode Text Colors
 	text: {
 		standard: '#1f2937',
@@ -84,7 +89,6 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		canvas: '#FF0000',
 		inset: '#FF0000',
 		surface: '#FF0000',
-		surfaceAlt: '#FF0000',
 		elevated: '#FF0000',
 		overlay: '#FF0000',
 
