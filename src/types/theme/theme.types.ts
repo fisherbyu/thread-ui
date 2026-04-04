@@ -92,11 +92,11 @@ export type StructureColorOptions = Prettify<keyof StructureColors>;
 
 /** Z-Index Hierarchy */
 export type ZIndexScale = {
-	base: number;
-	sticky: number;
-	overlay: number;
-	modal: number;
-	system: number;
+	base: string;
+	sticky: string;
+	overlay: string;
+	modal: string;
+	system: string;
 };
 
 /** Z-Index Options */
