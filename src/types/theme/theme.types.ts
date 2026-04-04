@@ -60,6 +60,9 @@ export type NewSurfaceColors = {
 	overlay: string;
 };
 
+/** Surface color options excluding `structure`, used for component background variants */
+export type SurfaceColorOptions = keyof Omit<NewSurfaceColors, 'structure'>;
+
 /** Surface and text color tokens that shift between light and dark mode */
 export type OldSurfaceColors = {
 	xbackgroundx: string;
@@ -67,9 +70,6 @@ export type OldSurfaceColors = {
 	xelevatedx: string;
 	structure: string;
 };
-
-/** Surface color options excluding `structure`, used for component background variants */
-export type SurfaceColorOptions = keyof Omit<NewSurfaceColors, 'structure'>;
 
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
