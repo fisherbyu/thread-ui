@@ -138,7 +138,7 @@ export type NeutralPalette = {
 };
 
 /** Theme Layout Structure */
-export type ThemeStructure = {
+export type ThemeLayout = {
 	breakpoints: BreakpointOptions;
 };
 
@@ -151,7 +151,7 @@ export type ThemeBorders = {
 
 /** Full design token set for the Thread theme */
 export type Theme = Prettify<
-	ThemePalette & StatusPalette & NeutralPalette & ThemeStructure & ThemeBorders & ModeColors
+	ThemePalette & StatusPalette & NeutralPalette & ThemeLayout & ThemeBorders & ModeColors
 >;
 
 /** Complete theme including dark mode surface and text overrides */
