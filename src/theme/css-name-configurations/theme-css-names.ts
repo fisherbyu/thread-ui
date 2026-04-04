@@ -60,9 +60,13 @@ export const AllBaseCssNames: AllThemeCssNames = {
 	},
 
 	// Surface Colors
-	xbackgroundx: 'xbackgroundx',
-	xsurfacex: 'xsurfacex',
-	xelevatedx: 'xelevatedx',
+	canvas: 'canvas',
+	inset: 'inset',
+	surface: 'surface',
+	elevated: 'elevated',
+	overlay: 'overlay',
+
+	// Structure Colors
 	structure: 'structure',
 
 	// Text Colors
@@ -98,10 +102,15 @@ export const AllBaseCssNames: AllThemeCssNames = {
 	// Light/Dark Mode Names
 	lightMode: {
 		// Surfaces
-		xbackgroundx: 'xbackgroundx-light-mode',
-		xsurfacex: 'xsurfacex-light-mode',
-		xelevatedx: 'xelevatedx-light-mode',
+		canvas: 'canvas-light-mode',
+		inset: 'inset-light-mode',
+		surface: 'surface-light-mode',
+		elevated: 'elevated-light-mode',
+		overlay: 'overlay-light-mode',
+
+		// Structure
 		structure: 'structure-light-mode',
+
 		// Text
 		text: {
 			standard: 'text-standard-light-mode',
@@ -114,10 +123,15 @@ export const AllBaseCssNames: AllThemeCssNames = {
 
 	darkMode: {
 		// Surfaces
-		xbackgroundx: 'xbackgroundx-dark-mode',
-		xsurfacex: 'xsurfacex-dark-mode',
-		xelevatedx: 'xelevatedx-dark-mode',
+		canvas: 'canvas-dark-mode',
+		inset: 'inset-dark-mode',
+		surface: 'surface-dark-mode',
+		elevated: 'elevated-dark-mode',
+		overlay: 'overlay-dark-mode',
+
+		// Structure
 		structure: 'structure-dark-mode',
+
 		// Text
 		text: {
 			standard: 'text-standard-dark-mode',
