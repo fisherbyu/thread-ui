@@ -18,7 +18,7 @@ const styles = {
 		},
 		variants: {
 			isSelected: {
-				true: { backgroundColor: 'hover' },
+				true: { backgroundColor: 'active' },
 			},
 		},
 	}),

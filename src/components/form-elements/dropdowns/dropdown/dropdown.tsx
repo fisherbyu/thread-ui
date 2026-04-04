@@ -14,7 +14,7 @@ const itemStyles = cva({
 	},
 	variants: {
 		isSelected: {
-			true: { backgroundColor: 'hover' },
+			true: { backgroundColor: 'active' },
 		},
 	},
 });
