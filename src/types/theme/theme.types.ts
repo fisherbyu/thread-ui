@@ -51,7 +51,7 @@ export type ExpandedUtilitySizeOptions = Prettify<keyof ExpandedUtilitySizes>;
 export type BreakpointOptions = Omit<ExpandedUtilitySizes, keyof ExpandedSmallOptions>;
 
 /** Surface Hierarchy and Layer Colors */
-export type NewSurfaceColors = {
+export type SurfaceColors = {
 	canvas: string;
 	inset: string;
 	surface: string;
@@ -65,10 +65,10 @@ export type SurfaceActivityColors = {
 	hover: string;
 };
 
-export type AllSurfaceColors = Prettify<NewSurfaceColors & SurfaceActivityColors>;
+export type AllSurfaceColors = Prettify<SurfaceColors & SurfaceActivityColors>;
 
 /** Surface color options, used for component background variants */
-export type SurfaceColorOptions = Prettify<keyof NewSurfaceColors | 'none'>;
+export type SurfaceColorOptions = Prettify<keyof SurfaceColors | 'none'>;
 
 /** Element Shadow Levels */
 export type ShadowScale = {
@@ -110,7 +110,7 @@ export type ScrimColors = {
 // Semantic Surface Layer System
 
 /** Surface Layer System Options */
-export type SurfaceLayerOptions = keyof NewSurfaceColors;
+export type SurfaceLayerOptions = keyof SurfaceColors;
 
 type SurfaceConfig = {
 	surface: SurfaceColorOptions;
