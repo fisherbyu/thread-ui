@@ -71,7 +71,15 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		accent: '#3c5c49', // resolves to primary.main
 		inverted: '#f9fafb', // resolves to dark mode text.standard
 	},
-	// Structure
+
+	// Shadow Layers
+	shadow: {
+		sm: '0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.03)',
+		md: '0 2px 4px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.04)',
+		lg: '0 4px 8px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.08)',
+	},
+
+	// Layouts
 	breakpoints: {
 		sm: '0',
 		md: '768',
@@ -79,6 +87,17 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		xl: '1280',
 		xxl: '1536',
 	},
+
+	zIndex: {
+		base: 0,
+		sticky: 100,
+		overlay: 200,
+		modal: 300,
+		system: 400,
+	},
+
+	scrim: 'rgba(0, 0, 0, 0.4)',
+
 	// Sizing
 	borderRadius: {
 		sm: '0.25rem', // 4px
