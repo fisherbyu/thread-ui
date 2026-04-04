@@ -55,7 +55,6 @@ export type NewSurfaceColors = {
 	canvas: string;
 	inset: string;
 	surface: string;
-	surfaceAlt: string;
 	elevated: string;
 	overlay: string;
 };
