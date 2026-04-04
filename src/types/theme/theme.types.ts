@@ -109,10 +109,10 @@ export type ScrimColors = {
 
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
-	AllSurfaceColors &
-		StructureColors & {
-			text: TextColors;
-		}
+	AllSurfaceColors & {
+		structure: StructureColors;
+		text: TextColors;
+	}
 >;
 
 /** Theme Brand Colors */
