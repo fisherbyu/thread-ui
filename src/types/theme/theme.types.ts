@@ -51,7 +51,7 @@ export type ExpandedUtilitySizeOptions = Prettify<keyof ExpandedUtilitySizes>;
 export type BreakpointOptions = Omit<ExpandedUtilitySizes, keyof ExpandedSmallOptions>;
 
 /** Surface and text color tokens that shift between light and dark mode */
-export type SurfaceColors = {
+export type OldSurfaceColors = {
 	xbackgroundx: string;
 	xsurfacex: string;
 	xelevatedx: string;
