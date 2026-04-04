@@ -87,6 +87,13 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		inverted: 'text-inverted',
 	},
 
+	// Shadows
+	shadow: {
+		sm: 'shadow-sm',
+		md: 'shadow-md',
+		lg: 'shadow-lg',
+	},
+
 	// Layouts
 	breakpoints: {
 		sm: 'breakpoint-sm',
@@ -94,6 +101,15 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		lg: 'breakpoint-lg',
 		xl: 'breakpoint-xl',
 		xxl: 'breakpoint-xxl',
+	},
+
+	// Z Indexes
+	zIndex: {
+		base: 'z-index-base',
+		sticky: 'z-index-sticky',
+		overlay: 'z-index-overlay',
+		modal: 'z-index-modal',
+		system: 'z-index-system',
 	},
 
 	// Sizing
