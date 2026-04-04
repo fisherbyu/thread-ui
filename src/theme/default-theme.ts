@@ -80,10 +80,18 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	},
 	// Dark Mode Colors
 	darkMode: {
-		xbackgroundx: '#121212',
-		xsurfacex: '#1e1e1e',
-		xelevatedx: '#2d2d2d',
+		// Layers
+		canvas: '#FF0000',
+		inset: '#FF0000',
+		surface: '#FF0000',
+		surfaceAlt: '#FF0000',
+		elevated: '#FF0000',
+		overlay: '#FF0000',
+
+		// Structure
 		structure: '#4b5563',
+
+		// Text
 		text: {
 			standard: '#f9fafb',
 			secondary: '#4b5563',
