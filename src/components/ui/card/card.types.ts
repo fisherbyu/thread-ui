@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { SurfaceColorOptions, UtilitySizeOptions } from '@/types';
+import { Prettify, SurfaceColorOptions, UtilitySizeOptions } from '@/types';
 
 export type CardProps = {
 	children: ReactNode;
@@ -7,8 +7,8 @@ export type CardProps = {
 	size?: UtilitySizeOptions;
 	/** Renders a subtle drop shadow @default `true` */
 	shadow?: boolean;
-	/** Background color token @default `'xbackgroundx'` */
-	surfaceColor?: SurfaceColorOptions;
+	/** Background color token @default `'surface'` */
+	surfaceColor?: Exclude<SurfaceColorOptions, 'canvas' | 'inset'>;
 	/** Optional title rendered above the card content */
 	title?: {
 		/** Title text */

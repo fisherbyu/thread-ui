@@ -32,14 +32,20 @@ const styles = {
 				},
 			},
 			surfaceColor: {
-				background: {
-					backgroundColor: 'background',
+				surface: {
+					backgroundColor: 'surface',
 				},
-				xsurfacex: {
-					backgroundColor: 'xsurfacex',
+				elevated: {
+					backgroundColor: 'elevated',
 				},
-				xelevatedx: {
-					backgroundColor: 'xelevatedx',
+				overlay: {
+					backgroundColor: 'overlay',
+				},
+				hover: {
+					backgroundColor: 'hover',
+				},
+				none: {
+					backgroundColor: 'transparent',
 				},
 			},
 			shadow: {
@@ -53,7 +59,7 @@ const styles = {
 		},
 		defaultVariants: {
 			size: 'md',
-			surfaceColor: 'xbackgroundx',
+			surfaceColor: 'surface',
 			shadow: true,
 		},
 	}),
@@ -86,7 +92,7 @@ const styles = {
  * </Card>
  */
 export const Card = ({
-	surfaceColor = 'xbackgroundx',
+	surfaceColor = 'surface',
 	children,
 	size = 'md',
 	shadow = true,

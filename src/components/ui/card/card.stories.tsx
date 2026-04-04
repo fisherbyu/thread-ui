@@ -12,7 +12,7 @@ const meta = {
 	argTypes: {
 		surfaceColor: {
 			control: 'select',
-			options: ['xbackgroundx', 'xsurfacex', 'xelevatedx'],
+			options: ['surface', 'elevated', 'overlay', 'hover', 'none'],
 		},
 		size: {
 			control: 'select',
@@ -29,7 +29,7 @@ type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
 	args: {
-		surfaceColor: 'xbackgroundx',
+		surfaceColor: 'surface',
 		size: 'md',
 		shadow: true,
 		children: <p>This is a card component with some content inside.</p>,
@@ -68,7 +68,7 @@ export const AllVariants: Story = {
 			</Card>
 			<Card
 				size="lg"
-				surfaceColor="xelevatedx"
+				surfaceColor="elevated"
 				title={{ text: 'Large Elevated Card', align: 'center' }}
 			>
 				<p>Large card with elevated surface and centered title</p>
