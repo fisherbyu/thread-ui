@@ -25,7 +25,7 @@ export const styles = {
 		alignItems: 'center',
 	}),
 	list: css({
-		backgroundColor: 'xbackgroundx',
+		backgroundColor: 'overlay',
 		position: 'absolute',
 		width: 'fit-content',
 		minWidth: '75%',
