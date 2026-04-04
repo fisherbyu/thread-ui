@@ -68,16 +68,9 @@ export type StructureColors = {
 	structure: string;
 };
 
-/** Surface and text color tokens that shift between light and dark mode */
-export type OldSurfaceColors = {
-	xbackgroundx: string;
-	xsurfacex: string;
-	xelevatedx: string;
-};
-
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
-	OldSurfaceColors &
+	NewSurfaceColors &
 		StructureColors & {
 			text: TextColors;
 		}
