@@ -57,8 +57,13 @@ export type NewSurfaceColors = {
 	surface: string;
 	elevated: string;
 	overlay: string;
+};
+
+export type SurfaceActivityColors = {
 	hover: string;
 };
+
+export type AllSurfaceColors = Prettify<NewSurfaceColors & SurfaceActivityColors>;
 
 /** Surface color options, used for component background variants */
 export type SurfaceColorOptions = Prettify<keyof NewSurfaceColors | 'none'>;
@@ -70,7 +75,7 @@ export type StructureColors = {
 
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
-	NewSurfaceColors &
+	AllSurfaceColors &
 		StructureColors & {
 			text: TextColors;
 		}
