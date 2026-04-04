@@ -115,9 +115,8 @@ export const buttonRecipe = defineRecipe({
 				color: 'text.standard',
 				_hover: {
 					backgroundColor: 'hover',
-					color: 'text.standard',
+					color: 'text.secondary',
 					borderColor: 'text.standard',
-					borderWidth: 'lg',
 				},
 			},
 		},
@@ -277,7 +276,6 @@ export const buttonRecipe = defineRecipe({
 					backgroundColor: 'transparent',
 					color: 'text.standard',
 					borderColor: 'text.standard',
-					borderWidth: 'md',
 				},
 			},
 		},
