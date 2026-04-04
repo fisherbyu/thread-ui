@@ -54,7 +54,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	overlay: '#FFFFFF',
 
 	// Structure Colors
-	structure: '',
+	structure: '#E2E8F0',
 
 	// Light Mode Text Colors
 	text: {
