@@ -40,10 +40,12 @@
 	--thread-border-size-lg: 1.5px;
 
 	/* Light Mode Values */
-	--thread-background-light-mode: #32cd32;
-	--thread-surface-light-mode: #ffc0cb;
-	--thread-xelevatedx-light-mode: #ff0000;
-	--thread-structure-light-mode: #ffa500;
+	--thread-canvas-light-mode: #f5f6f8;
+	--thread-inset-light-mode: #edeef1;
+	--thread-surface-light-mode: #ffffff;
+	--thread-elevated-light-mode: #ffffff;
+	--thread-overlay-light-mode: #ffffff;
+	--thread-structure-light-mode: #e2e8f0;
 	--thread-text-standard-light-mode: #1f2937;
 	--thread-text-secondary-light-mode: #4b5563;
 	--thread-text-disabled-light-mode: #9ca3af;
@@ -51,9 +53,11 @@
 	--thread-text-inverted-light-mode: #f9fafb;
 
 	/* Dark Mode Values */
-	--thread-background-dark-mode: #121212;
-	--thread-surface-dark-mode: #1e1e1e;
-	--thread-xelevatedx-dark-mode: #2d2d2d;
+	--thread-canvas-dark-mode: #ff0000;
+	--thread-inset-dark-mode: #ff0000;
+	--thread-surface-dark-mode: #ff0000;
+	--thread-elevated-dark-mode: #ff0000;
+	--thread-overlay-dark-mode: #ff0000;
 	--thread-structure-dark-mode: #4b5563;
 	--thread-text-standard-dark-mode: #f9fafb;
 	--thread-text-secondary-dark-mode: #4b5563;
@@ -62,9 +66,11 @@
 	--thread-text-inverted-dark-mode: #1f2937;
 
 	/* Apply Light Mode Colors */
-	--thread-background: var(--thread-background-light-mode);
+	--thread-canvas: var(--thread-canvas-light-mode);
+	--thread-inset: var(--thread-inset-light-mode);
 	--thread-surface: var(--thread-surface-light-mode);
-	--thread-xelevatedx: var(--thread-xelevatedx-light-mode);
+	--thread-elevated: var(--thread-elevated-light-mode);
+	--thread-overlay: var(--thread-overlay-light-mode);
 	--thread-structure: var(--thread-structure-light-mode);
 	--thread-text-standard: var(--thread-text-standard-light-mode);
 	--thread-text-secondary: var(--thread-text-secondary-light-mode);
@@ -75,9 +81,11 @@
 
 :root[data-theme='light'] {
 	/* Light Mode Color Override */
-	--thread-background: var(--thread-background-light-mode);
+	--thread-canvas: var(--thread-canvas-light-mode);
+	--thread-inset: var(--thread-inset-light-mode);
 	--thread-surface: var(--thread-surface-light-mode);
-	--thread-xelevatedx: var(--thread-xelevatedx-light-mode);
+	--thread-elevated: var(--thread-elevated-light-mode);
+	--thread-overlay: var(--thread-overlay-light-mode);
 	--thread-structure: var(--thread-structure-light-mode);
 	--thread-text-standard: var(--thread-text-standard-light-mode);
 	--thread-text-secondary: var(--thread-text-secondary-light-mode);
@@ -88,9 +96,11 @@
 
 :root[data-theme='dark'] {
 	/* Dark Mode Color Override */
-	--thread-background: var(--thread-background-dark-mode);
+	--thread-canvas: var(--thread-canvas-dark-mode);
+	--thread-inset: var(--thread-inset-dark-mode);
 	--thread-surface: var(--thread-surface-dark-mode);
-	--thread-xelevatedx: var(--thread-xelevatedx-dark-mode);
+	--thread-elevated: var(--thread-elevated-dark-mode);
+	--thread-overlay: var(--thread-overlay-dark-mode);
 	--thread-structure: var(--thread-structure-dark-mode);
 	--thread-text-standard: var(--thread-text-standard-dark-mode);
 	--thread-text-secondary: var(--thread-text-secondary-dark-mode);
@@ -102,9 +112,11 @@
 @media (prefers-color-scheme: dark) {
 	:root:not([data-theme]) {
 		/* Apply Dark Mode Colors */
-		--thread-background: var(--thread-background-dark-mode);
+		--thread-canvas: var(--thread-canvas-dark-mode);
+		--thread-inset: var(--thread-inset-dark-mode);
 		--thread-surface: var(--thread-surface-dark-mode);
-		--thread-xelevatedx: var(--thread-xelevatedx-dark-mode);
+		--thread-elevated: var(--thread-elevated-dark-mode);
+		--thread-overlay: var(--thread-overlay-dark-mode);
 		--thread-structure: var(--thread-structure-dark-mode);
 		--thread-text-standard: var(--thread-text-standard-dark-mode);
 		--thread-text-secondary: var(--thread-text-secondary-dark-mode);
