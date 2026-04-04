@@ -12,7 +12,7 @@ const meta = {
 	argTypes: {
 		surfaceColor: {
 			control: 'select',
-			options: ['xbackgroundx', 'surface', 'elevated'],
+			options: ['xbackgroundx', 'xsurfacex', 'elevated'],
 		},
 		size: {
 			control: 'select',

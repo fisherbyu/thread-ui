@@ -84,7 +84,7 @@ export default defineConfig({
 			semanticTokens: {
 				colors: {
 					xbackgroundx: { value: 'var(--thread-xbackgroundx)' },
-					surface: { value: 'var(--thread-surface)' },
+					xsurfacex: { value: 'var(--thread-xsurfacex)' },
 					elevated: { value: 'var(--thread-elevated)' },
 					structure: { value: 'var(--thread-structure)' },
 					text: {

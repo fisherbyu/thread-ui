@@ -48,7 +48,7 @@ export default {
 					dark: 'var(--info-dark)',
 				},
 				xbackgroundx: 'var(--xbackgroundx)',
-				surface: 'var(--surface)',
+				xsurfacex: 'var(--xsurfacex)',
 				elevated: 'var(--elevated)',
 			},
 		},

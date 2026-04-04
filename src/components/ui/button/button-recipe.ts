@@ -466,14 +466,14 @@ export const buttonRecipe = defineRecipe({
 			disabled: false,
 			textVariant: false,
 			color: 'text',
-			css: { _hover: { backgroundColor: 'surface', borderColor: 'text.standard' } },
+			css: { _hover: { backgroundColor: 'xsurfacex', borderColor: 'text.standard' } },
 		},
 		{
 			highlightOnHover: true,
 			disabled: false,
 			textVariant: false,
 			color: 'neutral',
-			css: { _hover: { backgroundColor: 'surface', borderColor: 'text.standard' } },
+			css: { _hover: { backgroundColor: 'xsurfacex', borderColor: 'text.standard' } },
 		},
 	],
 	defaultVariants: {

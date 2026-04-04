@@ -6,7 +6,7 @@ const styles = cva({
 	variants: {
 		bgColor: {
 			background: { backgroundColor: 'xbackgroundx' },
-			surface: { backgroundColor: 'surface' },
+			surface: { backgroundColor: 'xsurfacex' },
 			elevated: { backgroundColor: 'elevated' },
 		},
 	},
@@ -20,7 +20,7 @@ const styles = cva({
  * Renders as `div` by default but can be swapped for `section`.
  *
  * @example
- * <Container as="section" bgColor="surface">
+ * <Container as="section" bgColor="xsurfacex">
  *   <PageHeader title="About" />
  * </Container>
  */

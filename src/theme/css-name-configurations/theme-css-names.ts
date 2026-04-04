@@ -61,7 +61,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 
 	// Surface Colors
 	xbackgroundx: 'xbackgroundx',
-	surface: 'surface',
+	xsurfacex: 'xsurfacex',
 	elevated: 'elevated',
 	structure: 'structure',
 
@@ -99,7 +99,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 	lightMode: {
 		// Surfaces
 		xbackgroundx: 'xbackgroundx-light-mode',
-		surface: 'surface-light-mode',
+		xsurfacex: 'xsurfacex-light-mode',
 		elevated: 'elevated-light-mode',
 		structure: 'structure-light-mode',
 		// Text
@@ -115,7 +115,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 	darkMode: {
 		// Surfaces
 		xbackgroundx: 'xbackgroundx-dark-mode',
-		surface: 'surface-dark-mode',
+		xsurfacex: 'xsurfacex-dark-mode',
 		elevated: 'elevated-dark-mode',
 		structure: 'structure-dark-mode',
 		// Text

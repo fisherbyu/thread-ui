@@ -37,7 +37,7 @@ const styles = {
 		background: 'xbackgroundx',
 		borderColor: 'structure',
 		_dark: {
-			backgroundColor: 'surface',
+			backgroundColor: 'xsurfacex',
 		},
 	}),
 	dropdownContentShow: css({

@@ -35,8 +35,8 @@ const styles = {
 				background: {
 					backgroundColor: 'background',
 				},
-				surface: {
-					backgroundColor: 'surface',
+				xsurfacex: {
+					backgroundColor: 'xsurfacex',
 				},
 				elevated: {
 					backgroundColor: 'elevated',

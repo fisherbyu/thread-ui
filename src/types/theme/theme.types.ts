@@ -53,7 +53,7 @@ export type BreakpointOptions = Omit<ExpandedUtilitySizes, keyof ExpandedSmallOp
 /** Surface and text color tokens that shift between light and dark mode */
 export type SurfaceColors = {
 	xbackgroundx: string;
-	surface: string;
+	xsurfacex: string;
 	elevated: string;
 	structure: string;
 };

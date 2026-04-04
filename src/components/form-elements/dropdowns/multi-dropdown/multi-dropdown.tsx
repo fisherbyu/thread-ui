@@ -14,7 +14,7 @@ const styles = {
 			display: 'flex',
 			alignItems: 'center',
 			gap: '2',
-			_hover: { backgroundColor: 'surface' },
+			_hover: { backgroundColor: 'xsurfacex' },
 		},
 		variants: {
 			isSelected: {
