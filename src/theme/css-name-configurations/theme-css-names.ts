@@ -1,13 +1,11 @@
-import { ThemeConfigFull, Theme, ModeColors, DeepStringify } from '@/types';
+import { ThemeConfigFull, ModeColors } from '@/types';
 import { prefixVariables, wrapVariables } from './theme-helper-utils';
 
 export const THREAD_CSS_VARIABLE_PREFIX = '--thread-' as const;
 
-type AllThemeCssNames = DeepStringify<
-	ThemeConfigFull & {
-		lightMode: ModeColors;
-	}
->;
+type AllThemeCssNames = ThemeConfigFull & {
+	lightMode: ModeColors;
+};
 
 /**
  * Base CSS Names for Every Thread Theme Property
@@ -191,10 +189,7 @@ export const {
 	...ThemeBaseCssNames
 } = AllBaseCssNames;
 
-export const ThemeCssVariableNames: DeepStringify<Theme> = prefixVariables(
-	ThemeBaseCssNames,
-	THREAD_CSS_VARIABLE_PREFIX
-);
+export const ThemeCssVariableNames = prefixVariables(ThemeBaseCssNames, THREAD_CSS_VARIABLE_PREFIX);
 
 export const LightModeVariables: ModeColors = wrapVariables(
 	LightModeVariablesBaseCssNames,
