@@ -49,7 +49,7 @@ export default {
 				},
 				xbackgroundx: 'var(--xbackgroundx)',
 				xsurfacex: 'var(--xsurfacex)',
-				elevated: 'var(--elevated)',
+				xelevatedx: 'var(--xelevatedx)',
 			},
 		},
 		container: {

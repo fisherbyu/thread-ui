@@ -85,7 +85,7 @@ export default defineConfig({
 				colors: {
 					xbackgroundx: { value: 'var(--thread-xbackgroundx)' },
 					xsurfacex: { value: 'var(--thread-xsurfacex)' },
-					elevated: { value: 'var(--thread-elevated)' },
+					xelevatedx: { value: 'var(--thread-xelevatedx)' },
 					structure: { value: 'var(--thread-structure)' },
 					text: {
 						standard: { value: 'var(--thread-text-standard)' },

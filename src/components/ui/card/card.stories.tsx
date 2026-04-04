@@ -12,7 +12,7 @@ const meta = {
 	argTypes: {
 		surfaceColor: {
 			control: 'select',
-			options: ['xbackgroundx', 'xsurfacex', 'elevated'],
+			options: ['xbackgroundx', 'xsurfacex', 'xelevatedx'],
 		},
 		size: {
 			control: 'select',
@@ -68,7 +68,7 @@ export const AllVariants: Story = {
 			</Card>
 			<Card
 				size="lg"
-				surfaceColor="elevated"
+				surfaceColor="xelevatedx"
 				title={{ text: 'Large Elevated Card', align: 'center' }}
 			>
 				<p>Large card with elevated surface and centered title</p>

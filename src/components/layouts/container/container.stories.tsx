@@ -16,7 +16,7 @@ const meta: Meta<typeof Container> = {
 		},
 		bgColor: {
 			control: 'select',
-			options: ['xbackgroundx', 'xsurfacex', 'elevated'],
+			options: ['xbackgroundx', 'xsurfacex', 'xelevatedx'],
 		},
 	},
 };

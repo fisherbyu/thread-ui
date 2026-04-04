@@ -24,7 +24,7 @@ const styles = {
 			transition: 'all 150ms ease-in-out',
 			margin: 'auto',
 			_hover: {
-				backgroundColor: 'elevated',
+				backgroundColor: 'xelevatedx',
 			},
 		},
 		variants: {

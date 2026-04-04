@@ -54,7 +54,7 @@ export type BreakpointOptions = Omit<ExpandedUtilitySizes, keyof ExpandedSmallOp
 export type SurfaceColors = {
 	xbackgroundx: string;
 	xsurfacex: string;
-	elevated: string;
+	xelevatedx: string;
 	structure: string;
 };
 

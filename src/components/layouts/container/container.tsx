@@ -7,7 +7,7 @@ const styles = cva({
 		bgColor: {
 			background: { backgroundColor: 'xbackgroundx' },
 			surface: { backgroundColor: 'xsurfacex' },
-			elevated: { backgroundColor: 'elevated' },
+			xelevatedx: { backgroundColor: 'xelevatedx' },
 		},
 	},
 	defaultVariants: {

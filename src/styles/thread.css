@@ -42,7 +42,7 @@
 	/* Light Mode Values */
 	--thread-background-light-mode: #32cd32;
 	--thread-surface-light-mode: #ffc0cb;
-	--thread-elevated-light-mode: #ff0000;
+	--thread-xelevatedx-light-mode: #ff0000;
 	--thread-structure-light-mode: #ffa500;
 	--thread-text-standard-light-mode: #1f2937;
 	--thread-text-secondary-light-mode: #4b5563;
@@ -53,7 +53,7 @@
 	/* Dark Mode Values */
 	--thread-background-dark-mode: #121212;
 	--thread-surface-dark-mode: #1e1e1e;
-	--thread-elevated-dark-mode: #2d2d2d;
+	--thread-xelevatedx-dark-mode: #2d2d2d;
 	--thread-structure-dark-mode: #4b5563;
 	--thread-text-standard-dark-mode: #f9fafb;
 	--thread-text-secondary-dark-mode: #4b5563;
@@ -64,7 +64,7 @@
 	/* Apply Light Mode Colors */
 	--thread-background: var(--thread-background-light-mode);
 	--thread-surface: var(--thread-surface-light-mode);
-	--thread-elevated: var(--thread-elevated-light-mode);
+	--thread-xelevatedx: var(--thread-xelevatedx-light-mode);
 	--thread-structure: var(--thread-structure-light-mode);
 	--thread-text-standard: var(--thread-text-standard-light-mode);
 	--thread-text-secondary: var(--thread-text-secondary-light-mode);
@@ -77,7 +77,7 @@
 	/* Light Mode Color Override */
 	--thread-background: var(--thread-background-light-mode);
 	--thread-surface: var(--thread-surface-light-mode);
-	--thread-elevated: var(--thread-elevated-light-mode);
+	--thread-xelevatedx: var(--thread-xelevatedx-light-mode);
 	--thread-structure: var(--thread-structure-light-mode);
 	--thread-text-standard: var(--thread-text-standard-light-mode);
 	--thread-text-secondary: var(--thread-text-secondary-light-mode);
@@ -90,7 +90,7 @@
 	/* Dark Mode Color Override */
 	--thread-background: var(--thread-background-dark-mode);
 	--thread-surface: var(--thread-surface-dark-mode);
-	--thread-elevated: var(--thread-elevated-dark-mode);
+	--thread-xelevatedx: var(--thread-xelevatedx-dark-mode);
 	--thread-structure: var(--thread-structure-dark-mode);
 	--thread-text-standard: var(--thread-text-standard-dark-mode);
 	--thread-text-secondary: var(--thread-text-secondary-dark-mode);
@@ -104,7 +104,7 @@
 		/* Apply Dark Mode Colors */
 		--thread-background: var(--thread-background-dark-mode);
 		--thread-surface: var(--thread-surface-dark-mode);
-		--thread-elevated: var(--thread-elevated-dark-mode);
+		--thread-xelevatedx: var(--thread-xelevatedx-dark-mode);
 		--thread-structure: var(--thread-structure-dark-mode);
 		--thread-text-standard: var(--thread-text-standard-dark-mode);
 		--thread-text-secondary: var(--thread-text-secondary-dark-mode);
