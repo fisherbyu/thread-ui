@@ -72,7 +72,11 @@ export const AllBaseCssNames: AllThemeCssNames = {
 	hover: 'hover',
 
 	// Structure Colors
-	structure: 'structure',
+	structure: {
+		subtle: 'structure-subtle',
+		default: 'structure-default',
+		strong: 'structure-strong',
+	},
 
 	// Text Colors
 	text: {
