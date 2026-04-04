@@ -87,7 +87,25 @@ export type StructureColors = {
 	strong: string;
 };
 
+/** Structure color options, used for component variants */
 export type StructureColorOptions = Prettify<keyof StructureColors>;
+
+/** Z-Index Hierarchy */
+export type ZIndexScale = {
+	base: number;
+	sticky: number;
+	overlay: number;
+	modal: number;
+	system: number;
+};
+
+/** Z-Index Options */
+export type ZIndexOptions = Prettify<keyof ZIndexScale>;
+
+/** Modal Overlays */
+export type ScrimColors = {
+	scrim: string;
+};
 
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
