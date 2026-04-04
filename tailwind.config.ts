@@ -47,9 +47,13 @@ export default {
 					DEFAULT: 'var(--info-main)',
 					dark: 'var(--info-dark)',
 				},
-				xbackgroundx: 'var(--xbackgroundx)',
-				xsurfacex: 'var(--xsurfacex)',
-				xelevatedx: 'var(--xelevatedx)',
+				canvas: 'var(--thread-canvas)',
+				inset: 'var(--thread-inset)',
+				surface: 'var(--thread-surface)',
+				elevated: 'var(--thread-elevated)',
+				overlay: 'var(--thread-overlay)',
+
+				structure: 'var(--thread-structure)',
 			},
 		},
 		container: {
