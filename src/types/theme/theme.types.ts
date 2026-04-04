@@ -112,47 +112,6 @@ export type ScrimColors = {
 /** Surface Layer System Options */
 export type SurfaceLayerOptions = keyof SurfaceColors;
 
-type SurfaceConfig = {
-	surface: SurfaceColorOptions;
-	shadow: ShadowOptions;
-	structure: StructureColorOptions | 'none';
-	zIndex: ZIndexOptions | 'none';
-};
-
-/** Surface System Values */
-export const SurfaceLevelMap: Record<SurfaceLayerOptions, SurfaceConfig> = {
-	canvas: {
-		surface: 'canvas',
-		shadow: 'none',
-		structure: 'none',
-		zIndex: 'none',
-	},
-	inset: {
-		surface: 'inset',
-		shadow: 'none',
-		structure: 'default',
-		zIndex: 'none',
-	},
-	surface: {
-		surface: 'surface',
-		shadow: 'none',
-		structure: 'subtle',
-		zIndex: 'none',
-	},
-	elevated: {
-		surface: 'elevated',
-		shadow: 'sm',
-		structure: 'subtle',
-		zIndex: 'sticky',
-	},
-	overlay: {
-		surface: 'overlay',
-		shadow: 'lg',
-		structure: 'none',
-		zIndex: 'overlay',
-	},
-};
-
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
 	AllSurfaceColors & {
