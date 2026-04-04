@@ -73,7 +73,7 @@ export type OldSurfaceColors = {
 
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
-	SurfaceColors & {
+	OldSurfaceColors & {
 		text: TextColors;
 	}
 >;
