@@ -69,7 +69,7 @@ export type OldSurfaceColors = {
 };
 
 /** Surface color options excluding `structure`, used for component background variants */
-export type SurfaceColorOptions = keyof Omit<SurfaceColors, 'structure'>;
+export type SurfaceColorOptions = keyof Omit<NewSurfaceColors, 'structure'>;
 
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
