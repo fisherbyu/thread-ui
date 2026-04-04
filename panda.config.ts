@@ -88,8 +88,12 @@ export default defineConfig({
 					surface: { value: 'var(--thread-surface)' },
 					elevated: { value: 'var(--thread-elevated)' },
 					overlay: { value: 'var(--thread-overlay)' },
+
+					active: { value: 'var(--thread-active)' },
 					hover: { value: 'var(--thread-hover)' },
+
 					structure: { value: 'var(--thread-structure)' },
+
 					text: {
 						standard: { value: 'var(--thread-text-standard)' },
 						secondary: { value: 'var(--thread-text-secondary)' },

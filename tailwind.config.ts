@@ -52,6 +52,8 @@ export default {
 				surface: 'var(--thread-surface)',
 				elevated: 'var(--thread-elevated)',
 				overlay: 'var(--thread-overlay)',
+
+				active: 'var(--thread-active)',
 				hover: 'var(--thread-hover',
 
 				structure: 'var(--thread-structure)',
