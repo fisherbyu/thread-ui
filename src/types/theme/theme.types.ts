@@ -57,6 +57,7 @@ export type NewSurfaceColors = {
 	surface: string;
 	elevated: string;
 	overlay: string;
+	hover: string;
 };
 
 /** Surface color options, used for component background variants */
