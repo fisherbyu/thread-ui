@@ -54,12 +54,12 @@
 	--thread-text-inverted-light-mode: #f9fafb;
 
 	/* Dark Mode Values */
-	--thread-canvas-dark-mode: #ff0000;
-	--thread-inset-dark-mode: #ff0000;
-	--thread-surface-dark-mode: #ff0000;
-	--thread-elevated-dark-mode: #ff0000;
-	--thread-overlay-dark-mode: #ff0000;
-	--thread-hover-dark-mode: #ff0000;
+	--thread-canvas-dark-mode: #121212;
+	--thread-inset-dark-mode: #0a0a0a;
+	--thread-surface-dark-mode: #1e1e1e;
+	--thread-elevated-dark-mode: #252525;
+	--thread-overlay-dark-mode: #2d2d2d;
+	--thread-hover-dark-mode: #333333;
 	--thread-structure-dark-mode: #4b5563;
 	--thread-text-standard-dark-mode: #f9fafb;
 	--thread-text-secondary-dark-mode: #4b5563;
