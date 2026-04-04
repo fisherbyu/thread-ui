@@ -53,7 +53,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	elevated: '#FFFFFF',
 	overlay: '#FFFFFF',
 
-	active: '#F3F4F6',
+	active: '#E9ECEF',
 	hover: '#F3F4F6',
 
 	// Light Mode Structure Colors
@@ -118,7 +118,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		elevated: '#252525',
 		overlay: '#2D2D2D',
 
-		active: '#333333',
+		active: '#3A3A3A',
 		hover: '#333333',
 
 		// Dark Mode Structure Colors
