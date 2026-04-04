@@ -50,6 +50,16 @@ export type ExpandedUtilitySizeOptions = Prettify<keyof ExpandedUtilitySizes>;
 /** Size scale extended with responsive breakpoint steps */
 export type BreakpointOptions = Omit<ExpandedUtilitySizes, keyof ExpandedSmallOptions>;
 
+/** Surface Hierarchy and Layer Colors */
+export type NewSurfaceColors = {
+	canvas: string;
+	inset: string;
+	surface: string;
+	surfaceAlt: string;
+	elevated: string;
+	overlay: string;
+};
+
 /** Surface and text color tokens that shift between light and dark mode */
 export type OldSurfaceColors = {
 	xbackgroundx: string;
