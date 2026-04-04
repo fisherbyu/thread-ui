@@ -345,7 +345,10 @@ export const buttonRecipe = defineRecipe({
 		{
 			textVariant: true,
 			color: 'neutral',
-			css: { color: 'text.standard', _hover: { color: 'text.standard' } },
+			css: {
+				color: 'text.standard',
+				_hover: { color: 'text.standard', backgroundColor: 'transparent' },
+			},
 		},
 		{
 			textVariant: true,
