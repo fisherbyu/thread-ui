@@ -18,7 +18,7 @@ const styles = {
 		maxWidth: '391px',
 		aspectRatio: '8 / 5',
 		width: '100%',
-		backgroundColor: { base: 'xbackgroundx', _hover: 'xsurfacex' },
+		backgroundColor: { base: 'surface', _hover: 'hover' },
 	}),
 	cardContent: css({
 		display: 'flex',
