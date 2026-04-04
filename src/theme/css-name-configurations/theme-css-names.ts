@@ -112,6 +112,9 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		system: 'z-index-system',
 	},
 
+	// Scrim
+	scrim: 'scrim',
+
 	// Sizing
 	borderRadius: {
 		sm: 'border-radius-sm',
