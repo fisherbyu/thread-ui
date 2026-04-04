@@ -40,10 +40,10 @@
 	--thread-border-size-lg: 1.5px;
 
 	/* Light Mode Values */
-	--thread-background-light-mode: #ffffff;
-	--thread-surface-light-mode: #f9fafb;
-	--thread-elevated-light-mode: #f3f4f6;
-	--thread-structure-light-mode: #e2e8f0;
+	--thread-background-light-mode: #32cd32;
+	--thread-surface-light-mode: #ffc0cb;
+	--thread-elevated-light-mode: #ff0000;
+	--thread-structure-light-mode: #ffa500;
 	--thread-text-standard-light-mode: #1f2937;
 	--thread-text-secondary-light-mode: #4b5563;
 	--thread-text-disabled-light-mode: #9ca3af;

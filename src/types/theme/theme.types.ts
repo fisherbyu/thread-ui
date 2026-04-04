@@ -68,28 +68,43 @@ export type ModeColors = Prettify<
 	}
 >;
 
+/** Theme Brand Colors */
+export type ThemePalette = Prettify<{
+	primary: ColorShades;
+	secondary: ColorShades;
+	tertiary: ColorShades;
+}>;
+
+/** Status Colors */
+export type StatusPalette = {
+	success: ColorShades;
+	warning: ColorShades;
+	error: ColorShades;
+	info: ColorShades;
+};
+
+/** Neutral Colors */
+export type NeutralPalette = {
+	white: string;
+	black: string;
+	gray: ColorShades;
+};
+
+/** Theme Layout Structure */
+export type ThemeStructure = {
+	breakpoints: BreakpointOptions;
+};
+
+/** Base Border Configuration */
+export type ThemeBorders = {
+	// Sizing
+	borderRadius: UtilitySizes;
+	borderSize: UtilitySizes;
+};
+
 /** Full design token set for the Thread theme */
 export type Theme = Prettify<
-	ModeColors & {
-		// Color Palette
-		primary: ColorShades;
-		secondary: ColorShades;
-		tertiary: ColorShades;
-		// Neutral Colors
-		white: string;
-		black: string;
-		gray: ColorShades;
-		// Status Colors
-		success: ColorShades;
-		warning: ColorShades;
-		error: ColorShades;
-		info: ColorShades;
-		// Structure
-		breakpoints: BreakpointOptions;
-		// Sizing
-		borderRadius: UtilitySizes;
-		borderSize: UtilitySizes;
-	}
+	ThemePalette & StatusPalette & NeutralPalette & ThemeStructure & ThemeBorders & ModeColors
 >;
 
 /** Complete theme including dark mode surface and text overrides */
