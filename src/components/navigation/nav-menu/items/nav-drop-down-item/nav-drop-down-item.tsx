@@ -34,10 +34,10 @@ const styles = {
 		top: { lg: 'calc(100% + 30px)' },
 		left: { lg: '50%' },
 		transform: { lg: 'translateX(-50%)' },
-		background: 'xbackgroundx',
+		background: 'surface',
 		borderColor: 'structure',
 		_dark: {
-			backgroundColor: 'xsurfacex',
+			backgroundColor: 'surface',
 		},
 	}),
 	dropdownContentShow: css({
@@ -47,7 +47,7 @@ const styles = {
 		justifyContent: 'center',
 		columnGap: '24px',
 		alignItems: 'center',
-		backgroundColor: 'xbackgroundx',
+		backgroundColor: 'surface',
 		width: '100vw',
 		position: 'relative',
 		left: '50%',
