@@ -53,7 +53,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	elevated: '#FFFFFF',
 	overlay: '#FFFFFF',
 
-	// Structure Colors
+	// Light Mode Structure Colors
 	structure: '#E2E8F0',
 
 	// Light Mode Text Colors
@@ -85,17 +85,17 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	},
 	// Dark Mode Colors
 	darkMode: {
-		// Layers
+		// Dark Mode Surface Colors
 		canvas: '#FF0000',
 		inset: '#FF0000',
 		surface: '#FF0000',
 		elevated: '#FF0000',
 		overlay: '#FF0000',
 
-		// Structure
+		// Dark Mode Structure Colors
 		structure: '#4b5563',
 
-		// Text
+		// Dark Mode Text Colors
 		text: {
 			standard: '#f9fafb',
 			secondary: '#4b5563',
