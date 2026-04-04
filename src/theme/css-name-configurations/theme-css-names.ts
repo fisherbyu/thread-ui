@@ -65,6 +65,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 	surface: 'surface',
 	elevated: 'elevated',
 	overlay: 'overlay',
+	hover: 'hover',
 
 	// Structure Colors
 	structure: 'structure',
@@ -107,6 +108,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		surface: 'surface-light-mode',
 		elevated: 'elevated-light-mode',
 		overlay: 'overlay-light-mode',
+		hover: 'hover-light-mode',
 
 		// Structure
 		structure: 'structure-light-mode',
@@ -128,6 +130,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		surface: 'surface-dark-mode',
 		elevated: 'elevated-dark-mode',
 		overlay: 'overlay-dark-mode',
+		hover: 'hover-light-mode',
 
 		// Structure
 		structure: 'structure-dark-mode',
