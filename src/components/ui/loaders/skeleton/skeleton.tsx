@@ -4,7 +4,7 @@ import type { SkeletonProps } from './skeleton.types';
 const styles = cva({
 	base: {
 		display: 'block',
-		backgroundImage: `linear-gradient(90deg, var(--thread-xelevatedx) 25%, var(--thread-structure) 50%, var(--thread-xelevatedx) 75%)`,
+		backgroundImage: `linear-gradient(90deg, var(--thread-elevated) 25%, var(--thread-structure) 50%, var(--thread-elevated) 75%)`,
 		backgroundSize: '200% 100%',
 		animation: 'shimmer 1.5s linear infinite',
 	},
