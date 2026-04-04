@@ -151,7 +151,16 @@ export type ThemeBorders = {
 
 /** Full design token set for the Thread theme */
 export type Theme = Prettify<
-	ThemePalette & StatusPalette & NeutralPalette & ThemeLayout & ThemeBorders & ModeColors
+	ThemePalette &
+		StatusPalette &
+		NeutralPalette &
+		ThemeLayout &
+		ThemeBorders &
+		ScrimColors &
+		ModeColors & {
+			zIndex: ZIndexScale;
+			shadow: ShadowScale;
+		}
 >;
 
 /** Complete theme including dark mode surface and text overrides */
