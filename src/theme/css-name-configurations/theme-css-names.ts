@@ -81,7 +81,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		inverted: 'text-inverted',
 	},
 
-	// Structure
+	// Layouts
 	breakpoints: {
 		sm: 'breakpoint-sm',
 		md: 'breakpoint-md',
@@ -115,7 +115,11 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		hover: 'hover-light-mode',
 
 		// Structure
-		structure: 'structure-light-mode',
+		structure: {
+			subtle: 'structure-subtle-light-mode',
+			default: 'structure-default-light-mode',
+			strong: 'structure-strong-light-mode',
+		},
 
 		// Text
 		text: {
@@ -139,7 +143,11 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		hover: 'hover-dark-mode',
 
 		// Structure
-		structure: 'structure-dark-mode',
+		structure: {
+			subtle: 'structure-subtle-dark-mode',
+			default: 'structure-default-dark-mode',
+			strong: 'structure-strong-dark-mode',
+		},
 
 		// Text
 		text: {
