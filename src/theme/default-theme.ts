@@ -47,7 +47,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		dark: '#1d4ed8',
 	},
 	// Light Mode Surface Colors
-	background: '#32CD32',
+	xbackgroundx: '#32CD32',
 	surface: '#FFC0CB',
 	elevated: '#FF0000',
 	structure: '#FFA500',
@@ -80,7 +80,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	},
 	// Dark Mode Colors
 	darkMode: {
-		background: '#121212',
+		xbackgroundx: '#121212',
 		surface: '#1e1e1e',
 		elevated: '#2d2d2d',
 		structure: '#4b5563',

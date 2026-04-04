@@ -53,7 +53,7 @@ const styles = {
 		},
 		defaultVariants: {
 			size: 'md',
-			surfaceColor: 'background',
+			surfaceColor: 'xbackgroundx',
 			shadow: true,
 		},
 	}),
@@ -86,7 +86,7 @@ const styles = {
  * </Card>
  */
 export const Card = ({
-	surfaceColor = 'background',
+	surfaceColor = 'xbackgroundx',
 	children,
 	size = 'md',
 	shadow = true,

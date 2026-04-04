@@ -34,7 +34,7 @@ const styles = {
 		top: { lg: 'calc(100% + 30px)' },
 		left: { lg: '50%' },
 		transform: { lg: 'translateX(-50%)' },
-		background: 'background',
+		background: 'xbackgroundx',
 		borderColor: 'structure',
 		_dark: {
 			backgroundColor: 'surface',
@@ -47,7 +47,7 @@ const styles = {
 		justifyContent: 'center',
 		columnGap: '24px',
 		alignItems: 'center',
-		backgroundColor: 'background',
+		backgroundColor: 'xbackgroundx',
 		width: '100vw',
 		position: 'relative',
 		left: '50%',

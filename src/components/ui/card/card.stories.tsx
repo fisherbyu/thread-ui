@@ -12,7 +12,7 @@ const meta = {
 	argTypes: {
 		surfaceColor: {
 			control: 'select',
-			options: ['background', 'surface', 'elevated'],
+			options: ['xbackgroundx', 'surface', 'elevated'],
 		},
 		size: {
 			control: 'select',
@@ -29,7 +29,7 @@ type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
 	args: {
-		surfaceColor: 'background',
+		surfaceColor: 'xbackgroundx',
 		size: 'md',
 		shadow: true,
 		children: <p>This is a card component with some content inside.</p>,

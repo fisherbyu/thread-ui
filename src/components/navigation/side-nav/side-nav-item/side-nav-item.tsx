@@ -17,8 +17,8 @@ const styles = {
 			marginY: '4px',
 			marginX: 'auto',
 			borderWidth: 'md',
-			borderColor: 'background',
-			backgroundColor: 'background',
+			borderColor: 'xbackgroundx',
+			backgroundColor: 'xbackgroundx',
 			borderRadius: '20px',
 			borderStyle: 'solid',
 			_hover: {
@@ -36,7 +36,7 @@ const styles = {
 				},
 				false: {
 					color: 'text.standard',
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 				},
 			},
 		},

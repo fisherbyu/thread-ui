@@ -7,7 +7,7 @@ export type CardProps = {
 	size?: UtilitySizeOptions;
 	/** Renders a subtle drop shadow @default `true` */
 	shadow?: boolean;
-	/** Background color token @default `'background'` */
+	/** Background color token @default `'xbackgroundx'` */
 	surfaceColor?: SurfaceColorOptions;
 	/** Optional title rendered above the card content */
 	title?: {

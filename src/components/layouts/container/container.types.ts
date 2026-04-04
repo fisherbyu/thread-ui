@@ -6,7 +6,7 @@ type BlockElements = Pick<JSX.IntrinsicElements, 'div' | 'section'>;
 export type ContainerProps = {
 	/** HTML element to render as @default `'div'` */
 	as?: keyof BlockElements;
-	/** Background color token @default `'background'` */
+	/** Background color token @default `'xbackgroundx'` */
 	bgColor?: SurfaceColorOptions;
 	children: ReactNode;
 };

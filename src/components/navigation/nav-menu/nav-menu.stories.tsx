@@ -12,7 +12,7 @@ const meta: Meta<typeof NavMenu> = {
 	tags: ['autodocs'],
 	decorators: [
 		(Story) => (
-			<div style={{ minHeight: '100vh', backgroundColor: ThreadTheme.background }}>
+			<div style={{ minHeight: '100vh', backgroundColor: ThreadTheme.xbackgroundx }}>
 				<Story />
 				<div style={{ padding: '20px' }}>
 					<h1 style={{ fontSize: '24px', marginBottom: '16px' }}>Page Content</h1>

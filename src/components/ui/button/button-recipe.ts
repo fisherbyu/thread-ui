@@ -22,7 +22,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'primary.main',
 				borderColor: 'primary.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 					color: 'primary.main',
 					borderColor: 'primary.main',
 				},
@@ -31,7 +31,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'secondary.main',
 				borderColor: 'secondary.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 					color: 'secondary.main',
 					borderColor: 'secondary.main',
 				},
@@ -40,7 +40,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'tertiary.main',
 				borderColor: 'tertiary.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 					color: 'tertiary.main',
 					borderColor: 'tertiary.main',
 				},
@@ -58,7 +58,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'gray.main',
 				borderColor: 'gray.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 					color: 'gray.main',
 					borderColor: 'gray.main',
 				},
@@ -67,7 +67,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'success.main',
 				borderColor: 'success.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 					color: 'success.main',
 					borderColor: 'success.main',
 				},
@@ -76,7 +76,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'warning.main',
 				borderColor: 'warning.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 					color: 'warning.main',
 					borderColor: 'warning.main',
 				},
@@ -85,7 +85,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'error.main',
 				borderColor: 'error.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 					color: 'error.main',
 					borderColor: 'error.main',
 				},
@@ -94,7 +94,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'info.main',
 				borderColor: 'info.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 					color: 'info.main',
 					borderColor: 'info.main',
 				},
@@ -104,17 +104,17 @@ export const buttonRecipe = defineRecipe({
 				color: 'text.inverted',
 				borderColor: 'text.standard',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 					color: 'text.standard',
 					borderColor: 'text.standard',
 				},
 			},
 			neutral: {
-				backgroundColor: 'background',
+				backgroundColor: 'xbackgroundx',
 				borderColor: 'text.standard',
 				color: 'text.standard',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 					color: 'text.standard',
 					borderColor: 'text.standard',
 					borderWidth: 'lg',
@@ -155,7 +155,7 @@ export const buttonRecipe = defineRecipe({
 		},
 		textVariant: {
 			true: {
-				backgroundColor: 'background',
+				backgroundColor: 'xbackgroundx',
 				borderColor: 'transparent',
 				border: 'none',
 				_hover: {
@@ -176,7 +176,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'primary.main',
-					color: 'background',
+					color: 'xbackgroundx',
 					borderColor: 'primary.main',
 				},
 			},
@@ -187,7 +187,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'secondary.main',
-					color: 'background',
+					color: 'xbackgroundx',
 					borderColor: 'secondary.main',
 				},
 			},
@@ -198,7 +198,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'tertiary.main',
-					color: 'background',
+					color: 'xbackgroundx',
 					borderColor: 'tertiary.main',
 				},
 			},
@@ -209,7 +209,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'gray.main',
-					color: 'background',
+					color: 'xbackgroundx',
 					borderColor: 'gray.main',
 				},
 			},
@@ -220,7 +220,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'success.main',
-					color: 'background',
+					color: 'xbackgroundx',
 					borderColor: 'success.main',
 				},
 			},
@@ -231,7 +231,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'warning.main',
-					color: 'background',
+					color: 'xbackgroundx',
 					borderColor: 'warning.main',
 				},
 			},
@@ -242,7 +242,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'error.main',
-					color: 'background',
+					color: 'xbackgroundx',
 					borderColor: 'error.main',
 				},
 			},
@@ -253,7 +253,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'info.main',
-					color: 'background',
+					color: 'xbackgroundx',
 					borderColor: 'info.main',
 				},
 			},
@@ -264,7 +264,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'text.standard',
-					color: 'background',
+					color: 'xbackgroundx',
 					borderColor: 'text.standard',
 				},
 			},
@@ -274,7 +274,7 @@ export const buttonRecipe = defineRecipe({
 			disabled: true,
 			css: {
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'xbackgroundx',
 					color: 'text.standard',
 					borderColor: 'text.standard',
 					borderWidth: 'md',
@@ -288,7 +288,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'black',
-					color: 'background',
+					color: 'xbackgroundx',
 					borderColor: 'white',
 				},
 			},
