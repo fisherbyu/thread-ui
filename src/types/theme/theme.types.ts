@@ -59,7 +59,9 @@ export type NewSurfaceColors = {
 	overlay: string;
 };
 
+/** Interactive Surface Status Colors */
 export type SurfaceActivityColors = {
+	active: string;
 	hover: string;
 };
 
