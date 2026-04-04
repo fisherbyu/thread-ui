@@ -130,7 +130,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		surface: 'surface-dark-mode',
 		elevated: 'elevated-dark-mode',
 		overlay: 'overlay-dark-mode',
-		hover: 'hover-light-mode',
+		hover: 'hover-dark-mode',
 
 		// Structure
 		structure: 'structure-dark-mode',
