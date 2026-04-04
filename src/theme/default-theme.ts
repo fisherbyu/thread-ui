@@ -89,11 +89,11 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	},
 
 	zIndex: {
-		base: 0,
-		sticky: 100,
-		overlay: 200,
-		modal: 300,
-		system: 400,
+		base: '0',
+		sticky: '100',
+		overlay: '200',
+		modal: '300',
+		system: '400',
 	},
 
 	scrim: 'rgba(0, 0, 0, 0.4)',
