@@ -47,7 +47,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		dark: '#1d4ed8',
 	},
 	// Light Mode Surface Colors
-	canvas: '#F8F9FB',
+	canvas: '#FCFCFB',
 	inset: '#EDEEF1',
 	surface: '#FFFFFF',
 	elevated: '#FFFFFF',
