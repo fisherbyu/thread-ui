@@ -25,7 +25,7 @@ const preview: Preview = {
 						justifyContent: 'center',
 						minWidth: '320px',
 						minHeight: '250px',
-						backgroundColor: ThreadTheme.xbackgroundx,
+						backgroundColor: ThreadTheme.canvas,
 						padding: '24px',
 					}}
 				>
