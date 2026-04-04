@@ -87,12 +87,12 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	// Dark Mode Colors
 	darkMode: {
 		// Dark Mode Surface Colors
-		canvas: '#FF0000',
-		inset: '#FF0000',
-		surface: '#FF0000',
-		elevated: '#FF0000',
-		overlay: '#FF0000',
-		hover: '#FF0000',
+		canvas: '#121212',
+		inset: '#0A0A0A',
+		surface: '#1E1E1E',
+		elevated: '#252525',
+		overlay: '#2D2D2D',
+		hover: '#333333',
 
 		// Dark Mode Structure Colors
 		structure: '#4b5563',
