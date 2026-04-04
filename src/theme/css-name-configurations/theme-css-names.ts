@@ -136,7 +136,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		elevated: 'elevated-light-mode',
 		overlay: 'overlay-light-mode',
 
-		active: 'hover-light-mode',
+		active: 'active-light-mode',
 		hover: 'hover-light-mode',
 
 		// Structure
@@ -164,7 +164,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		elevated: 'elevated-dark-mode',
 		overlay: 'overlay-dark-mode',
 
-		active: 'hover-dark-mode',
+		active: 'active-dark-mode',
 		hover: 'hover-dark-mode',
 
 		// Structure
@@ -191,7 +191,7 @@ export const {
 	...ThemeBaseCssNames
 } = AllBaseCssNames;
 
-export const ThemeCssVariableNames: Theme = prefixVariables(
+export const ThemeCssVariableNames: DeepStringify<Theme> = prefixVariables(
 	ThemeBaseCssNames,
 	THREAD_CSS_VARIABLE_PREFIX
 );
