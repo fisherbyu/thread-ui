@@ -70,10 +70,24 @@ export type AllSurfaceColors = Prettify<NewSurfaceColors & SurfaceActivityColors
 /** Surface color options, used for component background variants */
 export type SurfaceColorOptions = Prettify<keyof NewSurfaceColors | 'none'>;
 
+/** Element Shadow Levels */
+export type ShadowScale = {
+	sm: string;
+	md: string;
+	lg: string;
+};
+
+/** Element Shadow Options */
+export type ShadowOptions = Prettify<keyof ShadowScale | 'none'>;
+
 /** Structural Colors, used for borders and dividers etc */
 export type StructureColors = {
-	structure: string;
+	subtle: string;
+	default: string;
+	strong: string;
 };
+
+export type StructureColorOptions = Prettify<keyof StructureColors>;
 
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
