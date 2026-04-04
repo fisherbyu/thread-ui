@@ -63,19 +63,24 @@ export type NewSurfaceColors = {
 /** Surface color options, used for component background variants */
 export type SurfaceColorOptions = keyof NewSurfaceColors;
 
+/** Structural Colors, used for borders and dividers etc */
+export type StructureColors = {
+	structure: string;
+};
+
 /** Surface and text color tokens that shift between light and dark mode */
 export type OldSurfaceColors = {
 	xbackgroundx: string;
 	xsurfacex: string;
 	xelevatedx: string;
-	structure: string;
 };
 
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
-	OldSurfaceColors & {
-		text: TextColors;
-	}
+	OldSurfaceColors &
+		StructureColors & {
+			text: TextColors;
+		}
 >;
 
 /** Theme Brand Colors */
