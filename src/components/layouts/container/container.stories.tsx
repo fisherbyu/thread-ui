@@ -16,7 +16,7 @@ const meta: Meta<typeof Container> = {
 		},
 		bgColor: {
 			control: 'select',
-			options: ['xbackgroundx', 'xsurfacex', 'xelevatedx'],
+			options: ['canvas', 'inset', 'surface', 'elevated', 'overlay', 'none'],
 		},
 	},
 };
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof Container>;
 export const Default: Story = {
 	args: {
 		as: 'div',
-		bgColor: 'xbackgroundx',
+		bgColor: 'none',
 	},
 	render: ({ as, bgColor }) => (
 		<Container as={as} bgColor={bgColor}>
