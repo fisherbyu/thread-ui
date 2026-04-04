@@ -57,7 +57,11 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	hover: '#F3F4F6',
 
 	// Light Mode Structure Colors
-	structure: '#E2E8F0',
+	structure: {
+		subtle: '#E8EAED',
+		default: '#D1D5DB',
+		strong: '#9CA3AF',
+	},
 
 	// Light Mode Text Colors
 	text: {
@@ -99,7 +103,11 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		hover: '#333333',
 
 		// Dark Mode Structure Colors
-		structure: '#4b5563',
+		structure: {
+			subtle: '#2A2A2A',
+			default: '#3D3D3D',
+			strong: '#5A5A5A',
+		},
 
 		// Dark Mode Text Colors
 		text: {
