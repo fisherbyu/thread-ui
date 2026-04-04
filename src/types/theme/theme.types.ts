@@ -60,7 +60,7 @@ export type NewSurfaceColors = {
 };
 
 /** Surface color options, used for component background variants */
-export type SurfaceColorOptions = keyof NewSurfaceColors;
+export type SurfaceColorOptions = Prettify<keyof NewSurfaceColors | 'none'>;
 
 /** Structural Colors, used for borders and dividers etc */
 export type StructureColors = {
