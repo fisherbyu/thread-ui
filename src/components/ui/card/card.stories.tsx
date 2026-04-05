@@ -76,7 +76,7 @@ export const AllLevels: Story = {
 			</Card>
 
 			<Card level="overlay" size="lg" title={{ text: 'Overlay Level', align: 'center' }}>
-				<Text>Overlay card — lg shadow, no border</Text>
+				<Text>Overlay card — lg shadow, no border (centered title)</Text>
 			</Card>
 		</div>
 	),
