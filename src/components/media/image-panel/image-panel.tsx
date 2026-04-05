@@ -41,6 +41,71 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	}
 };
 
+const panelStyles = cva({
+	base: {
+		display: 'flex',
+		gap: { base: '12px', lg: '20px' },
+		justifyContent: 'center',
+		alignItems: 'stretch',
+		width: '100%',
+		marginRight: 'auto',
+		maxWidth: { base: 'none', md: '800px', lg: '1400px' },
+		marginLeft: 'auto',
+		paddingRight: '2rem',
+		paddingLeft: '2rem',
+		borderStyle: 'solid',
+	},
+	variants: {
+		contentBelow: {
+			true: { flexDirection: { base: 'column' } },
+			false: { flexDirection: { base: 'column-reverse' } },
+		},
+		contentLeft: {
+			true: { flexDirection: { lg: 'row-reverse' } },
+			false: { flexDirection: { lg: 'row' } },
+		},
+		surface: {
+			none: {},
+			canvas: { backgroundColor: 'canvas', borderRadius: 'lg', padding: '1.5rem' },
+			inset: { backgroundColor: 'inset', borderRadius: 'lg', padding: '1.5rem' },
+			surface: { backgroundColor: 'surface', borderRadius: 'lg', padding: '1.5rem' },
+			elevated: { backgroundColor: 'elevated', borderRadius: 'lg', padding: '1.5rem' },
+			overlay: { backgroundColor: 'overlay', borderRadius: 'lg', padding: '1.5rem' },
+		},
+		structure: {
+			none: { borderWidth: '0' },
+			subtle: { borderWidth: 'md', borderColor: 'structure.subtle', borderRadius: 'lg' },
+			default: { borderWidth: 'md', borderColor: 'structure.default', borderRadius: 'lg' },
+			strong: { borderWidth: 'md', borderColor: 'structure.strong', borderRadius: 'lg' },
+		},
+	},
+	defaultVariants: {
+		contentBelow: false,
+		contentLeft: false,
+		surface: 'none',
+		structure: 'none',
+	},
+});
+
+const styles = {
+	imageBlock: css({
+		width: { base: '100%', lg: '66.666667%' },
+	}),
+	images: css({
+		position: 'relative',
+		width: '100%',
+		height: '100%',
+	}),
+	textBlock: css({
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginLeft: 'auto',
+		marginRight: 'auto',
+		width: { base: '100%', lg: '41.666667%' },
+	}),
+};
+
 /**
  * Two-column panel with an image and a text block. Supports responsive image swapping,
  * flexible content positioning, and colored title variants.
@@ -64,57 +129,11 @@ export const ImagePanel = ({
 	contentBelow = false,
 	contentLeft = false,
 	titleColor = 'standard',
+	surface = 'none',
+	structure = 'none',
 }: ImagePanelProps) => {
-	const panelStyles = cva({
-		base: {
-			display: 'flex',
-			gap: { base: '12px', lg: '20px' },
-			justifyContent: 'center',
-			alignItems: 'stretch',
-			width: '100%',
-			marginRight: 'auto',
-			maxWidth: { base: 'none', md: '800px', lg: '1400px' },
-			marginLeft: 'auto',
-			paddingRight: '2rem',
-			paddingLeft: '2rem',
-		},
-		variants: {
-			contentBelow: {
-				true: { flexDirection: { base: 'column' } },
-				false: { flexDirection: { base: 'column-reverse' } },
-			},
-			contentLeft: {
-				true: { flexDirection: { lg: 'row-reverse' } },
-				false: { flexDirection: { lg: 'row' } },
-			},
-		},
-		defaultVariants: {
-			contentBelow: false,
-			contentLeft: false,
-		},
-	});
-
-	const styles = {
-		imageBlock: css({
-			width: { base: '100%', lg: '66.666667%' },
-		}),
-		images: css({
-			position: 'relative',
-			width: '100%',
-			height: '100%',
-		}),
-		textBlock: css({
-			display: 'flex',
-			justifyContent: 'center',
-			alignItems: 'center',
-			marginLeft: 'auto',
-			marginRight: 'auto',
-			width: { base: '100%', lg: '41.666667%' },
-		}),
-	};
-
 	return (
-		<div className={panelStyles({ contentBelow, contentLeft })}>
+		<div className={panelStyles({ contentBelow, contentLeft, surface, structure })}>
 			<div className={styles.imageBlock}>
 				<div className={styles.images}>{renderPanelImage(image, smImage)}</div>
 			</div>
