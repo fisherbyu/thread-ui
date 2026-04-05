@@ -12,6 +12,14 @@ const meta: Meta<typeof ImagePanel> = {
 		},
 		contentBelow: { control: 'boolean' },
 		contentLeft: { control: 'boolean' },
+		surface: {
+			control: 'select',
+			options: ['none', 'canvas', 'inset', 'surface', 'elevated', 'overlay'],
+		},
+		structure: {
+			control: 'select',
+			options: ['none', 'subtle', 'default', 'strong'],
+		},
 	},
 };
 
@@ -33,5 +41,7 @@ export const Default: Story = {
 		contentBelow: false,
 		contentLeft: false,
 		titleColor: 'standard',
+		surface: 'none',
+		structure: 'none',
 	},
 };
