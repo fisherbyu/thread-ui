@@ -1,2 +1,2 @@
-export type { SkeletonLoaderProps as SkeletonProps } from './skeleton.types';
-export { SkeletonLoader as Skeleton } from './skeleton';
+export type { SkeletonLoaderProps } from './skeleton.types';
+export { SkeletonLoader } from './skeleton';

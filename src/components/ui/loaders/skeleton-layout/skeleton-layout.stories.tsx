@@ -1,10 +1,10 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { SkeletonLayout } from './skeleton-layout';
+import { SkeletonLayoutLoader } from './skeleton-layout';
 
-const meta: Meta<typeof SkeletonLayout> = {
-	title: 'UI Components/Loaders/SkeletonLayout',
-	component: SkeletonLayout,
+const meta: Meta<typeof SkeletonLayoutLoader> = {
+	title: 'UI Components/Loaders/SkeletonLayoutLoader',
+	component: SkeletonLayoutLoader,
 	parameters: {
 		layout: 'centered',
 	},
@@ -25,7 +25,7 @@ const meta: Meta<typeof SkeletonLayout> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof SkeletonLayout>;
+type Story = StoryObj<typeof SkeletonLayoutLoader>;
 
 export const Default: Story = {
 	args: {
