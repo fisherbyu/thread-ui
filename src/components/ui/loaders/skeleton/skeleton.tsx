@@ -1,5 +1,5 @@
 import { cva } from '@/styled-system/css';
-import type { SkeletonProps } from './skeleton.types';
+import type { SkeletonLoaderProps } from './skeleton.types';
 
 const styles = cva({
 	base: {
@@ -20,13 +20,13 @@ const styles = cva({
 });
 
 /**
- * Low-level skeleton primitive for building content placeholder layouts.
+ * Low-level skeleton primitive for building content placeholders.
  * Compose multiple instances to mirror the shape of loading content.
  *
  * @example
- * <Skeleton w="100%" h="4" />
- * <Skeleton w="10" h="10" round />
+ * <SkeletonLoader w="100%" h="4" />
+ * <SkeletonLoader w="10" h="10" round />
  */
-export const Skeleton = ({ w = '100%', h = '3rem', round = false }: SkeletonProps) => {
+export const SkeletonLoader = ({ w = '100%', h = '3rem', round = false }: SkeletonLoaderProps) => {
 	return <span role="status" className={styles({ round })} style={{ width: w, height: h }} />;
 };

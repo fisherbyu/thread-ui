@@ -1,5 +1,5 @@
 import type { SkeletonLayoutProps } from './skeleton-layout.types';
-import { Skeleton } from '../skeleton/skeleton';
+import { SkeletonLoader } from '../skeleton/skeleton';
 import { ColumnItem, ColumnLayout } from '@/components/layouts';
 
 /**
@@ -23,7 +23,7 @@ export const SkeletonLayout = ({
 	const itemCount = lgcol * rows;
 
 	const items: ColumnItem[] = [...Array(itemCount)].map((_, i) => ({
-		content: <Skeleton key={i} {...itemConfig} />,
+		content: <SkeletonLoader key={i} {...itemConfig} />,
 	}));
 
 	return <ColumnLayout mdcol={mdcol} lgcol={lgcol} items={items} />;
