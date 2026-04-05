@@ -41,6 +41,25 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	}
 };
 
+const sectionWrapper = cva({
+	base: {
+		width: '100%',
+	},
+	variants: {
+		surface: {
+			none: {},
+			canvas: { backgroundColor: 'canvas' },
+			inset: { backgroundColor: 'inset' },
+			surface: { backgroundColor: 'surface' },
+			elevated: { backgroundColor: 'elevated' },
+			overlay: { backgroundColor: 'overlay' },
+		},
+	},
+	defaultVariants: {
+		surface: 'none',
+	},
+});
+
 const panelStyles = cva({
 	base: {
 		display: 'flex',
@@ -66,11 +85,11 @@ const panelStyles = cva({
 		},
 		surface: {
 			none: {},
-			canvas: { backgroundColor: 'canvas', borderRadius: 'lg', padding: '1.5rem' },
-			inset: { backgroundColor: 'inset', borderRadius: 'lg', padding: '1.5rem' },
-			surface: { backgroundColor: 'surface', borderRadius: 'lg', padding: '1.5rem' },
-			elevated: { backgroundColor: 'elevated', borderRadius: 'lg', padding: '1.5rem' },
-			overlay: { backgroundColor: 'overlay', borderRadius: 'lg', padding: '1.5rem' },
+			canvas: { backgroundColor: 'canvas' },
+			inset: { backgroundColor: 'inset' },
+			surface: { backgroundColor: 'surface' },
+			elevated: { backgroundColor: 'elevated' },
+			overlay: { backgroundColor: 'overlay' },
 		},
 		structure: {
 			none: { borderWidth: '0' },
@@ -111,13 +130,21 @@ const styles = {
  * flexible content positioning, and colored title variants.
  *
  * @example
+ * // Card mode with border
  * <ImagePanel
+ *   as="card"
+ *   surface="surface"
+ *   structure="subtle"
  *   title="Our Story"
- *   subtitle="How it started"
- *   contents={['Founded in 2020...', 'We believe in...']}
  *   image={{ src: '/hero.jpg', alt: 'Hero' }}
- *   smImage={{ src: '/hero-sm.jpg', alt: 'Hero' }}
- *   contentLeft
+ * />
+ *
+ * // Full-bleed section stripe
+ * <ImagePanel
+ *   as="section"
+ *   surface="inset"
+ *   title="Our Story"
+ *   image={{ src: '/hero.jpg', alt: 'Hero' }}
  * />
  */
 export const ImagePanel = ({
@@ -129,11 +156,21 @@ export const ImagePanel = ({
 	contentBelow = false,
 	contentLeft = false,
 	titleColor = 'standard',
+	as = 'card',
 	surface = 'none',
 	structure = 'none',
 }: ImagePanelProps) => {
-	return (
-		<div className={panelStyles({ contentBelow, contentLeft, surface, structure })}>
+	const isSection = as === 'section';
+
+	const content = (
+		<div
+			className={panelStyles({
+				contentBelow,
+				contentLeft,
+				surface: isSection ? 'none' : surface,
+				structure: isSection ? 'none' : structure,
+			})}
+		>
 			<div className={styles.imageBlock}>
 				<div className={styles.images}>{renderPanelImage(image, smImage)}</div>
 			</div>
@@ -150,4 +187,10 @@ export const ImagePanel = ({
 			</div>
 		</div>
 	);
+
+	if (isSection) {
+		return <section className={sectionWrapper({ surface })}>{content}</section>;
+	}
+
+	return content;
 };
