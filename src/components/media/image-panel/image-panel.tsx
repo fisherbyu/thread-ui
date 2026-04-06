@@ -4,6 +4,8 @@ import { Subtitle, Text, Title } from '@/components';
 import { ImageProps } from '@/types';
 import { css, cva, cx } from '@/styled-system/css';
 
+// BOOKMARK
+
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	const classes = {
 		image: css({
