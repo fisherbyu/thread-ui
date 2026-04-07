@@ -43,52 +43,6 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	}
 };
 
-const panelStyles = cva({
-	base: {
-		display: 'flex',
-		gap: { base: '12px', lg: '20px' },
-		justifyContent: 'center',
-		alignItems: 'stretch',
-		width: '100%',
-		marginRight: 'auto',
-		maxWidth: { base: 'none', md: '800px', lg: '1400px' },
-		marginLeft: 'auto',
-		paddingRight: '2rem',
-		paddingLeft: '2rem',
-		borderStyle: 'solid',
-	},
-	variants: {
-		contentBelow: {
-			true: { flexDirection: { base: 'column' } },
-			false: { flexDirection: { base: 'column-reverse' } },
-		},
-		contentLeft: {
-			true: { flexDirection: { lg: 'row-reverse' } },
-			false: { flexDirection: { lg: 'row' } },
-		},
-		surface: {
-			none: {},
-			canvas: { backgroundColor: 'canvas' },
-			inset: { backgroundColor: 'inset' },
-			surface: { backgroundColor: 'surface' },
-			elevated: { backgroundColor: 'elevated' },
-			overlay: { backgroundColor: 'overlay' },
-		},
-		structure: {
-			none: { borderWidth: '0' },
-			subtle: { borderWidth: 'md', borderColor: 'structure.subtle', borderRadius: 'lg' },
-			default: { borderWidth: 'md', borderColor: 'structure.default', borderRadius: 'lg' },
-			strong: { borderWidth: 'md', borderColor: 'structure.strong', borderRadius: 'lg' },
-		},
-	},
-	defaultVariants: {
-		contentBelow: false,
-		contentLeft: false,
-		surface: 'none',
-		structure: 'none',
-	},
-});
-
 const styles = {
 	sectionWrapper: cva({
 		base: {
@@ -106,6 +60,55 @@ const styles = {
 		},
 		defaultVariants: {
 			surface: 'none',
+		},
+	}),
+	panelStyles: cva({
+		base: {
+			display: 'flex',
+			gap: { base: '12px', lg: '20px' },
+			justifyContent: 'center',
+			alignItems: 'stretch',
+			width: '100%',
+			marginRight: 'auto',
+			maxWidth: { base: 'none', md: '800px', lg: '1400px' },
+			marginLeft: 'auto',
+			paddingRight: '2rem',
+			paddingLeft: '2rem',
+			borderStyle: 'solid',
+		},
+		variants: {
+			contentBelow: {
+				true: { flexDirection: { base: 'column' } },
+				false: { flexDirection: { base: 'column-reverse' } },
+			},
+			contentLeft: {
+				true: { flexDirection: { lg: 'row-reverse' } },
+				false: { flexDirection: { lg: 'row' } },
+			},
+			surface: {
+				none: {},
+				canvas: { backgroundColor: 'canvas' },
+				inset: { backgroundColor: 'inset' },
+				surface: { backgroundColor: 'surface' },
+				elevated: { backgroundColor: 'elevated' },
+				overlay: { backgroundColor: 'overlay' },
+			},
+			structure: {
+				none: { borderWidth: '0' },
+				subtle: { borderWidth: 'md', borderColor: 'structure.subtle', borderRadius: 'lg' },
+				default: {
+					borderWidth: 'md',
+					borderColor: 'structure.default',
+					borderRadius: 'lg',
+				},
+				strong: { borderWidth: 'md', borderColor: 'structure.strong', borderRadius: 'lg' },
+			},
+		},
+		defaultVariants: {
+			contentBelow: false,
+			contentLeft: false,
+			surface: 'none',
+			structure: 'none',
 		},
 	}),
 	imageBlock: css({
@@ -165,7 +168,7 @@ export const ImagePanel = ({
 
 	const content = (
 		<div
-			className={panelStyles({
+			className={styles.panelStyles({
 				contentBelow,
 				contentLeft,
 				surface: isSection ? 'none' : surface,
