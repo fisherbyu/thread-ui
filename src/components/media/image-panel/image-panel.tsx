@@ -62,6 +62,26 @@ const styles = {
 			surface: 'none',
 		},
 	}),
+	outlineStyle: cva({
+		base: {
+			borderStyle: 'solid',
+		},
+		variants: {
+			structure: {
+				none: { borderWidth: '0' },
+				subtle: { borderWidth: 'md', borderColor: 'structure.subtle', borderRadius: 'lg' },
+				default: {
+					borderWidth: 'md',
+					borderColor: 'structure.default',
+					borderRadius: 'lg',
+				},
+				strong: { borderWidth: 'md', borderColor: 'structure.strong', borderRadius: 'lg' },
+			},
+		},
+		defaultVariants: {
+			structure: 'none',
+		},
+	}),
 	panelStyles: cva({
 		base: {
 			display: 'flex',
@@ -74,7 +94,6 @@ const styles = {
 			marginLeft: 'auto',
 			paddingRight: '2rem',
 			paddingLeft: '2rem',
-			borderStyle: 'solid',
 		},
 		variants: {
 			contentBelow: {
@@ -93,22 +112,11 @@ const styles = {
 				elevated: { backgroundColor: 'elevated' },
 				overlay: { backgroundColor: 'overlay' },
 			},
-			structure: {
-				none: { borderWidth: '0' },
-				subtle: { borderWidth: 'md', borderColor: 'structure.subtle', borderRadius: 'lg' },
-				default: {
-					borderWidth: 'md',
-					borderColor: 'structure.default',
-					borderRadius: 'lg',
-				},
-				strong: { borderWidth: 'md', borderColor: 'structure.strong', borderRadius: 'lg' },
-			},
 		},
 		defaultVariants: {
 			contentBelow: false,
 			contentLeft: false,
 			surface: 'none',
-			structure: 'none',
 		},
 	}),
 	imageBlock: css({
@@ -168,12 +176,14 @@ export const ImagePanel = ({
 
 	const content = (
 		<div
-			className={styles.panelStyles({
-				contentBelow,
-				contentLeft,
-				surface: isSection ? 'none' : surface,
-				structure: isSection ? 'none' : structure,
-			})}
+			className={cx(
+				styles.panelStyles({
+					contentBelow,
+					contentLeft,
+					surface: isSection ? 'none' : surface,
+				}),
+				styles.outlineStyle({ structure: isSection ? 'none' : structure })
+			)}
 		>
 			<div className={styles.imageBlock}>
 				<div className={styles.images}>{renderPanelImage(image, smImage)}</div>
@@ -193,7 +203,16 @@ export const ImagePanel = ({
 	);
 
 	if (isSection) {
-		return <section className={styles.sectionWrapper({ surface })}>{content}</section>;
+		return (
+			<section
+				className={cx(
+					styles.sectionWrapper({ surface }),
+					styles.outlineStyle({ structure })
+				)}
+			>
+				{content}
+			</section>
+		);
 	}
 
 	return content;
