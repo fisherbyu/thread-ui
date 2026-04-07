@@ -43,25 +43,6 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	}
 };
 
-const sectionWrapper = cva({
-	base: {
-		width: '100%',
-	},
-	variants: {
-		surface: {
-			none: {},
-			canvas: { backgroundColor: 'canvas' },
-			inset: { backgroundColor: 'inset' },
-			surface: { backgroundColor: 'surface' },
-			elevated: { backgroundColor: 'elevated' },
-			overlay: { backgroundColor: 'overlay' },
-		},
-	},
-	defaultVariants: {
-		surface: 'none',
-	},
-});
-
 const panelStyles = cva({
 	base: {
 		display: 'flex',
@@ -109,6 +90,24 @@ const panelStyles = cva({
 });
 
 const styles = {
+	sectionWrapper: cva({
+		base: {
+			width: '100%',
+		},
+		variants: {
+			surface: {
+				none: {},
+				canvas: { backgroundColor: 'canvas' },
+				inset: { backgroundColor: 'inset' },
+				surface: { backgroundColor: 'surface' },
+				elevated: { backgroundColor: 'elevated' },
+				overlay: { backgroundColor: 'overlay' },
+			},
+		},
+		defaultVariants: {
+			surface: 'none',
+		},
+	}),
 	imageBlock: css({
 		width: { base: '100%', lg: '66.666667%' },
 	}),
@@ -191,7 +190,7 @@ export const ImagePanel = ({
 	);
 
 	if (isSection) {
-		return <section className={sectionWrapper({ surface })}>{content}</section>;
+		return <section className={styles.sectionWrapper({ surface })}>{content}</section>;
 	}
 
 	return content;
