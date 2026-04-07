@@ -47,6 +47,8 @@ const styles = {
 	sectionWrapper: cva({
 		base: {
 			width: '100%',
+			borderRightWidth: '0px',
+			borderLeftWidth: '0px',
 		},
 		variants: {
 			surface: {
@@ -69,13 +71,12 @@ const styles = {
 		variants: {
 			structure: {
 				none: { borderWidth: '0' },
-				subtle: { borderWidth: 'md', borderColor: 'structure.subtle', borderRadius: 'lg' },
+				subtle: { borderWidth: 'md', borderColor: 'structure.subtle' },
 				default: {
 					borderWidth: 'md',
 					borderColor: 'structure.default',
-					borderRadius: 'lg',
 				},
-				strong: { borderWidth: 'md', borderColor: 'structure.strong', borderRadius: 'lg' },
+				strong: { borderWidth: 'md', borderColor: 'structure.strong' },
 			},
 		},
 		defaultVariants: {
@@ -94,6 +95,7 @@ const styles = {
 			marginLeft: 'auto',
 			paddingRight: '2rem',
 			paddingLeft: '2rem',
+			borderRadius: 'lg',
 		},
 		variants: {
 			contentBelow: {
