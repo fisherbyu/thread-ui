@@ -7,7 +7,7 @@ import { css, cva, cx } from '@/styled-system/css';
 // BOOKMARK
 
 const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
-	const classes = {
+	const styles = {
 		image: css({
 			marginX: { base: '0', md: 'auto' },
 			borderRadius: 'sm',
@@ -30,16 +30,16 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 	if (smImage) {
 		return (
 			<>
-				{renderImage(smImage, undefined, cx(classes.image, classes.smImage))}
+				{renderImage(smImage, undefined, cx(styles.image, styles.smImage))}
 				{renderImage(
 					image,
 					undefined,
-					cx(classes.image, classes.standardImg, classes.standardImageWSmall)
+					cx(styles.image, styles.standardImg, styles.standardImageWSmall)
 				)}
 			</>
 		);
 	} else {
-		return renderImage(image, undefined, cx(classes.image, classes.standardImg));
+		return renderImage(image, undefined, cx(styles.image, styles.standardImg));
 	}
 };
 
