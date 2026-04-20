@@ -47,6 +47,7 @@ const styles = {
 			width: '100%',
 			borderRightWidth: '0px',
 			borderLeftWidth: '0px',
+			paddingY: { base: '4', sm: '2', md: '4', lg: '6' },
 		},
 		variants: {
 			surface: {
