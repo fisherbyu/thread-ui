@@ -8,4 +8,7 @@ import {
 /**
  * Access object to connect to active CSS Theme variables
  */
-export const ThreadTheme: Theme = wrapVariables(ThemeBaseCssNames, THREAD_CSS_VARIABLE_PREFIX);
+export const ThreadTheme: Theme = wrapVariables(
+	ThemeBaseCssNames,
+	THREAD_CSS_VARIABLE_PREFIX
+) as Theme;

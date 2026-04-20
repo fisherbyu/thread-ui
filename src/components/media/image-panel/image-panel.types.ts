@@ -1,4 +1,9 @@
-import { ImageProps, ColoredTextOptions } from '@/types';
+import {
+	ImageProps,
+	ColoredTextOptions,
+	SurfaceColorOptions,
+	StructureColorOptions,
+} from '@/types';
 
 export type ImagePanelProps = {
 	/** Main heading */
@@ -17,4 +22,10 @@ export type ImagePanelProps = {
 	contentLeft?: boolean;
 	/** Color variant for the title @default `'standard'` */
 	titleColor?: ColoredTextOptions;
+	/** Render mode: `'card'` constrains with border/radius, `'section'` renders as a full-bleed stripe @default `'card'` */
+	as?: 'card' | 'section';
+	/** Surface background color @default `'none'` */
+	surface?: SurfaceColorOptions;
+	/** Border color tier (only top/bottom when as 'section') @default `'none'` */
+	structure?: StructureColorOptions | 'none';
 };

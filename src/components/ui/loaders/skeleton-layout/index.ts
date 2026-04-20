@@ -1,2 +1,2 @@
-export type { SkeletonLayoutProps } from './skeleton-layout.types';
-export { SkeletonLayout } from './skeleton-layout';
+export type { SkeletonLayoutLoaderProps } from './skeleton-layout.types';
+export { SkeletonLayoutLoader } from './skeleton-layout';

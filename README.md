@@ -52,7 +52,7 @@ Component CSS is pre-generated using Panda CSS, so components render correctly s
 
 ### UI Elements
 
-`Button` `Card` `Divider` `Icon` `IconButton` `Modal` `Toggle` `DotsLoader` `SpinLoader` `Skeleton` `SkeletonLayout`
+`Button` `Card` `Divider` `Icon` `IconButton` `Modal` `Toggle` `DotsLoader` `SpinLoader` `SkeletonLoader` `SkeletonLayoutLoader`
 
 ### Media Display
 

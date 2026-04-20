@@ -29,13 +29,13 @@ export const SurfaceLevelMap: Record<SurfaceLayerOptions, SurfaceConfig> = {
 	},
 	surface: {
 		surface: 'surface',
-		shadow: 'none',
+		shadow: 'sm',
 		structure: 'subtle',
 		zIndex: 'none',
 	},
 	elevated: {
 		surface: 'elevated',
-		shadow: 'sm',
+		shadow: 'md',
 		structure: 'subtle',
 		zIndex: 'sticky',
 	},
