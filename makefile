@@ -25,7 +25,7 @@ STATIC_STORYBOOK := .storybook/.static
 # File names
 THEME_CSS_FILE := theme.css
 PANDA_CSS_FILE := panda.css
-STYLES_CSS_FILE := styles.css
+STYLES_CSS_FILE := tailwind.css
 THEME_SCRIPT := $(SCRIPTS_DIR)/generate-default-theme-css.scripts.ts
 PACKAGE_JSON := package.json
 

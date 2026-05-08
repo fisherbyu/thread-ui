@@ -26,7 +26,7 @@ dist-ssr
 # Storybook
 *storybook.log
 /.storybook/.static 
-src/styles/styles.css
+src/styles/tailwind.css
 
 ## Panda
 styled-system

@@ -1,6 +1,6 @@
 // Import Tailwind + Panda Styles
 import './styles/theme.css';
-// import './styles/styles.css';
+// import './styles/tailwind.css';
 import './styles/panda.css';
 
 // Export Components
