@@ -90,7 +90,7 @@ watch: # Watch CSS files. Use CSS=tailwind|panda to limit (default: both)
 
 .PHONY: theme-css
 theme-css: ## Generate theme CSS from TypeScript
-	$(TSX) $(THEME_SCRIPT)
+	$(TSX) $(THEME_SCRIPT) --out $(STYLES_SRC)/$(THEME_CSS_FILE)
 	$(PRETTIER) --write $(STYLES_SRC)/$(THEME_CSS_FILE)
 
 .PHONY: new-item
