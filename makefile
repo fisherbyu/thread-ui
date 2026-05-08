@@ -26,6 +26,7 @@ STATIC_STORYBOOK := .storybook/.static
 THEME_CSS_FILE := theme.css
 PANDA_CSS_FILE := panda.css
 STYLES_CSS_FILE := tailwind.css
+THREAD_CSS_FILE := thread.css
 THEME_SCRIPT := $(SCRIPTS_DIR)/generate-default-theme-css.scripts.ts
 PACKAGE_JSON := package.json
 
@@ -62,12 +63,17 @@ $(DIST_DIR):
 
 $(STYLES_DIST):
 	mkdir -p $(STYLES_DIST)
+	
+.PHONY: generate-thread-css-export
+generate-thread-css-export: # Generate the CSS export file from variables
+	@printf '@import "./$(THEME_CSS_FILE)";\n@import "./$(PANDA_CSS_FILE)";\n@import "./$(STYLES_CSS_FILE)";\n' > $(STYLES_SRC)/$(THREAD_CSS_FILE)
 
 .PHONY: build-css
-build-css: | $(STYLES_DIST) # Build and copy CSS files
+build-css: generate-thread-css-export | $(STYLES_DIST) # Build and copy CSS files
 	$(POSTCSS) $(STYLES_SRC)/$(STYLES_CSS_FILE) -o $(STYLES_DIST)/$(STYLES_CSS_FILE)
 	cp $(STYLES_SRC)/$(THEME_CSS_FILE) $(STYLES_DIST)/$(THEME_CSS_FILE)
 	cp $(STYLES_SRC)/$(PANDA_CSS_FILE) $(STYLES_DIST)/$(PANDA_CSS_FILE)
+	cp $(STYLES_SRC)/$(THREAD_CSS_FILE) $(STYLES_DIST)/$(THREAD_CSS_FILE)
 
 .PHONY: prepare-typescript
 prepare-typescript: prepare-panda-code # Compile TypeScript into JavaScript
