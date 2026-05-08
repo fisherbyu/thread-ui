@@ -26,7 +26,9 @@
 			"import": "./dist/index.js",
 			"default": "./dist/index.js"
 		},
-		"./dist/*": "./dist/*"
+		"./dist/styled-system/css": "./dist/styled-system/css/index.js",
+		"./dist/styled-system/patterns": "./dist/styled-system/patterns/index.js",
+		"./dist/styled-system/recipes": "./dist/styled-system/recipes/index.js"
 	},
 	"sideEffects": [
 		"**/*.css"
