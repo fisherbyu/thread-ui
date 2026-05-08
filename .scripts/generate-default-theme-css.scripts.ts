@@ -8,7 +8,13 @@ import {
 } from '../src/theme/css-name-configurations/theme-css-names.ts';
 import { DefaultThreadTheme } from '../src/theme/default-theme.ts';
 
-const OUTPUT_PATH = 'src/styles/thread.css';
+// Parse output path from CLI args (--out <path>)
+const outIdx = process.argv.indexOf('--out');
+if (outIdx === -1 || !process.argv[outIdx + 1]) {
+	console.error('Error: --out <path> argument is required');
+	process.exit(1);
+}
+const OUTPUT_PATH = process.argv[outIdx + 1];
 
 const compileCssVariableContent = (
 	cssVariableName: string,
