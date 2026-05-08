@@ -20,12 +20,15 @@
 	"main": "dist/index.js",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"type": "module",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js",
 			"default": "./dist/index.js"
 		},
+		"./dist/*": "./dist/*",
+		"./dist/styles/*": "./dist/styles/*",
 		"./dist/styled-system/css": "./dist/styled-system/css/index.js",
 		"./dist/styled-system/patterns": "./dist/styled-system/patterns/index.js",
 		"./dist/styled-system/recipes": "./dist/styled-system/recipes/index.js"
