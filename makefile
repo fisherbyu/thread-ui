@@ -22,10 +22,10 @@ STYLES_DIST := $(DIST_DIR)/styles
 SCRIPTS_DIR := .scripts
 STATIC_STORYBOOK := .storybook/.static
 
-# Files
-PANDA_CSS := $(STYLES_SRC)/panda.css
-STYLES_CSS := $(STYLES_SRC)/styles.css
-THREAD_CSS := $(STYLES_SRC)/thread.css
+# File names
+THEME_CSS_FILE := thread.css
+PANDA_CSS_FILE := panda.css
+STYLES_CSS_FILE := styles.css
 THEME_SCRIPT := $(SCRIPTS_DIR)/generate-default-theme-css.scripts.ts
 PACKAGE_JSON := package.json
 
@@ -55,7 +55,7 @@ prepare-panda-code: # Generate Panda CSS codegen and copy to dist
 
 .PHONY: prepare-panda-css
 prepare-panda-css: # Generate Panda CSS output file
-	$(PANDA) cssgen --outfile $(PANDA_CSS)
+	$(PANDA) cssgen --outfile $(STYLES_SRC)/$(PANDA_CSS_FILE)
 
 $(DIST_DIR):
 	mkdir -p $(DIST_DIR)
@@ -65,9 +65,9 @@ $(STYLES_DIST):
 
 .PHONY: build-css
 build-css: | $(STYLES_DIST) # Build and copy CSS files
-	$(POSTCSS) $(STYLES_CSS) -o $(STYLES_DIST)/styles.css
-	cp $(THREAD_CSS) $(STYLES_DIST)/thread.css
-	cp $(PANDA_CSS) $(STYLES_DIST)/panda.css
+	$(POSTCSS) $(STYLES_SRC)/$(STYLES_CSS_FILE) -o $(STYLES_DIST)/$(STYLES_CSS_FILE)
+	cp $(STYLES_SRC)/$(THEME_CSS_FILE) $(STYLES_DIST)/$(THEME_CSS_FILE)
+	cp $(STYLES_SRC)/$(PANDA_CSS_FILE) $(STYLES_DIST)/$(PANDA_CSS_FILE)
 
 .PHONY: prepare-typescript
 prepare-typescript: prepare-panda-code # Compile TypeScript into JavaScript
@@ -78,20 +78,20 @@ prepare-typescript: prepare-panda-code # Compile TypeScript into JavaScript
 .PHONY: watch
 watch: # Watch CSS files. Use CSS=tailwind|panda to limit (default: both)
 	@if [ "$(CSS)" = "tailwind" ]; then \
-		$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch; \
+		$(TAILWIND) -i $(STYLES_SRC)/$(STYLES_CSS_FILE) -o $(STYLES_SRC)/$(STYLES_CSS_FILE) --watch; \
 	elif [ "$(CSS)" = "panda" ]; then \
-		$(CONCURRENTLY) "$(PANDA) --watch" "$(PANDA) cssgen --outfile $(PANDA_CSS) --watch"; \
+		$(CONCURRENTLY) "$(PANDA) --watch" "$(PANDA) cssgen --outfile $(STYLES_SRC)/$(PANDA_CSS_FILE) --watch"; \
 	else \
 		$(CONCURRENTLY) \
-			"$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch" \
+			"$(TAILWIND) -i $(STYLES_SRC)/$(STYLES_CSS_FILE) -o $(STYLES_SRC)/$(STYLES_CSS_FILE) --watch" \
 			"$(PANDA) --watch" \
-			"$(PANDA) cssgen --outfile $(PANDA_CSS) --watch"; \
+			"$(PANDA) cssgen --outfile $(STYLES_SRC)/$(PANDA_CSS_FILE) --watch"; \
 	fi
 
 .PHONY: theme-css
 theme-css: ## Generate theme CSS from TypeScript
 	$(TSX) $(THEME_SCRIPT)
-	$(PRETTIER) --write $(THREAD_CSS)
+	$(PRETTIER) --write $(STYLES_SRC)/$(THEME_CSS_FILE)
 
 .PHONY: new-item
 new-item: ## Generate New Items using Plop.js
