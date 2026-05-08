@@ -26,6 +26,14 @@ STATIC_STORYBOOK := .storybook/.static
 PANDA_CSS := $(STYLES_SRC)/panda.css
 STYLES_CSS := $(STYLES_SRC)/styles.css
 THREAD_CSS := $(STYLES_SRC)/thread.css
+THEME_SCRIPT := $(SCRIPTS_DIR)/generate-default-theme-css.scripts.ts
+PACKAGE_JSON := package.json
+
+# Package
+PACKAGE_NAME := thread-ui
+
+# Storybook
+STORYBOOK_PORT := 6006
 
 # Default target
 .DEFAULT_GOAL := help
@@ -82,8 +90,8 @@ watch: # Watch CSS files. Use CSS=tailwind|panda to limit (default: both)
 
 .PHONY: theme-css
 theme-css: ## Generate theme CSS from TypeScript
-	$(TSX) $(SCRIPTS_DIR)/generate-default-theme-css.scripts.ts
-	$(PRETTIER) --write src/styles/thread.css
+	$(TSX) $(THEME_SCRIPT)
+	$(PRETTIER) --write $(THREAD_CSS)
 
 .PHONY: new-item
 new-item: ## Generate New Items using Plop.js
@@ -99,7 +107,7 @@ help: ## Show this help message
 
 .PHONY: storybook
 storybook: prepare-panda-code ## Run Storybook dev server (with Panda and Tailwind watch)
-	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p 6006 --no-open"
+	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p $(STORYBOOK_PORT) --no-open"
 
 .PHONY: build
 build: clean prepare-panda-code theme-css prepare-typescript prepare-panda-css build-css ## Full build pipeline
@@ -160,16 +168,16 @@ endef
 
 define do_publish
 	npm version $(1); \
-	new_version=$$(node -p "require('./package.json').version"); \
+	new_version=$$(node -p "require('./$(PACKAGE_JSON)').version"); \
 	echo ""; \
-	echo "⚠️  Publishing thread-ui@$$new_version to npm"; \
+	echo "⚠️  Publishing $(PACKAGE_NAME)@$$new_version to npm"; \
 	read -p "Continue? [y/N]: " -n 1 -r; \
 	echo; \
 	if [[ $$REPLY =~ ^[Yy]$$ ]]; then \
 		npm publish; \
-		echo "✅ Published thread-ui@$$new_version successfully!"; \
+		echo "✅ Published $(PACKAGE_NAME)@$$new_version successfully!"; \
 	else \
-		echo "❌ Publish cancelled. Version was bumped in package.json but not published."; \
+		echo "❌ Publish cancelled. Version was bumped in $(PACKAGE_JSON) but not published."; \
 		exit 1; \
 	fi
 endef
