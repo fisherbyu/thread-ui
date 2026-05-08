@@ -1,0 +1,11 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"rootDir": "..",
+		"noEmit": true,
+		"allowImportingTsExtensions": true,
+		"types": ["node"]
+	},
+	"include": ["**/*", "../src/css.d.ts"],
+	"exclude": ["../node_modules", "../dist"]
+}
