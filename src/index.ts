@@ -1,5 +1,5 @@
 // Import Tailwind + Panda Styles
-import './styles/thread.css';
+import './styles/theme.css';
 // import './styles/styles.css';
 import './styles/panda.css';
 
