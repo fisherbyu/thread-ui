@@ -1,9 +1,10 @@
 'use client';
-import { Icon } from '@/components/ui';
 import { InfoCardProps } from './info-card.types';
 import { css, cx } from '@/styled-system/css';
 import { Text } from '@/components/typography';
-import { DynamicIcon } from '@/internal-components';
+import { DynamicIcon, renderImage } from '@/internal-components';
+import { isValidElement } from 'react';
+import { isHtmlImageProps } from '@/internal-components/image/is-html-image-props';
 
 const styles = {
 	card: css({
@@ -55,18 +56,16 @@ const styles = {
  *
  * @example
  * // Named icon
- * <InfoCard title="Getting Started" url="/docs" icon="BookOpen" img="/cover.jpg" />
+ * <InfoCard title="Getting Started" url="/docs" icon="BookOpen" image={{ src: '/cover.jpg' }} />
  *
  * @example
  * // Emoji
- * <InfoCard title="Recipes" url="/recipes" icon={{ type: 'emoji', emoji: '🍋' }} img="/cover.jpg" />
+ * <InfoCard title="Recipes" url="/recipes" icon={{ type: 'emoji', emoji: '🍋' }} image={{ src: '/cover.jpg' }} />
  */
-export const InfoCard = ({ title, url, icon, img }: InfoCardProps) => {
+export const InfoCard = ({ title, url, icon, image }: InfoCardProps) => {
 	return (
 		<a href={url} className={cx(styles.cardContent, styles.link, styles.card)}>
-			<div className={styles.imageWrapper}>
-				<img className={styles.image} src={img} alt="Article Cover Image" />
-			</div>
+			<div className={styles.imageWrapper}>{renderImage(image, undefined, styles.image)}</div>
 			<div className={styles.caption}>
 				<DynamicIcon icon={icon} size={24} />
 				<Text size="sm" truncate inline>
