@@ -5,8 +5,7 @@ export const isHtmlImageProps = (value: any): value is HtmlImageProps => {
 		typeof value === 'object' &&
 		value !== null &&
 		'src' in value &&
-		'alt' in value &&
 		typeof value.src === 'string' &&
-		typeof value.alt === 'string'
+		(!('alt' in value) || typeof value.alt === 'string')
 	);
 };
