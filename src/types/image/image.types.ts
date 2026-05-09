@@ -3,7 +3,7 @@ import { CSSProperties, ReactNode } from 'react';
 /** Props for a standard HTML `<img>` element */
 export type HtmlImageProps = {
 	src: string;
-	alt: string;
+	alt?: string;
 	width?: number | string;
 	height?: number | string;
 	className?: string;
