@@ -1,5 +1,5 @@
-import { IconNames } from '@/components/ui';
 import { DynamicIconProps } from '@/internal-components';
+import { ImageProps } from '@/types';
 
 export type InfoCardProps = {
 	/** Card title displayed in the caption bar */
@@ -14,6 +14,6 @@ export type InfoCardProps = {
 	 * icon={{ type: 'svg', content: '/icons/article.svg' }}
 	 */
 	icon?: DynamicIconProps['icon'];
-	/** Cover image URL displayed in the card */
-	img: string;
+	/** Cover image displayed in the card */
+	image: ImageProps;
 };
