@@ -7,40 +7,40 @@ import type {
 } from '@/types';
 
 type SurfaceConfig = {
-	surface: BgColorOptions;
+	bg: BgColorOptions;
 	shadow: ShadowOptions;
 	structure: StructureColorOptions | 'none';
 	zIndex: ZIndexOptions | 'none';
 };
 
-/** Surface System Values */
-export const SurfaceLevelMap: Record<SurfaceLayerOptions, SurfaceConfig> = {
+/** Surface Layer System — maps each layer to its default bg, shadow, structure, and zIndex */
+export const SurfaceLayerMap: Record<SurfaceLayerOptions, SurfaceConfig> = {
 	canvas: {
-		surface: 'canvas',
+		bg: 'canvas',
 		shadow: 'none',
 		structure: 'none',
 		zIndex: 'none',
 	},
 	inset: {
-		surface: 'inset',
+		bg: 'inset',
 		shadow: 'none',
 		structure: 'default',
 		zIndex: 'none',
 	},
 	surface: {
-		surface: 'surface',
+		bg: 'surface',
 		shadow: 'sm',
 		structure: 'subtle',
 		zIndex: 'none',
 	},
 	elevated: {
-		surface: 'elevated',
+		bg: 'elevated',
 		shadow: 'md',
 		structure: 'subtle',
 		zIndex: 'sticky',
 	},
 	overlay: {
-		surface: 'overlay',
+		bg: 'overlay',
 		shadow: 'lg',
 		structure: 'none',
 		zIndex: 'overlay',
