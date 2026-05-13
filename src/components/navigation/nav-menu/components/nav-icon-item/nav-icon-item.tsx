@@ -3,10 +3,8 @@ import { NavigationLogoProps } from './nav-icon-item.types';
 
 export const NavigationLogo = ({ href, logo }: NavigationLogoProps) => {
 	return (
-		<>
-			<NavLink href={href} halfPadding>
-				{logo}
-			</NavLink>
-		</>
+		<NavLink href={href} halfPadding>
+			{logo}
+		</NavLink>
 	);
 };
