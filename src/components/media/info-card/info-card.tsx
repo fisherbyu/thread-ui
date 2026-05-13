@@ -12,7 +12,7 @@ const styles = {
 			margin: 'auto',
 			borderStyle: 'solid',
 			borderRadius: 'md',
-			maxHeight: '15rem',
+			maxHeight: '60',
 			overflow: 'hidden',
 			maxWidth: '391px',
 			aspectRatio: '8 / 5',
