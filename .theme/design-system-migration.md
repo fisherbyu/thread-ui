@@ -193,8 +193,8 @@ variants: {
 - [x] **Modal** — Fixed `overlay`. zIndex override to `modal`. Scrim fixed.
 - [x] **NavMenu** — Fixed `elevated`. Bottom border via `structure.subtle`. Hover/active on items. zIndex: `sticky`.
 - [ ] **SideNav** — Fixed `elevated` (when fixed) / `surface` (when static). Trailing edge border via `structure.subtle`. Shadow override to `none`.
-- [ ] **Dropdown (closed)** — Fixed `inset`. Border via `structure.default`. Focus: border → `primary.main`.
-- [ ] **Dropdown (open menu)** — Fixed `overlay`. Hover/active on items. zIndex: `overlay`. Shadow: `lg`.
+- [x] **Dropdown (closed)** — Fixed `inset`. Border via `structure.default`. Focus: border → `primary.main`.
+- [x] **Dropdown (open menu)** — Fixed `overlay`. Hover/active on items. zIndex: `overlay`. Shadow: `lg`.
 - [ ] **FileUpload** — Fixed `inset`. Dashed border via `structure.default`. Drag-over: border → `primary.main`.
 - [ ] **NumberInput** — Fixed `inset`. Border via `structure.default`. Focus: border → `primary.main`.
 - [ ] **TextInput** — Fixed `inset`. Border via `structure.default`. Focus: border → `primary.main`.
