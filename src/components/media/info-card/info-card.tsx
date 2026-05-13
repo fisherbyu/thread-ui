@@ -23,6 +23,9 @@ const styles = {
 			transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
 			_hover: {
 				backgroundColor: 'hover',
+				'& .info-card-image-wrapper::after': {
+					opacity: 0.1,
+				},
 			},
 			_active: {
 				backgroundColor: 'active',
@@ -61,6 +64,16 @@ const styles = {
 		width: '100%',
 		flex: '1',
 		minHeight: '0',
+		position: 'relative',
+		_after: {
+			content: '""',
+			position: 'absolute',
+			inset: '0',
+			backgroundColor: 'text.standard',
+			opacity: 0,
+			transition: 'opacity 0.15s ease',
+			pointerEvents: 'none',
+		},
 	}),
 	image: css({
 		height: '100%',
@@ -97,7 +110,9 @@ export const InfoCard = ({ title, url, icon, image, layer = 'surface' }: InfoCar
 				structure: config.structure,
 			})}
 		>
-			<div className={styles.imageWrapper}>{renderImage(image, undefined, styles.image)}</div>
+			<div className={`${styles.imageWrapper} info-card-image-wrapper`}>
+				{renderImage(image, undefined, styles.image)}
+			</div>
 			<div className={styles.caption}>
 				<DynamicIcon icon={icon} size={24} />
 				<Text size="sm" truncate inline>
