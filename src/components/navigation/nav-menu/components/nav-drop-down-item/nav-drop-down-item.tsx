@@ -112,7 +112,6 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			</div>
 			{/* Screen LG */}
 			<div
-				id="target-123"
 				className={cx(
 					styles.dropdownContent,
 					isHovered ? styles.dropdownContentShow : styles.dropdownContentNoShow
