@@ -1,4 +1,4 @@
-import { BaseItemProps } from './base-item.types';
+import { NavLinkProps } from './base-item.types';
 import { LinkWrapper } from '@/internal-components';
 import { css, cva } from '@/styled-system/css';
 
@@ -51,7 +51,7 @@ export const NavLink = ({
 	onMouseEnter,
 	onMouseLeave,
 	isDropdownItem,
-}: BaseItemProps) => {
+}: NavLinkProps) => {
 	// Handle hover state
 
 	return (

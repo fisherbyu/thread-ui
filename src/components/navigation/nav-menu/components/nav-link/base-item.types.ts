@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type BaseItemProps = {
+export type NavLinkProps = {
 	children: ReactNode;
 	href: string;
 	onMouseEnter?: (event: React.MouseEvent<HTMLLIElement>) => void;
