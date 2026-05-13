@@ -1,7 +1,13 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
-import { NavIconItem, NavItem, NavItemProps, NavDropdownItemProps, NavDropdownItem } from './items';
+import {
+	NavIconItem,
+	NavItem,
+	NavItemProps,
+	NavDropdownItemProps,
+	NavDropdownItem,
+} from './components';
 import { css, cx } from '@/styled-system/css';
 
 const style = {
