@@ -7,6 +7,8 @@ type ColorShades = {
 	dark: string;
 };
 
+export type ColorShadeOptions = Prettify<keyof ColorShades>;
+
 /** Semantic text color roles */
 export type TextColors = {
 	standard: string;
