@@ -12,7 +12,7 @@ const styles = {
 				base: '5',
 			},
 			marginX: 'auto',
-			maxWidth: '850px',
+			maxWidth: '213',
 			width: {
 				base: '100%',
 				md: '75%',
@@ -23,7 +23,7 @@ const styles = {
 			size: {
 				sm: {
 					borderRadius: 'sm',
-					maxWidth: '600px',
+					maxWidth: '150',
 				},
 				md: {
 					borderRadius: 'md',
