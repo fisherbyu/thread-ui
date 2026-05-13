@@ -15,7 +15,8 @@ const styles = {
 			textAlign: 'center',
 			display: 'flex',
 			alignItems: 'center',
-			borderColor: 'gray.300',
+			borderColor: 'structure.default',
+			backgroundColor: 'inset',
 		},
 		variants: {
 			size: {
@@ -25,7 +26,7 @@ const styles = {
 			},
 		},
 	}),
-	isDragging: css({ borderColor: 'blue.500', bg: 'hover' }),
+	isDragging: css({ borderColor: 'info.main' }),
 	contents: cva({
 		base: {
 			display: 'flex',
