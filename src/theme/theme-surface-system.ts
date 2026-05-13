@@ -1,13 +1,13 @@
 import type {
 	ShadowOptions,
 	StructureColorOptions,
-	SurfaceColorOptions,
+	BgColorOptions,
 	SurfaceLayerOptions,
 	ZIndexOptions,
 } from '@/types';
 
 type SurfaceConfig = {
-	surface: SurfaceColorOptions;
+	surface: BgColorOptions;
 	shadow: ShadowOptions;
 	structure: StructureColorOptions | 'none';
 	zIndex: ZIndexOptions | 'none';

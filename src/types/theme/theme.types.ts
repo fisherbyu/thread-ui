@@ -67,8 +67,8 @@ export type SurfaceActivityColors = {
 
 export type AllSurfaceColors = Prettify<SurfaceColors & SurfaceActivityColors>;
 
-/** Surface color options, used for component background variants */
-export type SurfaceColorOptions = Prettify<keyof SurfaceColors | 'none'>;
+/** Background color options for component */
+export type BgColorOptions = Prettify<keyof SurfaceColors | 'none'>;
 
 /** Element Shadow Levels */
 export type ShadowScale = {
@@ -142,14 +142,13 @@ export type NeutralPalette = {
 	gray: ColorShades;
 };
 
-/** Theme Layout Structure */
+/** Theme Layout Configuration */
 export type ThemeLayout = {
 	breakpoints: BreakpointOptions;
 };
 
 /** Base Border Configuration */
 export type ThemeBorders = {
-	// Sizing
 	borderRadius: UtilitySizes;
 	borderSize: UtilitySizes;
 };
