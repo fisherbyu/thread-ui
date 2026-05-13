@@ -10,6 +10,17 @@ All items work out of the box. Explore thread components at [thread.fisherandrew
 npm install thread-ui
 ```
 
+Then import the styles once in your app's entry point:
+
+```tsx
+import 'thread-ui/thread.css';
+```
+
+- **Next.js (App Router)**: place in `app/layout.tsx`
+- **Next.js (Pages Router)**: place in `pages/_app.tsx`
+- **Vite / CRA**: place in `main.tsx` or `index.tsx`
+- **Remix**: import in `root.tsx`
+
 ## Features
 
 ### Custom Themes

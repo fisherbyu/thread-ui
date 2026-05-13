@@ -22,10 +22,19 @@ STYLES_DIST := $(DIST_DIR)/styles
 SCRIPTS_DIR := .scripts
 STATIC_STORYBOOK := .storybook/.static
 
-# Files
-PANDA_CSS := $(STYLES_SRC)/panda.css
-STYLES_CSS := $(STYLES_SRC)/styles.css
-THREAD_CSS := $(STYLES_SRC)/thread.css
+# File names
+THEME_CSS_FILE := theme.css
+PANDA_CSS_FILE := panda.css
+STYLES_CSS_FILE := tailwind.css
+THREAD_CSS_FILE := thread.css
+THEME_SCRIPT := $(SCRIPTS_DIR)/generate-default-theme-css.scripts.ts
+PACKAGE_JSON := package.json
+
+# Package
+PACKAGE_NAME := thread-ui
+
+# Storybook
+STORYBOOK_PORT := 6006
 
 # Default target
 .DEFAULT_GOAL := help
@@ -47,19 +56,24 @@ prepare-panda-code: # Generate Panda CSS codegen and copy to dist
 
 .PHONY: prepare-panda-css
 prepare-panda-css: # Generate Panda CSS output file
-	$(PANDA) cssgen --outfile $(PANDA_CSS)
+	$(PANDA) cssgen --outfile $(STYLES_SRC)/$(PANDA_CSS_FILE)
 
 $(DIST_DIR):
 	mkdir -p $(DIST_DIR)
 
 $(STYLES_DIST):
 	mkdir -p $(STYLES_DIST)
+	
+.PHONY: generate-thread-css-export
+generate-thread-css-export: # Generate the CSS export file from variables
+	@printf '@import "./$(THEME_CSS_FILE)";\n@import "./$(PANDA_CSS_FILE)";\n@import "./$(STYLES_CSS_FILE)";\n' > $(STYLES_SRC)/$(THREAD_CSS_FILE)
 
 .PHONY: build-css
-build-css: | $(STYLES_DIST) # Build and copy CSS files
-	$(POSTCSS) $(STYLES_CSS) -o $(STYLES_DIST)/styles.css
-	cp $(THREAD_CSS) $(STYLES_DIST)/thread.css
-	cp $(PANDA_CSS) $(STYLES_DIST)/panda.css
+build-css: generate-thread-css-export | $(STYLES_DIST) # Build and copy CSS files
+	$(POSTCSS) $(STYLES_SRC)/$(STYLES_CSS_FILE) -o $(STYLES_DIST)/$(STYLES_CSS_FILE)
+	cp $(STYLES_SRC)/$(THEME_CSS_FILE) $(STYLES_DIST)/$(THEME_CSS_FILE)
+	cp $(STYLES_SRC)/$(PANDA_CSS_FILE) $(STYLES_DIST)/$(PANDA_CSS_FILE)
+	cp $(STYLES_SRC)/$(THREAD_CSS_FILE) $(STYLES_DIST)/$(THREAD_CSS_FILE)
 
 .PHONY: prepare-typescript
 prepare-typescript: prepare-panda-code # Compile TypeScript into JavaScript
@@ -70,20 +84,20 @@ prepare-typescript: prepare-panda-code # Compile TypeScript into JavaScript
 .PHONY: watch
 watch: # Watch CSS files. Use CSS=tailwind|panda to limit (default: both)
 	@if [ "$(CSS)" = "tailwind" ]; then \
-		$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch; \
+		$(TAILWIND) -i $(STYLES_SRC)/$(STYLES_CSS_FILE) -o $(STYLES_SRC)/$(STYLES_CSS_FILE) --watch; \
 	elif [ "$(CSS)" = "panda" ]; then \
-		$(CONCURRENTLY) "$(PANDA) --watch" "$(PANDA) cssgen --outfile $(PANDA_CSS) --watch"; \
+		$(CONCURRENTLY) "$(PANDA) --watch" "$(PANDA) cssgen --outfile $(STYLES_SRC)/$(PANDA_CSS_FILE) --watch"; \
 	else \
 		$(CONCURRENTLY) \
-			"$(TAILWIND) -i $(STYLES_CSS) -o $(STYLES_CSS) --watch" \
+			"$(TAILWIND) -i $(STYLES_SRC)/$(STYLES_CSS_FILE) -o $(STYLES_SRC)/$(STYLES_CSS_FILE) --watch" \
 			"$(PANDA) --watch" \
-			"$(PANDA) cssgen --outfile $(PANDA_CSS) --watch"; \
+			"$(PANDA) cssgen --outfile $(STYLES_SRC)/$(PANDA_CSS_FILE) --watch"; \
 	fi
 
 .PHONY: theme-css
 theme-css: ## Generate theme CSS from TypeScript
-	$(TSX) $(SCRIPTS_DIR)/generate-default-theme-css.scripts.ts
-	$(PRETTIER) --write src/styles/thread.css
+	$(TSX) $(THEME_SCRIPT) --out $(STYLES_SRC)/$(THEME_CSS_FILE)
+	$(PRETTIER) --write $(STYLES_SRC)/$(THEME_CSS_FILE)
 
 .PHONY: new-item
 new-item: ## Generate New Items using Plop.js
@@ -99,7 +113,7 @@ help: ## Show this help message
 
 .PHONY: storybook
 storybook: prepare-panda-code theme-css ## Run Storybook dev server (with Panda and Tailwind watch)
-	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p 6006 --no-open"
+	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p $(STORYBOOK_PORT) --no-open"
 
 .PHONY: build
 build: clean prepare-panda-code theme-css prepare-typescript prepare-panda-css build-css ## Full build pipeline
@@ -160,16 +174,16 @@ endef
 
 define do_publish
 	npm version $(1); \
-	new_version=$$(node -p "require('./package.json').version"); \
+	new_version=$$(node -p "require('./$(PACKAGE_JSON)').version"); \
 	echo ""; \
-	echo "⚠️  Publishing thread-ui@$$new_version to npm"; \
+	echo "⚠️  Publishing $(PACKAGE_NAME)@$$new_version to npm"; \
 	read -p "Continue? [y/N]: " -n 1 -r; \
 	echo; \
 	if [[ $$REPLY =~ ^[Yy]$$ ]]; then \
 		npm publish; \
-		echo "✅ Published thread-ui@$$new_version successfully!"; \
+		echo "✅ Published $(PACKAGE_NAME)@$$new_version successfully!"; \
 	else \
-		echo "❌ Publish cancelled. Version was bumped in package.json but not published."; \
+		echo "❌ Publish cancelled. Version was bumped in $(PACKAGE_JSON) but not published."; \
 		exit 1; \
 	fi
 endef

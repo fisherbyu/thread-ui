@@ -6,6 +6,7 @@ export default defineConfig({
 	include: ['./src/**/*.{ts,tsx,js,jsx}'],
 	exclude: ['./src/styled-system/**'],
 	outdir: 'src/styled-system',
+	outExtension: 'js',
 	minify: true,
 
 	// Prefix
