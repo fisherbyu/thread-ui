@@ -193,11 +193,11 @@ variants: {
 - [x] **Modal** — Fixed `overlay`. zIndex override to `modal`. Scrim fixed.
 - [x] **NavMenu** — Fixed `elevated`. Bottom border via `structure.subtle`. Hover/active on items. zIndex: `sticky`.
 - [ ] **SideNav** — Fixed `elevated` (when fixed) / `surface` (when static). Trailing edge border via `structure.subtle`. Shadow override to `none`.
-- [x] **Dropdown (closed)** — Fixed `inset`. Border via `structure.default`. Focus: border → `primary.main`.
+- [x] **Dropdown (closed)** — Fixed `inset`. Border via `structure.default`. Focus: border → `info.main`.
 - [x] **Dropdown (open menu)** — Fixed `overlay`. Hover/active on items. zIndex: `overlay`. Shadow: `lg`.
-- [x] **FileUpload** — Fixed `inset`. Dashed border via `structure.default`. Drag-over: border → `primary.main`.
-- [x] **NumberInput** — Fixed `inset`. Border via `structure.default`. Focus: border → `primary.main`.
-- [ ] **TextInput** — Fixed `inset`. Border via `structure.default`. Focus: border → `primary.main`.
+- [x] **FileUpload** — Fixed `inset`. Dashed border via `structure.default`. Drag-over: border → `info.main`.
+- [x] **NumberInput** — Fixed `inset`. Border via `structure.default`. Focus: border → `info.main`.
+- [x] **TextInput** — Fixed `inset`. Border via `structure.default`. Focus: border → `info.main`.
 - [ ] **DataDisplayControls** — `none` default. `elevated` when `sticky={true}`.
 
 ### No Layer Participation
