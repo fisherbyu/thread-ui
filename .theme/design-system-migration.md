@@ -198,7 +198,6 @@ variants: {
 - [x] **FileUpload** — Fixed `inset`. Dashed border via `structure.default`. Drag-over: border → `info.main`.
 - [x] **NumberInput** — Fixed `inset`. Border via `structure.default`. Focus: border → `info.main`.
 - [x] **TextInput** — Fixed `inset`. Border via `structure.default`. Focus: border → `info.main`.
-- [ ] **DataDisplayControls** — `none` default. `elevated` when `sticky={true}`.
 
 ### No Layer Participation
 
@@ -226,6 +225,7 @@ variants: {
 - [ ] **MasonryLayout** — Pure layout, no visual opinion.
 - [ ] **FilterControls** — Children handle their own layers.
 - [ ] **SortControls** — Children handle their own layers.
+- [ ] **DataDisplayControls** — Children handle their own layers.
 
 ### Global Requirements
 
