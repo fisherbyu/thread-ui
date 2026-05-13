@@ -44,7 +44,7 @@ const styles = {
 	}),
 };
 
-export const BaseItem = ({
+export const NavLink = ({
 	children,
 	href,
 	halfPadding = false,

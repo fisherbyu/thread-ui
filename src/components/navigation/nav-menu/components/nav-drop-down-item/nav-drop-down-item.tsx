@@ -1,6 +1,6 @@
 'use client';
 import { CSSProperties, useState } from 'react';
-import { BaseItem } from '../nav-link';
+import { NavLink } from '../nav-link';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { css, cx } from '@/styled-system/css';
 
@@ -81,7 +81,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			onMouseLeave={() => setIsHovered(false)}
 			onClick={() => setIsHovered(false)}
 		>
-			<BaseItem href="#">
+			<NavLink href="#">
 				<div className={styles.textBlock}>
 					<span>{title}</span>
 					<svg
@@ -99,7 +99,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 						<path d="m6 9 6 6 6-6"></path>
 					</svg>
 				</div>
-			</BaseItem>
+			</NavLink>
 			{isHovered && <div className={styles.targetArea} />}
 			{/* Swap menu based on size */}
 			{/* Screen SM */}
@@ -110,9 +110,9 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 				)}
 			>
 				{items.map((item) => (
-					<BaseItem key={item.title} href={item.href} isDropdownItem>
+					<NavLink key={item.title} href={item.href} isDropdownItem>
 						{item.title}
-					</BaseItem>
+					</NavLink>
 				))}
 			</div>
 			{/* Screen LG */}
@@ -124,9 +124,9 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 				)}
 			>
 				{items.map((item) => (
-					<BaseItem key={item.title} href={item.href} isDropdownItem>
+					<NavLink key={item.title} href={item.href} isDropdownItem>
 						{item.title}
-					</BaseItem>
+					</NavLink>
 				))}
 			</div>
 		</div>
