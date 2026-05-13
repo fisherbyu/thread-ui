@@ -11,7 +11,7 @@ const styles = {
 	textBlock: css({
 		display: 'flex',
 		flexDirection: 'row',
-		gap: '4px',
+		gap: '1',
 		justifyContent: 'center',
 		alignItems: 'center',
 	}),
