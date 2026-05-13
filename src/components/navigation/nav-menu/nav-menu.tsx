@@ -83,7 +83,7 @@ const style = {
 		gap: '24px',
 		alignItems: { base: 'stretch', lg: 'center' },
 		width: { base: 'auto', lg: '100%' },
-		justifyContent: { base: 'flex-center', lg: 'center' },
+		justifyContent: 'center',
 	}),
 
 	menuControl: css({
