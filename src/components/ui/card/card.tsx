@@ -2,7 +2,7 @@ import { cva } from '@/styled-system/css';
 import { CardProps } from './card.types';
 import { H3 } from '@/components/typography';
 import { Divider } from '../divider';
-import { SurfaceLayerMap } from '@/theme';
+import { getResolvedLayerValues } from '@/utils';
 
 const styles = {
 	cardContainer: cva({
@@ -32,7 +32,7 @@ const styles = {
 					borderRadius: 'lg',
 				},
 			},
-			surface: {
+			bg: {
 				none: {},
 				canvas: { backgroundColor: 'canvas' },
 				inset: { backgroundColor: 'inset' },
@@ -55,7 +55,7 @@ const styles = {
 		},
 		defaultVariants: {
 			size: 'md',
-			surface: 'surface',
+			bg: 'surface',
 			shadow: 'none',
 			structure: 'subtle',
 		},
@@ -85,12 +85,12 @@ const styles = {
  *
  * @example
  * // Use level shorthand
- * <Card level="surface" interactive>
+ * <Card layer="surface" interactive>
  *   <div>Clickable card</div>
  * </Card>
  *
  * // Or granular overrides
- * <Card surface="elevated" shadow="md" structure="none">
+ * <Card bg="elevated" shadow="md" structure="none">
  *   <div>Custom card</div>
  * </Card>
  */
@@ -104,19 +104,15 @@ export const Card = ({
 	title,
 }: CardProps) => {
 	// Resolve from level, allow individual overrides
-	const defaults = SurfaceLayerMap[layer];
-
-	const resolvedSurface = bg ?? defaults.bg;
-	const resolvedShadow = shadow ?? defaults.shadow;
-	const resolvedStructure = structure ?? defaults.structure;
+	const layerValues = getResolvedLayerValues({ layer, bg, shadow, structure });
 
 	return (
 		<div
 			className={styles.cardContainer({
 				size,
-				surface: resolvedSurface,
-				shadow: resolvedShadow,
-				structure: resolvedStructure,
+				bg: layerValues.bg,
+				shadow: layerValues.shadow,
+				structure: layerValues.structure,
 			})}
 		>
 			{title && (
