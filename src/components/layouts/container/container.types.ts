@@ -8,5 +8,6 @@ export type ContainerProps = {
 	as?: keyof BlockElements;
 	/** Background color token @default `'none'` */
 	bg?: BgColorOptions;
+	/** Container Contents */
 	children: ReactNode;
 };
