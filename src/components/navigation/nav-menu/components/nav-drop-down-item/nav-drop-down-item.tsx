@@ -1,6 +1,6 @@
 'use client';
 import { CSSProperties, useState } from 'react';
-import { BaseItem } from '../base-item';
+import { BaseItem } from '../nav-link';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { css, cx } from '@/styled-system/css';
 

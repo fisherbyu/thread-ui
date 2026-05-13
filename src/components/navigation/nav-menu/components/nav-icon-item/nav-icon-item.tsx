@@ -1,4 +1,4 @@
-import { BaseItem } from '../base-item';
+import { BaseItem } from '../nav-link';
 import { NavIconItemProps } from './nav-icon-item.types';
 
 export const NavIconItem = ({ href, logo }: NavIconItemProps) => {
