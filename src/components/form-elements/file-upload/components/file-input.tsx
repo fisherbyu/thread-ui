@@ -9,7 +9,8 @@ import { Text } from '@/components/typography';
 const styles = {
 	dropzone: cva({
 		base: {
-			border: '2px dashed',
+			borderWidth: 'lg',
+			borderStyle: 'dashed',
 			mx: 'auto',
 			rounded: 'lg',
 			textAlign: 'center',
