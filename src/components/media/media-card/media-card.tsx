@@ -3,6 +3,7 @@ import { MediaCardProps } from './media-card.types';
 import { H1, Text } from '@/components/typography';
 import { Divider, Icon } from '@/components/ui';
 import { LinkWrapper, renderImage } from '@/internal-components';
+import { SurfaceLayerMap } from '@/theme';
 import { cloneElement, isValidElement } from 'react';
 
 const styles = {
@@ -10,8 +11,7 @@ const styles = {
 		base: {
 			alignItems: 'center',
 			borderRadius: 'md',
-			borderWidth: 'md',
-			borderColor: 'structure',
+			borderStyle: 'solid',
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'center',
@@ -29,9 +29,32 @@ const styles = {
 				md: { maxWidth: '672px' },
 				lg: { maxWidth: '896px' },
 			},
+			bg: {
+				none: {},
+				canvas: { backgroundColor: 'canvas' },
+				inset: { backgroundColor: 'inset' },
+				surface: { backgroundColor: 'surface' },
+				elevated: { backgroundColor: 'elevated' },
+				overlay: { backgroundColor: 'overlay' },
+			},
+			shadow: {
+				none: { boxShadow: 'none' },
+				sm: { boxShadow: 'sm' },
+				md: { boxShadow: 'md' },
+				lg: { boxShadow: 'lg' },
+			},
+			structure: {
+				none: { borderWidth: '0' },
+				subtle: { borderWidth: 'md', borderColor: 'structure.subtle' },
+				default: { borderWidth: 'md', borderColor: 'structure.default' },
+				strong: { borderWidth: 'md', borderColor: 'structure.strong' },
+			},
 		},
 		defaultVariants: {
 			size: 'md',
+			bg: 'surface',
+			shadow: 'sm',
+			structure: 'subtle',
 		},
 	}),
 	title: css({
@@ -157,10 +180,14 @@ export const MediaCard = ({
 	detailsPosition = 'text',
 	image,
 	imagePosition = 'left',
+	layer = 'surface',
 	links,
 	size = 'md',
 	title,
 }: MediaCardProps) => {
+	// Resolve from layer, allow individual overrides
+	const layerConfig = SurfaceLayerMap[layer];
+
 	const linksSection = links.map((link, index) =>
 		isValidElement(link) ? (
 			cloneElement(link, { key: index })
@@ -187,7 +214,14 @@ export const MediaCard = ({
 	);
 
 	return (
-		<div className={styles.container({ size })}>
+		<div
+			className={styles.container({
+				size,
+				bg: layerConfig.bg,
+				shadow: layerConfig.shadow,
+				structure: layerConfig.structure,
+			})}
+		>
 			<div className={styles.title}>
 				<H1 align="center" inline>
 					{title}
