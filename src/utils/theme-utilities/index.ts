@@ -4,3 +4,5 @@ export * from './get-utility-color';
 export * from './get-utility-font-size';
 export * from './get-utility-icon-size';
 export * from './get-utility-size-value';
+
+export * from './get-resolved-layer-values';
