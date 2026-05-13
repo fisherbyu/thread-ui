@@ -51,8 +51,8 @@ const styles = {
 			appearance: 'none',
 		},
 		_focus: {
-			ringColor: 'primary.main',
-			borderColor: 'primary.main',
+			ringColor: 'info.main',
+			borderColor: 'info.main',
 		},
 	}),
 	container: css({
