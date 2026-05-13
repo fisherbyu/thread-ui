@@ -151,12 +151,6 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		setNavIsOpened((navIsOpened) => !navIsOpened);
 	};
 
-	// Dropdown Control
-	const [isDropdownHovered, setIsDropdownHovered] = useState(false);
-	const handleMusicHover = (hovered: boolean) => {
-		setIsDropdownHovered(hovered);
-	};
-
 	useEffect(() => {
 		const onResize = () => {
 			closeNavbar();
