@@ -7,7 +7,7 @@ const styles = css({
 	justifyContent: 'start',
 	alignItems: 'center',
 	width: '100%',
-	paddingBottom: '4px',
+	paddingBottom: '1',
 });
 
 export const InputWrapper = ({ children }: { children: ReactNode }) => {

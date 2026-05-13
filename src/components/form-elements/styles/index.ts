@@ -4,9 +4,9 @@ export const baseInputStyles = cva({
 	base: {
 		color: 'text.standard',
 		backgroundColor: 'inset',
-		paddingX: '16px',
-		paddingY: '8px',
-		borderWidth: '1px',
+		paddingX: '4',
+		paddingY: '2',
+		borderWidth: 'md',
 		borderStyle: 'solid',
 		borderColor: 'structure.default',
 		borderRadius: 'md',

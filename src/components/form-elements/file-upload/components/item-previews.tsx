@@ -10,8 +10,8 @@ const styles = {
 		height: '100%',
 		objectFit: 'cover',
 		borderRadius: 'md',
-		maxHeight: '6rem',
-		maxWidth: '6rem',
+		maxHeight: '24',
+		maxWidth: '24',
 	}),
 	wrapper: css({
 		display: 'flex',
@@ -24,8 +24,8 @@ const styles = {
 const fixedImageStyles = {
 	height: 'auto',
 	width: 'auto',
-	maxWidth: '256px',
-	maxHeight: '400px',
+	maxWidth: '64',
+	maxHeight: '100',
 };
 
 export type ImageDisplayProps = {
