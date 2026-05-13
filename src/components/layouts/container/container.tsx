@@ -4,7 +4,7 @@ import { ContainerProps } from './container.types';
 
 const styles = cva({
 	variants: {
-		bgColor: {
+		bg: {
 			none: { backgroundColor: 'transparent' },
 			canvas: { backgroundColor: 'canvas' },
 			inset: { backgroundColor: 'inset' },
@@ -14,7 +14,7 @@ const styles = cva({
 		},
 	},
 	defaultVariants: {
-		bgColor: 'none',
+		bg: 'none',
 	},
 });
 
@@ -27,6 +27,6 @@ const styles = cva({
  *   <PageHeader title="About" />
  * </Container>
  */
-export const Container = ({ as: Tag = 'div', bgColor = 'none', children }: ContainerProps) => {
-	return <Tag className={cx(styles({ bgColor }), container())}>{children}</Tag>;
+export const Container = ({ as: Tag = 'div', bg = 'none', children }: ContainerProps) => {
+	return <Tag className={cx(styles({ bg }), container())}>{children}</Tag>;
 };

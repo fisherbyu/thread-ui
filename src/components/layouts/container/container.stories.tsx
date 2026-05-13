@@ -14,7 +14,7 @@ const meta: Meta<typeof Container> = {
 			control: 'select',
 			options: ['div', 'section'],
 		},
-		bgColor: {
+		bg: {
 			control: 'select',
 			options: ['canvas', 'inset', 'surface', 'elevated', 'overlay', 'none'],
 		},
@@ -27,11 +27,17 @@ type Story = StoryObj<typeof Container>;
 export const Default: Story = {
 	args: {
 		as: 'div',
-		bgColor: 'none',
+		bg: 'none',
 	},
-	render: ({ as, bgColor }) => (
-		<Container as={as} bgColor={bgColor}>
-			<div style={{ background: '#bfdbfe', height: '200px', borderRadius: '8px' }} />
+	render: ({ as, bg }) => (
+		<Container as={as} bg={bg}>
+			<div
+				style={{
+					background: bg === 'none' ? '#bfdbfe' : 'transparent',
+					height: '200px',
+					borderRadius: '8px',
+				}}
+			/>
 		</Container>
 	),
 };

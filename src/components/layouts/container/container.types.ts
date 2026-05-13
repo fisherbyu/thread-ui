@@ -7,6 +7,6 @@ export type ContainerProps = {
 	/** HTML element to render as @default `'div'` */
 	as?: keyof BlockElements;
 	/** Background color token @default `'none'` */
-	bgColor?: BgColorOptions;
+	bg?: BgColorOptions;
 	children: ReactNode;
 };
