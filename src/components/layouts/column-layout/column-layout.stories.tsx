@@ -1,6 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ColumnLayout } from './column-layout';
 
+// Sample items for demonstration
+const SampleCard = ({ height, color }: { height: number; color: string }) => (
+	<div
+		className="thread-w-full thread-rounded-lg"
+		style={{
+			height: `${height}px`,
+			backgroundColor: color,
+		}}
+	/>
+);
+
 const meta: Meta<typeof ColumnLayout> = {
 	title: 'Layouts/ColumnLayout',
 	component: ColumnLayout,
@@ -67,40 +78,28 @@ export const WithImages: Story = {
 		container: true,
 		items: [
 			{
-				title: 'Folsom',
+				title: 'Title',
 				description:
-					'I grew up in Folsom, California.    It was a great place to grow up with tons of friendly people and opportunities for me as a youth',
-				content: {
-					src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffolsom.18907cb6.jpg&w=3840&q=75',
-					alt: 'Rainbow Bridge',
-				},
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+				content: <SampleCard height={180} color="#60A5FA" />,
 			},
 			{
-				title: 'Philippines',
+				title: 'Title',
 				description:
-					'I served a mission for The Church of Jesus Christ of Latter-day Saints in Isabela Philippines.    The people of the Philippines are the most friendly, kind and amazing people on Earth.',
-				content: {
-					src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fphilippines.1c61a311.jpg&w=3840&q=75',
-					alt: 'Corn Field, Isabela Philippines',
-				},
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+				content: <SampleCard height={180} color="#F472B6" />,
 			},
 			{
-				title: 'BYU',
+				title: 'Title',
 				description:
-					"I'm currently studying at BYU.    I love learning in such a spiritual environment and I've made lifelong friends during my time here.",
-				content: {
-					src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhbll.902dbb81.jpg&w=3840&q=75',
-					alt: 'BYU Library and Y Mountain',
-				},
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+				content: <SampleCard height={180} color="#A78BFA" />,
 			},
 			{
-				title: 'Utah',
+				title: 'Title',
 				description:
-					"I'm lucky to live in Utah, its such a pretty place with so much to do.",
-				content: {
-					src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falpine-loop.1df0e6d7.jpg&w=3840&q=75',
-					alt: 'Alpine Loop, Provo, UT',
-				},
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+				content: <SampleCard height={180} color="#34D399" />,
 			},
 		],
 	},
