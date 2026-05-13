@@ -6,11 +6,11 @@ const styles = {
 	core: {
 		base: css({
 			marginX: 'auto',
-			backgroundColor: 'structure',
+			backgroundColor: 'structure.default',
 			borderRadius: '9999px',
 		}),
 		marginY: css({
-			marginY: '16px',
+			marginY: '4',
 		}),
 		width: css({
 			width: '75%',
@@ -19,9 +19,9 @@ const styles = {
 	dividerWeight: cva({
 		variants: {
 			weight: {
-				light: { height: '0.5px' },
-				standard: { height: '1px' },
-				heavy: { height: '2px' },
+				light: { height: '0.125' },
+				standard: { height: '0.25' },
+				heavy: { height: '0.5' },
 			},
 		},
 		defaultVariants: {
