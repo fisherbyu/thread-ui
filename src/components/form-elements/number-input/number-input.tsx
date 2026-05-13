@@ -93,7 +93,6 @@ export const NumberInput = ({
 	value,
 	placeholder,
 	required,
-	dark,
 	min,
 	max,
 	onChange,
