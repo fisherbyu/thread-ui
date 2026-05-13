@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import {
 	SurfaceLayerOptions,
-	SurfaceColorOptions,
+	BgColorOptions,
 	ShadowOptions,
 	StructureColorOptions,
 	UtilitySizeOptions,
@@ -9,13 +9,13 @@ import {
 
 export type CardProps = {
 	children: ReactNode;
-	/** Surface level shorthand — resolves surface, shadow, and structure from SurfaceLevelMap @default `'surface'` */
-	level?: SurfaceLayerOptions;
-	/** Override surface background @default resolved from level: `'surface'` */
-	surface?: SurfaceColorOptions;
-	/** Override shadow @default resolved from level: `'sm'` */
+	/** Layer shorthand — resolves bg, shadow, and structure from SurfaceLayerMap @default `'surface'` */
+	layer?: SurfaceLayerOptions;
+	/** Override background color @default resolved from layer: `'surface'` */
+	bg?: BgColorOptions;
+	/** Override shadow @default resolved from layer: `'sm'` */
 	shadow?: ShadowOptions;
-	/** Override border structure color @default resolved from level: `'subtle'` */
+	/** Override border structure color @default resolved from layer: `'subtle'` */
 	structure?: StructureColorOptions | 'none';
 	/** Size variant controlling border radius and max width @default `'md'` */
 	size?: UtilitySizeOptions;
