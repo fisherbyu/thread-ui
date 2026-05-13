@@ -1,5 +1,5 @@
 import { DynamicIconProps } from '@/internal-components';
-import { ImageProps } from '@/types';
+import { ImageProps, SurfaceLayerOptions } from '@/types';
 
 export type InfoCardProps = {
 	/** Card title displayed in the caption bar */
@@ -16,4 +16,6 @@ export type InfoCardProps = {
 	icon?: DynamicIconProps['icon'];
 	/** Cover image displayed in the card */
 	image: ImageProps;
+	/** Surface layer @default `'surface'` */
+	layer?: SurfaceLayerOptions;
 };
