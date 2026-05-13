@@ -199,44 +199,39 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	};
 
 	return (
-		<>
-			<header id="site-menu" className={style.header}>
-				<nav className={style.nav}>
-					{logo && <NavigationLogo href={logo.href} logo={logo.logo} />}
-					<div
-						className={cx(
-							style.menuItemBlock,
-							navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
-						)}
+		<header id="site-menu" className={style.header}>
+			<nav className={style.nav}>
+				{logo && <NavigationLogo href={logo.href} logo={logo.logo} />}
+				<div
+					className={cx(
+						style.menuItemBlock,
+						navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
+					)}
+				>
+					<ul className={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
+				</div>
+				<div className={style.menuControl}>
+					<button
+						onClick={() => {
+							toggleNavbar();
+						}}
+						aria-label="toggle navbar"
 					>
-						<ul className={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
-					</div>
-					<div className={style.menuControl}>
-						<button
-							onClick={() => {
-								toggleNavbar();
-							}}
-							aria-label="toggle navbar"
-						>
-							<span
-								aria-hidden={true}
-								className={cx(
-									style.menuCross,
-									navIsOpened && style.menuCrossTopOpen
-								)}
-							/>
-							<span
-								aria-hidden={true}
-								className={cx(
-									style.menuCross,
-									style.menuCrossBottom,
-									navIsOpened && style.menuCrossBottomOpen
-								)}
-							/>
-						</button>
-					</div>
-				</nav>
-			</header>
-		</>
+						<span
+							aria-hidden={true}
+							className={cx(style.menuCross, navIsOpened && style.menuCrossTopOpen)}
+						/>
+						<span
+							aria-hidden={true}
+							className={cx(
+								style.menuCross,
+								style.menuCrossBottom,
+								navIsOpened && style.menuCrossBottomOpen
+							)}
+						/>
+					</button>
+				</div>
+			</nav>
+		</header>
 	);
 };
