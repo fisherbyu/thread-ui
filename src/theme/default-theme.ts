@@ -48,7 +48,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	},
 	// Light Mode Surface Colors
 	canvas: '#FCFCFB',
-	inset: '#EDEEF1',
+	inset: '#F7F7F6',
 	surface: '#FFFFFF',
 	elevated: '#FFFFFF',
 	overlay: '#FFFFFF',
