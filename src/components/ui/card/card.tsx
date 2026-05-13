@@ -2,7 +2,7 @@ import { cva } from '@/styled-system/css';
 import { CardProps } from './card.types';
 import { H3 } from '@/components/typography';
 import { Divider } from '../divider';
-import { SurfaceLevelMap } from '@/theme';
+import { SurfaceLayerMap } from '@/theme';
 
 const styles = {
 	cardContainer: cva({
@@ -104,9 +104,9 @@ export const Card = ({
 	title,
 }: CardProps) => {
 	// Resolve from level, allow individual overrides
-	const defaults = SurfaceLevelMap[layer];
+	const defaults = SurfaceLayerMap[layer];
 
-	const resolvedSurface = bg ?? defaults.surface;
+	const resolvedSurface = bg ?? defaults.bg;
 	const resolvedShadow = shadow ?? defaults.shadow;
 	const resolvedStructure = structure ?? defaults.structure;
 
