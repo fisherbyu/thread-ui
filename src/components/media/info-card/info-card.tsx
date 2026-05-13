@@ -6,57 +6,56 @@ import { Text } from '@/components/typography';
 import { DynamicIcon, renderImage } from '@/internal-components';
 import { SurfaceLayerMap } from '@/theme';
 
-const cardStyles = cva({
-	base: {
-		margin: 'auto',
-		borderStyle: 'solid',
-		borderRadius: 'md',
-		maxHeight: '15rem',
-		overflow: 'hidden',
-		maxWidth: '391px',
-		aspectRatio: '8 / 5',
-		width: '100%',
-		cursor: 'pointer',
-		display: 'flex',
-		flexDirection: 'column',
-		transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
-		_hover: {
-			backgroundColor: 'hover',
-		},
-		_active: {
-			backgroundColor: 'active',
-		},
-	},
-	variants: {
-		bg: {
-			none: {},
-			canvas: { backgroundColor: 'canvas' },
-			inset: { backgroundColor: 'inset' },
-			surface: { backgroundColor: 'surface' },
-			elevated: { backgroundColor: 'elevated' },
-			overlay: { backgroundColor: 'overlay' },
-		},
-		shadow: {
-			none: { boxShadow: 'none' },
-			sm: { boxShadow: 'sm' },
-			md: { boxShadow: 'md' },
-			lg: { boxShadow: 'lg' },
-		},
-		structure: {
-			none: { borderWidth: '0' },
-			subtle: { borderWidth: 'md', borderColor: 'structure.subtle' },
-			default: { borderWidth: 'md', borderColor: 'structure.default' },
-			strong: { borderWidth: 'md', borderColor: 'structure.strong' },
-		},
-	},
-	defaultVariants: {
-		bg: 'surface',
-		shadow: 'sm',
-		structure: 'subtle',
-	},
-});
-
 const styles = {
+	card: cva({
+		base: {
+			margin: 'auto',
+			borderStyle: 'solid',
+			borderRadius: 'md',
+			maxHeight: '15rem',
+			overflow: 'hidden',
+			maxWidth: '391px',
+			aspectRatio: '8 / 5',
+			width: '100%',
+			cursor: 'pointer',
+			display: 'flex',
+			flexDirection: 'column',
+			transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
+			_hover: {
+				backgroundColor: 'hover',
+			},
+			_active: {
+				backgroundColor: 'active',
+			},
+		},
+		variants: {
+			bg: {
+				none: {},
+				canvas: { backgroundColor: 'canvas' },
+				inset: { backgroundColor: 'inset' },
+				surface: { backgroundColor: 'surface' },
+				elevated: { backgroundColor: 'elevated' },
+				overlay: { backgroundColor: 'overlay' },
+			},
+			shadow: {
+				none: { boxShadow: 'none' },
+				sm: { boxShadow: 'sm' },
+				md: { boxShadow: 'md' },
+				lg: { boxShadow: 'lg' },
+			},
+			structure: {
+				none: { borderWidth: '0' },
+				subtle: { borderWidth: 'md', borderColor: 'structure.subtle' },
+				default: { borderWidth: 'md', borderColor: 'structure.default' },
+				strong: { borderWidth: 'md', borderColor: 'structure.strong' },
+			},
+		},
+		defaultVariants: {
+			bg: 'surface',
+			shadow: 'sm',
+			structure: 'subtle',
+		},
+	}),
 	imageWrapper: css({
 		overflow: 'hidden',
 		width: '100%',
@@ -92,7 +91,7 @@ export const InfoCard = ({ title, url, icon, image, layer = 'surface' }: InfoCar
 	return (
 		<a
 			href={url}
-			className={cardStyles({
+			className={styles.card({
 				bg: config.bg,
 				shadow: config.shadow,
 				structure: config.structure,
