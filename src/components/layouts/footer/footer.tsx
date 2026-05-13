@@ -8,7 +8,7 @@ import {
 	LinkedinLogoIcon,
 	TwitterLogoIcon,
 } from '@phosphor-icons/react';
-import { css, cx } from '@/styled-system/css';
+import { css } from '@/styled-system/css';
 
 const styles = {
 	footerContents: css({
@@ -21,9 +21,6 @@ const styles = {
 		overflow: 'hidden',
 		maxWidth: '1280px',
 	}),
-	textBlock: css({
-		marginTop: '2',
-	}),
 	logoBlock: css({
 		display: 'flex',
 		flexDirection: 'row',
@@ -32,16 +29,6 @@ const styles = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		paddingY: '4',
-	}),
-	circleStyle: css({
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		marginTop: '9',
-		backgroundColor: 'black',
-		borderRadius: '50%',
-		width: '12',
-		height: '12',
 	}),
 	links: css({
 		color: 'text.standard',
