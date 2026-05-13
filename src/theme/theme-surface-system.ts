@@ -6,7 +6,7 @@ import type {
 	ZIndexOptions,
 } from '@/types';
 
-type SurfaceConfig = {
+export type SurfaceConfig = {
 	bg: BgColorOptions;
 	shadow: ShadowOptions;
 	structure: StructureColorOptions | 'none';
