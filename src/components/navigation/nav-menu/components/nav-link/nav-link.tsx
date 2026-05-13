@@ -44,16 +44,7 @@ const styles = {
 	}),
 };
 
-export const NavLink = ({
-	children,
-	href,
-	halfPadding = false,
-	onMouseEnter,
-	onMouseLeave,
-	isDropdownItem,
-}: NavLinkProps) => {
-	// Handle hover state
-
+export const NavLink = ({ children, href, halfPadding = false, isDropdownItem }: NavLinkProps) => {
 	return (
 		<li className={styles.li}>
 			<LinkWrapper link={href} className={styles.link({ halfPadding, isDropdownItem })}>
