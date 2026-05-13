@@ -95,8 +95,8 @@ const styles = {
  * </Card>
  */
 export const Card = ({
-	level = 'surface',
-	surface,
+	layer = 'surface',
+	bg,
 	shadow,
 	structure,
 	children,
@@ -104,9 +104,9 @@ export const Card = ({
 	title,
 }: CardProps) => {
 	// Resolve from level, allow individual overrides
-	const defaults = SurfaceLevelMap[level];
+	const defaults = SurfaceLevelMap[layer];
 
-	const resolvedSurface = surface ?? defaults.surface;
+	const resolvedSurface = bg ?? defaults.surface;
 	const resolvedShadow = shadow ?? defaults.shadow;
 	const resolvedStructure = structure ?? defaults.structure;
 
