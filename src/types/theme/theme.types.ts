@@ -110,7 +110,7 @@ export type ScrimColors = {
 // Semantic Surface Layer System
 
 /** Surface Layer System Options */
-export type SurfaceLayerOptions = keyof SurfaceColors;
+export type SurfaceLayerOptions = Prettify<keyof SurfaceColors>;
 
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
