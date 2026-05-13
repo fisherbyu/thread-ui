@@ -1,4 +1,4 @@
-import { NavLinkProps } from './base-item.types';
+import { NavLinkProps } from './nav-link.types';
 import { LinkWrapper } from '@/internal-components';
 import { css, cva } from '@/styled-system/css';
 

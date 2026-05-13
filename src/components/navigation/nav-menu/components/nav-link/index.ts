@@ -1,2 +1,2 @@
-export type { NavLinkProps } from './base-item.types';
-export { NavLink } from './base-item';
+export type { NavLinkProps } from './nav-link.types';
+export { NavLink } from './nav-link';
