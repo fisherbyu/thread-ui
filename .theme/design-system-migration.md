@@ -186,7 +186,7 @@ variants: {
 ### Accept `bg` Prop Only
 
 - [x] **Container** — `bg` default: `none` (transparent). Consumer sets `bg="canvas"` or `bg="surface"` for alternating page bands. No shadow, structure, or zIndex.
-- [ ] **Footer** — `bg` default: `canvas`. Fixed `structure.subtle` top border. Text: `text.secondary`. No shadow or zIndex.
+- [x] **Footer** — `bg` default: `canvas`. Fixed `structure.subtle` top border. Text: `text.secondary`. No shadow or zIndex.
 
 ### Fixed Layer (No Prop)
 
