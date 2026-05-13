@@ -8,16 +8,16 @@ const styles = {
 		position: 'relative',
 		display: 'inline-flex',
 		alignItems: 'center',
-		height: '24px',
-		width: '44px',
+		height: '6',
+		width: '11',
 		borderRadius: '9999px',
 		transition: 'background-color 200ms ease-in-out',
 		outline: 'none',
 	}),
 	knob: css({
 		display: 'inline-block',
-		height: '16px',
-		width: '16px',
+		height: '4',
+		width: '4',
 		backgroundColor: 'white',
 		borderRadius: '9999px',
 		transform: 'translateX(4px)',
@@ -28,8 +28,8 @@ const styles = {
 	}),
 	srOnly: css({
 		position: 'absolute',
-		width: '1px',
-		height: '1px',
+		width: '0.25',
+		height: '0.25',
 		padding: '0',
 		margin: '-1px',
 		overflow: 'hidden',
@@ -46,7 +46,7 @@ const styles = {
  * <Toggle isOn={enabled} onToggle={() => setEnabled(!enabled)} color="primary" />
  */
 export const Toggle = ({ isOn, onToggle, color = 'success' }: ToggleProps) => {
-	const colorValue = getUtilityColorValue(color);
+	const colorValue = getUtilityColorValue(color, 'dark');
 
 	return (
 		<button
