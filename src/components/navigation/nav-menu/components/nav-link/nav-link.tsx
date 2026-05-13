@@ -10,13 +10,13 @@ const styles = {
 	}),
 	link: cva({
 		base: {
-			position: { sm: 'static', lg: 'relative' },
+			position: { base: 'static', lg: 'relative' },
 			display: 'inline-flex',
 			flexDirection: 'column',
-			height: { sm: 'auto', lg: '2.5rem' },
+			height: { base: 'auto', lg: '2.5rem' },
 			alignItems: 'center',
 			justifyContent: 'center',
-			borderRadius: '0.375rem',
+			borderRadius: 'md',
 			color: 'text.standard',
 			fontSize: '0.875rem',
 			fontWeight: 500,
@@ -25,6 +25,9 @@ const styles = {
 			margin: 'auto',
 			_hover: {
 				backgroundColor: 'hover',
+			},
+			_active: {
+				backgroundColor: 'active',
 			},
 		},
 		variants: {
