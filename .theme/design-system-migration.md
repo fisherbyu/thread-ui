@@ -206,12 +206,12 @@ variants: {
 - [ ] **Toggle** — Track: `gray.main` off / `primary.main` on. Thumb: `white`.
 - [ ] **Divider** — Structure color as line color. Prop default: `subtle`.
 - [ ] **Icon** — Color prop, default `text.secondary`.
-- [ ] **DotsLoader** — Dot color from `text.secondary`.
-- [ ] **SpinLoader** — Stroke from `primary.main`.
-- [ ] **Skeleton** — Shimmer uses `elevated` token directly in recipe.
-- [ ] **SkeletonLayout** — Arranges Skeleton bars. Inherits surface from parent.
-- [ ] **ImagePanel** — Pure content. Inherits surface from parent.
-- [ ] **FormLabel** — Text color prop, default `text.standard`.
+- [x] **DotsLoader** — Dot color from `text.secondary`.
+- [x] **SpinLoader** — Stroke from `primary.main`.
+- [x] **Skeleton** — Shimmer uses `elevated` token directly in recipe.
+- [x] **SkeletonLayout** — Arranges Skeleton bars. Inherits surface from parent.
+- [x] **ImagePanel** — Pure content. Inherits surface from parent.
+- [x] **FormLabel** — Text color prop, default `text.standard`.
 - [ ] **Title** — Text color prop, default `text.standard`.
 - [ ] **H1** — Text color prop, default `text.standard`.
 - [ ] **H2** — Text color prop, default `text.standard`.
@@ -221,11 +221,11 @@ variants: {
 - [ ] **List** — Text color, inherits.
 - [ ] **OrderedList** — Text color, inherits.
 - [ ] **PageHeader** — Fixed: heading `text.standard`, subtitle `text.secondary`.
-- [ ] **ColumnLayout** — Pure layout, no visual opinion.
-- [ ] **MasonryLayout** — Pure layout, no visual opinion.
-- [ ] **FilterControls** — Children handle their own layers.
-- [ ] **SortControls** — Children handle their own layers.
-- [ ] **DataDisplayControls** — Children handle their own layers.
+- [x] **ColumnLayout** — Pure layout, no visual opinion.
+- [x] **MasonryLayout** — Pure layout, no visual opinion.
+- [x] **FilterControls** — Children handle their own layers.
+- [x] **SortControls** — Children handle their own layers.
+- [x] **DataDisplayControls** — Children handle their own layers.
 
 ### Global Requirements
 
