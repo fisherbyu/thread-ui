@@ -66,7 +66,7 @@ $(STYLES_DIST):
 	
 .PHONY: generate-thread-css-export
 generate-thread-css-export: # Generate the CSS export file from variables
-	@printf '@import "./$(THEME_CSS_FILE)";\n@import "./$(PANDA_CSS_FILE)";\n@import "./$(STYLES_CSS_FILE)";\n' > $(STYLES_SRC)/$(THREAD_CSS_FILE)
+	@printf "@import './$(THEME_CSS_FILE)';\n@import './$(PANDA_CSS_FILE)';\n@import './$(STYLES_CSS_FILE)';\n" > $(STYLES_SRC)/$(THREAD_CSS_FILE)
 
 .PHONY: build-css
 build-css: generate-thread-css-export | $(STYLES_DIST) # Build and copy CSS files
