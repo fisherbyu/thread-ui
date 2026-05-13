@@ -1,5 +1,5 @@
 import { NavLink } from '../nav-link';
-import { NavigationLogoProps } from './nav-icon-item.types';
+import { NavigationLogoProps } from './navigation-logo.types';
 
 export const NavigationLogo = ({ href, logo }: NavigationLogoProps) => {
 	return (
