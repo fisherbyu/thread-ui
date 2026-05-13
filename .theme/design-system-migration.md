@@ -179,9 +179,9 @@ variants: {
 
 ### Accept `layer` Prop (With Overrides)
 
-- [ ] **Card** — `layer` default: `surface`. Overrides: bg, shadow, structure. Not interactive.
-- [ ] **InfoCard** — `layer` default: `surface`. Overrides: bg, shadow, structure. Always interactive (hover → `hover`, active → `active`, shadow → `sm` on hover).
-- [ ] **MediaCard** — `layer` default: `surface`. Overrides: bg, shadow, structure. Always interactive (hover → `hover`, active → `active`, shadow → `sm` on hover).
+- [x] **Card** — `layer` default: `surface`. Overrides: bg, shadow, structure. Not interactive.
+- [x] **InfoCard** — `layer` default: `surface`. Overrides: bg, shadow, structure. Always interactive (hover → `hover`, active → `active`, shadow → `sm` on hover).
+- [x] **MediaCard** — `layer` default: `surface`. Overrides: bg, shadow, structure. Always interactive (hover → `hover`, active → `active`, shadow → `sm` on hover).
 
 ### Accept `bg` Prop Only
 
