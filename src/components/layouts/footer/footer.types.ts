@@ -1,3 +1,4 @@
+import { BgColorOptions } from '@/types';
 import { ReactNode } from 'react';
 
 export type FooterProps = {
@@ -5,6 +6,8 @@ export type FooterProps = {
 	logo?: ReactNode;
 	/** Tagline or description rendered below the logo */
 	caption?: string | ReactNode;
+	/** Background color token @default `'none'` */
+	bg?: BgColorOptions;
 	/** URL for the Facebook social link */
 	facebookLink?: string;
 	/** URL for the Instagram social link */

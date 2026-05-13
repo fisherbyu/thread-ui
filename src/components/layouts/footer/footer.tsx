@@ -1,6 +1,6 @@
 'use client';
 import { FooterProps } from './footer.types';
-import { Divider, Subtitle } from '@/components';
+import { Container, Divider, Subtitle } from '@/components';
 import {
 	FacebookLogoIcon,
 	GithubLogoIcon,
@@ -9,10 +9,8 @@ import {
 	TwitterLogoIcon,
 } from '@phosphor-icons/react';
 import { css, cx } from '@/styled-system/css';
-import { container } from '@/styled-system/patterns';
 
 const styles = {
-	footer: cx(container(), css({ marginX: 'auto' })),
 	footerContents: css({
 		display: 'flex',
 		flexDirection: 'column',
@@ -65,6 +63,7 @@ const styles = {
 export const Footer = ({
 	logo,
 	caption,
+	bg,
 	facebookLink,
 	instagramLink,
 	twitterLink,
@@ -75,7 +74,7 @@ export const Footer = ({
 	const size = 24;
 
 	return (
-		<footer className={styles.footer}>
+		<Container as="footer" bg={bg}>
 			<Divider />
 			<div className={styles.footerContents}>
 				{logo && logo}
@@ -108,6 +107,6 @@ export const Footer = ({
 					)}
 				</div>
 			</div>
-		</footer>
+		</Container>
 	);
 };
