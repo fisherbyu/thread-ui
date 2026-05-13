@@ -11,10 +11,10 @@ const styles = {
 		base: {
 			position: 'fixed',
 			inset: 0,
-			background: 'rgba(0, 0, 0, 0.5)',
+			background: 'scrim',
 			display: 'flex',
 			justifyContent: 'center',
-			zIndex: 50,
+			zIndex: 'modal',
 		},
 		variants: {
 			placement: {
