@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { DropdownBaseProps } from './dropdown-base.types';
 import { InputWrapper } from '../../input-wrapper';
 import { FormLabel } from '../../form-label';
-import { Button, Icon } from '@/components/ui';
+import { Icon } from '@/components/ui';
 import { css } from '@/styled-system/css';
 import { useClickOutside } from '@/hooks';
 import { getUtilityIconSize } from '@/utils';
