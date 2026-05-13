@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { UtilityColorOptions } from '../../../../../types';
+import { UtilityColorOptions } from '@/types';
 
-export type NavIconItemProps = {
+export type NavigationLogoProps = {
 	href: string;
 	logo: ReactNode;
 	color?: UtilityColorOptions;

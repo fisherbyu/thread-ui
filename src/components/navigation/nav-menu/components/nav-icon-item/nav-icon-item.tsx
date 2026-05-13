@@ -1,7 +1,7 @@
 import { NavLink } from '../nav-link';
-import { NavIconItemProps } from './nav-icon-item.types';
+import { NavigationLogoProps } from './nav-icon-item.types';
 
-export const NavIconItem = ({ href, logo }: NavIconItemProps) => {
+export const NavigationLogo = ({ href, logo }: NavigationLogoProps) => {
 	return (
 		<>
 			<NavLink href={href} halfPadding>

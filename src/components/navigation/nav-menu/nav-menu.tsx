@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
 import {
-	NavIconItem,
+	NavigationLogo,
 	NavItem,
 	NavItemProps,
 	NavDropdownItemProps,
@@ -202,7 +202,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		<>
 			<header id="site-menu" className={style.header}>
 				<nav className={style.nav}>
-					{logo && <NavIconItem href={logo.href} logo={logo.logo} />}
+					{logo && <NavigationLogo href={logo.href} logo={logo.logo} />}
 					<div
 						className={cx(
 							style.menuItemBlock,

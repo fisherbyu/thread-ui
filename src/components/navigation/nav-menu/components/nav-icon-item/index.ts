@@ -1,2 +1,2 @@
-export type { NavIconItemProps } from './nav-icon-item.types';
-export { NavIconItem } from './nav-icon-item';
+export type { NavigationLogoProps } from './nav-icon-item.types';
+export { NavigationLogo } from './nav-icon-item';
