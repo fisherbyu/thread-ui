@@ -68,7 +68,7 @@ const styles = {
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'center',
-			gap: '0.5rem',
+			gap: '2',
 		},
 		variants: {
 			imagePosition: {
@@ -97,8 +97,8 @@ const styles = {
 		alignItems: 'center',
 		justifyContent: 'center',
 		gap: {
-			base: '0.5rem',
-			lg: '0.75rem',
+			base: '2',
+			lg: '3',
 		},
 		flexDirection: 'column',
 	}),
@@ -106,10 +106,10 @@ const styles = {
 		borderRadius: 'md',
 		borderWidth: 'sm',
 		width: '100%',
-		maxWidth: '16rem',
+		maxWidth: '64',
 		marginX: 'auto',
 		marginTop: {
-			lg: '0.75rem',
+			lg: '3',
 		},
 	}),
 	links: css({
@@ -117,14 +117,14 @@ const styles = {
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
-		gap: '0.5rem',
+		gap: '2',
 		color: 'text.standard',
 	}),
 	dividerWrapper: css({
 		display: {
 			lg: 'none',
 		},
-		marginY: '0.5rem',
+		marginY: '2',
 		width: '9/12',
 	}),
 	description: css({
@@ -135,7 +135,7 @@ const styles = {
 		marginX: 'auto',
 		alignItems: 'center',
 		justifyContent: 'center',
-		gap: '0.75rem',
+		gap: '3',
 		display: 'flex',
 		flexDirection: {
 			base: 'column',
@@ -144,9 +144,9 @@ const styles = {
 	}),
 	descriptionWrapper: css({
 		maxHeight: {
-			base: '300px',
+			base: '75',
 			md: 'none',
-			lg: '500px',
+			lg: '125',
 		},
 		overflowY: {
 			base: 'auto',
