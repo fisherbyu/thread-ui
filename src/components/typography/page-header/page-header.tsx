@@ -7,17 +7,17 @@ const styles = {
 	container: cx(
 		container(),
 		css({
-			marginY: '20px',
+			marginY: '4',
 		})
 	),
 	caption: css({
 		width: { md: '50%' },
-		paddingX: { md: '8px' },
+		paddingX: { md: '1' },
 		marginX: 'auto',
 	}),
 	spacer: css({
 		display: 'inline-block',
-		marginRight: '32px',
+		marginRight: '8',
 	}),
 };
 

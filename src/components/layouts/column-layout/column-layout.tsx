@@ -15,16 +15,16 @@ const styles = {
 			md: 'var(--max-width, none)',
 			lg: 'none',
 		},
-		paddingTop: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
-		paddingBottom: { base: '2.5rem', md: '2rem', lg: '1.5rem' },
+		paddingTop: { base: '10', md: '8', lg: '6' },
+		paddingBottom: { base: '10', md: '8', lg: '6' },
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
 		flex: { base: '1 1 0%', lg: 'none' },
 	}),
 	gridItem: css({
-		borderRadius: '0.25rem',
-		marginBottom: '1.5rem',
+		borderRadius: 'sm',
+		marginBottom: '6',
 		width: '100%',
 		height: 'auto',
 		overflow: 'hidden',
@@ -33,7 +33,7 @@ const styles = {
 	gridItemContent: css({
 		width: '100%',
 		height: 'auto',
-		borderRadius: '0.25rem',
+		borderRadius: 'sm',
 	}),
 };
 

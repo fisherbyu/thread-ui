@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MasonryLayout } from './masonry-layout';
-import '../../../styles/theme.css';
 
 // Sample items for demonstration
 const SampleCard = ({ height, color }: { height: number; color: string }) => (

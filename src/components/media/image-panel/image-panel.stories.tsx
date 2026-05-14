@@ -6,12 +6,24 @@ const meta: Meta<typeof ImagePanel> = {
 	component: ImagePanel,
 	tags: ['autodocs'],
 	argTypes: {
+		contentBelow: { control: 'boolean' },
+		contentLeft: { control: 'boolean' },
+		surface: {
+			control: 'select',
+			options: ['none', 'canvas', 'inset', 'surface', 'elevated', 'overlay'],
+		},
+		structure: {
+			control: 'select',
+			options: ['none', 'subtle', 'default', 'strong'],
+		},
+		as: {
+			control: 'select',
+			options: ['card', 'section'],
+		},
 		titleColor: {
 			control: 'select',
 			options: ['standard', 'primary', 'secondary', 'inverse'],
 		},
-		contentBelow: { control: 'boolean' },
-		contentLeft: { control: 'boolean' },
 	},
 };
 
@@ -20,6 +32,12 @@ type Story = StoryObj<typeof ImagePanel>;
 
 export const Default: Story = {
 	args: {
+		contentBelow: false,
+		contentLeft: false,
+		titleColor: 'standard',
+		surface: 'none',
+		structure: 'none',
+		as: 'card',
 		title: 'A Compelling Headline',
 		subtitle: 'An optional subtitle that adds more context',
 		contents: [
@@ -30,8 +48,5 @@ export const Default: Story = {
 			src: 'https://placehold.co/800x600',
 			alt: 'Placeholder image',
 		},
-		contentBelow: false,
-		contentLeft: false,
-		titleColor: 'standard',
 	},
 };

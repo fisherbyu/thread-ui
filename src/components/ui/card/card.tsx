@@ -2,27 +2,23 @@ import { cva } from '@/styled-system/css';
 import { CardProps } from './card.types';
 import { H3 } from '@/components/typography';
 import { Divider } from '../divider';
+import { getResolvedLayerValues } from '@/utils';
 
 const styles = {
 	cardContainer: cva({
 		base: {
-			borderWidth: 'sm',
-			borderColor: 'structure',
+			borderStyle: 'solid',
 			padding: {
 				base: '5',
 			},
 			marginX: 'auto',
-			maxWidth: '850px',
-			width: {
-				base: '100%',
-				md: '75%',
-			},
+			transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
 		},
 		variants: {
 			size: {
 				sm: {
 					borderRadius: 'sm',
-					maxWidth: '600px',
+					maxWidth: '150',
 				},
 				md: {
 					borderRadius: 'md',
@@ -31,30 +27,55 @@ const styles = {
 					borderRadius: 'lg',
 				},
 			},
-			surfaceColor: {
-				background: {
-					backgroundColor: 'background',
-				},
-				surface: {
-					backgroundColor: 'surface',
-				},
-				elevated: {
-					backgroundColor: 'elevated',
-				},
-			},
-			shadow: {
+			fullWidth: {
 				true: {
-					boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+					width: '100%',
+					maxWidth: 'none',
 				},
 				false: {
-					boxShadow: 'none',
+					maxWidth: '213',
+					width: {
+						base: '100%',
+						md: '75%',
+					},
 				},
 			},
+			bg: {
+				none: {},
+				canvas: { backgroundColor: 'canvas' },
+				inset: { backgroundColor: 'inset' },
+				surface: { backgroundColor: 'surface' },
+				elevated: { backgroundColor: 'elevated' },
+				overlay: { backgroundColor: 'overlay' },
+			},
+			shadow: {
+				none: { boxShadow: 'none' },
+				sm: { boxShadow: 'sm' },
+				md: { boxShadow: 'md' },
+				lg: { boxShadow: 'lg' },
+			},
+			structure: {
+				none: { borderWidth: '0' },
+				subtle: { borderWidth: 'md', borderColor: 'structure.subtle' },
+				default: { borderWidth: 'md', borderColor: 'structure.default' },
+				strong: { borderWidth: 'md', borderColor: 'structure.strong' },
+			},
 		},
+		compoundVariants: [
+			{
+				size: 'sm',
+				fullWidth: false,
+				css: {
+					maxWidth: '150',
+				},
+			},
+		],
 		defaultVariants: {
 			size: 'md',
-			surfaceColor: 'background',
-			shadow: true,
+			fullWidth: false,
+			bg: 'surface',
+			shadow: 'none',
+			structure: 'subtle',
 		},
 	}),
 	title: cva({
@@ -76,24 +97,42 @@ const styles = {
 		},
 	}),
 };
-
 /**
- * General-purpose content card container with optional title, divider, shadow, and surface color variants.
+ * General-purpose content card container with optional title, divider, and surface level control.
  *
  * @example
- * <Card title={{ text: 'Details', divider: true }} size="md" shadow>
- *   <div>Card content here</div>
+ * // Use level shorthand
+ * <Card layer="surface" interactive>
+ *   <div>Clickable card</div>
+ * </Card>
+ *
+ * // Or granular overrides
+ * <Card bg="elevated" shadow="md" structure="none">
+ *   <div>Custom card</div>
  * </Card>
  */
 export const Card = ({
-	surfaceColor = 'background',
+	layer = 'surface',
+	bg,
+	shadow,
+	structure,
 	children,
 	size = 'md',
-	shadow = true,
+	fullWidth = false,
 	title,
 }: CardProps) => {
+	// Resolve from level, allow individual overrides
+	const layerValues = getResolvedLayerValues({ layer, bg, shadow, structure });
 	return (
-		<div className={styles.cardContainer({ size, surfaceColor, shadow })}>
+		<div
+			className={styles.cardContainer({
+				size,
+				fullWidth,
+				bg: layerValues.bg,
+				shadow: layerValues.shadow,
+				structure: layerValues.structure,
+			})}
+		>
 			{title && (
 				<div className={styles.title({ size })}>
 					<H3 align={title.align} inline>

@@ -68,6 +68,8 @@ export default defineConfig({
 						main: { value: 'var(--thread-info-main)' },
 						dark: { value: 'var(--thread-info-dark)' },
 					},
+					// Scrim
+					scrim: { value: 'var(--thread-scrim)' },
 				},
 				// Border radius tokens
 				radii: {
@@ -81,13 +83,42 @@ export default defineConfig({
 					md: { value: 'var(--thread-border-size-md)' },
 					lg: { value: 'var(--thread-border-size-lg)' },
 				},
+				// Shadow tokens
+				shadows: {
+					sm: { value: 'var(--thread-shadow-sm)' },
+					md: { value: 'var(--thread-shadow-md)' },
+					lg: { value: 'var(--thread-shadow-lg)' },
+				},
+				// Z-index tokens
+				zIndex: {
+					base: { value: 'var(--thread-z-index-base)' },
+					sticky: { value: 'var(--thread-z-index-sticky)' },
+					overlay: { value: 'var(--thread-z-index-overlay)' },
+					modal: { value: 'var(--thread-z-index-modal)' },
+					system: { value: 'var(--thread-z-index-system)' },
+				},
 			},
 			semanticTokens: {
 				colors: {
-					background: { value: 'var(--thread-background)' },
+					// Surface layers
+					canvas: { value: 'var(--thread-canvas)' },
+					inset: { value: 'var(--thread-inset)' },
 					surface: { value: 'var(--thread-surface)' },
 					elevated: { value: 'var(--thread-elevated)' },
-					structure: { value: 'var(--thread-structure)' },
+					overlay: { value: 'var(--thread-overlay)' },
+
+					// Interactive surface states
+					active: { value: 'var(--thread-active)' },
+					hover: { value: 'var(--thread-hover)' },
+
+					// Structure colors
+					structure: {
+						subtle: { value: 'var(--thread-structure-subtle)' },
+						default: { value: 'var(--thread-structure-default)' },
+						strong: { value: 'var(--thread-structure-strong)' },
+					},
+
+					// Text colors
 					text: {
 						standard: { value: 'var(--thread-text-standard)' },
 						secondary: { value: 'var(--thread-text-secondary)' },

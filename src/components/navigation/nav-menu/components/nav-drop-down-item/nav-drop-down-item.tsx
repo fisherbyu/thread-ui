@@ -1,6 +1,6 @@
 'use client';
 import { CSSProperties, useState } from 'react';
-import { BaseItem } from '../base-item';
+import { NavLink } from '../nav-link';
 import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { css, cx } from '@/styled-system/css';
 
@@ -11,7 +11,7 @@ const styles = {
 	textBlock: css({
 		display: 'flex',
 		flexDirection: 'row',
-		gap: '4px',
+		gap: '1',
 		justifyContent: 'center',
 		alignItems: 'center',
 	}),
@@ -25,20 +25,16 @@ const styles = {
 	}),
 	dropdownContent: css({
 		display: 'none',
-		borderWidth: '1px',
 		position: { base: 'static', lg: 'absolute' },
 		width: 'fit-content',
 		borderRadius: 'md',
 		padding: '16px',
-		zIndex: 10,
+		zIndex: 'overlay',
 		top: { lg: 'calc(100% + 30px)' },
 		left: { lg: '50%' },
 		transform: { lg: 'translateX(-50%)' },
-		background: 'background',
-		borderColor: 'structure',
-		_dark: {
-			backgroundColor: 'surface',
-		},
+		backgroundColor: 'overlay',
+		boxShadow: 'lg',
 	}),
 	dropdownContentShow: css({
 		display: { base: 'none', lg: 'block' },
@@ -47,13 +43,12 @@ const styles = {
 		justifyContent: 'center',
 		columnGap: '24px',
 		alignItems: 'center',
-		backgroundColor: 'background',
 		width: '100vw',
 		position: 'relative',
 		left: '50%',
 		transform: 'translateX(-50%)',
 		borderRadius: 'md',
-		zIndex: 10,
+		zIndex: 'overlay',
 	}),
 	dropdownContentNoShow: css({
 		display: 'none',
@@ -81,7 +76,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 			onMouseLeave={() => setIsHovered(false)}
 			onClick={() => setIsHovered(false)}
 		>
-			<BaseItem href="#">
+			<NavLink href="#">
 				<div className={styles.textBlock}>
 					<span>{title}</span>
 					<svg
@@ -99,7 +94,7 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 						<path d="m6 9 6 6 6-6"></path>
 					</svg>
 				</div>
-			</BaseItem>
+			</NavLink>
 			{isHovered && <div className={styles.targetArea} />}
 			{/* Swap menu based on size */}
 			{/* Screen SM */}
@@ -110,23 +105,22 @@ export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
 				)}
 			>
 				{items.map((item) => (
-					<BaseItem key={item.title} href={item.href} isDropdownItem>
+					<NavLink key={item.title} href={item.href} isDropdownItem>
 						{item.title}
-					</BaseItem>
+					</NavLink>
 				))}
 			</div>
 			{/* Screen LG */}
 			<div
-				id="target-123"
 				className={cx(
 					styles.dropdownContent,
 					isHovered ? styles.dropdownContentShow : styles.dropdownContentNoShow
 				)}
 			>
 				{items.map((item) => (
-					<BaseItem key={item.title} href={item.href} isDropdownItem>
+					<NavLink key={item.title} href={item.href} isDropdownItem>
 						{item.title}
-					</BaseItem>
+					</NavLink>
 				))}
 			</div>
 		</div>

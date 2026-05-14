@@ -1,5 +1,4 @@
 import { ImageProps, ColoredTextOptions } from '@/types';
-
 export type ImagePanelProps = {
 	/** Main heading */
 	title: string;

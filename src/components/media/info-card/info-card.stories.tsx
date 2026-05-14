@@ -9,6 +9,12 @@ const meta: Meta<typeof InfoCard> = {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
+	argTypes: {
+		layer: {
+			control: 'select',
+			options: ['canvas', 'inset', 'surface', 'elevated', 'overlay'],
+		},
+	},
 };
 
 export default meta;
@@ -84,7 +90,25 @@ export const WithIconName: Story = {
 		url: 'https://fisherandrew.org/photo',
 		icon: 'Camera',
 		image: {
-			src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falpine-loop-1.98af1205.jpg&w=3840&q=75',
+			src: 'https://fisherandrew.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Falpine-loop-1.0e~fa8cvs~0-7.jpg&w=3840&q=75',
 		},
 	},
+};
+
+export const LayerVariants: Story = {
+	render: () => (
+		<div
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				gap: '2rem',
+				width: '100%',
+				maxWidth: '400px',
+			}}
+		>
+			<InfoCard {...recipesData[0]} layer="surface" />
+			<InfoCard {...recipesData[1]} layer="elevated" />
+			<InfoCard {...recipesData[2]} layer="overlay" />
+		</div>
+	),
 };

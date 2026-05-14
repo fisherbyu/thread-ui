@@ -14,11 +14,11 @@ const styles = {
 			display: 'flex',
 			alignItems: 'center',
 			gap: '2',
-			_hover: { backgroundColor: 'surface' },
+			_hover: { backgroundColor: 'hover' },
 		},
 		variants: {
 			isSelected: {
-				true: { backgroundColor: 'elevated' },
+				true: { backgroundColor: 'active' },
 			},
 		},
 	}),

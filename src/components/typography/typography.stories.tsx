@@ -1,8 +1,10 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Title, H1, H2, H3, Text, Subtitle, List, OrderedList } from './index'; // Adjust import path as needed
+import { Title, H1, H2, H3, Text, Subtitle, List, OrderedList, PageHeader } from './index'; // Adjust import path as needed
 
 type TypographyArgs = {
+	pageHeaderTitle: string;
+	pageHeaderCaption: string;
 	titleText: string;
 	titleAlign: 'left' | 'center';
 	h1Text: string;
@@ -26,6 +28,17 @@ const meta: Meta<TypographyArgs> = {
 		},
 	},
 	argTypes: {
+		// PageHeader controls
+		pageHeaderTitle: {
+			name: 'PageHeader Title',
+			control: 'text',
+			description: 'Title for the PageHeader component',
+		},
+		pageHeaderCaption: {
+			name: 'PageHeader Caption',
+			control: 'text',
+			description: 'Caption for the PageHeader component',
+		},
 		// Title component controls
 		titleText: {
 			name: 'Title Text',
@@ -85,6 +98,9 @@ type Story = StoryObj<typeof meta>;
 export const Typography: Story = {
 	render: (args) => (
 		<div style={{ maxWidth: '800px', margin: '0 auto' }}>
+			{/* --- Page Header --- */}
+			<PageHeader title={args.pageHeaderTitle} caption={args.pageHeaderCaption} center />
+
 			{/* --- Main --- */}
 			<Title align={args.titleAlign}>
 				{args.titleText}
@@ -182,6 +198,8 @@ export const Typography: Story = {
 	),
 	args: {
 		// Default args for controls
+		pageHeaderTitle: 'Page Header',
+		pageHeaderCaption: 'A descriptive caption that appears below the page header title.',
 		titleText: 'Title',
 		titleAlign: 'left',
 		h1Text: 'Heading 1',

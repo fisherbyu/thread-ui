@@ -1,10 +1,10 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Skeleton } from './skeleton';
+import { SkeletonLoader } from './skeleton';
 
-const meta: Meta<typeof Skeleton> = {
-	title: 'UI Components/Loaders/Skeleton',
-	component: Skeleton,
+const meta: Meta<typeof SkeletonLoader> = {
+	title: 'UI Components/Loaders/SkeletonLoader',
+	component: SkeletonLoader,
 	parameters: {
 		layout: 'centered',
 	},
@@ -23,7 +23,7 @@ const meta: Meta<typeof Skeleton> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Skeleton>;
+type Story = StoryObj<typeof SkeletonLoader>;
 
 export const Default: Story = {
 	args: {
@@ -44,10 +44,10 @@ export const Circle: Story = {
 export const Card: Story = {
 	render: () => (
 		<div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', width: '300px' }}>
-			<Skeleton w="100%" h="160px" />
-			<Skeleton w="70%" h="1rem" />
-			<Skeleton w="100%" h="0.75rem" />
-			<Skeleton w="90%" h="0.75rem" />
+			<SkeletonLoader w="100%" h="160px" />
+			<SkeletonLoader w="70%" h="1rem" />
+			<SkeletonLoader w="100%" h="0.75rem" />
+			<SkeletonLoader w="90%" h="0.75rem" />
 		</div>
 	),
 };

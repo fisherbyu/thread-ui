@@ -9,7 +9,8 @@ import { useModalContext } from '../modal-context';
 const styles = {
 	outline: cva({
 		base: {
-			background: 'background',
+			backgroundColor: 'overlay',
+			boxShadow: 'lg',
 			width: '100%',
 		},
 		variants: {

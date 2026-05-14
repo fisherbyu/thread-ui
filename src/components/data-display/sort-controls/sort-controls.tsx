@@ -3,7 +3,6 @@ import { cva } from '@/styled-system/css';
 import { SortControlsProps, ActiveSort } from './sort-controls.types';
 import { Button, ButtonProps, Icon, Text } from '@/components';
 import { OptionalIconButton } from '@/internal-components';
-import { UtilityColorOptions } from '@/types';
 
 const styles = {
 	container: cva({

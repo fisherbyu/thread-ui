@@ -3,17 +3,18 @@ import { cva } from '@/styled-system/css';
 export const baseInputStyles = cva({
 	base: {
 		color: 'text.standard',
-		paddingX: '16px',
-		paddingY: '8px',
-		borderWidth: '1px',
+		backgroundColor: 'inset',
+		paddingX: '4',
+		paddingY: '2',
+		borderWidth: 'md',
 		borderStyle: 'solid',
-		borderColor: 'structure',
+		borderColor: 'structure.default',
 		borderRadius: 'md',
 		transition: 'colors',
 		_focus: {
 			outline: 'none',
-			borderColor: 'transparent',
-			boxShadow: '0 0 0 2px {colors.blue.500}',
+			borderColor: 'info.main',
+			boxShadow: '0 0 0 2px {colors.info.main}',
 		},
 	},
 	variants: {

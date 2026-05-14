@@ -24,7 +24,7 @@ const preview: Preview = {
 						justifyContent: 'center',
 						minWidth: '320px',
 						minHeight: '250px',
-						backgroundColor: ThreadTheme.background,
+						backgroundColor: ThreadTheme.canvas,
 						padding: '24px',
 					}}
 				>
@@ -43,6 +43,7 @@ const preview: Preview = {
 		options: {
 			storySort: {
 				order: [
+					'Theme',
 					'Components',
 					'UI Components',
 					'Media',

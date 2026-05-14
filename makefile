@@ -66,7 +66,7 @@ $(STYLES_DIST):
 	
 .PHONY: generate-thread-css-export
 generate-thread-css-export: # Generate the CSS export file from variables
-	@printf '@import "./$(THEME_CSS_FILE)";\n@import "./$(PANDA_CSS_FILE)";\n@import "./$(STYLES_CSS_FILE)";\n' > $(STYLES_SRC)/$(THREAD_CSS_FILE)
+	@printf "@import './$(THEME_CSS_FILE)';\n@import './$(PANDA_CSS_FILE)';\n@import './$(STYLES_CSS_FILE)';\n" > $(STYLES_SRC)/$(THREAD_CSS_FILE)
 
 .PHONY: build-css
 build-css: generate-thread-css-export | $(STYLES_DIST) # Build and copy CSS files
@@ -112,7 +112,7 @@ help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: storybook
-storybook: prepare-panda-code ## Run Storybook dev server (with Panda and Tailwind watch)
+storybook: prepare-panda-code theme-css ## Run Storybook dev server (with Panda and Tailwind watch)
 	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p $(STORYBOOK_PORT) --no-open"
 
 .PHONY: build

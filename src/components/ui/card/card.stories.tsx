@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from './card';
+import { Text } from '../../typography';
 
 const meta = {
 	title: 'UI Components/Card',
@@ -10,15 +11,28 @@ const meta = {
 	},
 	tags: ['autodocs'],
 	argTypes: {
-		surfaceColor: {
-			control: 'select',
-			options: ['background', 'surface', 'elevated'],
-		},
 		size: {
 			control: 'select',
 			options: ['sm', 'md', 'lg'],
 		},
+		layer: {
+			control: 'select',
+			options: ['canvas', 'inset', 'surface', 'elevated', 'overlay'],
+		},
+
+		bg: {
+			control: 'select',
+			options: ['none', 'canvas', 'inset', 'surface', 'elevated', 'overlay'],
+		},
 		shadow: {
+			control: 'select',
+			options: ['none', 'sm', 'md', 'lg'],
+		},
+		structure: {
+			control: 'select',
+			options: ['none', 'subtle', 'default', 'strong'],
+		},
+		fullWidth: {
 			control: 'boolean',
 		},
 	},
@@ -29,24 +43,49 @@ type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
 	args: {
-		surfaceColor: 'background',
+		layer: 'surface',
 		size: 'md',
-		shadow: true,
-		children: <p>This is a card component with some content inside.</p>,
+		children: <Text>This is a card component with some content inside.</Text>,
 	},
 };
 
 export const WithTitle: Story = {
 	args: {
+		layer: 'surface',
 		title: {
 			text: 'Card Title',
 			align: 'left',
 		},
-		children: <p>This card has a title and some content.</p>,
+		children: <Text>This card has a title and some content.</Text>,
 	},
 };
 
-export const AllVariants: Story = {
+export const AllLevels: Story = {
+	render: () => (
+		<div
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				gap: '2rem',
+				width: '100%',
+			}}
+		>
+			<Card layer="surface" size="sm" title={{ text: 'Surface layer', align: 'left' }}>
+				<Text>Default card — sm shadow, subtle border</Text>
+			</Card>
+
+			<Card layer="elevated" size="md" title={{ text: 'Elevated layer', align: 'left' }}>
+				<Text>Elevated card — md shadow, subtle border</Text>
+			</Card>
+
+			<Card layer="overlay" size="lg" title={{ text: 'Overlay layer', align: 'center' }}>
+				<Text>Overlay card — lg shadow, no border (centered title)</Text>
+			</Card>
+		</div>
+	),
+};
+
+export const WithOverrides: Story = {
 	render: () => (
 		<div
 			style={{
@@ -57,25 +96,42 @@ export const AllVariants: Story = {
 				maxWidth: '900px',
 			}}
 		>
-			<Card size="sm" title={{ text: 'Small Card', align: 'left' }}>
-				<p>Small card with default background</p>
-			</Card>
 			<Card
-				size="md"
-				title={{ text: 'Medium Card with Divider', align: 'left', divider: true }}
+				layer="surface"
+				shadow="none"
+				title={{ text: 'Surface, No Shadow', align: 'left' }}
 			>
-				<p>Medium card with divider</p>
+				<Text>Surface layer with shadow overridden to none</Text>
 			</Card>
+
 			<Card
-				size="lg"
-				surfaceColor="elevated"
-				title={{ text: 'Large Elevated Card', align: 'center' }}
+				layer="surface"
+				structure="strong"
+				title={{ text: 'Surface, Strong Border', align: 'left' }}
 			>
-				<p>Large card with elevated surface and centered title</p>
+				<Text>Surface layer with structure overridden to strong</Text>
 			</Card>
-			<Card shadow={false} title={{ text: 'Card Without Shadow', align: 'left' }}>
-				<p>Card with no shadow</p>
+
+			<Card
+				layer="elevated"
+				shadow="lg"
+				structure="none"
+				title={{ text: 'Elevated, Heavy Shadow', align: 'left' }}
+			>
+				<Text>Elevated layer with shadow bumped to lg and border removed</Text>
 			</Card>
 		</div>
 	),
+};
+
+export const WithTitleDivider: Story = {
+	args: {
+		layer: 'surface',
+		title: {
+			text: 'Card with Divider',
+			align: 'left',
+			divider: true,
+		},
+		children: <Text>Title divider separates the heading from content</Text>,
+	},
 };

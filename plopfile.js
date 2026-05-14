@@ -1,7 +1,11 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-module.exports = function (plop) {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default function (plop) {
 	const componentsPath = path.resolve(__dirname, 'src/components');
 	const utilsPath = path.resolve(__dirname, 'src/utils');
 	const hooksPath = path.resolve(__dirname, 'src/hooks');
@@ -400,4 +404,4 @@ module.exports = function (plop) {
 			return [];
 		},
 	});
-};
+}

@@ -65,10 +65,15 @@ const meta: Meta<typeof MediaCard> = {
 			control: 'select',
 			options: ['text', 'image'],
 		},
+		layer: {
+			control: 'select',
+			options: ['canvas', 'inset', 'surface', 'elevated', 'overlay'],
+		},
 	},
 };
 
 export default meta;
+
 type Story = StoryObj<typeof MediaCard>;
 
 export const Default: Story = {
@@ -93,5 +98,6 @@ export const Default: Story = {
 		size: 'md',
 		imagePosition: 'left',
 		detailsPosition: 'text',
+		layer: 'surface',
 	},
 };

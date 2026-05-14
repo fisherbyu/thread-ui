@@ -1,7 +1,13 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
-import { NavIconItem, NavItem, NavItemProps, NavDropdownItemProps, NavDropdownItem } from './items';
+import {
+	NavigationLogo,
+	NavItem,
+	NavItemProps,
+	NavDropdownItemProps,
+	NavDropdownItem,
+} from './components';
 import { css, cx } from '@/styled-system/css';
 
 const style = {
@@ -12,10 +18,11 @@ const style = {
 		display: 'flex',
 		alignItems: 'center',
 		height: '80px',
-		backgroundColor: 'background',
-		borderBottomWidth: '1px',
-		borderBottomColor: 'structure',
-		zIndex: '40',
+		backgroundColor: 'elevated',
+		borderBottomWidth: 'md',
+		borderBottomColor: 'structure.subtle',
+		boxShadow: 'md',
+		zIndex: 'sticky',
 	}),
 
 	nav: css({
@@ -37,9 +44,9 @@ const style = {
 		position: { base: 'absolute', lg: 'relative' },
 		top: { base: '100%', lg: '0px' },
 		left: '0px',
-		borderBottomWidth: '1px',
-		backgroundColor: { base: 'background', lg: 'transparent' },
-		borderColor: 'structure',
+		borderBottomWidth: { base: 'md', lg: '0' },
+		backgroundColor: { base: 'elevated', lg: 'transparent' },
+		borderColor: 'structure.subtle',
 		paddingTop: { base: '32px', lg: '0px' },
 		paddingBottom: { base: '32px', lg: '0px' },
 		paddingLeft: { base: '20px', md: '48px', lg: '0px' },
@@ -76,7 +83,7 @@ const style = {
 		gap: '24px',
 		alignItems: { base: 'stretch', lg: 'center' },
 		width: { base: 'auto', lg: '100%' },
-		justifyContent: { base: 'flex-center', lg: 'center' },
+		justifyContent: 'center',
 	}),
 
 	menuControl: css({
@@ -87,8 +94,8 @@ const style = {
 	menuControlButton: css({
 		outline: '2px solid transparent',
 		outlineOffset: '2px',
-		borderLeftWidth: '1px',
-		borderLeftColor: 'gray.main',
+		borderLeftWidth: 'md',
+		borderLeftColor: 'structure.default',
 		paddingLeft: '12px',
 		position: 'relative',
 		paddingTop: '12px',
@@ -101,7 +108,7 @@ const style = {
 		height: '2px',
 		width: '24px',
 		borderRadius: 'sm',
-		backgroundColor: 'gray.dark',
+		backgroundColor: 'text.standard',
 		transitionProperty:
 			'color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
 		transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
@@ -142,12 +149,6 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	};
 	const toggleNavbar = () => {
 		setNavIsOpened((navIsOpened) => !navIsOpened);
-	};
-
-	// Dropdown Control
-	const [isDropdownHovered, setIsDropdownHovered] = useState(false);
-	const handleMusicHover = (hovered: boolean) => {
-		setIsDropdownHovered(hovered);
 	};
 
 	useEffect(() => {
@@ -193,44 +194,39 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	};
 
 	return (
-		<>
-			<header id="site-menu" className={style.header}>
-				<nav className={style.nav}>
-					{logo && <NavIconItem href={logo.href} logo={logo.logo} />}
-					<div
-						className={cx(
-							style.menuItemBlock,
-							navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
-						)}
+		<header id="site-menu" className={style.header}>
+			<nav className={style.nav}>
+				{logo && <NavigationLogo href={logo.href} logo={logo.logo} />}
+				<div
+					className={cx(
+						style.menuItemBlock,
+						navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
+					)}
+				>
+					<ul className={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
+				</div>
+				<div className={style.menuControl}>
+					<button
+						onClick={() => {
+							toggleNavbar();
+						}}
+						aria-label="toggle navbar"
 					>
-						<ul className={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
-					</div>
-					<div className={style.menuControl}>
-						<button
-							onClick={() => {
-								toggleNavbar();
-							}}
-							aria-label="toggle navbar"
-						>
-							<span
-								aria-hidden={true}
-								className={cx(
-									style.menuCross,
-									navIsOpened && style.menuCrossTopOpen
-								)}
-							/>
-							<span
-								aria-hidden={true}
-								className={cx(
-									style.menuCross,
-									style.menuCrossBottom,
-									navIsOpened && style.menuCrossBottomOpen
-								)}
-							/>
-						</button>
-					</div>
-				</nav>
-			</header>
-		</>
+						<span
+							aria-hidden={true}
+							className={cx(style.menuCross, navIsOpened && style.menuCrossTopOpen)}
+						/>
+						<span
+							aria-hidden={true}
+							className={cx(
+								style.menuCross,
+								style.menuCrossBottom,
+								navIsOpened && style.menuCrossBottomOpen
+							)}
+						/>
+					</button>
+				</div>
+			</nav>
+		</header>
 	);
 };

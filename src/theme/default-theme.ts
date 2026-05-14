@@ -47,10 +47,22 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		dark: '#1d4ed8',
 	},
 	// Light Mode Surface Colors
-	background: '#ffffff',
-	surface: '#f9fafb',
-	elevated: '#f3f4f6',
-	structure: '#e2e8f0',
+	canvas: '#FCFCFB',
+	inset: '#F7F7F6',
+	surface: '#FFFFFF',
+	elevated: '#FFFFFF',
+	overlay: '#FFFFFF',
+
+	active: '#E9ECEF',
+	hover: '#F3F4F6',
+
+	// Light Mode Structure Colors
+	structure: {
+		subtle: '#E8EAED',
+		default: '#D1D5DB',
+		strong: '#9CA3AF',
+	},
+
 	// Light Mode Text Colors
 	text: {
 		standard: '#1f2937',
@@ -59,7 +71,15 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		accent: '#3c5c49', // resolves to primary.main
 		inverted: '#f9fafb', // resolves to dark mode text.standard
 	},
-	// Structure
+
+	// Shadow Layers
+	shadow: {
+		sm: '0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.03)',
+		md: '0 2px 4px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.04)',
+		lg: '0 4px 8px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.08)',
+	},
+
+	// Layouts
 	breakpoints: {
 		sm: '0',
 		md: '768',
@@ -67,6 +87,17 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		xl: '1280',
 		xxl: '1536',
 	},
+
+	zIndex: {
+		base: '0',
+		sticky: '100',
+		overlay: '200',
+		modal: '300',
+		system: '400',
+	},
+
+	scrim: 'rgba(0, 0, 0, 0.4)',
+
 	// Sizing
 	borderRadius: {
 		sm: '0.25rem', // 4px
@@ -80,16 +111,30 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	},
 	// Dark Mode Colors
 	darkMode: {
-		background: '#121212',
-		surface: '#1e1e1e',
-		elevated: '#2d2d2d',
-		structure: '#4b5563',
+		// Dark Mode Surface Colors
+		canvas: '#121212',
+		inset: '#0A0A0A',
+		surface: '#1E1E1E',
+		elevated: '#252525',
+		overlay: '#2D2D2D',
+
+		active: '#3A3A3A',
+		hover: '#333333',
+
+		// Dark Mode Structure Colors
+		structure: {
+			subtle: '#2A2A2A',
+			default: '#3D3D3D',
+			strong: '#5A5A5A',
+		},
+
+		// Dark Mode Text Colors
 		text: {
-			standard: '#f9fafb',
-			secondary: '#4b5563',
-			disabled: '#6b7280',
-			accent: '#3c5c49', // resolves to primary.main
-			inverted: '#1f2937', // resolves to light mode text.standard
+			standard: '#F9FAFB',
+			secondary: '#9CA3AF',
+			disabled: '#6B7280',
+			accent: '#7DA88E',
+			inverted: '#1F2937',
 		},
 	},
 };

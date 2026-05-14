@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { DropdownBaseProps } from './dropdown-base.types';
 import { InputWrapper } from '../../input-wrapper';
 import { FormLabel } from '../../form-label';
-import { Button, Icon } from '@/components/ui';
+import { Icon } from '@/components/ui';
 import { css } from '@/styled-system/css';
 import { useClickOutside } from '@/hooks';
 import { getUtilityIconSize } from '@/utils';
@@ -25,16 +25,14 @@ export const styles = {
 		alignItems: 'center',
 	}),
 	list: css({
-		backgroundColor: 'background',
+		backgroundColor: 'overlay',
 		position: 'absolute',
 		width: 'fit-content',
 		minWidth: '75%',
-		borderWidth: 'md',
-		borderColor: 'structure',
 		borderRadius: 'md',
 		marginTop: '3',
 		boxShadow: 'lg',
-		zIndex: '10',
+		zIndex: 'overlay',
 		maxHeight: '60',
 		overflow: 'auto',
 	}),

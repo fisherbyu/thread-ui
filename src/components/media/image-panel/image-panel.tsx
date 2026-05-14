@@ -24,7 +24,6 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 			hideBelow: 'md',
 		}),
 	};
-
 	if (smImage) {
 		return (
 			<>
@@ -40,7 +39,6 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 		return renderImage(image, undefined, cx(classes.image, classes.standardImg));
 	}
 };
-
 /**
  * Two-column panel with an image and a text block. Supports responsive image swapping,
  * flexible content positioning, and colored title variants.
@@ -93,7 +91,6 @@ export const ImagePanel = ({
 			contentLeft: false,
 		},
 	});
-
 	const styles = {
 		imageBlock: css({
 			width: { base: '100%', lg: '66.666667%' },
@@ -112,7 +109,6 @@ export const ImagePanel = ({
 			width: { base: '100%', lg: '41.666667%' },
 		}),
 	};
-
 	return (
 		<div className={panelStyles({ contentBelow, contentLeft })}>
 			<div className={styles.imageBlock}>

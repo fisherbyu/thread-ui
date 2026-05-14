@@ -22,7 +22,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'primary.main',
 				borderColor: 'primary.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'transparent',
 					color: 'primary.main',
 					borderColor: 'primary.main',
 				},
@@ -31,7 +31,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'secondary.main',
 				borderColor: 'secondary.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'transparent',
 					color: 'secondary.main',
 					borderColor: 'secondary.main',
 				},
@@ -40,7 +40,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'tertiary.main',
 				borderColor: 'tertiary.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'transparent',
 					color: 'tertiary.main',
 					borderColor: 'tertiary.main',
 				},
@@ -58,7 +58,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'gray.main',
 				borderColor: 'gray.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'transparent',
 					color: 'gray.main',
 					borderColor: 'gray.main',
 				},
@@ -67,7 +67,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'success.main',
 				borderColor: 'success.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'transparent',
 					color: 'success.main',
 					borderColor: 'success.main',
 				},
@@ -76,7 +76,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'warning.main',
 				borderColor: 'warning.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'transparent',
 					color: 'warning.main',
 					borderColor: 'warning.main',
 				},
@@ -85,7 +85,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'error.main',
 				borderColor: 'error.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'transparent',
 					color: 'error.main',
 					borderColor: 'error.main',
 				},
@@ -94,7 +94,7 @@ export const buttonRecipe = defineRecipe({
 				backgroundColor: 'info.main',
 				borderColor: 'info.main',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'transparent',
 					color: 'info.main',
 					borderColor: 'info.main',
 				},
@@ -104,20 +104,19 @@ export const buttonRecipe = defineRecipe({
 				color: 'text.inverted',
 				borderColor: 'text.standard',
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'transparent',
 					color: 'text.standard',
 					borderColor: 'text.standard',
 				},
 			},
 			neutral: {
-				backgroundColor: 'background',
+				backgroundColor: 'transparent',
 				borderColor: 'text.standard',
 				color: 'text.standard',
 				_hover: {
-					backgroundColor: 'background',
-					color: 'text.standard',
+					backgroundColor: 'hover',
+					color: 'text.secondary',
 					borderColor: 'text.standard',
-					borderWidth: 'lg',
 				},
 			},
 		},
@@ -155,9 +154,8 @@ export const buttonRecipe = defineRecipe({
 		},
 		textVariant: {
 			true: {
-				backgroundColor: 'background',
+				backgroundColor: 'transparent',
 				borderColor: 'transparent',
-				border: 'none',
 				_hover: {
 					textDecoration: 'underline',
 				},
@@ -176,7 +174,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'primary.main',
-					color: 'background',
+					color: 'text.inverted',
 					borderColor: 'primary.main',
 				},
 			},
@@ -187,7 +185,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'secondary.main',
-					color: 'background',
+					color: 'text.inverted',
 					borderColor: 'secondary.main',
 				},
 			},
@@ -198,7 +196,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'tertiary.main',
-					color: 'background',
+					color: 'text.inverted',
 					borderColor: 'tertiary.main',
 				},
 			},
@@ -209,7 +207,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'gray.main',
-					color: 'background',
+					color: 'text.inverted',
 					borderColor: 'gray.main',
 				},
 			},
@@ -220,7 +218,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'success.main',
-					color: 'background',
+					color: 'text.inverted',
 					borderColor: 'success.main',
 				},
 			},
@@ -231,7 +229,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'warning.main',
-					color: 'background',
+					color: 'text.inverted',
 					borderColor: 'warning.main',
 				},
 			},
@@ -242,7 +240,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'error.main',
-					color: 'background',
+					color: 'text.inverted',
 					borderColor: 'error.main',
 				},
 			},
@@ -253,7 +251,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'info.main',
-					color: 'background',
+					color: 'text.inverted',
 					borderColor: 'info.main',
 				},
 			},
@@ -264,7 +262,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'text.standard',
-					color: 'background',
+					color: 'text.inverted',
 					borderColor: 'text.standard',
 				},
 			},
@@ -274,10 +272,9 @@ export const buttonRecipe = defineRecipe({
 			disabled: true,
 			css: {
 				_hover: {
-					backgroundColor: 'background',
+					backgroundColor: 'transparent',
 					color: 'text.standard',
 					borderColor: 'text.standard',
-					borderWidth: 'md',
 				},
 			},
 		},
@@ -288,7 +285,7 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'black',
-					color: 'background',
+					color: 'text.inverted',
 					borderColor: 'white',
 				},
 			},
@@ -347,7 +344,10 @@ export const buttonRecipe = defineRecipe({
 		{
 			textVariant: true,
 			color: 'neutral',
-			css: { color: 'text.standard', _hover: { color: 'text.standard' } },
+			css: {
+				color: 'text.standard',
+				_hover: { color: 'text.standard', backgroundColor: 'transparent' },
+			},
 		},
 		{
 			textVariant: true,

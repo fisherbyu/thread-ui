@@ -1,29 +1,29 @@
-import type { SkeletonLayoutProps } from './skeleton-layout.types';
-import { Skeleton } from '../skeleton/skeleton';
+import type { SkeletonLayoutLoaderProps } from './skeleton-layout.types';
+import { SkeletonLoader } from '../skeleton/skeleton';
 import { ColumnItem, ColumnLayout } from '@/components/layouts';
 
 /**
- * Renders a grid of Skeleton placeholders using ColumnLayout.
+ * Renders a grid of SkeletonLoader placeholders using ColumnLayout.
  * Total items rendered = `lgcol * rows`.
  *
  * @example
- * <SkeletonLayout
+ * <SkeletonLayoutLoader
  *   lgcol={3}
  *   mdcol={2}
  *   rows={4}
  *   itemConfig={{ w: '100%', h: '120px' }}
  * />
  */
-export const SkeletonLayout = ({
+export const SkeletonLayoutLoader = ({
 	itemConfig,
 	mdcol,
 	lgcol = mdcol,
 	rows = 3,
-}: SkeletonLayoutProps) => {
+}: SkeletonLayoutLoaderProps) => {
 	const itemCount = lgcol * rows;
 
 	const items: ColumnItem[] = [...Array(itemCount)].map((_, i) => ({
-		content: <Skeleton key={i} {...itemConfig} />,
+		content: <SkeletonLoader key={i} {...itemConfig} />,
 	}));
 
 	return <ColumnLayout mdcol={mdcol} lgcol={lgcol} items={items} />;

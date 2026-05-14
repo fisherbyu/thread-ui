@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { IconNames } from '@/components/ui';
-import { ImageProps, UtilitySizeOptions } from '@/types';
+import { ImageProps, UtilitySizeOptions, SurfaceLayerOptions } from '@/types';
 
 /** An icon link or a custom React element rendered in the links row */
 type MediaLink =
@@ -28,6 +28,8 @@ export type MediaCardProps = {
 	image: ImageProps;
 	/** Side the image appears on at large viewports @default `'left'` */
 	imagePosition?: 'left' | 'right';
+	/** Layer shorthand — resolves bg, shadow, and structure from SurfaceLayerMap @default `'surface'` */
+	layer?: SurfaceLayerOptions;
 	/** Links rendered below the image as icons or custom elements */
 	links: MediaLink[];
 	/** Controls the max width of the card @default `'md'` */

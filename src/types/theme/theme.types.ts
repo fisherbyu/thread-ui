@@ -7,6 +7,8 @@ type ColorShades = {
 	dark: string;
 };
 
+export type ColorShadeOptions = Prettify<keyof ColorShades>;
+
 /** Semantic text color roles */
 export type TextColors = {
 	standard: string;
@@ -50,46 +52,121 @@ export type ExpandedUtilitySizeOptions = Prettify<keyof ExpandedUtilitySizes>;
 /** Size scale extended with responsive breakpoint steps */
 export type BreakpointOptions = Omit<ExpandedUtilitySizes, keyof ExpandedSmallOptions>;
 
-/** Surface and text color tokens that shift between light and dark mode */
+/** Surface Hierarchy and Layer Colors */
 export type SurfaceColors = {
-	background: string;
+	canvas: string;
+	inset: string;
 	surface: string;
 	elevated: string;
-	structure: string;
+	overlay: string;
 };
 
-/** Surface color options excluding `structure`, used for component background variants */
-export type SurfaceColorOptions = keyof Omit<SurfaceColors, 'structure'>;
+/** Interactive Surface Status Colors */
+export type SurfaceActivityColors = {
+	active: string;
+	hover: string;
+};
+
+export type AllSurfaceColors = Prettify<SurfaceColors & SurfaceActivityColors>;
+
+/** Background color options for component */
+export type BgColorOptions = Prettify<keyof SurfaceColors | 'none'>;
+
+/** Element Shadow Levels */
+export type ShadowScale = {
+	sm: string;
+	md: string;
+	lg: string;
+};
+
+/** Element Shadow Options */
+export type ShadowOptions = Prettify<keyof ShadowScale | 'none'>;
+
+/** Structural Colors, used for borders and dividers etc */
+export type StructureColors = {
+	subtle: string;
+	default: string;
+	strong: string;
+};
+
+/** Structure color options, used for component variants */
+export type StructureColorOptions = Prettify<keyof StructureColors>;
+
+/** Z-Index Hierarchy */
+export type ZIndexScale = {
+	base: string;
+	sticky: string;
+	overlay: string;
+	modal: string;
+	system: string;
+};
+
+/** Z-Index Options */
+export type ZIndexOptions = Prettify<keyof ZIndexScale>;
+
+/** Modal Overlays */
+export type ScrimColors = {
+	scrim: string;
+};
+
+// Semantic Surface Layer System
+
+/** Surface Layer System Options */
+export type SurfaceLayerOptions = Prettify<keyof SurfaceColors>;
 
 /** Mode-aware color tokens combining surface colors with text roles */
 export type ModeColors = Prettify<
-	SurfaceColors & {
+	AllSurfaceColors & {
+		structure: StructureColors;
 		text: TextColors;
 	}
 >;
 
+/** Theme Brand Colors */
+export type ThemePalette = Prettify<{
+	primary: ColorShades;
+	secondary: ColorShades;
+	tertiary: ColorShades;
+}>;
+
+/** Status Colors */
+export type StatusPalette = {
+	success: ColorShades;
+	warning: ColorShades;
+	error: ColorShades;
+	info: ColorShades;
+};
+
+/** Neutral Colors */
+export type NeutralPalette = {
+	white: string;
+	black: string;
+	gray: ColorShades;
+};
+
+/** Theme Layout Configuration */
+export type ThemeLayout = {
+	breakpoints: BreakpointOptions;
+};
+
+/** Base Border Configuration */
+export type ThemeBorders = {
+	borderRadius: UtilitySizes;
+	borderSize: UtilitySizes;
+};
+
 /** Full design token set for the Thread theme */
 export type Theme = Prettify<
-	ModeColors & {
-		// Color Palette
-		primary: ColorShades;
-		secondary: ColorShades;
-		tertiary: ColorShades;
-		// Neutral Colors
-		white: string;
-		black: string;
-		gray: ColorShades;
-		// Status Colors
-		success: ColorShades;
-		warning: ColorShades;
-		error: ColorShades;
-		info: ColorShades;
-		// Structure
-		breakpoints: BreakpointOptions;
-		// Sizing
-		borderRadius: UtilitySizes;
-		borderSize: UtilitySizes;
-	}
+	ThemePalette &
+		StatusPalette &
+		NeutralPalette &
+		ThemeLayout &
+		ThemeBorders &
+		ScrimColors &
+		ModeColors & {
+			zIndex: ZIndexScale;
+			shadow: ShadowScale;
+		}
 >;
 
 /** Complete theme including dark mode surface and text overrides */

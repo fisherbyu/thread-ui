@@ -9,13 +9,15 @@ import { Text } from '@/components/typography';
 const styles = {
 	dropzone: cva({
 		base: {
-			border: '2px dashed',
+			borderWidth: 'lg',
+			borderStyle: 'dashed',
 			mx: 'auto',
 			rounded: 'lg',
 			textAlign: 'center',
 			display: 'flex',
 			alignItems: 'center',
-			borderColor: 'gray.300',
+			borderColor: 'structure.default',
+			backgroundColor: 'inset',
 		},
 		variants: {
 			size: {
@@ -25,7 +27,7 @@ const styles = {
 			},
 		},
 	}),
-	isDragging: css({ borderColor: 'blue.500', bg: 'surface' }),
+	isDragging: css({ borderColor: 'info.main' }),
 	contents: cva({
 		base: {
 			display: 'flex',

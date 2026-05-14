@@ -57,3 +57,8 @@ export type ReplaceKey<T, K extends string, R> = T extends (infer U)[]
 				}
 			>
 		: T;
+
+/** Recursively Replace values with string  */
+export type DeepStringify<T> = {
+	[K in keyof T]: T[K] extends object ? DeepStringify<T[K]> : string;
+};

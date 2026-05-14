@@ -40,6 +40,12 @@ const meta: Meta<typeof Footer> = {
 	parameters: {
 		layout: 'fullscreen',
 	},
+	argTypes: {
+		bg: {
+			control: 'select',
+			options: ['canvas', 'inset', 'surface', 'elevated', 'overlay', 'none'],
+		},
+	},
 	decorators: [
 		(Story) => (
 			<div style={{ minHeight: '100vh' }}>
@@ -56,6 +62,7 @@ export const Default: Story = {
 	args: {
 		logo: WEBSITE_LOGO.icon,
 		caption: CAPTION,
+		bg: 'surface',
 		// githubLink: SOCIAL_LINKS.GITHUB,
 		// linkedInLink: SOCIAL_LINKS.LINKEDIN,
 		// twitterLink: SOCIAL_LINKS.TWITTER,

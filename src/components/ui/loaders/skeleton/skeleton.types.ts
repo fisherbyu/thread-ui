@@ -1,4 +1,4 @@
-export type SkeletonProps = {
+export type SkeletonLoaderProps = {
 	/** Width of the skeleton block @default '100%' */
 	w?: string;
 	/** Height of the skeleton block @default '1rem' */

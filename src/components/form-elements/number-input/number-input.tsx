@@ -9,12 +9,12 @@ import { css, cva, cx } from '@/styled-system/css';
 const styles = {
 	arrowButton: cva({
 		base: {
-			backgroundColor: { base: 'gray.light', _hover: 'gray.100' },
+			backgroundColor: { base: 'transparent', _hover: 'hover' },
 			borderWidth: 'md',
-			borderColor: 'gray.light',
+			borderColor: 'structure.default',
 			_focus: {
 				ring: '2',
-				ringColor: 'gray.100',
+				ringColor: 'structure.default',
 				outline: 'none',
 			},
 		},
@@ -33,7 +33,7 @@ const styles = {
 	}),
 	baseSegment: css({
 		borderWidth: 'md',
-		borderColor: 'gray.light',
+		borderColor: 'structure.default',
 		padding: '3',
 		height: '11',
 		textAlign: 'center',
@@ -41,6 +41,7 @@ const styles = {
 	}),
 	centerSegment: css({
 		color: 'text.standard',
+		backgroundColor: 'inset',
 		width: '16',
 		appearance: 'none',
 		'&::-webkit-outer-spin-button': {
@@ -50,8 +51,8 @@ const styles = {
 			appearance: 'none',
 		},
 		_focus: {
-			ringColor: 'blue.500',
-			borderColor: 'blue.500',
+			ringColor: 'info.main',
+			borderColor: 'info.main',
 		},
 	}),
 	container: css({
@@ -93,7 +94,6 @@ export const NumberInput = ({
 	value,
 	placeholder,
 	required,
-	dark,
 	min,
 	max,
 	onChange,

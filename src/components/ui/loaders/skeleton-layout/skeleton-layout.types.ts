@@ -1,9 +1,9 @@
 import { ColumnLayoutProps } from '@/components/layouts';
-import { SkeletonProps } from '../skeleton/skeleton.types';
+import { SkeletonLoaderProps } from '../skeleton/skeleton.types';
 
-export type SkeletonLayoutProps = Omit<ColumnLayoutProps, 'title' | 'caption' | 'items'> & {
+export type SkeletonLayoutLoaderProps = Omit<ColumnLayoutProps, 'title' | 'caption' | 'items'> & {
 	/** Configuration passed to each individual Skeleton item */
-	itemConfig: SkeletonProps;
+	itemConfig: SkeletonLoaderProps;
 	/** Number of rows to render. Total items = `lgcol * rows` @default 3 */
 	rows?: number;
 };

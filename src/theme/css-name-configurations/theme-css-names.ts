@@ -1,4 +1,4 @@
-import { ThemeConfigFull, Theme, ModeColors } from '@/types';
+import { ThemeConfigFull, ModeColors } from '@/types';
 import { prefixVariables, wrapVariables } from './theme-helper-utils';
 
 export const THREAD_CSS_VARIABLE_PREFIX = '--thread-' as const;
@@ -60,10 +60,21 @@ export const AllBaseCssNames: AllThemeCssNames = {
 	},
 
 	// Surface Colors
-	background: 'background',
+	canvas: 'canvas',
+	inset: 'inset',
 	surface: 'surface',
 	elevated: 'elevated',
-	structure: 'structure',
+	overlay: 'overlay',
+
+	active: 'active',
+	hover: 'hover',
+
+	// Structure Colors
+	structure: {
+		subtle: 'structure-subtle',
+		default: 'structure-default',
+		strong: 'structure-strong',
+	},
 
 	// Text Colors
 	text: {
@@ -74,7 +85,14 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		inverted: 'text-inverted',
 	},
 
-	// Structure
+	// Shadows
+	shadow: {
+		sm: 'shadow-sm',
+		md: 'shadow-md',
+		lg: 'shadow-lg',
+	},
+
+	// Layouts
 	breakpoints: {
 		sm: 'breakpoint-sm',
 		md: 'breakpoint-md',
@@ -82,6 +100,18 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		xl: 'breakpoint-xl',
 		xxl: 'breakpoint-xxl',
 	},
+
+	// Z Indexes
+	zIndex: {
+		base: 'z-index-base',
+		sticky: 'z-index-sticky',
+		overlay: 'z-index-overlay',
+		modal: 'z-index-modal',
+		system: 'z-index-system',
+	},
+
+	// Scrim
+	scrim: 'scrim',
 
 	// Sizing
 	borderRadius: {
@@ -98,10 +128,22 @@ export const AllBaseCssNames: AllThemeCssNames = {
 	// Light/Dark Mode Names
 	lightMode: {
 		// Surfaces
-		background: 'background-light-mode',
+		canvas: 'canvas-light-mode',
+		inset: 'inset-light-mode',
 		surface: 'surface-light-mode',
 		elevated: 'elevated-light-mode',
-		structure: 'structure-light-mode',
+		overlay: 'overlay-light-mode',
+
+		active: 'active-light-mode',
+		hover: 'hover-light-mode',
+
+		// Structure
+		structure: {
+			subtle: 'structure-subtle-light-mode',
+			default: 'structure-default-light-mode',
+			strong: 'structure-strong-light-mode',
+		},
+
 		// Text
 		text: {
 			standard: 'text-standard-light-mode',
@@ -114,10 +156,22 @@ export const AllBaseCssNames: AllThemeCssNames = {
 
 	darkMode: {
 		// Surfaces
-		background: 'background-dark-mode',
+		canvas: 'canvas-dark-mode',
+		inset: 'inset-dark-mode',
 		surface: 'surface-dark-mode',
 		elevated: 'elevated-dark-mode',
-		structure: 'structure-dark-mode',
+		overlay: 'overlay-dark-mode',
+
+		active: 'active-dark-mode',
+		hover: 'hover-dark-mode',
+
+		// Structure
+		structure: {
+			subtle: 'structure-subtle-dark-mode',
+			default: 'structure-default-dark-mode',
+			strong: 'structure-strong-dark-mode',
+		},
+
 		// Text
 		text: {
 			standard: 'text-standard-dark-mode',
@@ -135,10 +189,7 @@ export const {
 	...ThemeBaseCssNames
 } = AllBaseCssNames;
 
-export const ThemeCssVariableNames: Theme = prefixVariables(
-	ThemeBaseCssNames,
-	THREAD_CSS_VARIABLE_PREFIX
-);
+export const ThemeCssVariableNames = prefixVariables(ThemeBaseCssNames, THREAD_CSS_VARIABLE_PREFIX);
 
 export const LightModeVariables: ModeColors = wrapVariables(
 	LightModeVariablesBaseCssNames,

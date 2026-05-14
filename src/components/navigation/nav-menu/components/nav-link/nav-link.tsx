@@ -1,4 +1,4 @@
-import { BaseItemProps } from './base-item.types';
+import { NavLinkProps } from './nav-link.types';
 import { LinkWrapper } from '@/internal-components';
 import { css, cva } from '@/styled-system/css';
 
@@ -10,13 +10,13 @@ const styles = {
 	}),
 	link: cva({
 		base: {
-			position: { sm: 'static', lg: 'relative' },
+			position: { base: 'static', lg: 'relative' },
 			display: 'inline-flex',
 			flexDirection: 'column',
-			height: { sm: 'auto', lg: '2.5rem' },
+			height: { base: 'auto', lg: '2.5rem' },
 			alignItems: 'center',
 			justifyContent: 'center',
-			borderRadius: '0.375rem',
+			borderRadius: 'md',
 			color: 'text.standard',
 			fontSize: '0.875rem',
 			fontWeight: 500,
@@ -24,7 +24,10 @@ const styles = {
 			transition: 'all 150ms ease-in-out',
 			margin: 'auto',
 			_hover: {
-				backgroundColor: 'elevated',
+				backgroundColor: 'hover',
+			},
+			_active: {
+				backgroundColor: 'active',
 			},
 		},
 		variants: {
@@ -44,16 +47,7 @@ const styles = {
 	}),
 };
 
-export const BaseItem = ({
-	children,
-	href,
-	halfPadding = false,
-	onMouseEnter,
-	onMouseLeave,
-	isDropdownItem,
-}: BaseItemProps) => {
-	// Handle hover state
-
+export const NavLink = ({ children, href, halfPadding = false, isDropdownItem }: NavLinkProps) => {
 	return (
 		<li className={styles.li}>
 			<LinkWrapper link={href} className={styles.link({ halfPadding, isDropdownItem })}>
