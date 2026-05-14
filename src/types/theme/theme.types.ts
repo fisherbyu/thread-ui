@@ -165,6 +165,9 @@ export type FontFamilies = {
 	mono: string;
 };
 
+/** Body text size scale */
+export type BodyFontSizes = Prettify<ExtendedUtilitySizes>;
+
 /** Theme Layout Configuration */
 export type ThemeLayout = {
 	breakpoints: BreakpointOptions;
