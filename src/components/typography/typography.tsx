@@ -1,5 +1,5 @@
 import { ColoredTextOptions } from '@/types';
-import { ExpandedUtilitySizes } from '@/types/theme/theme.types';
+import { FullUtilitySizes } from '@/types/theme/theme.types';
 import { getColoredTextColor } from '@/utils';
 import { CSSProperties, ReactNode } from 'react';
 
@@ -135,10 +135,10 @@ export type TextProps = TypographyProps & {
 	/** Applies semibold weight @default `false` */
 	bold?: boolean;
 	/** Font size @default `'md'` */
-	size?: keyof ExpandedUtilitySizes;
+	size?: keyof FullUtilitySizes;
 };
 
-const TEXT_SIZES: ExpandedUtilitySizes = {
+const TEXT_SIZES: FullUtilitySizes = {
 	xxs: '0.625rem',
 	xs: '0.75rem',
 	sm: '0.875rem',
