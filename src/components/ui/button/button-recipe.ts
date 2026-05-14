@@ -156,7 +156,6 @@ export const buttonRecipe = defineRecipe({
 			true: {
 				backgroundColor: 'transparent',
 				borderColor: 'transparent',
-				border: 'none',
 				_hover: {
 					textDecoration: 'underline',
 				},
