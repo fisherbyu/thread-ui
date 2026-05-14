@@ -201,7 +201,7 @@ variants: {
 
 ### No Layer Participation
 
-- [ ] **Button** — Palette-driven bg/border/hover. No surface system.
+- [x] **Button** — Palette-driven bg/border/hover. No surface system.
 - [x] **IconButton** — Same as Button.
 - [x] **Toggle** — Track: `gray.main` off / `primary.main` on. Thumb: `white`.
 - [x] **Divider** — Structure color as line color. Prop default: `subtle`.
