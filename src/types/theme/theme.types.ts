@@ -45,7 +45,7 @@ type FullLargeOptions = {
 export type FullUtilitySizes = Prettify<FullSmallOptions & UtilitySizes & FullLargeOptions>;
 
 /** Key union of the full expanded size scale */
-export type ExpandedUtilitySizeOptions = Prettify<keyof FullUtilitySizes>;
+export type FullUtilitySizeOptions = Prettify<keyof FullUtilitySizes>;
 
 /** Size scale extended with responsive breakpoint steps */
 export type BreakpointOptions = Omit<FullUtilitySizes, keyof FullSmallOptions>;
