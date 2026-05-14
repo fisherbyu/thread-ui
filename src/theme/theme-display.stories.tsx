@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { DefaultThreadTheme } from './default-theme';
 import { SurfaceLayerMap } from './theme-surface-system';
+import { H1, List, Text } from '../components/typography';
 
 type DesignSystemArgs = Record<string, never>;
 
@@ -12,8 +13,7 @@ const meta: Meta<DesignSystemArgs> = {
 		layout: 'fullscreen',
 		docs: {
 			description: {
-				component:
-					"Thread UI's layer-based elevation system. Every component sits on a named layer that determines its background, shadow, border, and stacking order.",
+				component: "Thread UI's default theme configuration",
 			},
 		},
 	},
@@ -35,7 +35,7 @@ const sectionTitleStyle: React.CSSProperties = {
 	fontSize: '1.5rem',
 	fontWeight: 700,
 	color: 'var(--thread-text-standard)',
-	marginBottom: '8px',
+	marginBottom: '4px',
 };
 
 const sectionCaptionStyle: React.CSSProperties = {
@@ -303,29 +303,20 @@ export const Theme: Story = {
 						margin: '0 auto',
 					}}
 				>
-					<h1
-						style={{
-							fontSize: '2.5rem',
-							fontWeight: 800,
-							color: 'var(--thread-text-standard)',
-							marginBottom: '12px',
-							letterSpacing: '-0.02em',
-						}}
-					>
-						Thread UI Design System
-					</h1>
-					<p
-						style={{
-							fontSize: '1.125rem',
-							color: 'var(--thread-text-secondary)',
-							maxWidth: '640px',
-							lineHeight: 1.6,
-						}}
-					>
-						A layer-based elevation system. Every component sits on a named layer that
-						determines its background, shadow, border, and stacking order. Light mode
-						uses shadows. Dark mode uses lightness.
-					</p>
+					<div style={{ maxWidth: '640px' }}>
+						<H1>Thread UI Design System</H1>
+						<Text>
+							The Thread-UI theme system defines the design language across the
+							library, including layering, spacing and coloration.Each component sits
+							on a named layer that determines its background, shadow, border, and
+							stacking order. The theme palette includes primary, secondary, and
+							tertiary colors, as well as definitions for common interactions, texts,
+							and neutrals.
+							<br /> <br />
+							Each element of this theme can be configured and customized by consumers
+							of the library
+						</Text>
+					</div>
 				</div>
 
 				{/* ── Surface Layers ── */}
