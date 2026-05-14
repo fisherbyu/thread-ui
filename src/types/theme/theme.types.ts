@@ -156,6 +156,15 @@ export type NeutralPalette = {
 	gray: ColorShades;
 };
 
+// Typography
+
+/** Font family stacks for heading, body, and monospace text */
+export type FontFamilies = {
+	body: string;
+	heading: string;
+	mono: string;
+};
+
 /** Theme Layout Configuration */
 export type ThemeLayout = {
 	breakpoints: BreakpointOptions;
