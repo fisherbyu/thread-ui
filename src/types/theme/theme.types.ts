@@ -168,6 +168,9 @@ export type FontFamilies = {
 /** Body text size scale */
 export type BodyFontSizes = Prettify<ExtendedUtilitySizes>;
 
+/** Key union of body font size steps */
+export type BodyFontSizeOptions = Prettify<keyof BodyFontSizes>;
+
 /** Theme Layout Configuration */
 export type ThemeLayout = {
 	breakpoints: BreakpointOptions;
