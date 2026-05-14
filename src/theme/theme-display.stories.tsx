@@ -7,8 +7,8 @@ import { H1, List, Text } from '../components/typography';
 type DesignSystemArgs = Record<string, never>;
 
 const meta: Meta<DesignSystemArgs> = {
-	title: 'Design System/Theme',
-	tags: ['autodocs'],
+	title: 'Design System',
+	// tags: ['autodocs'],
 	parameters: {
 		layout: 'fullscreen',
 		docs: {

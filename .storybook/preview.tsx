@@ -43,6 +43,7 @@ const preview: Preview = {
 		options: {
 			storySort: {
 				order: [
+					'Theme',
 					'Components',
 					'UI Components',
 					'Media',
