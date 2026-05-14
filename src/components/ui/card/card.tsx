@@ -30,6 +30,7 @@ const styles = {
 			fullWidth: {
 				true: {
 					width: '100%',
+					maxWidth: 'none',
 				},
 				false: {
 					maxWidth: '213',
@@ -60,6 +61,15 @@ const styles = {
 				strong: { borderWidth: 'md', borderColor: 'structure.strong' },
 			},
 		},
+		compoundVariants: [
+			{
+				size: 'sm',
+				fullWidth: false,
+				css: {
+					maxWidth: '150',
+				},
+			},
+		],
 		defaultVariants: {
 			size: 'md',
 			fullWidth: false,
@@ -87,7 +97,6 @@ const styles = {
 		},
 	}),
 };
-
 /**
  * General-purpose content card container with optional title, divider, and surface level control.
  *
@@ -114,7 +123,6 @@ export const Card = ({
 }: CardProps) => {
 	// Resolve from level, allow individual overrides
 	const layerValues = getResolvedLayerValues({ layer, bg, shadow, structure });
-
 	return (
 		<div
 			className={styles.cardContainer({
