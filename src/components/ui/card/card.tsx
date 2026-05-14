@@ -12,11 +12,6 @@ const styles = {
 				base: '5',
 			},
 			marginX: 'auto',
-			maxWidth: '213',
-			width: {
-				base: '100%',
-				md: '75%',
-			},
 			transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
 		},
 		variants: {
@@ -30,6 +25,18 @@ const styles = {
 				},
 				lg: {
 					borderRadius: 'lg',
+				},
+			},
+			fullWidth: {
+				true: {
+					width: '100%',
+				},
+				false: {
+					maxWidth: '213',
+					width: {
+						base: '100%',
+						md: '75%',
+					},
 				},
 			},
 			bg: {
@@ -55,6 +62,7 @@ const styles = {
 		},
 		defaultVariants: {
 			size: 'md',
+			fullWidth: false,
 			bg: 'surface',
 			shadow: 'none',
 			structure: 'subtle',
@@ -101,6 +109,7 @@ export const Card = ({
 	structure,
 	children,
 	size = 'md',
+	fullWidth = false,
 	title,
 }: CardProps) => {
 	// Resolve from level, allow individual overrides
@@ -110,6 +119,7 @@ export const Card = ({
 		<div
 			className={styles.cardContainer({
 				size,
+				fullWidth,
 				bg: layerValues.bg,
 				shadow: layerValues.shadow,
 				structure: layerValues.structure,

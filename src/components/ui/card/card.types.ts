@@ -19,6 +19,8 @@ export type CardProps = {
 	structure?: StructureColorOptions | 'none';
 	/** Size variant controlling border radius and max width @default `'md'` */
 	size?: UtilitySizeOptions;
+	/** Allow card to fill available width @default false */
+	fullWidth?: boolean;
 	/** Optional title rendered above the card content */
 	title?: {
 		/** Title text */
