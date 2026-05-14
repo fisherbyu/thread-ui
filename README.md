@@ -21,6 +21,33 @@ import 'thread-ui/thread.css';
 - **Vite / CRA**: place in `main.tsx` or `index.tsx`
 - **Remix**: import in `root.tsx`
 
+## Design System
+
+Thread UI uses a **layer-based elevation system**. Every component either sits on a named layer (canvas, inset, surface, elevated, overlay) or opts out entirely (transparent). The layer determines the component's background color, shadow depth, border treatment, and stacking order.
+
+### Surface Layers
+
+| Layer      | Purpose                                                                     |
+| ---------- | --------------------------------------------------------------------------- |
+| `canvas`   | Page background. The base everything sits on.                               |
+| `inset`    | Recessed containers: inputs, code blocks, wells. Visually below the canvas. |
+| `surface`  | Cards, panels, content regions. Pops against canvas.                        |
+| `elevated` | Sticky nav, toolbars. Differentiated by shadow in light mode.               |
+| `overlay`  | Modals, popovers. Highest elevation.                                        |
+
+```tsx
+// Components resolve their bg, shadow, and border from the layer
+<Card layer="surface" />
+
+// Individual overrides when needed
+<Card layer="surface" bg="elevated" shadow="md" structure="none" />
+```
+
+### The Two Rules
+
+1. **Light mode communicates elevation through shadows.** Surface, elevated, and overlay share the same background color — shadows and z-index differentiate them.
+2. **Dark mode communicates elevation through lightness.** Each layer step up is slightly lighter. Shadows are nearly invisible against dark surfaces.
+
 ## Features
 
 ### Custom Themes
