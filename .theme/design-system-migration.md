@@ -202,10 +202,10 @@ variants: {
 ### No Layer Participation
 
 - [ ] **Button** — Palette-driven bg/border/hover. No surface system.
-- [ ] **IconButton** — Same as Button.
-- [ ] **Toggle** — Track: `gray.main` off / `primary.main` on. Thumb: `white`.
-- [ ] **Divider** — Structure color as line color. Prop default: `subtle`.
-- [ ] **Icon** — Color prop, default `text.secondary`.
+- [x] **IconButton** — Same as Button.
+- [x] **Toggle** — Track: `gray.main` off / `primary.main` on. Thumb: `white`.
+- [x] **Divider** — Structure color as line color. Prop default: `subtle`.
+- [x] **Icon** — Color prop, default `text.secondary`.
 - [x] **DotsLoader** — Dot color from `text.secondary`.
 - [x] **SpinLoader** — Stroke from `primary.main`.
 - [x] **Skeleton** — Shimmer uses `elevated` token directly in recipe.
@@ -220,7 +220,7 @@ variants: {
 - [ ] **Subtitle** — Text color prop, default `text.secondary`.
 - [ ] **List** — Text color, inherits.
 - [ ] **OrderedList** — Text color, inherits.
-- [ ] **PageHeader** — Fixed: heading `text.standard`, subtitle `text.secondary`.
+- [x] **PageHeader** — Fixed: heading `text.standard`, subtitle `text.secondary`.
 - [x] **ColumnLayout** — Pure layout, no visual opinion.
 - [x] **MasonryLayout** — Pure layout, no visual opinion.
 - [x] **FilterControls** — Children handle their own layers.
