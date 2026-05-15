@@ -230,8 +230,17 @@ export type HeadingRoleOptions = 'title' | 'h1' | 'h2' | 'h3';
 /** Typography Body Role Options */
 export type BodyRoleOptions = 'body' | 'code';
 
-/** Typography Definitions  */
+/** Typography Roles  */
 export type TypographyRoleOptions = Prettify<HeadingRoleOptions | BodyRoleOptions>;
+
+/** Typography Configurations */
+export type TypographyConfiguration = Prettify<{
+	fontFamilies: FontFamilies;
+	fontSizes: ThemeFontSizes;
+	fontWeights: FontWeights;
+	lineHeights: LineHeights;
+	letterSpaces: LetterSpacings;
+}>;
 
 /** Theme Layout Configuration */
 export type ThemeLayout = {
@@ -255,6 +264,7 @@ export type Theme = Prettify<
 		ModeColors & {
 			zIndex: ZIndexScale;
 			shadow: ShadowScale;
+			typography: TypographyConfiguration;
 		}
 >;
 
