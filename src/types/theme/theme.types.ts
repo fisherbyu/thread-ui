@@ -224,6 +224,15 @@ export type LetterSpacings = {
 /** Key union of letter spacing steps */
 export type LetterSpacingOptions = Prettify<keyof LetterSpacings>;
 
+/** Typography Heading Role Options */
+export type HeadingRoleOptions = 'title' | 'h1' | 'h2' | 'h3';
+
+/** Typography Body Role Options */
+export type BodyRoleOptions = 'body' | 'code';
+
+/** Typography Definitions  */
+export type TypographyRoleOptions = HeadingRoleOptions & BodyRoleOptions;
+
 /** Theme Layout Configuration */
 export type ThemeLayout = {
 	breakpoints: BreakpointOptions;
