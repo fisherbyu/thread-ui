@@ -166,7 +166,7 @@ export type FontFamilies = {
 };
 
 /** Font Family Options */
-export type FontFamilyOptions = Prettify<FontFamilies>;
+export type FontFamilyOptions = Prettify<keyof FontFamilies>;
 
 /** Body text size scale */
 export type BodyFontSizes = Prettify<ExtendedUtilitySizes>;
@@ -231,7 +231,7 @@ export type HeadingRoleOptions = 'title' | 'h1' | 'h2' | 'h3';
 export type BodyRoleOptions = 'body' | 'code';
 
 /** Typography Definitions  */
-export type TypographyRoleOptions = HeadingRoleOptions & BodyRoleOptions;
+export type TypographyRoleOptions = Prettify<HeadingRoleOptions | BodyRoleOptions>;
 
 /** Theme Layout Configuration */
 export type ThemeLayout = {
