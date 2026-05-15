@@ -171,6 +171,23 @@ export type BodyFontSizes = Prettify<ExtendedUtilitySizes>;
 /** Key union of body font size steps */
 export type BodyFontSizeOptions = Prettify<keyof BodyFontSizes>;
 
+/** Heading size scale (1.25rem → 3rem) */
+export type HeadingFontSizes = {
+	title: string;
+	h1: string;
+	h2: string;
+	h3: string;
+};
+
+/** Key union of heading font size steps */
+export type HeadingFontSizeOptions = Prettify<keyof HeadingFontSizes>;
+
+/** Combined font size scales */
+export type ThemeFontSizes = Prettify<{
+	heading: HeadingFontSizes;
+	body: BodyFontSizes;
+}>;
+
 /** Theme Layout Configuration */
 export type ThemeLayout = {
 	breakpoints: BreakpointOptions;
