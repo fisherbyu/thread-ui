@@ -124,6 +124,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 				xl: 'font-size-heading-xl',
 			},
 			body: {
+				xxs: 'font-size-body-xxs',
 				xs: 'font-size-body-xs',
 				sm: 'font-size-body-sm',
 				md: 'font-size-body-md',
