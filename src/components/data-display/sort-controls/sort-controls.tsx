@@ -59,7 +59,7 @@ export const SortControls = <T,>({
 
 	return (
 		<div className={styles.container({ inner: false, size })}>
-			{showSortLabel && <Text bold>Sort</Text>}
+			{showSortLabel && <Text weight="semibold">Sort</Text>}
 			<div className={styles.container({ inner: true, size })}>
 				{fields.map(({ key, label, icon, color: fieldColor }) => {
 					const state = getState(key);

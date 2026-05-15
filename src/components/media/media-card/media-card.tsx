@@ -205,7 +205,7 @@ export const MediaCard = ({
 					<Text align="center" size="xs">
 						{detail.title}
 					</Text>
-					<Text align="center" size="xs" bold>
+					<Text align="center" size="xs" weight="semibold">
 						{detail.details}
 					</Text>
 				</span>

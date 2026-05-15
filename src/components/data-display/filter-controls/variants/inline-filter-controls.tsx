@@ -71,7 +71,7 @@ export const InlineFilterControls = <T,>({
 }: InlineFilterControlsProps<T>) => {
 	return (
 		<div className={styles.container({ size })}>
-			{showFilterLabel && <Text bold>Filters</Text>}
+			{showFilterLabel && <Text weight="semibold">Filters</Text>}
 			{fields.map(({ key, label, icon, color: fieldColor, options }) => (
 				<div
 					key={String(key)}
