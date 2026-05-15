@@ -1,7 +1,67 @@
+import { cva } from '@/styled-system/css';
 import { ColoredTextOptions } from '@/types';
 import { FullUtilitySizes } from '@/types/theme/theme.types';
 import { getColoredTextColor } from '@/utils';
 import { CSSProperties, ReactNode } from 'react';
+
+const getTypographyStyles = cva({
+	base: {},
+	variants: {
+		fontFamily: {
+			headings: {
+				fontFamily: 'heading',
+			},
+			body: {
+				fontFamily: 'body',
+			},
+			mono: {
+				fontFamily: 'mono',
+			},
+		},
+		fontWeight: {
+			regular: {
+				fontWeight: 'regular',
+			},
+			medium: {
+				fontWeight: 'medium',
+			},
+			semibold: {
+				fontWeight: 'semibold',
+			},
+			bold: {
+				fontWeight: 'bold',
+			},
+		},
+		lineHeight: {
+			tighter: {
+				lineHeight: 'tighter',
+			},
+			tight: {
+				lineHeight: 'tight',
+			},
+			normal: {
+				lineHeight: 'normal',
+			},
+			loose: {
+				lineHeight: 'loose',
+			},
+			looser: {
+				lineHeight: 'looser',
+			},
+		},
+		letterSpacings: {
+			tight: {
+				letterSpacing: 'tight',
+			},
+			normal: {
+				letterSpacing: 'normal',
+			},
+			wide: {
+				letterSpacing: 'wide',
+			},
+		},
+	},
+});
 
 export type TypographyProps = {
 	children: ReactNode;
