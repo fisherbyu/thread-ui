@@ -194,6 +194,28 @@ export type FontWeights = {
 /** Key union of font weight options */
 export type FontWeightOptions = Prettify<keyof FontWeights>;
 
+/** Line height scale */
+export type LineHeights = {
+	tighter: number;
+	tight: number;
+	normal: number;
+	loose: number;
+	looser: number;
+};
+
+/** Key union of line height steps */
+export type LineHeightOptions = Prettify<keyof LineHeights>;
+
+/** Letter spacing scale */
+export type LetterSpacings = {
+	tight: string;
+	normal: string;
+	wide: string;
+};
+
+/** Key union of letter spacing steps */
+export type LetterSpacingOptions = Prettify<keyof LetterSpacings>;
+
 /** Theme Layout Configuration */
 export type ThemeLayout = {
 	breakpoints: BreakpointOptions;
