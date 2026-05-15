@@ -132,17 +132,17 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 			},
 		},
 		fontWeights: {
-			regular: 400,
-			medium: 500,
-			semibold: 600,
-			bold: 700,
+			regular: '400',
+			medium: '500',
+			semibold: '600',
+			bold: '700',
 		},
 		lineHeights: {
-			tighter: 1.1, // hero/display - very large text only
-			tight: 1.3, // headings (current value)
-			normal: 1.5, // body (current value, W3C standard)
-			loose: 1.7, // long-form reading
-			looser: 2.0, // callouts, marketing copy
+			tighter: '1.1', // hero/display - very large text only
+			tight: '1.3', // headings (current value)
+			normal: '1.5', // body (current value, W3C standard)
+			loose: '1.7', // long-form reading
+			looser: '2.0', // callouts, marketing copy
 		},
 		letterSpacings: {
 			tight: '-0.02em', // display tightening

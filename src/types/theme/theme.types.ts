@@ -193,10 +193,10 @@ export type CompleteFontSizeOptions = {
 
 /** Font weight scale */
 export type FontWeights = {
-	regular: number;
-	medium: number;
-	semibold: number;
-	bold: number;
+	regular: string;
+	medium: string;
+	semibold: string;
+	bold: string;
 };
 
 /** Key union of font weight options */
@@ -204,11 +204,11 @@ export type FontWeightOptions = Prettify<keyof FontWeights>;
 
 /** Line height scale */
 export type LineHeights = {
-	tighter: number;
-	tight: number;
-	normal: number;
-	loose: number;
-	looser: number;
+	tighter: string;
+	tight: string;
+	normal: string;
+	loose: string;
+	looser: string;
 };
 
 /** Key union of line height steps */
