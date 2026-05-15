@@ -97,6 +97,49 @@ export default defineConfig({
 					modal: { value: 'var(--thread-z-index-modal)' },
 					system: { value: 'var(--thread-z-index-system)' },
 				},
+				// Font family tokens
+				fonts: {
+					body: { value: 'var(--thread-font-family-body)' },
+					heading: { value: 'var(--thread-font-family-heading)' },
+					mono: { value: 'var(--thread-font-family-mono)' },
+				},
+				// Font size tokens
+				fontSizes: {
+					heading: {
+						sm: { value: 'var(--thread-font-size-heading-sm)' },
+						md: { value: 'var(--thread-font-size-heading-md)' },
+						lg: { value: 'var(--thread-font-size-heading-lg)' },
+						xl: { value: 'var(--thread-font-size-heading-xl)' },
+					},
+					body: {
+						xs: { value: 'var(--thread-font-size-body-xs)' },
+						sm: { value: 'var(--thread-font-size-body-sm)' },
+						md: { value: 'var(--thread-font-size-body-md)' },
+						lg: { value: 'var(--thread-font-size-body-lg)' },
+						xl: { value: 'var(--thread-font-size-body-xl)' },
+					},
+				},
+				// Font weight tokens
+				fontWeights: {
+					regular: { value: 'var(--thread-font-weight-regular)' },
+					medium: { value: 'var(--thread-font-weight-medium)' },
+					semibold: { value: 'var(--thread-font-weight-semibold)' },
+					bold: { value: 'var(--thread-font-weight-bold)' },
+				},
+				// Line height tokens
+				lineHeights: {
+					tighter: { value: 'var(--thread-line-height-tighter)' },
+					tight: { value: 'var(--thread-line-height-tight)' },
+					normal: { value: 'var(--thread-line-height-normal)' },
+					loose: { value: 'var(--thread-line-height-loose)' },
+					looser: { value: 'var(--thread-line-height-looser)' },
+				},
+				// Letter spacing tokens
+				letterSpacings: {
+					tight: { value: 'var(--thread-letter-spacing-tight)' },
+					normal: { value: 'var(--thread-letter-spacing-normal)' },
+					wide: { value: 'var(--thread-letter-spacing-wide)' },
+				},
 			},
 			semanticTokens: {
 				colors: {
