@@ -186,6 +186,11 @@ export type ThemeFontSizes = Prettify<{
 	body: BodyFontSizes;
 }>;
 
+/** Dot-notation keys for all font sizes (e.g. "heading.sm" | "body.xs") */
+export type CompleteFontSizeOptions = {
+	[K in keyof ThemeFontSizes]: `${K & string}.${keyof ThemeFontSizes[K] & string}`;
+}[keyof ThemeFontSizes];
+
 /** Font weight scale */
 export type FontWeights = {
 	regular: number;
