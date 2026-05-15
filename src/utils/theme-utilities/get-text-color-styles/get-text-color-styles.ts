@@ -1,14 +1,23 @@
 import { cva } from '@/styled-system/css';
-import { TextColorOptions } from '@/types';
+import { ColoredTextOptions } from '@/types';
 
 const styles = cva({
 	variants: {
 		color: {
 			standard: { color: 'text.standard' },
-			secondary: { color: 'text.secondary' },
+			'text-secondary': { color: 'text.secondary' },
 			disabled: { color: 'text.disabled' },
 			accent: { color: 'text.accent' },
 			inverted: { color: 'text.inverted' },
+			black: { color: 'black' },
+			primary: { color: 'primary.main' },
+			secondary: { color: 'secondary.main' },
+			tertiary: { color: 'tertiary.main' },
+			gray: { color: 'gray.main' },
+			success: { color: 'success.main' },
+			info: { color: 'info.main' },
+			error: { color: 'error.main' },
+			warning: { color: 'warning.main' },
 		},
 	},
 });
@@ -22,6 +31,6 @@ const styles = cva({
  * @example
  * <p className={getTextColorStyles({ color: 'secondary' })}>...</p>
  */
-export const getTextColorStyles = (color: TextColorOptions) => {
+export const getTextColorStyles = (color: ColoredTextOptions) => {
 	return styles({ color });
 };
