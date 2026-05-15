@@ -31,6 +31,37 @@ const compileCssVariableContent = (
 	return `${indent}${cssVariableName}: ${value};`;
 };
 
+/**
+ * Recursively walks a value tree and a parallel variable-name tree in lockstep,
+ * emitting a CSS variable declaration at each string leaf. Handles arbitrary nesting depth.
+ */
+const walkAndEmit = (
+	valueTree: unknown,
+	varNameTree: unknown,
+	output: string[],
+	wrapVal: boolean
+): void => {
+	if (typeof valueTree === 'string' && typeof varNameTree === 'string') {
+		output.push(`${compileCssVariableContent(varNameTree, valueTree, 1, wrapVal)}\n`);
+		return;
+	}
+
+	if (
+		typeof valueTree === 'object' &&
+		valueTree !== null &&
+		!Array.isArray(valueTree) &&
+		typeof varNameTree === 'object' &&
+		varNameTree !== null &&
+		!Array.isArray(varNameTree)
+	) {
+		const valueRecord = valueTree as Record<string, unknown>;
+		const varNameRecord = varNameTree as Record<string, unknown>;
+		Object.keys(valueRecord).forEach((key) => {
+			walkAndEmit(valueRecord[key], varNameRecord[key], output, wrapVal);
+		});
+	}
+};
+
 export const generateDefaultThemeCss = (
 	defaultThemeConfig: ThemeConfigFull,
 	themeVariableNames: Theme,
@@ -64,132 +95,55 @@ export const generateDefaultThemeCss = (
 	const genericThemeVariables: string[] = []; // CSS Variable names and values. Ex: --thread-primary-light: #5a7d6a;
 
 	genericThemeKeys.forEach((key) => {
-		const variableName = themeVariableNames[key];
-		const value = defaultThemeConfig[key];
-
-		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-			// Handle Nested Keys
-			Object.keys(value).forEach((nestedKey) => {
-				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
-				const nestedValue = (value as Record<string, string>)[nestedKey];
-				genericThemeVariables.push(
-					`${compileCssVariableContent(nestedVariableName, nestedValue, 1)}\n`
-				);
-			});
-		} else if (typeof value === 'string' && typeof variableName === 'string') {
-			genericThemeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`);
-		}
+		walkAndEmit(defaultThemeConfig[key], themeVariableNames[key], genericThemeVariables, false);
 	});
 
 	// Generate Light Mode Variables
 	const lightModeVariables: string[] = [];
 
 	lightModeKeys.forEach((key) => {
-		const variableName = lightModeVariableNames[key];
-		const value = defaultThemeConfig[key];
-
-		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-			// Handle Nested Keys
-			Object.keys(value).forEach((nestedKey) => {
-				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
-				const nestedValue = (value as Record<string, string>)[nestedKey];
-				lightModeVariables.push(
-					`${compileCssVariableContent(nestedVariableName, nestedValue, 1)}\n`
-				);
-			});
-		} else if (typeof value === 'string' && typeof variableName === 'string') {
-			lightModeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`);
-		}
+		walkAndEmit(
+			defaultThemeConfig[key],
+			lightModeVariableNames[key],
+			lightModeVariables,
+			false
+		);
 	});
 
 	// Generate Dark Mode Variables
 	const darkModeVariables: string[] = [];
 
 	darkModeKeys.forEach((key) => {
-		const variableName = darkModeVariableNames[key];
-		const value = defaultThemeConfig['darkMode'][key];
-
-		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-			// Handle Nested Keys
-			Object.keys(value).forEach((nestedKey) => {
-				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
-				const nestedValue = (value as Record<string, string>)[nestedKey];
-				darkModeVariables.push(
-					`${compileCssVariableContent(nestedVariableName, nestedValue, 1)}\n`
-				);
-			});
-		} else if (typeof value === 'string' && typeof variableName === 'string') {
-			darkModeVariables.push(`${compileCssVariableContent(variableName, value, 1)}\n`);
-		}
+		walkAndEmit(
+			defaultThemeConfig['darkMode'][key],
+			darkModeVariableNames[key],
+			darkModeVariables,
+			false
+		);
 	});
 
-	// Apply Light Mode Colors
+	// Apply Light Mode Colors (used in both :root default and [data-theme='light'] override — output is identical)
 	const appliedLightModeVariables: string[] = [];
 
 	modeColorsKeys.forEach((key) => {
-		const variableName = ThemeCssVariableNames[key];
-		const value = lightModeVariableNames[key];
-
-		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-			// Handle Nested Keys
-			Object.keys(value).forEach((nestedKey) => {
-				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
-				const nestedValue = (value as Record<string, string>)[nestedKey];
-				appliedLightModeVariables.push(
-					`${compileCssVariableContent(nestedVariableName, nestedValue, 1, true)}\n`
-				);
-			});
-		} else if (typeof value === 'string' && typeof variableName === 'string') {
-			appliedLightModeVariables.push(
-				`${compileCssVariableContent(variableName, value, 1, true)}\n`
-			);
-		}
-	});
-
-	// Apply Light Mode Colors when Light Mode Overrides System
-	const overrideLightModeVariables: string[] = [];
-
-	modeColorsKeys.forEach((key) => {
-		const variableName = ThemeCssVariableNames[key];
-		const value = lightModeVariableNames[key];
-
-		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-			// Handle Nested Keys
-			Object.keys(value).forEach((nestedKey) => {
-				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
-				const nestedValue = (value as Record<string, string>)[nestedKey];
-				overrideLightModeVariables.push(
-					`${compileCssVariableContent(nestedVariableName, nestedValue, 1, true)}\n`
-				);
-			});
-		} else if (typeof value === 'string' && typeof variableName === 'string') {
-			overrideLightModeVariables.push(
-				`${compileCssVariableContent(variableName, value, 1, true)}\n`
-			);
-		}
+		walkAndEmit(
+			lightModeVariableNames[key],
+			ThemeCssVariableNames[key],
+			appliedLightModeVariables,
+			true
+		);
 	});
 
 	// Apply Dark Mode Colors when Dark Mode Active or Applied
 	const appliedDarkModeVariables: string[] = [];
 
 	modeColorsKeys.forEach((key) => {
-		const variableName = ThemeCssVariableNames[key];
-		const value = darkModeVariableNames[key];
-
-		if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-			// Handle Nested Keys
-			Object.keys(value).forEach((nestedKey) => {
-				const nestedVariableName = (variableName as Record<string, string>)[nestedKey];
-				const nestedValue = (value as Record<string, string>)[nestedKey];
-				appliedDarkModeVariables.push(
-					`${compileCssVariableContent(nestedVariableName, nestedValue, 1, true)}\n`
-				);
-			});
-		} else if (typeof value === 'string' && typeof variableName === 'string') {
-			appliedDarkModeVariables.push(
-				`${compileCssVariableContent(variableName, value, 1, true)}\n`
-			);
-		}
+		walkAndEmit(
+			darkModeVariableNames[key],
+			ThemeCssVariableNames[key],
+			appliedDarkModeVariables,
+			true
+		);
 	});
 
 	const ROOT_CONFIG = `
@@ -210,7 +164,7 @@ export const generateDefaultThemeCss = (
 
 	const LIGHT_MODE_OVERRIDE = `\n:root[data-theme='light'] {\n
     /* Light Mode Color Override */
-    ${overrideLightModeVariables.join('')}\n
+    ${appliedLightModeVariables.join('')}\n
     }\n`;
 
 	const DARK_MODE_OVERRIDE = `\n:root[data-theme='dark'] {\n
