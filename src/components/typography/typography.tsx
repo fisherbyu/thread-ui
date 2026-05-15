@@ -1,10 +1,17 @@
-import { cva } from '@/styled-system/css';
-import { ColoredTextOptions } from '@/types';
-import { FullUtilitySizes } from '@/types/theme/theme.types';
-import { getColoredTextColor } from '@/utils';
-import { CSSProperties, ReactNode } from 'react';
-import { getTextColorStyles } from '@/utils'; // Panda CSS util that needs to be used
+import { cva, cx } from '@/styled-system/css';
+import { getResolvedTypographyValues } from '@/utils';
+import {
+	BodyFontSizeOptions,
+	ColoredTextOptions,
+	FontWeightOptions,
+	LetterSpacingOptions,
+	LineHeightOptions,
+} from '@/types';
+import { getTextColorStyles } from '@/utils';
+import { ReactNode } from 'react';
 
+/** Typography CVA — maps individual token keys to single style declarations.
+ * Chord composition happens upstream in `getResolvedTypographyValues`. */
 const getTypographyStyles = cva({
 	variants: {
 		fontFamily: {
@@ -45,6 +52,23 @@ const getTypographyStyles = cva({
 	},
 });
 
+/** Presentation CVA for align/truncate. Not part of the typography chord. */
+const getPresentationStyles = cva({
+	variants: {
+		align: {
+			left: { textAlign: 'left' },
+			center: { textAlign: 'center' },
+		},
+		truncate: {
+			true: {
+				overflow: 'hidden',
+				whiteSpace: 'nowrap',
+				textOverflow: 'ellipsis',
+			},
+		},
+	},
+});
+
 export type TypographyProps = {
 	children: ReactNode;
 	/** Text alignment @default `'left'` */
@@ -57,174 +81,165 @@ export type TypographyProps = {
 	truncate?: boolean;
 };
 
+export type HeadingProps = TypographyProps & {
+	/** Optional subtitle rendered beneath the heading at one-step-down typography. */
+	subtitle?: ReactNode;
+};
+
+// Margins preserved from prior implementation — TODO: migrate to spacing scale
+const HEADING_MARGINS = {
+	title: '40px',
+	h1: '32px',
+	h2: '24px',
+	h3: '16px',
+} as const;
+
+/** Subtitle role mapping: subtitle under a heading uses one-step-down typography role. */
+const SUBTITLE_ROLE_MAP = {
+	title: 'h1',
+	h1: 'h2',
+	h2: 'h3',
+	h3: 'body',
+} as const;
+
+type HeadingRoleKey = keyof typeof SUBTITLE_ROLE_MAP;
+
 /**
- * Display-level heading. Renders as `h1` at 3rem/700 weight.
- *
- * @example
- * <Title align="center">Welcome</Title>
+ * Internal helper rendering a heading with optional subtitle.
+ * Wraps in <hgroup> when subtitle is present.
  */
-export const Title = ({
-	children,
-	align = 'left',
-	inline = false,
-	color = 'standard',
-	truncate = false,
-}: TypographyProps) => {
-	const styles: CSSProperties = {
-		fontSize: '3rem',
-		fontWeight: 700,
-		lineHeight: 1.3,
-		marginBottom: inline ? 0 : '40px',
-		textAlign: align,
-		color: getColoredTextColor(color),
-		...(truncate && {
-			overflow: 'hidden',
-			whiteSpace: 'nowrap',
-			textOverflow: 'ellipsis',
-		}),
-	};
-	return <h1 style={styles}>{children}</h1>;
+const renderHeading = (
+	role: HeadingRoleKey,
+	HeadingTag: 'h1' | 'h2' | 'h3',
+	{
+		children,
+		align = 'left',
+		inline = false,
+		color = 'standard',
+		truncate = false,
+		subtitle,
+	}: HeadingProps
+) => {
+	const headingClass = cx(
+		getTypographyStyles(getResolvedTypographyValues({ role })),
+		getPresentationStyles({ align, truncate: truncate || undefined }),
+		getTextColorStyles(color)
+	);
+
+	const outerMargin = inline ? 0 : HEADING_MARGINS[role];
+
+	if (!subtitle) {
+		return (
+			<HeadingTag className={headingClass} style={{ marginBottom: outerMargin }}>
+				{children}
+			</HeadingTag>
+		);
+	}
+
+	const subtitleRole = SUBTITLE_ROLE_MAP[role];
+	const subtitleClass = cx(
+		getTypographyStyles(getResolvedTypographyValues({ role: subtitleRole })),
+		getPresentationStyles({ align, truncate: truncate || undefined }),
+		getTextColorStyles('text-secondary')
+	);
+
+	return (
+		<hgroup style={{ marginBottom: outerMargin }}>
+			<HeadingTag className={headingClass}>{children}</HeadingTag>
+			<p className={subtitleClass}>{subtitle}</p>
+		</hgroup>
+	);
 };
 
 /**
- * Primary heading. Renders as `h1` at 2rem/600 weight.
+ * Display-level heading. Renders as `h1` using the `title` typography role.
+ *
+ * @example
+ * <Title align="center">Welcome</Title>
+ * <Title subtitle="Last updated March 2025">Welcome</Title>
+ */
+export const Title = (props: HeadingProps) => renderHeading('title', 'h1', props);
+
+/**
+ * Primary heading. Renders as `h1` using the `h1` typography role.
  *
  * @example
  * <H1>Page Title</H1>
  */
-export const H1 = ({
-	children,
-	align = 'left',
-	color = 'standard',
-	inline = false,
-	truncate = false,
-}: TypographyProps) => {
-	const styles: CSSProperties = {
-		fontSize: '2rem',
-		fontWeight: 600,
-		lineHeight: 1.3,
-		marginBottom: inline ? 0 : '32px',
-		textAlign: align,
-		color: getColoredTextColor(color),
-		...(truncate && {
-			overflow: 'hidden',
-			whiteSpace: 'nowrap',
-			textOverflow: 'ellipsis',
-		}),
-	};
-	return <h1 style={styles}>{children}</h1>;
-};
+export const H1 = (props: HeadingProps) => renderHeading('h1', 'h1', props);
 
 /**
- * Secondary heading. Renders as `h2` at 1.5rem/600 weight.
+ * Secondary heading. Renders as `h2` using the `h2` typography role.
  *
  * @example
  * <H2>Section Title</H2>
  */
-export const H2 = ({
-	children,
-	align = 'left',
-	color = 'standard',
-	inline = false,
-	truncate = false,
-}: TypographyProps) => {
-	const styles: CSSProperties = {
-		fontSize: '1.5rem',
-		fontWeight: 600,
-		lineHeight: 1.3,
-		marginBottom: inline ? 0 : '24px',
-		textAlign: align,
-		color: getColoredTextColor(color),
-		...(truncate && {
-			overflow: 'hidden',
-			whiteSpace: 'nowrap',
-			textOverflow: 'ellipsis',
-		}),
-	};
-	return <h2 style={styles}>{children}</h2>;
-};
+export const H2 = (props: HeadingProps) => renderHeading('h2', 'h2', props);
 
 /**
- * Tertiary heading. Renders as `h3` at 1.25rem/600 weight.
+ * Tertiary heading. Renders as `h3` using the `h3` typography role.
  *
  * @example
  * <H3>Subsection Title</H3>
  */
-export const H3 = ({
-	children,
-	align = 'left',
-	color = 'standard',
-	inline = false,
-	truncate = false,
-}: TypographyProps) => {
-	const styles: CSSProperties = {
-		fontSize: '1.25rem',
-		fontWeight: 600,
-		lineHeight: 1.3,
-		marginBottom: inline ? 0 : '16px',
-		textAlign: align,
-		color: getColoredTextColor(color),
-		...(truncate && {
-			overflow: 'hidden',
-			whiteSpace: 'nowrap',
-			textOverflow: 'ellipsis',
-		}),
-	};
-	return <h3 style={styles}>{children}</h3>;
-};
+export const H3 = (props: HeadingProps) => renderHeading('h3', 'h3', props);
 
 export type TextProps = TypographyProps & {
-	/** Applies semibold weight @default `false` */
-	bold?: boolean;
-	/** Font size @default `'md'` */
-	size?: keyof FullUtilitySizes;
-};
-
-const TEXT_SIZES: FullUtilitySizes = {
-	xxs: '0.625rem',
-	xs: '0.75rem',
-	sm: '0.875rem',
-	md: '1rem',
-	lg: '1.125rem',
-	xl: '1.25rem',
-	xxl: '1.375rem',
+	/** Font size — body scale only @default `'md'` */
+	size?: BodyFontSizeOptions;
+	/** Font weight override @default role default (`'regular'`) */
+	weight?: FontWeightOptions;
+	/** Line height override @default role default (`'normal'`) */
+	lineHeight?: LineHeightOptions;
+	/** Letter spacing override @default role default (`'normal'`) */
+	letterSpacing?: LetterSpacingOptions;
 };
 
 /**
  * Body text. Renders as `p` by default or `span` when `inline` is true.
+ * Uses the `body` typography role with per-axis overrides available.
  *
  * @example
- * <Text size="sm" bold>Important note</Text>
+ * <Text size="sm" weight="semibold">Important note</Text>
  */
 export const Text = ({
 	children,
 	align = 'left',
 	inline = false,
 	color = 'standard',
-	bold = false,
 	size = 'md',
+	weight,
+	lineHeight,
+	letterSpacing,
 	truncate = false,
 }: TextProps) => {
 	const Component = inline ? 'span' : 'p';
-	const styles: CSSProperties = {
-		fontSize: TEXT_SIZES[size],
-		fontWeight: bold ? 600 : 400,
-		lineHeight: 1.5,
-		marginBottom: inline ? 0 : '0.25em',
-		textAlign: align,
-		color: getColoredTextColor(color),
-		...(truncate && {
-			overflow: 'hidden',
-			whiteSpace: 'nowrap',
-			textOverflow: 'ellipsis',
-		}),
-	};
 
-	return <Component style={styles}>{children}</Component>;
+	const resolved = getResolvedTypographyValues({
+		role: 'body',
+		fontSize: `body.${size}` as const,
+		fontWeight: weight,
+		lineHeight,
+		letterSpacing,
+	});
+
+	const className = cx(
+		getTypographyStyles(resolved),
+		getPresentationStyles({ align, truncate: truncate || undefined }),
+		getTextColorStyles(color)
+	);
+
+	// TODO: migrate marginBottom to spacing scale
+	return (
+		<Component className={className} style={{ marginBottom: inline ? 0 : '0.25em' }}>
+			{children}
+		</Component>
+	);
 };
 
 /**
- * Secondary text rendered as an inline `span`. Fluid font size between 0.875rem and 1.5rem.
+ * Standalone secondary text rendered as an inline `span`.
+ * For subtitles attached to headings, use the `subtitle` prop on Title/H1/H2/H3 instead.
  *
  * @example
  * <Subtitle>Last updated March 2025</Subtitle>
@@ -232,25 +247,29 @@ export const Text = ({
 export const Subtitle = ({
 	children,
 	align = 'left',
-	color = 'text-secondary',
+	color = 'secondary',
 	truncate = false,
 }: TypographyProps) => {
-	const styles: CSSProperties = {
-		display: 'block',
-		fontSize: '0.875rem',
-		marginTop: '0.2em',
-		textAlign: align,
-		color: getColoredTextColor(color),
-		...(truncate && {
-			overflow: 'hidden',
-			whiteSpace: 'nowrap',
-			textOverflow: 'ellipsis',
-		}),
-	};
-	return <span style={styles}>{children}</span>;
+	const resolved = getResolvedTypographyValues({
+		role: 'body',
+		fontSize: 'body.sm',
+	});
+
+	const className = cx(
+		getTypographyStyles(resolved),
+		getPresentationStyles({ align, truncate: truncate || undefined }),
+		getTextColorStyles(color)
+	);
+
+	// TODO: migrate marginTop to spacing scale
+	return (
+		<span className={className} style={{ display: 'block', marginTop: '0.2em' }}>
+			{children}
+		</span>
+	);
 };
 
-export type ListProps = Omit<TextProps, 'bold' | 'children' | 'inline' | 'truncate'> & {
+export type ListProps = Omit<TextProps, 'children' | 'inline' | 'truncate'> & {
 	/** Items to render in the list */
 	items: Array<string | ReactNode>;
 	/** List marker style @default `'disc'` */
@@ -267,22 +286,36 @@ export const List = ({
 	align = 'left',
 	color = 'standard',
 	size = 'md',
+	weight,
+	lineHeight,
+	letterSpacing,
 	items,
 	decoration = 'disc',
 }: ListProps) => {
-	const styles: CSSProperties = {
-		fontSize: TEXT_SIZES[size],
-		lineHeight: 1.5,
-		textAlign: align,
-		color: getColoredTextColor(color),
+	const resolved = getResolvedTypographyValues({
+		role: 'body',
+		fontSize: `body.${size}` as const,
+		fontWeight: weight,
+		lineHeight,
+		letterSpacing,
+	});
+
+	const itemClass = cx(
+		getTypographyStyles(resolved),
+		getPresentationStyles({ align }),
+		getTextColorStyles(color)
+	);
+
+	const listStyles: React.CSSProperties = {
+		padding: 0,
 		listStyleType: decoration === 'blank' ? 'none' : decoration,
 		marginLeft: decoration !== 'none' ? '1em' : undefined,
 	};
 
 	return (
-		<ul style={{ padding: 0 }}>
+		<ul style={listStyles}>
 			{items.map((item, index) => (
-				<li key={index} style={styles}>
+				<li key={index} className={itemClass}>
 					{item}
 				</li>
 			))}
@@ -302,21 +335,29 @@ export const OrderedList = ({
 	align = 'left',
 	color = 'standard',
 	size = 'md',
+	weight,
+	lineHeight,
+	letterSpacing,
 	items,
 }: OrderedListProps) => {
-	const styles: CSSProperties = {
-		fontSize: TEXT_SIZES[size],
-		lineHeight: 1.5,
-		textAlign: align,
-		color: getColoredTextColor(color),
-		listStyleType: 'decimal',
-		marginLeft: '1em',
-	};
+	const resolved = getResolvedTypographyValues({
+		role: 'body',
+		fontSize: `body.${size}` as const,
+		fontWeight: weight,
+		lineHeight,
+		letterSpacing,
+	});
+
+	const itemClass = cx(
+		getTypographyStyles(resolved),
+		getPresentationStyles({ align }),
+		getTextColorStyles(color)
+	);
 
 	return (
-		<ol style={{ padding: 0 }}>
+		<ol style={{ padding: 0, listStyleType: 'decimal', marginLeft: '1em' }}>
 			{items.map((item, index) => (
-				<li key={index} style={styles}>
+				<li key={index} className={itemClass}>
 					{item}
 				</li>
 			))}

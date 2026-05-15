@@ -80,11 +80,11 @@ const meta: Meta<TypographyArgs> = {
 			control: 'boolean',
 			description: 'Control wether Text is block or inline',
 		},
-		// Subtitle component controls
+		// Subtitle text — used both as standalone Subtitle and as heading subtitle prop
 		subtitleText: {
 			name: 'Subtitle Text',
 			control: 'text',
-			description: 'Content for the Subtitle component',
+			description: 'Subtitle content used by both <Subtitle> and the heading `subtitle` prop',
 		},
 	},
 } satisfies Meta<TypographyArgs>;
@@ -101,14 +101,15 @@ export const Typography: Story = {
 			{/* --- Page Header --- */}
 			<PageHeader title={args.pageHeaderTitle} caption={args.pageHeaderCaption} center />
 
-			{/* --- Main --- */}
-			<Title align={args.titleAlign}>
+			{/* --- Main: headings with subtitle prop --- */}
+			<Title align={args.titleAlign} subtitle={args.subtitleText}>
 				{args.titleText}
-				<Subtitle>{args.subtitleText}</Subtitle>
 			</Title>
-			<H1>{args.h1Text}</H1>
-			<H2>{args.h2Text}</H2>
-			<H3>{args.h3Text}</H3>
+			<H1 subtitle={args.subtitleText}>{args.h1Text}</H1>
+			<H2 subtitle={args.subtitleText}>{args.h2Text}</H2>
+			<H3 subtitle={args.subtitleText}>{args.h3Text}</H3>
+
+			{/* --- Body + standalone Subtitle --- */}
 			<Text>{args.paragraphText}</Text>
 			<Subtitle>{args.subtitleText}</Subtitle>
 
@@ -119,7 +120,7 @@ export const Typography: Story = {
 
 			{/* --- Variants --- */}
 			<div style={{ marginTop: '48px', borderTop: '1px solid #eee', paddingTop: '32px' }}>
-				{/* Text sizes + bold side by side */}
+				{/* Text sizes + semibold + bold side by side */}
 				<div style={{ display: 'flex', gap: '48px', marginBottom: '32px' }}>
 					<div>
 						<H3>Text Sizes</H3>
@@ -131,23 +132,44 @@ export const Typography: Story = {
 						<Text size="xl">xl — The quick brown fox</Text>
 					</div>
 					<div>
-						<H3>Bold</H3>
-						<Text size="xxs" bold>
+						<H3>Semibold</H3>
+						<Text size="xxs" weight="semibold">
 							xxs — The quick brown fox
 						</Text>
-						<Text size="xs" bold>
+						<Text size="xs" weight="semibold">
 							xs — The quick brown fox
 						</Text>
-						<Text size="sm" bold>
+						<Text size="sm" weight="semibold">
 							sm — The quick brown fox
 						</Text>
-						<Text size="md" bold>
+						<Text size="md" weight="semibold">
 							md — The quick brown fox
 						</Text>
-						<Text size="lg" bold>
+						<Text size="lg" weight="semibold">
 							lg — The quick brown fox
 						</Text>
-						<Text size="xl" bold>
+						<Text size="xl" weight="semibold">
+							xl — The quick brown fox
+						</Text>
+					</div>
+					<div>
+						<H3>Bold</H3>
+						<Text size="xxs" weight="bold">
+							xxs — The quick brown fox
+						</Text>
+						<Text size="xs" weight="bold">
+							xs — The quick brown fox
+						</Text>
+						<Text size="sm" weight="bold">
+							sm — The quick brown fox
+						</Text>
+						<Text size="md" weight="bold">
+							md — The quick brown fox
+						</Text>
+						<Text size="lg" weight="bold">
+							lg — The quick brown fox
+						</Text>
+						<Text size="xl" weight="bold">
 							xl — The quick brown fox
 						</Text>
 					</div>
@@ -157,25 +179,25 @@ export const Typography: Story = {
 				<div style={{ display: 'flex', gap: '48px', marginBottom: '32px' }}>
 					<div>
 						<H3>List Decorations</H3>
-						<Text size="xs" bold inline>
+						<Text size="xs" weight="semibold" inline>
 							disc
 						</Text>
 						<List items={['Item one', 'Item two', 'Item three']} decoration="disc" />
-						<Text size="xs" bold inline>
+						<Text size="xs" weight="semibold" inline>
 							circle
 						</Text>
 						<List items={['Item one', 'Item two', 'Item three']} decoration="circle" />
-						<Text size="xs" bold inline>
+						<Text size="xs" weight="semibold" inline>
 							square
 						</Text>
 						<List items={['Item one', 'Item two', 'Item three']} decoration="square" />
 					</div>
 					<div style={{ marginTop: '36px' }}>
-						<Text size="xs" bold inline>
+						<Text size="xs" weight="semibold" inline>
 							blank
 						</Text>
 						<List items={['Item one', 'Item two', 'Item three']} decoration="blank" />
-						<Text size="xs" bold inline>
+						<Text size="xs" weight="semibold" inline>
 							none
 						</Text>
 						<List items={['Item one', 'Item two', 'Item three']} decoration="none" />
