@@ -5,60 +5,40 @@ import { getColoredTextColor } from '@/utils';
 import { CSSProperties, ReactNode } from 'react';
 
 const getTypographyStyles = cva({
-	base: {},
 	variants: {
 		fontFamily: {
-			headings: {
-				fontFamily: 'heading',
-			},
-			body: {
-				fontFamily: 'body',
-			},
-			mono: {
-				fontFamily: 'mono',
-			},
+			body: { fontFamily: 'body' },
+			heading: { fontFamily: 'heading' },
+			mono: { fontFamily: 'mono' },
+		},
+		fontSize: {
+			'heading.sm': { fontSize: 'heading.sm' },
+			'heading.md': { fontSize: 'heading.md' },
+			'heading.lg': { fontSize: 'heading.lg' },
+			'heading.xl': { fontSize: 'heading.xl' },
+			'body.xs': { fontSize: 'body.xs' },
+			'body.sm': { fontSize: 'body.sm' },
+			'body.md': { fontSize: 'body.md' },
+			'body.lg': { fontSize: 'body.lg' },
+			'body.xl': { fontSize: 'body.xl' },
 		},
 		fontWeight: {
-			regular: {
-				fontWeight: 'regular',
-			},
-			medium: {
-				fontWeight: 'medium',
-			},
-			semibold: {
-				fontWeight: 'semibold',
-			},
-			bold: {
-				fontWeight: 'bold',
-			},
+			regular: { fontWeight: 'regular' },
+			medium: { fontWeight: 'medium' },
+			semibold: { fontWeight: 'semibold' },
+			bold: { fontWeight: 'bold' },
 		},
 		lineHeight: {
-			tighter: {
-				lineHeight: 'tighter',
-			},
-			tight: {
-				lineHeight: 'tight',
-			},
-			normal: {
-				lineHeight: 'normal',
-			},
-			loose: {
-				lineHeight: 'loose',
-			},
-			looser: {
-				lineHeight: 'looser',
-			},
+			tighter: { lineHeight: 'tighter' },
+			tight: { lineHeight: 'tight' },
+			normal: { lineHeight: 'normal' },
+			loose: { lineHeight: 'loose' },
+			looser: { lineHeight: 'looser' },
 		},
-		letterSpacings: {
-			tight: {
-				letterSpacing: 'tight',
-			},
-			normal: {
-				letterSpacing: 'normal',
-			},
-			wide: {
-				letterSpacing: 'wide',
-			},
+		letterSpacing: {
+			tight: { letterSpacing: 'tight' },
+			normal: { letterSpacing: 'normal' },
+			wide: { letterSpacing: 'wide' },
 		},
 	},
 });
