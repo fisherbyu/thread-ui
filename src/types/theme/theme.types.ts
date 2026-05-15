@@ -188,6 +188,20 @@ export type ThemeFontSizes = Prettify<{
 	body: BodyFontSizes;
 }>;
 
+/** Font weight scale */
+export type FontWeights = {
+	thin: number;
+	extralight: number;
+	light: number;
+	regular: number;
+	medium: number;
+	semibold: number;
+	bold: number;
+};
+
+/** Key union of font weight options */
+export type FontWeightOptions = Prettify<keyof FontWeights>;
+
 /** Theme Layout Configuration */
 export type ThemeLayout = {
 	breakpoints: BreakpointOptions;
