@@ -31,32 +31,30 @@ export type UtilitySizes = {
 /** Key union of the base size scale */
 export type UtilitySizeOptions = Prettify<keyof UtilitySizes>;
 
-type ExtendedSmallOptions = {
+type ExtendedSmallSizes = {
 	xs: string;
 };
 
-type FullSmallOptions = ExtendedSmallOptions & {
+type FullSmallOptions = ExtendedSmallSizes & {
 	xxs: string;
 };
 
-type ExtendedLargeOptions = {
+type ExtendedLargeSizes = {
 	xl: string;
 };
 
-type FullLargeOptions = ExtendedLargeOptions & {
+type FullLargeSizes = ExtendedLargeSizes & {
 	xxl: string;
 };
 
 /** Extended size scale including extra small and extra large steps */
-export type ExtendedUtilitySizes = Prettify<
-	ExtendedSmallOptions & UtilitySizes & ExtendedLargeOptions
->;
+export type ExtendedUtilitySizes = Prettify<ExtendedSmallSizes & UtilitySizes & ExtendedLargeSizes>;
 
 /** Key union of the extended size scale */
-export type ExtendedUtilityOptions = Prettify<keyof ExtendedUtilitySizes>;
+export type ExtendedUtilitySizesOptions = Prettify<keyof ExtendedUtilitySizes>;
 
 /** Full size scale including extra-extra small and extra-extra large steps */
-export type FullUtilitySizes = Prettify<FullSmallOptions & UtilitySizes & FullLargeOptions>;
+export type FullUtilitySizes = Prettify<FullSmallOptions & UtilitySizes & FullLargeSizes>;
 
 /** Key union of the full expanded size scale */
 export type FullUtilitySizeOptions = Prettify<keyof FullUtilitySizes>;
@@ -175,7 +173,7 @@ export type BodyFontSizes = Prettify<ExtendedUtilitySizes>;
 export type BodyFontSizeOptions = Prettify<keyof BodyFontSizes>;
 
 /** Heading size scale (1.25rem → 3rem) */
-export type HeadingFontSizes = Prettify<UtilitySizes & ExtendedLargeOptions>;
+export type HeadingFontSizes = Prettify<UtilitySizes & ExtendedLargeSizes>;
 
 /** Key union of heading font size steps */
 export type HeadingFontSizeOptions = Prettify<keyof HeadingFontSizes>;
