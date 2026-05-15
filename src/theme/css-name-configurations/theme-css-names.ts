@@ -3,22 +3,9 @@ import { prefixVariables, wrapVariables } from './theme-helper-utils';
 
 export const THREAD_CSS_VARIABLE_PREFIX = '--thread-' as const;
 
-/** Recursively replaces all `number` leaves with `string`. Used to type CSS variable name maps that need string identifiers in place of numeric theme values (e.g. fontWeights, lineHeights). */
-type NumberLeavesAsStrings<T> = {
-	[K in keyof T]: T[K] extends number
-		? string
-		: T[K] extends string
-			? string
-			: T[K] extends object
-				? NumberLeavesAsStrings<T[K]>
-				: T[K];
+type AllThemeCssNames = ThemeConfigFull & {
+	lightMode: ModeColors;
 };
-
-type AllThemeCssNames = NumberLeavesAsStrings<
-	ThemeConfigFull & {
-		lightMode: ModeColors;
-	}
->;
 
 /**
  * Base CSS Names for Every Thread Theme Property
