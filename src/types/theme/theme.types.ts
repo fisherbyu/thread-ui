@@ -167,7 +167,7 @@ export type FontFamilies = {
 export type FontFamilyOptions = Prettify<keyof FontFamilies>;
 
 /** Body text size scale */
-export type BodyFontSizes = Prettify<ExtendedUtilitySizes>;
+export type BodyFontSizes = Prettify<FullSmallSizes & UtilitySizes & ExtendedLargeSizes>;
 
 /** Key union of body font size steps */
 export type BodyFontSizeOptions = Prettify<keyof BodyFontSizes>;
