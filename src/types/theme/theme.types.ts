@@ -35,7 +35,7 @@ type ExtendedSmallSizes = {
 	xs: string;
 };
 
-type FullSmallOptions = ExtendedSmallSizes & {
+type FullSmallSizes = ExtendedSmallSizes & {
 	xxs: string;
 };
 
@@ -54,13 +54,13 @@ export type ExtendedUtilitySizes = Prettify<ExtendedSmallSizes & UtilitySizes & 
 export type ExtendedUtilitySizesOptions = Prettify<keyof ExtendedUtilitySizes>;
 
 /** Full size scale including extra-extra small and extra-extra large steps */
-export type FullUtilitySizes = Prettify<FullSmallOptions & UtilitySizes & FullLargeSizes>;
+export type FullUtilitySizes = Prettify<FullSmallSizes & UtilitySizes & FullLargeSizes>;
 
 /** Key union of the full expanded size scale */
 export type FullUtilitySizeOptions = Prettify<keyof FullUtilitySizes>;
 
 /** Size scale extended with responsive breakpoint steps */
-export type BreakpointOptions = Omit<FullUtilitySizes, keyof FullSmallOptions>;
+export type BreakpointOptions = Omit<FullUtilitySizes, keyof FullSmallSizes>;
 
 /** Surface Hierarchy and Layer Colors */
 export type SurfaceColors = {
