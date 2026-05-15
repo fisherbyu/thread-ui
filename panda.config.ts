@@ -112,6 +112,7 @@ export default defineConfig({
 						xl: { value: 'var(--thread-font-size-heading-xl)' },
 					},
 					body: {
+						xxs: { value: 'var(--thread-font-size-body-xxs)' },
 						xs: { value: 'var(--thread-font-size-body-xs)' },
 						sm: { value: 'var(--thread-font-size-body-sm)' },
 						md: { value: 'var(--thread-font-size-body-md)' },
