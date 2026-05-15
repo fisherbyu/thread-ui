@@ -3,6 +3,7 @@ import { ColoredTextOptions } from '@/types';
 import { FullUtilitySizes } from '@/types/theme/theme.types';
 import { getColoredTextColor } from '@/utils';
 import { CSSProperties, ReactNode } from 'react';
+import { getTextColorStyles } from '@/utils'; // Panda CSS util that needs to be used
 
 const getTypographyStyles = cva({
 	variants: {
@@ -16,6 +17,7 @@ const getTypographyStyles = cva({
 			'heading.md': { fontSize: 'heading.md' },
 			'heading.lg': { fontSize: 'heading.lg' },
 			'heading.xl': { fontSize: 'heading.xl' },
+			'body.xxs': { fontSize: 'body.xxs' },
 			'body.xs': { fontSize: 'body.xs' },
 			'body.sm': { fontSize: 'body.sm' },
 			'body.md': { fontSize: 'body.md' },
