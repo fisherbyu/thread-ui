@@ -144,7 +144,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 			loose: 1.7, // long-form reading
 			looser: 2.0, // callouts, marketing copy
 		},
-		letterSpaces: {
+		letterSpacings: {
 			tight: '-0.02em', // display tightening
 			normal: '0', // default
 			wide: '0.05em', // labels, all-caps, eyebrows

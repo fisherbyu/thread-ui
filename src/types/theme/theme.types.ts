@@ -239,7 +239,7 @@ export type TypographyConfiguration = Prettify<{
 	fontSizes: ThemeFontSizes;
 	fontWeights: FontWeights;
 	lineHeights: LineHeights;
-	letterSpaces: LetterSpacings;
+	letterSpacings: LetterSpacings;
 }>;
 
 /** Theme Layout Configuration */
