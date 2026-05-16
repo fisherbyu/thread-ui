@@ -178,6 +178,9 @@ export type HeadingFontSizes = Prettify<UtilitySizes & ExtendedLargeSizes>;
 /** Key union of heading font size steps */
 export type HeadingFontSizeOptions = Prettify<keyof HeadingFontSizes>;
 
+/** Em-based margin ratios for typography roles */
+export type TypographyMarginOptions = '0' | '0.5em' | '0.75em' | '1em';
+
 /** Combined font size scales */
 export type ThemeFontSizes = Prettify<{
 	heading: HeadingFontSizes;
