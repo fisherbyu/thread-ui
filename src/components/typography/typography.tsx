@@ -397,3 +397,35 @@ export const OrderedList = ({
 		</ol>
 	);
 };
+
+/**
+ * Code typography component for code display. Renders as `<code>`.
+ *
+ * @example
+ * <Text>Run <Code>npm install</Code> to get started.</Text>
+ */
+export type CodeProps = TypographyProps & {
+	/** Font size — body scale only @default `'sm'` */
+	size?: BodyFontSizeOptions;
+};
+
+export const Code = ({
+	children,
+	align = 'left',
+	color = 'standard',
+	size = 'sm',
+	truncate = false,
+}: CodeProps) => {
+	const resolved = getResolvedTypographyValues({
+		role: 'code',
+		fontSize: `body.${size}` as const,
+	});
+
+	const className = cx(
+		getTypographyStyles(resolved),
+		getPresentationStyles({ align, truncate: truncate || undefined }),
+		getTextColorStyles(color)
+	);
+
+	return <code className={className}>{children}</code>;
+};
