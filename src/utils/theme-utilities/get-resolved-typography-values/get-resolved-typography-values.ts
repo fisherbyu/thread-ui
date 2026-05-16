@@ -16,7 +16,7 @@ type GetResolvedTypographyValuesProps = {
 	fontWeight?: FontWeightOptions;
 	lineHeight?: LineHeightOptions;
 	letterSpacing?: LetterSpacingOptions;
-	marginBottomRatio?: TypographyMarginOptions;
+	marginBottom?: TypographyMarginOptions;
 };
 
 export const getResolvedTypographyValues = ({
@@ -26,7 +26,7 @@ export const getResolvedTypographyValues = ({
 	fontWeight,
 	lineHeight,
 	letterSpacing,
-	marginBottomRatio,
+	marginBottom,
 }: GetResolvedTypographyValuesProps): TypographyRole => {
 	const defaults = TypographyRoles[role];
 
@@ -36,6 +36,6 @@ export const getResolvedTypographyValues = ({
 		fontWeight: fontWeight ?? defaults.fontWeight,
 		lineHeight: lineHeight ?? defaults.lineHeight,
 		letterSpacing: letterSpacing ?? defaults.letterSpacing,
-		marginBottomRatio: marginBottomRatio ?? defaults.marginBottomRatio,
+		marginBottom: marginBottom ?? defaults.marginBottom,
 	};
 };

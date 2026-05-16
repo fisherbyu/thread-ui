@@ -48,7 +48,7 @@ const getTypographyStyles = cva({
 			normal: { letterSpacing: 'normal' },
 			wide: { letterSpacing: 'wide' },
 		},
-		marginBottomRatio: {
+		marginBottom: {
 			'0': { marginBottom: '0' },
 			'0.5em': { marginBottom: '0.5em' },
 			'0.75em': { marginBottom: '0.75em' },
@@ -122,7 +122,7 @@ const renderHeading = (
 	if (!subtitle) {
 		const resolved = getResolvedTypographyValues({
 			role,
-			marginBottomRatio: inline ? '0' : undefined,
+			marginBottom: inline ? '0' : undefined,
 		});
 
 		const headingClass = cx(
@@ -137,7 +137,7 @@ const renderHeading = (
 	// Wrap subtitle and heading in hgroup, add margin to wrapper
 	const headingResolved = getResolvedTypographyValues({
 		role,
-		marginBottomRatio: '0',
+		marginBottom: '0',
 	});
 
 	const headingClass = cx(
@@ -149,7 +149,7 @@ const renderHeading = (
 	const subtitleRole = SUBTITLE_ROLE_MAP[role];
 	const subtitleResolved = getResolvedTypographyValues({
 		role: subtitleRole,
-		marginBottomRatio: '0',
+		marginBottom: '0',
 	});
 
 	const subtitleClass = cx(
@@ -161,12 +161,12 @@ const renderHeading = (
 	// Derive hgroup outer margin from heading
 	const wrapperResolved = getResolvedTypographyValues({
 		role,
-		marginBottomRatio: inline ? '0' : undefined,
+		marginBottom: inline ? '0' : undefined,
 	});
 
 	const wrapperClass = getTypographyStyles({
 		fontSize: wrapperResolved.fontSize,
-		marginBottomRatio: wrapperResolved.marginBottomRatio,
+		marginBottom: wrapperResolved.marginBottom,
 	});
 
 	return (
@@ -220,7 +220,7 @@ export type TextProps = TypographyProps & {
 	/** Letter spacing override @default role default (`'normal'`) */
 	letterSpacing?: LetterSpacingOptions;
 	/** Bottom margin override @default role default (`'0.5em'`) */
-	marginBottomRatio?: TypographyMarginOptions;
+	marginBottom?: TypographyMarginOptions;
 };
 
 /**
@@ -242,7 +242,7 @@ export const Text = ({
 	weight,
 	lineHeight,
 	letterSpacing,
-	marginBottomRatio,
+	marginBottom,
 	truncate = false,
 }: TextProps) => {
 	const Component = inline ? 'span' : 'p';
@@ -253,7 +253,7 @@ export const Text = ({
 		fontWeight: weight,
 		lineHeight,
 		letterSpacing,
-		marginBottomRatio: inline ? '0' : marginBottomRatio,
+		marginBottom: inline ? '0' : marginBottom,
 	});
 
 	const className = cx(
@@ -281,7 +281,7 @@ export const Subtitle = ({
 	const resolved = getResolvedTypographyValues({
 		role: 'body',
 		fontSize: 'body.sm',
-		marginBottomRatio: '0',
+		marginBottom: '0',
 	});
 
 	const className = cx(
@@ -297,10 +297,7 @@ export const Subtitle = ({
 	);
 };
 
-export type ListProps = Omit<
-	TextProps,
-	'children' | 'inline' | 'truncate' | 'marginBottomRatio'
-> & {
+export type ListProps = Omit<TextProps, 'children' | 'inline' | 'truncate' | 'marginBottom'> & {
 	/** Items to render in the list */
 	items: Array<string | ReactNode>;
 	/** List marker style @default `'disc'` */
@@ -329,7 +326,7 @@ export const List = ({
 		fontWeight: weight,
 		lineHeight,
 		letterSpacing,
-		marginBottomRatio: '0',
+		marginBottom: '0',
 	});
 
 	const itemClass = cx(
@@ -378,7 +375,7 @@ export const OrderedList = ({
 		fontWeight: weight,
 		lineHeight,
 		letterSpacing,
-		marginBottomRatio: '0',
+		marginBottom: '0',
 	});
 
 	const itemClass = cx(
