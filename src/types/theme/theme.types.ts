@@ -248,6 +248,7 @@ export type TypographyConfiguration = Prettify<{
 
 /** Theme Layout Configuration */
 export type ThemeLayout = {
+	spacing: SpacingScale;
 	breakpoints: BreakpointOptions;
 };
 
