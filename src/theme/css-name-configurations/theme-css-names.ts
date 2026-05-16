@@ -100,6 +100,16 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		xl: 'breakpoint-xl',
 		xxl: 'breakpoint-xxl',
 	},
+	spacing: {
+		none: 'spacing-none',
+		xxs: 'spacing-xxs',
+		xs: 'spacing-xs',
+		sm: 'spacing-sm',
+		md: 'spacing-md',
+		lg: 'spacing-lg',
+		xl: 'spacing-xl',
+		xxl: 'spacing-xl',
+	},
 
 	// Z Indexes
 	zIndex: {
