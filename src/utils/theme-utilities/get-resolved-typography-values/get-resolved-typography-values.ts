@@ -16,7 +16,7 @@ type GetResolvedTypographyValuesProps = {
 	fontWeight?: FontWeightOptions;
 	lineHeight?: LineHeightOptions;
 	letterSpacing?: LetterSpacingOptions;
-	marginBottomRatio: TypographyMarginOptions;
+	marginBottomRatio?: TypographyMarginOptions;
 };
 
 export const getResolvedTypographyValues = ({
