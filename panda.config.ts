@@ -71,6 +71,17 @@ export default defineConfig({
 					// Scrim
 					scrim: { value: 'var(--thread-scrim)' },
 				},
+				// Spacing tokens
+				spacing: {
+					none: { value: 'var(--thread-spacing-none)' },
+					xxs: { value: 'var(--thread-spacing-xxs)' },
+					xs: { value: 'var(--thread-spacing-xs)' },
+					sm: { value: 'var(--thread-spacing-sm)' },
+					md: { value: 'var(--thread-spacing-md)' },
+					lg: { value: 'var(--thread-spacing-lg)' },
+					xl: { value: 'var(--thread-spacing-xl)' },
+					xxl: { value: 'var(--thread-spacing-xxl)' },
+				},
 				// Border radius tokens
 				radii: {
 					sm: { value: 'var(--thread-border-radius-sm)' },
