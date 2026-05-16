@@ -4,6 +4,7 @@ import {
 	FontWeightOptions,
 	LetterSpacingOptions,
 	LineHeightOptions,
+	TypographyMarginOptions,
 	TypographyRoleOptions,
 } from '@/types';
 
@@ -13,6 +14,7 @@ export type TypographyRole = {
 	fontWeight: FontWeightOptions;
 	lineHeight: LineHeightOptions;
 	letterSpacing: LetterSpacingOptions;
+	marginBottomRatio: TypographyMarginOptions;
 };
 
 export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
@@ -22,6 +24,7 @@ export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
 		fontWeight: 'bold',
 		lineHeight: 'tight',
 		letterSpacing: 'tight',
+		marginBottomRatio: '1em',
 	},
 	h1: {
 		fontFamily: 'heading',
@@ -29,6 +32,7 @@ export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
 		fontWeight: 'semibold',
 		lineHeight: 'tight',
 		letterSpacing: 'normal',
+		marginBottomRatio: '0.75em',
 	},
 	h2: {
 		fontFamily: 'heading',
@@ -36,6 +40,7 @@ export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
 		fontWeight: 'semibold',
 		lineHeight: 'tight',
 		letterSpacing: 'normal',
+		marginBottomRatio: '0.75em',
 	},
 	h3: {
 		fontFamily: 'heading',
@@ -43,6 +48,7 @@ export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
 		fontWeight: 'semibold',
 		lineHeight: 'tight',
 		letterSpacing: 'normal',
+		marginBottomRatio: '0.75em',
 	},
 	body: {
 		fontFamily: 'body',
@@ -50,6 +56,7 @@ export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
 		fontWeight: 'regular',
 		lineHeight: 'normal',
 		letterSpacing: 'normal',
+		marginBottomRatio: '0.5em',
 	},
 	code: {
 		fontFamily: 'mono',
@@ -57,5 +64,6 @@ export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
 		fontWeight: 'regular',
 		lineHeight: 'normal',
 		letterSpacing: 'normal',
+		marginBottomRatio: '0',
 	},
 };
