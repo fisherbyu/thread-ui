@@ -49,6 +49,12 @@ const getTypographyStyles = cva({
 			normal: { letterSpacing: 'normal' },
 			wide: { letterSpacing: 'wide' },
 		},
+		marginBottom: {
+			'0': { marginBottom: '0' },
+			'0.5em': { marginBottom: '0.5em' },
+			'0.75em': { marginBottom: '0.75em' },
+			'1em': { marginBottom: '1em' },
+		},
 	},
 });
 
