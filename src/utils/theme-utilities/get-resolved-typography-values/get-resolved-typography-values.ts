@@ -5,7 +5,7 @@ import {
 	FontWeightOptions,
 	LetterSpacingOptions,
 	LineHeightOptions,
-	TypographyMarginOptions,
+	SpacingScaleOptions,
 	TypographyRoleOptions,
 } from '@/types';
 
@@ -16,7 +16,7 @@ type GetResolvedTypographyValuesProps = {
 	fontWeight?: FontWeightOptions;
 	lineHeight?: LineHeightOptions;
 	letterSpacing?: LetterSpacingOptions;
-	marginBottom?: TypographyMarginOptions;
+	marginBottom?: SpacingScaleOptions;
 };
 
 export const getResolvedTypographyValues = ({

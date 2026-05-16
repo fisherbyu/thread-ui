@@ -4,7 +4,7 @@ import {
 	FontWeightOptions,
 	LetterSpacingOptions,
 	LineHeightOptions,
-	TypographyMarginOptions,
+	SpacingScaleOptions,
 	TypographyRoleOptions,
 } from '@/types';
 
@@ -14,7 +14,7 @@ export type TypographyRole = {
 	fontWeight: FontWeightOptions;
 	lineHeight: LineHeightOptions;
 	letterSpacing: LetterSpacingOptions;
-	marginBottom: TypographyMarginOptions;
+	marginBottom: SpacingScaleOptions;
 };
 
 export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {

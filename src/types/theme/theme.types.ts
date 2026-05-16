@@ -182,7 +182,7 @@ export type HeadingFontSizeOptions = Prettify<keyof HeadingFontSizes>;
 export type SpacingScale = Prettify<{ none: string } & FullUtilitySizes>;
 
 /** Em-based margin ratios for typography roles */
-export type TypographyMarginOptions = '0' | '0.5em' | '0.75em' | '1em';
+export type SpacingScaleOptions = '0' | '0.5em' | '0.75em' | '1em';
 
 /** Combined font size scales */
 export type ThemeFontSizes = Prettify<{

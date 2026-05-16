@@ -6,7 +6,7 @@ import {
 	FontWeightOptions,
 	LetterSpacingOptions,
 	LineHeightOptions,
-	TypographyMarginOptions,
+	SpacingScaleOptions,
 } from '@/types';
 import { ReactNode } from 'react';
 
@@ -220,7 +220,7 @@ export type TextProps = TypographyProps & {
 	/** Letter spacing override @default role default (`'normal'`) */
 	letterSpacing?: LetterSpacingOptions;
 	/** Bottom margin override @default role default (`'0.5em'`) */
-	marginBottom?: TypographyMarginOptions;
+	marginBottom?: SpacingScaleOptions;
 };
 
 /**
