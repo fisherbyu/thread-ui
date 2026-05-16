@@ -24,7 +24,7 @@ export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
 		fontWeight: 'bold',
 		lineHeight: 'tight',
 		letterSpacing: 'tight',
-		marginBottomRatio: '1em',
+		marginBottomRatio: '0.75em',
 	},
 	h1: {
 		fontFamily: 'heading',
@@ -56,7 +56,7 @@ export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
 		fontWeight: 'regular',
 		lineHeight: 'normal',
 		letterSpacing: 'normal',
-		marginBottomRatio: '0.5em',
+		marginBottomRatio: '0.75em',
 	},
 	code: {
 		fontFamily: 'mono',
