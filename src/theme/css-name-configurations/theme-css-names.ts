@@ -108,7 +108,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		md: 'spacing-md',
 		lg: 'spacing-lg',
 		xl: 'spacing-xl',
-		xxl: 'spacing-xl',
+		xxl: 'spacing-xxl',
 	},
 
 	// Z Indexes
