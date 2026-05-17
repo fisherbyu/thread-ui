@@ -87,6 +87,16 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		xl: '1280',
 		xxl: '1536',
 	},
+	spacing: {
+		none: '0px',
+		xxs: '4px',
+		xs: '8px',
+		sm: '12px',
+		md: '16px',
+		lg: '24px',
+		xl: '32px',
+		xxl: '48px',
+	},
 
 	zIndex: {
 		base: '0',

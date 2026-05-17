@@ -35,6 +35,14 @@
 	--thread-breakpoint-lg: 1024;
 	--thread-breakpoint-xl: 1280;
 	--thread-breakpoint-xxl: 1536;
+	--thread-spacing-none: 0px;
+	--thread-spacing-xxs: 4px;
+	--thread-spacing-xs: 8px;
+	--thread-spacing-sm: 12px;
+	--thread-spacing-md: 16px;
+	--thread-spacing-lg: 24px;
+	--thread-spacing-xl: 32px;
+	--thread-spacing-xxl: 48px;
 	--thread-z-index-base: 0;
 	--thread-z-index-sticky: 100;
 	--thread-z-index-overlay: 200;
