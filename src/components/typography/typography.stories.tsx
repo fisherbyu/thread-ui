@@ -120,6 +120,7 @@ export const Typography: Story = {
 
 			{/* --- Body + standalone Subtitle --- */}
 			<Text>{args.paragraphText}</Text>
+			<Text>{args.paragraphText}</Text>
 			{args.showSubtitles && <Subtitle>{args.subtitleText}</Subtitle>}
 
 			<div style={{ display: 'flex', gap: '48px', marginTop: '8px' }}>
