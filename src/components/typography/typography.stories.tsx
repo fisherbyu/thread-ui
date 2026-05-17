@@ -13,6 +13,7 @@ type TypographyArgs = {
 	paragraphText: string;
 	textInline: boolean;
 	subtitleText: string;
+	showSubtitles: boolean;
 };
 
 // Define the Meta for the Typography components
@@ -86,6 +87,11 @@ const meta: Meta<TypographyArgs> = {
 			control: 'text',
 			description: 'Subtitle content used by both <Subtitle> and the heading `subtitle` prop',
 		},
+		showSubtitles: {
+			name: 'Show Subtitle',
+			control: 'boolean',
+			description: 'Toggle subtitles on the heading components',
+		},
 	},
 } satisfies Meta<TypographyArgs>;
 
@@ -102,16 +108,19 @@ export const Typography: Story = {
 			<PageHeader title={args.pageHeaderTitle} caption={args.pageHeaderCaption} center />
 
 			{/* --- Main: headings with subtitle prop --- */}
-			<Title align={args.titleAlign} subtitle={args.subtitleText}>
+			<Title
+				align={args.titleAlign}
+				subtitle={args.showSubtitles ? args.subtitleText : undefined}
+			>
 				{args.titleText}
 			</Title>
-			<H1 subtitle={args.subtitleText}>{args.h1Text}</H1>
-			<H2 subtitle={args.subtitleText}>{args.h2Text}</H2>
-			<H3 subtitle={args.subtitleText}>{args.h3Text}</H3>
+			<H1 subtitle={args.showSubtitles ? args.subtitleText : undefined}>{args.h1Text}</H1>
+			<H2 subtitle={args.showSubtitles ? args.subtitleText : undefined}>{args.h2Text}</H2>
+			<H3 subtitle={args.showSubtitles ? args.subtitleText : undefined}>{args.h3Text}</H3>
 
 			{/* --- Body + standalone Subtitle --- */}
 			<Text>{args.paragraphText}</Text>
-			<Subtitle>{args.subtitleText}</Subtitle>
+			{args.showSubtitles && <Subtitle>{args.subtitleText}</Subtitle>}
 
 			<div style={{ display: 'flex', gap: '48px', marginTop: '8px' }}>
 				<List items={['Disc item one', 'Disc item two', 'Disc item three']} />
@@ -231,5 +240,6 @@ export const Typography: Story = {
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 		textInline: false,
 		subtitleText: 'Subtitle',
+		showSubtitles: true,
 	},
 };
