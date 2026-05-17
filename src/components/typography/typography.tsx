@@ -49,10 +49,14 @@ const getTypographyStyles = cva({
 			wide: { letterSpacing: 'wide' },
 		},
 		marginBottom: {
-			'0': { marginBottom: '0' },
-			'0.5em': { marginBottom: '0.5em' },
-			'0.75em': { marginBottom: '0.75em' },
-			'1em': { marginBottom: '1em' },
+			none: { marginBottom: 'none' },
+			xxs: { marginBottom: 'xxs' },
+			xs: { marginBottom: 'xs' },
+			sm: { marginBottom: 'sm' },
+			md: { marginBottom: 'md' },
+			lg: { marginBottom: 'lg' },
+			xl: { marginBottom: 'xl' },
+			xxl: { marginBottom: 'xxl' },
 		},
 	},
 });
@@ -122,7 +126,7 @@ const renderHeading = (
 	if (!subtitle) {
 		const resolved = getResolvedTypographyValues({
 			role,
-			marginBottom: inline ? '0' : undefined,
+			marginBottom: inline ? 'none' : undefined,
 		});
 
 		const headingClass = cx(
@@ -137,7 +141,7 @@ const renderHeading = (
 	// Wrap subtitle and heading in hgroup, add margin to wrapper
 	const headingResolved = getResolvedTypographyValues({
 		role,
-		marginBottom: '0',
+		marginBottom: 'none',
 	});
 
 	const headingClass = cx(
@@ -149,7 +153,7 @@ const renderHeading = (
 	const subtitleRole = SUBTITLE_ROLE_MAP[role];
 	const subtitleResolved = getResolvedTypographyValues({
 		role: subtitleRole,
-		marginBottom: '0',
+		marginBottom: 'none',
 	});
 
 	const subtitleClass = cx(
@@ -161,7 +165,7 @@ const renderHeading = (
 	// Derive hgroup outer margin from heading
 	const wrapperResolved = getResolvedTypographyValues({
 		role,
-		marginBottom: inline ? '0' : undefined,
+		marginBottom: inline ? 'none' : undefined,
 	});
 
 	const wrapperClass = getTypographyStyles({
@@ -253,7 +257,7 @@ export const Text = ({
 		fontWeight: weight,
 		lineHeight,
 		letterSpacing,
-		marginBottom: inline ? '0' : marginBottom,
+		marginBottom: inline ? 'none' : marginBottom,
 	});
 
 	const className = cx(
@@ -281,7 +285,7 @@ export const Subtitle = ({
 	const resolved = getResolvedTypographyValues({
 		role: 'body',
 		fontSize: 'body.sm',
-		marginBottom: '0',
+		marginBottom: 'none',
 	});
 
 	const className = cx(
@@ -326,7 +330,7 @@ export const List = ({
 		fontWeight: weight,
 		lineHeight,
 		letterSpacing,
-		marginBottom: '0',
+		marginBottom: 'none',
 	});
 
 	const itemClass = cx(
@@ -375,7 +379,7 @@ export const OrderedList = ({
 		fontWeight: weight,
 		lineHeight,
 		letterSpacing,
-		marginBottom: '0',
+		marginBottom: 'none',
 	});
 
 	const itemClass = cx(
