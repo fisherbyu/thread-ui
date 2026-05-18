@@ -272,7 +272,7 @@ export const Text = ({
 };
 
 export type SubtitleProps = TypographyProps & {
-	fontFamily: Extract<FontFamilyOptions, 'body' | 'heading'>;
+	fontFamily?: Extract<FontFamilyOptions, 'body' | 'heading'>;
 };
 
 /**
