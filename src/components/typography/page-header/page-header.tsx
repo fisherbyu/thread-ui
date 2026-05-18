@@ -37,7 +37,7 @@ export const PageHeader = ({ title, caption, center }: PageHeaderProps) => {
 				<>
 					<br />
 					<div className={styles.caption}>
-						<Subtitle align={center ? 'center' : 'left'}>
+						<Subtitle fontFamily="heading" align={center ? 'center' : 'left'}>
 							{!center && <span className={styles.spacer}></span>}
 							{caption}
 						</Subtitle>
