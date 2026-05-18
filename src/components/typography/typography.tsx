@@ -3,6 +3,7 @@ import { getResolvedTypographyValues, getTextColorStyles } from '@/utils';
 import {
 	BodyFontSizeOptions,
 	ColoredTextOptions,
+	FontFamilyOptions,
 	FontWeightOptions,
 	LetterSpacingOptions,
 	LineHeightOptions,
@@ -153,6 +154,7 @@ const renderHeading = (
 	const subtitleRole = SUBTITLE_ROLE_MAP[role];
 	const subtitleResolved = getResolvedTypographyValues({
 		role: subtitleRole,
+		fontFamily: 'heading',
 		marginBottom: 'none',
 	});
 
@@ -269,6 +271,10 @@ export const Text = ({
 	return <Component className={className}>{children}</Component>;
 };
 
+export type SubtitleProps = TypographyProps & {
+	fontFamily: Extract<FontFamilyOptions, 'body' | 'heading'>;
+};
+
 /**
  * Standalone secondary text rendered as an inline `span`.
  * For subtitles attached to headings, use the `subtitle` prop on Title/H1/H2/H3 instead.
@@ -281,11 +287,13 @@ export const Subtitle = ({
 	align = 'left',
 	color = 'secondary',
 	truncate = false,
-}: TypographyProps) => {
+	fontFamily,
+}: SubtitleProps) => {
 	const resolved = getResolvedTypographyValues({
 		role: 'body',
 		fontSize: 'body.sm',
 		marginBottom: 'none',
+		fontFamily,
 	});
 
 	const className = cx(
