@@ -1,4 +1,4 @@
-import { cva, cx } from '@/styled-system/css';
+import { css, cva, cx } from '@/styled-system/css';
 import { getResolvedTypographyValues, getTextColorStyles } from '@/utils';
 import {
 	BodyFontSizeOptions,
@@ -448,6 +448,11 @@ export const Code = ({
 	});
 
 	const className = cx(
+		css({
+			padding: '0.5',
+			backgroundColor: 'structure.subtle',
+			borderRadius: 'xs',
+		}),
 		getTypographyStyles(resolved),
 		getPresentationStyles({ align, truncate: truncate || undefined }),
 		getTextColorStyles(color)
