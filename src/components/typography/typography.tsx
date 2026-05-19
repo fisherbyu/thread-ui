@@ -254,7 +254,7 @@ export const Text = ({
 	letterSpacing,
 	marginBottom,
 	truncate = false,
-	indent = true,
+	indent,
 }: TextProps) => {
 	const Component = inline ? 'span' : 'p';
 
