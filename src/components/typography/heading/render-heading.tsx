@@ -1,5 +1,5 @@
 import { getResolvedTypographyValues, getTextColorStyles } from '@/utils';
-import { HeadingProps } from './heading.types';
+import { TypographyHeadingProps } from './heading.types';
 import { cx } from '@/styled-system/css';
 import { getTypographyStyles } from '../shared-utils/get-typography-styles';
 import { getPresentationStyles } from '../shared-utils/get-presentation-styles';
@@ -29,7 +29,7 @@ export const renderHeading = (
 		color = 'standard',
 		truncate = false,
 		subtitle,
-	}: HeadingProps
+	}: TypographyHeadingProps
 ) => {
 	// If no subtitle, pass marginBottom through unless inline
 	if (!subtitle) {
