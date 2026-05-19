@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Title, H1, H2, H3, Text, Subtitle, List, OrderedList, PageHeader } from './index'; // Adjust import path as needed
+import { Title, H1, H2, H3, Text, Subtitle, List, OrderedList, Code, PageHeader } from './index'; // Adjust import path as needed
 
 type TypographyArgs = {
 	pageHeaderTitle: string;
@@ -212,6 +212,18 @@ export const Typography: Story = {
 						</Text>
 						<List items={['Item one', 'Item two', 'Item three']} decoration="none" />
 					</div>
+				</div>
+
+				{/* Code */}
+				<div style={{ marginBottom: '32px' }}>
+					<H3>Code</H3>
+					<Text>
+						Install the package with <Code>npm install thread-ui</Code> to get started.
+					</Text>
+					<Text>
+						Inline sizes: <Code size="xs">xs</Code> <Code size="sm">sm</Code>{' '}
+						<Code size="md">md</Code> <Code size="lg">lg</Code>
+					</Text>
 				</div>
 
 				{/* Truncate */}
