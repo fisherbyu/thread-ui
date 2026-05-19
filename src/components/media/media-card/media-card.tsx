@@ -144,14 +144,31 @@ const styles = {
 	}),
 	descriptionWrapper: css({
 		maxHeight: {
-			base: '75',
+			base: '[300px]',
 			md: 'none',
-			lg: '500px',
+			lg: '[500px]',
 		},
 		overflowY: {
 			base: 'auto',
 			md: 'visible',
-			lg: 'scroll',
+			lg: 'auto',
+		},
+		// Firefox
+		scrollbarWidth: 'thin',
+		scrollbarColor: 'token(colors.structure.default) transparent',
+		// WebKit (Chrome, Safari, Edge)
+		'&::-webkit-scrollbar': {
+			width: '2px',
+		},
+		'&::-webkit-scrollbar-track': {
+			background: 'transparent',
+		},
+		'&::-webkit-scrollbar-thumb': {
+			backgroundColor: 'structure.subtle',
+			borderRadius: 'md',
+		},
+		'&::-webkit-scrollbar-thumb:hover': {
+			backgroundColor: 'structure.subtle',
 		},
 	}),
 	details: css({
