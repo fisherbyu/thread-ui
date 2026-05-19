@@ -229,6 +229,10 @@ export type BodyTextProps = TypographyProps & {
 	marginBottom?: SpacingScaleOptions;
 };
 
+export type TextProps = BodyTextProps & {
+	indent?: boolean;
+};
+
 /**
  * Body text. Renders as `p` by default or `span` when `inline` is true.
  *
@@ -250,7 +254,8 @@ export const Text = ({
 	letterSpacing,
 	marginBottom,
 	truncate = false,
-}: BodyTextProps) => {
+	indent = true,
+}: TextProps) => {
 	const Component = inline ? 'span' : 'p';
 
 	const resolved = getResolvedTypographyValues({
@@ -262,7 +267,19 @@ export const Text = ({
 		marginBottom: inline ? 'none' : marginBottom,
 	});
 
+	const indentedStyles = cva({
+		variants: {
+			indent: {
+				true: {
+					textIndent: '4',
+				},
+				false: {},
+			},
+		},
+	});
+
 	const className = cx(
+		indentedStyles({ indent }),
 		getTypographyStyles(resolved),
 		getPresentationStyles({ align, truncate: truncate || undefined }),
 		getTextColorStyles(color)
