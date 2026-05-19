@@ -100,6 +100,16 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		xl: 'breakpoint-xl',
 		xxl: 'breakpoint-xxl',
 	},
+	spacing: {
+		none: 'spacing-none',
+		xxs: 'spacing-xxs',
+		xs: 'spacing-xs',
+		sm: 'spacing-sm',
+		md: 'spacing-md',
+		lg: 'spacing-lg',
+		xl: 'spacing-xl',
+		xxl: 'spacing-xxl',
+	},
 
 	// Z Indexes
 	zIndex: {
@@ -108,6 +118,48 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		overlay: 'z-index-overlay',
 		modal: 'z-index-modal',
 		system: 'z-index-system',
+	},
+
+	typography: {
+		fontFamilies: {
+			body: 'font-family-body',
+			heading: 'font-family-heading',
+			mono: 'font-family-mono',
+		},
+		fontSizes: {
+			heading: {
+				sm: 'font-size-heading-sm',
+				md: 'font-size-heading-md',
+				lg: 'font-size-heading-lg',
+				xl: 'font-size-heading-xl',
+			},
+			body: {
+				xxs: 'font-size-body-xxs',
+				xs: 'font-size-body-xs',
+				sm: 'font-size-body-sm',
+				md: 'font-size-body-md',
+				lg: 'font-size-body-lg',
+				xl: 'font-size-body-xl',
+			},
+		},
+		fontWeights: {
+			regular: 'font-weight-regular',
+			medium: 'font-weight-medium',
+			semibold: 'font-weight-semibold',
+			bold: 'font-weight-bold',
+		},
+		lineHeights: {
+			tighter: 'line-height-tighter',
+			tight: 'line-height-tight',
+			normal: 'line-height-normal',
+			loose: 'line-height-loose',
+			looser: 'line-height-looser',
+		},
+		letterSpacings: {
+			tight: 'letter-spacing-tight',
+			normal: 'letter-spacing-normal',
+			wide: 'letter-spacing-wide',
+		},
 	},
 
 	// Scrim

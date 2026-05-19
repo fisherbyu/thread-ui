@@ -44,7 +44,7 @@ export const FormLabel = ({ name, id = name, title, size = 'md' }: FormLabelProp
 
 	return (
 		<label id={id} htmlFor={name} className={styles({ size })}>
-			<Text bold size={textSizeFromSizeProp}>
+			<Text weight="semibold" size={textSizeFromSizeProp}>
 				{title}
 			</Text>
 		</label>

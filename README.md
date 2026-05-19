@@ -48,6 +48,12 @@ Thread UI uses a **layer-based elevation system**. Every component either sits o
 1. **Light mode communicates elevation through shadows.** Surface, elevated, and overlay share the same background color — shadows and z-index differentiate them.
 2. **Dark mode communicates elevation through lightness.** Each layer step up is slightly lighter. Shadows are nearly invisible against dark surfaces.
 
+### Typography
+
+Thread's typography system is built on **roles** — semantic chords that combine font family, size, weight, line height, letter spacing, and bottom margin into named presets like `title`, `h1`–`h3`, `body`, and `code`. Each role is defined once in the theme and consumed by components (`<Title>`, `<H1>`, `<Text>`, `<Code>`, etc.) so visual hierarchy stays consistent across the app.
+
+Individual tokens (font sizes, weights, line heights, etc.) can be overridden per-instance for fine control, or theme-wide via `ThemeProvider`. Spacing flows through a shared scale (`none` → `xxl`) so heading and paragraph rhythm follows the same vocabulary as the rest of the system.
+
 ## Features
 
 ### Custom Themes

@@ -144,14 +144,31 @@ const styles = {
 	}),
 	descriptionWrapper: css({
 		maxHeight: {
-			base: '75',
+			base: '[300px]',
 			md: 'none',
-			lg: '125',
+			lg: '[500px]',
 		},
 		overflowY: {
 			base: 'auto',
 			md: 'visible',
-			lg: 'scroll',
+			lg: 'auto',
+		},
+		// Firefox
+		scrollbarWidth: 'thin',
+		scrollbarColor: 'token(colors.structure.default) transparent',
+		// WebKit (Chrome, Safari, Edge)
+		'&::-webkit-scrollbar': {
+			width: '2px',
+		},
+		'&::-webkit-scrollbar-track': {
+			background: 'transparent',
+		},
+		'&::-webkit-scrollbar-thumb': {
+			backgroundColor: 'structure.subtle',
+			borderRadius: 'md',
+		},
+		'&::-webkit-scrollbar-thumb:hover': {
+			backgroundColor: 'structure.subtle',
 		},
 	}),
 	details: css({
@@ -205,7 +222,7 @@ export const MediaCard = ({
 					<Text align="center" size="xs">
 						{detail.title}
 					</Text>
-					<Text align="center" size="xs" bold>
+					<Text align="center" size="xs" weight="semibold">
 						{detail.details}
 					</Text>
 				</span>
@@ -241,7 +258,7 @@ export const MediaCard = ({
 					{detailsPosition === 'text' && mediaDetails}
 					<div className={styles.descriptionWrapper}>
 						{description.map((item, index) => (
-							<Text align="center" size="sm" key={index}>
+							<Text indent align="left" size="sm" key={index}>
 								{item}
 							</Text>
 						))}

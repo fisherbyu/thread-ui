@@ -60,7 +60,7 @@ export const FilterControls = <T,>({
 
 	return (
 		<div className={styles.container({ size })}>
-			{showFilterLabel && <Text bold>Filters</Text>}
+			{showFilterLabel && <Text weight="semibold">Filters</Text>}
 			<div className={styles.controlsContainer({ size })}>
 				{fields.map(({ key, label, icon, color: fieldColor, options }) => {
 					const active = getActive(key);

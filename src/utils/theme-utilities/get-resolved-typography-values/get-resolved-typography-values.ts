@@ -1,0 +1,41 @@
+import { TypographyRole, TypographyRoles } from '@/theme/theme-typography-system';
+import {
+	CompleteFontSizeOptions,
+	FontFamilyOptions,
+	FontWeightOptions,
+	LetterSpacingOptions,
+	LineHeightOptions,
+	SpacingScaleOptions,
+	TypographyRoleOptions,
+} from '@/types';
+
+export type ResolvedTypographyValuesProps = {
+	role: TypographyRoleOptions;
+	fontFamily?: FontFamilyOptions;
+	fontSize?: CompleteFontSizeOptions;
+	fontWeight?: FontWeightOptions;
+	lineHeight?: LineHeightOptions;
+	letterSpacing?: LetterSpacingOptions;
+	marginBottom?: SpacingScaleOptions;
+};
+
+export const getResolvedTypographyValues = ({
+	role,
+	fontFamily,
+	fontSize,
+	fontWeight,
+	lineHeight,
+	letterSpacing,
+	marginBottom,
+}: ResolvedTypographyValuesProps): TypographyRole => {
+	const defaults = TypographyRoles[role];
+
+	return {
+		fontFamily: fontFamily ?? defaults.fontFamily,
+		fontSize: fontSize ?? defaults.fontSize,
+		fontWeight: fontWeight ?? defaults.fontWeight,
+		lineHeight: lineHeight ?? defaults.lineHeight,
+		letterSpacing: letterSpacing ?? defaults.letterSpacing,
+		marginBottom: marginBottom ?? defaults.marginBottom,
+	};
+};

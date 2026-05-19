@@ -87,6 +87,16 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		xl: '1280',
 		xxl: '1536',
 	},
+	spacing: {
+		none: '0px',
+		xxs: '4px',
+		xs: '8px',
+		sm: '12px',
+		md: '16px',
+		lg: '24px',
+		xl: '32px',
+		xxl: '40px',
+	},
 
 	zIndex: {
 		base: '0',
@@ -108,6 +118,48 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		sm: '0.5px',
 		md: '1px',
 		lg: '1.5px',
+	},
+	// Typograpghy
+	typography: {
+		fontFamilies: {
+			body: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+			heading: "ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif",
+			mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+		},
+		fontSizes: {
+			heading: {
+				sm: '1.25rem', // H3
+				md: '1.5rem', // H2
+				lg: '2rem', // H1
+				xl: '3rem', // Title
+			},
+			body: {
+				xxs: '0.625rem',
+				xs: '0.75rem',
+				sm: '0.875rem',
+				md: '1rem', // body default
+				lg: '1.125rem',
+				xl: '1.25rem', // caps at heading.sm
+			},
+		},
+		fontWeights: {
+			regular: '400',
+			medium: '500',
+			semibold: '600',
+			bold: '700',
+		},
+		lineHeights: {
+			tighter: '1.1', // hero/display - very large text only
+			tight: '1.3', // headings (current value)
+			normal: '1.5', // body (current value, W3C standard)
+			loose: '1.7', // long-form reading
+			looser: '2.0', // callouts, marketing copy
+		},
+		letterSpacings: {
+			tight: '-0.02em', // display tightening
+			normal: '0', // default
+			wide: '0.05em', // labels, all-caps, eyebrows
+		},
 	},
 	// Dark Mode Colors
 	darkMode: {

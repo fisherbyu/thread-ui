@@ -1,6 +1,7 @@
 import { NavLinkProps } from './nav-link.types';
 import { LinkWrapper } from '@/internal-components';
 import { css, cva } from '@/styled-system/css';
+import { Text } from '@/components/typography';
 
 const styles = {
 	li: css({
@@ -17,9 +18,6 @@ const styles = {
 			alignItems: 'center',
 			justifyContent: 'center',
 			borderRadius: 'md',
-			color: 'text.standard',
-			fontSize: '0.875rem',
-			fontWeight: 500,
 			textDecoration: 'none',
 			transition: 'all 150ms ease-in-out',
 			margin: 'auto',
@@ -51,7 +49,9 @@ export const NavLink = ({ children, href, halfPadding = false, isDropdownItem }:
 	return (
 		<li className={styles.li}>
 			<LinkWrapper link={href} className={styles.link({ halfPadding, isDropdownItem })}>
-				{children}
+				<Text size="sm" inline weight="medium">
+					{children}
+				</Text>
 			</LinkWrapper>
 		</li>
 	);

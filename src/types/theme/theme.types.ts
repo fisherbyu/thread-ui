@@ -31,26 +31,36 @@ export type UtilitySizes = {
 /** Key union of the base size scale */
 export type UtilitySizeOptions = Prettify<keyof UtilitySizes>;
 
-type ExpandedSmallOptions = {
-	xxs: string;
+type ExtendedSmallSizes = {
 	xs: string;
 };
 
-type ExpandedLargeOptions = {
+type FullSmallSizes = ExtendedSmallSizes & {
+	xxs: string;
+};
+
+type ExtendedLargeSizes = {
 	xl: string;
+};
+
+type FullLargeSizes = ExtendedLargeSizes & {
 	xxl: string;
 };
 
-/** Full size scale including sub-small and extra-large steps */
-export type ExpandedUtilitySizes = Prettify<
-	ExpandedSmallOptions & UtilitySizes & ExpandedLargeOptions
->;
+/** Extended size scale including extra small and extra large steps */
+export type ExtendedUtilitySizes = Prettify<ExtendedSmallSizes & UtilitySizes & ExtendedLargeSizes>;
+
+/** Key union of the extended size scale */
+export type ExtendedUtilitySizesOptions = Prettify<keyof ExtendedUtilitySizes>;
+
+/** Full size scale including extra-extra small and extra-extra large steps */
+export type FullUtilitySizes = Prettify<FullSmallSizes & UtilitySizes & FullLargeSizes>;
 
 /** Key union of the full expanded size scale */
-export type ExpandedUtilitySizeOptions = Prettify<keyof ExpandedUtilitySizes>;
+export type FullUtilitySizeOptions = Prettify<keyof FullUtilitySizes>;
 
 /** Size scale extended with responsive breakpoint steps */
-export type BreakpointOptions = Omit<ExpandedUtilitySizes, keyof ExpandedSmallOptions>;
+export type BreakpointOptions = Omit<FullUtilitySizes, keyof FullSmallSizes>;
 
 /** Surface Hierarchy and Layer Colors */
 export type SurfaceColors = {
@@ -144,8 +154,101 @@ export type NeutralPalette = {
 	gray: ColorShades;
 };
 
+// Typography
+
+/** Font family stacks for heading, body, and monospace text */
+export type FontFamilies = {
+	body: string;
+	heading: string;
+	mono: string;
+};
+
+/** Font Family Options */
+export type FontFamilyOptions = Prettify<keyof FontFamilies>;
+
+/** Body text size scale */
+export type BodyFontSizes = Prettify<FullSmallSizes & UtilitySizes & ExtendedLargeSizes>;
+
+/** Key union of body font size steps */
+export type BodyFontSizeOptions = Prettify<keyof BodyFontSizes>;
+
+/** Heading size scale (1.25rem → 3rem) */
+export type HeadingFontSizes = Prettify<UtilitySizes & ExtendedLargeSizes>;
+
+/** Key union of heading font size steps */
+export type HeadingFontSizeOptions = Prettify<keyof HeadingFontSizes>;
+
+/** Standard Theme Spacing Scale */
+export type SpacingScale = Prettify<{ none: string } & FullUtilitySizes>;
+
+/** Em-based margin ratios for typography roles */
+export type SpacingScaleOptions = Prettify<keyof SpacingScale>;
+
+/** Combined font size scales */
+export type ThemeFontSizes = Prettify<{
+	heading: HeadingFontSizes;
+	body: BodyFontSizes;
+}>;
+
+/** Dot-notation keys for all font sizes (e.g. "heading.sm" | "body.xs") */
+export type CompleteFontSizeOptions = {
+	[K in keyof ThemeFontSizes]: `${K & string}.${keyof ThemeFontSizes[K] & string}`;
+}[keyof ThemeFontSizes];
+
+/** Font weight scale */
+export type FontWeights = {
+	regular: string;
+	medium: string;
+	semibold: string;
+	bold: string;
+};
+
+/** Key union of font weight options */
+export type FontWeightOptions = Prettify<keyof FontWeights>;
+
+/** Line height scale */
+export type LineHeights = {
+	tighter: string;
+	tight: string;
+	normal: string;
+	loose: string;
+	looser: string;
+};
+
+/** Key union of line height steps */
+export type LineHeightOptions = Prettify<keyof LineHeights>;
+
+/** Letter spacing scale */
+export type LetterSpacings = {
+	tight: string;
+	normal: string;
+	wide: string;
+};
+
+/** Key union of letter spacing steps */
+export type LetterSpacingOptions = Prettify<keyof LetterSpacings>;
+
+/** Typography Heading Role Options */
+export type HeadingRoleOptions = 'title' | 'h1' | 'h2' | 'h3';
+
+/** Typography Body Role Options */
+export type BodyRoleOptions = 'body' | 'code';
+
+/** Typography Roles  */
+export type TypographyRoleOptions = Prettify<HeadingRoleOptions | BodyRoleOptions>;
+
+/** Typography Configurations */
+export type TypographyConfiguration = Prettify<{
+	fontFamilies: FontFamilies;
+	fontSizes: ThemeFontSizes;
+	fontWeights: FontWeights;
+	lineHeights: LineHeights;
+	letterSpacings: LetterSpacings;
+}>;
+
 /** Theme Layout Configuration */
 export type ThemeLayout = {
+	spacing: SpacingScale;
 	breakpoints: BreakpointOptions;
 };
 
@@ -166,6 +269,7 @@ export type Theme = Prettify<
 		ModeColors & {
 			zIndex: ZIndexScale;
 			shadow: ShadowScale;
+			typography: TypographyConfiguration;
 		}
 >;
 
