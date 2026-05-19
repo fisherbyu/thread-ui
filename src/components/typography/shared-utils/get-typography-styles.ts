@@ -1,5 +1,6 @@
 import { cva } from '@/styled-system/css';
 import { TypographyRole } from '@/theme/theme-typography-system';
+import { DeepPartial } from '@/types';
 import { ResolvedTypographyValuesProps } from '@/utils';
 
 /** Typography CVA — map individual token keys to style declarations. */
@@ -53,6 +54,6 @@ const getTypographyStylesCva = cva({
 	},
 });
 
-export const getTypographyStyles = (props: TypographyRole) => {
+export const getTypographyStyles = (props: DeepPartial<TypographyRole>) => {
 	return getTypographyStylesCva(props);
 };
