@@ -3,7 +3,7 @@ import { TypographyProps } from '../typography';
 
 /** Code Component Props */
 export type CodeProps = Prettify<
-	TypographyProps & {
+	Pick<TypographyProps, 'children' | 'inline' | 'truncate'> & {
 		/** Font size — body scale only @default `'sm'` */
 		size?: BodyFontSizeOptions;
 	}
