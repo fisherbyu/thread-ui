@@ -76,6 +76,12 @@ const getPresentationStyles = cva({
 				textOverflow: 'ellipsis',
 			},
 		},
+		indent: {
+			true: {
+				textIndent: '4',
+			},
+			false: {},
+		},
 	},
 });
 
@@ -267,21 +273,9 @@ export const Text = ({
 		marginBottom: inline ? 'none' : marginBottom,
 	});
 
-	const indentedStyles = cva({
-		variants: {
-			indent: {
-				true: {
-					textIndent: '4',
-				},
-				false: {},
-			},
-		},
-	});
-
 	const className = cx(
-		indentedStyles({ indent }),
 		getTypographyStyles(resolved),
-		getPresentationStyles({ align, truncate: truncate || undefined }),
+		getPresentationStyles({ indent, align, truncate: truncate || undefined }),
 		getTextColorStyles(color)
 	);
 
@@ -290,6 +284,7 @@ export const Text = ({
 
 export type SubtitleProps = TypographyProps & {
 	fontFamily?: Extract<FontFamilyOptions, 'body' | 'heading'>;
+	indent?: boolean;
 };
 
 /**
@@ -305,6 +300,7 @@ export const Subtitle = ({
 	color = 'secondary',
 	truncate = false,
 	fontFamily,
+	indent,
 }: SubtitleProps) => {
 	const resolved = getResolvedTypographyValues({
 		role: 'body',
@@ -315,7 +311,7 @@ export const Subtitle = ({
 
 	const className = cx(
 		getTypographyStyles(resolved),
-		getPresentationStyles({ align, truncate: truncate || undefined }),
+		getPresentationStyles({ indent, align, truncate: truncate || undefined }),
 		getTextColorStyles(color)
 	);
 
