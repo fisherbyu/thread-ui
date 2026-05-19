@@ -14,6 +14,7 @@ const styles = {
 		width: { md: '50%' },
 		paddingX: { md: '1' },
 		marginX: 'auto',
+		marginY: '4',
 	}),
 	spacer: css({
 		display: 'inline-block',
@@ -35,10 +36,12 @@ export const PageHeader = ({ title, caption, center }: PageHeaderProps) => {
 			</Title>
 			{caption && (
 				<>
-					<br />
 					<div className={styles.caption}>
-						<Subtitle fontFamily="heading" align={center ? 'center' : 'left'}>
-							{!center && <span className={styles.spacer}></span>}
+						<Subtitle
+							indent={center ? false : true}
+							fontFamily="heading"
+							align={center ? 'center' : 'left'}
+						>
 							{caption}
 						</Subtitle>
 					</div>
