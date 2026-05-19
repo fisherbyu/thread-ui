@@ -258,7 +258,7 @@ export const MediaCard = ({
 					{detailsPosition === 'text' && mediaDetails}
 					<div className={styles.descriptionWrapper}>
 						{description.map((item, index) => (
-							<Text align="center" size="sm" key={index}>
+							<Text indent align="left" size="sm" key={index}>
 								{item}
 							</Text>
 						))}
