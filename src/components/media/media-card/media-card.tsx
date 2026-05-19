@@ -146,7 +146,7 @@ const styles = {
 		maxHeight: {
 			base: '75',
 			md: 'none',
-			lg: '125',
+			lg: '500px',
 		},
 		overflowY: {
 			base: 'auto',
