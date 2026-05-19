@@ -1,15 +1,8 @@
 import { css, cva, cx } from '@/styled-system/css';
 import { PageHeaderProps } from './page-header.types';
-import { container } from '@/styled-system/patterns';
-import { Divider, Subtitle, Title } from '@/components';
+import { Container, Divider, Subtitle, Title } from '@/components';
 
 const styles = {
-	container: cx(
-		container(),
-		css({
-			marginY: '4',
-		})
-	),
 	caption: css({
 		width: { md: '50%' },
 		paddingX: { md: '1' },
@@ -30,7 +23,7 @@ const styles = {
  */
 export const PageHeader = ({ title, caption, center }: PageHeaderProps) => {
 	return (
-		<div className={styles.container}>
+		<Container>
 			<Title align="center" inline>
 				{title}
 			</Title>
@@ -47,7 +40,7 @@ export const PageHeader = ({ title, caption, center }: PageHeaderProps) => {
 					</div>
 				</>
 			)}
-			<Divider width="33%" />
-		</div>
+			<Divider marginY="16px" width="33%" />
+		</Container>
 	);
 };
