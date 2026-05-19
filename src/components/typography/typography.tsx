@@ -449,9 +449,13 @@ export const Code = ({
 
 	const className = cx(
 		css({
-			padding: '0.5',
+			paddingY: '2px',
+			paddingX: '3px',
 			backgroundColor: 'structure.subtle',
 			borderRadius: 'xs',
+			borderWidth: 'sm',
+			borderColor: 'structure.default',
+			letterSpacing: 'wide',
 		}),
 		getTypographyStyles(resolved),
 		getPresentationStyles({ align, truncate: truncate || undefined }),
