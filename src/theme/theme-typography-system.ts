@@ -29,7 +29,7 @@ export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
 	h1: {
 		fontFamily: 'heading',
 		fontSize: 'heading.lg',
-		fontWeight: 'semibold',
+		fontWeight: 'bold',
 		lineHeight: 'tight',
 		letterSpacing: 'normal',
 		marginBottom: 'xl',
@@ -37,7 +37,7 @@ export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
 	h2: {
 		fontFamily: 'heading',
 		fontSize: 'heading.md',
-		fontWeight: 'semibold',
+		fontWeight: 'bold',
 		lineHeight: 'tight',
 		letterSpacing: 'normal',
 		marginBottom: 'lg',
@@ -45,7 +45,7 @@ export const TypographyRoles: Record<TypographyRoleOptions, TypographyRole> = {
 	h3: {
 		fontFamily: 'heading',
 		fontSize: 'heading.sm',
-		fontWeight: 'semibold',
+		fontWeight: 'bold',
 		lineHeight: 'tight',
 		letterSpacing: 'normal',
 		marginBottom: 'md',
