@@ -1,5 +1,5 @@
 import { BodyFontSizeOptions, Prettify } from '@/types';
-import { TypographyProps } from '../typography';
+import { TypographyProps } from '../typography.types';
 
 /** Code Component Props */
 export type CodeProps = Prettify<
