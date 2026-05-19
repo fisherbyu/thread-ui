@@ -9,7 +9,7 @@ import {
 	TypographyRoleOptions,
 } from '@/types';
 
-type GetResolvedTypographyValuesProps = {
+export type ResolvedTypographyValuesProps = {
 	role: TypographyRoleOptions;
 	fontFamily?: FontFamilyOptions;
 	fontSize?: CompleteFontSizeOptions;
@@ -27,7 +27,7 @@ export const getResolvedTypographyValues = ({
 	lineHeight,
 	letterSpacing,
 	marginBottom,
-}: GetResolvedTypographyValuesProps): TypographyRole => {
+}: ResolvedTypographyValuesProps): TypographyRole => {
 	const defaults = TypographyRoles[role];
 
 	return {
