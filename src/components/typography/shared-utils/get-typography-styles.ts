@@ -1,4 +1,5 @@
 import { cva } from '@/styled-system/css';
+import { TypographyRole } from '@/theme/theme-typography-system';
 import { ResolvedTypographyValuesProps } from '@/utils';
 
 /** Typography CVA — map individual token keys to style declarations. */
@@ -52,6 +53,6 @@ const getTypographyStylesCva = cva({
 	},
 });
 
-export const getTypographyStyles = (props: ResolvedTypographyValuesProps) => {
+export const getTypographyStyles = (props: TypographyRole) => {
 	return getTypographyStylesCva(props);
 };
