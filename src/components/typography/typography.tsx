@@ -216,7 +216,7 @@ export const H2 = (props: HeadingProps) => renderHeading('h2', 'h2', props);
  */
 export const H3 = (props: HeadingProps) => renderHeading('h3', 'h3', props);
 
-export type TextProps = TypographyProps & {
+export type BodyTextProps = TypographyProps & {
 	/** Font size — body scale only @default `'md'` */
 	size?: BodyFontSizeOptions;
 	/** Font weight override @default role default (`'regular'`) */
@@ -250,7 +250,7 @@ export const Text = ({
 	letterSpacing,
 	marginBottom,
 	truncate = false,
-}: TextProps) => {
+}: BodyTextProps) => {
 	const Component = inline ? 'span' : 'p';
 
 	const resolved = getResolvedTypographyValues({
@@ -309,7 +309,7 @@ export const Subtitle = ({
 	);
 };
 
-export type ListProps = Omit<TextProps, 'children' | 'inline' | 'truncate' | 'marginBottom'> & {
+export type ListProps = Omit<BodyTextProps, 'children' | 'inline' | 'truncate' | 'marginBottom'> & {
 	/** Items to render in the list */
 	items: Array<string | ReactNode>;
 	/** List marker style @default `'disc'` */
