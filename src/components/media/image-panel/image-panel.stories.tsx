@@ -23,7 +23,7 @@ export const Default: Story = {
 		contentBelow: false,
 		contentLeft: false,
 		titleColor: 'standard',
-		title: 'A Compelling Headline',
+		title: 'A Headline',
 		subtitle: 'An optional subtitle that adds more context',
 		contents: [
 			'This is the first paragraph of content. It can be as long or as short as needed to convey the message.',
