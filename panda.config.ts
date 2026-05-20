@@ -232,4 +232,14 @@ export default defineConfig({
 			button: ['*'], // Generate ALL variant combinations
 		},
 	},
+
+	// Default CSS
+	globalCss: {
+		'html, body': {
+			fontFamily: 'body',
+		},
+		'button, input, select, textarea': {
+			fontFamily: 'inherit',
+		},
+	},
 });
