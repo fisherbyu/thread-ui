@@ -6,5 +6,7 @@ export type CodeProps = Prettify<
 	Pick<TypographyProps, 'children' | 'inline' | 'truncate'> & {
 		/** Font size — body scale only @default `'sm'` */
 		size?: BodyFontSizeOptions;
+		/** Remove default background and coloring @default `true`` */
+		plain?: boolean;
 	}
 >;
