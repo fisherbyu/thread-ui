@@ -39,6 +39,55 @@ const renderPanelImage = (image: ImageProps, smImage?: ImageProps) => {
 		return renderImage(image, undefined, cx(classes.image, classes.standardImg));
 	}
 };
+
+const panelStyles = cva({
+	base: {
+		display: 'flex',
+		gap: { base: '12px', lg: '20px' },
+		justifyContent: 'center',
+		alignItems: 'stretch',
+		width: '100%',
+		marginRight: 'auto',
+		maxWidth: { base: 'none', md: '800px', lg: '1400px' },
+		marginLeft: 'auto',
+		paddingRight: '2rem',
+		paddingLeft: '2rem',
+	},
+	variants: {
+		contentBelow: {
+			true: { flexDirection: { base: 'column' } },
+			false: { flexDirection: { base: 'column-reverse' } },
+		},
+		contentLeft: {
+			true: { flexDirection: { lg: 'row-reverse' } },
+			false: { flexDirection: { lg: 'row' } },
+		},
+	},
+	defaultVariants: {
+		contentBelow: false,
+		contentLeft: false,
+	},
+});
+
+const styles = {
+	imageBlock: css({
+		width: { base: '100%', lg: '66.666667%' },
+	}),
+	images: css({
+		position: 'relative',
+		width: '100%',
+		height: '100%',
+	}),
+	textBlock: css({
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginLeft: 'auto',
+		marginRight: 'auto',
+		width: { base: '100%', lg: '41.666667%' },
+	}),
+};
+
 /**
  * Two-column panel with an image and a text block. Supports responsive image swapping,
  * flexible content positioning, and colored title variants.
@@ -63,52 +112,6 @@ export const ImagePanel = ({
 	contentLeft = false,
 	titleColor = 'standard',
 }: ImagePanelProps) => {
-	const panelStyles = cva({
-		base: {
-			display: 'flex',
-			gap: { base: '12px', lg: '20px' },
-			justifyContent: 'center',
-			alignItems: 'stretch',
-			width: '100%',
-			marginRight: 'auto',
-			maxWidth: { base: 'none', md: '800px', lg: '1400px' },
-			marginLeft: 'auto',
-			paddingRight: '2rem',
-			paddingLeft: '2rem',
-		},
-		variants: {
-			contentBelow: {
-				true: { flexDirection: { base: 'column' } },
-				false: { flexDirection: { base: 'column-reverse' } },
-			},
-			contentLeft: {
-				true: { flexDirection: { lg: 'row-reverse' } },
-				false: { flexDirection: { lg: 'row' } },
-			},
-		},
-		defaultVariants: {
-			contentBelow: false,
-			contentLeft: false,
-		},
-	});
-	const styles = {
-		imageBlock: css({
-			width: { base: '100%', lg: '66.666667%' },
-		}),
-		images: css({
-			position: 'relative',
-			width: '100%',
-			height: '100%',
-		}),
-		textBlock: css({
-			display: 'flex',
-			justifyContent: 'center',
-			alignItems: 'center',
-			marginLeft: 'auto',
-			marginRight: 'auto',
-			width: { base: '100%', lg: '41.666667%' },
-		}),
-	};
 	return (
 		<div className={panelStyles({ contentBelow, contentLeft })}>
 			<div className={styles.imageBlock}>
