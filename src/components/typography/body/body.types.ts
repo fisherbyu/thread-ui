@@ -1,5 +1,6 @@
 import {
 	BodyFontSizeOptions,
+	FontFamilyOptions,
 	FontWeightOptions,
 	LetterSpacingOptions,
 	LineHeightOptions,
@@ -29,6 +30,7 @@ export type TypographyBodyTypes = Prettify<
 export type TextProps = Prettify<
 	TypographyBodyTypes & {
 		indent?: boolean;
+		fontFamily?: Exclude<FontFamilyOptions, 'heading'>;
 	}
 >;
 
