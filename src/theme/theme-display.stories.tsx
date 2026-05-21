@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { DefaultThreadTheme } from './default-theme';
 import { SurfaceLayerMap } from './theme-surface-system';
-import { H1, List, Text } from '../components/typography';
+import { Code, H1, H2, List, Text, Title } from '../components/typography';
+import { Container } from '../components/layouts/container';
+import { ThreadTheme } from '../theme/thread-theme';
 
 type DesignSystemArgs = Record<string, never>;
 
@@ -26,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 // ── Helpers ──────────────────────────────────────────────────
 
 const sectionStyle: React.CSSProperties = {
-	padding: '48px 32px',
+	padding: '20px 32px',
 	maxWidth: '1100px',
 	margin: '0 auto',
 };
@@ -37,6 +39,18 @@ const sectionTitleStyle: React.CSSProperties = {
 	color: 'var(--thread-text-standard)',
 	marginBottom: '4px',
 };
+
+const contentWrapperStyles: React.CSSProperties = {
+	maxWidth: '640px',
+};
+
+const codeTextStyles: React.CSSProperties = {
+	fontFamily: ThreadTheme.typography.fontFamilies.mono,
+	fontSize: ThreadTheme.typography.fontSizes.body.xs,
+	color: ThreadTheme.text.secondary,
+};
+
+console.table(codeTextStyles);
 
 const sectionCaptionStyle: React.CSSProperties = {
 	fontSize: '0.875rem',
@@ -281,6 +295,8 @@ const ShadowCard = ({ size, value }: { size: string; value: string }) => (
 	</div>
 );
 
+// ── Blocks ───────────────────────────────────────────────────
+
 // ── Story ────────────────────────────────────────────────────
 
 export const Theme: Story = {
@@ -295,16 +311,10 @@ export const Theme: Story = {
 
 		return (
 			<div style={{ backgroundColor: 'var(--thread-canvas)', minHeight: '100vh' }}>
-				{/* ── Header ── */}
-				<div
-					style={{
-						padding: '64px 32px 48px',
-						maxWidth: '1100px',
-						margin: '0 auto',
-					}}
-				>
-					<div style={{ maxWidth: '640px' }}>
-						<H1>Thread UI Design System</H1>
+				{/* ── Intro ── */}
+				<Container>
+					<div style={contentWrapperStyles}>
+						<Title>Thread UI Design System</Title>
 						<Text>
 							The Thread-UI theme system defines the design language across the
 							library, including layering, spacing and coloration.Each component sits
@@ -317,14 +327,17 @@ export const Theme: Story = {
 							of the library
 						</Text>
 					</div>
-				</div>
+				</Container>
 
 				{/* ── Surface Layers ── */}
-				<div style={sectionStyle}>
-					<div style={sectionTitleStyle}>Surface Layers</div>
-					<div style={sectionCaptionStyle}>
-						Five elevation layers from page background to overlay. Each layer resolves
-						its own background color, shadow depth, border weight, and z-index.
+				<Container>
+					<div style={contentWrapperStyles}>
+						<H1>Surface Layers</H1>
+						<Text>
+							Five elevation layers from page background to overlay. Each layer
+							resolves its own background color, shadow depth, border weight, and
+							z-index.
+						</Text>
 					</div>
 
 					{/* Nested layer demo */}
@@ -335,37 +348,21 @@ export const Theme: Story = {
 							padding: '24px',
 							border: '1px dashed var(--thread-structure-default)',
 							marginBottom: '32px',
+							display: 'flex',
+							flexDirection: 'column',
+							gap: '16px',
 						}}
 					>
-						<span
-							style={{
-								fontSize: '0.6875rem',
-								fontFamily: 'monospace',
-								color: 'var(--thread-text-disabled)',
-								marginBottom: '16px',
-								display: 'block',
-							}}
-						>
-							canvas
-						</span>
+						<p style={codeTextStyles}>canvas - global background</p>
 						<div
 							style={{
 								backgroundColor: 'var(--thread-inset)',
 								borderRadius: '8px',
 								padding: '16px',
 								border: '1px solid var(--thread-structure-default)',
-								marginBottom: '16px',
 							}}
 						>
-							<span
-								style={{
-									fontSize: '0.6875rem',
-									fontFamily: 'monospace',
-									color: 'var(--thread-text-disabled)',
-								}}
-							>
-								inset — recessed below canvas
-							</span>
+							<p style={codeTextStyles}>inset — recessed below canvas</p>
 						</div>
 						<div
 							style={{
@@ -376,17 +373,9 @@ export const Theme: Story = {
 								boxShadow: 'var(--thread-shadow-sm)',
 							}}
 						>
-							<span
-								style={{
-									fontSize: '0.6875rem',
-									fontFamily: 'monospace',
-									color: 'var(--thread-text-disabled)',
-									marginBottom: '12px',
-									display: 'block',
-								}}
-							>
+							<p style={{ ...codeTextStyles, marginBottom: '12px' }}>
 								surface — cards sit here
-							</span>
+							</p>
 							<div
 								style={{
 									backgroundColor: 'var(--thread-elevated)',
@@ -397,15 +386,7 @@ export const Theme: Story = {
 									marginBottom: '12px',
 								}}
 							>
-								<span
-									style={{
-										fontSize: '0.6875rem',
-										fontFamily: 'monospace',
-										color: 'var(--thread-text-disabled)',
-									}}
-								>
-									elevated — sticky nav, toolbars
-								</span>
+								<p style={codeTextStyles}>elevated — sticky nav, toolbars</p>
 							</div>
 							<div
 								style={{
@@ -415,15 +396,7 @@ export const Theme: Story = {
 									boxShadow: 'var(--thread-shadow-lg)',
 								}}
 							>
-								<span
-									style={{
-										fontSize: '0.6875rem',
-										fontFamily: 'monospace',
-										color: 'var(--thread-text-disabled)',
-									}}
-								>
-									overlay — modals, dropdowns
-								</span>
+								<p style={codeTextStyles}>overlay — modals, dropdowns</p>
 							</div>
 						</div>
 					</div>
@@ -441,20 +414,23 @@ export const Theme: Story = {
 							)
 						)}
 					</div>
-				</div>
+				</Container>
+				<div style={{ height: '24px' }} />
 
 				{/* ── Interactive States ── */}
-				<div style={sectionStyle}>
-					<div style={sectionTitleStyle}>Interactive States</div>
-					<div style={sectionCaptionStyle}>
-						Hover and active states applied on top of any surface. These are interaction
-						cues, not layers.
+				<Container>
+					<div style={contentWrapperStyles}>
+						<H2>Interactive States</H2>
+						<Text>
+							Hover and active states applied on top of any surface. These are
+							interaction cues, not layers.
+						</Text>
 					</div>
 					<div style={{ display: 'flex', gap: '16px' }}>
 						<Swatch label="Hover" cssVar="--thread-hover" border />
 						<Swatch label="Active" cssVar="--thread-active" border />
 					</div>
-				</div>
+				</Container>
 
 				{/* ── Shadows ── */}
 				<div style={sectionStyle}>
