@@ -21,9 +21,9 @@ const getSurfaceStylesCva = cva({
 		},
 		structure: {
 			none: {},
-			default: { borderWidth: '1px', borderStyle: 'solid', borderColor: 'structure.default' },
-			subtle: { borderWidth: '1px', borderStyle: 'solid', borderColor: 'structure.subtle' },
-			strong: { borderWidth: '1px', borderStyle: 'solid', borderColor: 'structure.strong' },
+			default: { borderWidth: 'md', borderStyle: 'solid', borderColor: 'structure.default' },
+			subtle: { borderWidth: 'md', borderStyle: 'solid', borderColor: 'structure.subtle' },
+			strong: { borderWidth: 'md', borderStyle: 'solid', borderColor: 'structure.strong' },
 		},
 		zIndex: {
 			none: {},
