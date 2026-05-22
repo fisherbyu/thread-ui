@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { IconNames } from '../icon';
+import { SurfaceLayerOptions } from '@/types';
 
 export type TabItem = {
 	name: string;
@@ -11,4 +12,5 @@ export type TabItem = {
 export type TabViewProps = {
 	items: TabItem[];
 	defaultValue: string;
+	layer?: SurfaceLayerOptions;
 };
