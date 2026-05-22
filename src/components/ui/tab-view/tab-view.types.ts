@@ -16,5 +16,5 @@ export type TabViewProps = {
 };
 
 export type TabViewState = Omit<TabViewProps, 'defaultValue'> & {
-	activeValue: string;
+	activeItem: TabItem;
 };
