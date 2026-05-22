@@ -1,8 +1,8 @@
-import { cva } from '@/styled-system/css';
+import { cva, cx } from '@/styled-system/css';
 import { CardProps } from './card.types';
 import { H3 } from '@/components/typography';
 import { Divider } from '../divider';
-import { getResolvedLayerValues } from '@/utils';
+import { getResolvedLayerValues, getSurfaceStyles } from '@/utils';
 
 const styles = {
 	cardContainer: cva({
@@ -40,26 +40,6 @@ const styles = {
 					},
 				},
 			},
-			bg: {
-				none: {},
-				canvas: { backgroundColor: 'canvas' },
-				inset: { backgroundColor: 'inset' },
-				surface: { backgroundColor: 'surface' },
-				elevated: { backgroundColor: 'elevated' },
-				overlay: { backgroundColor: 'overlay' },
-			},
-			shadow: {
-				none: { boxShadow: 'none' },
-				sm: { boxShadow: 'sm' },
-				md: { boxShadow: 'md' },
-				lg: { boxShadow: 'lg' },
-			},
-			structure: {
-				none: { borderWidth: '0' },
-				subtle: { borderWidth: 'md', borderColor: 'structure.subtle' },
-				default: { borderWidth: 'md', borderColor: 'structure.default' },
-				strong: { borderWidth: 'md', borderColor: 'structure.strong' },
-			},
 		},
 		compoundVariants: [
 			{
@@ -73,9 +53,6 @@ const styles = {
 		defaultVariants: {
 			size: 'md',
 			fullWidth: false,
-			bg: 'surface',
-			shadow: 'none',
-			structure: 'subtle',
 		},
 	}),
 	title: cva({
@@ -97,6 +74,7 @@ const styles = {
 		},
 	}),
 };
+
 /**
  * General-purpose content card container with optional title, divider, and surface level control.
  *
@@ -123,15 +101,10 @@ export const Card = ({
 }: CardProps) => {
 	// Resolve from level, allow individual overrides
 	const layerValues = getResolvedLayerValues({ layer, bg, shadow, structure });
+
 	return (
 		<div
-			className={styles.cardContainer({
-				size,
-				fullWidth,
-				bg: layerValues.bg,
-				shadow: layerValues.shadow,
-				structure: layerValues.structure,
-			})}
+			className={cx(styles.cardContainer({ size, fullWidth }), getSurfaceStyles(layerValues))}
 		>
 			{title && (
 				<div className={styles.title({ size })}>
