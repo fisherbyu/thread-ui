@@ -14,3 +14,7 @@ export type TabViewProps = {
 	defaultValue: string;
 	layer?: SurfaceLayerOptions;
 };
+
+export type TabViewState = Omit<TabViewProps, 'defaultValue'> & {
+	activeValue: string;
+};

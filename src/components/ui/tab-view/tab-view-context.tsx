@@ -1,6 +1,6 @@
 'use client';
 import { createComponentContext } from '@/utils';
-import { TabViewProps } from './tab-view.types';
+import { TabViewProps, TabViewState } from './tab-view.types';
 
 export const [TabViewProvider, useTabViewContext] =
-	createComponentContext<TabViewProps>('Tab View');
+	createComponentContext<TabViewState>('Tab View');

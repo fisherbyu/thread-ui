@@ -6,7 +6,7 @@ import { TabViewProvider } from './tab-view-context';
 
 export const TabView = ({ items, defaultValue, layer = 'surface' }: TabViewProps) => {
 	return (
-		<TabViewProvider value={{ items, defaultValue, layer }}>
+		<TabViewProvider value={{ activeValue: defaultValue, items, layer }}>
 			<TabViewContent />
 		</TabViewProvider>
 	);
