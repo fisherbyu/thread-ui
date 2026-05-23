@@ -11,14 +11,12 @@ export type TabItem = {
 
 export type TabViewProps = {
 	items: TabItem[];
-	defaultValueId: TabItem['id'];
+	defaultValueId?: TabItem['id'];
 	layer?: SurfaceLayerOptions;
 };
 
-export type TabViewState = Prettify<
-	Omit<TabViewProps, 'defaultValue' | 'items'> & {
-		items: Record<TabItem['id'], TabItem>;
-		itemOrder: TabItem['id'][];
-		activeItemId: TabItem['id'];
-	}
->;
+export type TabViewState = Prettify<{
+	items: Record<TabItem['id'], TabItem>;
+	itemOrder: TabItem['id'][];
+	activeItemId: TabItem['id'];
+}>;
