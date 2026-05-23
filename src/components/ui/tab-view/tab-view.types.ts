@@ -18,6 +18,7 @@ export type TabViewProps = {
 export type TabViewState = Prettify<
 	Omit<TabViewProps, 'defaultValue' | 'items'> & {
 		items: Record<TabItem['id'], TabItem>;
-		activeItem: TabItem;
+		itemOrder: TabItem['id'][];
+		activeItemId: TabItem['id'];
 	}
 >;
