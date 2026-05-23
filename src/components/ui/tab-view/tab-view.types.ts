@@ -3,7 +3,7 @@ import { IconNames } from '../icon';
 import { Prettify, SurfaceLayerOptions } from '@/types';
 
 export type TabItem = {
-	name: string;
+	id: string;
 	icon?: IconNames;
 	title: string;
 	content: ReactNode;
@@ -17,7 +17,7 @@ export type TabViewProps = {
 
 export type TabViewState = Prettify<
 	Omit<TabViewProps, 'defaultValue' | 'items'> & {
-		items: Record<number, TabItem>;
+		items: Record<TabItem['id'], TabItem>;
 		activeItem: TabItem;
 	}
 >;
