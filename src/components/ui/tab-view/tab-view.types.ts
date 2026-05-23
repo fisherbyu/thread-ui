@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { IconNames } from '../icon';
-import { SurfaceLayerOptions } from '@/types';
+import { Prettify, SurfaceLayerOptions } from '@/types';
 
 export type TabItem = {
 	name: string;
@@ -15,6 +15,9 @@ export type TabViewProps = {
 	layer?: SurfaceLayerOptions;
 };
 
-export type TabViewState = Omit<TabViewProps, 'defaultValue'> & {
-	activeItem: TabItem;
-};
+export type TabViewState = Prettify<
+	Omit<TabViewProps, 'defaultValue' | 'items'> & {
+		items: Record<number, TabItem>;
+		activeItem: TabItem;
+	}
+>;
