@@ -30,13 +30,13 @@ const styles = {
 };
 
 export const TabDisplay = () => {
-	const { activeValue, items } = useTabViewContext();
+	const { activeItemId, items, itemOrder } = useTabViewContext();
 
 	return (
 		<div className={styles.container}>
-			{items.map((item, _) => (
-				<div key={_} className={styles.item({ active: activeValue === item.name })}>
-					{item.title}
+			{itemOrder.map((itemId) => (
+				<div key={itemId} className={styles.item({ active: activeItemId === itemId })}>
+					{items[itemId].title}
 				</div>
 			))}
 		</div>
