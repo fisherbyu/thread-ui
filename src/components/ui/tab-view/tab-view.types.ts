@@ -11,7 +11,7 @@ export type TabItem = {
 
 export type TabViewProps = {
 	items: TabItem[];
-	defaultValue: string;
+	defaultValueId: TabItem['id'];
 	layer?: SurfaceLayerOptions;
 };
 
