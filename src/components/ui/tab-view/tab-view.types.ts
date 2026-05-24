@@ -29,5 +29,6 @@ export type TabViewState = Prettify<{
 	items: Record<TabItem['id'], TabItem>;
 	itemOrder: TabItem['id'][];
 	activeItemId: TabItem['id'];
+	layer: TabViewProps['layer'];
 	unmountInactive: boolean;
 }>;

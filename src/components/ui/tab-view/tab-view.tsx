@@ -25,6 +25,7 @@ export const TabView = ({
 		itemOrder,
 		activeItemId,
 		unmountInactive,
+		layer,
 	};
 
 	return (
