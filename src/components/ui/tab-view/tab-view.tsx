@@ -3,6 +3,22 @@ import { TabViewProps, TabViewState } from './tab-view.types';
 import { TabViewContent } from './components/tab-view-content';
 import { TabViewProvider } from './tab-view-context';
 
+/**
+ * Tabbed view component that renders a row of tab controls and a panel for the active tab.
+ *
+ * Items are normalized into a keyed record and an order array, then handed to
+ * `TabViewProvider` so descendant components can read and update the active tab via context.
+ * Returns `null` when `items` is empty.
+ *
+ * @example
+ * <TabView
+ *   items={[
+ *     { id: 'overview', title: 'Overview', content: <Overview /> },
+ *     { id: 'details', title: 'Details', content: <Details /> },
+ *   ]}
+ *   defaultValueId="details"
+ * />
+ */
 export const TabView = ({
 	items: itemList,
 	defaultValueId,
