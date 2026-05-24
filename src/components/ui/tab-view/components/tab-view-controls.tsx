@@ -1,7 +1,7 @@
-import { css, cva } from '@/styled-system/css';
+import { cva } from '@/styled-system/css';
 import { useTabViewContext } from '../tab-view-context';
 import { Divider } from '../../divider';
-import { H3, Text } from '@/components/typography';
+import { Text } from '@/components/typography';
 
 const styles = {
 	container: cva({
@@ -12,6 +12,9 @@ const styles = {
 			justifyContent: 'start',
 			gap: '2',
 			alignItems: 'center',
+			overflowX: 'auto',
+			scrollbarWidth: 'none',
+			'&::-webkit-scrollbar': { display: 'none' },
 		},
 		variants: {
 			showDivider: {
@@ -27,6 +30,8 @@ const styles = {
 			borderBottomColor: 'transparent',
 			cursor: 'pointer',
 			fontFamily: 'heading',
+			flexShrink: 0,
+			whiteSpace: 'nowrap',
 			_hover: {
 				borderBottomColor: 'structure.subtle',
 			},
