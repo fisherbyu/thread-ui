@@ -22,6 +22,9 @@ const meta: Meta<typeof TabView> = {
 		items: {
 			control: false,
 		},
+		showDivider: {
+			control: 'boolean',
+		},
 	},
 };
 
