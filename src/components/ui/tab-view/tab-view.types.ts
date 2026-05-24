@@ -13,10 +13,12 @@ export type TabViewProps = {
 	items: TabItem[];
 	defaultValueId?: TabItem['id'];
 	layer?: SurfaceLayerOptions;
+	unmountInactive?: boolean;
 };
 
 export type TabViewState = Prettify<{
 	items: Record<TabItem['id'], TabItem>;
 	itemOrder: TabItem['id'][];
 	activeItemId: TabItem['id'];
+	unmountInactive?: boolean;
 }>;
