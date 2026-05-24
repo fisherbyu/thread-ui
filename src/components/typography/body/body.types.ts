@@ -31,6 +31,7 @@ export type TextProps = Prettify<
 	TypographyBodyTypes & {
 		indent?: boolean;
 		fontFamily?: Exclude<FontFamilyOptions, 'heading'>;
+		underline?: boolean;
 	}
 >;
 

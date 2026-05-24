@@ -21,6 +21,10 @@ const getPresentationStylesCva = cva({
 			},
 			false: {},
 		},
+		underline: {
+			true: { textDecorationLine: 'underline' },
+			false: {},
+		},
 	},
 });
 
