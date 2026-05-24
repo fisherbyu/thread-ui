@@ -1,6 +1,7 @@
 import { css, cva } from '@/styled-system/css';
 import { useTabViewContext } from '../tab-view-context';
 import { Divider } from '../../divider';
+import { H3, Text } from '@/components/typography';
 
 const styles = {
 	container: css({
@@ -39,15 +40,20 @@ export const TabViewControls = () => {
 	return (
 		<>
 			<div className={styles.container}>
-				{itemOrder.map((itemId) => (
-					<button
-						key={itemId}
-						className={styles.item({ active: activeItemId === itemId })}
-						onClick={() => setValue((prev) => ({ ...prev, activeItemId: itemId }))}
-					>
-						{items[itemId].title}
-					</button>
-				))}
+				{itemOrder.map((itemId) => {
+					const isActive = activeItemId === itemId;
+					return (
+						<button
+							key={itemId}
+							className={styles.item({ active: isActive })}
+							onClick={() => setValue((prev) => ({ ...prev, activeItemId: itemId }))}
+						>
+							<Text weight={isActive ? 'semibold' : 'regular'} inline>
+								{items[itemId].title}
+							</Text>
+						</button>
+					);
+				})}
 			</div>
 			<Divider marginY="16px" width="100%" />
 		</>
