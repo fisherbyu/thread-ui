@@ -30,12 +30,19 @@ const styles = {
 };
 
 export const TabDisplay = () => {
-	const { activeItemId, items, itemOrder } = useTabViewContext();
+	const {
+		value: { activeItemId, items, itemOrder },
+		setValue,
+	} = useTabViewContext();
 
 	return (
 		<div className={styles.container}>
 			{itemOrder.map((itemId) => (
-				<div key={itemId} className={styles.item({ active: activeItemId === itemId })}>
+				<div
+					key={itemId}
+					className={styles.item({ active: activeItemId === itemId })}
+					onClick={() => setValue((prev) => ({ ...prev, activeItemId: itemId }))}
+				>
 					{items[itemId].title}
 				</div>
 			))}
