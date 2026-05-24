@@ -2,12 +2,13 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { TabView } from './tab-view';
 import { Text } from '../../typography';
+import { Container } from '../../layouts/container/container';
 
 const meta: Meta<typeof TabView> = {
 	title: 'Components/TabView',
 	component: TabView,
 	parameters: {
-		layout: 'centered',
+		layout: 'fullscreen',
 	},
 	tags: ['autodocs'],
 	argTypes: {
@@ -49,5 +50,12 @@ export const Default: Story = {
 				content: <Text>Configure your settings here.</Text>,
 			},
 		],
+	},
+	render: (args) => {
+		return (
+			<Container>
+				<TabView {...args} />
+			</Container>
+		);
 	},
 };
