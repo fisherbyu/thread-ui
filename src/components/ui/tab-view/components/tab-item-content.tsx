@@ -1,4 +1,4 @@
-import { cva } from '@/styled-system/css';
+import { css, cva } from '@/styled-system/css';
 import { Card } from '../../card';
 import { useTabViewContext } from '../tab-view-context';
 import { TabItem, TabViewProps } from '../tab-view.types';
@@ -8,15 +8,7 @@ type TabItemContentProps = {
 };
 
 const styles = {
-	container: cva({
-		base: {},
-		variants: {
-			showItem: {
-				true: {},
-				false: { display: 'none' },
-			},
-		},
-	}),
+	container: css({}),
 };
 
 export const TabItemContent = ({ itemId }: TabItemContentProps) => {
@@ -29,7 +21,7 @@ export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 	const showItem = activeItemId === itemId;
 
 	return (
-		<div className={styles.container({ showItem })}>
+		<div hidden={showItem} className={styles.container}>
 			<Card title={{ text: item.title }}>{item.content}</Card>
 		</div>
 	);
