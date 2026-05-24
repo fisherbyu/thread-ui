@@ -60,6 +60,7 @@ export const TabViewControls = () => {
 		<>
 			<div className={styles.container({ showDivider })}>
 				{itemOrder.map((itemId) => {
+					const item = items[itemId];
 					const isActive = activeItemId === itemId;
 					return (
 						<button
@@ -72,7 +73,7 @@ export const TabViewControls = () => {
 								color={isActive ? 'standard' : 'text-secondary'}
 								inline
 							>
-								{items[itemId].title}
+								{item.title}
 							</Text>
 						</button>
 					);
