@@ -17,6 +17,8 @@ const styles = {
 			padding: '2',
 			borderBottomWidth: 'md',
 			borderBottomColor: 'transparent',
+			cursor: 'pointer',
+			fontFamily: 'heading',
 			_hover: {
 				borderBottomColor: 'structure.subtle',
 			},
@@ -52,14 +54,18 @@ export const TabViewControls = () => {
 							className={styles.item({ isActive })}
 							onClick={() => setValue((prev) => ({ ...prev, activeItemId: itemId }))}
 						>
-							<Text weight={isActive ? 'semibold' : 'regular'} inline>
+							<Text
+								weight="semibold"
+								color={isActive ? 'standard' : 'text-secondary'}
+								inline
+							>
 								{items[itemId].title}
 							</Text>
 						</button>
 					);
 				})}
 			</div>
-			<Divider color="subtle" marginY="16px" width="100%" />
+			<Divider marginY="16px" width="100%" />
 		</>
 	);
 };
