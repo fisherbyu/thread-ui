@@ -13,15 +13,19 @@ const styles = {
 
 export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 	const {
-		value: { activeItemId, items },
+		value: { activeItemId, items, unmountInactive },
 	} = useTabViewContext();
+
+	const isActive = activeItemId === itemId;
+
+	if (unmountInactive && !isActive) {
+		return null;
+	}
 
 	const item = items[itemId];
 
-	const showItem = activeItemId === itemId;
-
 	return (
-		<div hidden={showItem} className={styles.container}>
+		<div hidden={isActive} className={styles.container}>
 			<Card title={{ text: item.title }}>{item.content}</Card>
 		</div>
 	);
