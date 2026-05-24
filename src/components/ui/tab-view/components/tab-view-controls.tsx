@@ -9,21 +9,25 @@ const styles = {
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'start',
-		gap: 1,
+		gap: '2',
 		alignItems: 'center',
 	}),
 	item: cva({
 		base: {
-			borderRadius: 'sm',
 			padding: '2',
+			borderBottomWidth: 'md',
+			borderBottomColor: 'transparent',
 			_hover: {
-				backgroundColor: 'hover',
+				borderBottomColor: 'structure.subtle',
 			},
 		},
 		variants: {
-			active: {
+			isActive: {
 				true: {
-					backgroundColor: 'active',
+					borderBottomColor: 'structure.default',
+					_hover: {
+						borderBottomColor: 'structure.strong',
+					},
 				},
 				false: {},
 			},
@@ -45,7 +49,7 @@ export const TabViewControls = () => {
 					return (
 						<button
 							key={itemId}
-							className={styles.item({ active: isActive })}
+							className={styles.item({ isActive })}
 							onClick={() => setValue((prev) => ({ ...prev, activeItemId: itemId }))}
 						>
 							<Text weight={isActive ? 'semibold' : 'regular'} inline>
@@ -55,7 +59,7 @@ export const TabViewControls = () => {
 					);
 				})}
 			</div>
-			<Divider marginY="16px" width="100%" />
+			<Divider color="subtle" marginY="16px" width="100%" />
 		</>
 	);
 };
