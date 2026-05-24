@@ -3,7 +3,12 @@ import { TabViewProps, TabViewState } from './tab-view.types';
 import { TabViewContent } from './components/tab-view-content';
 import { TabViewProvider } from './tab-view-context';
 
-export const TabView = ({ items, defaultValueId, layer = 'surface' }: TabViewProps) => {
+export const TabView = ({
+	items,
+	defaultValueId,
+	layer = 'surface',
+	unmountInactive = false,
+}: TabViewProps) => {
 	if (!items.length) return null;
 
 	const itemsStore = Object.fromEntries(
@@ -15,7 +20,12 @@ export const TabView = ({ items, defaultValueId, layer = 'surface' }: TabViewPro
 	const activeItemId =
 		defaultValueId && itemsStore[defaultValueId] ? defaultValueId : items[0]?.id;
 
-	const initialValue: TabViewState = { items: itemsStore, itemOrder, activeItemId };
+	const initialValue: TabViewState = {
+		items: itemsStore,
+		itemOrder,
+		activeItemId,
+		unmountInactive,
+	};
 
 	return (
 		<TabViewProvider initialValue={initialValue}>
