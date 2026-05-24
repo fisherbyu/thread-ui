@@ -2,7 +2,9 @@ import { Card } from '../../card';
 import { useTabViewContext } from '../tab-view-context';
 
 export const TabViewActiveContent = () => {
-	const { activeItemId, items } = useTabViewContext();
+	const {
+		value: { activeItemId, items },
+	} = useTabViewContext();
 
 	const activeItem = items[activeItemId];
 
