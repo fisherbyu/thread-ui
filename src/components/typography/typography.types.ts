@@ -14,6 +14,8 @@ export type ExpandedTypographyPresentationProps = Prettify<
 	BaseTypographyPresentationProps & {
 		/** Optionally indent text */
 		indent?: boolean;
+		/** Optionally underline text */
+		underline?: boolean;
 	}
 >;
 
