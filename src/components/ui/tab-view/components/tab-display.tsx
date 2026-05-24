@@ -29,7 +29,7 @@ const styles = {
 	}),
 };
 
-export const TabDisplay = () => {
+export const TabViewControls = () => {
 	const {
 		value: { activeItemId, items, itemOrder },
 		setValue,
