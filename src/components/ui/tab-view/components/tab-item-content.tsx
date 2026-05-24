@@ -1,12 +1,36 @@
+import { cva } from '@/styled-system/css';
 import { Card } from '../../card';
 import { useTabViewContext } from '../tab-view-context';
+import { TabItem, TabViewProps } from '../tab-view.types';
 
-export const TabItemContent = () => {
+type TabItemContentProps = {
+	itemId: TabItem['id'];
+};
+
+const styles = {
+	container: cva({
+		base: {},
+		variants: {
+			showItem: {
+				true: {},
+				false: { display: 'none' },
+			},
+		},
+	}),
+};
+
+export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 	const {
 		value: { activeItemId, items },
 	} = useTabViewContext();
 
-	const activeItem = items[activeItemId];
+	const item = items[itemId];
 
-	return <Card title={{ text: activeItem.title }}>{activeItem.content}</Card>;
+	const showItem = activeItemId === itemId;
+
+	return (
+		<div className={styles.container({ showItem })}>
+			<Card title={{ text: item.title }}>{item.content}</Card>
+		</div>
+	);
 };
