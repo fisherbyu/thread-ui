@@ -2,6 +2,7 @@ import { css, cva } from '@/styled-system/css';
 import { Card } from '../../card';
 import { useTabViewContext } from '../tab-view-context';
 import { TabItem, TabViewProps } from '../tab-view.types';
+import { TabViewControls } from './tab-view-controls';
 
 type TabItemContentProps = {
 	itemId: TabItem['id'];
@@ -26,7 +27,8 @@ export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 
 	return (
 		<div hidden={!isActive} className={styles.container}>
-			<Card fullWidth title={{ text: item.title }}>
+			<Card fullWidth>
+				<TabViewControls />
 				{item.content}
 			</Card>
 		</div>

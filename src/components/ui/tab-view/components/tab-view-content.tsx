@@ -8,7 +8,6 @@ export const TabViewContent = () => {
 	} = useTabViewContext();
 	return (
 		<div>
-			<TabViewControls />
 			{Object.entries(items).map(([itemId]) => (
 				<TabItemContent key={itemId} itemId={itemId} />
 			))}
