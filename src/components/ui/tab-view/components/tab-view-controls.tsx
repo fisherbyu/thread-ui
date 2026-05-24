@@ -1,5 +1,6 @@
 import { css, cva } from '@/styled-system/css';
 import { useTabViewContext } from '../tab-view-context';
+import { Divider } from '../../divider';
 
 const styles = {
 	container: css({
@@ -7,13 +8,14 @@ const styles = {
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'start',
-		gap: 0.5,
+		gap: 1,
 		alignItems: 'center',
+		marginBottom: '3',
 	}),
 	item: cva({
 		base: {
-			height: '4',
 			borderRadius: 'sm',
+			padding: '2',
 			_hover: {
 				backgroundColor: 'hover',
 			},
@@ -36,16 +38,19 @@ export const TabViewControls = () => {
 	} = useTabViewContext();
 
 	return (
-		<div className={styles.container}>
-			{itemOrder.map((itemId) => (
-				<div
-					key={itemId}
-					className={styles.item({ active: activeItemId === itemId })}
-					onClick={() => setValue((prev) => ({ ...prev, activeItemId: itemId }))}
-				>
-					{items[itemId].title}
-				</div>
-			))}
-		</div>
+		<>
+			<div className={styles.container}>
+				{itemOrder.map((itemId) => (
+					<button
+						key={itemId}
+						className={styles.item({ active: activeItemId === itemId })}
+						onClick={() => setValue((prev) => ({ ...prev, activeItemId: itemId }))}
+					>
+						{items[itemId].title}
+					</button>
+				))}
+			</div>
+			<Divider width="100%" />
+		</>
 	);
 };
