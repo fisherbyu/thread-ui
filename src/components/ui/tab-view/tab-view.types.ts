@@ -21,7 +21,7 @@ export type TabViewProps = {
 	defaultValueId?: TabItem['id'];
 	/** Surface layer token applied to the tab view container card @default `'surface'` */
 	layer?: SurfaceLayerOptions;
-	/** Display Divider between Controls and Content @default `'true'` */
+	/** Display Divider between Controls and Content @default `'false'` */
 	showDivider?: boolean;
 	/** When true, inactive tab panels are removed from the DOM rather than hidden @default `false` */
 	unmountInactive?: boolean;
