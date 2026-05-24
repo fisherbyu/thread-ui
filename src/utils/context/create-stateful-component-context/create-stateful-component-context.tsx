@@ -31,7 +31,7 @@ export const createStatefulComponentContext = <T,>(displayName: string) => {
 	}
 	StatefulProvider.displayName = `${displayName}Provider`;
 
-	function useStatefulComponentContext() {
+	function useStatefulComponentContext(): ContextValue {
 		const ctx = useContext(Context);
 		if (!ctx) throw new Error(`use${displayName} must be used within a ${displayName}Provider`);
 		return ctx;
