@@ -1,7 +1,7 @@
 import { Card } from '../../card';
 import { useTabViewContext } from '../tab-view-context';
 
-export const TabViewActiveContent = () => {
+export const TabItemContent = () => {
 	const {
 		value: { activeItemId, items },
 	} = useTabViewContext();
