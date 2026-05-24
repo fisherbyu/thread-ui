@@ -11,17 +11,16 @@ export const TabView = ({
 }: TabViewProps) => {
 	if (!itemList.length) return null;
 
-	const itemsStore = Object.fromEntries(
+	const items = Object.fromEntries(
 		itemList.map((item) => [item.id, item])
 	) as TabViewState['items'];
 
 	const itemOrder = itemList.map((item) => item.id);
 
-	const activeItemId =
-		defaultValueId && itemsStore[defaultValueId] ? defaultValueId : itemList[0]?.id;
+	const activeItemId = defaultValueId && items[defaultValueId] ? defaultValueId : itemList[0]?.id;
 
 	const initialValue: TabViewState = {
-		items: itemsStore,
+		items,
 		itemOrder,
 		activeItemId,
 		unmountInactive,
