@@ -10,7 +10,6 @@ const styles = {
 		justifyContent: 'start',
 		gap: 1,
 		alignItems: 'center',
-		marginBottom: '3',
 	}),
 	item: cva({
 		base: {
@@ -50,7 +49,7 @@ export const TabViewControls = () => {
 					</button>
 				))}
 			</div>
-			<Divider width="100%" />
+			<Divider marginY="16px" width="100%" />
 		</>
 	);
 };
