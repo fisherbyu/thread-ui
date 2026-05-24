@@ -25,7 +25,7 @@ export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 	const item = items[itemId];
 
 	return (
-		<div hidden={isActive} className={styles.container}>
+		<div hidden={!isActive} className={styles.container}>
 			<Card title={{ text: item.title }}>{item.content}</Card>
 		</div>
 	);
