@@ -24,6 +24,7 @@ export const TabView = ({
 	defaultValueId,
 	layer = 'surface',
 	unmountInactive = false,
+	showDivider = false,
 }: TabViewProps) => {
 	if (!itemList.length) return null;
 
@@ -41,6 +42,7 @@ export const TabView = ({
 		activeItemId,
 		unmountInactive,
 		layer,
+		showDivider,
 	};
 
 	return (

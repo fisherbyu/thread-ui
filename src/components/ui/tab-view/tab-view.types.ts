@@ -21,11 +21,14 @@ export type TabViewProps = {
 	defaultValueId?: TabItem['id'];
 	/** Surface layer token applied to the tab view container card @default `'surface'` */
 	layer?: SurfaceLayerOptions;
+	/** Display Divider between Controls and Content @default `'true'` */
+	showDivider?: boolean;
 	/** When true, inactive tab panels are removed from the DOM rather than hidden @default `false` */
 	unmountInactive?: boolean;
 };
 
 export type TabViewState = Prettify<{
+	showDivider: TabViewProps['showDivider'];
 	items: Record<TabItem['id'], TabItem>;
 	itemOrder: TabItem['id'][];
 	activeItemId: TabItem['id'];

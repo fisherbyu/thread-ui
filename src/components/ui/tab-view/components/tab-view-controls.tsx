@@ -4,13 +4,21 @@ import { Divider } from '../../divider';
 import { H3, Text } from '@/components/typography';
 
 const styles = {
-	container: css({
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'start',
-		gap: '2',
-		alignItems: 'center',
+	container: cva({
+		base: {
+			width: '100%',
+			display: 'flex',
+			flexDirection: 'row',
+			justifyContent: 'start',
+			gap: '2',
+			alignItems: 'center',
+		},
+		variants: {
+			showDivider: {
+				true: {},
+				false: { marginBottom: '4' },
+			},
+		},
 	}),
 	item: cva({
 		base: {
@@ -39,13 +47,13 @@ const styles = {
 
 export const TabViewControls = () => {
 	const {
-		value: { activeItemId, items, itemOrder },
+		value: { activeItemId, items, itemOrder, showDivider },
 		setValue,
 	} = useTabViewContext();
 
 	return (
 		<>
-			<div className={styles.container}>
+			<div className={styles.container({ showDivider })}>
 				{itemOrder.map((itemId) => {
 					const isActive = activeItemId === itemId;
 					return (
@@ -65,7 +73,7 @@ export const TabViewControls = () => {
 					);
 				})}
 			</div>
-			<Divider marginY="16px" width="100%" />
+			{showDivider && <Divider marginY="16px" width="100%" />}
 		</>
 	);
 };
