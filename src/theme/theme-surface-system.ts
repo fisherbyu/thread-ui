@@ -13,6 +13,15 @@ export type SurfaceConfig = {
 	zIndex: ZIndexOptions | 'none';
 };
 
+/** Surface Layer Order - Returns next highest layer */
+export const NextSurfaceLayerMap: Record<SurfaceLayerOptions, SurfaceLayerOptions | null> = {
+	inset: 'canvas',
+	canvas: 'surface',
+	surface: 'elevated',
+	elevated: 'overlay',
+	overlay: null,
+};
+
 /** Surface Layer System — maps each layer to its default bg, shadow, structure, and zIndex */
 export const SurfaceLayerMap: Record<SurfaceLayerOptions, SurfaceConfig> = {
 	canvas: {

@@ -8,18 +8,6 @@ const meta: Meta<typeof ImagePanel> = {
 	argTypes: {
 		contentBelow: { control: 'boolean' },
 		contentLeft: { control: 'boolean' },
-		surface: {
-			control: 'select',
-			options: ['none', 'canvas', 'inset', 'surface', 'elevated', 'overlay'],
-		},
-		structure: {
-			control: 'select',
-			options: ['none', 'subtle', 'default', 'strong'],
-		},
-		as: {
-			control: 'select',
-			options: ['card', 'section'],
-		},
 		titleColor: {
 			control: 'select',
 			options: ['standard', 'primary', 'secondary', 'inverse'],
@@ -35,10 +23,7 @@ export const Default: Story = {
 		contentBelow: false,
 		contentLeft: false,
 		titleColor: 'standard',
-		surface: 'none',
-		structure: 'none',
-		as: 'card',
-		title: 'A Compelling Headline',
+		title: 'A Headline',
 		subtitle: 'An optional subtitle that adds more context',
 		contents: [
 			'This is the first paragraph of content. It can be as long or as short as needed to convey the message.',

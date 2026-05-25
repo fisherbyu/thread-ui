@@ -149,6 +149,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 			bold: 'font-weight-bold',
 		},
 		lineHeights: {
+			none: 'line-height-none',
 			tighter: 'line-height-tighter',
 			tight: 'line-height-tight',
 			normal: 'line-height-normal',

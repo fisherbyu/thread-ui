@@ -208,6 +208,7 @@ export type FontWeightOptions = Prettify<keyof FontWeights>;
 
 /** Line height scale */
 export type LineHeights = {
+	none: string;
 	tighter: string;
 	tight: string;
 	normal: string;

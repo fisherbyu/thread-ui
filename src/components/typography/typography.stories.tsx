@@ -221,8 +221,16 @@ export const Typography: Story = {
 						Install the package with <Code>npm install thread-ui</Code> to get started.
 					</Text>
 					<Text>
-						Inline sizes: <Code size="xs">xs</Code> <Code size="sm">sm</Code>{' '}
+						Inline sizes: <Code size="xs">xs</Code> <Code size="sm">sm</Code>
 						<Code size="md">md</Code> <Code size="lg">lg</Code>
+					</Text>
+				</div>
+
+				{/* Underline */}
+				<div style={{ marginBottom: '32px' }}>
+					<H3>Underline</H3>
+					<Text underline>
+						This entire paragraph is underlined via the `underline` prop on Text.
 					</Text>
 				</div>
 

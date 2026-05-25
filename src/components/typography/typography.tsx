@@ -38,6 +38,7 @@ const getTypographyStyles = cva({
 			bold: { fontWeight: 'bold' },
 		},
 		lineHeight: {
+			none: { lineHeight: 'none' },
 			tighter: { lineHeight: 'tighter' },
 			tight: { lineHeight: 'tight' },
 			normal: { lineHeight: 'normal' },

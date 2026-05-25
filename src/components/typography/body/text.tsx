@@ -26,6 +26,8 @@ export const Text = ({
 	marginBottom,
 	truncate = false,
 	indent,
+	fontFamily,
+	underline,
 }: TextProps) => {
 	const Component = inline ? 'span' : 'p';
 
@@ -33,6 +35,7 @@ export const Text = ({
 		role: 'body',
 		fontSize: `body.${size}` as const,
 		fontWeight: weight,
+		fontFamily,
 		lineHeight,
 		letterSpacing,
 		marginBottom: inline ? 'none' : marginBottom,
@@ -40,7 +43,7 @@ export const Text = ({
 
 	const className = cx(
 		getTypographyStyles(resolved),
-		getPresentationStyles({ indent, align, truncate: truncate || undefined }),
+		getPresentationStyles({ indent, align, truncate: truncate || undefined, underline }),
 		getTextColorStyles(color)
 	);
 

@@ -1,3 +1,5 @@
+import { StructureColorOptions } from '@/types';
+
 export type DividerProps = {
 	/** Width override. Defaults to `75%` */
 	width?: string;
@@ -5,4 +7,6 @@ export type DividerProps = {
 	marginY?: string;
 	/** Line thickness @default `'standard'` */
 	weight?: 'light' | 'standard' | 'heavy';
+	/** Structure Color @default `'default'` */
+	color?: StructureColorOptions;
 };
