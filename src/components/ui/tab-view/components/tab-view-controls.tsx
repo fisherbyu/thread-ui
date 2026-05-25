@@ -1,5 +1,5 @@
 import { cva } from '@/styled-system/css';
-import { Divider, Icon, Text } from '@/components';
+import { Divider, Icon } from '@/components';
 import { useTabViewContext } from '../tab-view-context';
 
 const styles = {
@@ -29,12 +29,13 @@ const styles = {
 			alignItems: 'center',
 			gap: '1',
 			padding: '2',
-			borderBottomWidth: 'md',
-			borderBottomColor: 'transparent',
+			borderWidth: 'md',
+			borderColor: 'transparent',
 			cursor: 'pointer',
-			fontFamily: 'heading',
-			flexShrink: 0,
+			fontWeight: 'semibold',
+			fontSize: 'md',
 			whiteSpace: 'nowrap',
+
 			_hover: {
 				borderBottomColor: 'structure.subtle',
 			},
@@ -42,12 +43,15 @@ const styles = {
 		variants: {
 			isActive: {
 				true: {
+					color: 'text.standard',
 					borderBottomColor: 'structure.default',
 					_hover: {
 						borderBottomColor: 'structure.strong',
 					},
 				},
-				false: {},
+				false: {
+					color: 'text.secondary',
+				},
 			},
 		},
 	}),
@@ -73,13 +77,7 @@ export const TabViewControls = () => {
 							onClick={() => setValue((prev) => ({ ...prev, activeItemId: itemId }))}
 						>
 							{item.icon && <Icon name={item.icon} size={16} />}
-							<Text
-								weight="semibold"
-								color={isActive ? 'standard' : 'text-secondary'}
-								inline
-							>
-								{item.title}
-							</Text>
+							{item.title}
 						</button>
 					);
 				})}
