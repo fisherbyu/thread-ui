@@ -243,7 +243,7 @@ const ShadowCard = ({ size, value }: { size: string; value: string }) => (
 export const Theme: Story = {
 	render: () => {
 		const layerDescriptions: Record<string, string> = {
-			canvas: 'Page background. The base everything sits on.',
+			canvas: 'Page background. The foundation everything sits on.',
 			inset: 'Recessed containers: inputs, wells. Visually below the canvas.',
 			surface: 'Cards, panels, content regions. Pops against canvas.',
 			elevated: 'Sticky nav, toolbars. Differentiated by shadow.',
@@ -258,14 +258,14 @@ export const Theme: Story = {
 						<Title>Thread UI Design System</Title>
 						<Text>
 							The Thread-UI theme system defines the design language across the
-							library, including layering, spacing and coloration.Each component sits
+							library, including layering, spacing and coloring. Each component sits
 							on a named layer that determines its background, shadow, border, and
 							stacking order. The theme palette includes primary, secondary, and
-							tertiary colors, as well as definitions for common interactions, texts,
+							tertiary brand colors, as well as definitions for interactions, text,
 							and neutrals.
 							<br /> <br />
 							Each element of this theme can be configured and customized by consumers
-							of the library
+							of the library.
 						</Text>
 					</div>
 				</Container>
@@ -433,9 +433,9 @@ export const Theme: Story = {
 											<div style={contentWrapperStyles}>
 												<Text>
 													Compound shadows with a tight edge layer and a
-													diffused ambient layer. Mode-independent — in
-													dark mode, surface color lightness carries
-													elevation instead.
+													diffused ambient layer. Shadows define elevation
+													in light mode, while in dark mode, surface
+													colors create elevation.
 												</Text>
 											</div>
 											<div
@@ -607,7 +607,7 @@ export const Theme: Story = {
 											<div style={contentWrapperStyles}>
 												<Text>
 													Semantic colors for feedback and alerts. These
-													intentionally break the neutral surface system
+													intentionally step outside the neutral palette
 													to draw attention.
 												</Text>
 											</div>
@@ -780,7 +780,7 @@ export const Theme: Story = {
 				{/* ── Sizing ── */}
 				<Container>
 					<div style={contentWrapperStyles}>
-						<H2>Border Sizing</H2>
+						<H2>Border</H2>
 						<Text>Radius and width tokens at three scales.</Text>
 					</div>
 					<div style={{ display: 'flex', gap: '32px' }}>
