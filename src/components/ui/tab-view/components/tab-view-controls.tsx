@@ -27,7 +27,7 @@ const styles = {
 			display: 'flex',
 			flexDirection: 'row',
 			alignItems: 'center',
-			gap: '1',
+			gap: '1.5',
 			padding: '2',
 			borderWidth: 'md',
 			borderColor: 'transparent',
