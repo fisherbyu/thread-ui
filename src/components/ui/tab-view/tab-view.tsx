@@ -2,7 +2,6 @@
 import { TabViewProps, TabViewState } from './tab-view.types';
 import { TabViewContent } from './components/tab-view-content';
 import { TabViewProvider } from './tab-view-context';
-
 /**
  * Tabbed view component that renders a row of tab controls and a panel for the active tab.
  *
@@ -27,15 +26,16 @@ export const TabView = ({
 	showDivider = false,
 }: TabViewProps) => {
 	if (!itemList.length) return null;
-
+	const normalizedItems = itemList.map((item, index) => ({
+		...item,
+		id: item.id ?? String(index),
+	}));
 	const items = Object.fromEntries(
-		itemList.map((item) => [item.id, item])
+		normalizedItems.map((item) => [item.id, item])
 	) as TabViewState['items'];
-
-	const itemOrder = itemList.map((item) => item.id);
-
-	const activeItemId = defaultValueId && items[defaultValueId] ? defaultValueId : itemList[0]?.id;
-
+	const itemOrder = normalizedItems.map((item) => item.id);
+	const activeItemId =
+		defaultValueId && items[defaultValueId] ? defaultValueId : normalizedItems[0].id;
 	const initialValue: TabViewState = {
 		items,
 		itemOrder,
@@ -44,7 +44,6 @@ export const TabView = ({
 		layer,
 		showDivider,
 	};
-
 	return (
 		<TabViewProvider initialValue={initialValue}>
 			<TabViewContent />

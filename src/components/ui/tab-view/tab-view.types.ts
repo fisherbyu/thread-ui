@@ -4,8 +4,8 @@ import { Prettify, SurfaceLayerOptions } from '@/types';
 
 /** A single tab definition consumed by the `TabView` component. */
 export type TabItem = {
-	/** Unique identifier for the tab. Used as the React key and to track the active tab. */
-	id: string;
+	/** Optionally manually set identifier for the tab. Used as the React key and to track the active tab. */
+	id?: string;
 	/** Optional icon rendered alongside the tab title. */
 	icon?: IconNames;
 	/** Label displayed in the tab control. */
@@ -13,7 +13,6 @@ export type TabItem = {
 	/** Content rendered in the panel when this tab is active. */
 	content: ReactNode;
 };
-
 export type TabViewProps = {
 	/** Tabs to render, in display order. */
 	items: TabItem[];
@@ -26,12 +25,13 @@ export type TabViewProps = {
 	/** When true, inactive tab panels are removed from the DOM rather than hidden @default `false` */
 	unmountInactive?: boolean;
 };
+type TabItemId = NonNullable<TabItem['id']>;
 
 export type TabViewState = Prettify<{
 	showDivider: TabViewProps['showDivider'];
-	items: Record<TabItem['id'], TabItem>;
-	itemOrder: TabItem['id'][];
-	activeItemId: TabItem['id'];
+	items: Record<TabItemId, TabItem>;
+	itemOrder: TabItemId[];
+	activeItemId: TabItemId;
 	layer: TabViewProps['layer'];
 	unmountInactive: boolean;
 }>;
