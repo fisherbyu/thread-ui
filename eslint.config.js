@@ -20,6 +20,6 @@ export default [
 		},
 	},
 	{
-		ignores: ['dist/**', 'storybook-static/**', 'node_modules/**'],
+		ignores: ['dist/**', 'storybook-static/**', 'node_modules/**', '**/*.stories.{ts,tsx}'],
 	},
 ];
