@@ -6,7 +6,7 @@ import { DeepPartial } from '@/types';
 const getSurfaceStylesCva = cva({
 	variants: {
 		bg: {
-			none: {},
+			none: { bg: 'transparent' },
 			canvas: { bg: 'canvas' },
 			inset: { bg: 'inset' },
 			surface: { bg: 'surface' },
