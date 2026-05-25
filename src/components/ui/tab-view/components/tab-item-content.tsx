@@ -26,6 +26,8 @@ export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 
 	const item = items[itemId];
 
+	const titleBlock = typeof title === 'string' ? <H3>{title}</H3> : title;
+
 	return (
 		<div hidden={!isActive}>
 			<ConditionalWrapper
@@ -36,7 +38,7 @@ export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 						: { layer: cardStyles, fullWidth: true }
 				}
 			>
-				{title && <H3>{title}</H3>}
+				{title && titleBlock}
 				<TabViewControls />
 				{item.content}
 			</ConditionalWrapper>

@@ -15,7 +15,7 @@ export type TabItem = {
 };
 export type TabViewProps = {
 	/** Optional Title */
-	title?: string;
+	title?: string | ReactNode;
 	/** Tabs to render, in display order. */
 	items: TabItem[];
 	/** ID of the tab to activate on initial mount @default first item's `id` */
