@@ -356,7 +356,7 @@ export const Theme: Story = {
 						)}
 					</div>
 				</Container>
-				<div style={{ height: '24px' }} />
+				<div style={{ height: '36px' }} />
 				{/* ── Layer Construction ── */}
 				<div style={{ height: '400px' }}>
 					<Container>
@@ -856,6 +856,7 @@ export const Theme: Story = {
 						</div>
 					</div>
 				</Container>
+				<div style={{ height: '36px' }} />
 			</div>
 		);
 	},
