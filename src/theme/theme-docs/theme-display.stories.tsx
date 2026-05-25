@@ -381,7 +381,7 @@ export const Theme: Story = {
 				</Container>
 				<div style={{ height: '24px' }} />
 				{/* ── Layer Construction ── */}
-				<div style={{ height: '350px' }}>
+				<div style={{ height: '400px' }}>
 					<Container>
 						<TabView
 							title={<H2>Layer Construction & Interactivity</H2>}
@@ -508,151 +508,261 @@ export const Theme: Story = {
 										</>
 									),
 								},
+								{
+									title: 'Z-Index Scale',
+									content: (
+										<>
+											<div style={contentWrapperStyles}>
+												<Text>
+													Stacking order for components. Gaps of 100 allow
+													slotting elements between layers without
+													renumbering.
+												</Text>
+											</div>
+											<div
+												style={{
+													display: 'flex',
+													flexDirection: 'column',
+													gap: '4px',
+													maxWidth: '480px',
+												}}
+											>
+												{(
+													[
+														['system', '400', 'Toasts, global banners'],
+														['modal', '300', 'Modal dialogs + scrim'],
+														['overlay', '200', 'Dropdowns, popovers'],
+														['sticky', '100', 'Nav, sticky controls'],
+														['base', '0', 'Normal document flow'],
+													] as const
+												).map(([name, value, desc]) => (
+													<div
+														key={name}
+														style={{
+															display: 'flex',
+															alignItems: 'center',
+															gap: '12px',
+															padding: '10px 16px',
+															backgroundColor:
+																'var(--thread-surface)',
+															borderRadius: '6px',
+															border: '1px solid var(--thread-structure-subtle)',
+														}}
+													>
+														<span
+															style={{
+																fontSize: '0.75rem',
+																fontWeight: 700,
+																color: 'var(--thread-text-standard)',
+																width: '60px',
+															}}
+														>
+															{name}
+														</span>
+														<span
+															style={{
+																fontSize: '0.6875rem',
+																fontFamily: 'monospace',
+																color: 'var(--thread-text-disabled)',
+																width: '32px',
+															}}
+														>
+															{value}
+														</span>
+														<span
+															style={{
+																fontSize: '0.75rem',
+																color: 'var(--thread-text-secondary)',
+															}}
+														>
+															{desc}
+														</span>
+													</div>
+												))}
+											</div>
+										</>
+									),
+								},
 							]}
 						/>
 					</Container>
 				</div>
-
 				<div style={{ height: '24px' }} />
-
 				{/* ── Brand Palette ── */}
-				<>
-					<TabView
-						title={<H1>Theme Color Scheme</H1>}
-						cardStyles="none"
-						items={[
-							{
-								title: 'Brand Palette',
-								content: (
-									<>
-										<div style={contentWrapperStyles}>
-											<Text>
-												Brand Identity is defined with primary, secondary,
-												and tertiary brand colors. Each color has light,
-												main and dark variants
-											</Text>
-										</div>
-										<div style={gridStyle}>
-											<ShadeGroup
-												name="primary"
-												shades={DefaultThreadTheme.primary}
-											/>
-											<ShadeGroup
-												name="secondary"
-												shades={DefaultThreadTheme.secondary}
-											/>
-											<ShadeGroup
-												name="tertiary"
-												shades={DefaultThreadTheme.tertiary}
-											/>
-										</div>
-									</>
-								),
-							},
-							{
-								title: 'Status Colors',
-								content: (
-									<>
-										<div style={contentWrapperStyles}>
-											<Text>
-												Semantic colors for feedback and alerts. These
-												intentionally break the neutral surface system to
-												draw attention.
-											</Text>
-										</div>
-										<div style={doubleGridStyles}>
-											<ShadeGroup
-												name="success"
-												shades={DefaultThreadTheme.success}
-											/>
-											<ShadeGroup
-												name="info"
-												shades={DefaultThreadTheme.info}
-											/>
-											<ShadeGroup
-												name="warning"
-												shades={DefaultThreadTheme.warning}
-											/>
-											<ShadeGroup
-												name="error"
-												shades={DefaultThreadTheme.error}
-											/>
-										</div>
-									</>
-								),
-							},
-							{
-								title: 'Neutrals',
-								content: (
-									<>
-										<div style={contentWrapperStyles}>
-											<Text>
-												Semantic colors for feedback and alerts. These
-												intentionally break the neutral surface system to
-												draw attention.
-											</Text>
-										</div>
-										<div
-											style={{
-												display: 'flex',
-												gap: '16px',
-												marginBottom: '16px',
-											}}
-										>
-											<Swatch label="White" cssVar="--thread-white" border />
-											<Swatch label="Black" cssVar="--thread-black" />
-										</div>
-										<div style={gridStyle}>
-											<ShadeGroup
-												name="gray"
-												shades={DefaultThreadTheme.gray}
-											/>
-										</div>
-									</>
-								),
-							},
-							{
-								title: 'Text Colors',
-								content: (
-									<>
-										<div style={contentWrapperStyles}>
-											<Text>
-												Semantic text roles. Standard for body copy,
-												secondary for supporting text, disabled for inactive
-												elements, accent for brand-colored text, inverted
-												for text on non-standard backgrounds.
-											</Text>
-										</div>
-										<div
-											style={{
-												backgroundColor: 'var(--thread-surface)',
-												borderRadius: '8px',
-												padding: '24px',
-												border: '1px solid var(--thread-structure-subtle)',
-												display: 'flex',
-												flexDirection: 'column',
-												gap: '12px',
-											}}
-										>
-											{(
-												[
+				<div style={{ height: '450px' }}>
+					<Container>
+						<TabView
+							title={<H1>Theme Color Scheme</H1>}
+							cardStyles="none"
+							items={[
+								{
+									title: 'Brand Palette',
+									content: (
+										<>
+											<div style={contentWrapperStyles}>
+												<Text>
+													Brand Identity is defined with primary,
+													secondary, and tertiary brand colors. Each color
+													has light, main and dark variants
+												</Text>
+											</div>
+											<div style={gridStyle}>
+												<ShadeGroup
+													name="primary"
+													shades={DefaultThreadTheme.primary}
+												/>
+												<ShadeGroup
+													name="secondary"
+													shades={DefaultThreadTheme.secondary}
+												/>
+												<ShadeGroup
+													name="tertiary"
+													shades={DefaultThreadTheme.tertiary}
+												/>
+											</div>
+										</>
+									),
+								},
+								{
+									title: 'Status Colors',
+									content: (
+										<>
+											<div style={contentWrapperStyles}>
+												<Text>
+													Semantic colors for feedback and alerts. These
+													intentionally break the neutral surface system
+													to draw attention.
+												</Text>
+											</div>
+											<div style={doubleGridStyles}>
+												<ShadeGroup
+													name="success"
+													shades={DefaultThreadTheme.success}
+												/>
+												<ShadeGroup
+													name="info"
+													shades={DefaultThreadTheme.info}
+												/>
+												<ShadeGroup
+													name="warning"
+													shades={DefaultThreadTheme.warning}
+												/>
+												<ShadeGroup
+													name="error"
+													shades={DefaultThreadTheme.error}
+												/>
+											</div>
+										</>
+									),
+								},
+								{
+									title: 'Neutrals',
+									content: (
+										<>
+											<div style={contentWrapperStyles}>
+												<Text>
+													Semantic colors for feedback and alerts. These
+													intentionally break the neutral surface system
+													to draw attention.
+												</Text>
+											</div>
+											<div
+												style={{
+													display: 'flex',
+													gap: '16px',
+													marginBottom: '16px',
+												}}
+											>
+												<Swatch
+													label="White"
+													cssVar="--thread-white"
+													border
+												/>
+												<Swatch label="Black" cssVar="--thread-black" />
+											</div>
+											<div style={gridStyle}>
+												<ShadeGroup
+													name="gray"
+													shades={DefaultThreadTheme.gray}
+												/>
+											</div>
+										</>
+									),
+								},
+								{
+									title: 'Text Colors',
+									content: (
+										<>
+											<div style={contentWrapperStyles}>
+												<Text>
+													Semantic text roles. Standard for body copy,
+													secondary for supporting text, disabled for
+													inactive elements, accent for brand-colored
+													text, inverted for text on non-standard
+													backgrounds.
+												</Text>
+											</div>
+											<div
+												style={{
+													backgroundColor: 'var(--thread-surface)',
+													borderRadius: '8px',
+													padding: '24px',
+													border: '1px solid var(--thread-structure-subtle)',
+													display: 'flex',
+													flexDirection: 'column',
+													gap: '12px',
+												}}
+											>
+												{(
 													[
-														'standard',
-														'The primary text color for body content.',
-													],
-													[
-														'secondary',
-														'Supporting text, captions, and labels.',
-													],
-													[
-														'disabled',
-														'Inactive or unavailable content.',
-													],
-													['accent', 'Brand-colored text for emphasis.'],
-												] as const
-											).map(([role, sample]) => (
+														[
+															'standard',
+															'The primary text color for body content.',
+														],
+														[
+															'secondary',
+															'Supporting text, captions, and labels.',
+														],
+														[
+															'disabled',
+															'Inactive or unavailable content.',
+														],
+														[
+															'accent',
+															'Brand-colored text for emphasis.',
+														],
+													] as const
+												).map(([role, sample]) => (
+													<div
+														key={role}
+														style={{
+															display: 'flex',
+															alignItems: 'baseline',
+															gap: '16px',
+														}}
+													>
+														<span
+															style={{
+																fontSize: '0.6875rem',
+																fontFamily: 'monospace',
+																color: 'var(--thread-text-disabled)',
+																width: '80px',
+																flexShrink: 0,
+															}}
+														>
+															{role}
+														</span>
+														<span
+															style={{
+																fontSize: '1rem',
+																color: `var(--thread-text-${role})`,
+															}}
+														>
+															{sample}
+														</span>
+													</div>
+												))}
 												<div
-													key={role}
 													style={{
 														display: 'flex',
 														alignItems: 'baseline',
@@ -668,129 +778,35 @@ export const Theme: Story = {
 															flexShrink: 0,
 														}}
 													>
-														{role}
+														inverted
 													</span>
 													<span
 														style={{
 															fontSize: '1rem',
-															color: `var(--thread-text-${role})`,
+															color: 'var(--thread-text-inverted)',
+															backgroundColor: 'var(--thread-black)',
+															padding: '4px 12px',
+															borderRadius: '4px',
 														}}
 													>
-														{sample}
+														Text on non-standard backgrounds.
 													</span>
 												</div>
-											))}
-											<div
-												style={{
-													display: 'flex',
-													alignItems: 'baseline',
-													gap: '16px',
-												}}
-											>
-												<span
-													style={{
-														fontSize: '0.6875rem',
-														fontFamily: 'monospace',
-														color: 'var(--thread-text-disabled)',
-														width: '80px',
-														flexShrink: 0,
-													}}
-												>
-													inverted
-												</span>
-												<span
-													style={{
-														fontSize: '1rem',
-														color: 'var(--thread-text-inverted)',
-														backgroundColor: 'var(--thread-black)',
-														padding: '4px 12px',
-														borderRadius: '4px',
-													}}
-												>
-													Text on non-standard backgrounds.
-												</span>
 											</div>
-										</div>
-									</>
-								),
-							},
-						]}
-					/>
-				</>
-
-				{/* ── Z-Index ── */}
-				<div style={sectionStyle}>
-					<div style={sectionTitleStyle}>Z-Index Scale</div>
-					<div style={sectionCaptionStyle}>
-						Stacking order for components. Gaps of 100 allow slotting elements between
-						layers without renumbering.
-					</div>
-					<div
-						style={{
-							display: 'flex',
-							flexDirection: 'column',
-							gap: '4px',
-							maxWidth: '480px',
-						}}
-					>
-						{(
-							[
-								['system', '400', 'Toasts, global banners'],
-								['modal', '300', 'Modal dialogs + scrim'],
-								['overlay', '200', 'Dropdowns, popovers'],
-								['sticky', '100', 'Nav, sticky controls'],
-								['base', '0', 'Normal document flow'],
-							] as const
-						).map(([name, value, desc]) => (
-							<div
-								key={name}
-								style={{
-									display: 'flex',
-									alignItems: 'center',
-									gap: '12px',
-									padding: '10px 16px',
-									backgroundColor: 'var(--thread-surface)',
-									borderRadius: '6px',
-									border: '1px solid var(--thread-structure-subtle)',
-								}}
-							>
-								<span
-									style={{
-										fontSize: '0.75rem',
-										fontWeight: 700,
-										color: 'var(--thread-text-standard)',
-										width: '60px',
-									}}
-								>
-									{name}
-								</span>
-								<span
-									style={{
-										fontSize: '0.6875rem',
-										fontFamily: 'monospace',
-										color: 'var(--thread-text-disabled)',
-										width: '32px',
-									}}
-								>
-									{value}
-								</span>
-								<span
-									style={{
-										fontSize: '0.75rem',
-										color: 'var(--thread-text-secondary)',
-									}}
-								>
-									{desc}
-								</span>
-							</div>
-						))}
-					</div>
+										</>
+									),
+								},
+							]}
+						/>
+					</Container>
 				</div>
-
+				<div style={{ height: '24px' }} />
 				{/* ── Sizing ── */}
-				<div style={{ ...sectionStyle, paddingBottom: '96px' }}>
-					<div style={sectionTitleStyle}>Border Sizing</div>
-					<div style={sectionCaptionStyle}>Radius and width tokens at three scales.</div>
+				<Container>
+					<div style={contentWrapperStyles}>
+						<H2>Border Sizing</H2>
+						<Text>Radius and width tokens at three scales.</Text>
+					</div>
 					<div style={{ display: 'flex', gap: '32px' }}>
 						<div>
 							<span
@@ -863,7 +879,7 @@ export const Theme: Story = {
 							</div>
 						</div>
 					</div>
-				</div>
+				</Container>
 			</div>
 		);
 	},
