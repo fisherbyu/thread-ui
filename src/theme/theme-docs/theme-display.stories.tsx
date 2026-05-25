@@ -240,7 +240,7 @@ const ShadowCard = ({ size, value }: { size: string; value: string }) => (
 		>
 			{size}
 		</span>
-		<span
+		{/* <span
 			style={{
 				fontSize: '0.6875rem',
 				fontFamily: 'monospace',
@@ -249,7 +249,7 @@ const ShadowCard = ({ size, value }: { size: string; value: string }) => (
 			}}
 		>
 			{value}
-		</span>
+		</span> */}
 	</div>
 );
 
@@ -374,99 +374,136 @@ export const Theme: Story = {
 					</div>
 				</Container>
 				<div style={{ height: '24px' }} />
-
-				{/* ── Interactive States ── */}
+				{/* ── Bundle ── */}
 				<Container>
-					<div style={contentWrapperStyles}>
-						<H2>Interactive States</H2>
-						<Text>
-							Hover and active states applied on top of any surface. These are
-							interaction cues, not layers.
-						</Text>
-					</div>
-					<div style={{ display: 'flex', gap: '16px' }}>
-						<Swatch label="Hover" cssVar="--thread-hover" border />
-						<Swatch label="Active" cssVar="--thread-active" border />
-					</div>
+					<TabView
+						layer="none"
+						items={[
+							{
+								title: 'Structure Colors',
+								content: (
+									<>
+										<>
+											<div style={contentWrapperStyles}>
+												<H2>Structure Colors</H2>
+												<Text>
+													Three tiers of border and divider colors. Subtle
+													for card edges, default for inputs and dividers,
+													strong for emphasis and active states. Input
+													focus uses the primary color, not a structure
+													tier.
+												</Text>
+											</div>
+											<div
+												style={{
+													display: 'flex',
+													gap: '16px',
+													marginBottom: '24px',
+												}}
+											>
+												{(['subtle', 'default', 'strong'] as const).map(
+													(tier) => (
+														<div
+															key={tier}
+															style={{
+																flex: 1,
+																backgroundColor:
+																	'var(--thread-surface)',
+																borderRadius: '8px',
+																padding: '20px',
+																border: `2px solid var(--thread-structure-${tier})`,
+																display: 'flex',
+																flexDirection: 'column',
+																gap: '4px',
+															}}
+														>
+															<span
+																style={{
+																	fontSize: '0.875rem',
+																	fontWeight: 700,
+																	color: 'var(--thread-text-standard)',
+																	textTransform: 'capitalize',
+																}}
+															>
+																{tier}
+															</span>
+															{/* <span
+																style={{
+																	fontSize: '0.6875rem',
+																	fontFamily: 'monospace',
+																	color: 'var(--thread-text-secondary)',
+																}}
+															>
+																--thread-structure-{tier}
+															</span> */}
+														</div>
+													)
+												)}
+											</div>
+										</>
+									</>
+								),
+							},
+							{
+								title: 'Shadow Scale',
+								content: (
+									<>
+										<div style={contentWrapperStyles}>
+											<H2>Shadow Scale</H2>
+											<Text>
+												Compound shadows with a tight edge layer and a
+												diffused ambient layer. Mode-independent — in dark
+												mode, surface color lightness carries elevation
+												instead.
+											</Text>
+										</div>
+										<div
+											style={{
+												display: 'grid',
+												gridTemplateColumns: 'repeat(3, 1fr)',
+												gap: '24px',
+											}}
+										>
+											{(
+												Object.keys(DefaultThreadTheme.shadow) as Array<
+													keyof typeof DefaultThreadTheme.shadow
+												>
+											).map((size) => (
+												<ShadowCard
+													key={size.toString()}
+													size={size as string}
+													value={DefaultThreadTheme.shadow[size]}
+												/>
+											))}
+										</div>
+									</>
+								),
+							},
+							{
+								title: 'Interactive States',
+								content: (
+									<>
+										<div style={contentWrapperStyles}>
+											<H2>Interactive States</H2>
+											<Text>
+												Hover and active states applied on top of any
+												surface. These are interaction cues, not layers.
+											</Text>
+										</div>
+										<div style={{ display: 'flex', gap: '16px' }}>
+											<Swatch label="Hover" cssVar="--thread-hover" border />
+											<Swatch
+												label="Active"
+												cssVar="--thread-active"
+												border
+											/>
+										</div>
+									</>
+								),
+							},
+						]}
+					/>
 				</Container>
-				<div style={{ height: '24px' }} />
-				{/* ── Shadows ── */}
-				<Container>
-					<div style={contentWrapperStyles}>
-						<H2>Shadow Scale</H2>
-						<Text>
-							Compound shadows with a tight edge layer and a diffused ambient layer.
-							Mode-independent — in dark mode, surface color lightness carries
-							elevation instead.
-						</Text>
-					</div>
-					<div
-						style={{
-							display: 'grid',
-							gridTemplateColumns: 'repeat(3, 1fr)',
-							gap: '24px',
-						}}
-					>
-						{(
-							Object.keys(DefaultThreadTheme.shadow) as Array<
-								keyof typeof DefaultThreadTheme.shadow
-							>
-						).map((size) => (
-							<ShadowCard
-								key={size.toString()}
-								size={size as string}
-								value={DefaultThreadTheme.shadow[size]}
-							/>
-						))}
-					</div>
-				</Container>
-
-				{/* ── Structure Colors ── */}
-				<div style={sectionStyle}>
-					<div style={sectionTitleStyle}>Structure Colors</div>
-					<div style={sectionCaptionStyle}>
-						Three tiers of border and divider colors. Subtle for card edges, default for
-						inputs and dividers, strong for emphasis and active states. Input focus uses
-						the primary color, not a structure tier.
-					</div>
-					<div style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
-						{(['subtle', 'default', 'strong'] as const).map((tier) => (
-							<div
-								key={tier}
-								style={{
-									flex: 1,
-									backgroundColor: 'var(--thread-surface)',
-									borderRadius: '8px',
-									padding: '20px',
-									border: `2px solid var(--thread-structure-${tier})`,
-									display: 'flex',
-									flexDirection: 'column',
-									gap: '4px',
-								}}
-							>
-								<span
-									style={{
-										fontSize: '0.875rem',
-										fontWeight: 700,
-										color: 'var(--thread-text-standard)',
-										textTransform: 'capitalize',
-									}}
-								>
-									{tier}
-								</span>
-								<span
-									style={{
-										fontSize: '0.6875rem',
-										fontFamily: 'monospace',
-										color: 'var(--thread-text-secondary)',
-									}}
-								>
-									--thread-structure-{tier}
-								</span>
-							</div>
-						))}
-					</div>
-				</div>
 
 				<div style={{ height: '24px' }} />
 
