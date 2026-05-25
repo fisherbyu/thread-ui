@@ -74,6 +74,12 @@ const wideGridStyle: React.CSSProperties = {
 	gap: '16px',
 };
 
+const doubleGridStyles: React.CSSProperties = {
+	display: 'grid',
+	gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+	gap: '16px',
+};
+
 const ShadeGroup = ({
 	name,
 	shades,
@@ -510,48 +516,104 @@ export const Theme: Story = {
 				<div style={{ height: '24px' }} />
 
 				{/* ── Brand Palette ── */}
-				<div style={sectionStyle}>
-					<div style={sectionTitleStyle}>Brand Palette</div>
-					<div style={sectionCaptionStyle}>
-						Three-step color scales for primary, secondary, and tertiary brand colors.
-						Each has light, main, and dark variants.
-					</div>
-					<div style={gridStyle}>
-						<ShadeGroup name="primary" shades={DefaultThreadTheme.primary} />
-						<ShadeGroup name="secondary" shades={DefaultThreadTheme.secondary} />
-						<ShadeGroup name="tertiary" shades={DefaultThreadTheme.tertiary} />
-					</div>
-				</div>
-
-				{/* ── Status Colors ── */}
-				<div style={sectionStyle}>
-					<div style={sectionTitleStyle}>Status Colors</div>
-					<div style={sectionCaptionStyle}>
-						Semantic colors for feedback and alerts. These intentionally break the
-						neutral surface system to draw attention.
-					</div>
-					<div style={gridStyle}>
-						<ShadeGroup name="success" shades={DefaultThreadTheme.success} />
-						<ShadeGroup name="warning" shades={DefaultThreadTheme.warning} />
-						<ShadeGroup name="error" shades={DefaultThreadTheme.error} />
-						<ShadeGroup name="info" shades={DefaultThreadTheme.info} />
-					</div>
-				</div>
-
-				{/* ── Neutral Colors ── */}
-				<div style={sectionStyle}>
-					<div style={sectionTitleStyle}>Neutrals</div>
-					<div style={sectionCaptionStyle}>
-						Base neutral palette. White, black, and a three-step gray scale.
-					</div>
-					<div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
-						<Swatch label="White" cssVar="--thread-white" border />
-						<Swatch label="Black" cssVar="--thread-black" />
-					</div>
-					<div style={gridStyle}>
-						<ShadeGroup name="gray" shades={DefaultThreadTheme.gray} />
-					</div>
-				</div>
+				<>
+					<TabView
+						title="Theme Color Scheme"
+						cardStyles="none"
+						items={[
+							{
+								title: 'Brand Palette',
+								content: (
+									<>
+										<div style={contentWrapperStyles}>
+											<Text>
+												Brand Identity is defined with primary, secondary,
+												and tertiary brand colors. Each color has light,
+												main and dark variants
+											</Text>
+										</div>
+										<div style={gridStyle}>
+											<ShadeGroup
+												name="primary"
+												shades={DefaultThreadTheme.primary}
+											/>
+											<ShadeGroup
+												name="secondary"
+												shades={DefaultThreadTheme.secondary}
+											/>
+											<ShadeGroup
+												name="tertiary"
+												shades={DefaultThreadTheme.tertiary}
+											/>
+										</div>
+									</>
+								),
+							},
+							{
+								title: 'Status Colors',
+								content: (
+									<>
+										<div style={contentWrapperStyles}>
+											<Text>
+												Semantic colors for feedback and alerts. These
+												intentionally break the neutral surface system to
+												draw attention.
+											</Text>
+										</div>
+										<div style={doubleGridStyles}>
+											<ShadeGroup
+												name="success"
+												shades={DefaultThreadTheme.success}
+											/>
+											<ShadeGroup
+												name="info"
+												shades={DefaultThreadTheme.info}
+											/>
+											<ShadeGroup
+												name="warning"
+												shades={DefaultThreadTheme.warning}
+											/>
+											<ShadeGroup
+												name="error"
+												shades={DefaultThreadTheme.error}
+											/>
+										</div>
+									</>
+								),
+							},
+							{
+								title: 'Neutrals',
+								content: (
+									<>
+										<div style={contentWrapperStyles}>
+											<Text>
+												Semantic colors for feedback and alerts. These
+												intentionally break the neutral surface system to
+												draw attention.
+											</Text>
+										</div>
+										<div
+											style={{
+												display: 'flex',
+												gap: '16px',
+												marginBottom: '16px',
+											}}
+										>
+											<Swatch label="White" cssVar="--thread-white" border />
+											<Swatch label="Black" cssVar="--thread-black" />
+										</div>
+										<div style={gridStyle}>
+											<ShadeGroup
+												name="gray"
+												shades={DefaultThreadTheme.gray}
+											/>
+										</div>
+									</>
+								),
+							},
+						]}
+					/>
+				</>
 
 				{/* ── Text Colors ── */}
 				<div style={sectionStyle}>
