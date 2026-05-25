@@ -1,7 +1,6 @@
 import { cva } from '@/styled-system/css';
+import { Divider, Icon, Text } from '@/components';
 import { useTabViewContext } from '../tab-view-context';
-import { Divider } from '../../divider';
-import { Text } from '@/components/typography';
 
 const styles = {
 	container: cva({
@@ -25,6 +24,10 @@ const styles = {
 	}),
 	item: cva({
 		base: {
+			display: 'flex',
+			flexDirection: 'row',
+			alignItems: 'center',
+			gap: '1',
 			padding: '2',
 			borderBottomWidth: 'md',
 			borderBottomColor: 'transparent',
@@ -62,12 +65,14 @@ export const TabViewControls = () => {
 				{itemOrder.map((itemId) => {
 					const item = items[itemId];
 					const isActive = activeItemId === itemId;
+
 					return (
 						<button
 							key={itemId}
 							className={styles.item({ isActive })}
 							onClick={() => setValue((prev) => ({ ...prev, activeItemId: itemId }))}
 						>
+							{item.icon && <Icon name={item.icon} size={16} />}
 							<Text
 								weight="semibold"
 								color={isActive ? 'standard' : 'text-secondary'}
