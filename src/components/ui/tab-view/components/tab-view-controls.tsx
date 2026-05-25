@@ -28,7 +28,7 @@ const styles = {
 			flexDirection: 'row',
 			alignItems: 'center',
 			gap: '1.5',
-			padding: '2',
+			paddingY: '2',
 			borderWidth: 'md',
 			borderColor: 'transparent',
 			cursor: 'pointer',
