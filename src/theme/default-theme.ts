@@ -149,6 +149,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 			bold: '700',
 		},
 		lineHeights: {
+			none: '1', // exact height of font
 			tighter: '1.1', // hero/display - very large text only
 			tight: '1.3', // headings (current value)
 			normal: '1.5', // body (current value, W3C standard)

@@ -140,6 +140,7 @@ export default defineConfig({
 				},
 				// Line height tokens
 				lineHeights: {
+					none: { value: 'var(--thread-line-height-none)' },
 					tighter: { value: 'var(--thread-line-height-tighter)' },
 					tight: { value: 'var(--thread-line-height-tight)' },
 					normal: { value: 'var(--thread-line-height-normal)' },
