@@ -17,7 +17,7 @@ const meta = {
 		},
 		layer: {
 			control: 'select',
-			options: ['canvas', 'inset', 'surface', 'elevated', 'overlay'],
+			options: ['none', 'canvas', 'inset', 'surface', 'elevated', 'overlay'],
 		},
 
 		bg: {
