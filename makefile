@@ -114,11 +114,11 @@ lint-check: # Lint without auto-fix (for CI/build)
 
 .PHONY: prettier
 prettier: # Format source files with Prettier
-	$(PRETTIER) --write $(SRC_DIR)
+	$(PRETTIER) --write $(SRC_DIR) --log-level warn
 
 .PHONY: prettier-check
 prettier-check: # Check Prettier formatting without writing (for CI/build)
-	$(PRETTIER) --check $(SRC_DIR)
+	$(PRETTIER) --check $(SRC_DIR) --log-level warn
 
 .PHONY: format
 format: lint prettier ## Run ESLint --fix and Prettier --write on source files
