@@ -638,9 +638,8 @@ export const Theme: Story = {
 										<>
 											<div style={contentWrapperStyles}>
 												<Text>
-													Semantic colors for feedback and alerts. These
-													intentionally break the neutral surface system
-													to draw attention.
+													Base neutral palette. White, black, and a
+													three-step gray scale.
 												</Text>
 											</div>
 											<div
