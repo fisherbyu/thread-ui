@@ -1,10 +1,12 @@
 import React, { ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { DefaultThreadTheme } from './default-theme';
-import { SurfaceLayerMap } from './theme-surface-system';
-import { Code, H1, H2, List, Text, Title } from '../components/typography';
-import { Container } from '../components/layouts/container';
-import { ThreadTheme } from '../theme/thread-theme';
+import { DefaultThreadTheme } from '../default-theme';
+import { SurfaceLayerMap } from '../theme-surface-system';
+import { Code, H1, H2, List, Text, Title } from '../../components/typography';
+import { Container } from '../../components/layouts/container';
+import { ThreadTheme } from '../../theme/thread-theme';
+import { Swatch } from './misc-elements';
+import { TabView } from '../../components';
 
 type DesignSystemArgs = Record<string, never>;
 
@@ -71,50 +73,6 @@ const wideGridStyle: React.CSSProperties = {
 	gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
 	gap: '16px',
 };
-
-const Swatch = ({
-	label,
-	cssVar,
-	border,
-	textDark = true,
-}: {
-	label: string;
-	cssVar: string;
-	border?: boolean;
-	textDark?: boolean;
-}) => (
-	<div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-		<div
-			style={{
-				width: '100%',
-				height: '64px',
-				borderRadius: '6px',
-				backgroundColor: `var(${cssVar})`,
-				border: border
-					? '1px solid var(--thread-structure-default)'
-					: '1px solid transparent',
-			}}
-		/>
-		<span
-			style={{
-				fontSize: '0.75rem',
-				fontWeight: 600,
-				color: 'var(--thread-text-standard)',
-			}}
-		>
-			{label}
-		</span>
-		<span
-			style={{
-				fontSize: '0.6875rem',
-				color: 'var(--thread-text-secondary)',
-				fontFamily: 'monospace',
-			}}
-		>
-			{cssVar}
-		</span>
-	</div>
-);
 
 const ShadeGroup = ({
 	name,
@@ -431,14 +389,16 @@ export const Theme: Story = {
 						<Swatch label="Active" cssVar="--thread-active" border />
 					</div>
 				</Container>
-
+				<div style={{ height: '24px' }} />
 				{/* ── Shadows ── */}
-				<div style={sectionStyle}>
-					<div style={sectionTitleStyle}>Shadow Scale</div>
-					<div style={sectionCaptionStyle}>
-						Compound shadows with a tight edge layer and a diffused ambient layer.
-						Mode-independent — in dark mode, surface color lightness carries elevation
-						instead.
+				<Container>
+					<div style={contentWrapperStyles}>
+						<H2>Shadow Scale</H2>
+						<Text>
+							Compound shadows with a tight edge layer and a diffused ambient layer.
+							Mode-independent — in dark mode, surface color lightness carries
+							elevation instead.
+						</Text>
 					</div>
 					<div
 						style={{
@@ -454,12 +414,12 @@ export const Theme: Story = {
 						).map((size) => (
 							<ShadowCard
 								key={size.toString()}
-								size={size}
+								size={size as string}
 								value={DefaultThreadTheme.shadow[size]}
 							/>
 						))}
 					</div>
-				</div>
+				</Container>
 
 				{/* ── Structure Colors ── */}
 				<div style={sectionStyle}>
@@ -507,6 +467,8 @@ export const Theme: Story = {
 						))}
 					</div>
 				</div>
+
+				<div style={{ height: '24px' }} />
 
 				{/* ── Brand Palette ── */}
 				<div style={sectionStyle}>
