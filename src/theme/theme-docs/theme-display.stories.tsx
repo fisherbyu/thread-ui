@@ -52,8 +52,6 @@ const codeTextStyles: React.CSSProperties = {
 	color: ThreadTheme.text.secondary,
 };
 
-console.table(codeTextStyles);
-
 const sectionCaptionStyle: React.CSSProperties = {
 	fontSize: '0.875rem',
 	color: 'var(--thread-text-secondary)',
