@@ -21,7 +21,7 @@ export type TabViewProps = {
 	/** ID of the tab to activate on initial mount @default first item's `id` */
 	defaultValueId?: TabItem['id'];
 	/** Card surface layer styles applied to the tab view container @default `'surface'` */
-	cardStyles?: SurfaceLayerOptions;
+	cardStyles?: SurfaceLayerOptions | 'none';
 	/** Display Divider between Controls and Content @default `'false'` */
 	showDivider?: boolean;
 	/** When true, inactive tab panels are removed from the DOM rather than hidden @default `false` */

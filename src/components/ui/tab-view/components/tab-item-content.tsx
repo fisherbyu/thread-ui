@@ -1,5 +1,6 @@
-import { css } from '@/styled-system/css';
+import { css, cva } from '@/styled-system/css';
 import { Card } from '../../card';
+import { ConditionalWrapper } from '../../../../internal-components';
 import { useTabViewContext } from '../tab-view-context';
 import { TabViewControls } from './tab-view-controls';
 import { H3 } from '@/components/typography';
@@ -9,7 +10,7 @@ type TabItemContentProps = {
 };
 
 const styles = {
-	container: css({}),
+	content: css({ width: '100%' }),
 };
 
 export const TabItemContent = ({ itemId }: TabItemContentProps) => {
@@ -26,12 +27,19 @@ export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 	const item = items[itemId];
 
 	return (
-		<div hidden={!isActive} className={styles.container}>
-			<Card layer={cardStyles} fullWidth>
+		<div hidden={!isActive}>
+			<ConditionalWrapper
+				wrapper={cardStyles === 'none' ? 'div' : Card}
+				wrapperProps={
+					cardStyles === 'none'
+						? { className: styles.content }
+						: { layer: cardStyles, fullWidth: true }
+				}
+			>
 				{title && <H3>{title}</H3>}
 				<TabViewControls />
 				{item.content}
-			</Card>
+			</ConditionalWrapper>
 		</div>
 	);
 };
