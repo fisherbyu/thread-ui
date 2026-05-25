@@ -276,7 +276,7 @@ export const Theme: Story = {
 						<H1>Surface Layers</H1>
 						<Text>
 							Five elevation layers from page background to overlay. Each layer
-							resolves its own background color, shadow depth, border weight, and
+							carries its own background color, shadow depth, border weight, and
 							z-index.
 						</Text>
 					</div>
