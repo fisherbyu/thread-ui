@@ -379,7 +379,7 @@ export const Theme: Story = {
 					<Container>
 						<TabView
 							title="Layer Construction & Interactivity"
-							layer="canvas"
+							cardStyles="none"
 							items={[
 								{
 									title: 'Structure Colors',
