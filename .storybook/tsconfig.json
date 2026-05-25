@@ -1,9 +1,9 @@
 {
-    "extends": "../tsconfig.json",
-    "compilerOptions": {
-        "rootDir": "..",
-        "noEmit": true
-    },
-    "include": ["**/*", "../src/css.d.ts"],
-    "exclude": ["../node_modules", "../dist"]
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"rootDir": "..",
+		"noEmit": true
+	},
+	"include": ["**/*", "../src/css.d.ts"],
+	"exclude": ["../node_modules", "../dist"]
 }
