@@ -29,19 +29,6 @@ type Story = StoryObj<typeof meta>;
 
 // ── Helpers ──────────────────────────────────────────────────
 
-const sectionStyle: React.CSSProperties = {
-	padding: '20px 32px',
-	maxWidth: '1100px',
-	margin: '0 auto',
-};
-
-const sectionTitleStyle: React.CSSProperties = {
-	fontSize: '1.5rem',
-	fontWeight: 700,
-	color: 'var(--thread-text-standard)',
-	marginBottom: '4px',
-};
-
 const contentWrapperStyles: React.CSSProperties = {
 	maxWidth: '640px',
 };
