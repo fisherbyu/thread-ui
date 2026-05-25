@@ -384,7 +384,7 @@ export const Theme: Story = {
 				<div style={{ height: '350px' }}>
 					<Container>
 						<TabView
-							title="Layer Construction & Interactivity"
+							title={<H2>Layer Construction & Interactivity</H2>}
 							cardStyles="none"
 							items={[
 								{
@@ -518,7 +518,7 @@ export const Theme: Story = {
 				{/* ── Brand Palette ── */}
 				<>
 					<TabView
-						title="Theme Color Scheme"
+						title={<H1>Theme Color Scheme</H1>}
 						cardStyles="none"
 						items={[
 							{
@@ -611,88 +611,112 @@ export const Theme: Story = {
 									</>
 								),
 							},
+							{
+								title: 'Text Colors',
+								content: (
+									<>
+										<div style={contentWrapperStyles}>
+											<Text>
+												Semantic text roles. Standard for body copy,
+												secondary for supporting text, disabled for inactive
+												elements, accent for brand-colored text, inverted
+												for text on non-standard backgrounds.
+											</Text>
+										</div>
+										<div
+											style={{
+												backgroundColor: 'var(--thread-surface)',
+												borderRadius: '8px',
+												padding: '24px',
+												border: '1px solid var(--thread-structure-subtle)',
+												display: 'flex',
+												flexDirection: 'column',
+												gap: '12px',
+											}}
+										>
+											{(
+												[
+													[
+														'standard',
+														'The primary text color for body content.',
+													],
+													[
+														'secondary',
+														'Supporting text, captions, and labels.',
+													],
+													[
+														'disabled',
+														'Inactive or unavailable content.',
+													],
+													['accent', 'Brand-colored text for emphasis.'],
+												] as const
+											).map(([role, sample]) => (
+												<div
+													key={role}
+													style={{
+														display: 'flex',
+														alignItems: 'baseline',
+														gap: '16px',
+													}}
+												>
+													<span
+														style={{
+															fontSize: '0.6875rem',
+															fontFamily: 'monospace',
+															color: 'var(--thread-text-disabled)',
+															width: '80px',
+															flexShrink: 0,
+														}}
+													>
+														{role}
+													</span>
+													<span
+														style={{
+															fontSize: '1rem',
+															color: `var(--thread-text-${role})`,
+														}}
+													>
+														{sample}
+													</span>
+												</div>
+											))}
+											<div
+												style={{
+													display: 'flex',
+													alignItems: 'baseline',
+													gap: '16px',
+												}}
+											>
+												<span
+													style={{
+														fontSize: '0.6875rem',
+														fontFamily: 'monospace',
+														color: 'var(--thread-text-disabled)',
+														width: '80px',
+														flexShrink: 0,
+													}}
+												>
+													inverted
+												</span>
+												<span
+													style={{
+														fontSize: '1rem',
+														color: 'var(--thread-text-inverted)',
+														backgroundColor: 'var(--thread-black)',
+														padding: '4px 12px',
+														borderRadius: '4px',
+													}}
+												>
+													Text on non-standard backgrounds.
+												</span>
+											</div>
+										</div>
+									</>
+								),
+							},
 						]}
 					/>
 				</>
-
-				{/* ── Text Colors ── */}
-				<div style={sectionStyle}>
-					<div style={sectionTitleStyle}>Text Colors</div>
-					<div style={sectionCaptionStyle}>
-						Semantic text roles. Standard for body copy, secondary for supporting text,
-						disabled for inactive elements, accent for brand-colored text, inverted for
-						text on non-standard backgrounds.
-					</div>
-					<div
-						style={{
-							backgroundColor: 'var(--thread-surface)',
-							borderRadius: '8px',
-							padding: '24px',
-							border: '1px solid var(--thread-structure-subtle)',
-							display: 'flex',
-							flexDirection: 'column',
-							gap: '12px',
-						}}
-					>
-						{(
-							[
-								['standard', 'The primary text color for body content.'],
-								['secondary', 'Supporting text, captions, and labels.'],
-								['disabled', 'Inactive or unavailable content.'],
-								['accent', 'Brand-colored text for emphasis.'],
-							] as const
-						).map(([role, sample]) => (
-							<div
-								key={role}
-								style={{ display: 'flex', alignItems: 'baseline', gap: '16px' }}
-							>
-								<span
-									style={{
-										fontSize: '0.6875rem',
-										fontFamily: 'monospace',
-										color: 'var(--thread-text-disabled)',
-										width: '80px',
-										flexShrink: 0,
-									}}
-								>
-									{role}
-								</span>
-								<span
-									style={{
-										fontSize: '1rem',
-										color: `var(--thread-text-${role})`,
-									}}
-								>
-									{sample}
-								</span>
-							</div>
-						))}
-						<div style={{ display: 'flex', alignItems: 'baseline', gap: '16px' }}>
-							<span
-								style={{
-									fontSize: '0.6875rem',
-									fontFamily: 'monospace',
-									color: 'var(--thread-text-disabled)',
-									width: '80px',
-									flexShrink: 0,
-								}}
-							>
-								inverted
-							</span>
-							<span
-								style={{
-									fontSize: '1rem',
-									color: 'var(--thread-text-inverted)',
-									backgroundColor: 'var(--thread-black)',
-									padding: '4px 12px',
-									borderRadius: '4px',
-								}}
-							>
-								Text on non-standard backgrounds.
-							</span>
-						</div>
-					</div>
-				</div>
 
 				{/* ── Z-Index ── */}
 				<div style={sectionStyle}>
