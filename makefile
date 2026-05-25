@@ -108,6 +108,10 @@ new-item: ## Generate New Items using Plop.js
 lint: ## Lint and auto-fix source files
 	$(ESLINT) $(SRC_DIR) --fix
 
+.PHONY: lint-check
+lint-check: # Lint without auto-fix (for CI/build)
+	$(ESLINT) $(SRC_DIR)
+
 # Build Targets
 .PHONY: help
 help: ## Show this help message
@@ -121,7 +125,7 @@ storybook: prepare-panda-code theme-css ## Run Storybook dev server (with Panda 
 	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p $(STORYBOOK_PORT) --no-open"
 
 .PHONY: build
-build: clean prepare-panda-code theme-css prepare-typescript prepare-panda-css build-css ## Full build pipeline
+build: clean lint-check prepare-panda-code theme-css prepare-typescript prepare-panda-css build-css ## Full build pipeline
 	@echo "Build complete!"
 
 .PHONY: weave
