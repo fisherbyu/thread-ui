@@ -9,7 +9,7 @@ const styles = {
 			display: 'flex',
 			flexDirection: 'row',
 			justifyContent: 'start',
-			gap: '2',
+			gap: '3.5',
 			alignItems: 'center',
 			overflowX: 'auto',
 			scrollbarWidth: 'none',

@@ -14,6 +14,8 @@ export type TabItem = {
 	content: ReactNode;
 };
 export type TabViewProps = {
+	/** Optional Title */
+	title?: string;
 	/** Tabs to render, in display order. */
 	items: TabItem[];
 	/** ID of the tab to activate on initial mount @default first item's `id` */
@@ -28,6 +30,7 @@ export type TabViewProps = {
 type TabItemId = NonNullable<TabItem['id']>;
 
 export type TabViewState = Prettify<{
+	title: TabViewProps['title'];
 	showDivider: TabViewProps['showDivider'];
 	items: Record<TabItemId, TabItem>;
 	itemOrder: TabItemId[];

@@ -2,6 +2,7 @@ import { css } from '@/styled-system/css';
 import { Card } from '../../card';
 import { useTabViewContext } from '../tab-view-context';
 import { TabViewControls } from './tab-view-controls';
+import { H3 } from '@/components/typography';
 
 type TabItemContentProps = {
 	itemId: string;
@@ -13,7 +14,7 @@ const styles = {
 
 export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 	const {
-		value: { activeItemId, items, unmountInactive, layer },
+		value: { activeItemId, items, unmountInactive, layer, title },
 	} = useTabViewContext();
 
 	const isActive = activeItemId === itemId;
@@ -27,6 +28,7 @@ export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 	return (
 		<div hidden={!isActive} className={styles.container}>
 			<Card layer={layer} fullWidth>
+				{title && <H3>{title}</H3>}
 				<TabViewControls />
 				{item.content}
 			</Card>

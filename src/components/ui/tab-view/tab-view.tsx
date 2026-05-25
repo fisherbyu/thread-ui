@@ -24,6 +24,7 @@ export const TabView = ({
 	layer = 'surface',
 	unmountInactive = false,
 	showDivider = false,
+	title,
 }: TabViewProps) => {
 	if (!itemList.length) return null;
 	const normalizedItems = itemList.map((item, index) => ({
@@ -37,6 +38,7 @@ export const TabView = ({
 	const activeItemId =
 		defaultValueId && items[defaultValueId] ? defaultValueId : normalizedItems[0].id;
 	const initialValue: TabViewState = {
+		title,
 		items,
 		itemOrder,
 		activeItemId,
