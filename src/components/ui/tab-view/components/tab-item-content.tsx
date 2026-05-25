@@ -14,7 +14,7 @@ const styles = {
 
 export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 	const {
-		value: { activeItemId, items, unmountInactive, layer, title },
+		value: { activeItemId, items, unmountInactive, cardStyles, title },
 	} = useTabViewContext();
 
 	const isActive = activeItemId === itemId;
@@ -27,7 +27,7 @@ export const TabItemContent = ({ itemId }: TabItemContentProps) => {
 
 	return (
 		<div hidden={!isActive} className={styles.container}>
-			<Card layer={layer} fullWidth>
+			<Card layer={cardStyles} fullWidth>
 				{title && <H3>{title}</H3>}
 				<TabViewControls />
 				{item.content}

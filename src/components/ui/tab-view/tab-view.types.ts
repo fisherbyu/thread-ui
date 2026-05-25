@@ -20,8 +20,8 @@ export type TabViewProps = {
 	items: TabItem[];
 	/** ID of the tab to activate on initial mount @default first item's `id` */
 	defaultValueId?: TabItem['id'];
-	/** Surface layer token applied to the tab view container card @default `'surface'` */
-	layer?: SurfaceLayerOptions;
+	/** Card surface layer styles applied to the tab view container @default `'surface'` */
+	cardStyles?: SurfaceLayerOptions;
 	/** Display Divider between Controls and Content @default `'false'` */
 	showDivider?: boolean;
 	/** When true, inactive tab panels are removed from the DOM rather than hidden @default `false` */
@@ -35,6 +35,6 @@ export type TabViewState = Prettify<{
 	items: Record<TabItemId, TabItem>;
 	itemOrder: TabItemId[];
 	activeItemId: TabItemId;
-	layer: TabViewProps['layer'];
+	cardStyles: TabViewProps['cardStyles'];
 	unmountInactive: boolean;
 }>;

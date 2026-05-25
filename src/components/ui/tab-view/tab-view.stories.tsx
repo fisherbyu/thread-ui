@@ -15,7 +15,7 @@ const meta: Meta<typeof TabView> = {
 		defaultValueId: {
 			control: 'text',
 		},
-		layer: {
+		cardStyles: {
 			control: 'select',
 			options: ['surface', 'raised', 'sunken'],
 		},

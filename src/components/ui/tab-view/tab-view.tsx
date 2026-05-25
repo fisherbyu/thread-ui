@@ -21,7 +21,7 @@ import { TabViewProvider } from './tab-view-context';
 export const TabView = ({
 	items: itemList,
 	defaultValueId,
-	layer = 'surface',
+	cardStyles = 'surface',
 	unmountInactive = false,
 	showDivider = false,
 	title,
@@ -43,7 +43,7 @@ export const TabView = ({
 		itemOrder,
 		activeItemId,
 		unmountInactive,
-		layer,
+		cardStyles,
 		showDivider,
 	};
 	return (
