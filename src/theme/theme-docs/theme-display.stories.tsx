@@ -374,18 +374,18 @@ export const Theme: Story = {
 					</div>
 				</Container>
 				<div style={{ height: '24px' }} />
-				{/* ── Bundle ── */}
-				<Container>
-					<TabView
-						layer="none"
-						items={[
-							{
-								title: 'Structure Colors',
-								content: (
-									<>
+				{/* ── Layer Construction ── */}
+				<div style={{ height: '350px' }}>
+					<Container>
+						<TabView
+							title="Layer Construction & Interactivity"
+							layer="canvas"
+							items={[
+								{
+									title: 'Structure Colors',
+									content: (
 										<>
 											<div style={contentWrapperStyles}>
-												<H2>Structure Colors</H2>
 												<Text>
 													Three tiers of border and divider colors. Subtle
 													for card edges, default for inputs and dividers,
@@ -441,69 +441,71 @@ export const Theme: Story = {
 												)}
 											</div>
 										</>
-									</>
-								),
-							},
-							{
-								title: 'Shadow Scale',
-								content: (
-									<>
-										<div style={contentWrapperStyles}>
-											<H2>Shadow Scale</H2>
-											<Text>
-												Compound shadows with a tight edge layer and a
-												diffused ambient layer. Mode-independent — in dark
-												mode, surface color lightness carries elevation
-												instead.
-											</Text>
-										</div>
-										<div
-											style={{
-												display: 'grid',
-												gridTemplateColumns: 'repeat(3, 1fr)',
-												gap: '24px',
-											}}
-										>
-											{(
-												Object.keys(DefaultThreadTheme.shadow) as Array<
-													keyof typeof DefaultThreadTheme.shadow
-												>
-											).map((size) => (
-												<ShadowCard
-													key={size.toString()}
-													size={size as string}
-													value={DefaultThreadTheme.shadow[size]}
+									),
+								},
+								{
+									title: 'Shadow Scale',
+									content: (
+										<>
+											<div style={contentWrapperStyles}>
+												<Text>
+													Compound shadows with a tight edge layer and a
+													diffused ambient layer. Mode-independent — in
+													dark mode, surface color lightness carries
+													elevation instead.
+												</Text>
+											</div>
+											<div
+												style={{
+													display: 'grid',
+													gridTemplateColumns: 'repeat(3, 1fr)',
+													gap: '24px',
+												}}
+											>
+												{(
+													Object.keys(DefaultThreadTheme.shadow) as Array<
+														keyof typeof DefaultThreadTheme.shadow
+													>
+												).map((size) => (
+													<ShadowCard
+														key={size.toString()}
+														size={size as string}
+														value={DefaultThreadTheme.shadow[size]}
+													/>
+												))}
+											</div>
+										</>
+									),
+								},
+								{
+									title: 'Interactive States',
+									content: (
+										<>
+											<div style={contentWrapperStyles}>
+												<Text>
+													Hover and active states applied on top of any
+													surface. These are interaction cues, not layers.
+												</Text>
+											</div>
+											<div style={{ display: 'flex', gap: '16px' }}>
+												<Swatch
+													label="Hover"
+													cssVar="--thread-hover"
+													border
 												/>
-											))}
-										</div>
-									</>
-								),
-							},
-							{
-								title: 'Interactive States',
-								content: (
-									<>
-										<div style={contentWrapperStyles}>
-											<H2>Interactive States</H2>
-											<Text>
-												Hover and active states applied on top of any
-												surface. These are interaction cues, not layers.
-											</Text>
-										</div>
-										<div style={{ display: 'flex', gap: '16px' }}>
-											<Swatch label="Hover" cssVar="--thread-hover" border />
-											<Swatch
-												label="Active"
-												cssVar="--thread-active"
-												border
-											/>
-										</div>
-									</>
-								),
-							},
-						]}
-					/>
-				</Container>
+												<Swatch
+													label="Active"
+													cssVar="--thread-active"
+													border
+												/>
+											</div>
+										</>
+									),
+								},
+							]}
+						/>
+					</Container>
+				</div>
 
 				<div style={{ height: '24px' }} />
 
