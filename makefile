@@ -10,6 +10,7 @@ CONCURRENTLY := $(NPX) concurrently
 TSX := $(NPX) tsx
 PRETTIER := $(NPX) prettier
 PLOP := $(NPX) plop
+ESLINT := $(NPX) eslint
 HTTP_SERVER := http-server
 
 # Directories
@@ -102,6 +103,10 @@ theme-css: ## Generate theme CSS from TypeScript
 .PHONY: new-item
 new-item: ## Generate New Items using Plop.js
 	$(PLOP)
+
+.PHONY: lint
+lint: ## Lint and auto-fix source files
+	$(ESLINT) $(SRC_DIR) --fix
 
 # Build Targets
 .PHONY: help
