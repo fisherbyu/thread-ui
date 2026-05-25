@@ -52,14 +52,6 @@ const codeTextStyles: React.CSSProperties = {
 	color: ThreadTheme.text.secondary,
 };
 
-const sectionCaptionStyle: React.CSSProperties = {
-	fontSize: '0.875rem',
-	color: 'var(--thread-text-secondary)',
-	marginBottom: '32px',
-	maxWidth: '640px',
-	lineHeight: 1.5,
-};
-
 const gridStyle: React.CSSProperties = {
 	display: 'grid',
 	gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
