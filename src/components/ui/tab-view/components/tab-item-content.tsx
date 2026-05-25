@@ -1,11 +1,10 @@
-import { css, cva } from '@/styled-system/css';
+import { css } from '@/styled-system/css';
 import { Card } from '../../card';
 import { useTabViewContext } from '../tab-view-context';
-import { TabItem, TabViewProps } from '../tab-view.types';
 import { TabViewControls } from './tab-view-controls';
 
 type TabItemContentProps = {
-	itemId: TabItem['id'];
+	itemId: string;
 };
 
 const styles = {
