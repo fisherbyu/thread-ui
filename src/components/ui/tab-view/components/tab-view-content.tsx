@@ -1,4 +1,4 @@
-import { TabViewControls } from './tab-view-controls';
+'use client';
 import { TabItemContent } from './tab-item-content';
 import { useTabViewContext } from '../tab-view-context';
 

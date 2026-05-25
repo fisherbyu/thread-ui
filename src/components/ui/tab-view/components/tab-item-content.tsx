@@ -1,4 +1,5 @@
-import { css, cva } from '@/styled-system/css';
+'use client';
+import { css } from '@/styled-system/css';
 import { Card } from '../../card';
 import { ConditionalWrapper } from '../../../../internal-components';
 import { useTabViewContext } from '../tab-view-context';

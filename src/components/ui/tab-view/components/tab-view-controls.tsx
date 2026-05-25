@@ -1,3 +1,4 @@
+'use client';
 import { cva } from '@/styled-system/css';
 import { Divider, Icon } from '@/components';
 import { useTabViewContext } from '../tab-view-context';

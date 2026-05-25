@@ -10,6 +10,7 @@ CONCURRENTLY := $(NPX) concurrently
 TSX := $(NPX) tsx
 PRETTIER := $(NPX) prettier
 PLOP := $(NPX) plop
+ESLINT := $(NPX) eslint
 HTTP_SERVER := http-server
 
 # Directories
@@ -103,6 +104,30 @@ theme-css: ## Generate theme CSS from TypeScript
 new-item: ## Generate New Items using Plop.js
 	$(PLOP)
 
+.PHONY: lint
+lint: # Lint and auto-fix source files
+	$(ESLINT) $(SRC_DIR) --fix
+
+.PHONY: lint-check
+lint-check: # Lint without auto-fix (for CI/build)
+	$(ESLINT) $(SRC_DIR)
+
+.PHONY: prettier
+prettier: # Format source files with Prettier
+	$(PRETTIER) --write $(SRC_DIR) --log-level warn
+
+.PHONY: prettier-check
+prettier-check: # Check Prettier formatting without writing (for CI/build)
+	$(PRETTIER) --check $(SRC_DIR) --log-level warn
+
+.PHONY: format
+format: lint prettier ## Run ESLint --fix and Prettier --write on source files
+
+.PHONY: format-check
+format-check: # Run lint and prettier checks without writing (for CI/build)
+	@$(MAKE) lint-check
+	@$(MAKE) prettier-check
+
 # Build Targets
 .PHONY: help
 help: ## Show this help message
@@ -116,8 +141,7 @@ storybook: prepare-panda-code theme-css ## Run Storybook dev server (with Panda 
 	$(CONCURRENTLY) "make watch" "$(STORYBOOK) dev -p $(STORYBOOK_PORT) --no-open"
 
 .PHONY: build
-build: clean prepare-panda-code theme-css prepare-typescript prepare-panda-css build-css ## Full build pipeline
-	@echo "Build complete!"
+build: clean format-check prepare-panda-code theme-css prepare-typescript prepare-panda-css build-css ## Full build pipeline	@echo "Build complete!"
 
 .PHONY: weave
 weave: build ## Build and push to yalc
