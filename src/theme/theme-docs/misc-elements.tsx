@@ -25,18 +25,18 @@ export const Swatch = ({
 		/>
 		<span
 			style={{
-				fontSize: '0.75rem',
-				fontWeight: 600,
-				color: 'var(--thread-text-standard)',
+				fontSize: ThreadTheme.typography.fontSizes.body.xxs,
+				fontWeight: ThreadTheme.typography.fontWeights.semibold,
+				color: ThreadTheme.text.standard,
 			}}
 		>
 			{label}
 		</span>
 		<span
 			style={{
-				fontSize: '0.6875rem',
-				color: 'var(--thread-text-secondary)',
-				fontFamily: 'monospace',
+				fontSize: ThreadTheme.typography.fontSizes.body.xxs,
+				color: ThreadTheme.text.secondary,
+				fontFamily: ThreadTheme.typography.fontFamilies.mono,
 			}}
 		>
 			{cssVar}
