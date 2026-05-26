@@ -3,7 +3,11 @@ import { CarouselProvider } from './carousel-context';
 import { CarouselProps, CarouselState } from './carousel.types';
 import { CarouselContent } from './components/carousel-content';
 
-export const Carousel = ({ title, items: itemList }: CarouselProps) => {
+export const Carousel = ({
+	title,
+	items: itemList,
+	controlsPosition = 'around',
+}: CarouselProps) => {
 	if (!itemList.length) return null;
 
 	const normalizedItems = itemList.map((item, index) => ({
@@ -24,6 +28,7 @@ export const Carousel = ({ title, items: itemList }: CarouselProps) => {
 		items,
 		itemOrder,
 		activeItemId,
+		controlsPosition,
 	};
 
 	return (
