@@ -7,7 +7,7 @@ const meta: Meta<typeof Carousel> = {
 	title: 'Components/Carousel',
 	component: Carousel,
 	parameters: {
-		layout: 'centered',
+		layout: 'fullscreen',
 	},
 	tags: ['autodocs'],
 	argTypes: {
@@ -18,6 +18,10 @@ const meta: Meta<typeof Carousel> = {
 		items: {
 			control: 'object',
 			description: 'Items to render, in display order',
+		},
+		controlsPosition: {
+			control: 'radio',
+			options: ['above', 'around', 'below'],
 		},
 	},
 };
