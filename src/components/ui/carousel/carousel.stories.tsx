@@ -1,23 +1,61 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Carousel } from './carousel';
+import { CarouselItem } from './carousel.types';
 
 const meta: Meta<typeof Carousel> = {
-  title: 'Components/Carousel',
-  component: Carousel,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
-  argTypes: {
-    // Add your prop controls here
-  },
+	title: 'Components/Carousel',
+	component: Carousel,
+	parameters: {
+		layout: 'centered',
+	},
+	tags: ['autodocs'],
+	argTypes: {
+		title: {
+			control: 'text',
+			description: 'Optional title rendered above the carousel',
+		},
+		items: {
+			control: 'object',
+			description: 'Items to render, in display order',
+		},
+	},
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Carousel>;
 
+const sampleItems: CarouselItem[] = [
+	{
+		title: 'First Pane',
+		content: (
+			<div style={{ padding: '2rem', minWidth: '300px' }}>
+				<p>This is the content of the first carousel item.</p>
+			</div>
+		),
+	},
+	{
+		title: 'Second Pane',
+		content: (
+			<div style={{ padding: '2rem', minWidth: '300px' }}>
+				<p>Here's some different content for the second pane.</p>
+			</div>
+		),
+	},
+	{
+		title: 'Third Pane',
+		content: (
+			<div style={{ padding: '2rem', minWidth: '300px' }}>
+				<p>And a third pane to round things out.</p>
+			</div>
+		),
+	},
+];
+
 export const Default: Story = {
-  args: {},
+	args: {
+		title: 'Featured Items',
+		items: sampleItems,
+	},
 };
