@@ -15,12 +15,10 @@ import { TabViewProvider } from './tab-view-context';
  *     { id: 'overview', title: 'Overview', content: <Overview /> },
  *     { id: 'details', title: 'Details', content: <Details /> },
  *   ]}
- *   defaultValueId="details"
  * />
  */
 export const TabView = ({
 	items: itemList,
-	defaultValueId,
 	cardStyles = 'surface',
 	unmountInactive = false,
 	showDivider = false,
@@ -35,8 +33,7 @@ export const TabView = ({
 		normalizedItems.map((item) => [item.id, item])
 	) as TabViewState['items'];
 	const itemOrder = normalizedItems.map((item) => item.id);
-	const activeItemId =
-		defaultValueId && items[defaultValueId] ? defaultValueId : normalizedItems[0].id;
+	const activeItemId = normalizedItems[0].id;
 	const initialValue: TabViewState = {
 		title,
 		items,

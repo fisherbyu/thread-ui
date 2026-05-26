@@ -23,8 +23,6 @@ export type TabViewProps = {
 	title?: string | ReactNode;
 	/** Tabs to render, in display order. */
 	items: TabItem[];
-	/** ID of the tab to activate on initial mount @default first item's `id` */
-	defaultValueId?: TabItemId;
 	/** Card surface layer styles applied to the tab view container @default `'surface'` */
 	cardStyles?: SurfaceLayerOptions | 'none';
 	/** Display Divider between Controls and Content @default `'false'` */
