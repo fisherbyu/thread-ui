@@ -11,8 +11,8 @@ const styles = {
 };
 
 export const CarouselControls = () => {
-	const leftButton = <IconButton name="CaretLeft" size="sm" />;
-	const rightButton = <IconButton name="CaretRight" size="sm" />;
+	const leftButton = <IconButton color="neutral" name="CaretLeft" size="sm" />;
+	const rightButton = <IconButton color="neutral" name="CaretRight" size="sm" />;
 
 	return (
 		<div className={styles.container}>
