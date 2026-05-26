@@ -1,6 +1,8 @@
 import { Prettify } from '@/types';
 import { ReactNode } from 'react';
 
+export type CarouselControlsPosition = 'above' | 'around' | 'below';
+
 /** A single pane consumed and displayed by the `Carousel` component */
 export type CarouselItem = {
 	/** Optional title rendered with content */
@@ -18,10 +20,12 @@ export type CarouselProps = Prettify<{
 	title?: string | ReactNode;
 	/** Items to render, in display order */
 	items: InternalCarouselItem[];
+	/** Location to Render Controls @default 'around' */
+	controlsPosition?: CarouselControlsPosition;
 }>;
 
 export type CarouselState = Prettify<
-	Pick<CarouselProps, 'title'> & {
+	Pick<CarouselProps, 'title' | 'controlsPosition'> & {
 		items: Record<CarouselItemId, InternalCarouselItem>;
 		itemOrder: CarouselItemId[];
 		activeItemId: CarouselItemId;
