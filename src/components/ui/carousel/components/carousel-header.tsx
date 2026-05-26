@@ -10,7 +10,7 @@ const styles = {
 	titleBlock: css({
 		display: 'flex',
 		flexDirection: 'row',
-		justifyContent: 'flex-start',
+		justifyContent: 'space-between',
 		alignItems: 'center',
 	}),
 };
@@ -20,7 +20,7 @@ export const CarouselHeader = () => {
 		value: { controlsPosition, title },
 	} = useCarouselContext();
 
-	const titleDisplay: ReactNode = typeof title === 'string' ? <H2>{title}</H2> : title;
+	const titleDisplay: ReactNode = typeof title === 'string' ? <H2 inline>{title}</H2> : title;
 
 	return (
 		<div className={styles.titleBlock}>
