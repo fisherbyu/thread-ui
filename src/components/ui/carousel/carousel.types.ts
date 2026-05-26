@@ -13,12 +13,12 @@ export type CarouselItemId = string;
 
 type InternalCarouselItem = Prettify<CarouselItem & { id: CarouselItemId }>;
 
-export type CarouselProps = {
+export type CarouselProps = Prettify<{
 	/** Optional Title */
 	title?: string | ReactNode;
 	/** Items to render, in display order */
 	items: InternalCarouselItem[];
-};
+}>;
 
 export type CarouselState = Prettify<
 	Pick<CarouselProps, 'title'> & {
