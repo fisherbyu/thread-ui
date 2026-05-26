@@ -8,10 +8,12 @@ import { CarouselControls } from './carousel-controls';
 
 const styles = {
 	content: css({
+		width: '100%',
 		display: 'flex',
 		flexDirection: 'column',
 	}),
-	controls: css({
+	belowControls: css({
+		width: '50px',
 		marginX: 'auto',
 	}),
 };
@@ -32,7 +34,7 @@ export const CarouselContent = () => {
 				</div>
 			</div>
 			{controlsPosition === 'below' && (
-				<div className={styles.controls}>
+				<div className={styles.belowControls}>
 					<CarouselControls />
 				</div>
 			)}
