@@ -29,7 +29,7 @@ export const TabView = ({
 	if (!itemList.length) return null;
 	const normalizedItems = itemList.map((item, index) => ({
 		...item,
-		id: item.id ?? String(index),
+		id: String(index),
 	}));
 	const items = Object.fromEntries(
 		normalizedItems.map((item) => [item.id, item])
