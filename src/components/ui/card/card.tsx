@@ -33,7 +33,7 @@ const styles = {
 					maxWidth: 'none',
 				},
 				false: {
-					maxWidth: '213',
+					maxWidth: '850px',
 					width: {
 						base: '100%',
 						md: '75%',
