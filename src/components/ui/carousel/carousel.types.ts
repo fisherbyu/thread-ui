@@ -27,10 +27,11 @@ export type CarouselProps = Prettify<{
 }>;
 
 export type CarouselState = Prettify<
-	Pick<CarouselProps, 'title' | 'itemWrapper'> & {
+	Pick<CarouselProps, 'title'> & {
 		items: Record<CarouselItemId, InternalCarouselItem>;
 		itemOrder: CarouselItemId[];
 		activeItemId: CarouselItemId;
 		controlsPosition: CarouselControlsPosition;
+		ItemWrapper: CarouselProps['itemWrapper'];
 	}
 >;
