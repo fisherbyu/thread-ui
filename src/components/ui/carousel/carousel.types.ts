@@ -1,5 +1,5 @@
 import { Prettify } from '@/types';
-import { ReactNode } from 'react';
+import { ComponentType, ReactElement, ReactNode } from 'react';
 
 export type CarouselControlsPosition = 'above' | 'around' | 'below';
 
@@ -22,10 +22,12 @@ export type CarouselProps = Prettify<{
 	items: InternalCarouselItem[];
 	/** Location to Render Controls @default 'around' */
 	controlsPosition?: CarouselControlsPosition;
+	/** Carousel Item Wrapper @default `Card` */
+	itemWrapper: ComponentType<any>;
 }>;
 
 export type CarouselState = Prettify<
-	Pick<CarouselProps, 'title'> & {
+	Pick<CarouselProps, 'title' | 'itemWrapper'> & {
 		items: Record<CarouselItemId, InternalCarouselItem>;
 		itemOrder: CarouselItemId[];
 		activeItemId: CarouselItemId;
