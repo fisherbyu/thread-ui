@@ -20,6 +20,10 @@ export const CarouselHeader = () => {
 		value: { controlsPosition, title },
 	} = useCarouselContext();
 
+	if (!title || controlsPosition !== 'above') {
+		return null;
+	}
+
 	const titleDisplay: ReactNode = typeof title === 'string' ? <H2 inline>{title}</H2> : title;
 
 	return (
