@@ -1,5 +1,7 @@
+'use client';
 import { css } from '@/styled-system/css';
 import { IconButton } from '../../icon-button';
+import { useCarouselContext } from '../carousel-context';
 
 const styles = {
 	container: css({
@@ -11,8 +13,28 @@ const styles = {
 };
 
 export const CarouselControls = () => {
-	const leftButton = <IconButton color="neutral" name="CaretLeft" size="sm" />;
-	const rightButton = <IconButton color="neutral" name="CaretRight" size="sm" />;
+	const {
+		value: { current, mdCols, lgCols },
+		setValue,
+	} = useCarouselContext();
+
+	const increment = () => {
+		if (current !== lgCols) {
+			setValue((prev) => ({ ...prev, current: current + 1 }));
+		}
+	};
+	const decrement = () => {
+		if (current !== mdCols) {
+			setValue((prev) => ({ ...prev, current: current - 1 }));
+		}
+	};
+
+	const leftButton = (
+		<IconButton color="neutral" name="CaretLeft" size="sm" onClick={decrement} />
+	);
+	const rightButton = (
+		<IconButton color="neutral" name="CaretRight" size="sm" onClick={increment} />
+	);
 
 	return (
 		<div className={styles.container}>
