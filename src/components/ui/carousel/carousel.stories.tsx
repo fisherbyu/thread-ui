@@ -34,7 +34,7 @@ const sampleItems: CarouselItem[] = [
 	{
 		title: 'First Pane',
 		content: (
-			<div style={{ padding: '2rem', minWidth: '300px' }}>
+			<div>
 				<p>This is the content of the first carousel item.</p>
 			</div>
 		),
@@ -42,7 +42,7 @@ const sampleItems: CarouselItem[] = [
 	{
 		title: 'Second Pane',
 		content: (
-			<div style={{ padding: '2rem', minWidth: '300px' }}>
+			<div>
 				<p>Here's some different content for the second pane.</p>
 			</div>
 		),
@@ -50,7 +50,7 @@ const sampleItems: CarouselItem[] = [
 	{
 		title: 'Third Pane',
 		content: (
-			<div style={{ padding: '2rem', minWidth: '300px' }}>
+			<div>
 				<p>And a third pane to round things out.</p>
 			</div>
 		),
