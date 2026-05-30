@@ -1,4 +1,5 @@
 'use client';
+import useEmblaCarousel from 'embla-carousel-react';
 import { Card } from '../card';
 import { CarouselProvider } from './carousel-context';
 import { CarouselProps, CarouselState } from './carousel.types';
@@ -11,6 +12,8 @@ export const Carousel = ({
 	mdCols,
 	lgCols,
 }: CarouselProps) => {
+	const emblaControls = useEmblaCarousel();
+
 	if (!itemList.length) return null;
 
 	const normalizedItems = itemList.map((item, index) => ({
@@ -33,6 +36,7 @@ export const Carousel = ({
 		controlsPosition,
 		mdCols,
 		lgCols: lgCols ? lgCols : mdCols,
+		emblaControls,
 	};
 
 	return (

@@ -2,6 +2,7 @@ import { ColumnSkeletonProps } from '@/components/layouts/column-layout/column-s
 import { LargeColumnOptions, MediumColumnOptions } from '@/components';
 import { Prettify } from '@/types';
 import { ComponentType, ReactElement, ReactNode } from 'react';
+import { EmblaViewportRefType, UseEmblaCarouselType } from 'embla-carousel-react';
 
 export type CarouselControlsPosition = 'above' | 'around' | 'below';
 
@@ -38,5 +39,6 @@ export type CarouselState = Prettify<
 			current: number;
 			controlsPosition: CarouselControlsPosition;
 			ItemWrapper: CarouselProps['itemWrapper'];
+			emblaControls: UseEmblaCarouselType;
 		}
 >;
