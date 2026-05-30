@@ -1,4 +1,5 @@
 'use client';
+import { Card } from '../card';
 import { CarouselProvider } from './carousel-context';
 import { CarouselProps, CarouselState } from './carousel.types';
 import { CarouselContent } from './components/carousel-content';
@@ -7,6 +8,8 @@ export const Carousel = ({
 	title,
 	items: itemList,
 	controlsPosition = 'around',
+	mdCols,
+	lgCol,
 }: CarouselProps) => {
 	if (!itemList.length) return null;
 
@@ -21,14 +24,15 @@ export const Carousel = ({
 
 	const itemOrder = normalizedItems.map((item) => item.id);
 
-	const activeItemId = normalizedItems[0].id;
-
-	const initialState = {
+	const initialState: CarouselState = {
 		title,
 		items,
 		itemOrder,
-		activeItemId,
+		ItemWrapper: Card,
+		current: 0,
 		controlsPosition,
+		mdCols,
+		lgCol: lgCol ? lgCol : mdCols,
 	};
 
 	return (
