@@ -20,7 +20,7 @@ export const CarouselItem = ({ itemId }: CarouselItemProps) => {
 	}
 
 	return (
-		<Card title={{ text: item.title }} size="md">
+		<Card fullWidth title={{ text: item.title }} size="md">
 			{item.content}
 		</Card>
 	);
