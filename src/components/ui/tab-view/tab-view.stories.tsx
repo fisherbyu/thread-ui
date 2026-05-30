@@ -12,9 +12,6 @@ const meta: Meta<typeof TabView> = {
 	},
 	tags: ['autodocs'],
 	argTypes: {
-		defaultValueId: {
-			control: 'text',
-		},
 		cardStyles: {
 			control: 'select',
 			options: ['surface', 'raised', 'sunken'],
