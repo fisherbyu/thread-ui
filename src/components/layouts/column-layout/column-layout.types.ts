@@ -1,15 +1,18 @@
 import { ImageProps } from '../../../types';
 import { LayoutComponentProps } from '../layout-component.types';
 
+export type MediumColumnOptions = 1 | 2 | 3;
+export type LargeColumnOptions = 1 | 2 | 3 | 4 | 5;
+
 export type ColumnLayoutProps = LayoutComponentProps & {
 	/** Optional title displayed at the top of the layout */
 	title?: string;
 	/** Optional caption rendered alongside the title */
 	caption?: string;
 	/** Number of columns at medium viewport sizes @default `2` */
-	mdcol: 1 | 2 | 3;
+	mdcol: MediumColumnOptions;
 	/** Number of columns at large viewport sizes @default `4` */
-	lgcol?: 1 | 2 | 3 | 4 | 5;
+	lgcol?: LargeColumnOptions;
 	/** Items to display in the grid */
 	items: ColumnItem[];
 };

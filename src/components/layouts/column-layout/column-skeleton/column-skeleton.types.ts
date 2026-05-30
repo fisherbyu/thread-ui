@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
-
-export type MediumColumnOptions = 1 | 2 | 3;
-export type LargeColumnOptions = 1 | 2 | 3 | 4 | 5;
+import { LargeColumnOptions, MediumColumnOptions } from '../column-layout.types';
 
 export type ColumnSkeletonProps = {
 	mdcol: MediumColumnOptions;
