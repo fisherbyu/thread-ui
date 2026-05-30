@@ -23,6 +23,16 @@ const meta: Meta<typeof Carousel> = {
 			control: 'radio',
 			options: ['above', 'around', 'below'],
 		},
+		mdCols: {
+			control: 'radio',
+			options: [1, 2, 3],
+			description: 'Visible columns at the md breakpoint',
+		},
+		lgCols: {
+			control: 'radio',
+			options: [1, 2, 3, 4, 5, 6],
+			description: 'Visible columns at the lg breakpoint',
+		},
 	},
 };
 
@@ -32,26 +42,42 @@ type Story = StoryObj<typeof Carousel>;
 
 const sampleItems: CarouselItem[] = [
 	{
-		title: 'First Pane',
+		title: 'Pane 1',
 		content: (
 			<div>
-				<p>This is the content of the first carousel item.</p>
+				<p>1</p>
 			</div>
 		),
 	},
 	{
-		title: 'Second Pane',
+		title: 'Pane 2',
 		content: (
 			<div>
-				<p>Here's some different content for the second pane.</p>
+				<p>2</p>
 			</div>
 		),
 	},
 	{
-		title: 'Third Pane',
+		title: 'Pane 3',
 		content: (
 			<div>
-				<p>And a third pane to round things out.</p>
+				<p>3</p>
+			</div>
+		),
+	},
+	{
+		title: 'Pane 4',
+		content: (
+			<div>
+				<p>4</p>
+			</div>
+		),
+	},
+	{
+		title: 'Pane 5',
+		content: (
+			<div>
+				<p>5</p>
 			</div>
 		),
 	},
@@ -61,5 +87,7 @@ export const Default: Story = {
 	args: {
 		title: 'Featured Items',
 		items: sampleItems,
+		mdCols: 3,
+		lgCols: 3,
 	},
 };
