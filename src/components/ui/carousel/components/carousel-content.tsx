@@ -1,7 +1,6 @@
 'use client';
 import { Container } from '@/components/layouts';
 import { useCarouselContext } from '../carousel-context';
-import { ItemDisplay } from './item-display';
 import { css } from '@/styled-system/css';
 import { CarouselHeader } from './carousel-header';
 import { CarouselControls } from './carousel-controls';
