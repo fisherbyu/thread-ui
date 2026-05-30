@@ -33,21 +33,12 @@ export const CarouselContent = () => {
 
 	return (
 		<Container>
-			<div className={styles.content}>
-				<CarouselHeader />
-				<div className={styles.viewport}>
-					<div className={styles.track}>
-						{itemOrder.map((itemId) => (
-							<CarouselItem itemId={itemId} />
-						))}
-					</div>
-				</div>
-			</div>
-			{controlsPosition === 'below' && (
-				<div className={styles.belowControls}>
-					<CarouselControls />
-				</div>
-			)}
+			<CarouselHeader />
+			<ColumnSkeleton mdcol={3} lgcol={3}>
+				{itemOrder.map((itemId) => (
+					<CarouselItem itemId={itemId} />
+				))}
+			</ColumnSkeleton>
 		</Container>
 	);
 };
