@@ -5,6 +5,8 @@ import { ItemDisplay } from './item-display';
 import { css } from '@/styled-system/css';
 import { CarouselHeader } from './carousel-header';
 import { CarouselControls } from './carousel-controls';
+import { CarouselItem } from './carousel-item';
+import { ColumnSkeleton } from '@/components/layouts/column-layout/column-skeleton';
 
 const styles = {
 	content: css({
@@ -15,6 +17,12 @@ const styles = {
 	belowControls: css({
 		width: '50px',
 		marginX: 'auto',
+	}),
+	viewport: css({ width: '100%', overflow: 'hidden' }),
+	track: css({
+		display: 'flex',
+		flexDirection: 'row',
+		translateX: '',
 	}),
 };
 
@@ -27,10 +35,12 @@ export const CarouselContent = () => {
 		<Container>
 			<div className={styles.content}>
 				<CarouselHeader />
-				<div>
-					{itemOrder.map((itemId) => (
-						<ItemDisplay itemId={itemId} />
-					))}
+				<div className={styles.viewport}>
+					<div className={styles.track}>
+						{itemOrder.map((itemId) => (
+							<CarouselItem itemId={itemId} />
+						))}
+					</div>
 				</div>
 			</div>
 			{controlsPosition === 'below' && (
