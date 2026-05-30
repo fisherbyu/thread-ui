@@ -28,7 +28,7 @@ const styles = {
 
 export const CarouselContent = () => {
 	const {
-		value: { itemOrder, controlsPosition },
+		value: { itemOrder },
 	} = useCarouselContext();
 
 	return (
