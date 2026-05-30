@@ -27,12 +27,12 @@ export type CarouselProps = Prettify<{
 	/** Carousel Item Wrapper @default `Card` */
 	itemWrapper: ComponentType<any>;
 	mdCols: MediumColumnOptions;
-	lgCol?: LargeColumnOptions;
+	lgCols?: LargeColumnOptions;
 }>;
 
 export type CarouselState = Prettify<
 	Pick<CarouselProps, 'title' | 'mdCols'> &
-		Required<Pick<CarouselProps, 'lgCol'>> & {
+		Required<Pick<CarouselProps, 'lgCols'>> & {
 			items: Record<CarouselItemId, InternalCarouselItem>;
 			itemOrder: CarouselItemId[];
 			current: number;

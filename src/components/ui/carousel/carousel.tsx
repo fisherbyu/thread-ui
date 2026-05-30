@@ -9,7 +9,7 @@ export const Carousel = ({
 	items: itemList,
 	controlsPosition = 'around',
 	mdCols,
-	lgCol,
+	lgCols,
 }: CarouselProps) => {
 	if (!itemList.length) return null;
 
@@ -29,10 +29,10 @@ export const Carousel = ({
 		items,
 		itemOrder,
 		ItemWrapper: Card,
-		current: 0,
+		current: mdCols,
 		controlsPosition,
 		mdCols,
-		lgCol: lgCol ? lgCol : mdCols,
+		lgCols: lgCols ? lgCols : mdCols,
 	};
 
 	return (
