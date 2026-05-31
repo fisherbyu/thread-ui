@@ -1,8 +1,8 @@
-import { ColumnSkeletonProps } from '@/components/layouts/column-layout/column-skeleton';
-import { LargeColumnOptions, MediumColumnOptions } from '@/components';
+import { ComponentType, ReactNode } from 'react';
 import { Prettify } from '@/types';
-import { ComponentType, ReactElement, ReactNode } from 'react';
-import { EmblaViewportRefType, UseEmblaCarouselType } from 'embla-carousel-react';
+import { EmblaViewportRefType } from 'embla-carousel-react';
+import { EmblaCarouselType } from 'embla-carousel';
+import { LargeColumnOptions, MediumColumnOptions } from '@/components';
 
 export type CarouselControlsPosition = 'above' | 'around' | 'below';
 
@@ -36,9 +36,17 @@ export type CarouselState = Prettify<
 		Required<Pick<CarouselProps, 'lgCols'>> & {
 			items: Record<CarouselItemId, InternalCarouselItem>;
 			itemOrder: CarouselItemId[];
-			current: number;
 			controlsPosition: CarouselControlsPosition;
 			ItemWrapper: CarouselProps['itemWrapper'];
-			emblaControls: UseEmblaCarouselType;
 		}
 >;
+
+/** Live embla values, bridged out of embla's mutable api via its event loop.
+ *  Separate from CarouselState because these change externally, not via dispatch. */
+export type CarouselEmblaContext = {
+	emblaRef: EmblaViewportRefType;
+	emblaApi: EmblaCarouselType | undefined;
+	selectedIndex: number;
+	canScrollPrev: boolean;
+	canScrollNext: boolean;
+};
