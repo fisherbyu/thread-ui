@@ -1,8 +1,7 @@
 'use client';
 import { css } from '@/styled-system/css';
 import { IconButton } from '../../icon-button';
-import { useCarouselContext } from '../carousel-context';
-import useEmblaCarousel from 'embla-carousel-react';
+import { useCarouselEmblaContext } from '../carousel-context';
 
 const styles = {
 	container: css({
@@ -14,18 +13,29 @@ const styles = {
 };
 
 export const CarouselControls = () => {
-	const {
-		value: {
-			emblaControls: [, emblaApi],
-		},
-	} = useCarouselContext();
+	const { emblaApi, canScrollPrev, canScrollNext } = useCarouselEmblaContext();
 
 	const goToPrev = () => emblaApi?.scrollPrev();
 	const goToNext = () => emblaApi?.scrollNext();
 
-	const leftButton = <IconButton color="neutral" name="CaretLeft" size="sm" onClick={goToPrev} />;
+	const leftButton = (
+		<IconButton
+			color="neutral"
+			name="CaretLeft"
+			size="sm"
+			onClick={goToPrev}
+			disabled={!canScrollPrev}
+		/>
+	);
+
 	const rightButton = (
-		<IconButton color="neutral" name="CaretRight" size="sm" onClick={goToNext} />
+		<IconButton
+			color="neutral"
+			name="CaretRight"
+			size="sm"
+			onClick={goToNext}
+			disabled={!canScrollNext}
+		/>
 	);
 
 	return (

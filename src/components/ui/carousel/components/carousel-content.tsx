@@ -1,10 +1,10 @@
 'use client';
 import { css } from '@/styled-system/css';
-import useEmblaCarousel from 'embla-carousel-react';
+import { Container } from '@/components/layouts';
 import { useCarouselContext } from '../carousel-context';
+import { useCarouselEmblaContext } from '../carousel-context';
 import { CarouselHeader } from './carousel-header';
 import { CarouselItem } from './carousel-item';
-import { Container } from '@/components/layouts';
 
 const styles = {
 	content: css({
@@ -29,7 +29,7 @@ export const CarouselContent = () => {
 		value: { itemOrder },
 	} = useCarouselContext();
 
-	const [emblaRef, emblaApi] = useEmblaCarousel();
+	const { emblaRef } = useCarouselEmblaContext();
 
 	return (
 		<Container>
