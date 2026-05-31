@@ -2,6 +2,7 @@
 import { css } from '@/styled-system/css';
 import { IconButton } from '../../icon-button';
 import { useCarouselContext } from '../carousel-context';
+import useEmblaCarousel from 'embla-carousel-react';
 
 const styles = {
 	container: css({
@@ -14,26 +15,17 @@ const styles = {
 
 export const CarouselControls = () => {
 	const {
-		value: { current, mdCols, lgCols },
-		setValue,
+		value: {
+			emblaControls: [, emblaApi],
+		},
 	} = useCarouselContext();
 
-	const increment = () => {
-		if (current !== lgCols) {
-			setValue((prev) => ({ ...prev, current: current + 1 }));
-		}
-	};
-	const decrement = () => {
-		if (current !== mdCols) {
-			setValue((prev) => ({ ...prev, current: current - 1 }));
-		}
-	};
+	const goToPrev = () => emblaApi?.scrollPrev();
+	const goToNext = () => emblaApi?.scrollNext();
 
-	const leftButton = (
-		<IconButton color="neutral" name="CaretLeft" size="sm" onClick={decrement} />
-	);
+	const leftButton = <IconButton color="neutral" name="CaretLeft" size="sm" onClick={goToPrev} />;
 	const rightButton = (
-		<IconButton color="neutral" name="CaretRight" size="sm" onClick={increment} />
+		<IconButton color="neutral" name="CaretRight" size="sm" onClick={goToNext} />
 	);
 
 	return (
