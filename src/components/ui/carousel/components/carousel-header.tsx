@@ -20,7 +20,7 @@ export const CarouselHeader = () => {
 		value: { controlsPosition, title },
 	} = useCarouselContext();
 
-	if (!title || controlsPosition !== 'above') {
+	if (!title && controlsPosition !== 'above') {
 		return null;
 	}
 
