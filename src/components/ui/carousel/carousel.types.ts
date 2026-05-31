@@ -27,7 +27,9 @@ export type CarouselProps = Prettify<{
 	controlsPosition?: CarouselControlsPosition;
 	/** Optional Carousel Item Wrapper @default `Card` */
 	itemWrapper?: ComponentType<any>;
+	/** Number of Columns in Medium Viewport */
 	mdCols: MediumColumnOptions;
+	/** Number of Columns in Large Viewport */
 	lgCols?: LargeColumnOptions;
 }>;
 
