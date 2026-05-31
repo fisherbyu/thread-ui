@@ -19,7 +19,8 @@ const styles = {
 	viewport: css({ width: '100%', overflow: 'hidden' }),
 	track: css({
 		display: 'flex',
-		gap: { sm: '1', md: '2' },
+
+		marginLeft: { base: '-3', md: '-4' },
 		touchAction: 'pan-y pinch-zoom',
 	}),
 };
