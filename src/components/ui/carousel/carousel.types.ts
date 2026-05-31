@@ -25,8 +25,8 @@ export type CarouselProps = Prettify<{
 	items: InternalCarouselItem[];
 	/** Location to Render Controls @default 'around' */
 	controlsPosition?: CarouselControlsPosition;
-	/** Carousel Item Wrapper @default `Card` */
-	itemWrapper: ComponentType<any>;
+	/** Optional Carousel Item Wrapper @default `Card` */
+	itemWrapper?: ComponentType<any>;
 	mdCols: MediumColumnOptions;
 	lgCols?: LargeColumnOptions;
 }>;
