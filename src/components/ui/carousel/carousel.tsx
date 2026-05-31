@@ -13,6 +13,7 @@ export const Carousel = ({
 	controlsPosition = 'above',
 	mdCols,
 	lgCols,
+	itemWrapper,
 }: CarouselProps) => {
 	// Embla Config
 	const [emblaRef, emblaApi] = useEmblaCarousel();
@@ -55,7 +56,7 @@ export const Carousel = ({
 			title,
 			items,
 			itemOrder,
-			ItemWrapper: Card,
+			ItemWrapper: itemWrapper,
 			controlsPosition,
 			mdCols,
 			lgCols: lgCols ? lgCols : mdCols,
