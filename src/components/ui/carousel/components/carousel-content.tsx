@@ -26,11 +26,10 @@ const styles = {
 
 export const CarouselContent = () => {
 	const {
-		value: {
-			itemOrder,
-			emblaControls: [emblaRef],
-		},
+		value: { itemOrder },
 	} = useCarouselContext();
+
+	const [emblaRef, emblaApi] = useEmblaCarousel();
 
 	return (
 		<Container>
