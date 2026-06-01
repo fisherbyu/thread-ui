@@ -8,7 +8,11 @@ const styles = {
 		width: '100%',
 		overflow: 'hidden',
 	}),
-	window: css({}),
+	window: css({
+		display: 'flex',
+		touchAction: 'pan-y pinch-zoom',
+		marginLeft: 'calc(8px * -1)',
+	}),
 };
 
 export const GalleryItemsDisplay = () => {
