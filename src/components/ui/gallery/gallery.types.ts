@@ -3,6 +3,8 @@ import { Prettify } from '@/types';
 import { EmblaViewportRefType } from 'embla-carousel-react';
 import { EmblaCarouselType } from 'embla-carousel';
 
+export type GalleryItemId = number;
+
 export type GalleryItem = ReactNode;
 
 export type GalleryProps = {
@@ -11,8 +13,14 @@ export type GalleryProps = {
 	itemWrapper?: ComponentType<any>;
 };
 
+type InternalGalleryItem = {
+	id: GalleryItemId;
+	content: GalleryItem;
+};
+
 export type GalleryState = Prettify<
-	Omit<GalleryProps, 'itemWrapper'> & {
+	Pick<GalleryProps, 'title'> & {
+		items: Record<GalleryItemId, InternalGalleryItem>;
 		ItemWrapper: GalleryProps['itemWrapper'];
 	}
 >;
