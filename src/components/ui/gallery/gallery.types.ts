@@ -31,5 +31,6 @@ export type GalleryEmblaContext = {
 	emblaDisplayApi: EmblaCarouselType | undefined;
 	emblaTrackRef: EmblaViewportRefType;
 	emblaTrackApi: EmblaCarouselType | undefined;
+	onTrackItemClick: (index: number) => void;
 	selectedIndex: number;
 };
