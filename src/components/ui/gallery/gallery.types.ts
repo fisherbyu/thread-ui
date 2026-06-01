@@ -30,6 +30,4 @@ export type GalleryEmblaContext = {
 	emblaRef: EmblaViewportRefType;
 	emblaApi: EmblaCarouselType | undefined;
 	selectedIndex: number;
-	canScrollPrev: boolean;
-	canScrollNext: boolean;
 };
