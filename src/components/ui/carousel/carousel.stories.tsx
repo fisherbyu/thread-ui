@@ -21,7 +21,7 @@ const meta: Meta<typeof Carousel> = {
 		},
 		controlsPosition: {
 			control: 'radio',
-			options: ['above', 'around', 'below'],
+			options: ['above', 'around', 'below', 'none'],
 		},
 		mdCols: {
 			control: 'radio',

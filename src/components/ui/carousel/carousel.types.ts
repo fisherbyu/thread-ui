@@ -4,7 +4,7 @@ import { EmblaViewportRefType } from 'embla-carousel-react';
 import { EmblaCarouselType } from 'embla-carousel';
 import { LargeColumnOptions, MediumColumnOptions } from '@/components';
 
-export type CarouselControlsPosition = 'above' | 'around' | 'below';
+export type CarouselControlsPosition = 'above' | 'around' | 'below' | 'none';
 
 /** A single pane consumed and displayed by the `Carousel` component */
 export type CarouselItem = {
