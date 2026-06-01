@@ -4,7 +4,7 @@ import { GalleryProps } from './gallery.types';
 import useEmblaCarousel from 'embla-carousel-react';
 
 export const Gallery = ({ title, items, itemWrapper }: GalleryProps) => {
-	const [displayEmblaRef, displayEmblaApi] = useEmblaCarousel();
+	const [emblaDisplayRef, emblaDisplayApi] = useEmblaCarousel();
 	const [emblaThumbnailStripRef, emblaThumbnailStripApi] = useEmblaCarousel({
 		containScroll: 'keepSnaps',
 		dragFree: true,
@@ -14,24 +14,24 @@ export const Gallery = ({ title, items, itemWrapper }: GalleryProps) => {
 
 	const onThumbClick = useCallback(
 		(index: number) => {
-			if (!displayEmblaApi || !emblaThumbnailStripApi) return;
-			displayEmblaApi.scrollTo(index);
+			if (!emblaDisplayApi || !emblaThumbnailStripApi) return;
+			emblaDisplayApi.scrollTo(index);
 		},
-		[displayEmblaApi, emblaThumbnailStripApi]
+		[emblaDisplayApi, emblaThumbnailStripApi]
 	);
 
 	const onSelect = useCallback(() => {
-		if (!displayEmblaApi || !emblaThumbnailStripApi) return;
-		setSelectedIndex(displayEmblaApi.selectedScrollSnap());
-		emblaThumbnailStripApi.scrollTo(displayEmblaApi.selectedScrollSnap());
-	}, [displayEmblaApi, emblaThumbnailStripApi, setSelectedIndex]);
+		if (!emblaDisplayApi || !emblaThumbnailStripApi) return;
+		setSelectedIndex(emblaDisplayApi.selectedScrollSnap());
+		emblaThumbnailStripApi.scrollTo(emblaDisplayApi.selectedScrollSnap());
+	}, [emblaDisplayApi, emblaThumbnailStripApi, setSelectedIndex]);
 
 	useEffect(() => {
-		if (!displayEmblaApi) return;
+		if (!emblaDisplayApi) return;
 		onSelect();
 
-		displayEmblaApi.on('select', onSelect).on('reInit', onSelect);
-	}, [displayEmblaApi, onSelect]);
+		emblaDisplayApi.on('select', onSelect).on('reInit', onSelect);
+	}, [emblaDisplayApi, onSelect]);
 
 	return <></>;
 };
