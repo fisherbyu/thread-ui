@@ -27,7 +27,9 @@ export type GalleryState = Prettify<
 >;
 
 export type GalleryEmblaContext = {
-	emblaRef: EmblaViewportRefType;
-	emblaApi: EmblaCarouselType | undefined;
+	emblDisplayRef: EmblaViewportRefType;
+	emblaDisplayApi: EmblaCarouselType | undefined;
+	emblaTrackRef: EmblaViewportRefType;
+	emblaTrackApi: EmblaCarouselType | undefined;
 	selectedIndex: number;
 };
