@@ -2,46 +2,59 @@
 import { css } from '@/styled-system/css';
 import { Container } from '@/components/layouts';
 import { useCarouselContext } from '../carousel-context';
-import { useCarouselEmblaContext } from '../carousel-context';
 import { CarouselHeader } from './carousel-header';
-import { CarouselItem } from './carousel-item';
+import { CarouselControls, NextButton, PreviousButton } from './carousel-controls';
+import { CarouselItemsDisplay } from './carousel-items-display';
 
 const styles = {
-	content: css({
-		width: '100%',
-		display: 'flex',
-		flexDirection: 'column',
-	}),
 	belowControls: css({
 		width: '50px',
 		marginX: 'auto',
+		marginTop: '3',
 	}),
-	viewport: css({ width: '100%', overflow: 'hidden' }),
-	track: css({
+	aroundWrapper: css({
 		display: 'flex',
-
-		marginLeft: { base: '-3', md: '-4' },
-		touchAction: 'pan-y pinch-zoom',
+		flexDirection: 'row',
+		gap: '1',
+	}),
+	buttonWrapper: css({
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
 	}),
 };
 
 export const CarouselContent = () => {
 	const {
-		value: { itemOrder },
+		value: { controlsPosition },
 	} = useCarouselContext();
 
-	const { emblaRef } = useCarouselEmblaContext();
+	if (controlsPosition === 'around') {
+		return (
+			<Container>
+				<CarouselHeader />
+				<div className={styles.aroundWrapper}>
+					<div className={styles.buttonWrapper}>
+						<PreviousButton />
+					</div>
+					<CarouselItemsDisplay />
+					<div className={styles.buttonWrapper}>
+						<NextButton />
+					</div>
+				</div>
+			</Container>
+		);
+	}
 
 	return (
 		<Container>
 			<CarouselHeader />
-			<div ref={emblaRef} className={styles.viewport}>
-				<div className={styles.track}>
-					{itemOrder.map((itemId) => (
-						<CarouselItem key={itemId} itemId={itemId} />
-					))}
+			<CarouselItemsDisplay />
+			{controlsPosition === 'below' && (
+				<div className={styles.belowControls}>
+					<CarouselControls />
 				</div>
-			</div>
+			)}
 		</Container>
 	);
 };
