@@ -22,6 +22,7 @@ export type GalleryState = Prettify<
 	Pick<GalleryProps, 'title'> & {
 		items: Record<GalleryItemId, InternalGalleryItem>;
 		ItemWrapper: GalleryProps['itemWrapper'];
+		itemOrder: GalleryItemId[];
 	}
 >;
 
