@@ -27,7 +27,7 @@ export type GalleryState = Prettify<
 >;
 
 export type GalleryEmblaContext = {
-	emblDisplayRef: EmblaViewportRefType;
+	emblaDisplayRef: EmblaViewportRefType;
 	emblaDisplayApi: EmblaCarouselType | undefined;
 	emblaTrackRef: EmblaViewportRefType;
 	emblaTrackApi: EmblaCarouselType | undefined;
