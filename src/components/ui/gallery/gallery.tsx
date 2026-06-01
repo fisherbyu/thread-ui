@@ -2,6 +2,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { GalleryProps, GalleryState } from './gallery.types';
 import useEmblaCarousel from 'embla-carousel-react';
+import { GalleryEmblaProvider, GalleryProvider } from './gallery-context';
+import { GalleryContent } from './components/gallery-content';
 
 export const Gallery = ({ title, items: itemList, itemWrapper }: GalleryProps) => {
 	const [emblaDisplayRef, emblaDisplayApi] = useEmblaCarousel();
@@ -12,7 +14,7 @@ export const Gallery = ({ title, items: itemList, itemWrapper }: GalleryProps) =
 
 	const [selectedIndex, setSelectedIndex] = useState(0);
 
-	const onThumbClick = useCallback(
+	const onTrackItemClick = useCallback(
 		(index: number) => {
 			if (!emblaDisplayApi || !emblaItemTrackApi) return;
 			emblaDisplayApi.scrollTo(index);
@@ -57,23 +59,30 @@ export const Gallery = ({ title, items: itemList, itemWrapper }: GalleryProps) =
 		};
 	}, [title, normalizedItems]);
 
-	const emblaDisplayValue = useMemo(
+	const emblaValue = useMemo(
 		() => ({
 			emblaDisplayRef,
 			emblaDisplayApi,
-			selectedIndex,
-		}),
-		[emblaDisplayRef, emblaDisplayApi, selectedIndex]
-	);
-
-	const emblaItemTrackValue = useMemo(
-		() => ({
 			emblaItemTrackRef,
 			emblaItemTrackApi,
+			onTrackItemClick,
 			selectedIndex,
 		}),
-		[emblaDisplayRef, emblaDisplayApi, selectedIndex]
+		[
+			emblaDisplayRef,
+			emblaDisplayApi,
+			emblaItemTrackRef,
+			emblaItemTrackApi,
+			onTrackItemClick,
+			selectedIndex,
+		]
 	);
 
-	return <></>;
+	return (
+		<GalleryProvider initialValue={initialState}>
+			<GalleryEmblaProvider value={emblaValue}>
+				<GalleryContent />
+			</GalleryEmblaProvider>
+		</GalleryProvider>
+	);
 };
