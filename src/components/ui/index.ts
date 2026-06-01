@@ -9,3 +9,4 @@ export * from './card';
 export * from './tab-view';
 
 export * from './carousel';
+export * from './gallery';
