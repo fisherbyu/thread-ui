@@ -12,13 +12,12 @@ const styles = {
 	}),
 };
 
-export const CarouselControls = () => {
-	const { emblaApi, canScrollPrev, canScrollNext } = useCarouselEmblaContext();
+export const PreviousButton = () => {
+	const { emblaApi, canScrollPrev } = useCarouselEmblaContext();
 
 	const goToPrev = () => emblaApi?.scrollPrev();
-	const goToNext = () => emblaApi?.scrollNext();
 
-	const leftButton = (
+	return (
 		<IconButton
 			color="neutral"
 			name="CaretLeft"
@@ -27,8 +26,14 @@ export const CarouselControls = () => {
 			disabled={!canScrollPrev}
 		/>
 	);
+};
 
-	const rightButton = (
+export const NextButton = () => {
+	const { emblaApi, canScrollPrev, canScrollNext } = useCarouselEmblaContext();
+
+	const goToNext = () => emblaApi?.scrollNext();
+
+	return (
 		<IconButton
 			color="neutral"
 			name="CaretRight"
@@ -37,11 +42,13 @@ export const CarouselControls = () => {
 			disabled={!canScrollNext}
 		/>
 	);
+};
 
+export const CarouselControls = () => {
 	return (
 		<div className={styles.container}>
-			{leftButton}
-			{rightButton}
+			<PreviousButton />
+			<NextButton />
 		</div>
 	);
 };
