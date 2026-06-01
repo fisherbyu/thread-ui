@@ -1,9 +1,9 @@
 'use client';
-import { useCallback, useEffect, useState } from 'react';
-import { GalleryProps } from './gallery.types';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { GalleryProps, GalleryState } from './gallery.types';
 import useEmblaCarousel from 'embla-carousel-react';
 
-export const Gallery = ({ title, items, itemWrapper }: GalleryProps) => {
+export const Gallery = ({ title, items: itemList, itemWrapper }: GalleryProps) => {
 	const [emblaDisplayRef, emblaDisplayApi] = useEmblaCarousel();
 	const [emblaThumbnailStripRef, emblaThumbnailStripApi] = useEmblaCarousel({
 		containScroll: 'keepSnaps',
@@ -32,6 +32,30 @@ export const Gallery = ({ title, items, itemWrapper }: GalleryProps) => {
 
 		emblaDisplayApi.on('select', onSelect).on('reInit', onSelect);
 	}, [emblaDisplayApi, onSelect]);
+
+	const normalizedItems = useMemo(
+		() =>
+			itemList.map((item, index) => ({
+				content: item,
+				id: index,
+			})),
+		[itemList]
+	);
+
+	const initialState: GalleryState = useMemo(() => {
+		const items = Object.fromEntries(
+			normalizedItems.map((item) => [item.id, item])
+		) as GalleryState['items'];
+
+		const itemOrder = normalizedItems.map((item) => item.id);
+
+		return {
+			title,
+			items,
+			itemOrder,
+			ItemWrapper: itemWrapper,
+		};
+	}, [title, normalizedItems]);
 
 	return <></>;
 };
