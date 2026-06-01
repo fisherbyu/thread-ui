@@ -57,5 +57,23 @@ export const Gallery = ({ title, items: itemList, itemWrapper }: GalleryProps) =
 		};
 	}, [title, normalizedItems]);
 
+	const emblaDisplayValue = useMemo(
+		() => ({
+			emblaDisplayRef,
+			emblaDisplayApi,
+			selectedIndex,
+		}),
+		[emblaDisplayRef, emblaDisplayApi, selectedIndex]
+	);
+
+	const emblaItemTrackValue = useMemo(
+		() => ({
+			emblaItemTrackRef,
+			emblaItemTrackApi,
+			selectedIndex,
+		}),
+		[emblaDisplayRef, emblaDisplayApi, selectedIndex]
+	);
+
 	return <></>;
 };
