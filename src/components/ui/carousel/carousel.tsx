@@ -2,7 +2,6 @@
 import { useMemo, useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { EmblaCarouselType } from 'embla-carousel';
-import { Card } from '../card';
 import { CarouselProvider, CarouselEmblaProvider } from './carousel-context';
 import { CarouselProps, CarouselState } from './carousel.types';
 import { CarouselContent } from './components/carousel-content';
