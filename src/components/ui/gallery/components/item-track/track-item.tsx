@@ -23,5 +23,5 @@ export const TrackItem = ({ itemId }: TrackItemProps) => {
 
 	const item = items[itemId];
 
-	return <button>{item.content}</button>;
+	return <button onClick={() => onTrackItemClick(itemId)}>{item.content}</button>;
 };
