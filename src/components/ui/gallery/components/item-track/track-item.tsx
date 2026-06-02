@@ -13,6 +13,9 @@ const styles = {
 		flex: ' 0 0 22%',
 		minWidth: '0',
 		paddingLeft: 'var(--thread-gallery-item-track-spacing)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
+		borderColor: 'transparent',
+		borderWidth: 'lg',
+		borderStyle: 'solid',
 	}),
 	internalContent: css({
 		borderRadius: 'sm',
@@ -20,6 +23,9 @@ const styles = {
 		alignItems: 'center',
 		justifyContent: 'center',
 		backgroundColor: 'surface',
+		borderColor: 'structure.subtle',
+		borderWidth: 'sm',
+		borderStyle: 'solid',
 		height: 'var(--thread-gallery-track-item-height)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
 	}),
 };

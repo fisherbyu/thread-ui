@@ -10,6 +10,9 @@ type GalleryItemProps = {
 
 const styles = {
 	container: css({
+		borderColor: 'transparent',
+		borderWidth: 'lg',
+		borderStyle: 'solid',
 		transform: 'translate3d(0, 0, 0)',
 		flexGrow: 0,
 		flexShrink: 0,
@@ -21,9 +24,9 @@ const styles = {
 		width: '100%',
 		height: 'var(--thread-gallery-display-item-height)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
 		backgroundColor: 'elevated',
-		borderColor: 'structure.default',
 		borderRadius: 'lg',
 		borderWidth: 'md',
+		borderColor: 'structure.subtle',
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
