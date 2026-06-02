@@ -5,7 +5,6 @@ import { TrackItem } from './track-item';
 
 const styles = {
 	viewport: css({
-		width: '100%',
 		overflow: 'hidden',
 	}),
 	window: css({
