@@ -21,7 +21,7 @@ const styles = {
 		width: '100%',
 		height: 'var(--thread-gallery-display-item-height)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
 		backgroundColor: 'elevated',
-		borderColor: 'structure.subtle',
+		borderColor: 'structure.default',
 		borderRadius: 'lg',
 		borderWidth: 'md',
 		display: 'flex',
