@@ -28,19 +28,19 @@ type Story = StoryObj<typeof Gallery>;
 
 const sampleItems: GalleryItem[] = [
 	<div key="1">
-		<Text>1</Text>
+		<Text inline>1</Text>
 	</div>,
 	<div key="2">
-		<Text>2</Text>
+		<Text inline>2</Text>
 	</div>,
 	<div key="3">
-		<Text>3</Text>
+		<Text inline>3</Text>
 	</div>,
 	<div key="4">
-		<Text>4</Text>
+		<Text inline>4</Text>
 	</div>,
 	<div key="5">
-		<Text>5</Text>
+		<Text inline>5</Text>
 	</div>,
 ];
 
