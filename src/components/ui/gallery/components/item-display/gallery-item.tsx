@@ -9,7 +9,7 @@ type GalleryItemProps = {
 };
 
 const styles = {
-	wrapper: css({
+	container: css({
 		transform: 'translate3d(0, 0, 0)',
 		flexGrow: 0,
 		flexShrink: 0,
@@ -27,13 +27,13 @@ export const GalleryItem = ({ itemId }: GalleryItemProps) => {
 	const item = items[itemId];
 
 	if (ItemWrapper) {
-		<div className={styles.wrapper}>
+		<div className={styles.container}>
 			<ItemWrapper>{item.content}</ItemWrapper>
 		</div>;
 	}
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={styles.container}>
 			<Card layer="elevated" fullWidth size="lg">
 				{item.content}
 			</Card>
