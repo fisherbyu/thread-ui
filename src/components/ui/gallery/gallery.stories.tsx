@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Gallery } from './gallery';
 import { GalleryItem } from './gallery.types';
+import { Text } from '../../typography';
 
 const meta: Meta<typeof Gallery> = {
 	title: 'Components/Gallery',
@@ -27,19 +28,19 @@ type Story = StoryObj<typeof Gallery>;
 
 const sampleItems: GalleryItem[] = [
 	<div key="1">
-		<p>1</p>
+		<Text>1</Text>
 	</div>,
 	<div key="2">
-		<p>2</p>
+		<Text>2</Text>
 	</div>,
 	<div key="3">
-		<p>3</p>
+		<Text>3</Text>
 	</div>,
 	<div key="4">
-		<p>4</p>
+		<Text>4</Text>
 	</div>,
 	<div key="5">
-		<p>5</p>
+		<Text>5</Text>
 	</div>,
 ];
 
