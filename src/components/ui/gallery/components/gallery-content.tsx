@@ -35,6 +35,7 @@ const styles = {
 		flexDirection: 'column',
 		width: '100%',
 		flex: '1',
+		gap: '2',
 		backgroundColor: 'primary.dark',
 	}),
 	displayContent: css({
