@@ -1,5 +1,5 @@
 export const GALLERY_DISPLAY_CONSTANTS = {
-	displayItemHeight: '19rem',
+	displayItemHeight: '100%',
 	displayItemSpacing: '1rem',
 	displayItemWidth: '100%',
 	trackItemHeight: '6rem',
