@@ -38,13 +38,11 @@ const styles = {
 		width: '100%',
 		flex: '1',
 		gap: '2',
-		backgroundColor: 'primary.dark',
 	}),
 	displayContent: css({
 		height: '100%',
 		width: '100%',
 		flex: '1',
-		backgroundColor: 'primary.light',
 	}),
 	trackContent: cva({
 		base: {
