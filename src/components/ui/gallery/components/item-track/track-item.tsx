@@ -9,9 +9,10 @@ type TrackItemProps = {
 
 const styles = {
 	container: css({
-		borderWidth: 'md',
-		borderColor: 'transparent',
 		cursor: 'pointer',
+		flex: ' 0 0 22%',
+		minWidth: '0',
+		paddingLeft: 'var(--thread-gallery-item-track-spacing)',
 	}),
 };
 
@@ -23,5 +24,9 @@ export const TrackItem = ({ itemId }: TrackItemProps) => {
 
 	const item = items[itemId];
 
-	return <button onClick={() => onTrackItemClick(itemId)}>{item.content}</button>;
+	return (
+		<button className={styles.container} onClick={() => onTrackItemClick(itemId)}>
+			{item.content}
+		</button>
+	);
 };
