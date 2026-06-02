@@ -10,7 +10,7 @@ const styles = {
 	window: css({
 		display: 'flex',
 		touchAction: 'pan-y pinch-zoom',
-		marginLeft: 'calc(8px * -1)',
+		marginLeft: 'calc(var(--thread-gallery-display-item-spacing) * -1)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
 	}),
 };
 
