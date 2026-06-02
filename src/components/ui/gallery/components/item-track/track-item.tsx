@@ -12,7 +12,15 @@ const styles = {
 		cursor: 'pointer',
 		flex: ' 0 0 22%',
 		minWidth: '0',
-		paddingLeft: 'var(--thread-gallery-item-track-spacing)',
+		paddingLeft: 'var(--thread-gallery-item-track-spacing)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
+	}),
+	internalContent: css({
+		borderRadius: 'sm',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: 'surface',
+		height: 'var(--thread-gallery-track-item-height)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
 	}),
 };
 
@@ -26,7 +34,7 @@ export const TrackItem = ({ itemId }: TrackItemProps) => {
 
 	return (
 		<button className={styles.container} onClick={() => onTrackItemClick(itemId)}>
-			{item.content}
+			<div className={styles.internalContent}>{item.content}</div>
 		</button>
 	);
 };
