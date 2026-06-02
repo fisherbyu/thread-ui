@@ -40,6 +40,7 @@ const styles = {
 		backgroundColor: 'primary.dark',
 	}),
 	displayContent: css({
+		height: '100%',
 		width: '100%',
 		flex: '1',
 		backgroundColor: 'primary.light',

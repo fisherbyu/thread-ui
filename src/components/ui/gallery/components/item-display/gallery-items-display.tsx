@@ -5,9 +5,11 @@ import { GalleryItem } from './gallery-item';
 
 const styles = {
 	viewport: css({
+		height: '100%',
 		overflow: 'hidden',
 	}),
 	window: css({
+		height: '100%',
 		display: 'flex',
 		touchAction: 'pan-y pinch-zoom',
 		marginLeft: 'calc(var(--thread-gallery-display-item-spacing) * -1)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
