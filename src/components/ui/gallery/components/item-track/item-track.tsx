@@ -10,7 +10,7 @@ const styles = {
 	window: css({
 		display: 'flex',
 		flexDirection: 'row',
-		paddingLeft: 'calc(12px * -1)',
+		paddingLeft: 'calc(var(--thread-gallery-item-track-spacing) * -1)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
 	}),
 };
 
