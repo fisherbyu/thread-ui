@@ -1,19 +1,15 @@
 'use client';
-import { css, cva } from '@/styled-system/css';
 import { ReactNode } from 'react';
-import { useGalleryContext } from '../gallery-context';
+import { css, cva } from '@/styled-system/css';
 import { H2 } from '@/components/typography';
+import { useGalleryContext } from '../gallery-context';
 
 const styles = {
-	container: css({
-		width: '100%',
-	}),
-	internalContent: cva({
+	container: cva({
 		base: {
 			display: 'flex',
 			flexDirection: 'column',
 			width: '100%',
-			backgroundColor: 'primary.dark',
 		},
 		variants: {
 			size: {
@@ -29,6 +25,13 @@ const styles = {
 			},
 		},
 	}),
+	internalContent: css({
+		display: 'flex',
+		flexDirection: 'column',
+		width: '100%',
+		flex: '1',
+		backgroundColor: 'primary.dark',
+	}),
 	displayContent: css({
 		width: '100%',
 		flex: '1',
@@ -37,19 +40,17 @@ const styles = {
 	trackContent: cva({
 		base: {
 			width: '100%',
-			maxHeight: '60px',
-			flex: '0 0 25%',
 		},
 		variants: {
 			size: {
 				sm: {
-					height: '50px',
-				},
-				md: {
 					height: '60px',
 				},
+				md: {
+					height: '75px',
+				},
 				lg: {
-					height: '70px',
+					height: '100px',
 				},
 			},
 		},
@@ -64,9 +65,9 @@ export const GalleryContent = () => {
 	const titleDisplay: ReactNode = typeof title === 'string' ? <H2 inline>{title}</H2> : title;
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.container({ size })}>
 			{title && titleDisplay}
-			<div className={styles.internalContent({ size })}>
+			<div className={styles.internalContent}>
 				<div className={styles.displayContent}></div>
 				<div className={styles.trackContent({ size })}></div>
 			</div>
