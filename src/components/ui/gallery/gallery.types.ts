@@ -1,5 +1,5 @@
 import { ReactNode, ComponentType } from 'react';
-import { Prettify } from '@/types';
+import { Prettify, UtilitySizeOptions } from '@/types';
 import { EmblaViewportRefType } from 'embla-carousel-react';
 import { EmblaCarouselType } from 'embla-carousel';
 
@@ -11,6 +11,7 @@ export type GalleryProps = {
 	title?: string;
 	items: GalleryItem[];
 	itemWrapper?: ComponentType<any>;
+	size?: UtilitySizeOptions;
 };
 
 type InternalGalleryItem = {
@@ -19,11 +20,12 @@ type InternalGalleryItem = {
 };
 
 export type GalleryState = Prettify<
-	Pick<GalleryProps, 'title'> & {
-		items: Record<GalleryItemId, InternalGalleryItem>;
-		ItemWrapper: GalleryProps['itemWrapper'];
-		itemOrder: GalleryItemId[];
-	}
+	Pick<GalleryProps, 'title'> &
+		Required<Pick<GalleryProps, 'size'>> & {
+			items: Record<GalleryItemId, InternalGalleryItem>;
+			ItemWrapper: GalleryProps['itemWrapper'];
+			itemOrder: GalleryItemId[];
+		}
 >;
 
 export type GalleryEmblaContext = {

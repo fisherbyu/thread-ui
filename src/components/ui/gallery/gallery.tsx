@@ -5,7 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { GalleryEmblaProvider, GalleryProvider } from './gallery-context';
 import { GalleryContent } from './components/gallery-content';
 
-export const Gallery = ({ title, items: itemList, itemWrapper }: GalleryProps) => {
+export const Gallery = ({ title, items: itemList, itemWrapper, size = 'lg' }: GalleryProps) => {
 	const [emblaDisplayRef, emblaDisplayApi] = useEmblaCarousel();
 	const [emblaItemTrackRef, emblaItemTrackApi] = useEmblaCarousel({
 		containScroll: 'keepSnaps',
@@ -56,8 +56,9 @@ export const Gallery = ({ title, items: itemList, itemWrapper }: GalleryProps) =
 			items,
 			itemOrder,
 			ItemWrapper: itemWrapper,
+			size,
 		};
-	}, [title, normalizedItems]);
+	}, [title, normalizedItems, size]);
 
 	const emblaValue = useMemo(
 		() => ({
