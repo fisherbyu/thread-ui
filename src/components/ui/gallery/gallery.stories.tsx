@@ -26,7 +26,32 @@ const meta: Meta<typeof Gallery> = {
 export default meta;
 type Story = StoryObj<typeof Gallery>;
 
-const sampleItems: GalleryItem[] = [
+const swatchColors = [
+	'#1982c4',
+	'#6a4c93',
+	'#e63946',
+	'#457b9d',
+	'#2a9d8f',
+	'#e9c46a',
+	'#264653',
+	'#f4a261',
+	'#8ac926',
+	'#ff595e',
+];
+
+const swatchItems: GalleryItem[] = swatchColors.map((color, i) => (
+	<div
+		key={i}
+		style={{
+			backgroundColor: color,
+			width: '100%',
+			height: '100%',
+			borderRadius: '4px',
+		}}
+	/>
+));
+
+const textItems: GalleryItem[] = [
 	<div key="1">
 		<Text inline>1</Text>
 	</div>,
@@ -47,6 +72,13 @@ const sampleItems: GalleryItem[] = [
 export const Default: Story = {
 	args: {
 		title: 'Gallery',
-		items: sampleItems,
+		items: swatchItems,
+	},
+};
+
+export const WithText: Story = {
+	args: {
+		title: 'Gallery',
+		items: textItems,
 	},
 };
