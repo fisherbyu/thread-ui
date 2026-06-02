@@ -27,9 +27,11 @@ export const GalleryItem = ({ itemId }: GalleryItemProps) => {
 	const item = items[itemId];
 
 	if (ItemWrapper) {
-		<div className={styles.container}>
-			<ItemWrapper>{item.content}</ItemWrapper>
-		</div>;
+		return (
+			<div className={styles.container}>
+				<ItemWrapper>{item.content}</ItemWrapper>
+			</div>
+		);
 	}
 
 	return (
