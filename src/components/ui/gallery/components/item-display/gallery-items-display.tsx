@@ -5,7 +5,6 @@ import { GalleryItem } from './gallery-item';
 
 const styles = {
 	viewport: css({
-		width: '100%',
 		overflow: 'hidden',
 	}),
 	window: css({
