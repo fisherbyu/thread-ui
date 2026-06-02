@@ -37,7 +37,7 @@ const styles = {
 		flexDirection: 'column',
 		width: '100%',
 		flex: '1',
-		gap: '2',
+		gap: '3',
 	}),
 	displayContent: css({
 		height: '100%',
@@ -69,7 +69,7 @@ export const GalleryContent = () => {
 		value: { size, title },
 	} = useGalleryContext();
 
-	const titleDisplay: ReactNode = typeof title === 'string' ? <H2 inline>{title}</H2> : title;
+	const titleDisplay: ReactNode = typeof title === 'string' ? <H2>{title}</H2> : title;
 
 	const cssVariables: Record<string, string> = Object.fromEntries(
 		(Object.entries(GALLERY_DISPLAY_CONSTANT_NAMES) as [DisplayConstantsKeys, string][]).map(
