@@ -9,6 +9,7 @@ import {
 	GALLERY_DISPLAY_CONSTANTS,
 } from '../gallery-display-constants';
 import { GalleryItemsDisplay } from './item-display/gallery-items-display';
+import { ItemTrack } from './item-track/item-track';
 
 const styles = {
 	container: cva({
@@ -85,7 +86,9 @@ export const GalleryContent = () => {
 				<div className={styles.displayContent}>
 					<GalleryItemsDisplay />
 				</div>
-				<div className={styles.trackContent({ size })}></div>
+				<div className={styles.trackContent({ size })}>
+					<ItemTrack />
+				</div>
 			</div>
 		</div>
 	);
