@@ -13,9 +13,9 @@ const styles = {
 		transform: 'translate3d(0, 0, 0)',
 		flexGrow: 0,
 		flexShrink: 0,
-		flexBasis: '100%',
+		flexBasis: 'var(--thread-gallery-display-item-width)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
 		minWidth: 0,
-		paddingLeft: '2',
+		paddingLeft: 'var(--thread-gallery-display-item-spacing)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
 	}),
 };
 
