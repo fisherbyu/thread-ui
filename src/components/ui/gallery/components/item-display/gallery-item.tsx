@@ -17,6 +17,18 @@ const styles = {
 		minWidth: 0,
 		paddingLeft: 'var(--thread-gallery-display-item-spacing)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
 	}),
+	content: css({
+		width: '100%',
+		height: 'var(--thread-gallery-display-item-height)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
+		backgroundColor: 'elevated',
+		borderColor: 'structure.subtle',
+		borderRadius: 'lg',
+		borderWidth: 'md',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		userSelect: 'none',
+	}),
 };
 
 export const GalleryItem = ({ itemId }: GalleryItemProps) => {
@@ -36,9 +48,7 @@ export const GalleryItem = ({ itemId }: GalleryItemProps) => {
 
 	return (
 		<div className={styles.container}>
-			<Card layer="elevated" fullWidth size="lg">
-				{item.content}
-			</Card>
+			<div className={styles.content}>{item.content}</div>
 		</div>
 	);
 };
