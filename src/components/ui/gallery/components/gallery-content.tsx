@@ -3,6 +3,11 @@ import { ReactNode } from 'react';
 import { css, cva } from '@/styled-system/css';
 import { H2 } from '@/components/typography';
 import { useGalleryContext } from '../gallery-context';
+import {
+	DisplayConstantsKeys,
+	GALLERY_DISPLAY_CONSTANT_NAMES,
+	GALLERY_DISPLAY_CONSTANTS,
+} from '../gallery-display-constants';
 
 const styles = {
 	container: cva({
@@ -64,8 +69,14 @@ export const GalleryContent = () => {
 
 	const titleDisplay: ReactNode = typeof title === 'string' ? <H2 inline>{title}</H2> : title;
 
+	const cssVariables: Record<string, string> = Object.fromEntries(
+		(Object.entries(GALLERY_DISPLAY_CONSTANT_NAMES) as [DisplayConstantsKeys, string][]).map(
+			([key, cssVar]) => [cssVar, GALLERY_DISPLAY_CONSTANTS[key]]
+		)
+	);
+
 	return (
-		<div className={styles.container({ size })}>
+		<div className={styles.container({ size })} style={cssVariables}>
 			{title && titleDisplay}
 			<div className={styles.internalContent}>
 				<div className={styles.displayContent}></div>
