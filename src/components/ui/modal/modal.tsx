@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { ModalProps } from './modal.types';
 import { ModalProvider } from './modal-context';
 import { ModalContent } from './components/modal-content';
-import { css, cva } from '@/styled-system/css';
+import { cva } from '@/styled-system/css';
 
 const styles = {
 	overlay: cva({
