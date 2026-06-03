@@ -39,7 +39,8 @@
 	],
 	"dependencies": {
 		"@phosphor-icons/react": "^2.1.10",
-		"embla-carousel-react": "^8.6.0"
+		"embla-carousel-react": "^8.6.0",
+		"embla-carousel-wheel-gestures": "^8.1.0"
 	},
 	"peerDependencies": {
 		"react": "^19.1.0",
