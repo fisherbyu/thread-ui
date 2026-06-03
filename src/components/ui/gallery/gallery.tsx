@@ -4,13 +4,17 @@ import { GalleryProps, GalleryState } from './gallery.types';
 import useEmblaCarousel from 'embla-carousel-react';
 import { GalleryEmblaProvider, GalleryProvider } from './gallery-context';
 import { GalleryContent } from './components/gallery-content';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 export const Gallery = ({ title, items: itemList, itemWrapper, size = 'lg' }: GalleryProps) => {
 	const [emblaDisplayRef, emblaDisplayApi] = useEmblaCarousel();
-	const [emblaItemTrackRef, emblaItemTrackApi] = useEmblaCarousel({
-		containScroll: 'keepSnaps',
-		dragFree: true,
-	});
+	const [emblaItemTrackRef, emblaItemTrackApi] = useEmblaCarousel(
+		{
+			containScroll: 'keepSnaps',
+			dragFree: true,
+		},
+		[WheelGesturesPlugin()]
+	);
 
 	const [selectedIndex, setSelectedIndex] = useState(0);
 
