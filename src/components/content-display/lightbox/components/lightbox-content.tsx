@@ -13,16 +13,17 @@ const styles = {
 };
 
 export const LightBoxContent = () => {
-	const { items, itemWrapper } = useLightboxContext();
+	const { items, itemWrapper, appearance, startIndex } = useLightboxContext();
 
 	return (
 		<div className={styles.container}>
 			<Gallery
+				startIndex={startIndex}
 				title={<LightboxTitle />}
 				items={items}
 				itemWrapper={itemWrapper}
 				size="lg"
-				appearance="bare"
+				appearance={appearance}
 			/>
 		</div>
 	);

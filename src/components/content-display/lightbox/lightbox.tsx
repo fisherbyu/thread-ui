@@ -32,13 +32,23 @@ const styles = {
  * />
  * ```
  */
-export const Lightbox = ({ title, items, itemWrapper, isOpen, onClose }: LightboxProps) => {
+export const Lightbox = ({
+	title,
+	items,
+	itemWrapper,
+	isOpen,
+	onClose,
+	startIndex,
+	appearance,
+}: LightboxProps) => {
 	const initialValue: LightboxState = {
 		title,
 		items,
 		itemWrapper,
 		isOpen,
 		onClose,
+		startIndex,
+		appearance,
 	};
 
 	return (
