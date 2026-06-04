@@ -5,7 +5,7 @@ type UseClickOutsideProps = {
 	elementRef: RefObject<HTMLElement | null>;
 	isOpen: boolean;
 	onClose: () => void;
-	disabled: boolean;
+	disabled?: boolean;
 };
 
 /**
