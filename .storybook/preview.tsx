@@ -46,7 +46,7 @@ const preview: Preview = {
 					'Theme',
 					'Components',
 					'UI Components',
-					'Media',
+					'Media Display',
 					'Typography',
 					'Navigation',
 					'Layouts',
