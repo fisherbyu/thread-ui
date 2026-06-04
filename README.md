@@ -96,11 +96,15 @@ Component CSS is pre-generated using Panda CSS, so components render correctly s
 
 ### UI Elements
 
-`Button` `Card` `Divider` `DotsLoader` `Icon` `IconButton` `Modal` `SkeletonLayoutLoader` `SkeletonLoader` `SpinLoader` `TabView` `Toggle`
+`Button` `Card` `Carousel` `Divider` `DotsLoader` `Gallery` `Icon` `IconButton` `Modal` `SkeletonLayoutLoader` `SkeletonLoader` `SpinLoader` `TabView` `Toggle`
 
 ### Media Display
 
 `ImagePanel` `InfoCard` `MediaCard`
+
+### Content Display
+
+`Lightbox`
 
 ### Typography Elements
 

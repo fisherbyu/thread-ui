@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
+import { LargeColumnOptions, MediumColumnOptions } from '../column-layout.types';
 
 export type ColumnSkeletonProps = {
-	mdcol: 1 | 2 | 3;
-	lgcol?: 1 | 2 | 3 | 4 | 5;
+	mdcol: MediumColumnOptions;
+	lgcol?: LargeColumnOptions;
 	children: ReactNode;
 };

@@ -11,7 +11,6 @@ const styles = {
 			padding: {
 				base: '5',
 			},
-			marginX: 'auto',
 			transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
 		},
 		variants: {
@@ -33,7 +32,8 @@ const styles = {
 					maxWidth: 'none',
 				},
 				false: {
-					maxWidth: '213',
+					marginX: 'auto',
+					maxWidth: '850px',
 					width: {
 						base: '100%',
 						md: '75%',

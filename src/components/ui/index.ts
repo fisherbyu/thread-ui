@@ -6,4 +6,3 @@ export * from './loaders';
 export * from './modal';
 export * from './toggle';
 export * from './card';
-export * from './tab-view';

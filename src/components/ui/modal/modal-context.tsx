@@ -1,5 +1,5 @@
 'use client';
 import { createComponentContext } from '@/utils';
-import { ModalProps } from './modal.types';
+import { ModalState } from './modal.types';
 
-export const [ModalProvider, useModalContext] = createComponentContext<ModalProps>('Modal');
+export const [ModalProvider, useModalContext] = createComponentContext<ModalState>('Modal');

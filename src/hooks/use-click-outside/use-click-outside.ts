@@ -1,20 +1,27 @@
 'use client';
 import { useEffect, useRef, RefObject } from 'react';
 
+type UseClickOutsideProps = {
+	elementRef: RefObject<HTMLElement | null>;
+	isOpen: boolean;
+	onClose: () => void;
+	disabled?: boolean;
+};
+
 /**
  * Calls `onClose` when a click is detected outside of `elementRef`.
  * Only active when `isOpen` is true and `disabled` is false.
  *
  * @example
  * const ref = useRef<HTMLDivElement>(null);
- * useClickOutside(ref, isOpen, () => setIsOpen(false));
+ * useClickOutside({ elementRef: ref, isOpen, onClose: () => setIsOpen(false) });
  */
-export const useClickOutside = (
-	elementRef: RefObject<HTMLElement | null>,
-	isOpen: boolean,
-	onClose: () => void,
-	disabled: boolean = false
-) => {
+export const useClickOutside = ({
+	elementRef,
+	isOpen,
+	onClose,
+	disabled = false,
+}: UseClickOutsideProps) => {
 	const onCloseRef = useRef(onClose);
 	onCloseRef.current = onClose;
 

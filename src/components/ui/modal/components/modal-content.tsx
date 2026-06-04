@@ -1,10 +1,8 @@
 'use client';
-import { useRef } from 'react';
-import { useDismiss } from '@/hooks';
 import { css, cva } from '@/styled-system/css';
+import { useModalContext } from '../modal-context';
 import { IconButton } from '../../icon-button';
 import { H2, H3 } from '@/components/typography';
-import { useModalContext } from '../modal-context';
 
 const styles = {
 	outline: cva({
@@ -90,13 +88,7 @@ const styles = {
 
 export const ModalContent = () => {
 	// Extract Properties from Context
-	const { children, size, title, footer, onClose, closeOnOverlayClick, closeOnEsc, open } =
-		useModalContext();
-
-	// Manage Modal Closure
-	const modalContentRef = useRef<HTMLDivElement>(null);
-
-	useDismiss(modalContentRef, open, onClose, closeOnOverlayClick, closeOnEsc);
+	const { children, size, title, footer, onClose } = useModalContext();
 
 	const TitleContent = title ? (
 		size === 'sm' ? (
@@ -107,7 +99,7 @@ export const ModalContent = () => {
 	) : null;
 
 	return (
-		<div className={styles.outline({ size })} ref={modalContentRef}>
+		<div className={styles.outline({ size })}>
 			<div className={styles.internalContent({ size })}>
 				<div className={styles.outerItems}>
 					<IconButton

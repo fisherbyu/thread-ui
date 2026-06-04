@@ -1,13 +1,14 @@
 'use client';
 import { css } from '@/styled-system/css';
-import { Card } from '../../card';
+import { Card } from '@/components/ui';
 import { ConditionalWrapper } from '../../../../internal-components';
 import { useTabViewContext } from '../tab-view-context';
 import { TabViewControls } from './tab-view-controls';
 import { H3 } from '@/components/typography';
+import { TabItemId } from '../tab-view.types';
 
 type TabItemContentProps = {
-	itemId: string;
+	itemId: TabItemId;
 };
 
 const styles = {

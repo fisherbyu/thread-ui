@@ -53,7 +53,7 @@ export const DropdownBase = ({
 	color = 'neutral',
 }: DropdownBaseProps) => {
 	const listRef = useRef<HTMLUListElement>(null);
-	useClickOutside(listRef, isOpen, onClose, false);
+	useClickOutside({ elementRef: listRef, isOpen, onClose });
 
 	return (
 		<div id={id} className={styles.container}>

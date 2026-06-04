@@ -49,7 +49,7 @@ const beatles = {
 };
 
 const meta: Meta<typeof MediaCard> = {
-	title: 'Media/MediaCard',
+	title: 'Media Display/MediaCard',
 	component: MediaCard,
 	tags: ['autodocs'],
 	argTypes: {
