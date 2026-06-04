@@ -96,7 +96,13 @@ export const ModalContent = () => {
 	// Manage Modal Closure
 	const modalContentRef = useRef<HTMLDivElement>(null);
 
-	useDismiss(modalContentRef, open, onClose, closeOnOverlayClick, closeOnEsc);
+	useDismiss({
+		elementRef: modalContentRef,
+		isOpen: open,
+		onClose,
+		dismissOnClick: closeOnOverlayClick,
+		dismissOnEsc: closeOnEsc,
+	});
 
 	const TitleContent = title ? (
 		size === 'sm' ? (
