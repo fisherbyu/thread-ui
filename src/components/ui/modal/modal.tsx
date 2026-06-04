@@ -59,15 +59,7 @@ export const Modal = (props: ModalProps) => {
 			preventScroll={preventScroll}
 			portalTarget={portalTarget}
 		>
-			<ModalProvider
-				value={{
-					...props,
-					placement,
-					closeOnOverlayClick,
-					closeOnEsc,
-					preventScroll,
-				}}
-			>
+			<ModalProvider value={props}>
 				<ModalContent />
 			</ModalProvider>
 		</ModalPrimitive>
