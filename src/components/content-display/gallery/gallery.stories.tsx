@@ -20,6 +20,24 @@ const meta: Meta<typeof Gallery> = {
 			control: 'object',
 			description: 'Items to render, in display order',
 		},
+		appearance: {
+			control: 'radio',
+			options: ['framed', 'bare'],
+			description: 'Visual treatment for item containers',
+		},
+		size: {
+			control: 'radio',
+			options: ['sm', 'md', 'lg', 'fill'],
+			description: 'Controls the gallery dimensional presets',
+		},
+		startIndex: {
+			control: 'number',
+			description: 'Index of item gallery opens at start',
+		},
+		variableWidths: {
+			control: 'boolean',
+			description: 'Display thumbnail items with varying widths',
+		},
 	},
 };
 
@@ -68,12 +86,19 @@ const textItems: GalleryItem[] = [
 	<div key="5">
 		<Text inline>5</Text>
 	</div>,
+	<div key="6">
+		<Text inline>6</Text>
+	</div>,
 ];
 
 export const Default: Story = {
 	args: {
 		title: 'Gallery',
 		items: swatchItems,
+		size: 'lg',
+		appearance: 'framed',
+		variableWidths: false,
+		startIndex: 0,
 	},
 };
 
@@ -81,5 +106,9 @@ export const WithText: Story = {
 	args: {
 		title: 'Gallery',
 		items: textItems,
+		size: 'md',
+		appearance: 'framed',
+		variableWidths: false,
+		startIndex: 2,
 	},
 };

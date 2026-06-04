@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Lightbox } from './lightbox';
+import { LightboxProps } from './lightbox.types';
 import { Button } from '../../ui';
 import { Text } from '../../typography';
 
@@ -18,7 +19,29 @@ const meta: Meta<typeof Lightbox> = {
 		),
 	],
 	tags: ['autodocs'],
-	// ...
+	argTypes: {
+		title: {
+			control: 'text',
+			description: 'Optional title rendered above the lightbox',
+		},
+		items: {
+			control: 'object',
+			description: 'Items to render, in display order',
+		},
+		appearance: {
+			control: 'radio',
+			options: ['framed', 'bare'],
+			description: 'Gallery content appearance',
+		},
+		variableWidths: {
+			control: 'boolean',
+			description: 'Control auto-width within track thumbnails',
+		},
+		startIndex: {
+			control: 'number',
+			description: 'Index of item gallery opens at start',
+		},
+	},
 };
 
 export default meta;
@@ -41,6 +64,7 @@ const swatchItems: React.ReactNode[] = swatchColors.map((color, i) => (
 	<div
 		key={i}
 		style={{
+			minWidth: '150px',
 			backgroundColor: color,
 			width: '100%',
 			height: '100%',
@@ -50,51 +74,53 @@ const swatchItems: React.ReactNode[] = swatchColors.map((color, i) => (
 ));
 
 const textItems: React.ReactNode[] = [
-	<div key="1">
+	<div style={{ minWidth: '150px' }} key="1">
 		<Text inline>1</Text>
 	</div>,
-	<div key="2">
+	<div style={{ minWidth: '150px' }} key="2">
 		<Text inline>2</Text>
 	</div>,
-	<div key="3">
+	<div style={{ minWidth: '150px' }} key="3">
 		<Text inline>3</Text>
 	</div>,
-	<div key="4">
+	<div style={{ minWidth: '150px' }} key="4">
 		<Text inline>4</Text>
 	</div>,
-	<div key="5">
+	<div style={{ minWidth: '150px' }} key="5">
 		<Text inline>5</Text>
 	</div>,
 ];
 
-const LightboxTrigger = ({
-	title,
-	items,
-	itemWrapper,
-}: {
-	title?: string;
-	items: React.ReactNode[];
-	itemWrapper?: React.ComponentType<any>;
-}) => {
+type LightboxTriggerProps = Omit<LightboxProps, 'isOpen' | 'onClose'>;
+
+const LightboxTrigger = (props: LightboxTriggerProps) => {
 	const [isOpen, setOpen] = useState(false);
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open Lightbox</Button>
-			<Lightbox
-				isOpen={isOpen}
-				onClose={() => setOpen(false)}
-				title={title}
-				items={items}
-				itemWrapper={itemWrapper}
-			/>
+			<Lightbox {...props} isOpen={isOpen} onClose={() => setOpen(false)} />
 		</>
 	);
 };
 
 export const Default: Story = {
-	render: () => <LightboxTrigger title="Lightbox" items={swatchItems} />,
+	args: {
+		title: 'Lightbox',
+		items: swatchItems,
+		appearance: 'bare',
+		variableWidths: true,
+		startIndex: 0,
+	},
+	render: (args: any) => <LightboxTrigger {...args} />,
 };
 
 export const WithText: Story = {
-	render: () => <LightboxTrigger title="Lightbox" items={textItems} />,
+	args: {
+		title: 'Lightbox',
+		items: textItems,
+		appearance: 'framed',
+		variableWidths: true,
+		startIndex: 2,
+	},
+	render: (args: any) => <LightboxTrigger {...args} />,
 };
