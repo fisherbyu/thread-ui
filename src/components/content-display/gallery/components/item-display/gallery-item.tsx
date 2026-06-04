@@ -27,6 +27,14 @@ const styles = {
 			alignItems: 'center',
 			justifyContent: 'center',
 			userSelect: 'none',
+			overflow: 'hidden',
+			'& img': {
+				maxWidth: '100%',
+				maxHeight: '100%',
+				width: 'auto',
+				height: 'auto',
+				objectFit: 'contain',
+			},
 		},
 		variants: {
 			appearance: {
