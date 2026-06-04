@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { IconNames } from '../icon';
+import { IconNames } from '@/components/ui';
 import { Prettify, SurfaceLayerOptions } from '@/types';
 
 /** A single tab definition consumed by the `TabView` component. */

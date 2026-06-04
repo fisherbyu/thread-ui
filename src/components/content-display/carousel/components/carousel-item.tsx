@@ -1,6 +1,6 @@
 'use client';
 import { css, cva } from '@/styled-system/css';
-import { Card } from '../../card';
+import { Card } from '@/components/ui';
 import { useCarouselContext } from '../carousel-context';
 import { CarouselItemId } from '../carousel.types';
 

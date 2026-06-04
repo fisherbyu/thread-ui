@@ -1,6 +1,6 @@
 'use client';
 import { css } from '@/styled-system/css';
-import { IconButton } from '../../icon-button';
+import { IconButton } from '@/components/ui';
 import { useCarouselEmblaContext } from '../carousel-context';
 
 const styles = {
