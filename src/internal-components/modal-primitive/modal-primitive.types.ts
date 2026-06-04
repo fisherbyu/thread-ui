@@ -7,6 +7,8 @@ export type ModalPrimitiveProps = {
 	onClose: () => void;
 	/** Modal Contents */
 	children: ReactNode;
+	/** Overlay styles */
+	overlayClassName?: string;
 	/** Close the modal when the overlay is clicked @default `true` */
 	closeOnOverlayClick?: boolean;
 	/** Close the modal when the Escape key is pressed @default `true` */
