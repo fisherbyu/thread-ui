@@ -36,13 +36,13 @@ const styles = {
  * scroll locking, and optional overlay-click dismissal.
  *
  * @example
- * <Modal open={isOpen} onClose={() => setIsOpen(false)} title="Confirm" size="md">
+ * <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} title="Confirm" size="md">
  *   <p>Are you sure?</p>
  * </Modal>
  */
 export const Modal = (props: ModalProps) => {
 	const {
-		open,
+		isOpen,
 		portalTarget,
 		preventScroll = true,
 		placement = 'center',
@@ -51,15 +51,15 @@ export const Modal = (props: ModalProps) => {
 	} = props;
 
 	useEffect(() => {
-		if (open && preventScroll) {
+		if (isOpen && preventScroll) {
 			document.body.style.overflow = 'hidden';
 		}
 		return () => {
 			document.body.style.overflow = '';
 		};
-	}, [open, preventScroll]);
+	}, [isOpen, preventScroll]);
 
-	if (open) {
+	if (isOpen) {
 		const target = portalTarget ?? document.body;
 
 		return createPortal(
