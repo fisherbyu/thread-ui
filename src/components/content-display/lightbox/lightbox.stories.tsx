@@ -64,7 +64,7 @@ const swatchItems: React.ReactNode[] = swatchColors.map((color, i) => (
 	<div
 		key={i}
 		style={{
-			minWidth: '150px',
+			// minWidth: '150px',
 			backgroundColor: color,
 			width: '100%',
 			height: '100%',
@@ -108,7 +108,7 @@ export const Default: Story = {
 		title: 'Lightbox',
 		items: swatchItems,
 		appearance: 'bare',
-		variableWidths: true,
+		variableWidths: false,
 		startIndex: 0,
 	},
 	render: (args: any) => <LightboxTrigger {...args} />,
@@ -119,7 +119,7 @@ export const WithText: Story = {
 		title: 'Lightbox',
 		items: textItems,
 		appearance: 'framed',
-		variableWidths: true,
+		variableWidths: false,
 		startIndex: 2,
 	},
 	render: (args: any) => <LightboxTrigger {...args} />,
