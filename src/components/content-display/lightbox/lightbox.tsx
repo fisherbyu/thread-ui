@@ -2,6 +2,7 @@ import { ModalPrimitive } from '@/internal-components';
 import { LightboxProps, LightboxState } from './lightbox.types';
 import { LightboxProvider } from './lightbox-context';
 import { css } from '@/styled-system/css';
+import { LightBoxContent } from './components/lightbox-content';
 
 const styles = {
 	overlay: css({
@@ -28,7 +29,7 @@ export const Lightbox = ({ title, items, itemWrapper, isOpen, onClose }: Lightbo
 	return (
 		<LightboxProvider value={initialValue}>
 			<ModalPrimitive overlayClassName={styles.overlay} isOpen={isOpen} onClose={onClose}>
-				<>Content Here</>
+				<LightBoxContent />
 			</ModalPrimitive>
 		</LightboxProvider>
 	);
