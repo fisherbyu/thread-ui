@@ -28,17 +28,19 @@ export const Gallery = ({
 	itemWrapper,
 	size = 'lg',
 	appearance = 'framed',
+	startIndex = 0,
 }: GalleryProps) => {
-	const [emblaDisplayRef, emblaDisplayApi] = useEmblaCarousel();
+	const [emblaDisplayRef, emblaDisplayApi] = useEmblaCarousel({ startIndex });
 	const [emblaItemTrackRef, emblaItemTrackApi] = useEmblaCarousel(
 		{
+			startIndex,
 			containScroll: 'keepSnaps',
 			dragFree: true,
 		},
 		[WheelGesturesPlugin()]
 	);
 
-	const [selectedIndex, setSelectedIndex] = useState(0);
+	const [selectedIndex, setSelectedIndex] = useState(startIndex);
 
 	const onTrackItemClick = useCallback(
 		(index: number) => {

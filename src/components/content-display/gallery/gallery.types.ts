@@ -26,6 +26,8 @@ export type GalleryProps = {
 	itemWrapper?: ComponentType<any>;
 	/** Controls the gallery's dimensional presets @default `'lg'` */
 	size?: UtilitySizeOptions;
+	/** Index of Item Gallery opens at Start @default 0 */
+	startIndex?: number;
 };
 
 type InternalGalleryItem = {
