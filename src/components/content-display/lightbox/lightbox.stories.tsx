@@ -10,18 +10,15 @@ const meta: Meta<typeof Lightbox> = {
 	parameters: {
 		layout: 'fullscreen',
 	},
-
+	decorators: [
+		(Story) => (
+			<div style={{ height: '100vh' }}>
+				<Story />
+			</div>
+		),
+	],
 	tags: ['autodocs'],
-	argTypes: {
-		title: {
-			control: 'text',
-			description: 'Optional title rendered above the lightbox',
-		},
-		items: {
-			control: 'object',
-			description: 'Items to render, in display order',
-		},
-	},
+	// ...
 };
 
 export default meta;
