@@ -4,10 +4,12 @@ import { ModalProps } from '@/components/ui';
 import { GalleryAppearanceOptions } from '../gallery/gallery.types';
 
 export type LightboxProps = Prettify<
-	Omit<GalleryProps, 'size' | 'appearance'> &
+	Omit<GalleryProps, 'size' | 'appearance' | 'variableWidths'> &
 		Pick<ModalProps, 'isOpen' | 'onClose'> & {
 			/** Gallery Content Appearance @default `bare` */
 			appearance?: GalleryAppearanceOptions;
+			/** Control Auto-Width within track thumbnails @default `true` */
+			variableWidths?: boolean;
 		}
 >;
 

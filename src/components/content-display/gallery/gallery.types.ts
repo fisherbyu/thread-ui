@@ -28,7 +28,7 @@ export type GalleryProps = {
 	size?: UtilitySizeOptions | 'fill';
 	/** Index of Item Gallery opens at Start @default 0 */
 	startIndex?: number;
-	/** Display thumbnail items with varying widths @default `true` */
+	/** Display thumbnail items with varying widths @default `false` */
 	variableWidths?: boolean;
 };
 
