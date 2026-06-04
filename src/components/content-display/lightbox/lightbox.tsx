@@ -1,6 +1,20 @@
 import { ModalPrimitive } from '@/internal-components';
 import { LightboxProps, LightboxState } from './lightbox.types';
 import { LightboxProvider } from './lightbox-context';
+import { css } from '@/styled-system/css';
+
+const styles = {
+	overlay: css({
+		position: 'fixed',
+		inset: 0,
+		background: 'scrim',
+		display: 'flex',
+		justifyContent: 'center',
+		zIndex: 'modal',
+		alignItems: 'center',
+		paddingTop: '0',
+	}),
+};
 
 export const Lightbox = ({ title, items, itemWrapper, isOpen, onClose }: LightboxProps) => {
 	const initialValue: LightboxState = {
@@ -13,7 +27,7 @@ export const Lightbox = ({ title, items, itemWrapper, isOpen, onClose }: Lightbo
 
 	return (
 		<LightboxProvider value={initialValue}>
-			<ModalPrimitive isOpen={isOpen} onClose={onClose}>
+			<ModalPrimitive overlayClassName={styles.overlay} isOpen={isOpen} onClose={onClose}>
 				<>Content Here</>
 			</ModalPrimitive>
 		</LightboxProvider>
