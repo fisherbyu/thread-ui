@@ -14,7 +14,7 @@ type UseClickOutsideProps = {
  *
  * @example
  * const ref = useRef<HTMLDivElement>(null);
- * useClickOutside(ref, isOpen, () => setIsOpen(false));
+ * useClickOutside({ elementRef: ref, isOpen, onClose: () => setIsOpen(false) });
  */
 export const useClickOutside = ({
 	elementRef,
