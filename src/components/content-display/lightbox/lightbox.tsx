@@ -39,7 +39,7 @@ export const Lightbox = ({
 	isOpen,
 	onClose,
 	startIndex,
-	appearance,
+	appearance = 'bare',
 }: LightboxProps) => {
 	const initialValue: LightboxState = {
 		title,
