@@ -14,7 +14,7 @@ const styles = {
 };
 
 export const LightBoxContent = () => {
-	const { items, itemWrapper, appearance, startIndex } = useLightboxContext();
+	const { items, itemWrapper, appearance, startIndex, variableWidths } = useLightboxContext();
 
 	return (
 		<div className={styles.container}>
@@ -25,6 +25,7 @@ export const LightBoxContent = () => {
 				itemWrapper={itemWrapper}
 				size="fill"
 				appearance={appearance}
+				variableWidths={variableWidths}
 			/>
 		</div>
 	);

@@ -40,6 +40,7 @@ export const Lightbox = ({
 	onClose,
 	startIndex,
 	appearance = 'bare',
+	variableWidths,
 }: LightboxProps) => {
 	const initialValue: LightboxState = {
 		title,
@@ -49,6 +50,7 @@ export const Lightbox = ({
 		onClose,
 		startIndex,
 		appearance,
+		variableWidths,
 	};
 
 	return (
