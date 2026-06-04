@@ -25,7 +25,7 @@ export type GalleryProps = {
 	/** Optional component used to wrap each item, replacing the default container */
 	itemWrapper?: ComponentType<any>;
 	/** Controls the gallery's dimensional presets @default `'lg'` */
-	size?: UtilitySizeOptions;
+	size?: UtilitySizeOptions | 'fill';
 	/** Index of Item Gallery opens at Start @default 0 */
 	startIndex?: number;
 };

@@ -20,15 +20,10 @@ const styles = {
 		},
 		variants: {
 			size: {
-				sm: {
-					height: '300px',
-				},
-				md: {
-					height: '500px',
-				},
-				lg: {
-					height: '700px',
-				},
+				sm: { height: '300px' },
+				md: { height: '500px' },
+				lg: { height: '700px' },
+				fill: { height: '100%' },
 			},
 		},
 	}),
@@ -38,11 +33,13 @@ const styles = {
 		width: '100%',
 		flex: '1',
 		gap: '3',
+		minHeight: 0,
 	}),
 	displayContent: css({
-		height: '100%',
 		width: '100%',
 		flex: '1',
+		minHeight: 0,
+		overflow: 'hidden',
 	}),
 	trackContent: cva({
 		base: {
@@ -84,7 +81,7 @@ export const GalleryContent = () => {
 				<div className={styles.displayContent}>
 					<GalleryItemsDisplay />
 				</div>
-				<div className={styles.trackContent({ size })}>
+				<div className={styles.trackContent({ size: size === 'fill' ? 'lg' : size })}>
 					<ItemTrack />
 				</div>
 			</div>

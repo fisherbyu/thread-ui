@@ -9,6 +9,7 @@ const styles = {
 		width: '90vw',
 		height: '85vh',
 		maxHeight: { base: '80vh', md: '100%' },
+		overflow: 'hidden',
 	}),
 };
 
