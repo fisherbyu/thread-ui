@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Carousel } from './carousel';
 import { CarouselItem } from './carousel.types';
+import { Text } from '../../typography';
 
 const meta: Meta<typeof Carousel> = {
 	title: 'Content Display/Carousel',
@@ -45,7 +46,7 @@ const sampleItems: CarouselItem[] = [
 		title: 'Pane 1',
 		content: (
 			<div>
-				<p>1</p>
+				<Text>1</Text>
 			</div>
 		),
 	},
@@ -53,7 +54,7 @@ const sampleItems: CarouselItem[] = [
 		title: 'Pane 2',
 		content: (
 			<div>
-				<p>2</p>
+				<Text>2</Text>
 			</div>
 		),
 	},
@@ -61,7 +62,7 @@ const sampleItems: CarouselItem[] = [
 		title: 'Pane 3',
 		content: (
 			<div>
-				<p>3</p>
+				<Text>3</Text>
 			</div>
 		),
 	},
@@ -69,7 +70,7 @@ const sampleItems: CarouselItem[] = [
 		title: 'Pane 4',
 		content: (
 			<div>
-				<p>4</p>
+				<Text>4</Text>
 			</div>
 		),
 	},
@@ -77,7 +78,7 @@ const sampleItems: CarouselItem[] = [
 		title: 'Pane 5',
 		content: (
 			<div>
-				<p>5</p>
+				<Text>5</Text>
 			</div>
 		),
 	},
