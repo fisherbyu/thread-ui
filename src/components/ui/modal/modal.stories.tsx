@@ -50,11 +50,11 @@ const ModalContent = () => (
 );
 
 const ModalTrigger = ({ size, title }: { size?: 'sm' | 'md' | 'lg' | 'full'; title?: string }) => {
-	const [open, setOpen] = useState(false);
+	const [isOpen, setOpen] = useState(false);
 	return (
 		<>
 			<Button onClick={() => setOpen(true)}>Open Modal</Button>
-			<Modal open={open} onClose={() => setOpen(false)} size={size} title={title}>
+			<Modal isOpen={isOpen} onClose={() => setOpen(false)} size={size} title={title}>
 				<ModalContent />
 			</Modal>
 		</>
