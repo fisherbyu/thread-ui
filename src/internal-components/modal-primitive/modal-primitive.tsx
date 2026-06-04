@@ -16,7 +16,13 @@ export const ModalPrimitive = ({
 }: ModalPrimitiveProps) => {
 	const primitiveRef = useRef<HTMLDivElement>(null);
 
-	useDismiss(primitiveRef, isOpen, onClose, closeOnOverlayClick, closeOnEsc);
+	useDismiss({
+		elementRef: primitiveRef,
+		isOpen,
+		onClose,
+		dismissOnClick: closeOnOverlayClick,
+		dismissOnEsc: closeOnEsc,
+	});
 
 	useEffect(() => {
 		if (isOpen && preventScroll) {
