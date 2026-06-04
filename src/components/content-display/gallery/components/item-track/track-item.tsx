@@ -1,5 +1,5 @@
 'use client';
-import { css } from '@/styled-system/css';
+import { css, cva } from '@/styled-system/css';
 import { useGalleryContext, useGalleryEmblaContext } from '../../gallery-context';
 import { GalleryItemId } from '../../gallery.types';
 
@@ -17,22 +17,34 @@ const styles = {
 		borderWidth: 'lg',
 		borderStyle: 'solid',
 	}),
-	internalContent: css({
-		borderRadius: 'sm',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		backgroundColor: 'surface',
-		borderColor: 'structure.subtle',
-		borderWidth: 'sm',
-		borderStyle: 'solid',
-		height: 'var(--thread-gallery-track-item-height)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
+	internalContent: cva({
+		base: {
+			borderRadius: 'sm',
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			height: 'var(--thread-gallery-track-item-height)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
+		},
+		variants: {
+			appearance: {
+				framed: {
+					backgroundColor: 'surface',
+					borderColor: 'structure.subtle',
+					borderWidth: 'sm',
+					borderStyle: 'solid',
+				},
+				bare: {},
+			},
+		},
+		defaultVariants: {
+			appearance: 'framed',
+		},
 	}),
 };
 
 export const TrackItem = ({ itemId }: TrackItemProps) => {
 	const {
-		value: { items },
+		value: { items, appearance },
 	} = useGalleryContext();
 	const { onTrackItemClick } = useGalleryEmblaContext();
 
@@ -40,7 +52,7 @@ export const TrackItem = ({ itemId }: TrackItemProps) => {
 
 	return (
 		<button className={styles.container} onClick={() => onTrackItemClick(itemId)}>
-			<div className={styles.internalContent}>{item.content}</div>
+			<div className={styles.internalContent({ appearance })}>{item.content}</div>
 		</button>
 	);
 };

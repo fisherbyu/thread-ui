@@ -1,8 +1,7 @@
 'use client';
-import { css } from '@/styled-system/css';
+import { css, cva } from '@/styled-system/css';
 import { useGalleryContext } from '../../gallery-context';
 import { GalleryItemId } from '../../gallery.types';
-import { Card } from '@/components/ui/card';
 
 type GalleryItemProps = {
 	itemId: GalleryItemId;
@@ -20,23 +19,35 @@ const styles = {
 		minWidth: 0,
 		paddingLeft: 'var(--thread-gallery-display-item-spacing)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
 	}),
-	content: css({
-		width: '100%',
-		height: 'var(--thread-gallery-display-item-height)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
-		backgroundColor: 'elevated',
-		borderRadius: 'lg',
-		borderWidth: 'md',
-		borderColor: 'structure.subtle',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		userSelect: 'none',
+	content: cva({
+		base: {
+			width: '100%',
+			height: 'var(--thread-gallery-display-item-height)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			userSelect: 'none',
+		},
+		variants: {
+			appearance: {
+				framed: {
+					backgroundColor: 'elevated',
+					borderRadius: 'lg',
+					borderWidth: 'md',
+					borderColor: 'structure.subtle',
+				},
+				bare: {},
+			},
+		},
+		defaultVariants: {
+			appearance: 'framed',
+		},
 	}),
 };
 
 export const GalleryItem = ({ itemId }: GalleryItemProps) => {
 	const {
-		value: { items, ItemWrapper },
+		value: { items, ItemWrapper, appearance },
 	} = useGalleryContext();
 
 	const item = items[itemId];
@@ -51,7 +62,7 @@ export const GalleryItem = ({ itemId }: GalleryItemProps) => {
 
 	return (
 		<div className={styles.container}>
-			<div className={styles.content}>{item.content}</div>
+			<div className={styles.content({ appearance })}>{item.content}</div>
 		</div>
 	);
 };
