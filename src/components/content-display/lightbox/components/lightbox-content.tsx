@@ -2,6 +2,7 @@
 import { css } from '@/styled-system/css';
 import { Gallery } from '../../gallery';
 import { useLightboxContext } from '../lightbox-context';
+import { LightboxTitle } from './lightbox-title';
 
 const styles = {
 	container: css({
@@ -12,12 +13,12 @@ const styles = {
 };
 
 export const LightBoxContent = () => {
-	const { title, items, itemWrapper } = useLightboxContext();
+	const { items, itemWrapper } = useLightboxContext();
 
 	return (
 		<div className={styles.container}>
 			<Gallery
-				title={title}
+				title={<LightboxTitle />}
 				items={items}
 				itemWrapper={itemWrapper}
 				size="lg"
