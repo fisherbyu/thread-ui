@@ -16,3 +16,7 @@ export type ModalProps = Prettify<
 		placement?: 'center' | 'top';
 	}
 >;
+
+export type ModalState = Prettify<
+	Pick<ModalProps, 'children' | 'size' | 'title' | 'footer' | 'onClose'>
+>;
