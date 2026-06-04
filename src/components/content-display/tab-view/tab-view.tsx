@@ -2,6 +2,7 @@
 import { TabViewProps, TabViewState } from './tab-view.types';
 import { TabViewContent } from './components/tab-view-content';
 import { TabViewProvider } from './tab-view-context';
+
 /**
  * Tabbed view component that renders a row of tab controls and a panel for the active tab.
  *
