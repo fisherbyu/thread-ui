@@ -11,7 +11,7 @@ export type GalleryAppearanceOptions = 'framed' | 'bare';
 
 export type GalleryProps = {
 	appearance?: GalleryAppearanceOptions;
-	title?: string;
+	title?: string | ReactNode;
 	items: GalleryItem[];
 	itemWrapper?: ComponentType<any>;
 	size?: UtilitySizeOptions;
