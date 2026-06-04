@@ -29,6 +29,7 @@ export const Gallery = ({
 	size = 'lg',
 	appearance = 'framed',
 	startIndex = 0,
+	variableWidths = true,
 }: GalleryProps) => {
 	const [emblaDisplayRef, emblaDisplayApi] = useEmblaCarousel({ startIndex });
 	const [emblaItemTrackRef, emblaItemTrackApi] = useEmblaCarousel(
@@ -86,6 +87,7 @@ export const Gallery = ({
 			ItemWrapper: itemWrapper,
 			size,
 			appearance,
+			variableWidths,
 		};
 	}, [title, normalizedItems, size]);
 

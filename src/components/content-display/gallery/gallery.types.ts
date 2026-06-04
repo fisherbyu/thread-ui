@@ -28,6 +28,8 @@ export type GalleryProps = {
 	size?: UtilitySizeOptions | 'fill';
 	/** Index of Item Gallery opens at Start @default 0 */
 	startIndex?: number;
+	/** Display thumbnail items with varying widths @default `true` */
+	variableWidths?: boolean;
 };
 
 type InternalGalleryItem = {
@@ -37,7 +39,7 @@ type InternalGalleryItem = {
 
 export type GalleryState = Prettify<
 	Pick<GalleryProps, 'title'> &
-		Required<Pick<GalleryProps, 'size' | 'appearance'>> & {
+		Required<Pick<GalleryProps, 'size' | 'appearance' | 'variableWidths'>> & {
 			items: Record<GalleryItemId, InternalGalleryItem>;
 			ItemWrapper: GalleryProps['itemWrapper'];
 			itemOrder: GalleryItemId[];
