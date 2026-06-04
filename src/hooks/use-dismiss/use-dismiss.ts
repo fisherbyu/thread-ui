@@ -5,8 +5,8 @@ type UseDismissProps = {
 	elementRef: RefObject<HTMLElement | null>;
 	isOpen: boolean;
 	onClose: () => void;
-	isClickDisabled: boolean;
-	isEscDisabled: boolean;
+	dismissOnClick: boolean;
+	dismissOnEsc: boolean;
 };
 
 /**
@@ -24,14 +24,14 @@ export const useDismiss = ({
 	elementRef,
 	isOpen,
 	onClose,
-	isClickDisabled = false,
-	isEscDisabled = false,
+	dismissOnClick = true,
+	dismissOnEsc = true,
 }: UseDismissProps) => {
 	const onCloseRef = useRef(onClose);
 	onCloseRef.current = onClose;
 
 	useEffect(() => {
-		if (!isOpen || (isClickDisabled && isEscDisabled)) return;
+		if (!isOpen || (!dismissOnClick && !dismissOnEsc)) return;
 
 		const handleClickOutside = (e: MouseEvent) => {
 			if (elementRef.current && !elementRef.current.contains(e.target as Node)) {
@@ -45,11 +45,11 @@ export const useDismiss = ({
 			}
 		};
 
-		if (!isClickDisabled) {
+		if (dismissOnClick) {
 			document.addEventListener('mousedown', handleClickOutside);
 		}
 
-		if (!isEscDisabled) {
+		if (dismissOnEsc) {
 			document.addEventListener('keydown', handleKeyDown);
 		}
 
@@ -57,5 +57,5 @@ export const useDismiss = ({
 			document.removeEventListener('mousedown', handleClickOutside);
 			document.removeEventListener('keydown', handleKeyDown);
 		};
-	}, [elementRef, isOpen, isClickDisabled, isEscDisabled]);
+	}, [elementRef, isOpen, dismissOnClick, dismissOnEsc]);
 };
