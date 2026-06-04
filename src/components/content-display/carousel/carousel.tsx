@@ -6,6 +6,22 @@ import { CarouselProvider, CarouselEmblaProvider } from './carousel-context';
 import { CarouselProps, CarouselState } from './carousel.types';
 import { CarouselContent } from './components/carousel-content';
 
+/**
+ * A scrollable carousel with optional navigation controls and responsive column configuration. Powered by [Embla Carousel](https://www.embla-carousel.com)
+ *
+ * Renders items in a single horizontally-scrollable track with forward/back controls.
+ * Column counts at `md` and `lg` breakpoints determine how many items are visible at once.
+ *
+ * @example
+ * ```tsx
+ * <Carousel
+ *   title="Featured"
+ *   items={[{ content: <Card /> }, { content: <Card /> }]}
+ *   mdCols={2}
+ *   lgCols={3}
+ * />
+ * ```
+ */
 export const Carousel = ({
 	title,
 	items: itemList,
