@@ -6,9 +6,9 @@ import { LightboxTitle } from './lightbox-title';
 
 const styles = {
 	container: css({
-		width: '100vw',
-		height: '100vh',
-		padding: '4',
+		width: '90vw',
+		height: '85vh',
+		maxHeight: { base: '80vh', md: '100%' },
 	}),
 };
 

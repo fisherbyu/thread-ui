@@ -13,7 +13,7 @@ const styles = {
 		justifyContent: 'center',
 		zIndex: 'modal',
 		alignItems: 'center',
-		paddingTop: '0',
+		padding: '6',
 	}),
 };
 
