@@ -17,6 +17,21 @@ const styles = {
 	}),
 };
 
+/**
+ * A fullscreen Gallery for focused content viewing, built on {@link ModalPrimitive}.
+ *
+ * Renders a {@link Gallery} in `bare` appearance over a scrim backdrop.
+ *
+ * @example
+ * ```tsx
+ * <Lightbox
+ *   isOpen={isOpen}
+ *   onClose={() => setOpen(false)}
+ *   title="Photos"
+ *   items={[<img src="a.jpg" />, <img src="b.jpg" />]}
+ * />
+ * ```
+ */
 export const Lightbox = ({ title, items, itemWrapper, isOpen, onClose }: LightboxProps) => {
 	const initialValue: LightboxState = {
 		title,
