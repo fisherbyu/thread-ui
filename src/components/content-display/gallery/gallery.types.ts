@@ -7,7 +7,10 @@ export type GalleryItemId = number;
 
 export type GalleryItem = ReactNode;
 
+export type GalleryAppearanceOptions = 'framed' | 'bare';
+
 export type GalleryProps = {
+	appearance?: GalleryAppearanceOptions;
 	title?: string;
 	items: GalleryItem[];
 	itemWrapper?: ComponentType<any>;
@@ -21,7 +24,7 @@ type InternalGalleryItem = {
 
 export type GalleryState = Prettify<
 	Pick<GalleryProps, 'title'> &
-		Required<Pick<GalleryProps, 'size'>> & {
+		Required<Pick<GalleryProps, 'size' | 'appearance'>> & {
 			items: Record<GalleryItemId, InternalGalleryItem>;
 			ItemWrapper: GalleryProps['itemWrapper'];
 			itemOrder: GalleryItemId[];
