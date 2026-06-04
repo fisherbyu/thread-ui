@@ -6,6 +6,22 @@ import { GalleryEmblaProvider, GalleryProvider } from './gallery-context';
 import { GalleryContent } from './components/gallery-content';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
+/**
+ * A synchronized dual-carousel gallery with a main display and a thumbnail track. Powered by [Embla Carousel](https://www.embla-carousel.com)
+ *
+ * Selecting a thumbnail scrolls the main display, and swiping the main display
+ * updates the active thumbnail. Supports trackpad scrolling on the thumbnail track
+ * via the Embla wheel gestures plugin.
+ *
+ * @example
+ * ```tsx
+ * <Gallery
+ *   title="Photos"
+ *   items={[<img src="a.jpg" />, <img src="b.jpg" />]}
+ *   appearance="bare"
+ * />
+ * ```
+ */
 export const Gallery = ({
 	title,
 	items: itemList,
