@@ -26,7 +26,7 @@ export const GalleryItemsDisplay = () => {
 		<div ref={emblaDisplayRef} className={styles.viewport}>
 			<div className={styles.window}>
 				{itemOrder.map((itemId) => (
-					<GalleryItem itemId={itemId} />
+					<GalleryItem key={itemId} itemId={itemId} />
 				))}
 			</div>
 		</div>

@@ -25,7 +25,7 @@ export const ItemTrack = () => {
 		<div ref={emblaItemTrackRef} className={styles.viewport}>
 			<div className={styles.window}>
 				{itemOrder.map((itemId) => (
-					<TrackItem itemId={itemId} />
+					<TrackItem key={itemId} itemId={itemId} />
 				))}
 			</div>
 		</div>
