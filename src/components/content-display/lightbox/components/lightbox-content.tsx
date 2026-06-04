@@ -5,9 +5,9 @@ import { useLightboxContext } from '../lightbox-context';
 
 const styles = {
 	container: css({
-		width: '100%',
-		height: '100%',
-		// padding: '4',
+		width: '100vw',
+		height: '100vh',
+		padding: '4',
 	}),
 };
 
@@ -16,7 +16,13 @@ export const LightBoxContent = () => {
 
 	return (
 		<div className={styles.container}>
-			<Gallery title={title} items={items} itemWrapper={itemWrapper} size="lg" />
+			<Gallery
+				title={title}
+				items={items}
+				itemWrapper={itemWrapper}
+				size="lg"
+				appearance="bare"
+			/>
 		</div>
 	);
 };
