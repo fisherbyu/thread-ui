@@ -45,6 +45,7 @@ const swatchItems: GalleryItem[] = swatchColors.map((color, i) => (
 		style={{
 			backgroundColor: color,
 			width: '100%',
+			minWidth: '300px',
 			height: '100%',
 			borderRadius: '4px',
 		}}
