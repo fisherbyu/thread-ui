@@ -6,7 +6,13 @@ import { GalleryEmblaProvider, GalleryProvider } from './gallery-context';
 import { GalleryContent } from './components/gallery-content';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
-export const Gallery = ({ title, items: itemList, itemWrapper, size = 'lg' }: GalleryProps) => {
+export const Gallery = ({
+	title,
+	items: itemList,
+	itemWrapper,
+	size = 'lg',
+	appearance = 'framed',
+}: GalleryProps) => {
 	const [emblaDisplayRef, emblaDisplayApi] = useEmblaCarousel();
 	const [emblaItemTrackRef, emblaItemTrackApi] = useEmblaCarousel(
 		{
@@ -61,6 +67,7 @@ export const Gallery = ({ title, items: itemList, itemWrapper, size = 'lg' }: Ga
 			itemOrder,
 			ItemWrapper: itemWrapper,
 			size,
+			appearance,
 		};
 	}, [title, normalizedItems, size]);
 
