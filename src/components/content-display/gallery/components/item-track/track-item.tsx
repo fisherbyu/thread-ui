@@ -33,6 +33,12 @@ const styles = {
 			justifyContent: 'center',
 			height: 'var(--thread-gallery-track-item-height)',
 			overflow: 'hidden',
+			position: 'relative',
+			'& img': {
+				width: 'auto',
+				height: '100%',
+				objectFit: 'contain',
+			},
 		},
 		variants: {
 			appearance: {
