@@ -3,6 +3,13 @@ import { useEffect, useRef } from 'react';
 import { ModalPrimitiveProps } from './modal-primitive.types';
 import { createPortal } from 'react-dom';
 import { useDismiss } from '@/hooks';
+import { css } from '@/styled-system/css';
+
+const styles = {
+	contentWrapperRef: css({
+		display: 'contents',
+	}),
+};
 
 export const ModalPrimitive = ({
 	children,
@@ -38,7 +45,9 @@ export const ModalPrimitive = ({
 
 		return createPortal(
 			<div className={overlayClassName}>
-				<div ref={primitiveRef}>{children}</div>
+				<div className={styles.contentWrapperRef} ref={primitiveRef}>
+					{children}
+				</div>
 			</div>,
 			target
 		);
