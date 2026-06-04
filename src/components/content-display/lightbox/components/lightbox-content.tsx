@@ -23,7 +23,7 @@ export const LightBoxContent = () => {
 				title={<LightboxTitle />}
 				items={items}
 				itemWrapper={itemWrapper}
-				size="lg"
+				size="fill"
 				appearance={appearance}
 			/>
 		</div>
