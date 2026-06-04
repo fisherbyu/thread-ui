@@ -8,14 +8,22 @@ type TrackItemProps = {
 };
 
 const styles = {
-	container: css({
-		cursor: 'pointer',
-		flex: ' 0 0 22%',
-		minWidth: '0',
-		paddingLeft: 'var(--thread-gallery-item-track-spacing)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
-		borderColor: 'transparent',
-		borderWidth: 'lg',
-		borderStyle: 'solid',
+	container: cva({
+		base: {
+			cursor: 'pointer',
+			flex: ' 0 0 auto',
+			minWidth: '0',
+			paddingLeft: 'var(--thread-gallery-item-track-spacing)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
+			borderColor: 'transparent',
+			borderWidth: 'lg',
+			borderStyle: 'solid',
+		},
+		variants: {
+			variableWidths: {
+				true: { flex: ' 0 0 auto' },
+				false: { flex: ' 0 0 22%' },
+			},
+		},
 	}),
 	internalContent: cva({
 		base: {
@@ -23,7 +31,8 @@ const styles = {
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'center',
-			height: 'var(--thread-gallery-track-item-height)', // Tracks with GALLERY_DISPLAY_CONSTANT_NAMES
+			height: 'var(--thread-gallery-track-item-height)',
+			overflow: 'hidden',
 		},
 		variants: {
 			appearance: {
@@ -44,14 +53,17 @@ const styles = {
 
 export const TrackItem = ({ itemId }: TrackItemProps) => {
 	const {
-		value: { items, appearance },
+		value: { items, appearance, variableWidths },
 	} = useGalleryContext();
 	const { onTrackItemClick } = useGalleryEmblaContext();
 
 	const item = items[itemId];
 
 	return (
-		<button className={styles.container} onClick={() => onTrackItemClick(itemId)}>
+		<button
+			className={styles.container({ variableWidths })}
+			onClick={() => onTrackItemClick(itemId)}
+		>
 			<div className={styles.internalContent({ appearance })}>{item.content}</div>
 		</button>
 	);
