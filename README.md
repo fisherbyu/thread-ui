@@ -102,6 +102,10 @@ Component CSS is pre-generated using Panda CSS, so components render correctly s
 
 `ImagePanel` `InfoCard` `MediaCard`
 
+### Content Display
+
+`Lightbox`
+
 ### Typography Elements
 
 `Title` `H1` `H2` `H3` `Text` `Subtitle` `List` `OrderedList` `PageHeader`
