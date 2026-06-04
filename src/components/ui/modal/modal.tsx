@@ -1,10 +1,9 @@
 'use client';
-import { useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import { ModalProps } from './modal.types';
 import { ModalProvider } from './modal-context';
 import { ModalContent } from './components/modal-content';
 import { cva } from '@/styled-system/css';
+import { ModalPrimitive } from '@/internal-components/modal-primitive';
 
 const styles = {
 	overlay: cva({
@@ -43,26 +42,23 @@ const styles = {
 export const Modal = (props: ModalProps) => {
 	const {
 		isOpen,
+		onClose,
 		portalTarget,
 		preventScroll = true,
 		placement = 'center',
 		closeOnOverlayClick = true,
 		closeOnEsc = true,
 	} = props;
-
-	useEffect(() => {
-		if (isOpen && preventScroll) {
-			document.body.style.overflow = 'hidden';
-		}
-		return () => {
-			document.body.style.overflow = '';
-		};
-	}, [isOpen, preventScroll]);
-
-	if (isOpen) {
-		const target = portalTarget ?? document.body;
-
-		return createPortal(
+	return (
+		<ModalPrimitive
+			overlayClassName={styles.overlay({ placement })}
+			isOpen={isOpen}
+			onClose={onClose}
+			closeOnOverlayClick={closeOnOverlayClick}
+			closeOnEsc={closeOnEsc}
+			preventScroll={preventScroll}
+			portalTarget={portalTarget}
+		>
 			<ModalProvider
 				value={{
 					...props,
@@ -72,11 +68,8 @@ export const Modal = (props: ModalProps) => {
 					preventScroll,
 				}}
 			>
-				<div className={styles.overlay({ placement })}>
-					<ModalContent />
-				</div>
-			</ModalProvider>,
-			target
-		);
-	}
+				<ModalContent />
+			</ModalProvider>
+		</ModalPrimitive>
+	);
 };
