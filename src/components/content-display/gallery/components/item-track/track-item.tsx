@@ -31,7 +31,7 @@ const styles = {
 			display: 'flex',
 			alignItems: 'center',
 			justifyContent: 'center',
-			height: 'var(--thread-gallery-track-item-height)',
+			height: { base: '3rem', md: 'var(--thread-gallery-track-item-height)' },
 			overflow: 'hidden',
 			position: 'relative',
 			'& img': {
