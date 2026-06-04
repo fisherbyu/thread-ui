@@ -1,6 +1,14 @@
 'use client';
 import { useEffect, useRef, RefObject } from 'react';
 
+type UseDismissProps = {
+	elementRef: RefObject<HTMLElement | null>;
+	isOpen: boolean;
+	onClose: () => void;
+	isClickDisabled: boolean;
+	isEscDisabled: boolean;
+};
+
 /**
  * Calls `onClose` when a click is detected outside of `elementRef` or when `Escape` is pressed.
  * Each trigger can be independently disabled. Only active when `isOpen` is true.
@@ -12,13 +20,13 @@ import { useEffect, useRef, RefObject } from 'react';
  * // Disable outside click, keep Escape
  * useDismiss(ref, isOpen, () => setIsOpen(false), true, false);
  */
-export const useDismiss = (
-	elementRef: RefObject<HTMLElement | null>,
-	isOpen: boolean,
-	onClose: () => void,
-	isClickDisabled: boolean = false,
-	isEscDisabled: boolean = false
-) => {
+export const useDismiss = ({
+	elementRef,
+	isOpen,
+	onClose,
+	isClickDisabled = false,
+	isEscDisabled = false,
+}: UseDismissProps) => {
 	const onCloseRef = useRef(onClose);
 	onCloseRef.current = onClose;
 
