@@ -5,7 +5,7 @@ import { GalleryItem } from './gallery.types';
 import { Text } from '../../typography';
 
 const meta: Meta<typeof Gallery> = {
-	title: 'Components/Gallery',
+	title: 'Content Display/Gallery',
 	component: Gallery,
 	parameters: {
 		layout: 'fullscreen',

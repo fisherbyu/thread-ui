@@ -4,7 +4,7 @@ import { Carousel } from './carousel';
 import { CarouselItem } from './carousel.types';
 
 const meta: Meta<typeof Carousel> = {
-	title: 'Components/Carousel',
+	title: 'Content Display/Carousel',
 	component: Carousel,
 	parameters: {
 		layout: 'fullscreen',

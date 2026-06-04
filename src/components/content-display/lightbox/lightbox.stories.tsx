@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Lightbox } from './lightbox';
 
 const meta: Meta<typeof Lightbox> = {
-	title: 'Components/Lightbox',
+	title: 'Content Display/Lightbox',
 	component: Lightbox,
 	parameters: {
 		layout: 'centered',

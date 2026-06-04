@@ -5,7 +5,7 @@ import { Text } from '../../typography';
 import { Container } from '../../layouts/container/container';
 
 const meta: Meta<typeof TabView> = {
-	title: 'UI Components/TabView',
+	title: 'Content Display/TabView',
 	component: TabView,
 	parameters: {
 		layout: 'fullscreen',
