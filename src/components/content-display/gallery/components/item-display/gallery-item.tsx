@@ -34,6 +34,7 @@ const styles = {
 				width: 'auto',
 				height: 'auto',
 				objectFit: 'contain',
+				borderRadius: 'lg',
 			},
 		},
 		variants: {
