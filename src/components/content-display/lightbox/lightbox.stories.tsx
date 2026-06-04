@@ -8,23 +8,9 @@ const meta: Meta<typeof Lightbox> = {
 	title: 'Content Display/Lightbox',
 	component: Lightbox,
 	parameters: {
-		layout: 'centered',
+		layout: 'fullscreen',
 	},
-	decorators: [
-		(Story) => (
-			<div
-				style={{
-					width: '740px',
-					minHeight: '50vh',
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'center',
-				}}
-			>
-				<Story />
-			</div>
-		),
-	],
+
 	tags: ['autodocs'],
 	argTypes: {
 		title: {
