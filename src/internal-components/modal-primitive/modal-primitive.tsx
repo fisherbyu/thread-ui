@@ -15,13 +15,15 @@ export const ModalPrimitive = ({
 	children,
 	closeOnEsc = true,
 	closeOnOverlayClick = true,
+	dismissRef,
 	isOpen,
 	onClose,
 	overlayClassName,
 	portalTarget,
 	preventScroll = true,
 }: ModalPrimitiveProps) => {
-	const primitiveRef = useRef<HTMLDivElement>(null);
+	const internalRef = useRef<HTMLDivElement>(null);
+	const primitiveRef = dismissRef ?? internalRef;
 
 	useDismiss({
 		elementRef: primitiveRef,
