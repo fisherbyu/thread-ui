@@ -1,10 +1,12 @@
 # Thread UI
 
-Thread is a React component library I built to create my [personal website](https://fisherandrew.org). It's designed around a clean, token-based theme system with full SSR support, dark mode, and easy customization.
+Thread is a React component library I built to create my [personal website](https://fisherandrew.org). It's designed around a clean, token-based theme system with easy customization, light/dark mode and SSR support.
 
 ## Get Started
 
 All items work out of the box. Explore thread components at [thread.fisherandrew.org](https://thread.fisherandrew.org)!
+
+### Setup
 
 ```bash
 npm install thread-ui
@@ -23,9 +25,11 @@ import 'thread-ui/thread.css';
 
 ## Design System
 
-Thread UI uses a **layer-based elevation system**. Every component either sits on a named layer (canvas, inset, surface, elevated, overlay) or opts out entirely (transparent). The layer determines the component's background color, shadow depth, border treatment, and stacking order.
+Thread UI is built around a central `Theme` that defines token values across the library - colors, spacing, type scales. Thread's design language governs how these tokens are applied to communicate hierarchy and intent.
 
 ### Surface Layers
+
+Thread UI uses a **layer-based elevation system**. Every component either sits on a named layer (canvas, inset, surface, elevated, overlay) or opts out entirely (transparent). The layer determines the component's background color, shadow depth, border treatment, and stacking order.
 
 | Layer      | Purpose                                                                     |
 | ---------- | --------------------------------------------------------------------------- |
@@ -43,7 +47,7 @@ Thread UI uses a **layer-based elevation system**. Every component either sits o
 <Card layer="surface" bg="elevated" shadow="md" structure="none" />
 ```
 
-### The Two Rules
+#### The Two Rules
 
 1. **Light mode communicates elevation through shadows.** Surface, elevated, and overlay share the same background color — shadows and z-index differentiate them.
 2. **Dark mode communicates elevation through lightness.** Each layer step up is slightly lighter. Shadows are nearly invisible against dark surfaces.
@@ -74,7 +78,9 @@ return <ThemeProvider theme={customTheme}>{children}</ThemeProvider>;
 
 ### Dark Mode
 
-Thread includes a built-in light/dark/system mode system. The `ThreadScript` component injects an inline script into your `<head>` that reads the user's saved preference from `localStorage` and sets `data-theme` on `:root` before the first paint — eliminating any flash of wrong-mode content.
+Thread includes built-in light/dark/system UI modes. Default UI behavior matches the system and works out of the box.
+
+To override the default mode, utilize `ThreadScript`. This injects an inline script into your `<head>` that reads the configured default mode, or even the user's saved preference in `localStorage` and sets `data-theme` on `:root` before the first paint — eliminating any flash of wrong-mode content.
 
 ```tsx
 // Next.js App Router
@@ -90,13 +96,13 @@ Thread includes a built-in light/dark/system mode system. The `ThreadScript` com
 
 ### SSR Compatible
 
-Component CSS is pre-generated using Panda CSS, so components render correctly server-side without any runtime style injection. Most components are SSR compatible, and all work out of the box with `Next.js`.
+Component CSS is pre-generated using Panda CSS, so components render correctly server-side without any runtime style injection. Most components are SSR compatible, and all client-side components and hooks are marked with `use client` and work out of the box with `Next.js`.
 
 ## Components
 
 ### UI Elements
 
-`Button` `Card` `Carousel` `Divider` `DotsLoader` `Gallery` `Icon` `IconButton` `Modal` `SkeletonLayoutLoader` `SkeletonLoader` `SpinLoader` `TabView` `Toggle`
+`Button` `Card` `Divider` `DotsLoader` `Icon` `IconButton` `Modal` `SkeletonLayoutLoader` `SkeletonLoader` `SpinLoader` `Toggle`
 
 ### Media Display
 
@@ -104,7 +110,7 @@ Component CSS is pre-generated using Panda CSS, so components render correctly s
 
 ### Content Display
 
-`Lightbox`
+`Carousel` `Gallery` `Lightbox` `TabView`
 
 ### Typography Elements
 
