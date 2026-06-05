@@ -14,7 +14,7 @@ export type ModalPrimitiveProps = {
 	/** Close the modal when the Escape key is pressed @default `true` */
 	closeOnEsc?: boolean;
 	/** Ref for the dismiss boundary. Clicks outside this element trigger close. Defaults to the content wrapper. */
-	dismissRef?: React.RefObject<HTMLDivElement>;
+	dismissRef?: React.RefObject<HTMLDivElement | null>;
 	/** Prevents body scroll while the modal is open @default `true` */
 	preventScroll?: boolean;
 	/** DOM element to portal the modal into. Defaults to `document.body` */
