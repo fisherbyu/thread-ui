@@ -25,7 +25,7 @@ import 'thread-ui/thread.css';
 
 ## Design System
 
-Thread UI is built around a central `Theme` that defines token values across the library - colors, spacing, type scales, while Thread's design language governs how these tokens are applied to communicate hierarchy and intent.
+Thread UI is built around a central `Theme` that defines token values across the library - colors, spacing, type scales. Thread's design language governs how these tokens are applied to communicate hierarchy and intent.
 
 ### Surface Layers
 
