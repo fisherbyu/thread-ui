@@ -74,19 +74,19 @@ const swatchItems: React.ReactNode[] = swatchColors.map((color, i) => (
 ));
 
 const textItems: React.ReactNode[] = [
-	<div style={{ minWidth: '150px' }} key="1">
+	<div key="1">
 		<Text inline>1</Text>
 	</div>,
-	<div style={{ minWidth: '150px' }} key="2">
+	<div key="2">
 		<Text inline>2</Text>
 	</div>,
-	<div style={{ minWidth: '150px' }} key="3">
+	<div key="3">
 		<Text inline>3</Text>
 	</div>,
-	<div style={{ minWidth: '150px' }} key="4">
+	<div key="4">
 		<Text inline>4</Text>
 	</div>,
-	<div style={{ minWidth: '150px' }} key="5">
+	<div key="5">
 		<Text inline>5</Text>
 	</div>,
 ];
