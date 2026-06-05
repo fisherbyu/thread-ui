@@ -80,7 +80,7 @@ return <ThemeProvider theme={customTheme}>{children}</ThemeProvider>;
 
 Thread includes built-in light/dark/system UI modes. Default UI behavior matches the system and works out of the box.
 
-To override the default, utilize the `ThreadScript` component, which injects an inline script into your `<head>` that reads the user's saved preference from `localStorage` and sets `data-theme` on `:root` before the first paint — eliminating any flash of wrong-mode content.
+To override the default mode, utilize `ThreadScript`. This injects an inline script into your `<head>` that reads the configured default mode, or even the user's saved preference in `localStorage` and sets `data-theme` on `:root` before the first paint — eliminating any flash of wrong-mode content.
 
 ```tsx
 // Next.js App Router
