@@ -22,7 +22,7 @@ export type CarouselProps = Prettify<{
 	/** Optional Title */
 	title?: string | ReactNode;
 	/** Items to render, in display order */
-	items: InternalCarouselItem[];
+	items: CarouselItem[];
 	/** Location to Render Controls @default 'around' */
 	controlsPosition?: CarouselControlsPosition;
 	/** Optional Carousel Item Wrapper @default `Card` */
