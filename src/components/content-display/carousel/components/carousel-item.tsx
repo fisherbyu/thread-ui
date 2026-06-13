@@ -55,7 +55,7 @@ export const CarouselItem = ({ itemId }: CarouselItemProps) => {
 
 	return (
 		<div className={styles.wrapper({ mdCols, lgCols })}>
-			<Card fullWidth title={{ text: item.title }} size="md">
+			<Card fullWidth title={item.title ? { text: item.title } : undefined} size="md">
 				{item.content}
 			</Card>
 		</div>

@@ -9,7 +9,7 @@ export type CarouselControlsPosition = 'above' | 'around' | 'below' | 'none';
 /** A single pane consumed and displayed by the `Carousel` component */
 export type CarouselItem = {
 	/** Optional title rendered with content */
-	title: string;
+	title?: string;
 	/** Content rendered in the carousel */
 	content: ReactNode;
 };
