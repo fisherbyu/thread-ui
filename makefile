@@ -51,6 +51,7 @@ clean-storybook-build: # Remove previous storybook build
 
 .PHONY: prepare-panda-code
 prepare-panda-code: # Generate Panda CSS codegen and copy to dist
+	rm -rf $(STYLED_SYSTEM_SRC)
 	$(PANDA) codegen
 	mkdir -p $(DIST_DIR)
 	cp -r $(STYLED_SYSTEM_SRC) $(STYLED_SYSTEM_DIST)
