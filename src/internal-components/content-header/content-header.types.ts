@@ -4,6 +4,7 @@ import {
 	TypographyHeadingProps,
 	SubtitleProps,
 } from '@/components/typography/heading/heading.types';
+import { Prettify } from '@/types';
 
 type HeadingElement = ReactElement<
 	TypographyHeadingProps,
@@ -20,4 +21,4 @@ export type ContentTitle = {
 	subtitle?: SubtitleType;
 };
 
-export type ContentHeaderProps = ContentTitle & { headerRight?: ReactNode };
+export type ContentHeaderProps = Prettify<ContentTitle & { headerRight?: ReactNode }>;
