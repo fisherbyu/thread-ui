@@ -129,6 +129,10 @@ format-check: # Run lint and prettier checks without writing (for CI/build)
 	@$(MAKE) lint-check
 	@$(MAKE) prettier-check
 
+.PHONY: type-check
+type-check: prepare-panda-code ## Type-check without emitting files
+	$(TSC) --noEmit
+
 # Build Targets
 .PHONY: help
 help: ## Show this help message
