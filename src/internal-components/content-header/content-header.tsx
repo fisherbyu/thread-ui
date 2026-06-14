@@ -48,18 +48,20 @@ export const ContentHeader = ({
 		);
 	}
 
-	if (!title && !secondaryContent) {
+	if (!title && !secondaryContent && !description) {
 		return null;
 	}
 
 	return (
 		<div className={className}>
-			<div className={styles.header}>
-				{title && titleDisplay}
-				{secondaryContent && (
-					<div className={styles.secondaryContent}>{secondaryContent}</div>
-				)}
-			</div>
+			{(title || secondaryContent) && (
+				<div className={styles.header}>
+					{title && titleDisplay}
+					{secondaryContent && (
+						<div className={styles.secondaryContent}>{secondaryContent}</div>
+					)}
+				</div>
+			)}
 			{description && <Text>{description}</Text>}
 		</div>
 	);
