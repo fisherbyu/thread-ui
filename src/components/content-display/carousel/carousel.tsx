@@ -49,6 +49,7 @@ const resolveItemWrapper = (option: ItemWrapperOptions) => {
  */
 export const Carousel = ({
 	title,
+	subtitle,
 	items: itemList,
 	controlsPosition = 'above',
 	mdCols,
@@ -94,6 +95,7 @@ export const Carousel = ({
 
 		return {
 			title,
+			subtitle,
 			items,
 			itemOrder,
 			ItemWrapper: resolveItemWrapper(itemWrapper),
