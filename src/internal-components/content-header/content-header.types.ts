@@ -11,16 +11,27 @@ type HeadingElement = ReactElement<
 	typeof Title | typeof H1 | typeof H2 | typeof H3
 >;
 
-type SubtitleElement = ReactElement<SubtitleProps, typeof Subtitle>;
-
+/** Accepted title values: a plain string or a Thread UI heading element */
 type TitleType = string | HeadingElement;
-type SubtitleType = string | SubtitleElement;
 
+/**
+ * Title/subtitle pair used by content and layout components.
+ *
+ * When `title` is a string, the component renders it as an `H2` and
+ * applies the `subtitle` prop automatically. When `title` is a heading
+ * element, the consumer owns subtitle rendering and the `subtitle` prop
+ * is ignored.
+ */
 export type ContentTitle = {
-	/** Optional Title */
+	/** Optional title displayed above the content */
 	title?: TitleType;
-	/** Optional Subtitle, requires `title` to be set as string */
-	subtitle?: SubtitleType;
+	/** Optional subtitle, requires `title` to be set as a string */
+	subtitle?: string;
 };
 
-export type ContentHeaderProps = Prettify<ContentTitle & { secondaryContent?: ReactNode }>;
+export type ContentHeaderProps = Prettify<
+	ContentTitle & {
+		/** Optional content rendered on the trailing end of the header */
+		secondaryContent?: ReactNode;
+	}
+>;
