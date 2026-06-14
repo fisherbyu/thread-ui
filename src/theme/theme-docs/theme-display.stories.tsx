@@ -700,6 +700,10 @@ export const Theme: Story = {
 															'Supporting text, captions, and labels.',
 														],
 														[
+															'tertiary',
+															'Lower-emphasis text below secondary.',
+														],
+														[
 															'disabled',
 															'Inactive or unavailable content.',
 														],
@@ -760,7 +764,8 @@ export const Theme: Story = {
 														style={{
 															fontSize: '1rem',
 															color: 'var(--thread-text-inverted)',
-															backgroundColor: 'var(--thread-black)',
+															backgroundColor:
+																'var(--thread-text-standard)',
 															padding: '4px 12px',
 															borderRadius: '4px',
 														}}
