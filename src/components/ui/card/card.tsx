@@ -1,8 +1,8 @@
-import { cva, cx } from '@/styled-system/css';
+import { cva } from '@/styled-system/css';
 import { CardProps } from './card.types';
 import { H3 } from '@/components/typography';
 import { Divider } from '../divider';
-import { getResolvedLayerValues, getSurfaceStyles } from '@/utils';
+import { Surface } from '@/internal-components/surface';
 
 const styles = {
 	cardContainer: cva({
@@ -107,15 +107,10 @@ export const Card = ({
 	title,
 	flush = false,
 }: CardProps) => {
-	// Resolve from level, allow individual overrides
-	const layerValues = getResolvedLayerValues({ layer, bg, shadow, structure });
-
 	return (
-		<div
-			className={cx(
-				styles.cardContainer({ size, fullWidth, flush }),
-				getSurfaceStyles(layerValues)
-			)}
+		<Surface
+			surfaceConfig={{ layer, bg, shadow, structure }}
+			className={styles.cardContainer({ size, fullWidth, flush })}
 		>
 			{title && (
 				<div className={styles.title({ size })}>
@@ -126,6 +121,6 @@ export const Card = ({
 				</div>
 			)}
 			<div>{children}</div>
-		</div>
+		</Surface>
 	);
 };
