@@ -21,6 +21,8 @@ export type CardProps = {
 	size?: UtilitySizeOptions;
 	/** Allow card to fill available width @default false */
 	fullWidth?: boolean;
+	/** Remove inner padding so content sits flush against the card edges @default false */
+	flush?: boolean;
 	/** Optional title rendered above the card content */
 	title?: {
 		/** Title text */

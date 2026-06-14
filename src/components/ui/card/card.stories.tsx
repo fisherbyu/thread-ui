@@ -35,6 +35,9 @@ const meta = {
 		fullWidth: {
 			control: 'boolean',
 		},
+		flush: {
+			control: 'boolean',
+		},
 	},
 } satisfies Meta<typeof Card>;
 

@@ -8,9 +8,6 @@ const styles = {
 	cardContainer: cva({
 		base: {
 			borderStyle: 'solid',
-			padding: {
-				base: '5',
-			},
 			transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
 		},
 		variants: {
@@ -40,6 +37,14 @@ const styles = {
 					},
 				},
 			},
+			flush: {
+				true: {
+					padding: '0',
+				},
+				false: {
+					padding: '5',
+				},
+			},
 		},
 		compoundVariants: [
 			{
@@ -53,6 +58,7 @@ const styles = {
 		defaultVariants: {
 			size: 'md',
 			fullWidth: false,
+			flush: true,
 		},
 	}),
 	title: cva({
@@ -98,13 +104,17 @@ export const Card = ({
 	size = 'md',
 	fullWidth = false,
 	title,
+	flush = false,
 }: CardProps) => {
 	// Resolve from level, allow individual overrides
 	const layerValues = getResolvedLayerValues({ layer, bg, shadow, structure });
 
 	return (
 		<div
-			className={cx(styles.cardContainer({ size, fullWidth }), getSurfaceStyles(layerValues))}
+			className={cx(
+				styles.cardContainer({ size, fullWidth, flush }),
+				getSurfaceStyles(layerValues)
+			)}
 		>
 			{title && (
 				<div className={styles.title({ size })}>
