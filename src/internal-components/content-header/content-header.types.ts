@@ -22,12 +22,12 @@ type TitleType = string | HeadingElement;
  * element, the consumer owns subtitle rendering and the `subtitle` prop
  * is ignored.
  */
-export type ContentTitle = {
+export interface ContentTitle {
 	/** Optional title displayed above the content */
 	title?: TitleType;
 	/** Optional subtitle, requires `title` to be set as a string */
 	subtitle?: string;
-};
+}
 
 export type ContentHeaderProps = Prettify<
 	ContentTitle & {

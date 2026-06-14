@@ -23,8 +23,8 @@ type ItemWrapperComponent = ComponentType<any>;
 
 export type ItemWrapperOptions = 'none' | 'card' | 'cardFrame' | ItemWrapperComponent;
 
-export type CarouselProps = ContentTitle &
-	Prettify<{
+export type CarouselProps = Prettify<
+	ContentTitle & {
 		/** Items to render, in display order */
 		items: CarouselItem[];
 		/** Location to Render Controls @default 'around' */
@@ -35,7 +35,8 @@ export type CarouselProps = ContentTitle &
 		mdCols: MediumColumnOptions;
 		/** Number of Columns in Large Viewport */
 		lgCols?: LargeColumnOptions;
-	}>;
+	}
+>;
 
 export type CarouselState = Prettify<
 	Pick<CarouselProps, 'title' | 'subtitle' | 'mdCols'> &
