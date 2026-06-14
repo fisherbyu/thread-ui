@@ -29,8 +29,15 @@ export interface ContentTitle {
 	subtitle?: string;
 }
 
-export type ContentHeaderProps = Prettify<
+export type ContentHeading = Prettify<
 	ContentTitle & {
+		/** Optional heading content */
+		description?: string;
+	}
+>;
+
+export type ContentHeaderProps = Prettify<
+	ContentHeading & {
 		/** Optional content rendered on the trailing end of the header */
 		secondaryContent?: ReactNode;
 		/** Optional Override styles, applied on outer container */
