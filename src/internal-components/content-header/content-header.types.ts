@@ -19,7 +19,7 @@ type SubtitleType = string | SubtitleElement;
 export type ContentTitle = {
 	/** Optional Title */
 	title?: TitleType;
-	/** Optional Subtitle, requires `title` to be set */
+	/** Optional Subtitle, requires `title` to be set as string */
 	subtitle?: SubtitleType;
 };
 
