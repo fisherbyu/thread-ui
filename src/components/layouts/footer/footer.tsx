@@ -36,20 +36,20 @@ const styles = {
 };
 
 /**
- * Site footer with optional logo, caption, and social media icon links.
+ * Site footer with optional logo, description, and social media icon links.
  * Only social icons with a provided URL are rendered.
  *
  * @example
  * <Footer
  *   logo={<Logo />}
- *   caption="© 2025 Acme Co."
+ *   description="© 1776 USA."
  *   githubLink="https://github.com/acme"
  *   linkedInLink="https://linkedin.com/company/acme"
  * />
  */
 export const Footer = ({
 	logo,
-	caption,
+	description,
 	bg = 'canvas',
 	facebookLink,
 	instagramLink,
@@ -65,7 +65,7 @@ export const Footer = ({
 			<Divider />
 			<div className={styles.footerContents}>
 				{logo && logo}
-				{caption && <Subtitle>{caption}</Subtitle>}
+				{description && <Subtitle>{description}</Subtitle>}
 				<div className={styles.logoBlock}>
 					{facebookLink && (
 						<a className={styles.links} href={facebookLink}>

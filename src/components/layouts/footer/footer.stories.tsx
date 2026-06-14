@@ -13,7 +13,7 @@ const SOCIAL_LINKS = {
 };
 
 const currentYear = new Date().getFullYear();
-const CAPTION = `© ${currentYear} Thread UI. All rights reserved.`;
+const DESCRIPTION = `© ${currentYear} Thread UI. All rights reserved.`;
 
 const WEBSITE_LOGO = {
 	icon: (
@@ -61,7 +61,7 @@ type Story = StoryObj<typeof Footer>;
 export const Default: Story = {
 	args: {
 		logo: WEBSITE_LOGO.icon,
-		caption: CAPTION,
+		description: DESCRIPTION,
 		bg: 'surface',
 		// githubLink: SOCIAL_LINKS.GITHUB,
 		// linkedInLink: SOCIAL_LINKS.LINKEDIN,
