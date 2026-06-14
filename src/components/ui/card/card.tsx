@@ -40,6 +40,7 @@ const styles = {
 			flush: {
 				true: {
 					padding: '0',
+					overflow: 'hidden',
 				},
 				false: {
 					padding: '5',
