@@ -1,43 +1,29 @@
 'use client';
 
-import { ReactNode } from 'react';
-import { useCarouselContext } from '../carousel-context';
-import { H2 } from '@/components/typography';
 import { css } from '@/styled-system/css';
+import { useCarouselContext } from '../carousel-context';
 import { CarouselControls } from './carousel-controls';
+import { ContentHeader } from '@/internal-components';
 
 const styles = {
 	titleBlock: css({
-		display: 'flex',
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
 		marginBottom: '4',
-	}),
-	controlsWrapper: css({
-		marginLeft: 'auto',
 	}),
 };
 
 export const CarouselHeader = () => {
 	const {
-		value: { controlsPosition, title },
+		value: { controlsPosition, title, subtitle },
 	} = useCarouselContext();
 
-	if (!title && controlsPosition !== 'above') {
-		return null;
-	}
-
-	const titleDisplay: ReactNode = typeof title === 'string' ? <H2 inline>{title}</H2> : title;
+	const headerControls = controlsPosition === 'above' ? <CarouselControls /> : undefined;
 
 	return (
-		<div className={styles.titleBlock}>
-			{title && titleDisplay}
-			{controlsPosition === 'above' && (
-				<div className={styles.controlsWrapper}>
-					<CarouselControls />
-				</div>
-			)}
-		</div>
+		<ContentHeader
+			className={styles.titleBlock}
+			title={title}
+			subtitle={subtitle}
+			secondaryContent={headerControls}
+		/>
 	);
 };
