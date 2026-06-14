@@ -12,6 +12,8 @@ export const getColoredTextColor = (color: ColoredTextOptions): string => {
 			return ThreadTheme.text.standard;
 		case 'text-secondary':
 			return ThreadTheme.text.secondary;
+		case 'text-tertiary':
+			return ThreadTheme.text.tertiary;
 		case 'disabled':
 			return ThreadTheme.text.disabled;
 		case 'accent':
