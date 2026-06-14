@@ -1,5 +1,6 @@
 // Export Internal Components
 export * from './conditional-wrapper';
+export * from './content-header';
 export * from './dynamic-icon';
 export * from './image';
 export * from './link-wrapper';
