@@ -6,6 +6,7 @@ const styles = cva({
 		color: {
 			standard: { color: 'text.standard' },
 			'text-secondary': { color: 'text.secondary' },
+			'text-tertiary': { color: 'text.tertiary' },
 			disabled: { color: 'text.disabled' },
 			accent: { color: 'text.accent' },
 			inverted: { color: 'text.inverted' },

@@ -98,6 +98,7 @@
 	--thread-structure-strong-light-mode: #9ca3af;
 	--thread-text-standard-light-mode: #1f2937;
 	--thread-text-secondary-light-mode: #4b5563;
+	--thread-text-tertiary-light-mode: #6b7280;
 	--thread-text-disabled-light-mode: #9ca3af;
 	--thread-text-accent-light-mode: #3c5c49;
 	--thread-text-inverted-light-mode: #f9fafb;
@@ -115,6 +116,7 @@
 	--thread-structure-strong-dark-mode: #5a5a5a;
 	--thread-text-standard-dark-mode: #f9fafb;
 	--thread-text-secondary-dark-mode: #9ca3af;
+	--thread-text-tertiary-dark-mode: #848b98;
 	--thread-text-disabled-dark-mode: #6b7280;
 	--thread-text-accent-dark-mode: #7da88e;
 	--thread-text-inverted-dark-mode: #1f2937;
@@ -132,6 +134,7 @@
 	--thread-structure-strong: var(--thread-structure-strong-light-mode);
 	--thread-text-standard: var(--thread-text-standard-light-mode);
 	--thread-text-secondary: var(--thread-text-secondary-light-mode);
+	--thread-text-tertiary: var(--thread-text-tertiary-light-mode);
 	--thread-text-disabled: var(--thread-text-disabled-light-mode);
 	--thread-text-accent: var(--thread-text-accent-light-mode);
 	--thread-text-inverted: var(--thread-text-inverted-light-mode);
@@ -151,6 +154,7 @@
 	--thread-structure-strong: var(--thread-structure-strong-light-mode);
 	--thread-text-standard: var(--thread-text-standard-light-mode);
 	--thread-text-secondary: var(--thread-text-secondary-light-mode);
+	--thread-text-tertiary: var(--thread-text-tertiary-light-mode);
 	--thread-text-disabled: var(--thread-text-disabled-light-mode);
 	--thread-text-accent: var(--thread-text-accent-light-mode);
 	--thread-text-inverted: var(--thread-text-inverted-light-mode);
@@ -170,6 +174,7 @@
 	--thread-structure-strong: var(--thread-structure-strong-dark-mode);
 	--thread-text-standard: var(--thread-text-standard-dark-mode);
 	--thread-text-secondary: var(--thread-text-secondary-dark-mode);
+	--thread-text-tertiary: var(--thread-text-tertiary-dark-mode);
 	--thread-text-disabled: var(--thread-text-disabled-dark-mode);
 	--thread-text-accent: var(--thread-text-accent-dark-mode);
 	--thread-text-inverted: var(--thread-text-inverted-dark-mode);
@@ -190,6 +195,7 @@
 		--thread-structure-strong: var(--thread-structure-strong-dark-mode);
 		--thread-text-standard: var(--thread-text-standard-dark-mode);
 		--thread-text-secondary: var(--thread-text-secondary-dark-mode);
+		--thread-text-tertiary: var(--thread-text-tertiary-dark-mode);
 		--thread-text-disabled: var(--thread-text-disabled-dark-mode);
 		--thread-text-accent: var(--thread-text-accent-dark-mode);
 		--thread-text-inverted: var(--thread-text-inverted-dark-mode);
