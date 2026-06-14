@@ -51,6 +51,7 @@ clean-storybook-build: # Remove previous storybook build
 
 .PHONY: prepare-panda-code
 prepare-panda-code: # Generate Panda CSS codegen and copy to dist
+	rm -rf $(STYLED_SYSTEM_SRC)
 	$(PANDA) codegen
 	mkdir -p $(DIST_DIR)
 	cp -r $(STYLED_SYSTEM_SRC) $(STYLED_SYSTEM_DIST)
@@ -127,6 +128,10 @@ format: lint prettier ## Run ESLint --fix and Prettier --write on source files
 format-check: # Run lint and prettier checks without writing (for CI/build)
 	@$(MAKE) lint-check
 	@$(MAKE) prettier-check
+
+.PHONY: type-check
+type-check: prepare-panda-code ## Type-check without emitting files
+	$(TSC) --noEmit
 
 # Build Targets
 .PHONY: help

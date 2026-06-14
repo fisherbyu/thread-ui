@@ -111,12 +111,12 @@ export const buttonRecipe = defineRecipe({
 			},
 			neutral: {
 				backgroundColor: 'transparent',
-				borderColor: 'text.standard',
-				color: 'text.standard',
+				color: 'text.tertiary',
+				borderColor: 'var(--thread-text-tertiary)',
 				_hover: {
-					backgroundColor: 'hover',
+					backgroundColor: 'transparent',
 					color: 'text.secondary',
-					borderColor: 'text.standard',
+					borderColor: 'var(--thread-text-secondary)',
 				},
 			},
 		},
@@ -148,7 +148,6 @@ export const buttonRecipe = defineRecipe({
 		disabled: {
 			true: {
 				opacity: 0.6,
-				cursor: 'not-allowed',
 			},
 			false: {},
 		},
@@ -273,8 +272,8 @@ export const buttonRecipe = defineRecipe({
 			css: {
 				_hover: {
 					backgroundColor: 'transparent',
-					color: 'text.standard',
-					borderColor: 'text.standard',
+					color: 'text.tertiary',
+					borderColor: 'var(--thread-text-tertiary)',
 				},
 			},
 		},
@@ -345,8 +344,8 @@ export const buttonRecipe = defineRecipe({
 			textVariant: true,
 			color: 'neutral',
 			css: {
-				color: 'text.standard',
-				_hover: { color: 'text.standard', backgroundColor: 'transparent' },
+				color: 'text.tertiary',
+				_hover: { color: 'text.secondary', backgroundColor: 'transparent' },
 			},
 		},
 		{
@@ -473,7 +472,9 @@ export const buttonRecipe = defineRecipe({
 			disabled: false,
 			textVariant: false,
 			color: 'neutral',
-			css: { _hover: { backgroundColor: 'surface', borderColor: 'text.standard' } },
+			css: {
+				_hover: { backgroundColor: 'hover', borderColor: 'var(--thread-text-secondary)' },
+			},
 		},
 	],
 	defaultVariants: {

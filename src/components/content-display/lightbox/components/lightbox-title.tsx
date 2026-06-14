@@ -1,17 +1,13 @@
 'use client';
-import { ReactNode } from 'react';
 import { useLightboxContext } from '../lightbox-context';
-import { H2 } from '@/components/typography';
+import { H2, Text } from '@/components/typography';
 import { css } from '@/styled-system/css';
 import { IconButton } from '@/components/ui';
+import { ContentHeader } from '@/internal-components';
 
 const styles = {
-	container: css({
+	titleBlock: css({
 		width: '100%',
-		display: 'flex',
-		flexDirection: 'row-reverse',
-		alignItems: 'center',
-		justifyContent: 'space-between',
 		marginBottom: '4',
 	}),
 };
@@ -19,18 +15,28 @@ const styles = {
 export const LightboxTitle = () => {
 	const { title, onClose } = useLightboxContext();
 
-	const titleDisplay: ReactNode = typeof title === 'string' ? <H2 inline>{title}</H2> : title;
+	const titleDisplay =
+		typeof title === 'string' ? (
+			<H2 color="inverted" inline>
+				{title}
+			</H2>
+		) : (
+			title
+		);
 
 	return (
-		<div className={styles.container}>
-			<IconButton
-				ariaLabel="Close modal"
-				onClick={onClose}
-				color="text"
-				size={'sm'}
-				name="X"
-			/>
-			{titleDisplay}
-		</div>
+		<ContentHeader
+			className={styles.titleBlock}
+			title={titleDisplay}
+			secondaryContent={
+				<IconButton
+					ariaLabel="Close modal"
+					onClick={onClose}
+					color="neutral"
+					size={'sm'}
+					name="X"
+				/>
+			}
+		/>
 	);
 };

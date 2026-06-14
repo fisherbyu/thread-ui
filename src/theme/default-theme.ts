@@ -67,6 +67,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	text: {
 		standard: '#1f2937',
 		secondary: '#4b5563',
+		tertiary: '#6B7280',
 		disabled: '#9ca3af',
 		accent: '#3c5c49', // resolves to primary.main
 		inverted: '#f9fafb', // resolves to dark mode text.standard
@@ -185,6 +186,7 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		text: {
 			standard: '#F9FAFB',
 			secondary: '#9CA3AF',
+			tertiary: '#848B98',
 			disabled: '#6B7280',
 			accent: '#7DA88E',
 			inverted: '#1F2937',

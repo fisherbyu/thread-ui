@@ -3,7 +3,7 @@ import { PageHeaderProps } from './page-header.types';
 import { Container, Divider, Subtitle, Title } from '@/components';
 
 const styles = {
-	caption: css({
+	description: css({
 		width: { md: '50%' },
 		paddingX: { md: '1' },
 		marginX: 'auto',
@@ -16,26 +16,26 @@ const styles = {
 };
 
 /**
- * Page-level header with a title, optional caption, and a divider.
+ * Page-level header with a title, optional description, and a divider.
  *
  * @example
- * <PageHeader title="Our Team" caption="Meet the people behind the product." center />
+ * <PageHeader title="Our Team" description="Meet the people behind the product." center />
  */
-export const PageHeader = ({ title, caption, center }: PageHeaderProps) => {
+export const PageHeader = ({ title, description, center }: PageHeaderProps) => {
 	return (
 		<Container>
 			<Title align="center" inline>
 				{title}
 			</Title>
-			{caption && (
+			{description && (
 				<>
-					<div className={styles.caption}>
+					<div className={styles.description}>
 						<Subtitle
 							indent={center ? false : true}
 							fontFamily="heading"
 							align={center ? 'center' : 'left'}
 						>
-							{caption}
+							{description}
 						</Subtitle>
 					</div>
 				</>

@@ -3,13 +3,14 @@ import { Prettify } from '@/types';
 import { EmblaViewportRefType } from 'embla-carousel-react';
 import { EmblaCarouselType } from 'embla-carousel';
 import { LargeColumnOptions, MediumColumnOptions } from '@/components';
+import { ContentTitle } from '@/internal-components';
 
 export type CarouselControlsPosition = 'above' | 'around' | 'below' | 'none';
 
 /** A single pane consumed and displayed by the `Carousel` component */
 export type CarouselItem = {
 	/** Optional title rendered with content */
-	title: string;
+	title?: string;
 	/** Content rendered in the carousel */
 	content: ReactNode;
 };
@@ -18,28 +19,32 @@ export type CarouselItemId = string;
 
 type InternalCarouselItem = Prettify<CarouselItem & { id: CarouselItemId }>;
 
-export type CarouselProps = Prettify<{
-	/** Optional Title */
-	title?: string | ReactNode;
-	/** Items to render, in display order */
-	items: InternalCarouselItem[];
-	/** Location to Render Controls @default 'around' */
-	controlsPosition?: CarouselControlsPosition;
-	/** Optional Carousel Item Wrapper @default `Card` */
-	itemWrapper?: ComponentType<any>;
-	/** Number of Columns in Medium Viewport */
-	mdCols: MediumColumnOptions;
-	/** Number of Columns in Large Viewport */
-	lgCols?: LargeColumnOptions;
-}>;
+type ItemWrapperComponent = ComponentType<any>;
+
+export type ItemWrapperOptions = 'none' | 'card' | 'cardFrame' | ItemWrapperComponent;
+
+export type CarouselProps = Prettify<
+	ContentTitle & {
+		/** Items to render, in display order */
+		items: CarouselItem[];
+		/** Location to Render Controls @default 'around' */
+		controlsPosition?: CarouselControlsPosition;
+		/** Optional Carousel Item Wrapper @default `cardOutline` */
+		itemWrapper?: ItemWrapperOptions;
+		/** Number of Columns in Medium Viewport */
+		mdCols: MediumColumnOptions;
+		/** Number of Columns in Large Viewport */
+		lgCols?: LargeColumnOptions;
+	}
+>;
 
 export type CarouselState = Prettify<
-	Pick<CarouselProps, 'title' | 'mdCols'> &
+	Pick<CarouselProps, 'title' | 'subtitle' | 'mdCols'> &
 		Required<Pick<CarouselProps, 'lgCols'>> & {
 			items: Record<CarouselItemId, InternalCarouselItem>;
 			itemOrder: CarouselItemId[];
 			controlsPosition: CarouselControlsPosition;
-			ItemWrapper: CarouselProps['itemWrapper'];
+			ItemWrapper: ItemWrapperComponent;
 		}
 >;
 

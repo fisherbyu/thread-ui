@@ -2,7 +2,7 @@ import { DynamicIconProps } from '@/internal-components';
 import { ImageProps, SurfaceLayerOptions } from '@/types';
 
 export type InfoCardProps = {
-	/** Card title displayed in the caption bar */
+	/** Card title displayed in the information bar */
 	title: string;
 	/** URL the card links to */
 	url: string;

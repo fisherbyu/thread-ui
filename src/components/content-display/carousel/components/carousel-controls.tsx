@@ -29,7 +29,7 @@ export const PreviousButton = () => {
 };
 
 export const NextButton = () => {
-	const { emblaApi, canScrollPrev, canScrollNext } = useCarouselEmblaContext();
+	const { emblaApi, canScrollNext } = useCarouselEmblaContext();
 
 	const goToNext = () => emblaApi?.scrollNext();
 

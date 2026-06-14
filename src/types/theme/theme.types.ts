@@ -13,6 +13,7 @@ export type ColorShadeOptions = Prettify<keyof ColorShades>;
 export type TextColors = {
 	standard: string;
 	secondary: string;
+	tertiary: string;
 	disabled: string;
 	accent: string;
 	inverted: string;

@@ -40,7 +40,7 @@ const ColorCard = ({ color }: { color: string }) => (
 export const Basic: Story = {
 	args: {
 		title: 'Our Services',
-		caption: 'Explore our range of solutions',
+		description: 'Explore our range of solutions',
 		mdcol: 2,
 		lgcol: 4,
 		container: true,
@@ -72,7 +72,7 @@ export const Basic: Story = {
 export const WithImages: Story = {
 	args: {
 		title: 'About Me',
-		caption: "Some of the places I've lived!",
+		description: "Some of the places I've lived!",
 		mdcol: 2,
 		lgcol: 4,
 		container: true,

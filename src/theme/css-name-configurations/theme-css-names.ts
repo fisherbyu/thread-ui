@@ -80,6 +80,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 	text: {
 		standard: 'text-standard',
 		secondary: 'text-secondary',
+		tertiary: 'text-tertiary',
 		disabled: 'text-disabled',
 		accent: 'text-accent',
 		inverted: 'text-inverted',
@@ -201,6 +202,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		text: {
 			standard: 'text-standard-light-mode',
 			secondary: 'text-secondary-light-mode',
+			tertiary: 'text-tertiary-light-mode',
 			disabled: 'text-disabled-light-mode',
 			accent: 'text-accent-light-mode',
 			inverted: 'text-inverted-light-mode',
@@ -229,6 +231,7 @@ export const AllBaseCssNames: AllThemeCssNames = {
 		text: {
 			standard: 'text-standard-dark-mode',
 			secondary: 'text-secondary-dark-mode',
+			tertiary: 'text-tertiary-dark-mode',
 			disabled: 'text-disabled-dark-mode',
 			accent: 'text-accent-dark-mode',
 			inverted: 'text-inverted-dark-mode',

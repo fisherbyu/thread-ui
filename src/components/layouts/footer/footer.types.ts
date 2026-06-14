@@ -5,7 +5,7 @@ export type FooterProps = {
 	/** Logo or branding element rendered at the top of the footer */
 	logo?: ReactNode;
 	/** Tagline or description rendered below the logo */
-	caption?: string | ReactNode;
+	description?: string | ReactNode;
 	/** Background color token @default `'none'` */
 	bg?: BgColorOptions;
 	/** URL for the Facebook social link */

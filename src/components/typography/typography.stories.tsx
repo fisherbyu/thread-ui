@@ -4,7 +4,7 @@ import { Title, H1, H2, H3, Text, Subtitle, List, OrderedList, Code, PageHeader 
 
 type TypographyArgs = {
 	pageHeaderTitle: string;
-	pageHeaderCaption: string;
+	pageHeaderDescription: string;
 	titleText: string;
 	titleAlign: 'left' | 'center';
 	h1Text: string;
@@ -35,10 +35,10 @@ const meta: Meta<TypographyArgs> = {
 			control: 'text',
 			description: 'Title for the PageHeader component',
 		},
-		pageHeaderCaption: {
-			name: 'PageHeader Caption',
+		pageHeaderDescription: {
+			name: 'PageHeader Description',
 			control: 'text',
-			description: 'Caption for the PageHeader component',
+			description: 'Description for the PageHeader component',
 		},
 		// Title component controls
 		titleText: {
@@ -105,7 +105,11 @@ export const Typography: Story = {
 	render: (args) => (
 		<div style={{ maxWidth: '800px', margin: '0 auto' }}>
 			{/* --- Page Header --- */}
-			<PageHeader title={args.pageHeaderTitle} caption={args.pageHeaderCaption} center />
+			<PageHeader
+				title={args.pageHeaderTitle}
+				description={args.pageHeaderDescription}
+				center
+			/>
 
 			{/* --- Main: headings with subtitle prop --- */}
 			<Title
@@ -251,7 +255,7 @@ export const Typography: Story = {
 	args: {
 		// Default args for controls
 		pageHeaderTitle: 'Page Header',
-		pageHeaderCaption: 'A descriptive caption that appears below the page header title.',
+		pageHeaderDescription: 'A description that appears below the page header title.',
 		titleText: 'Title',
 		titleAlign: 'left',
 		h1Text: 'Heading 1',

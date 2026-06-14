@@ -16,6 +16,10 @@ const meta: Meta<typeof Carousel> = {
 			control: 'text',
 			description: 'Optional title rendered above the carousel',
 		},
+		subtitle: {
+			control: 'text',
+			description: 'Optional subtitle rendered below the title',
+		},
 		items: {
 			control: 'object',
 			description: 'Items to render, in display order',

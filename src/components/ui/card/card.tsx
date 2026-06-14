@@ -1,16 +1,13 @@
-import { cva, cx } from '@/styled-system/css';
+import { cva } from '@/styled-system/css';
 import { CardProps } from './card.types';
 import { H3 } from '@/components/typography';
 import { Divider } from '../divider';
-import { getResolvedLayerValues, getSurfaceStyles } from '@/utils';
+import { Surface } from '@/internal-components/surface';
 
 const styles = {
 	cardContainer: cva({
 		base: {
 			borderStyle: 'solid',
-			padding: {
-				base: '5',
-			},
 			transition: 'background-color 0.15s ease, box-shadow 0.15s ease',
 		},
 		variants: {
@@ -40,6 +37,15 @@ const styles = {
 					},
 				},
 			},
+			flush: {
+				true: {
+					padding: '0',
+					overflow: 'hidden',
+				},
+				false: {
+					padding: '5',
+				},
+			},
 		},
 		compoundVariants: [
 			{
@@ -53,6 +59,7 @@ const styles = {
 		defaultVariants: {
 			size: 'md',
 			fullWidth: false,
+			flush: true,
 		},
 	}),
 	title: cva({
@@ -98,13 +105,12 @@ export const Card = ({
 	size = 'md',
 	fullWidth = false,
 	title,
+	flush = false,
 }: CardProps) => {
-	// Resolve from level, allow individual overrides
-	const layerValues = getResolvedLayerValues({ layer, bg, shadow, structure });
-
 	return (
-		<div
-			className={cx(styles.cardContainer({ size, fullWidth }), getSurfaceStyles(layerValues))}
+		<Surface
+			surfaceConfig={{ layer, bg, shadow, structure }}
+			className={styles.cardContainer({ size, fullWidth, flush })}
 		>
 			{title && (
 				<div className={styles.title({ size })}>
@@ -115,6 +121,6 @@ export const Card = ({
 				</div>
 			)}
 			<div>{children}</div>
-		</div>
+		</Surface>
 	);
 };

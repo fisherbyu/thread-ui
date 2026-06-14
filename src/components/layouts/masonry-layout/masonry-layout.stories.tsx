@@ -36,6 +36,18 @@ const meta: Meta<typeof MasonryLayout> = {
 		container: {
 			control: 'boolean',
 		},
+		title: {
+			control: 'text',
+			description: 'Optional title rendered above the gallery',
+		},
+		subtitle: {
+			control: 'text',
+			description: 'Optional subtitle rendered below the title',
+		},
+		description: {
+			control: 'text',
+			description: 'Optional text rendered below the titles',
+		},
 	},
 };
 
@@ -49,10 +61,10 @@ export const Default: Story = {
 	},
 };
 
-export const WithTitleAndCaption: Story = {
+export const WithTitleAndDescription: Story = {
 	args: {
 		title: 'Photo Gallery',
-		caption: 'A beautiful collection of photographs arranged in a masonry layout',
+		description: 'A beautiful collection of photographs arranged in a masonry layout',
 		container: true,
 		items: sampleitems,
 	},

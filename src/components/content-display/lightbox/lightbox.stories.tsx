@@ -24,6 +24,10 @@ const meta: Meta<typeof Lightbox> = {
 			control: 'text',
 			description: 'Optional title rendered above the lightbox',
 		},
+		subtitle: {
+			control: 'text',
+			description: 'Optional subtitle rendered below the title',
+		},
 		items: {
 			control: 'object',
 			description: 'Items to render, in display order',

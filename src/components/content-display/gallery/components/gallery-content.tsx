@@ -1,7 +1,5 @@
 'use client';
-import { ReactNode } from 'react';
 import { css, cva } from '@/styled-system/css';
-import { H2 } from '@/components/typography';
 import { useGalleryContext } from '../gallery-context';
 import {
 	DisplayConstantsKeys,
@@ -10,6 +8,7 @@ import {
 } from '../gallery-display-constants';
 import { GalleryItemsDisplay } from './item-display/gallery-items-display';
 import { ItemTrack } from './item-track/item-track';
+import { ContentHeader } from '@/internal-components';
 
 const styles = {
 	container: cva({
@@ -63,10 +62,8 @@ const styles = {
 
 export const GalleryContent = () => {
 	const {
-		value: { size, title },
+		value: { size, title, subtitle },
 	} = useGalleryContext();
-
-	const titleDisplay: ReactNode = typeof title === 'string' ? <H2>{title}</H2> : title;
 
 	const cssVariables: Record<string, string> = Object.fromEntries(
 		(Object.entries(GALLERY_DISPLAY_CONSTANT_NAMES) as [DisplayConstantsKeys, string][]).map(
@@ -76,7 +73,7 @@ export const GalleryContent = () => {
 
 	return (
 		<div className={styles.container({ size })} style={cssVariables}>
-			{title && titleDisplay}
+			<ContentHeader title={title} subtitle={subtitle} />
 			<div className={styles.internalContent}>
 				<div className={styles.displayContent}>
 					<GalleryItemsDisplay />

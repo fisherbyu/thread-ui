@@ -1,11 +1,12 @@
 import { ReactNode } from 'react';
 import { LayoutComponentProps } from '../layout-component.types';
+import { Prettify } from '@/types';
+import { ContentHeading } from '@/internal-components';
 
-export type MasonryLayoutProps = LayoutComponentProps & {
-	/** Optional title displayed above the grid */
-	title?: string;
-	/** Optional caption rendered alongside the title */
-	caption?: string;
-	/** Items to render in the masonry grid */
-	items: ReactNode[];
-};
+export type MasonryLayoutProps = Prettify<
+	LayoutComponentProps &
+		ContentHeading & {
+			/** Items to render in the masonry grid */
+			items: ReactNode[];
+		}
+>;

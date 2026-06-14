@@ -1,5 +1,5 @@
 import { cva } from '@/styled-system/css';
-import { SurfaceConfig } from '@/theme/theme-surface-system';
+import { SurfaceConfigOverrides } from '@/theme/theme-surface-system';
 import { DeepPartial } from '@/types';
 
 /** Surface CVA — map individual token keys to style declarations. */
@@ -36,6 +36,6 @@ const getSurfaceStylesCva = cva({
 	},
 });
 
-export const getSurfaceStyles = (props: DeepPartial<SurfaceConfig>) => {
+export const getSurfaceStyles = (props: SurfaceConfigOverrides) => {
 	return getSurfaceStylesCva(props);
 };

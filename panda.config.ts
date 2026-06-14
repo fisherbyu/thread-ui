@@ -178,6 +178,7 @@ export default defineConfig({
 					text: {
 						standard: { value: 'var(--thread-text-standard)' },
 						secondary: { value: 'var(--thread-text-secondary)' },
+						tertiary: { value: 'var(--thread-text-tertiary)' },
 						disabled: { value: 'var(--thread-text-disabled)' },
 						accent: { value: 'var(--thread-text-accent)' },
 						inverted: { value: 'var(--thread-text-inverted)' },

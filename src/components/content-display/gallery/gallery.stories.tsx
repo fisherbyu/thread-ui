@@ -16,6 +16,10 @@ const meta: Meta<typeof Gallery> = {
 			control: 'text',
 			description: 'Optional title rendered above the gallery',
 		},
+		subtitle: {
+			control: 'text',
+			description: 'Optional subtitle rendered below the title',
+		},
 		items: {
 			control: 'object',
 			description: 'Items to render, in display order',
