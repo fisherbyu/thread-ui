@@ -1,8 +1,8 @@
 export type PageHeaderProps = {
 	/** Page heading */
 	title: string;
-	/** Optional caption rendered below the title */
-	caption?: string;
-	/** Centers the caption text @default `false` */
+	/** Optional description rendered below the title */
+	description?: string;
+	/** Centers the description text @default `false` */
 	center?: boolean;
 };
