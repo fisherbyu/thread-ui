@@ -2,6 +2,7 @@ import { ReactNode, ComponentType } from 'react';
 import { Prettify, UtilitySizeOptions } from '@/types';
 import { EmblaViewportRefType } from 'embla-carousel-react';
 import { EmblaCarouselType } from 'embla-carousel';
+import { ContentTitle } from '@/internal-components';
 
 export type GalleryItemId = number;
 
@@ -15,22 +16,22 @@ export type GalleryItem = ReactNode;
  */
 export type GalleryAppearanceOptions = 'framed' | 'bare';
 
-export type GalleryProps = {
-	/** Visual treatment for item containers @default `'framed'` */
-	appearance?: GalleryAppearanceOptions;
-	/** Optional title rendered above the gallery */
-	title?: string | ReactNode;
-	/** Array of React nodes to render as slides, in display order */
-	items: GalleryItem[];
-	/** Optional component used to wrap each item, replacing the default container */
-	itemWrapper?: ComponentType<any>;
-	/** Controls the gallery's dimensional presets @default `'lg'` */
-	size?: UtilitySizeOptions | 'fill';
-	/** Index of Item Gallery opens at Start @default 0 */
-	startIndex?: number;
-	/** Display thumbnail items with varying widths @default `false` */
-	variableWidths?: boolean;
-};
+export type GalleryProps = Prettify<
+	ContentTitle & {
+		/** Visual treatment for item containers @default `'framed'` */
+		appearance?: GalleryAppearanceOptions;
+		/** Array of React nodes to render as slides, in display order */
+		items: GalleryItem[];
+		/** Optional component used to wrap each item, replacing the default container */
+		itemWrapper?: ComponentType<any>;
+		/** Controls the gallery's dimensional presets @default `'lg'` */
+		size?: UtilitySizeOptions | 'fill';
+		/** Index of Item Gallery opens at Start @default 0 */
+		startIndex?: number;
+		/** Display thumbnail items with varying widths @default `false` */
+		variableWidths?: boolean;
+	}
+>;
 
 type InternalGalleryItem = {
 	id: GalleryItemId;
@@ -38,7 +39,7 @@ type InternalGalleryItem = {
 };
 
 export type GalleryState = Prettify<
-	Pick<GalleryProps, 'title'> &
+	Pick<GalleryProps, 'title' | 'subtitle'> &
 		Required<Pick<GalleryProps, 'size' | 'appearance' | 'variableWidths'>> & {
 			items: Record<GalleryItemId, InternalGalleryItem>;
 			ItemWrapper: GalleryProps['itemWrapper'];

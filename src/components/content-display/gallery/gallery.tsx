@@ -24,6 +24,7 @@ import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
  */
 export const Gallery = ({
 	title,
+	subtitle,
 	items: itemList,
 	itemWrapper,
 	size = 'lg',
@@ -82,6 +83,7 @@ export const Gallery = ({
 
 		return {
 			title,
+			subtitle,
 			items,
 			itemOrder,
 			ItemWrapper: itemWrapper,
