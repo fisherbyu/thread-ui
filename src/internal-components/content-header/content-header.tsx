@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
+import { css } from '@/styled-system/css';
 import { ContentHeaderProps } from './content-header.types';
 import { H2 } from '@/components';
-import { css } from '@/styled-system/css';
 
 const styles = {
 	container: css({
@@ -15,6 +15,16 @@ const styles = {
 	}),
 };
 
+/**
+ * Internal header component used by content and layout components to
+ * render a consistent title region with an optional trailing slot.
+ *
+ * When `title` is a string it renders as an `H2` with the `subtitle`
+ * prop applied. When `title` is a heading element the consumer owns
+ * all heading rendering and the `subtitle` prop is ignored.
+ *
+ * Returns `null` when neither `title` nor `secondaryContent` is provided.
+ */
 export const ContentHeader = ({ title, subtitle, secondaryContent }: ContentHeaderProps) => {
 	const titleDisplay: ReactNode =
 		typeof title === 'string' ? (
