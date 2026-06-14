@@ -48,7 +48,7 @@ export const H3 = (props: TypographyHeadingProps) => renderHeading('h3', 'h3', p
 export const Subtitle = ({
 	children,
 	align = 'left',
-	color = 'secondary',
+	color = 'text-secondary',
 	truncate = false,
 	fontFamily,
 	indent,
