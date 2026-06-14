@@ -18,6 +18,10 @@ export type CarouselItemId = string;
 
 type InternalCarouselItem = Prettify<CarouselItem & { id: CarouselItemId }>;
 
+type ItemWrapperComponent = ComponentType<any>;
+
+export type ItemWrapperOptions = 'none' | 'card' | ItemWrapperComponent;
+
 export type CarouselProps = Prettify<{
 	/** Optional Title */
 	title?: string | ReactNode;
@@ -26,7 +30,7 @@ export type CarouselProps = Prettify<{
 	/** Location to Render Controls @default 'around' */
 	controlsPosition?: CarouselControlsPosition;
 	/** Optional Carousel Item Wrapper @default `Card` */
-	itemWrapper?: ComponentType<any>;
+	itemWrapper?: ItemWrapperOptions;
 	/** Number of Columns in Medium Viewport */
 	mdCols: MediumColumnOptions;
 	/** Number of Columns in Large Viewport */
@@ -39,7 +43,7 @@ export type CarouselState = Prettify<
 			items: Record<CarouselItemId, InternalCarouselItem>;
 			itemOrder: CarouselItemId[];
 			controlsPosition: CarouselControlsPosition;
-			ItemWrapper: CarouselProps['itemWrapper'];
+			ItemWrapper: ItemWrapperComponent;
 		}
 >;
 
