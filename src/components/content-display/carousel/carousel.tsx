@@ -18,9 +18,16 @@ const CardWrapper = ({ children, title }: { children: ReactNode; title?: string 
 	</Card>
 );
 
+const CardFrameWrapper = ({ children, title }: { children: ReactNode; title?: string }) => (
+	<Card fullWidth flush title={title ? { text: title } : undefined} size="md">
+		{children}
+	</Card>
+);
+
 const resolveItemWrapper = (option: ItemWrapperOptions) => {
 	if (option === 'none') return FragmentWrapper;
 	if (option === 'card') return CardWrapper;
+	if (option === 'cardFrame') return CardFrameWrapper;
 	return option;
 };
 
@@ -46,7 +53,7 @@ export const Carousel = ({
 	controlsPosition = 'above',
 	mdCols,
 	lgCols,
-	itemWrapper = 'none',
+	itemWrapper = 'card',
 }: CarouselProps) => {
 	// Embla Config
 	const [emblaRef, emblaApi] = useEmblaCarousel();

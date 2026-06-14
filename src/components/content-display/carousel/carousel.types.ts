@@ -20,7 +20,7 @@ type InternalCarouselItem = Prettify<CarouselItem & { id: CarouselItemId }>;
 
 type ItemWrapperComponent = ComponentType<any>;
 
-export type ItemWrapperOptions = 'none' | 'card' | ItemWrapperComponent;
+export type ItemWrapperOptions = 'none' | 'card' | 'cardFrame' | ItemWrapperComponent;
 
 export type CarouselProps = Prettify<{
 	/** Optional Title */
@@ -29,7 +29,7 @@ export type CarouselProps = Prettify<{
 	items: CarouselItem[];
 	/** Location to Render Controls @default 'around' */
 	controlsPosition?: CarouselControlsPosition;
-	/** Optional Carousel Item Wrapper @default `Card` */
+	/** Optional Carousel Item Wrapper @default `cardOutline` */
 	itemWrapper?: ItemWrapperOptions;
 	/** Number of Columns in Medium Viewport */
 	mdCols: MediumColumnOptions;
