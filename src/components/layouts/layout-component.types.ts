@@ -5,7 +5,9 @@ type BreakpointToken = PandaBreakpointToken | 'base';
 
 export type ResponsiveValue<T> = T | Partial<Record<BreakpointToken, T>>;
 
+type ContainerConfig = Omit<ContainerProps, 'children'>;
+
 export type LayoutComponentProps = {
 	/** Wraps the layout in a container */
-	container?: boolean | Omit<ContainerProps, 'children'>;
+	container?: boolean | ContainerConfig;
 };
