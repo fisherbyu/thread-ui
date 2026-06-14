@@ -1,6 +1,5 @@
 'use client';
-import { css, cva } from '@/styled-system/css';
-import { Card } from '@/components/ui';
+import { cva } from '@/styled-system/css';
 import { useCarouselContext } from '../carousel-context';
 import { CarouselItemId } from '../carousel.types';
 
@@ -45,19 +44,9 @@ export const CarouselItem = ({ itemId }: CarouselItemProps) => {
 
 	const item = items[itemId];
 
-	if (ItemWrapper) {
-		return (
-			<div className={styles.wrapper({ mdCols, lgCols })}>
-				<ItemWrapper>{item.content}</ItemWrapper>
-			</div>
-		);
-	}
-
 	return (
 		<div className={styles.wrapper({ mdCols, lgCols })}>
-			<Card fullWidth title={item.title ? { text: item.title } : undefined} size="md">
-				{item.content}
-			</Card>
+			<ItemWrapper title={item.title}>{item.content}</ItemWrapper>
 		</div>
 	);
 };
