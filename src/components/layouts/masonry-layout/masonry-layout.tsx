@@ -2,6 +2,7 @@ import { H3, Subtitle } from '@/components';
 import { MasonryLayoutProps } from './masonry-layout.types';
 import { css } from '@/styled-system/css';
 import { LayoutWrapper } from '../layout-wrapper';
+import { ContentHeader } from '@/internal-components';
 
 const styles = {
 	container: css({ width: 'full' }),
@@ -27,16 +28,17 @@ const styles = {
  *   components={images.map((img) => <img src={img.src} alt={img.alt} />)}
  * />
  */
-export const MasonryLayout = ({ title, caption, items, container }: MasonryLayoutProps) => {
+export const MasonryLayout = ({
+	title,
+	subtitle,
+	description,
+	items,
+	container,
+}: MasonryLayoutProps) => {
 	return (
 		<LayoutWrapper container={container}>
 			<div className={styles.container}>
-				{title && (
-					<H3>
-						{title}
-						{caption && <Subtitle>{caption}</Subtitle>}
-					</H3>
-				)}
+				<ContentHeader title={title} subtitle={subtitle} description={description} />
 				<ol className={styles.list}>
 					{items.map((component, index) => (
 						<li key={index} className={styles.item}>
