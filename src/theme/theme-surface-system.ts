@@ -4,6 +4,7 @@ import type {
 	BgColorOptions,
 	SurfaceLayerOptions,
 	ZIndexOptions,
+	DeepPartial,
 } from '@/types';
 
 export type SurfaceConfig = {
@@ -12,6 +13,8 @@ export type SurfaceConfig = {
 	structure: StructureColorOptions | 'none';
 	zIndex: ZIndexOptions | 'none';
 };
+
+export type SurfaceConfigOverrides = DeepPartial<SurfaceConfig>;
 
 /** Surface Layer Order - Returns next highest layer */
 export const NextSurfaceLayerMap: Record<SurfaceLayerOptions, SurfaceLayerOptions | null> = {
