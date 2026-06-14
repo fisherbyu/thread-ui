@@ -14,6 +14,9 @@ const styles = {
 		alignItems: 'center',
 		marginBottom: '4',
 	}),
+	controlsWrapper: css({
+		marginLeft: 'auto',
+	}),
 };
 
 export const CarouselHeader = () => {
@@ -30,7 +33,11 @@ export const CarouselHeader = () => {
 	return (
 		<div className={styles.titleBlock}>
 			{title && titleDisplay}
-			{controlsPosition === 'above' && <CarouselControls />}
+			{controlsPosition === 'above' && (
+				<div className={styles.controlsWrapper}>
+					<CarouselControls />
+				</div>
+			)}
 		</div>
 	);
 };
