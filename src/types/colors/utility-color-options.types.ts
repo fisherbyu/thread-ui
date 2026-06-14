@@ -19,4 +19,5 @@ export type ColoredTextOptions =
 	| 'standard'
 	| 'disabled'
 	| 'accent'
-	| 'text-secondary';
+	| 'text-secondary'
+	| 'text-tertiary';
