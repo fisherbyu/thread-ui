@@ -17,7 +17,9 @@ type TitleType = string | HeadingElement;
 type SubtitleType = string | SubtitleElement;
 
 export type ContentTitle = {
-	title: TitleType;
+	/** Optional Title */
+	title?: TitleType;
+	/** Optional Subtitle, requires `title` to be set */
 	subtitle?: SubtitleType;
 };
 
