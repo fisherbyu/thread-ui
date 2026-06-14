@@ -1,10 +1,30 @@
 'use client';
-import { useMemo, useState, useEffect, useCallback } from 'react';
+
+import { useMemo, useState, useEffect, useCallback, ReactNode } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { EmblaCarouselType } from 'embla-carousel';
+import { Card } from '@/components/ui';
 import { CarouselProvider, CarouselEmblaProvider } from './carousel-context';
-import { CarouselProps, CarouselState } from './carousel.types';
+import { CarouselProps, CarouselState, ItemWrapperOptions } from './carousel.types';
 import { CarouselContent } from './components/carousel-content';
+
+// -- Item Wrapper Resolution --
+
+const FragmentWrapper = ({ children }: { children: ReactNode }) => <>{children}</>;
+
+const CardWrapper = ({ children, title }: { children: ReactNode; title?: string }) => (
+	<Card fullWidth title={title ? { text: title } : undefined} size="md">
+		{children}
+	</Card>
+);
+
+/** Resolve the prop-level `ItemWrapperOptions` to an actual component.
+ *  `undefined` and `'card'` both resolve to Card (matching the old fallback). */
+const resolveItemWrapper = (option: ItemWrapperOptions) => {
+	if (option === 'none') return FragmentWrapper;
+	if (option === 'card') return CardWrapper;
+	return option;
+};
 
 /**
  * A scrollable carousel with optional navigation controls and responsive column configuration. Powered by [Embla Carousel](https://www.embla-carousel.com)
@@ -28,7 +48,7 @@ export const Carousel = ({
 	controlsPosition = 'above',
 	mdCols,
 	lgCols,
-	itemWrapper,
+	itemWrapper = 'none',
 }: CarouselProps) => {
 	// Embla Config
 	const [emblaRef, emblaApi] = useEmblaCarousel();
@@ -71,12 +91,12 @@ export const Carousel = ({
 			title,
 			items,
 			itemOrder,
-			ItemWrapper: itemWrapper,
+			ItemWrapper: resolveItemWrapper(itemWrapper),
 			controlsPosition,
 			mdCols,
 			lgCols: lgCols ? lgCols : mdCols,
 		};
-	}, [title, normalizedItems, controlsPosition, mdCols, lgCols]);
+	}, [title, normalizedItems, controlsPosition, mdCols, lgCols, itemWrapper]);
 
 	const emblaValue = useMemo(
 		() => ({
