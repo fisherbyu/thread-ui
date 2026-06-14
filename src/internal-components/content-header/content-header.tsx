@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 import { css, cx } from '@/styled-system/css';
 import { ContentHeaderProps } from './content-header.types';
-import { H2 } from '@/components';
+import { H2, Text } from '@/components';
 
 const styles = {
-	container: css({
+	header: css({
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
@@ -30,6 +30,7 @@ export const ContentHeader = ({
 	subtitle,
 	secondaryContent,
 	className,
+	description,
 }: ContentHeaderProps) => {
 	const titleDisplay: ReactNode =
 		typeof title === 'string' ? (
@@ -52,9 +53,14 @@ export const ContentHeader = ({
 	}
 
 	return (
-		<div className={cx(styles.container, className)}>
-			{title && titleDisplay}
-			{secondaryContent && <div className={styles.secondaryContent}>{secondaryContent}</div>}
+		<div className={className}>
+			<div className={styles.header}>
+				{title && titleDisplay}
+				{secondaryContent && (
+					<div className={styles.secondaryContent}>{secondaryContent}</div>
+				)}
+			</div>
+			{description && <Text>{description}</Text>}
 		</div>
 	);
 };
