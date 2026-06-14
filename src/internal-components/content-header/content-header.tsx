@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { css } from '@/styled-system/css';
+import { css, cx } from '@/styled-system/css';
 import { ContentHeaderProps } from './content-header.types';
 import { H2 } from '@/components';
 
@@ -25,7 +25,12 @@ const styles = {
  *
  * Returns `null` when neither `title` nor `secondaryContent` is provided.
  */
-export const ContentHeader = ({ title, subtitle, secondaryContent }: ContentHeaderProps) => {
+export const ContentHeader = ({
+	title,
+	subtitle,
+	secondaryContent,
+	className,
+}: ContentHeaderProps) => {
 	const titleDisplay: ReactNode =
 		typeof title === 'string' ? (
 			<H2 subtitle={subtitle} inline>
@@ -47,7 +52,7 @@ export const ContentHeader = ({ title, subtitle, secondaryContent }: ContentHead
 	}
 
 	return (
-		<div className={styles.container}>
+		<div className={cx(styles.container, className)}>
 			{title && titleDisplay}
 			{secondaryContent && <div className={styles.secondaryContent}>{secondaryContent}</div>}
 		</div>

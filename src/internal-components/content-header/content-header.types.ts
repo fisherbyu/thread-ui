@@ -33,5 +33,7 @@ export type ContentHeaderProps = Prettify<
 	ContentTitle & {
 		/** Optional content rendered on the trailing end of the header */
 		secondaryContent?: ReactNode;
+		/** Optional Override styles, applied on outer container */
+		className?: string;
 	}
 >;
