@@ -18,8 +18,6 @@ const CardWrapper = ({ children, title }: { children: ReactNode; title?: string 
 	</Card>
 );
 
-/** Resolve the prop-level `ItemWrapperOptions` to an actual component.
- *  `undefined` and `'card'` both resolve to Card (matching the old fallback). */
 const resolveItemWrapper = (option: ItemWrapperOptions) => {
 	if (option === 'none') return FragmentWrapper;
 	if (option === 'card') return CardWrapper;
