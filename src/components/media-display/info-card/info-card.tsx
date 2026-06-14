@@ -80,7 +80,7 @@ const styles = {
 		width: '100%',
 		objectFit: 'cover',
 	}),
-	caption: css({
+	information: css({
 		padding: '2.5',
 		height: '10',
 		display: 'flex',
@@ -113,7 +113,7 @@ export const InfoCard = ({ title, url, icon, image, layer = 'surface' }: InfoCar
 			<div className={`${styles.imageWrapper} info-card-image-wrapper`}>
 				{renderImage(image, undefined, styles.image)}
 			</div>
-			<div className={styles.caption}>
+			<div className={styles.information}>
 				<DynamicIcon icon={icon} size={24} />
 				<Text size="sm" truncate inline>
 					{title}
