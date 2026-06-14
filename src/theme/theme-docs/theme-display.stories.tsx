@@ -566,7 +566,7 @@ export const Theme: Story = {
 				</div>
 				<div style={{ height: '24px' }} />
 				{/* ── Brand Palette ── */}
-				<div style={{ height: '450px' }}>
+				<div style={{ height: '500px' }}>
 					<Container>
 						<TabView
 							title={<H1>Theme Color Scheme</H1>}
