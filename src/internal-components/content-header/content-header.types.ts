@@ -23,4 +23,4 @@ export type ContentTitle = {
 	subtitle?: SubtitleType;
 };
 
-export type ContentHeaderProps = Prettify<ContentTitle & { headerRight?: ReactNode }>;
+export type ContentHeaderProps = Prettify<ContentTitle & { secondaryContent?: ReactNode }>;
