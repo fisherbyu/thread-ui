@@ -4,7 +4,7 @@ import { ModalProps } from '@/components/ui';
 import { GalleryAppearanceOptions } from '../gallery/gallery.types';
 
 export type LightboxProps = Prettify<
-	Omit<GalleryProps, 'size' | 'appearance' | 'variableWidths'> &
+	Omit<GalleryProps, 'size' | 'subtitle' | 'appearance' | 'variableWidths'> &
 		Pick<ModalProps, 'isOpen' | 'onClose'> & {
 			/** Gallery Content Appearance @default `bare` */
 			appearance?: GalleryAppearanceOptions;

@@ -13,11 +13,11 @@ const styles = {
 };
 
 export const LightboxTitle = () => {
-	const { title, subtitle, onClose } = useLightboxContext();
+	const { title, onClose } = useLightboxContext();
 
 	const titleDisplay =
 		typeof title === 'string' ? (
-			<H2 subtitle={subtitle} color="inverted" inline>
+			<H2 color="inverted" inline>
 				{title}
 			</H2>
 		) : (
