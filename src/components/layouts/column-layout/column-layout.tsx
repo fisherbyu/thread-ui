@@ -1,4 +1,4 @@
-import { renderImage } from '@/internal-components';
+import { ContentHeader, renderImage } from '@/internal-components';
 import { ColumnSkeleton } from './column-skeleton';
 import { ColumnLayoutProps } from './column-layout.types';
 import { H2, H3, Text } from '@/components';
@@ -38,7 +38,7 @@ const styles = {
 };
 
 /**
- * Responsive image grid with an optional title and caption.
+ * Responsive image grid with an optional title and description.
  * Column count is controlled separately for medium and large viewports.
  *
  * @example
@@ -51,7 +51,8 @@ const styles = {
  */
 export const ColumnLayout = ({
 	title,
-	caption,
+	subtitle,
+	description,
 	mdcol,
 	lgcol = mdcol,
 	items,
@@ -67,17 +68,8 @@ export const ColumnLayout = ({
 					} as React.CSSProperties
 				}
 			>
-				{(title || caption) && (
-					<div>
-						{title && (
-							<>
-								<H2>
-									{title}
-									{caption && <Text>{caption}</Text>}
-								</H2>
-							</>
-						)}
-					</div>
+				{(title || description) && (
+					<ContentHeader title={title} subtitle={subtitle} description={description} />
 				)}
 				<ColumnSkeleton mdcol={mdcol} lgcol={lgcol}>
 					{items.map((item, index) => (

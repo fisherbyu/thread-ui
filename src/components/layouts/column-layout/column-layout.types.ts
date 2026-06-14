@@ -1,21 +1,21 @@
-import { ImageProps } from '../../../types';
+import { ContentHeading } from '@/internal-components';
+import { ImageProps, Prettify } from '../../../types';
 import { LayoutComponentProps } from '../layout-component.types';
 
 export type MediumColumnOptions = 1 | 2 | 3;
 export type LargeColumnOptions = 1 | 2 | 3 | 4 | 5;
 
-export type ColumnLayoutProps = LayoutComponentProps & {
-	/** Optional title displayed at the top of the layout */
-	title?: string;
-	/** Optional caption rendered alongside the title */
-	caption?: string;
-	/** Number of columns at medium viewport sizes @default `2` */
-	mdcol: MediumColumnOptions;
-	/** Number of columns at large viewport sizes @default `4` */
-	lgcol?: LargeColumnOptions;
-	/** Items to display in the grid */
-	items: ColumnItem[];
-};
+export type ColumnLayoutProps = Prettify<
+	LayoutComponentProps &
+		ContentHeading & {
+			/** Number of columns at medium viewport sizes @default `2` */
+			mdcol: MediumColumnOptions;
+			/** Number of columns at large viewport sizes @default `4` */
+			lgcol?: LargeColumnOptions;
+			/** Items to display in the grid */
+			items: ColumnItem[];
+		}
+>;
 
 export type ColumnItem = {
 	/** Optional title rendered below the image */
