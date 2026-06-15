@@ -122,7 +122,7 @@ export const Carousel = ({
 
 	return (
 		<CarouselProvider
-			syncKeys={['title', 'subtitle', 'description', 'items']}
+			syncedKeys={['title', 'subtitle', 'description', 'items']}
 			initialValue={initialState}
 		>
 			<CarouselEmblaProvider value={emblaValue}>

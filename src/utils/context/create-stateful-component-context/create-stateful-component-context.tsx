@@ -22,33 +22,33 @@ export const createStatefulComponentContext = <T,>(displayName: string) => {
 
 	function StatefulProvider({
 		initialValue,
-		syncKeys,
+		syncedKeys,
 		children,
 	}: {
 		initialValue: T;
 		/** Keys from initialValue to keep in sync when their values change in the parent. */
-		syncKeys?: (keyof T)[];
+		syncedKeys?: (keyof T)[];
 		children: ReactNode;
 	}) {
 		const [value, setValue] = useState<T>(initialValue);
 		const prevSyncedRef = useRef<Partial<T>>({});
 
 		useEffect(() => {
-			if (!syncKeys) return;
+			if (!syncedKeys) return;
 
-			const changed = syncKeys.some((k) => initialValue[k] !== prevSyncedRef.current[k]);
+			const changed = syncedKeys.some((k) => initialValue[k] !== prevSyncedRef.current[k]);
 
 			if (changed) {
 				setValue((prev) => {
 					const next = { ...prev };
-					for (const key of syncKeys) {
+					for (const key of syncedKeys) {
 						next[key] = initialValue[key];
 					}
 					return next;
 				});
 
 				const snapshot: Partial<T> = {};
-				for (const key of syncKeys) {
+				for (const key of syncedKeys) {
 					snapshot[key] = initialValue[key];
 				}
 				prevSyncedRef.current = snapshot;
