@@ -45,7 +45,7 @@ export const TabView = ({
 		showDivider,
 	};
 	return (
-		<TabViewProvider initialValue={initialValue}>
+		<TabViewProvider syncedKeys={['title', 'items']} initialValue={initialValue}>
 			<TabViewContent />
 		</TabViewProvider>
 	);
