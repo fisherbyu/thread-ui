@@ -113,7 +113,7 @@ export const Gallery = ({
 	);
 
 	return (
-		<GalleryProvider initialValue={initialState}>
+		<GalleryProvider syncKeys={['title', 'subtitle', 'items']} initialValue={initialState}>
 			<GalleryEmblaProvider value={emblaValue}>
 				<GalleryContent />
 			</GalleryEmblaProvider>
