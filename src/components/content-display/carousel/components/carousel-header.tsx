@@ -13,7 +13,7 @@ const styles = {
 
 export const CarouselHeader = () => {
 	const {
-		value: { controlsPosition, title, subtitle },
+		value: { controlsPosition, title, subtitle, description },
 	} = useCarouselContext();
 
 	const headerControls = controlsPosition === 'above' ? <CarouselControls /> : undefined;
@@ -23,6 +23,7 @@ export const CarouselHeader = () => {
 			className={styles.titleBlock}
 			title={title}
 			subtitle={subtitle}
+			description={description}
 			secondaryContent={headerControls}
 		/>
 	);

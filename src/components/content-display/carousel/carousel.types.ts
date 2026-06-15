@@ -3,7 +3,7 @@ import { Prettify } from '@/types';
 import { EmblaViewportRefType } from 'embla-carousel-react';
 import { EmblaCarouselType } from 'embla-carousel';
 import { LargeColumnOptions, MediumColumnOptions } from '@/components';
-import { ContentTitle } from '@/internal-components';
+import { ContentHeading } from '@/internal-components';
 
 export type CarouselControlsPosition = 'above' | 'around' | 'below' | 'none';
 
@@ -24,7 +24,7 @@ type ItemWrapperComponent = ComponentType<any>;
 export type ItemWrapperOptions = 'none' | 'card' | 'cardFrame' | ItemWrapperComponent;
 
 export type CarouselProps = Prettify<
-	ContentTitle & {
+	ContentHeading & {
 		/** Items to render, in display order */
 		items: CarouselItem[];
 		/** Location to Render Controls @default 'around' */
@@ -39,7 +39,7 @@ export type CarouselProps = Prettify<
 >;
 
 export type CarouselState = Prettify<
-	Pick<CarouselProps, 'title' | 'subtitle' | 'mdCols'> &
+	Pick<CarouselProps, 'title' | 'subtitle' | 'description' | 'mdCols'> &
 		Required<Pick<CarouselProps, 'lgCols'>> & {
 			items: Record<CarouselItemId, InternalCarouselItem>;
 			itemOrder: CarouselItemId[];
