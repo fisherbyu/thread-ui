@@ -121,7 +121,10 @@ export const Carousel = ({
 	if (!itemList.length) return null;
 
 	return (
-		<CarouselProvider initialValue={initialState}>
+		<CarouselProvider
+			syncKeys={['title', 'subtitle', 'description', 'items']}
+			initialValue={initialState}
+		>
 			<CarouselEmblaProvider value={emblaValue}>
 				<CarouselContent />
 			</CarouselEmblaProvider>
