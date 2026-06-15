@@ -4,6 +4,7 @@ import {
 	useContext,
 	useState,
 	useEffect,
+	useRef,
 	useMemo,
 	type Dispatch,
 	type SetStateAction,
@@ -30,20 +31,29 @@ export const createStatefulComponentContext = <T,>(displayName: string) => {
 		children: ReactNode;
 	}) {
 		const [value, setValue] = useState<T>(initialValue);
-
-		// Stable serialization of just the watched values for the dependency array
-		const syncDep = syncKeys ? JSON.stringify(syncKeys.map((k) => initialValue[k])) : undefined;
+		const prevSyncedRef = useRef<Partial<T>>({});
 
 		useEffect(() => {
 			if (!syncKeys) return;
-			setValue((prev) => {
-				const next = { ...prev };
+
+			const changed = syncKeys.some((k) => initialValue[k] !== prevSyncedRef.current[k]);
+
+			if (changed) {
+				setValue((prev) => {
+					const next = { ...prev };
+					for (const key of syncKeys) {
+						next[key] = initialValue[key];
+					}
+					return next;
+				});
+
+				const snapshot: Partial<T> = {};
 				for (const key of syncKeys) {
-					next[key] = initialValue[key];
+					snapshot[key] = initialValue[key];
 				}
-				return next;
-			});
-		}, [syncDep]);
+				prevSyncedRef.current = snapshot;
+			}
+		});
 
 		const ctxValue = useMemo(() => ({ value, setValue }), [value]);
 		return <Context.Provider value={ctxValue}>{children}</Context.Provider>;
