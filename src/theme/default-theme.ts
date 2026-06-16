@@ -1,4 +1,5 @@
 import { ThemeConfigFull } from '@/types/theme/theme.types';
+import { ThemeFontOverrides } from './theme-fonts';
 
 export const DefaultThreadTheme: ThemeConfigFull = {
 	// Color Palette
@@ -123,9 +124,9 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	// Typograpghy
 	typography: {
 		fontFamilies: {
-			body: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
-			heading: "ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif",
-			mono: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+			body: `var(${ThemeFontOverrides.body}, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif)`,
+			heading: `var(${ThemeFontOverrides.heading}, ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif)`,
+			mono: `var(${ThemeFontOverrides.mono}, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace)`,
 		},
 		fontSizes: {
 			heading: {
