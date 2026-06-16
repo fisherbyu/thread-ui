@@ -1,4 +1,4 @@
-import { ThreadMode, THREAD_MODE_STORAGE_KEY, VALID_MODES } from './theme-mode';
+import { ThreadMode, THREAD_MODE_STORAGE_KEY, VALID_MODES } from './theme-provider.types';
 
 export type { ThreadMode };
 
