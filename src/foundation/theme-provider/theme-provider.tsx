@@ -1,27 +1,19 @@
 'use client';
 
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { ThemeConfig } from '@/types';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { generateOverrideCss } from './generate-override-css';
-import { ThreadMode, THREAD_MODE_STORAGE_KEY } from './theme-provider.types';
+import {
+	ThreadMode,
+	THREAD_MODE_STORAGE_KEY,
+	ThemeProviderProps,
+	ThemeContextValue,
+} from './theme-provider.types';
 import { applyModeToDocument } from './theme-mode-utils';
 
 // ─── Context ──────────────────────────────────────────────────────────────────
-
-interface ThreadContextValue {
-	mode: ThreadMode;
-	setMode: (mode: ThreadMode) => void;
-	toggleMode: () => void;
-}
-
-const ThreadContext = createContext<ThreadContextValue | null>(null);
+const ThreadContext = createContext<ThemeContextValue | null>(null);
 
 // ─── Provider ─────────────────────────────────────────────────────────────────
-
-interface ThemeProviderProps {
-	children: React.ReactNode;
-	theme?: ThemeConfig;
-}
 
 /**
  * Provides custom Thread theme configuration.
@@ -104,7 +96,7 @@ export const ThemeProvider = ({ children, theme }: ThemeProviderProps) => {
  * @example
  * const { mode, setMode, toggleMode } = useThemeMode();
  */
-export const useThemeMode = (): ThreadContextValue => {
+export const useThemeMode = (): ThemeContextValue => {
 	const context = useContext(ThreadContext);
 	if (!context) {
 		throw new Error('useThemeMode must be used within a <ThemeProvider>');
