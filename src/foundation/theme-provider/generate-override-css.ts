@@ -9,7 +9,7 @@ import {
  * Generates a CSS :root block containing only the variable declarations
  * for values present in the provided ThemeConfig override.
  */
-export function generateOverrideCss(overrides: ThemeConfig): string {
+export const generateOverrideCss = (overrides: ThemeConfig): string => {
 	const vars: string[] = [];
 
 	const lightModeKeySet = new Set(Object.keys(PrefixedLightModeVariables));
@@ -56,16 +56,16 @@ export function generateOverrideCss(overrides: ThemeConfig): string {
 	if (vars.length === 0) return '';
 
 	return `:root {\n${vars.join('\n')}\n}`;
-}
+};
 
 /**
  * Recursively collects CSS variable declarations.
  */
-function collectVars(
+const collectVars = (
 	variableNameOrMap: string | Record<string, unknown>,
 	value: unknown,
 	acc: string[]
-): void {
+): void => {
 	if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
 		// Nested object — recurse into each provided key
 		Object.keys(value as Record<string, unknown>).forEach((nestedKey) => {
@@ -79,4 +79,4 @@ function collectVars(
 	} else if (typeof value === 'string' && typeof variableNameOrMap === 'string') {
 		acc.push(`    ${variableNameOrMap}: ${value};`);
 	}
-}
+};

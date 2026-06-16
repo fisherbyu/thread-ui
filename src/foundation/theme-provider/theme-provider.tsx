@@ -33,7 +33,7 @@ interface ThemeProviderProps {
  *   <App />
  * </ThemeProvider>
  */
-export function ThemeProvider({ children, theme }: ThemeProviderProps) {
+export const ThemeProvider = ({ children, theme }: ThemeProviderProps) => {
 	const [mode, setModeState] = useState<ThreadMode>('system'); // Init as 'system' — sync to applied value on mount
 
 	// On mount: read the data-theme attribute ThreadScript already set on <html>.
@@ -92,7 +92,7 @@ export function ThemeProvider({ children, theme }: ThemeProviderProps) {
 			{children}
 		</ThreadContext.Provider>
 	);
-}
+};
 
 /**
  * Returns the current theme mode and controls for updating it.
