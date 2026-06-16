@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import { NavMenuProps } from './nav-menu.types';
 import {
 	NavigationLogo,
@@ -8,6 +8,7 @@ import {
 	NavDropdownItemProps,
 	NavDropdownItem,
 } from './components';
+import { useClickOutside, useResize } from '@/hooks';
 import { css, cx } from '@/styled-system/css';
 
 const style = {
@@ -143,6 +144,7 @@ const style = {
  */
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	// Navmenu Controls
+	const headerRef = useRef<HTMLElement>(null);
 	const [navIsOpened, setNavIsOpened] = useState(false);
 	const closeNavbar = () => {
 		setNavIsOpened(false);
@@ -151,31 +153,12 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		setNavIsOpened((navIsOpened) => !navIsOpened);
 	};
 
-	useEffect(() => {
-		const onResize = () => {
-			closeNavbar();
-		};
-
-		window.addEventListener('resize', onResize);
-	}, []);
-
-	useEffect(() => {
-		const handleOutsideClick = (event: MouseEvent) => {
-			// Check if the click is outside of the menu
-			const menu = document.getElementById('site-menu');
-			const isClickInsideMenu = menu && menu.contains(event.target as Node);
-
-			if (!isClickInsideMenu) {
-				closeNavbar();
-			}
-		};
-
-		document.addEventListener('click', handleOutsideClick);
-
-		return () => {
-			document.removeEventListener('click', handleOutsideClick);
-		};
-	}, []);
+	useResize({ onResize: closeNavbar });
+	useClickOutside({
+		elementRef: headerRef,
+		isOpen: navIsOpened,
+		onClose: closeNavbar,
+	});
 
 	const _renderNavItem = ({ href, title }: NavItemProps) => {
 		return <NavItem key={title} href={href} title={title} />;
@@ -194,7 +177,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	};
 
 	return (
-		<header id="site-menu" className={style.header}>
+		<header ref={headerRef} className={style.header}>
 			<nav className={style.nav}>
 				{logo && <NavigationLogo href={logo.href} logo={logo.logo} />}
 				<div
