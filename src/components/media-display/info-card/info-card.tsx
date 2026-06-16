@@ -1,4 +1,3 @@
-'use client';
 import { InfoCardProps } from './info-card.types';
 import { css } from '@/styled-system/css';
 import { cva } from '@/styled-system/css';
