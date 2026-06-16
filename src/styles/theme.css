@@ -55,12 +55,36 @@
 	--thread-border-size-sm: 0.5px;
 	--thread-border-size-md: 1px;
 	--thread-border-size-lg: 1.5px;
-	--thread-font-family-body:
-		-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	--thread-font-family-heading: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-	--thread-font-family-mono:
-		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-		monospace;
+	--thread-font-family-heading: var(
+		--font-heading,
+		ui-serif,
+		Georgia,
+		Cambria,
+		'Times New Roman',
+		Times,
+		serif
+	);
+	--thread-font-family-body: var(
+		--font-body,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		'Helvetica Neue',
+		Arial,
+		sans-serif
+	);
+	--thread-font-family-mono: var(
+		--font-mono,
+		ui-monospace,
+		SFMono-Regular,
+		Menlo,
+		Monaco,
+		Consolas,
+		'Liberation Mono',
+		'Courier New',
+		monospace
+	);
 	--thread-font-size-heading-sm: 1.25rem;
 	--thread-font-size-heading-md: 1.5rem;
 	--thread-font-size-heading-lg: 2rem;
