@@ -64,12 +64,15 @@ export const Footer = ({
 	const weight = 'bold';
 	const size = 24;
 
+	const descriptionDisplay =
+		typeof description === 'string' ? <Subtitle>{description}</Subtitle> : description;
+
 	return (
 		<Container as="footer" bg={bg}>
 			<Divider />
 			<div className={styles.footerContents}>
 				{logo && logo}
-				{description && <Subtitle>{description}</Subtitle>}
+				{descriptionDisplay}
 				<div className={styles.logoBlock}>
 					{facebookLink && (
 						<Link className={styles.links} href={facebookLink}>
