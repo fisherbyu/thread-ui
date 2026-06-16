@@ -9,6 +9,7 @@ import {
 	TwitterLogoIcon,
 } from '@phosphor-icons/react';
 import { css } from '@/styled-system/css';
+import { Link } from '@/internal-components';
 
 const styles = {
 	footerContents: css({
@@ -68,29 +69,29 @@ export const Footer = ({
 				{description && <Subtitle>{description}</Subtitle>}
 				<div className={styles.logoBlock}>
 					{facebookLink && (
-						<a className={styles.links} href={facebookLink}>
+						<Link className={styles.links} href={facebookLink}>
 							<FacebookLogoIcon size={size} weight={weight} />
-						</a>
+						</Link>
 					)}
 					{instagramLink && (
-						<a className={styles.links} href={instagramLink}>
+						<Link className={styles.links} href={instagramLink}>
 							<InstagramLogoIcon size={size} weight={weight} />
-						</a>
+						</Link>
 					)}
 					{twitterLink && (
-						<a className={styles.links} href={twitterLink}>
+						<Link className={styles.links} href={twitterLink}>
 							<TwitterLogoIcon size={size} weight={weight} />
-						</a>
+						</Link>
 					)}
 					{githubLink && (
-						<a className={styles.links} href={githubLink}>
+						<Link className={styles.links} href={githubLink}>
 							<GithubLogoIcon size={size} weight={weight} />
-						</a>
+						</Link>
 					)}
 					{linkedInLink && (
-						<a className={styles.links} href={linkedInLink}>
+						<Link className={styles.links} href={linkedInLink}>
 							<LinkedinLogoIcon size={size} weight={weight} />
-						</a>
+						</Link>
 					)}
 				</div>
 			</div>
