@@ -8,5 +8,5 @@ export type ThreadProviderProps = Prettify<{
 }>;
 
 export type ThreadFoundation = {
-	LinkComponent: LinkComponent | 'a';
+	LinkComponent: LinkComponent;
 };
