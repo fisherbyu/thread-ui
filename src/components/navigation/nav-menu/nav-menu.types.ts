@@ -1,5 +1,5 @@
 import { NavDropdownItemProps } from './components/nav-drop-down-item/nav-drop-down-item.types';
-import { NavigationLogoProps } from './components/nav-icon-item';
+import { NavigationLogoProps } from './components/nav-logo';
 import { NavItemProps } from './components/nav-item';
 
 export type NavMenuProps = {
