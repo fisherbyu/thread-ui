@@ -124,8 +124,8 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 	// Typograpghy
 	typography: {
 		fontFamilies: {
-			body: `var(${ThemeFontOverrides.body}, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif)`,
 			heading: `var(${ThemeFontOverrides.heading}, ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif)`,
+			body: `var(${ThemeFontOverrides.body}, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif)`,
 			mono: `var(${ThemeFontOverrides.mono}, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace)`,
 		},
 		fontSizes: {
