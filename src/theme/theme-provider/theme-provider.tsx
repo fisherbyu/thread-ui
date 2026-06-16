@@ -2,8 +2,8 @@
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { ThemeConfig } from '@/types';
-import { generateOverrideCss } from './theme-provider/generate-override-css';
-import { applyModeToDocument, ThreadMode, THREAD_MODE_STORAGE_KEY } from './theme-mode';
+import { generateOverrideCss } from './generate-override-css';
+import { applyModeToDocument, ThreadMode, THREAD_MODE_STORAGE_KEY } from '../theme-mode';
 
 // ─── Context ──────────────────────────────────────────────────────────────────
 
