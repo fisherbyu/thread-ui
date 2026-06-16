@@ -26,11 +26,11 @@ interface ThreadScriptProps {
  * // Next.js Pages Router (_document.tsx)
  * <Head><ThreadScript defaultMode="system" /></Head>
  */
-export function ThreadScript({ defaultMode = 'system' }: ThreadScriptProps) {
+export const ThreadScript = ({ defaultMode = 'system' }: ThreadScriptProps) => {
 	const scriptContent = buildScriptContent(defaultMode);
 
 	return <script dangerouslySetInnerHTML={{ __html: scriptContent }} />;
-}
+};
 
 const buildScriptContent = (defaultMode: ThreadMode): string => {
 	// Serialized as an IIFE so it doesn't pollute the global scope.
