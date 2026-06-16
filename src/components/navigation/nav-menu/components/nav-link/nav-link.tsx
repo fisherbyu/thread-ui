@@ -48,7 +48,7 @@ const styles = {
 export const NavLink = ({ children, href, halfPadding = false, isDropdownItem }: NavLinkProps) => {
 	return (
 		<li className={styles.li}>
-			<LinkWrapper link={href} className={styles.link({ halfPadding, isDropdownItem })}>
+			<LinkWrapper href={href} className={styles.link({ halfPadding, isDropdownItem })}>
 				<Text size="sm" inline weight="medium">
 					{children}
 				</Text>

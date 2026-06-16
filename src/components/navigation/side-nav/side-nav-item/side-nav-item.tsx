@@ -53,7 +53,7 @@ export const SideNavItem = ({ title, path, icon, onClick, basePath = '' }: SideN
 	const isActive = path === '/' ? currentPath === fullPath : currentPath.startsWith(fullPath);
 
 	return (
-		<LinkWrapper link={fullPath} className={styles.link({ isActive })} onClick={onClick}>
+		<LinkWrapper href={fullPath} className={styles.link({ isActive })} onClick={onClick}>
 			<Icon name={icon} size={24} filled={isActive} />
 			<p className={styles.linkContents}>{title}</p>
 		</LinkWrapper>

@@ -209,7 +209,7 @@ export const MediaCard = ({
 		isValidElement(link) ? (
 			cloneElement(link, { key: index })
 		) : (
-			<LinkWrapper link={link.url} key={index}>
+			<LinkWrapper href={link.url} key={index}>
 				<Icon name={link.iconName} size={24} />
 			</LinkWrapper>
 		)
