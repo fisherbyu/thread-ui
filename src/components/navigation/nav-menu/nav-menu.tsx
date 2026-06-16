@@ -92,17 +92,6 @@ const style = {
 		alignItems: 'center',
 	}),
 
-	menuControlButton: css({
-		outline: '2px solid transparent',
-		outlineOffset: '2px',
-		borderLeftWidth: 'md',
-		borderLeftColor: 'structure.default',
-		paddingLeft: '12px',
-		position: 'relative',
-		paddingTop: '12px',
-		paddingBottom: '12px',
-	}),
-
 	menuCross: css({
 		animationDuration: '300ms',
 		display: 'flex',
@@ -143,15 +132,11 @@ const style = {
  * />
  */
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
-	// Navmenu Controls
 	const headerRef = useRef<HTMLElement>(null);
 	const [navIsOpened, setNavIsOpened] = useState(false);
-	const closeNavbar = () => {
-		setNavIsOpened(false);
-	};
-	const toggleNavbar = () => {
-		setNavIsOpened((navIsOpened) => !navIsOpened);
-	};
+
+	const closeNavbar = () => setNavIsOpened(false);
+	const toggleNavbar = () => setNavIsOpened((prev) => !prev);
 
 	useResize({ onResize: closeNavbar });
 	useClickOutside({
@@ -160,20 +145,12 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		onClose: closeNavbar,
 	});
 
-	const _renderNavItem = ({ href, title }: NavItemProps) => {
-		return <NavItem key={title} href={href} title={title} />;
-	};
-	const _renderNavDropdown = ({ title, items }: NavDropdownItemProps) => {
-		return <NavDropdownItem key={title} title={title} items={items} />;
-	};
-	const _renderItem = (item: NavItemProps | NavDropdownItemProps) => {
-		if ('href' in item) {
-			// item is of type NavItem
-			return _renderNavItem(item);
-		} else {
-			// item is of type NavDropdownItem
-			return _renderNavDropdown(item);
-		}
+	const renderItem = (item: NavItemProps | NavDropdownItemProps) => {
+		return 'href' in item ? (
+			<NavItem key={item.title} href={item.href} title={item.title} />
+		) : (
+			<NavDropdownItem key={item.title} title={item.title} items={item.items} />
+		);
 	};
 
 	return (
@@ -186,15 +163,10 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 						navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
 					)}
 				>
-					<ul className={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
+					<ul className={style.itemList}>{items.map(renderItem)}</ul>
 				</div>
 				<div className={style.menuControl}>
-					<button
-						onClick={() => {
-							toggleNavbar();
-						}}
-						aria-label="toggle navbar"
-					>
+					<button onClick={toggleNavbar} aria-label="toggle navbar">
 						<span
 							aria-hidden={true}
 							className={cx(style.menuCross, navIsOpened && style.menuCrossTopOpen)}
