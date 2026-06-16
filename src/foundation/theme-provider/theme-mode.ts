@@ -1,8 +1,4 @@
-export type ThreadMode = 'light' | 'dark' | 'system';
-
-export const THREAD_MODE_STORAGE_KEY = 'thread-mode' as const;
-
-export const VALID_MODES: ThreadMode[] = ['light', 'dark', 'system'];
+import { ThreadMode, VALID_MODES } from './theme-provider.types';
 
 export const isValidMode = (value: unknown): value is ThreadMode => {
 	return typeof value === 'string' && VALID_MODES.includes(value as ThreadMode);
