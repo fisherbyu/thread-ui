@@ -11,7 +11,7 @@ import {
 import { applyModeToDocument } from './theme-mode-utils';
 
 // ─── Context ──────────────────────────────────────────────────────────────────
-const ThreadContext = createContext<ThemeContextValue | null>(null);
+const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 // ─── Provider ─────────────────────────────────────────────────────────────────
 
@@ -75,7 +75,7 @@ export const ThemeProvider = ({ children, theme }: ThemeProviderProps) => {
 	);
 
 	return (
-		<ThreadContext.Provider value={contextValue}>
+		<ThemeContext.Provider value={contextValue}>
 			{overrideCss && (
 				<style
 					id="thread-theme-overrides"
@@ -83,7 +83,7 @@ export const ThemeProvider = ({ children, theme }: ThemeProviderProps) => {
 				/>
 			)}
 			{children}
-		</ThreadContext.Provider>
+		</ThemeContext.Provider>
 	);
 };
 
@@ -97,7 +97,7 @@ export const ThemeProvider = ({ children, theme }: ThemeProviderProps) => {
  * const { mode, setMode, toggleMode } = useThemeMode();
  */
 export const useThemeMode = (): ThemeContextValue => {
-	const context = useContext(ThreadContext);
+	const context = useContext(ThemeContext);
 	if (!context) {
 		throw new Error('useThemeMode must be used within a <ThemeProvider>');
 	}
