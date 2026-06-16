@@ -4,7 +4,7 @@ import { LinkWrapperProps } from './link-wrapper.types';
 import { useLinkComponent } from '@/foundation';
 
 export const LinkWrapper: React.FC<LinkWrapperProps> = ({ children, ...anchorProps }) => {
-	const Link = useLinkComponent();
+	const LinkComponent = useLinkComponent();
 
-	return <Link {...anchorProps}>{children}</Link>;
+	return <LinkComponent {...anchorProps}>{children}</LinkComponent>;
 };
