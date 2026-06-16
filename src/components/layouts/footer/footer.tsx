@@ -33,6 +33,9 @@ const styles = {
 	}),
 	links: css({
 		color: 'text.standard',
+		_hover: {
+			color: 'text.accent',
+		},
 	}),
 };
 
