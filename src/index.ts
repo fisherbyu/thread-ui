@@ -2,7 +2,7 @@
 export * from './components';
 
 // Export Foundation
-export { ThreadScript, ThreadProvider, ThreadProviderProps } from './foundation';
+export { ThreadScript, ThreadProvider, type ThreadProviderProps } from './foundation';
 
 // Export Types
 export * from './types';
