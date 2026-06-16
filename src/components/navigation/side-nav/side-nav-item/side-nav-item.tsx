@@ -1,5 +1,5 @@
 'use client';
-import { LinkWrapper } from '@/internal-components';
+import { Link } from '@/internal-components';
 import { usePathname } from '@/hooks';
 import { Icon } from '@/components';
 import { SideNavItemProps } from './side-nav-item.types';
@@ -53,9 +53,9 @@ export const SideNavItem = ({ title, path, icon, onClick, basePath = '' }: SideN
 	const isActive = path === '/' ? currentPath === fullPath : currentPath.startsWith(fullPath);
 
 	return (
-		<LinkWrapper href={fullPath} className={styles.link({ isActive })} onClick={onClick}>
+		<Link href={fullPath} className={styles.link({ isActive })} onClick={onClick}>
 			<Icon name={icon} size={24} filled={isActive} />
 			<p className={styles.linkContents}>{title}</p>
-		</LinkWrapper>
+		</Link>
 	);
 };

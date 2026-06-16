@@ -1,5 +1,5 @@
 import { NavLinkProps } from './nav-link.types';
-import { LinkWrapper } from '@/internal-components';
+import { Link } from '@/internal-components';
 import { css, cva } from '@/styled-system/css';
 import { Text } from '@/components/typography';
 
@@ -48,11 +48,11 @@ const styles = {
 export const NavLink = ({ children, href, halfPadding = false, isDropdownItem }: NavLinkProps) => {
 	return (
 		<li className={styles.li}>
-			<LinkWrapper href={href} className={styles.link({ halfPadding, isDropdownItem })}>
+			<Link href={href} className={styles.link({ halfPadding, isDropdownItem })}>
 				<Text size="sm" inline weight="medium">
 					{children}
 				</Text>
-			</LinkWrapper>
+			</Link>
 		</li>
 	);
 };
