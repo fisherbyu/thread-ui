@@ -1,5 +1,4 @@
 import { FontFamilyOptions } from '@/types';
-import { ThreadTheme } from './thread-theme';
 
 type ThemeFonts = Record<FontFamilyOptions, `--${string}`>;
 
