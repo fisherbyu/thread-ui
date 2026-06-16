@@ -1,2 +1,2 @@
-export type { LinkWrapperProps } from './link-wrapper.types';
-export { Link } from './link-wrapper';
+export type { LinkWrapperProps } from './link.types';
+export { Link } from './link';
