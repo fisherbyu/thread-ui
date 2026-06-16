@@ -4,7 +4,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 import { ThemeConfig } from '@/types';
 import { generateOverrideCss } from './generate-override-css';
 import { ThreadMode, THREAD_MODE_STORAGE_KEY } from './theme-provider.types';
-import { applyModeToDocument } from './theme-mode';
+import { applyModeToDocument } from './theme-mode-utils';
 
 // ─── Context ──────────────────────────────────────────────────────────────────
 
