@@ -4,11 +4,6 @@ import '../src/styles/thread.css'; // Thread UI styles (theme + panda + tailwind
 
 import { ThreadTheme } from '../src';
 
-const threadConfig = {} as const;
-
-// Initialize Theme
-// export const TestConfig = createTheme(threadConfig);
-
 const preview: Preview = {
 	decorators: [
 		(Story, context) => {
