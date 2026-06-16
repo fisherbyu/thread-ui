@@ -1,3 +1,3 @@
 import { ComponentPropsWithRef } from 'react';
 
-export type LinkWrapperProps = ComponentPropsWithRef<'a'>;
+export type LinkProps = ComponentPropsWithRef<'a'>;
