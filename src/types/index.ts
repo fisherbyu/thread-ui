@@ -1,6 +1,9 @@
 // COLOR TYPES
 export * from './colors';
 
+// FOUNDATION TYPES
+export * from './foundation';
+
 // IMAGE TYPES
 export * from './image';
 
