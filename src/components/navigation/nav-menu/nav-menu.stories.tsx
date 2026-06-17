@@ -2,14 +2,15 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { NavMenu } from './nav-menu';
 import { ThreadTheme } from '../../../theme';
+import { H1, H2, Text } from '../../typography';
 
 const SamplePageContent = (
 	<div style={{ padding: '20px' }}>
-		<h1 style={{ fontSize: '24px', marginBottom: '16px' }}>Page Content</h1>
-		<p style={{ color: '#666' }}>
+		<H1>Page Content</H1>
+		<Text>
 			This is sample page content to demonstrate the navigation in context. Scroll down to see
 			how the sticky navigation behaves.
-		</p>
+		</Text>
 		{/* Add more content to make the page scrollable */}
 		{Array.from({ length: 5 }).map((_, i) => (
 			<div
@@ -21,12 +22,12 @@ const SamplePageContent = (
 					borderRadius: '8px',
 				}}
 			>
-				<h2 style={{ marginBottom: '12px' }}>Section {i + 1}</h2>
-				<p style={{ color: '#666' }}>
+				<H2>Section {i + 1}</H2>
+				<Text>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
 					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 					nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
+				</Text>
 			</div>
 		))}
 	</div>
