@@ -1,8 +1,8 @@
 'use client';
 import { CSSProperties, useState } from 'react';
-import { NavLink } from '../nav-link';
+import { NavLink } from './nav-link';
 import { css, cx } from '@/styled-system/css';
-import { NavigationDropdownItem } from '../../nav-menu.types';
+import { NavigationDropdownItem } from '../nav-menu.types';
 
 const styles = {
 	parentBlock: css({
