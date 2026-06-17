@@ -17,7 +17,7 @@ export type NavigationLogoProps = {
 };
 
 export type NavigationDropdownItem = Prettify<
-	NavigationItem & {
+	Omit<NavigationItem, 'href'> & {
 		/** Items within dropdown */
 		items: NavigationItem[];
 	}
