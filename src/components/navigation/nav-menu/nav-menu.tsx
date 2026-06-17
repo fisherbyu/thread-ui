@@ -1,15 +1,12 @@
 'use client';
 import { useRef, useState } from 'react';
-import { NavMenuProps } from './nav-menu.types';
-import {
-	NavigationLogo,
-	NavItem,
-	NavItemProps,
-	NavDropdownItemProps,
-	NavDropdownItem,
-} from './components';
 import { useClickOutside, useResize } from '@/hooks';
 import { css, cx } from '@/styled-system/css';
+import { NavigationDropdownItem, NavMenuProps } from './nav-menu.types';
+import { NavigationLogo } from './components/navigation-logo';
+import { NavItem } from './components/nav-item';
+import { NavDropdownItem } from './components/nav-drop-down-item';
+import { NavigationItem } from '../navigation.types';
 
 const style = {
 	header: css({
@@ -145,7 +142,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		onClose: closeNavbar,
 	});
 
-	const renderItem = (item: NavItemProps | NavDropdownItemProps) => {
+	const renderItem = (item: NavigationItem | NavigationDropdownItem) => {
 		return 'href' in item ? (
 			<NavItem key={item.title} href={item.href} title={item.title} />
 		) : (
