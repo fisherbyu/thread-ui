@@ -14,7 +14,7 @@ const styles = {
 			position: { base: 'static', lg: 'relative' },
 			display: 'inline-flex',
 			flexDirection: 'row',
-			gap: '1',
+			gap: '1.5',
 			height: { base: 'auto', lg: '10' },
 			alignItems: 'center',
 			justifyContent: 'center',
@@ -41,7 +41,10 @@ const styles = {
 				},
 			},
 			isDropdownItem: {
-				true: { width: { base: 'fit-content', lg: '100%' } },
+				true: {
+					justifyContent: { base: 'space-between', lg: 'center' },
+					width: { base: 'fit-content', lg: '100%' },
+				},
 				false: { width: { base: '100%', lg: 'fit-content' } },
 			},
 		},

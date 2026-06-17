@@ -3,6 +3,9 @@ import { CSSProperties, useState } from 'react';
 import { NavLink } from './nav-link';
 import { css, cx } from '@/styled-system/css';
 import { NavigationDropdownItem } from '../nav-menu.types';
+import { Text } from '@/components/typography';
+import { Icon } from '@/components/ui';
+import { ThreadTheme } from '@/theme';
 
 const styles = {
 	parentBlock: css({
@@ -11,7 +14,6 @@ const styles = {
 	textBlock: css({
 		display: 'flex',
 		flexDirection: 'row',
-		gap: '1',
 		justifyContent: 'center',
 		alignItems: 'center',
 	}),
@@ -58,10 +60,11 @@ const styles = {
 	}),
 };
 
-export const NavDropdownItem = ({ title, items }: NavigationDropdownItem) => {
+export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) => {
 	const [isHovered, setIsHovered] = useState(false);
 
 	const arrow: CSSProperties = {
+		color: ThreadTheme.text.standard,
 		marginTop: '1px',
 		height: '12px',
 		width: '12px',
@@ -77,23 +80,24 @@ export const NavDropdownItem = ({ title, items }: NavigationDropdownItem) => {
 			onClick={() => setIsHovered(false)}
 		>
 			<NavLink href="#">
-				<div className={styles.textBlock}>
-					<span>{title}</span>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						strokeWidth="2"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						style={arrow}
-					>
-						<path d="m6 9 6 6 6-6"></path>
-					</svg>
-				</div>
+				{icon && <Icon size={16} color="text" name={icon} />}
+				<Text size="sm" inline>
+					{title}
+				</Text>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					strokeWidth="2"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+					style={arrow}
+				>
+					<path d="m6 9 6 6 6-6"></path>
+				</svg>
 			</NavLink>
 			{isHovered && <div className={styles.targetArea} />}
 			{/* Swap menu based on size */}
@@ -106,7 +110,10 @@ export const NavDropdownItem = ({ title, items }: NavigationDropdownItem) => {
 			>
 				{items.map((item) => (
 					<NavLink key={item.title} href={item.href} isDropdownItem>
-						{item.title}
+						{item.icon && <Icon color="text" name={item.icon} size={12} />}
+						<Text size="sm" inline weight="medium">
+							{item.title}
+						</Text>
 					</NavLink>
 				))}
 			</div>
@@ -119,7 +126,10 @@ export const NavDropdownItem = ({ title, items }: NavigationDropdownItem) => {
 			>
 				{items.map((item) => (
 					<NavLink key={item.title} href={item.href} isDropdownItem>
-						{item.title}
+						{item.icon && <Icon color="text" name={item.icon} size={12} />}
+						<Text size="sm" inline weight="medium">
+							{item.title}
+						</Text>
 					</NavLink>
 				))}
 			</div>
