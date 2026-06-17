@@ -14,7 +14,7 @@ const styles = {
 			position: { base: 'static', lg: 'relative' },
 			display: 'inline-flex',
 			flexDirection: 'column',
-			height: { base: 'auto', lg: '2.5rem' },
+			height: { base: 'auto', lg: '10' },
 			alignItems: 'center',
 			justifyContent: 'center',
 			borderRadius: 'md',
@@ -30,8 +30,14 @@ const styles = {
 		},
 		variants: {
 			halfPadding: {
-				true: { padding: '4px 8px' },
-				false: { padding: '8px 16px' },
+				true: {
+					paddingY: '1',
+					paddingX: '2',
+				},
+				false: {
+					paddingY: '2',
+					paddingX: '4',
+				},
 			},
 			isDropdownItem: {
 				true: { width: { base: 'fit-content', lg: '100%' } },
