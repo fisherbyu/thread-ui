@@ -1,8 +1,8 @@
 'use client';
 import { CSSProperties, useState } from 'react';
 import { NavLink } from '../nav-link';
-import { NavDropdownItemProps } from './nav-drop-down-item.types';
 import { css, cx } from '@/styled-system/css';
+import { NavigationDropdownItem } from '../../nav-menu.types';
 
 const styles = {
 	parentBlock: css({
@@ -58,7 +58,7 @@ const styles = {
 	}),
 };
 
-export const NavDropdownItem = ({ title, items }: NavDropdownItemProps) => {
+export const NavDropdownItem = ({ title, items }: NavigationDropdownItem) => {
 	const [isHovered, setIsHovered] = useState(false);
 
 	const arrow: CSSProperties = {
