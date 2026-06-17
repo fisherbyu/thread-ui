@@ -77,9 +77,9 @@ export const Basic: Story = {
 			logo: <SampleLogo />,
 		},
 		items: [
-			{ href: '/', title: 'Home', icon: 'House' },
-			{ href: '/', title: 'About' },
-			{ href: '/', title: 'Contact' },
+			{ href: '/', title: 'Home', icon: 'HouseIcon' },
+			{ href: '/', title: 'About', icon: 'BookOpenTextIcon' },
+			{ href: '/', title: 'Contact', icon: 'EnvelopeIcon' },
 			{
 				title: 'Music',
 				items: [
