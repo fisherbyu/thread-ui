@@ -14,6 +14,9 @@ const config: StorybookConfig = {
 		name: '@storybook/react-vite',
 		options: {},
 	},
+	features: {
+		sidebarOnboardingChecklist: false,
+	},
 	managerHead: (head) => `
         ${head}
         <script>
