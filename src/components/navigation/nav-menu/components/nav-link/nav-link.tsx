@@ -13,7 +13,8 @@ const styles = {
 		base: {
 			position: { base: 'static', lg: 'relative' },
 			display: 'inline-flex',
-			flexDirection: 'column',
+			flexDirection: 'row',
+			gap: '1',
 			height: { base: 'auto', lg: '10' },
 			alignItems: 'center',
 			justifyContent: 'center',
@@ -55,9 +56,7 @@ export const NavLink = ({ children, href, halfPadding = false, isDropdownItem }:
 	return (
 		<li className={styles.li}>
 			<Link href={href} className={styles.link({ halfPadding, isDropdownItem })}>
-				<Text size="sm" inline weight="medium">
-					{children}
-				</Text>
+				{children}
 			</Link>
 		</li>
 	);
