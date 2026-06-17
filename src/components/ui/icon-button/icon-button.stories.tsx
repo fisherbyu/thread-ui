@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { IconButton } from './icon-button';
 import * as PhosphorIcons from '@phosphor-icons/react';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { NavMenu } from './nav-menu';
 import { ThreadTheme } from '../../../theme';
 import { H1, H2, Text } from '../../typography';

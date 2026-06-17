@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Gallery } from './gallery';
 import { GalleryItem } from './gallery.types';
 import { Text } from '../../typography';

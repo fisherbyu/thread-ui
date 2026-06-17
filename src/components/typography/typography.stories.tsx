@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Title, H1, H2, H3, Text, Subtitle, List, OrderedList, Code, PageHeader } from './index'; // Adjust import path as needed
 
 type TypographyArgs = {

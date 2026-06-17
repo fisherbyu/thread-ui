@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DefaultThreadTheme } from '../default-theme';
 import { SurfaceLayerMap } from '../theme-surface-system';
 import { Code, H1, H2, List, Text, Title } from '../../components/typography';

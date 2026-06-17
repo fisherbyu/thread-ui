@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { SortControls } from './sort-controls';
 import { useSortControls } from './use-sort-controls';
 import { Text } from '../../typography';

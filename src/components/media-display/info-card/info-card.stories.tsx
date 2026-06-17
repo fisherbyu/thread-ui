@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { InfoCard } from './info-card';
 
 const meta: Meta<typeof InfoCard> = {
