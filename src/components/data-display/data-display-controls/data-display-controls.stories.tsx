@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DataDisplayControls } from './';
 import { useDataDisplayControls } from './use-data-display-controls';
 import { DataDisplayControlsProps } from './data-display-controls.types';

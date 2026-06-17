@@ -1,14 +1,12 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { NavMenuProps } from './nav-menu.types';
-import {
-	NavigationLogo,
-	NavItem,
-	NavItemProps,
-	NavDropdownItemProps,
-	NavDropdownItem,
-} from './components';
+import { useRef, useState } from 'react';
+import { useClickOutside, useResize } from '@/hooks';
 import { css, cx } from '@/styled-system/css';
+import { NavigationDropdownItem, NavMenuProps } from './nav-menu.types';
+import { NavigationLogo } from './components/navigation-logo';
+import { NavItem } from './components/nav-item';
+import { NavDropdownItem } from './components/nav-drop-down-item';
+import { NavigationItem } from '../navigation.types';
 
 const style = {
 	header: css({
@@ -91,17 +89,6 @@ const style = {
 		alignItems: 'center',
 	}),
 
-	menuControlButton: css({
-		outline: '2px solid transparent',
-		outlineOffset: '2px',
-		borderLeftWidth: 'md',
-		borderLeftColor: 'structure.default',
-		paddingLeft: '12px',
-		position: 'relative',
-		paddingTop: '12px',
-		paddingBottom: '12px',
-	}),
-
 	menuCross: css({
 		animationDuration: '300ms',
 		display: 'flex',
@@ -142,59 +129,29 @@ const style = {
  * />
  */
 export const NavMenu = ({ logo, items }: NavMenuProps) => {
-	// Navmenu Controls
+	const headerRef = useRef<HTMLElement>(null);
 	const [navIsOpened, setNavIsOpened] = useState(false);
-	const closeNavbar = () => {
-		setNavIsOpened(false);
-	};
-	const toggleNavbar = () => {
-		setNavIsOpened((navIsOpened) => !navIsOpened);
-	};
 
-	useEffect(() => {
-		const onResize = () => {
-			closeNavbar();
-		};
+	const closeNavbar = () => setNavIsOpened(false);
+	const toggleNavbar = () => setNavIsOpened((prev) => !prev);
 
-		window.addEventListener('resize', onResize);
-	}, []);
+	useResize({ onResize: closeNavbar });
+	useClickOutside({
+		elementRef: headerRef,
+		isOpen: navIsOpened,
+		onClose: closeNavbar,
+	});
 
-	useEffect(() => {
-		const handleOutsideClick = (event: MouseEvent) => {
-			// Check if the click is outside of the menu
-			const menu = document.getElementById('site-menu');
-			const isClickInsideMenu = menu && menu.contains(event.target as Node);
-
-			if (!isClickInsideMenu) {
-				closeNavbar();
-			}
-		};
-
-		document.addEventListener('click', handleOutsideClick);
-
-		return () => {
-			document.removeEventListener('click', handleOutsideClick);
-		};
-	}, []);
-
-	const _renderNavItem = ({ href, title }: NavItemProps) => {
-		return <NavItem key={title} href={href} title={title} />;
-	};
-	const _renderNavDropdown = ({ title, items }: NavDropdownItemProps) => {
-		return <NavDropdownItem key={title} title={title} items={items} />;
-	};
-	const _renderItem = (item: NavItemProps | NavDropdownItemProps) => {
-		if ('href' in item) {
-			// item is of type NavItem
-			return _renderNavItem(item);
-		} else {
-			// item is of type NavDropdownItem
-			return _renderNavDropdown(item);
-		}
+	const renderItem = (item: NavigationItem | NavigationDropdownItem) => {
+		return 'href' in item ? (
+			<NavItem key={item.title} {...item} />
+		) : (
+			<NavDropdownItem key={item.title} {...item} />
+		);
 	};
 
 	return (
-		<header id="site-menu" className={style.header}>
+		<header ref={headerRef} className={style.header}>
 			<nav className={style.nav}>
 				{logo && <NavigationLogo href={logo.href} logo={logo.logo} />}
 				<div
@@ -203,15 +160,10 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 						navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
 					)}
 				>
-					<ul className={style.itemList}>{items.map((item) => _renderItem(item))}</ul>
+					<ul className={style.itemList}>{items.map(renderItem)}</ul>
 				</div>
 				<div className={style.menuControl}>
-					<button
-						onClick={() => {
-							toggleNavbar();
-						}}
-						aria-label="toggle navbar"
-					>
+					<button onClick={toggleNavbar} aria-label="toggle navbar">
 						<span
 							aria-hidden={true}
 							className={cx(style.menuCross, navIsOpened && style.menuCrossTopOpen)}

@@ -1,5 +1,5 @@
 import { NavLinkProps } from './nav-link.types';
-import { LinkWrapper } from '@/internal-components';
+import { Link } from '@/internal-components';
 import { css, cva } from '@/styled-system/css';
 import { Text } from '@/components/typography';
 
@@ -13,8 +13,9 @@ const styles = {
 		base: {
 			position: { base: 'static', lg: 'relative' },
 			display: 'inline-flex',
-			flexDirection: 'column',
-			height: { base: 'auto', lg: '2.5rem' },
+			flexDirection: 'row',
+			gap: '1.5',
+			height: { base: 'auto', lg: '10' },
 			alignItems: 'center',
 			justifyContent: 'center',
 			borderRadius: 'md',
@@ -30,11 +31,20 @@ const styles = {
 		},
 		variants: {
 			halfPadding: {
-				true: { padding: '4px 8px' },
-				false: { padding: '8px 16px' },
+				true: {
+					paddingY: '1',
+					paddingX: '2',
+				},
+				false: {
+					paddingY: '2',
+					paddingX: '4',
+				},
 			},
 			isDropdownItem: {
-				true: { width: { base: 'fit-content', lg: '100%' } },
+				true: {
+					justifyContent: { base: 'space-between', lg: 'center' },
+					width: { base: 'fit-content', lg: '100%' },
+				},
 				false: { width: { base: '100%', lg: 'fit-content' } },
 			},
 		},
@@ -48,11 +58,9 @@ const styles = {
 export const NavLink = ({ children, href, halfPadding = false, isDropdownItem }: NavLinkProps) => {
 	return (
 		<li className={styles.li}>
-			<LinkWrapper link={href} className={styles.link({ halfPadding, isDropdownItem })}>
-				<Text size="sm" inline weight="medium">
-					{children}
-				</Text>
-			</LinkWrapper>
+			<Link href={href} className={styles.link({ halfPadding, isDropdownItem })}>
+				{children}
+			</Link>
 		</li>
 	);
 };

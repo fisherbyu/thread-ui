@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Toggle } from './';
 
 const meta: Meta<typeof Toggle> = {

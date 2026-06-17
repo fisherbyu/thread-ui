@@ -2,7 +2,7 @@ import { css, cva } from '@/styled-system/css';
 import { MediaCardProps } from './media-card.types';
 import { H1, Text } from '@/components/typography';
 import { Divider, Icon } from '@/components/ui';
-import { LinkWrapper, renderImage } from '@/internal-components';
+import { Link, renderImage } from '@/internal-components';
 import { SurfaceLayerMap } from '@/theme';
 import { cloneElement, isValidElement } from 'react';
 
@@ -209,9 +209,9 @@ export const MediaCard = ({
 		isValidElement(link) ? (
 			cloneElement(link, { key: index })
 		) : (
-			<LinkWrapper link={link.url} key={index}>
+			<Link href={link.url} key={index}>
 				<Icon name={link.iconName} size={24} />
-			</LinkWrapper>
+			</Link>
 		)
 	);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Carousel } from './carousel';
 import { CarouselItem } from './carousel.types';
 import { Text } from '../../typography';

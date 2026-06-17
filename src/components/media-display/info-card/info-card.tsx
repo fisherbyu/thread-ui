@@ -1,9 +1,8 @@
-'use client';
 import { InfoCardProps } from './info-card.types';
 import { css } from '@/styled-system/css';
 import { cva } from '@/styled-system/css';
 import { Text } from '@/components/typography';
-import { DynamicIcon, renderImage } from '@/internal-components';
+import { DynamicIcon, Link, renderImage } from '@/internal-components';
 import { SurfaceLayerMap } from '@/theme';
 
 const styles = {
@@ -102,7 +101,7 @@ export const InfoCard = ({ title, url, icon, image, layer = 'surface' }: InfoCar
 	const config = SurfaceLayerMap[layer];
 
 	return (
-		<a
+		<Link
 			href={url}
 			className={styles.card({
 				bg: config.bg,
@@ -119,6 +118,6 @@ export const InfoCard = ({ title, url, icon, image, layer = 'surface' }: InfoCar
 					{title}
 				</Text>
 			</div>
-		</a>
+		</Link>
 	);
 };

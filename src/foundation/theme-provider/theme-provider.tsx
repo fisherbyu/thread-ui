@@ -1,26 +1,19 @@
 'use client';
 
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { ThemeConfig } from '@/types';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { generateOverrideCss } from './generate-override-css';
-import { applyModeToDocument, ThreadMode, THREAD_MODE_STORAGE_KEY } from './theme-mode';
+import {
+	ThreadMode,
+	THREAD_MODE_STORAGE_KEY,
+	ThemeProviderProps,
+	ThemeContextValue,
+} from './theme-provider.types';
+import { applyModeToDocument } from './theme-mode-utils';
 
 // ─── Context ──────────────────────────────────────────────────────────────────
-
-interface ThreadContextValue {
-	mode: ThreadMode;
-	setMode: (mode: ThreadMode) => void;
-	toggleMode: () => void;
-}
-
-const ThreadContext = createContext<ThreadContextValue | null>(null);
+const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 // ─── Provider ─────────────────────────────────────────────────────────────────
-
-interface ThemeProviderProps {
-	children: React.ReactNode;
-	theme?: ThemeConfig;
-}
 
 /**
  * Provides custom Thread theme configuration.
@@ -33,7 +26,7 @@ interface ThemeProviderProps {
  *   <App />
  * </ThemeProvider>
  */
-export function ThemeProvider({ children, theme }: ThemeProviderProps) {
+export const ThemeProvider = ({ children, theme }: ThemeProviderProps) => {
 	const [mode, setModeState] = useState<ThreadMode>('system'); // Init as 'system' — sync to applied value on mount
 
 	// On mount: read the data-theme attribute ThreadScript already set on <html>.
@@ -82,7 +75,7 @@ export function ThemeProvider({ children, theme }: ThemeProviderProps) {
 	);
 
 	return (
-		<ThreadContext.Provider value={contextValue}>
+		<ThemeContext.Provider value={contextValue}>
 			{overrideCss && (
 				<style
 					id="thread-theme-overrides"
@@ -90,9 +83,9 @@ export function ThemeProvider({ children, theme }: ThemeProviderProps) {
 				/>
 			)}
 			{children}
-		</ThreadContext.Provider>
+		</ThemeContext.Provider>
 	);
-}
+};
 
 /**
  * Returns the current theme mode and controls for updating it.
@@ -103,8 +96,8 @@ export function ThemeProvider({ children, theme }: ThemeProviderProps) {
  * @example
  * const { mode, setMode, toggleMode } = useThemeMode();
  */
-export const useThemeMode = (): ThreadContextValue => {
-	const context = useContext(ThreadContext);
+export const useThemeMode = (): ThemeContextValue => {
+	const context = useContext(ThemeContext);
 	if (!context) {
 		throw new Error('useThemeMode must be used within a <ThemeProvider>');
 	}

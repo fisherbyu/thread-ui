@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FilterControls } from './variants/filter-controls';
 import { InlineFilterControls } from './variants/inline-filter-controls';
 import { useFilterControls } from './use-filter-controls';

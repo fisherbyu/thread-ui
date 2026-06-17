@@ -1,13 +1,8 @@
 import React from 'react';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import '../src/styles/thread.css'; // Thread UI styles (theme + panda + tailwind)
 
 import { ThreadTheme } from '../src';
-
-const threadConfig = {} as const;
-
-// Initialize Theme
-// export const TestConfig = createTheme(threadConfig);
 
 const preview: Preview = {
 	decorators: [
@@ -71,7 +66,6 @@ const preview: Preview = {
 					{ value: 'dark', icon: 'moon', title: 'Dark' },
 				],
 				// Show tool tip with current theme
-				showName: true,
 				// Change toolbar icon based on selected theme
 				dynamicTitle: true,
 			},
