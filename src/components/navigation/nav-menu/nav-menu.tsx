@@ -159,6 +159,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 						style.menuItemBlock,
 						navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
 					)}
+					onClick={() => setNavIsOpened(false)}
 				>
 					<ul className={style.itemList}>{items.map(renderItem)}</ul>
 				</div>
