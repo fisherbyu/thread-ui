@@ -83,10 +83,11 @@ export const Basic: Story = {
 			{ href: '/', title: 'Contact', icon: 'EnvelopeIcon' },
 			{
 				title: 'Music',
+				icon: 'MusicNotesIcon',
 				items: [
-					{ href: '/', title: 'Artists' },
-					{ href: '/', title: 'Coldplay' },
-					{ href: '/', title: 'Playlists' },
+					{ href: '/', title: 'Artists', icon: 'MicrophoneStageIcon' },
+					{ href: '/', title: 'Coldplay', icon: 'StarIcon' },
+					{ href: '/', title: 'Playlists', icon: 'PlaylistIcon' },
 				],
 			},
 		],
