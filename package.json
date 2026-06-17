@@ -49,8 +49,6 @@
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@pandacss/dev": "^1.8.2",
-		"@storybook/addon-docs": "^10.4.6",
-		"@storybook/addon-onboarding": "^10.4.6",
 		"@storybook/react": "^10.4.6",
 		"@storybook/react-vite": "^10.4.6",
 		"@types/node": "^22.4.1",
