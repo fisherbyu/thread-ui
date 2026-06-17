@@ -1,6 +1,6 @@
-import { NavItemProps } from './nav-item.types';
 import { NavLink } from '../nav-link';
+import { NavigationItem } from '../../../navigation.types';
 
-export const NavItem = ({ href, title }: NavItemProps) => {
+export const NavItem = ({ href, title }: NavigationItem) => {
 	return <NavLink href={href}>{title}</NavLink>;
 };
