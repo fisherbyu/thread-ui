@@ -146,7 +146,7 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		return 'href' in item ? (
 			<NavItem key={item.title} {...item} />
 		) : (
-			<NavDropdownItem key={item.title} title={item.title} items={item.items} />
+			<NavDropdownItem key={item.title} {...item} />
 		);
 	};
 
