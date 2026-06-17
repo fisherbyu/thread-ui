@@ -1,3 +1,3 @@
-import { ElementType, AnchorHTMLAttributes } from 'react';
+import { ElementType } from 'react';
 
-export type LinkComponent = ElementType<AnchorHTMLAttributes<HTMLAnchorElement>>;
+export type LinkComponent = ElementType;
