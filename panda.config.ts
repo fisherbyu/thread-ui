@@ -69,7 +69,12 @@ export default defineConfig({
 						dark: { value: 'var(--thread-info-dark)' },
 					},
 					// Scrim
-					scrim: { value: 'var(--thread-scrim)' },
+					// Scrim
+					scrim: {
+						light: { value: 'var(--thread-scrim-light)' },
+						medium: { value: 'var(--thread-scrim-medium)' },
+						heavy: { value: 'var(--thread-scrim-heavy)' },
+					},
 				},
 				// Spacing tokens
 				spacing: {
