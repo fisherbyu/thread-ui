@@ -154,15 +154,6 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 		<header ref={headerRef} className={style.header}>
 			<nav className={style.nav}>
 				{logo && <NavigationLogo href={logo.href} logo={logo.logo} />}
-				<div
-					className={cx(
-						style.menuItemBlock,
-						navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
-					)}
-					onClick={() => setNavIsOpened(false)}
-				>
-					<ul className={style.itemList}>{items.map(renderItem)}</ul>
-				</div>
 				<div className={style.menuControl}>
 					<button onClick={toggleNavbar} aria-label="toggle navbar">
 						<span
@@ -178,6 +169,15 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 							)}
 						/>
 					</button>
+				</div>
+				<div
+					className={cx(
+						style.menuItemBlock,
+						navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
+					)}
+					onClick={() => setNavIsOpened(false)}
+				>
+					<ul className={style.itemList}>{items.map(renderItem)}</ul>
 				</div>
 			</nav>
 		</header>
