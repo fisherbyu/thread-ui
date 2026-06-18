@@ -31,7 +31,7 @@ const styles = {
 			position: { base: 'relative', lg: 'absolute' },
 			width: { base: '100vw', lg: 'fit-content' },
 			borderRadius: 'md',
-			padding: { base: '0', lg: '16px' },
+			padding: { base: '8px 0 8px 0', lg: '16px' },
 			zIndex: 'overlay',
 			top: { lg: 'calc(100% + 30px)' },
 			left: '50%',
