@@ -59,16 +59,27 @@ const styles = {
 			open: false,
 		},
 	}),
-	caretWrapper: css({
-		display: 'flex',
-		alignItems: 'center',
-		transition: 'transform 200ms',
-		marginTop: '1px',
+	caretWrapper: cva({
+		base: {
+			display: 'flex',
+			alignItems: 'center',
+			transition: 'transform 200ms',
+			marginTop: '1px',
+		},
+		variants: {
+			open: {
+				true: { transform: 'rotate(180deg)' },
+				false: { transform: 'rotate(0deg)' },
+			},
+		},
+		defaultVariants: {
+			open: false,
+		},
 	}),
 };
 
 export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) => {
-	const [isHovered, setIsHovered] = useState(true);
+	const [isHovered, setIsHovered] = useState(false);
 
 	const mobileCols = items.length === 4 ? 2 : Math.min(items.length, 3);
 	const desktopCols = items.length <= 3 ? 1 : 2;
@@ -85,10 +96,7 @@ export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) 
 				<Text size="sm" inline>
 					{title}
 				</Text>
-				<span
-					className={styles.caretWrapper}
-					style={{ transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)' }}
-				>
+				<span className={styles.caretWrapper({ open: isHovered })}>
 					<Icon name="CaretDownIcon" size={12} color="text" />
 				</span>
 			</NavLink>
