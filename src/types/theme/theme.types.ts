@@ -123,7 +123,7 @@ export type ScrimScale = {
 };
 
 /** Scrim Overlay Options */
-export type ScrimScaleOptions = Prettify<keyof ScrimScale | 'none'>;
+export type ScrimScaleOptions = Prettify<keyof ScrimScale>;
 
 // Semantic Surface Layer System
 
