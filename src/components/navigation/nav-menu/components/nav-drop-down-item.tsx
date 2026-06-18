@@ -1,7 +1,8 @@
 'use client';
 import { CSSProperties, useState } from 'react';
 import { NavLink } from './nav-link';
-import { css, cx } from '@/styled-system/css';
+import { NavItem } from './nav-item';
+import { css, cva } from '@/styled-system/css';
 import { NavigationDropdownItem } from '../nav-menu.types';
 import { Text } from '@/components/typography';
 import { Icon } from '@/components/ui';
@@ -25,38 +26,35 @@ const styles = {
 		transform: 'translateX(-50%)',
 		bottom: { base: '-0px', lg: '-30px' },
 	}),
-	dropdownContent: css({
-		display: 'none',
-		position: { base: 'static', lg: 'absolute' },
-		width: 'fit-content',
-		borderRadius: 'md',
-		padding: '16px',
-		zIndex: 'overlay',
-		top: { lg: 'calc(100% + 30px)' },
-		left: { lg: '50%' },
-		transform: { lg: 'translateX(-50%)' },
-		backgroundColor: 'overlay',
-		boxShadow: 'lg',
-	}),
-	dropdownContentShow: css({
-		display: { base: 'none', lg: 'block' },
-	}),
-	collapsedDropdownContent: css({
-		justifyContent: 'center',
-		columnGap: '24px',
-		alignItems: 'center',
-		width: '100vw',
-		position: 'relative',
-		left: '50%',
-		transform: 'translateX(-50%)',
-		borderRadius: 'md',
-		zIndex: 'overlay',
-	}),
-	dropdownContentNoShow: css({
-		display: 'none',
-	}),
-	collapsedDropdownContentShow: css({
-		display: { base: 'flex', lg: 'none' },
+	dropdownContent: cva({
+		base: {
+			position: { base: 'relative', lg: 'absolute' },
+			width: { base: '100vw', lg: 'fit-content' },
+			borderRadius: 'md',
+			padding: { base: '0', lg: '16px' },
+			zIndex: 'overlay',
+			top: { lg: 'calc(100% + 30px)' },
+			left: '50%',
+			transform: 'translateX(-50%)',
+			backgroundColor: { lg: 'overlay' },
+			boxShadow: { lg: 'lg' },
+			justifyContent: { base: 'center' },
+			columnGap: { base: '24px' },
+			alignItems: { base: 'center' },
+		},
+		variants: {
+			open: {
+				true: {
+					display: { base: 'flex', lg: 'block' },
+				},
+				false: {
+					display: 'none',
+				},
+			},
+		},
+		defaultVariants: {
+			open: false,
+		},
 	}),
 };
 
@@ -100,37 +98,9 @@ export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) 
 				</svg>
 			</NavLink>
 			{isHovered && <div className={styles.targetArea} />}
-			{/* Swap menu based on size */}
-			{/* Screen SM */}
-			<div
-				className={cx(
-					styles.collapsedDropdownContent,
-					isHovered ? styles.collapsedDropdownContentShow : styles.dropdownContentNoShow
-				)}
-			>
+			<div className={styles.dropdownContent({ open: isHovered })}>
 				{items.map((item) => (
-					<NavLink key={item.title} href={item.href} isDropdownItem>
-						{item.icon && <Icon color="text" name={item.icon} size={12} />}
-						<Text size="sm" inline weight="medium">
-							{item.title}
-						</Text>
-					</NavLink>
-				))}
-			</div>
-			{/* Screen LG */}
-			<div
-				className={cx(
-					styles.dropdownContent,
-					isHovered ? styles.dropdownContentShow : styles.dropdownContentNoShow
-				)}
-			>
-				{items.map((item) => (
-					<NavLink key={item.title} href={item.href} isDropdownItem>
-						{item.icon && <Icon color="text" name={item.icon} size={12} />}
-						<Text size="sm" inline weight="medium">
-							{item.title}
-						</Text>
-					</NavLink>
+					<NavItem key={item.title} {...item} isDropdownItem />
 				))}
 			</div>
 		</div>
