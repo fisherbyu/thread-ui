@@ -165,7 +165,11 @@ export const AllBaseCssNames: AllThemeCssNames = {
 	},
 
 	// Scrim
-	scrim: 'scrim',
+	scrim: {
+		light: 'scrim-light',
+		medium: 'scrim-medium',
+		heavy: 'scrim-heavy',
+	},
 
 	// Sizing
 	borderRadius: {
