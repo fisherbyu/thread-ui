@@ -38,14 +38,13 @@ const styles = {
 			transform: 'translateX(-50%)',
 			backgroundColor: { lg: 'overlay' },
 			boxShadow: { lg: 'lg' },
-			gridTemplateColumns: { base: 'repeat(var(--thread-nav-menu-dropdown-cols), auto)' },
-			justifyContent: 'center',
-			gap: { base: '8px 24px' },
+			flexDirection: { base: 'column' },
+			alignItems: { base: 'center' },
 		},
 		variants: {
 			open: {
 				true: {
-					display: { base: 'grid', lg: 'block' },
+					display: { base: 'flex', lg: 'block' },
 				},
 				false: {
 					display: 'none',
@@ -56,11 +55,23 @@ const styles = {
 			open: false,
 		},
 	}),
+	dropdownGrid: css({
+		display: { base: 'grid', lg: 'contents' },
+		gridTemplateColumns: { base: 'repeat(var(--row-cols), auto)' },
+		justifyContent: 'center',
+		gap: { base: '8px 24px' },
+	}),
 };
 
 export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) => {
 	const [isHovered, setIsHovered] = useState(false);
+
+	const remainder = items.length > 4 ? items.length % 3 : 0;
+	const needsSplit = remainder !== 0;
 	const columns = items.length === 4 ? 2 : Math.min(items.length, 3);
+
+	const fullRowItems = needsSplit ? items.slice(0, items.length - remainder) : items;
+	const remainderItems = needsSplit ? items.slice(items.length - remainder) : [];
 
 	const arrow: CSSProperties = {
 		color: ThreadTheme.text.standard,
@@ -99,13 +110,25 @@ export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) 
 				</svg>
 			</NavLink>
 			{isHovered && <div className={styles.targetArea} />}
-			<div
-				className={styles.dropdownContent({ open: isHovered })}
-				style={{ '--thread-nav-menu-dropdown-cols': columns } as CSSProperties}
-			>
-				{items.map((item) => (
-					<NavItem key={item.title} {...item} isDropdownItem />
-				))}
+			<div className={styles.dropdownContent({ open: isHovered })}>
+				<div
+					className={styles.dropdownGrid}
+					style={{ '--row-cols': columns } as CSSProperties}
+				>
+					{fullRowItems.map((item) => (
+						<NavItem key={item.title} {...item} isDropdownItem />
+					))}
+				</div>
+				{remainderItems.length > 0 && (
+					<div
+						className={styles.dropdownGrid}
+						style={{ '--row-cols': remainderItems.length } as CSSProperties}
+					>
+						{remainderItems.map((item) => (
+							<NavItem key={item.title} {...item} isDropdownItem />
+						))}
+					</div>
+				)}
 			</div>
 		</div>
 	);
