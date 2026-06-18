@@ -6,7 +6,6 @@ import { css, cva } from '@/styled-system/css';
 import { NavigationDropdownItem } from '../nav-menu.types';
 import { Text } from '@/components/typography';
 import { Icon } from '@/components/ui';
-import { ThreadTheme } from '@/theme';
 
 const styles = {
 	parentBlock: css({
