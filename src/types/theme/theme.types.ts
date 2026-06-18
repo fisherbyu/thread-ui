@@ -115,10 +115,15 @@ export type ZIndexScale = {
 /** Z-Index Options */
 export type ZIndexOptions = Prettify<keyof ZIndexScale>;
 
-/** Modal Overlays */
-export type ScrimColors = {
-	scrim: string;
+/** Scrim Overlay colors, for modals etc. */
+export type ScrimScale = {
+	light: string;
+	medium: string;
+	heavy: string;
 };
+
+/** Scrim Overlay Options */
+export type ScrimScaleOptions = Prettify<keyof ScrimScale | 'none'>;
 
 // Semantic Surface Layer System
 
@@ -267,9 +272,9 @@ export type Theme = Prettify<
 		NeutralPalette &
 		ThemeLayout &
 		ThemeBorders &
-		ScrimColors &
 		ModeColors & {
 			zIndex: ZIndexScale;
+			scrim: ScrimScale;
 			shadow: ShadowScale;
 			typography: TypographyConfiguration;
 		}
