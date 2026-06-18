@@ -59,22 +59,19 @@ const styles = {
 			open: false,
 		},
 	}),
+	caretWrapper: css({
+		display: 'flex',
+		alignItems: 'center',
+		transition: 'transform 200ms',
+		marginTop: '1px',
+	}),
 };
 
 export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) => {
-	const [isHovered, setIsHovered] = useState(false);
+	const [isHovered, setIsHovered] = useState(true);
 
 	const mobileCols = items.length === 4 ? 2 : Math.min(items.length, 3);
 	const desktopCols = items.length <= 3 ? 1 : 2;
-
-	const arrow: CSSProperties = {
-		color: ThreadTheme.text.standard,
-		marginTop: '1px',
-		height: '12px',
-		width: '12px',
-		transition: 'all 200ms',
-		transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)',
-	};
 
 	return (
 		<div
@@ -88,20 +85,12 @@ export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) 
 				<Text size="sm" inline>
 					{title}
 				</Text>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					strokeWidth="2"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					style={arrow}
+				<span
+					className={styles.caretWrapper}
+					style={{ transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)' }}
 				>
-					<path d="m6 9 6 6 6-6"></path>
-				</svg>
+					<Icon name="CaretDownIcon" size={12} color="text" />
+				</span>
 			</NavLink>
 			{isHovered && <div className={styles.targetArea} />}
 			<div
