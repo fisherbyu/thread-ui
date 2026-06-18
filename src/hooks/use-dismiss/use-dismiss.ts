@@ -7,18 +7,20 @@ type UseDismissProps = {
 	onClose: () => void;
 	dismissOnClick?: boolean;
 	dismissOnEsc?: boolean;
+	dismissOnBlur?: boolean;
 };
 
 /**
- * Calls `onClose` when a click is detected outside of `elementRef` or when `Escape` is pressed.
- * Each trigger can be independently enabled/disabled. Only active when `isOpen` is true.
+ * Calls `onClose` when a click is detected outside of `elementRef`, when `Escape` is pressed,
+ * or when focus leaves `elementRef`. Each trigger can be independently enabled/disabled.
+ * Only active when `isOpen` is true.
  *
  * @example
  * const ref = useRef<HTMLDivElement>(null);
  * useDismiss({ elementRef: ref, isOpen, onClose: () => setIsOpen(false) });
  *
- * // Disable outside click, keep Escape
- * useDismiss({ elementRef: ref, isOpen, onClose: () => setIsOpen(false), dismissOnClick: false });
+ * // Disable outside click, keep Escape and blur
+ * useDismiss({ elementRef: ref, isOpen, onClose: () => setIsOpen(false), dismissOnClick: false, dismissOnBlur: true });
  */
 export const useDismiss = ({
 	elementRef,
@@ -26,12 +28,13 @@ export const useDismiss = ({
 	onClose,
 	dismissOnClick = true,
 	dismissOnEsc = true,
+	dismissOnBlur = true,
 }: UseDismissProps) => {
 	const onCloseRef = useRef(onClose);
 	onCloseRef.current = onClose;
 
 	useEffect(() => {
-		if (!isOpen || (!dismissOnClick && !dismissOnEsc)) return;
+		if (!isOpen || (!dismissOnClick && !dismissOnEsc && !dismissOnBlur)) return;
 
 		const handleClickOutside = (e: MouseEvent) => {
 			if (elementRef.current && !elementRef.current.contains(e.target as Node)) {
@@ -45,6 +48,12 @@ export const useDismiss = ({
 			}
 		};
 
+		const handleFocusOut = (e: FocusEvent) => {
+			if (elementRef.current && !elementRef.current.contains(e.relatedTarget as Node)) {
+				onCloseRef.current();
+			}
+		};
+
 		if (dismissOnClick) {
 			document.addEventListener('mousedown', handleClickOutside);
 		}
@@ -52,10 +61,15 @@ export const useDismiss = ({
 		if (dismissOnEsc) {
 			document.addEventListener('keydown', handleKeyDown);
 		}
+		if (dismissOnBlur) {
+			elementRef.current?.addEventListener('focusout', handleFocusOut);
+		}
 
+		const el = elementRef.current;
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
 			document.removeEventListener('keydown', handleKeyDown);
+			el?.removeEventListener('focusout', handleFocusOut);
 		};
-	}, [elementRef, isOpen, dismissOnClick, dismissOnEsc]);
+	}, [elementRef, isOpen, dismissOnClick, dismissOnEsc, dismissOnBlur]);
 };
