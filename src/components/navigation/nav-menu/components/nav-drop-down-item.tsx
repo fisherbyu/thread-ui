@@ -41,8 +41,8 @@ const styles = {
 			justifyContent: 'center',
 			gap: '8px 24px',
 			gridTemplateColumns: {
-				base: 'repeat(var(--cols-sm), auto)',
-				lg: 'repeat(var(--cols-lg), auto)',
+				base: 'repeat(var(--thread-nav-menu-cols-sm), auto)',
+				lg: 'repeat(var(--thread-nav-menu-cols-lg), auto)',
 			},
 		},
 		variants: {
@@ -108,8 +108,8 @@ export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) 
 				className={styles.dropdownContent({ open: isHovered })}
 				style={
 					{
-						'--cols-sm': mobileCols,
-						'--cols-lg': desktopCols,
+						'--thread-nav-menu-cols-sm': mobileCols,
+						'--thread-nav-menu-cols-lg': desktopCols,
 					} as CSSProperties
 				}
 			>
