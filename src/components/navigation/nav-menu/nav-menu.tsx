@@ -153,10 +153,14 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 
 	return (
 		<header ref={headerRef} className={style.header}>
-			<nav className={style.nav}>
+			<nav aria-label="Main" className={style.nav}>
 				{logo && <NavigationLogo href={logo.href} logo={logo.logo} />}
 				<div className={style.menuControl}>
-					<button onClick={toggleNavbar} aria-label="toggle navbar">
+					<button
+						onClick={toggleNavbar}
+						aria-label="toggle navbar"
+						aria-expanded={navIsOpened}
+					>
 						<span
 							aria-hidden={true}
 							className={cx(style.menuCross, navIsOpened && style.menuCrossTopOpen)}

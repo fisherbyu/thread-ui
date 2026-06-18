@@ -1,5 +1,5 @@
 'use client';
-import { CSSProperties, FocusEvent, useState } from 'react';
+import { CSSProperties, FocusEvent, useId, useState } from 'react';
 import { NavLink } from './nav-link';
 import { NavItem } from './nav-item';
 import { css, cva } from '@/styled-system/css';
@@ -79,6 +79,7 @@ const styles = {
 
 export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const dropdownId = useId();
 
 	const mobileCols = items.length === 4 ? 2 : Math.min(items.length, 3);
 	const desktopCols = items.length <= 3 ? 1 : 2;
@@ -91,6 +92,9 @@ export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) 
 
 	return (
 		<div
+			aria-expanded={isOpen}
+			aria-haspopup="true"
+			aria-controls={dropdownId}
 			className={styles.parentBlock}
 			onMouseEnter={() => setIsOpen(true)}
 			onMouseLeave={() => setIsOpen(false)}
@@ -109,6 +113,7 @@ export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) 
 			</NavLink>
 			{isOpen && <div className={styles.targetArea} />}
 			<div
+				id={dropdownId}
 				className={styles.dropdownContent({ open: isOpen })}
 				style={
 					{
