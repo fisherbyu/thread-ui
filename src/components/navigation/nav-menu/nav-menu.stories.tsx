@@ -82,12 +82,12 @@ export const Basic: Story = {
 			{ href: '/', title: 'About', icon: 'BookOpenTextIcon' },
 			{ href: '/', title: 'Contact', icon: 'EnvelopeIcon' },
 			{
-				title: 'Music',
-				icon: 'MusicNotesIcon',
+				title: 'Products',
+				icon: 'BasketIcon',
 				items: [
-					{ href: '/', title: 'Artists', icon: 'MicrophoneStageIcon' },
-					{ href: '/', title: 'Coldplay', icon: 'StarIcon' },
-					{ href: '/', title: 'Playlists', icon: 'PlaylistIcon' },
+					{ href: '/', title: 'Bag', icon: 'BagIcon' },
+					{ href: '/', title: 'Handbag', icon: 'HandbagIcon' },
+					{ href: '/', title: 'Backpack', icon: 'BackpackIcon' },
 				],
 			},
 		],
