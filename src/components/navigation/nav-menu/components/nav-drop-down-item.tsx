@@ -1,5 +1,5 @@
 'use client';
-import { CSSProperties, useState } from 'react';
+import { CSSProperties, FocusEvent, useState } from 'react';
 import { NavLink } from './nav-link';
 import { NavItem } from './nav-item';
 import { css, cva } from '@/styled-system/css';
@@ -79,30 +79,38 @@ const styles = {
 };
 
 export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) => {
-	const [isHovered, setIsHovered] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const mobileCols = items.length === 4 ? 2 : Math.min(items.length, 3);
 	const desktopCols = items.length <= 3 ? 1 : 2;
 
+	const handleBlurCapture = (e: FocusEvent<HTMLDivElement>) => {
+		if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+			setIsOpen(false);
+		}
+	};
+
 	return (
 		<div
 			className={styles.parentBlock}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-			onClick={() => setIsHovered(false)}
+			onMouseEnter={() => setIsOpen(true)}
+			onMouseLeave={() => setIsOpen(false)}
+			onFocusCapture={() => setIsOpen(true)}
+			onBlurCapture={handleBlurCapture}
+			onClick={() => setIsOpen(false)}
 		>
 			<NavLink href="#">
 				{icon && <Icon size={16} color="text" name={icon} />}
 				<Text size="sm" inline>
 					{title}
 				</Text>
-				<span className={styles.caretWrapper({ open: isHovered })}>
+				<span className={styles.caretWrapper({ open: isOpen })}>
 					<Icon name="CaretDownIcon" size={12} color="text" />
 				</span>
 			</NavLink>
-			{isHovered && <div className={styles.targetArea} />}
+			{isOpen && <div className={styles.targetArea} />}
 			<div
-				className={styles.dropdownContent({ open: isHovered })}
+				className={styles.dropdownContent({ open: isOpen })}
 				style={
 					{
 						'--thread-nav-menu-cols-sm': mobileCols,
