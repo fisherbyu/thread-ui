@@ -1,7 +1,13 @@
-import { NavLinkProps } from './nav-link.types';
 import { Link } from '@/internal-components';
 import { css, cva } from '@/styled-system/css';
-import { Text } from '@/components/typography';
+import { ReactNode } from 'react';
+
+export type NavLinkProps = {
+	children: ReactNode;
+	href: string;
+	halfPadding?: boolean;
+	isDropdownItem?: boolean;
+};
 
 const styles = {
 	li: css({
