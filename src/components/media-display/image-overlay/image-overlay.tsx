@@ -1,4 +1,4 @@
-import { css } from '@/styled-system/css';
+import { css, cva } from '@/styled-system/css';
 import { ImageOverlayProps } from './image-overlay.types';
 
 const styles = {
@@ -12,29 +12,38 @@ const styles = {
 			height: '100%',
 		},
 	}),
-	overlay: css({
-		background: 'scrim',
-		position: 'absolute',
-		inset: 0,
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'flex-end',
-		padding: 'md',
-		opacity: 0,
-		transition: 'opacity 200ms ease',
-		color: 'white',
-		borderRadius: 'inherit',
-		_hover: {
-			opacity: 1,
+	overlay: cva({
+		base: {
+			position: 'absolute',
+			inset: 0,
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'flex-end',
+			padding: 'md',
+			opacity: 0,
+			transition: 'opacity 200ms ease',
+			color: 'white',
+			borderRadius: 'inherit',
+			_hover: {
+				opacity: 1,
+			},
+		},
+		variants: {
+			scrimLevel: {
+				none: { background: 'transparent' },
+				light: { background: 'scrim.light' },
+				medium: { background: 'scrim.medium' },
+				heavy: { background: 'scrim.heavy' },
+			},
 		},
 	}),
 };
 
-export const ImageOverlay = ({ children, overlay }: ImageOverlayProps) => {
+export const ImageOverlay = ({ children, overlay, scrimLevel }: ImageOverlayProps) => {
 	return (
 		<div className={styles.root}>
 			{children}
-			<div className={styles.overlay}>{overlay}</div>
+			<div className={styles.overlay({ scrimLevel })}>{overlay}</div>
 		</div>
 	);
 };
