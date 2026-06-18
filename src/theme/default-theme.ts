@@ -108,7 +108,11 @@ export const DefaultThreadTheme: ThemeConfigFull = {
 		system: '400',
 	},
 
-	scrim: 'rgba(0, 0, 0, 0.8)',
+	scrim: {
+		light: 'rgba(0, 0, 0, 0.3)',
+		medium: 'rgba(0, 0, 0, 0.55)',
+		heavy: 'rgba(0, 0, 0, 0.8)',
+	},
 
 	// Sizing
 	borderRadius: {
