@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useState } from 'react';
-import { useClickOutside, useResize } from '@/hooks';
+import { useDismiss, useResize } from '@/hooks';
 import { css, cx } from '@/styled-system/css';
 import { NavigationDropdownItem, NavMenuProps } from './nav-menu.types';
 import { NavigationLogo } from './components/navigation-logo';
@@ -117,7 +117,7 @@ const style = {
 
 /**
  * Sticky site navigation with a logo, nav links, dropdown menus, and a mobile hamburger toggle.
- * Closes on outside click and on viewport resize.
+ * Closes on outside click, on viewport resize, on Escape, or when focus leaves the nav.
  *
  * @example
  * <NavMenu
@@ -136,10 +136,11 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	const toggleNavbar = () => setNavIsOpened((prev) => !prev);
 
 	useResize({ onResize: closeNavbar });
-	useClickOutside({
+	useDismiss({
 		elementRef: headerRef,
 		isOpen: navIsOpened,
 		onClose: closeNavbar,
+		dismissOnBlur: true,
 	});
 
 	const renderItem = (item: NavigationItem | NavigationDropdownItem) => {
