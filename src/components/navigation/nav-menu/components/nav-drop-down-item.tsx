@@ -38,13 +38,13 @@ const styles = {
 			transform: 'translateX(-50%)',
 			backgroundColor: { lg: 'overlay' },
 			boxShadow: { lg: 'lg' },
-			flexDirection: { base: 'column' },
-			alignItems: { base: 'center' },
+			flexDirection: 'column',
+			alignItems: 'center',
 		},
 		variants: {
 			open: {
 				true: {
-					display: { base: 'flex', lg: 'block' },
+					display: 'flex',
 				},
 				false: {
 					display: 'none',
@@ -56,10 +56,10 @@ const styles = {
 		},
 	}),
 	dropdownGrid: css({
-		display: { base: 'grid', lg: 'contents' },
-		gridTemplateColumns: { base: 'repeat(var(--row-cols), auto)' },
+		display: 'grid',
+		gridTemplateColumns: 'repeat(var(--row-cols), auto)',
 		justifyContent: 'center',
-		gap: { base: '8px 24px' },
+		gap: '8px 24px',
 	}),
 };
 
