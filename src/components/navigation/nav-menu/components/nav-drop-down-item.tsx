@@ -38,13 +38,17 @@ const styles = {
 			transform: 'translateX(-50%)',
 			backgroundColor: { lg: 'overlay' },
 			boxShadow: { lg: 'lg' },
-			flexDirection: 'column',
-			alignItems: 'center',
+			justifyContent: 'center',
+			gap: '8px 24px',
+			gridTemplateColumns: {
+				base: 'repeat(var(--cols-sm), auto)',
+				lg: 'repeat(var(--cols-lg), auto)',
+			},
 		},
 		variants: {
 			open: {
 				true: {
-					display: 'flex',
+					display: 'grid',
 				},
 				false: {
 					display: 'none',
@@ -55,23 +59,13 @@ const styles = {
 			open: false,
 		},
 	}),
-	dropdownGrid: css({
-		display: 'grid',
-		gridTemplateColumns: 'repeat(var(--row-cols), auto)',
-		justifyContent: 'center',
-		gap: '8px 24px',
-	}),
 };
 
 export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) => {
 	const [isHovered, setIsHovered] = useState(false);
 
-	const remainder = items.length > 4 ? items.length % 3 : 0;
-	const needsSplit = remainder !== 0;
-	const columns = items.length === 4 ? 2 : Math.min(items.length, 3);
-
-	const fullRowItems = needsSplit ? items.slice(0, items.length - remainder) : items;
-	const remainderItems = needsSplit ? items.slice(items.length - remainder) : [];
+	const mobileCols = items.length === 4 ? 2 : Math.min(items.length, 3);
+	const desktopCols = items.length <= 3 ? 1 : 2;
 
 	const arrow: CSSProperties = {
 		color: ThreadTheme.text.standard,
@@ -110,25 +104,18 @@ export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) 
 				</svg>
 			</NavLink>
 			{isHovered && <div className={styles.targetArea} />}
-			<div className={styles.dropdownContent({ open: isHovered })}>
-				<div
-					className={styles.dropdownGrid}
-					style={{ '--row-cols': columns } as CSSProperties}
-				>
-					{fullRowItems.map((item) => (
-						<NavItem key={item.title} {...item} isDropdownItem />
-					))}
-				</div>
-				{remainderItems.length > 0 && (
-					<div
-						className={styles.dropdownGrid}
-						style={{ '--row-cols': remainderItems.length } as CSSProperties}
-					>
-						{remainderItems.map((item) => (
-							<NavItem key={item.title} {...item} isDropdownItem />
-						))}
-					</div>
-				)}
+			<div
+				className={styles.dropdownContent({ open: isHovered })}
+				style={
+					{
+						'--cols-sm': mobileCols,
+						'--cols-lg': desktopCols,
+					} as CSSProperties
+				}
+			>
+				{items.map((item) => (
+					<NavItem key={item.title} {...item} isDropdownItem />
+				))}
 			</div>
 		</div>
 	);
