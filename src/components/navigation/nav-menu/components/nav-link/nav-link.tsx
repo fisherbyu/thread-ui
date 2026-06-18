@@ -42,8 +42,9 @@ const styles = {
 			},
 			isDropdownItem: {
 				true: {
-					justifyContent: { base: 'space-between', lg: 'center' },
+					justifyContent: { base: 'center', lg: 'start' },
 					width: { base: 'fit-content', lg: '100%' },
+					whiteSpace: 'nowrap',
 				},
 				false: { width: { base: '100%', lg: 'fit-content' } },
 			},
