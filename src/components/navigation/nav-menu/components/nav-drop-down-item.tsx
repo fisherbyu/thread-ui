@@ -38,14 +38,14 @@ const styles = {
 			transform: 'translateX(-50%)',
 			backgroundColor: { lg: 'overlay' },
 			boxShadow: { lg: 'lg' },
-			justifyContent: { base: 'center' },
-			columnGap: { base: '24px' },
-			alignItems: { base: 'center' },
+			gridTemplateColumns: { base: 'repeat(var(--thread-nav-menu-dropdown-cols), auto)' },
+			justifyContent: 'center',
+			gap: { base: '8px 24px' },
 		},
 		variants: {
 			open: {
 				true: {
-					display: { base: 'flex', lg: 'block' },
+					display: { base: 'grid', lg: 'block' },
 				},
 				false: {
 					display: 'none',
@@ -60,6 +60,7 @@ const styles = {
 
 export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) => {
 	const [isHovered, setIsHovered] = useState(false);
+	const columns = items.length === 4 ? 2 : Math.min(items.length, 3);
 
 	const arrow: CSSProperties = {
 		color: ThreadTheme.text.standard,
@@ -98,7 +99,10 @@ export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) 
 				</svg>
 			</NavLink>
 			{isHovered && <div className={styles.targetArea} />}
-			<div className={styles.dropdownContent({ open: isHovered })}>
+			<div
+				className={styles.dropdownContent({ open: isHovered })}
+				style={{ '--thread-nav-menu-dropdown-cols': columns } as CSSProperties}
+			>
 				{items.map((item) => (
 					<NavItem key={item.title} {...item} isDropdownItem />
 				))}
