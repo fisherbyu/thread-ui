@@ -90,6 +90,18 @@ export const Basic: Story = {
 					{ href: '/', title: 'Backpack', icon: 'BackpackIcon' },
 				],
 			},
+			{
+				title: 'Food',
+				icon: 'ForkKnifeIcon',
+				items: [
+					{ href: '/', title: 'Ice Cream', icon: 'IceCreamIcon' },
+					{ href: '/', title: 'Popsicle', icon: 'PopsicleIcon' },
+					{ href: '/', title: 'Popcorn', icon: 'PopcornIcon' },
+					{ href: '/', title: 'Hamburger', icon: 'HamburgerIcon' },
+					{ href: '/', title: 'Pizza', icon: 'PizzaIcon' },
+					{ href: '/', title: 'Guacamole', icon: 'AvocadoIcon' },
+				],
+			},
 		],
 	},
 };
