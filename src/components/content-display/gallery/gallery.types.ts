@@ -22,8 +22,6 @@ export type GalleryProps = Prettify<
 		appearance?: GalleryAppearanceOptions;
 		/** Array of React nodes to render as slides, in display order */
 		items: GalleryItem[];
-		/** Optional component used to wrap each item, replacing the default container */
-		itemWrapper?: ComponentType<any>;
 		/** Controls the gallery's dimensional presets @default `'lg'` */
 		size?: UtilitySizeOptions | 'fill';
 		/** Index of Item Gallery opens at Start @default 0 */
@@ -42,7 +40,6 @@ export type GalleryState = Prettify<
 	Pick<GalleryProps, 'title' | 'subtitle'> &
 		Required<Pick<GalleryProps, 'size' | 'appearance' | 'variableWidths'>> & {
 			items: Record<GalleryItemId, InternalGalleryItem>;
-			ItemWrapper: GalleryProps['itemWrapper'];
 			itemOrder: GalleryItemId[];
 		}
 >;
