@@ -7,6 +7,7 @@ import { Card } from '@/components/ui';
 import { CarouselProvider, CarouselEmblaProvider } from './carousel-context';
 import { CarouselProps, CarouselState, ItemWrapperOptions } from './carousel.types';
 import { CarouselContent } from './components/carousel-content';
+import WheelGesturesPlugin from 'embla-carousel-wheel-gestures';
 
 // -- Item Wrapper Resolution --
 
@@ -58,7 +59,7 @@ export const Carousel = ({
 	itemWrapper = 'card',
 }: CarouselProps) => {
 	// Embla Config
-	const [emblaRef, emblaApi] = useEmblaCarousel();
+	const [emblaRef, emblaApi] = useEmblaCarousel({}, [WheelGesturesPlugin()]);
 
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const [canScrollPrev, setCanScrollPrev] = useState(false);
