@@ -1,12 +1,16 @@
 import { css, cva } from '@/styled-system/css';
 import { MediaOverlayProps } from './media-overlay.types';
+import type { ThreadCssName } from '@/theme/css-name-configurations/theme-css-names';
+
+const MAX_HEIGHT_CSS_NAME: ThreadCssName = '--thread-media-overlay-max-height';
+const MAX_WIDTH_CSS_NAME: ThreadCssName = '--thread-media-overlay-max-width';
 
 const styles = {
 	root: css({
 		position: 'relative',
 		overflow: 'hidden',
 		borderRadius: 'inherit',
-		'& img': {
+		'& > :first-child': {
 			display: 'block',
 			width: '100%',
 			height: '100%',
@@ -15,7 +19,6 @@ const styles = {
 	overlay: cva({
 		base: {
 			position: 'absolute',
-			inset: 0,
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'flex-end',
@@ -24,6 +27,9 @@ const styles = {
 			transition: 'opacity 200ms ease',
 			color: 'white',
 			borderRadius: 'inherit',
+			maxHeight: 'var(--thread-media-overlay-max-height, 100%)',
+			maxWidth: 'var(--thread-media-overlay-max-width, 100%)',
+			overflow: 'hidden',
 			_hover: {
 				opacity: 1,
 			},
@@ -35,15 +41,42 @@ const styles = {
 				medium: { background: 'scrim.medium' },
 				heavy: { background: 'scrim.heavy' },
 			},
+			placement: {
+				full: { inset: 0 },
+				top: { top: 0, left: 0, right: 0 },
+				bottom: { bottom: 0, left: 0, right: 0 },
+				left: { top: 0, bottom: 0, left: 0 },
+				right: { top: 0, bottom: 0, right: 0 },
+			},
+		},
+		defaultVariants: {
+			placement: 'full',
 		},
 	}),
 };
 
-export const MediaOverlay = ({ children, overlay, scrimLevel }: MediaOverlayProps) => {
+export const MediaOverlay = ({
+	children,
+	overlay,
+	scrimLevel,
+	placement,
+	maxHeight,
+	maxWidth,
+}: MediaOverlayProps) => {
 	return (
 		<div className={styles.root}>
 			{children}
-			<div className={styles.overlay({ scrimLevel })}>{overlay}</div>
+			<div
+				className={styles.overlay({ scrimLevel, placement })}
+				style={
+					{
+						...(maxHeight ? { [MAX_HEIGHT_CSS_NAME]: maxHeight } : {}),
+						...(maxWidth ? { [MAX_WIDTH_CSS_NAME]: maxWidth } : {}),
+					} as React.CSSProperties
+				}
+			>
+				{overlay}
+			</div>
 		</div>
 	);
 };
