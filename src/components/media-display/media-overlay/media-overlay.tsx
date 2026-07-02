@@ -55,6 +55,19 @@ const styles = {
 	}),
 };
 
+/**
+ * Renders an overlay layer on top of arbitrary media, with a configurable scrim, placement, and size caps.
+ *
+ * @example
+ * <MediaOverlay
+ *   scrimLevel="medium"
+ *   placement="bottom"
+ *   maxHeight="50%"
+ *   overlay={<Title>Caption</Title>}
+ * >
+ *   <img src="/photo.jpg" alt="Photo" />
+ * </MediaOverlay>
+ */
 export const MediaOverlay = ({
 	children,
 	overlay,
