@@ -53,6 +53,7 @@ export const Lightbox = ({
 	appearance = 'bare',
 	variableWidths = true,
 	scrimLevel = 'heavy',
+	trackItems,
 }: LightboxProps) => {
 	const initialValue: LightboxState = {
 		title,
@@ -62,6 +63,7 @@ export const Lightbox = ({
 		startIndex,
 		appearance,
 		variableWidths,
+		trackItems,
 	};
 
 	return (
