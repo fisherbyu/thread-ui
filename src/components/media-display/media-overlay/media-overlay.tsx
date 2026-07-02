@@ -10,11 +10,10 @@ const styles = {
 		position: 'relative',
 		overflow: 'hidden',
 		borderRadius: 'inherit',
-		'& > :first-child': {
-			display: 'block',
-			width: '100%',
-			height: '100%',
-		},
+		display: 'inline-flex',
+		height: '100%',
+		maxWidth: '100%',
+		maxHeight: '100%',
 		_hover: {
 			'& [data-overlay]': {
 				opacity: 1,
