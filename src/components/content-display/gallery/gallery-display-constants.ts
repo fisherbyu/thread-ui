@@ -1,3 +1,5 @@
+import { ThreadCssName } from '@/theme/css-name-configurations/theme-css-names';
+
 export const GALLERY_DISPLAY_CONSTANTS = {
 	displayItemHeight: '100%',
 	displayItemSpacing: '1rem',
@@ -8,7 +10,7 @@ export const GALLERY_DISPLAY_CONSTANTS = {
 
 export type DisplayConstantsKeys = keyof typeof GALLERY_DISPLAY_CONSTANTS;
 
-export const GALLERY_DISPLAY_CONSTANT_NAMES: Record<DisplayConstantsKeys, string> = {
+export const GALLERY_DISPLAY_CONSTANT_NAMES: Record<DisplayConstantsKeys, ThreadCssName> = {
 	displayItemHeight: '--thread-gallery-display-item-height',
 	displayItemSpacing: '--thread-gallery-display-item-spacing',
 	displayItemWidth: '--thread-gallery-display-item-width',
