@@ -30,6 +30,7 @@ export const Gallery = ({
 	appearance = 'framed',
 	startIndex = 0,
 	variableWidths = false,
+	trackItems: trackItemList,
 }: GalleryProps) => {
 	const [emblaDisplayRef, emblaDisplayApi] = useEmblaCarousel({ startIndex });
 	const [emblaItemTrackRef, emblaItemTrackApi] = useEmblaCarousel(
@@ -60,7 +61,6 @@ export const Gallery = ({
 	useEffect(() => {
 		if (!emblaDisplayApi) return;
 		onSelect();
-
 		emblaDisplayApi.on('select', onSelect).on('reInit', onSelect);
 	}, [emblaDisplayApi, onSelect]);
 
@@ -73,23 +73,35 @@ export const Gallery = ({
 		[itemList]
 	);
 
+	const normalizedTrackItems = useMemo(
+		() =>
+			(trackItemList ?? itemList).map((item, index) => ({
+				content: item,
+				id: index,
+			})),
+		[trackItemList, itemList]
+	);
+
 	const initialState: GalleryState = useMemo(() => {
 		const items = Object.fromEntries(
 			normalizedItems.map((item) => [item.id, item])
 		) as GalleryState['items'];
-
+		const trackItems = Object.fromEntries(
+			normalizedTrackItems.map((item) => [item.id, item])
+		) as GalleryState['trackItems'];
 		const itemOrder = normalizedItems.map((item) => item.id);
 
 		return {
 			title,
 			subtitle,
 			items,
+			trackItems,
 			itemOrder,
 			size,
 			appearance,
 			variableWidths,
 		};
-	}, [title, normalizedItems, size]);
+	}, [title, normalizedItems, normalizedTrackItems, size]);
 
 	const emblaValue = useMemo(
 		() => ({
