@@ -47,7 +47,6 @@ const styles = {
 export const Lightbox = ({
 	title,
 	items,
-	itemWrapper,
 	isOpen,
 	onClose,
 	startIndex,
@@ -58,7 +57,6 @@ export const Lightbox = ({
 	const initialValue: LightboxState = {
 		title,
 		items,
-		itemWrapper,
 		isOpen,
 		onClose,
 		startIndex,
