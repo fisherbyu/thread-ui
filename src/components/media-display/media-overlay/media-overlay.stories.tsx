@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { MediaOverlay } from './media-overlay';
 
 const meta: Meta<typeof MediaOverlay> = {
-	title: 'Components/MediaOverlay',
+	title: 'Media Display/MediaOverlay',
 	component: MediaOverlay,
 	parameters: {
 		layout: 'centered',
