@@ -1,19 +1,31 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ImageOverlay } from './image-overlay';
+import { MediaOverlay } from './media-overlay';
 
-const meta: Meta<typeof ImageOverlay> = {
-	title: 'Components/ImageOverlay',
-	component: ImageOverlay,
+const meta: Meta<typeof MediaOverlay> = {
+	title: 'Components/MediaOverlay',
+	component: MediaOverlay,
 	parameters: {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
-	argTypes: {},
+	argTypes: {
+		scrimLevel: {
+			control: 'select',
+			options: ['none', 'light', 'medium', 'heavy'],
+		},
+		placement: {
+			control: 'select',
+			options: ['full', 'top', 'bottom', 'left', 'right'],
+		},
+		maxHeight: { control: 'text' },
+		maxWidth: { control: 'text' },
+	},
 };
 
 export default meta;
-type Story = StoryObj<typeof ImageOverlay>;
+
+type Story = StoryObj<typeof MediaOverlay>;
 
 const img = (seed: string, w: number, h: number) => (
 	<img
@@ -26,11 +38,16 @@ const img = (seed: string, w: number, h: number) => (
 export const Default: Story = {
 	args: {
 		children: img('landscape', 500, 350),
-		overlay: <span>Overlay content on hover</span>,
+		overlay: (
+			<div>
+				<strong>Alpine Loop, Utah</strong>
+				<div>Canon 5D Mark II · 50mm · f/2.8</div>
+			</div>
+		),
 	},
 };
 
-export const MoviePoster: Story = {
+export const Placement: Story = {
 	args: {
 		children: img('poster', 300, 450),
 		overlay: (
@@ -39,17 +56,8 @@ export const MoviePoster: Story = {
 				<div>★★★★★</div>
 			</div>
 		),
-	},
-};
-
-export const PhotoMetadata: Story = {
-	args: {
-		children: img('photo', 500, 350),
-		overlay: (
-			<div>
-				<strong>Alpine Loop, Utah</strong>
-				<div>Canon 5D Mark II · 50mm · f/2.8</div>
-			</div>
-		),
+		scrimLevel: 'medium',
+		placement: 'bottom',
+		maxHeight: '30%',
 	},
 };
