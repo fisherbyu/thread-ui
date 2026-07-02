@@ -49,6 +49,7 @@ const styles = {
 					borderStyle: 'solid',
 				},
 				bare: {},
+				rounded: {},
 			},
 		},
 		defaultVariants: {
