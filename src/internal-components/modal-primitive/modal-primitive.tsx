@@ -8,12 +8,6 @@ import { css } from '@/styled-system/css';
 const FOCUSABLE_SELECTOR =
 	'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-const styles = {
-	contentWrapperRef: css({
-		display: 'contents',
-	}),
-};
-
 export const ModalPrimitive = ({
 	autoFocus = true,
 	children,
@@ -70,9 +64,7 @@ export const ModalPrimitive = ({
 		const target = portalTarget ?? document.body;
 		return createPortal(
 			<div className={overlayClassName}>
-				<div className={styles.contentWrapperRef} ref={primitiveRef}>
-					{children}
-				</div>
+				<div ref={primitiveRef}>{children}</div>
 			</div>,
 			target
 		);

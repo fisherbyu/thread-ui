@@ -49,6 +49,7 @@ export const useDismiss = ({
 		};
 
 		const handleFocusOut = (e: FocusEvent) => {
+			if (!e.relatedTarget) return;
 			if (elementRef.current && !elementRef.current.contains(e.relatedTarget as Node)) {
 				onCloseRef.current();
 			}
