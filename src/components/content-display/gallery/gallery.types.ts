@@ -20,8 +20,10 @@ export type GalleryProps = Prettify<
 	ContentTitle & {
 		/** Visual treatment for item containers @default `'framed'` */
 		appearance?: GalleryAppearanceOptions;
-		/** Array of React nodes to render as slides, in display order */
+		/** Array of items to render as slides, in display order */
 		items: GalleryItem[];
+		/** Alternate content for the gallery track — must match `items` by index */
+		trackItems?: GalleryItem[];
 		/** Controls the gallery's dimensional presets @default `'lg'` */
 		size?: UtilitySizeOptions | 'fill';
 		/** Index of Item Gallery opens at Start @default 0 */
@@ -38,7 +40,7 @@ type InternalGalleryItem = {
 
 export type GalleryState = Prettify<
 	Pick<GalleryProps, 'title' | 'subtitle'> &
-		Required<Pick<GalleryProps, 'size' | 'appearance' | 'variableWidths'>> & {
+		Required<Pick<GalleryProps, 'size' | 'appearance' | 'variableWidths' | 'trackItems'>> & {
 			items: Record<GalleryItemId, InternalGalleryItem>;
 			itemOrder: GalleryItemId[];
 		}
