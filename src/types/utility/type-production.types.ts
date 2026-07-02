@@ -31,6 +31,16 @@ export type Prettify<T> = { [K in keyof T]: T[K] } & {};
 export type StartsWith<Prefix extends string> = `${Prefix}${string}`;
 
 /**
+ * Construct a string literal type that must contain `Substr`
+ * anywhere within it.
+ *
+ * @example
+ * type HasError = Contains<'error'>;
+ * // `${string}error${string}`
+ */
+export type Contains<Substr extends string> = `${string}${Substr}${string}`;
+
+/**
  * Recursively make specified key(s) optional throughout `T`
  * and all nested object types.
  *
