@@ -50,7 +50,7 @@ export const Lightbox = ({
 	isOpen,
 	onClose,
 	startIndex,
-	appearance = 'bare',
+	appearance = 'rounded',
 	variableWidths = true,
 	scrimLevel = 'heavy',
 	trackItems,
