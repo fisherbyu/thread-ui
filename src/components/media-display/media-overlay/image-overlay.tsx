@@ -1,5 +1,5 @@
 import { css, cva } from '@/styled-system/css';
-import { ImageOverlayProps } from './image-overlay.types';
+import { ImageOverlayProps } from './media-overlay.types';
 
 const styles = {
 	root: css({
