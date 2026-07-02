@@ -13,8 +13,9 @@ export type GalleryItem = ReactNode;
  * Controls the visual treatment of gallery item containers.
  * - `'framed'` — Adds background, border, and border-radius to each item.
  * - `'bare'` — Renders items without any decorative container styles.
+ * - `'rounded'` — No background or border, but rounds the clip box so overlaid media keeps rounded corners.
  */
-export type GalleryAppearanceOptions = 'framed' | 'bare';
+export type GalleryAppearanceOptions = 'framed' | 'bare' | 'rounded';
 
 export type GalleryProps = Prettify<
 	ContentTitle & {
