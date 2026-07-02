@@ -39,7 +39,7 @@ const styles = {
 	}),
 };
 
-export const ImageOverlay = ({ children, overlay, scrimLevel }: MediaOverlayProps) => {
+export const MediaOverlay = ({ children, overlay, scrimLevel }: MediaOverlayProps) => {
 	return (
 		<div className={styles.root}>
 			{children}
