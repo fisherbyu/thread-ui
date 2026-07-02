@@ -71,7 +71,7 @@ const styles = {
 export const MediaOverlay = ({
 	children,
 	overlay,
-	scrimLevel,
+	scrimLevel = 'medium',
 	placement,
 	maxHeight,
 	maxWidth,
