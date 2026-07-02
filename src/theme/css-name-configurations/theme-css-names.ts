@@ -1,7 +1,10 @@
-import { ThemeConfigFull, ModeColors } from '@/types';
+import { ThemeConfigFull, ModeColors, StartsWith } from '@/types';
 import { prefixVariables, wrapVariables } from './theme-helper-utils';
 
 export const THREAD_CSS_VARIABLE_PREFIX = '--thread-' as const;
+
+/** A CSS variable name prefixed with {@link THREAD_CSS_VARIABLE_PREFIX}. */
+export type ThreadCssName = StartsWith<typeof THREAD_CSS_VARIABLE_PREFIX>;
 
 type AllThemeCssNames = ThemeConfigFull & {
 	lightMode: ModeColors;
