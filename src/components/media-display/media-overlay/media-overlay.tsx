@@ -6,18 +6,36 @@ const MAX_HEIGHT_CSS_NAME: ThreadCssName = '--thread-media-overlay-max-height';
 const MAX_WIDTH_CSS_NAME: ThreadCssName = '--thread-media-overlay-max-width';
 
 const styles = {
-	root: css({
-		position: 'relative',
-		overflow: 'hidden',
-		borderRadius: 'inherit',
-		display: 'inline-flex',
-		height: '100%',
-		maxWidth: '100%',
-		maxHeight: '100%',
-		_hover: {
-			'& [data-overlay]': {
-				opacity: 1,
+	root: cva({
+		base: {
+			position: 'relative',
+			overflow: 'hidden',
+			borderRadius: 'inherit',
+			_hover: {
+				'& [data-overlay]': {
+					opacity: 1,
+				},
 			},
+		},
+		variants: {
+			fit: {
+				contain: {
+					'& > :first-child': {
+						display: 'block',
+						width: '100%',
+						height: '100%',
+					},
+				},
+				fill: {
+					display: 'inline-flex',
+					height: '100%',
+					maxWidth: '100%',
+					maxHeight: '100%',
+				},
+			},
+		},
+		defaultVariants: {
+			fit: 'contain',
 		},
 	}),
 	overlay: cva({
@@ -74,11 +92,12 @@ export const MediaOverlay = ({
 	overlay,
 	scrimLevel = 'medium',
 	placement,
+	fit = 'contain',
 	maxHeight,
 	maxWidth,
 }: MediaOverlayProps) => {
 	return (
-		<div className={styles.root}>
+		<div className={styles.root({ fit })}>
 			{children}
 			<div
 				data-overlay
