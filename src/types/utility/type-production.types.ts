@@ -21,6 +21,16 @@ export type Override<T, U> = Omit<T, keyof U> & U;
 export type Prettify<T> = { [K in keyof T]: T[K] } & {};
 
 /**
+ * Construct a string literal type that must begin with `Prefix`,
+ * followed by any string.
+ *
+ * @example
+ * type PrefixedString = StartsWith<'prefix-'>;
+ * // `prefix-${string}`
+ */
+export type StartsWith<Prefix extends string> = `${Prefix}${string}`;
+
+/**
  * Recursively make specified key(s) optional throughout `T`
  * and all nested object types.
  *
