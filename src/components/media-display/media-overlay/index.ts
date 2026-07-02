@@ -1,2 +1,2 @@
 export type { ImageOverlayProps } from './media-overlay.types';
-export { ImageOverlay } from './image-overlay';
+export { ImageOverlay } from './media-overlay';
