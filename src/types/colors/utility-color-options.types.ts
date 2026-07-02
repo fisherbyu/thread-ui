@@ -16,6 +16,7 @@ export type UtilityColorOptions =
 /** Extended color options for text and typography components. Includes semantic text tokens in addition to utility colors */
 export type ColoredTextOptions =
 	| Exclude<UtilityColorOptions, 'text'>
+	| 'white'
 	| 'standard'
 	| 'disabled'
 	| 'accent'

@@ -19,6 +19,7 @@ const styles = cva({
 			info: { color: 'info.main' },
 			error: { color: 'error.main' },
 			warning: { color: 'warning.main' },
+			white: { color: 'white' },
 		},
 	},
 });
