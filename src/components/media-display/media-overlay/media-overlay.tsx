@@ -1,5 +1,5 @@
 import { css, cva } from '@/styled-system/css';
-import { ImageOverlayProps } from './media-overlay.types';
+import { MediaOverlayProps } from './media-overlay.types';
 
 const styles = {
 	root: css({
@@ -39,7 +39,7 @@ const styles = {
 	}),
 };
 
-export const ImageOverlay = ({ children, overlay, scrimLevel }: ImageOverlayProps) => {
+export const ImageOverlay = ({ children, overlay, scrimLevel }: MediaOverlayProps) => {
 	return (
 		<div className={styles.root}>
 			{children}
