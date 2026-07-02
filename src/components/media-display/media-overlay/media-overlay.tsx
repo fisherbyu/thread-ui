@@ -15,6 +15,11 @@ const styles = {
 			width: '100%',
 			height: '100%',
 		},
+		_hover: {
+			'& [data-overlay]': {
+				opacity: 1,
+			},
+		},
 	}),
 	overlay: cva({
 		base: {
@@ -30,9 +35,6 @@ const styles = {
 			maxHeight: 'var(--thread-media-overlay-max-height, 100%)',
 			maxWidth: 'var(--thread-media-overlay-max-width, 100%)',
 			overflow: 'hidden',
-			_hover: {
-				opacity: 1,
-			},
 		},
 		variants: {
 			scrimLevel: {
@@ -80,6 +82,7 @@ export const MediaOverlay = ({
 		<div className={styles.root}>
 			{children}
 			<div
+				data-overlay
 				className={styles.overlay({ scrimLevel, placement })}
 				style={
 					{
