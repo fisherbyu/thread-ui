@@ -40,8 +40,9 @@ type InternalGalleryItem = {
 
 export type GalleryState = Prettify<
 	Pick<GalleryProps, 'title' | 'subtitle'> &
-		Required<Pick<GalleryProps, 'size' | 'appearance' | 'variableWidths' | 'trackItems'>> & {
+		Required<Pick<GalleryProps, 'size' | 'appearance' | 'variableWidths'>> & {
 			items: Record<GalleryItemId, InternalGalleryItem>;
+			trackItems: Record<GalleryItemId, InternalGalleryItem>;
 			itemOrder: GalleryItemId[];
 		}
 >;
