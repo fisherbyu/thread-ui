@@ -5,5 +5,7 @@ export type {
 	Override,
 	Prettify,
 	ReplaceKey,
+	StartsWith,
+	Contains,
 } from './type-production.types';
 export type { NotionIcon } from './notion-icon.types';

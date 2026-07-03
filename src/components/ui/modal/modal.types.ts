@@ -1,6 +1,6 @@
 import { ModalPrimitiveProps } from '@/internal-components/modal-primitive';
-import { Prettify, UtilitySizeOptions } from '@/types';
-import { ReactNode, RefObject } from 'react';
+import { Prettify, ScrimScaleOptions, UtilitySizeOptions } from '@/types';
+import { ReactNode } from 'react';
 
 type ModalSizeOptions = UtilitySizeOptions & 'full';
 
@@ -14,6 +14,8 @@ export type ModalProps = Prettify<
 		size?: ModalSizeOptions;
 		/** Vertical placement of the modal within the page @default `'center'` */
 		placement?: 'center' | 'top';
+		/** Scrim Background Opacity @default `medium` */
+		scrimLevel?: ScrimScaleOptions;
 	}
 >;
 

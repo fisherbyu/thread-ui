@@ -106,7 +106,7 @@ Component CSS is pre-generated using Panda CSS, so components render correctly s
 
 ### Media Display
 
-`ImagePanel` `InfoCard` `MediaCard`
+`ImagePanel` `InfoCard` `MediaCard` `MediaOverlay`
 
 ### Content Display
 

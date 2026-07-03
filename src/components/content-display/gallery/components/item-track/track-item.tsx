@@ -1,5 +1,5 @@
 'use client';
-import { css, cva } from '@/styled-system/css';
+import { cva } from '@/styled-system/css';
 import { useGalleryContext, useGalleryEmblaContext } from '../../gallery-context';
 import { GalleryItemId } from '../../gallery.types';
 
@@ -49,6 +49,7 @@ const styles = {
 					borderStyle: 'solid',
 				},
 				bare: {},
+				rounded: {},
 			},
 		},
 		defaultVariants: {
@@ -59,11 +60,11 @@ const styles = {
 
 export const TrackItem = ({ itemId }: TrackItemProps) => {
 	const {
-		value: { items, appearance, variableWidths },
+		value: { trackItems, appearance, variableWidths },
 	} = useGalleryContext();
 	const { onTrackItemClick } = useGalleryEmblaContext();
 
-	const item = items[itemId];
+	const item = trackItems[itemId];
 
 	return (
 		<button

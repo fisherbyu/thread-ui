@@ -19,4 +19,6 @@ export type ModalPrimitiveProps = {
 	preventScroll?: boolean;
 	/** DOM element to portal the modal into. Defaults to `document.body` */
 	portalTarget?: HTMLElement;
+	/** Optionally automatically focus content @default `true` */
+	autoFocus?: boolean;
 };

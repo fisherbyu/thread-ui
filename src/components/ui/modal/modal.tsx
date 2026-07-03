@@ -10,12 +10,17 @@ const styles = {
 		base: {
 			position: 'fixed',
 			inset: 0,
-			background: 'scrim',
+
 			display: 'flex',
 			justifyContent: 'center',
 			zIndex: 'modal',
 		},
 		variants: {
+			scrimLevel: {
+				light: { background: 'scrim.light' },
+				medium: { background: 'scrim.medium' },
+				heavy: { background: 'scrim.heavy' },
+			},
 			placement: {
 				center: {
 					alignItems: 'center',
@@ -48,10 +53,11 @@ export const Modal = (props: ModalProps) => {
 		placement = 'center',
 		closeOnOverlayClick = true,
 		closeOnEsc = true,
+		scrimLevel = 'medium',
 	} = props;
 	return (
 		<ModalPrimitive
-			overlayClassName={styles.overlay({ placement })}
+			overlayClassName={styles.overlay({ placement, scrimLevel })}
 			isOpen={isOpen}
 			onClose={onClose}
 			closeOnOverlayClick={closeOnOverlayClick}

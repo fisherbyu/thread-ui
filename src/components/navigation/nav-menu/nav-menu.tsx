@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useState } from 'react';
-import { useClickOutside, useResize } from '@/hooks';
+import { useDismiss, useResize } from '@/hooks';
 import { css, cx } from '@/styled-system/css';
 import { NavigationDropdownItem, NavMenuProps } from './nav-menu.types';
 import { NavigationLogo } from './components/navigation-logo';
@@ -117,7 +117,7 @@ const style = {
 
 /**
  * Sticky site navigation with a logo, nav links, dropdown menus, and a mobile hamburger toggle.
- * Closes on outside click and on viewport resize.
+ * Closes on outside click, on viewport resize, on Escape, or when focus leaves the nav.
  *
  * @example
  * <NavMenu
@@ -136,10 +136,11 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 	const toggleNavbar = () => setNavIsOpened((prev) => !prev);
 
 	useResize({ onResize: closeNavbar });
-	useClickOutside({
+	useDismiss({
 		elementRef: headerRef,
 		isOpen: navIsOpened,
 		onClose: closeNavbar,
+		dismissOnBlur: true,
 	});
 
 	const renderItem = (item: NavigationItem | NavigationDropdownItem) => {
@@ -152,19 +153,14 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 
 	return (
 		<header ref={headerRef} className={style.header}>
-			<nav className={style.nav}>
+			<nav aria-label="Main" className={style.nav}>
 				{logo && <NavigationLogo href={logo.href} logo={logo.logo} />}
-				<div
-					className={cx(
-						style.menuItemBlock,
-						navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
-					)}
-					onClick={() => setNavIsOpened(false)}
-				>
-					<ul className={style.itemList}>{items.map(renderItem)}</ul>
-				</div>
 				<div className={style.menuControl}>
-					<button onClick={toggleNavbar} aria-label="toggle navbar">
+					<button
+						onClick={toggleNavbar}
+						aria-label="toggle navbar"
+						aria-expanded={navIsOpened}
+					>
 						<span
 							aria-hidden={true}
 							className={cx(style.menuCross, navIsOpened && style.menuCrossTopOpen)}
@@ -178,6 +174,15 @@ export const NavMenu = ({ logo, items }: NavMenuProps) => {
 							)}
 						/>
 					</button>
+				</div>
+				<div
+					className={cx(
+						style.menuItemBlock,
+						navIsOpened ? style.menuOpenItemBlock : style.menuCloseItemBlock
+					)}
+					onClick={() => setNavIsOpened(false)}
+				>
+					<ul className={style.itemList}>{items.map(renderItem)}</ul>
 				</div>
 			</nav>
 		</header>

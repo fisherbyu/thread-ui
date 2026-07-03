@@ -1,4 +1,4 @@
-import { Prettify } from '@/types';
+import { Prettify, ScrimScaleOptions } from '@/types';
 import { GalleryProps } from '../gallery';
 import { ModalProps } from '@/components/ui';
 import { GalleryAppearanceOptions } from '../gallery/gallery.types';
@@ -10,6 +10,8 @@ export type LightboxProps = Prettify<
 			appearance?: GalleryAppearanceOptions;
 			/** Control Auto-Width within track thumbnails @default `true` */
 			variableWidths?: boolean;
+			/** Scrim Background Opacity @default `heavy` */
+			scrimLevel?: ScrimScaleOptions;
 		}
 >;
 

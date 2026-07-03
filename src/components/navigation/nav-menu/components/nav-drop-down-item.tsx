@@ -1,11 +1,11 @@
 'use client';
-import { CSSProperties, useState } from 'react';
+import { CSSProperties, FocusEvent, useId, useState } from 'react';
 import { NavLink } from './nav-link';
-import { css, cx } from '@/styled-system/css';
+import { NavItem } from './nav-item';
+import { css, cva } from '@/styled-system/css';
 import { NavigationDropdownItem } from '../nav-menu.types';
 import { Text } from '@/components/typography';
 import { Icon } from '@/components/ui';
-import { ThreadTheme } from '@/theme';
 
 const styles = {
 	parentBlock: css({
@@ -25,112 +25,105 @@ const styles = {
 		transform: 'translateX(-50%)',
 		bottom: { base: '-0px', lg: '-30px' },
 	}),
-	dropdownContent: css({
-		display: 'none',
-		position: { base: 'static', lg: 'absolute' },
-		width: 'fit-content',
-		borderRadius: 'md',
-		padding: '16px',
-		zIndex: 'overlay',
-		top: { lg: 'calc(100% + 30px)' },
-		left: { lg: '50%' },
-		transform: { lg: 'translateX(-50%)' },
-		backgroundColor: 'overlay',
-		boxShadow: 'lg',
+	dropdownContent: cva({
+		base: {
+			position: { base: 'relative', lg: 'absolute' },
+			width: { base: '100vw', lg: 'fit-content' },
+			borderRadius: 'md',
+			padding: { base: '8px 0 8px 0', lg: '16px' },
+			zIndex: 'overlay',
+			top: { lg: 'calc(100% + 30px)' },
+			left: '50%',
+			transform: 'translateX(-50%)',
+			backgroundColor: { lg: 'overlay' },
+			boxShadow: { lg: 'lg' },
+			justifyContent: 'center',
+			gap: '8px 24px',
+			gridTemplateColumns: {
+				base: 'repeat(var(--thread-nav-menu-cols-sm), auto)',
+				lg: 'repeat(var(--thread-nav-menu-cols-lg), auto)',
+			},
+		},
+		variants: {
+			open: {
+				true: {
+					display: 'grid',
+				},
+				false: {
+					display: 'none',
+				},
+			},
+		},
+		defaultVariants: {
+			open: false,
+		},
 	}),
-	dropdownContentShow: css({
-		display: { base: 'none', lg: 'block' },
-	}),
-	collapsedDropdownContent: css({
-		justifyContent: 'center',
-		columnGap: '24px',
-		alignItems: 'center',
-		width: '100vw',
-		position: 'relative',
-		left: '50%',
-		transform: 'translateX(-50%)',
-		borderRadius: 'md',
-		zIndex: 'overlay',
-	}),
-	dropdownContentNoShow: css({
-		display: 'none',
-	}),
-	collapsedDropdownContentShow: css({
-		display: { base: 'flex', lg: 'none' },
+	caretWrapper: cva({
+		base: {
+			display: 'flex',
+			alignItems: 'center',
+			transition: 'transform 200ms',
+			marginTop: '1px',
+		},
+		variants: {
+			open: {
+				true: { transform: 'rotate(180deg)' },
+				false: { transform: 'rotate(0deg)' },
+			},
+		},
+		defaultVariants: {
+			open: false,
+		},
 	}),
 };
 
 export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) => {
-	const [isHovered, setIsHovered] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
+	const dropdownId = useId();
 
-	const arrow: CSSProperties = {
-		color: ThreadTheme.text.standard,
-		marginTop: '1px',
-		height: '12px',
-		width: '12px',
-		transition: 'all 200ms',
-		transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)',
+	const mobileCols = items.length === 4 ? 2 : Math.min(items.length, 3);
+	const desktopCols = items.length <= 3 ? 1 : 2;
+
+	const handleBlurCapture = (e: FocusEvent<HTMLDivElement>) => {
+		if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+			setIsOpen(false);
+		}
 	};
 
 	return (
 		<div
+			aria-expanded={isOpen}
+			aria-haspopup="true"
+			aria-controls={dropdownId}
 			className={styles.parentBlock}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-			onClick={() => setIsHovered(false)}
+			onMouseEnter={() => setIsOpen(true)}
+			onMouseLeave={() => setIsOpen(false)}
+			onFocusCapture={() => setIsOpen(true)}
+			onBlurCapture={handleBlurCapture}
+			onClick={() => setIsOpen(false)}
 		>
 			<NavLink href="#">
 				{icon && <Icon size={16} color="text" name={icon} />}
 				<Text size="sm" inline>
 					{title}
 				</Text>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					strokeWidth="2"
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					style={arrow}
-				>
-					<path d="m6 9 6 6 6-6"></path>
-				</svg>
+				<span className={styles.caretWrapper({ open: isOpen })}>
+					<Icon name="CaretDownIcon" size={12} color="text" />
+				</span>
 			</NavLink>
-			{isHovered && <div className={styles.targetArea} />}
-			{/* Swap menu based on size */}
-			{/* Screen SM */}
+			{isOpen && <div className={styles.targetArea} />}
 			<div
-				className={cx(
-					styles.collapsedDropdownContent,
-					isHovered ? styles.collapsedDropdownContentShow : styles.dropdownContentNoShow
-				)}
+				id={dropdownId}
+				className={styles.dropdownContent({ open: isOpen })}
+				style={
+					{
+						'--thread-nav-menu-cols-sm': mobileCols,
+						'--thread-nav-menu-cols-lg': desktopCols,
+					} as CSSProperties
+				}
 			>
 				{items.map((item) => (
-					<NavLink key={item.title} href={item.href} isDropdownItem>
-						{item.icon && <Icon color="text" name={item.icon} size={12} />}
-						<Text size="sm" inline weight="medium">
-							{item.title}
-						</Text>
-					</NavLink>
-				))}
-			</div>
-			{/* Screen LG */}
-			<div
-				className={cx(
-					styles.dropdownContent,
-					isHovered ? styles.dropdownContentShow : styles.dropdownContentNoShow
-				)}
-			>
-				{items.map((item) => (
-					<NavLink key={item.title} href={item.href} isDropdownItem>
-						{item.icon && <Icon color="text" name={item.icon} size={12} />}
-						<Text size="sm" inline weight="medium">
-							{item.title}
-						</Text>
-					</NavLink>
+					<NavItem key={item.title} {...item} isDropdownItem />
 				))}
 			</div>
 		</div>

@@ -34,6 +34,12 @@ export const getColoredTextColor = (color: ColoredTextOptions): string => {
 			return ThreadTheme.error.main;
 		case 'info':
 			return ThreadTheme.info.main;
+		case 'white':
+			return ThreadTheme.white;
+		case 'inverted':
+			return ThreadTheme.text.inverted;
+		case 'warning':
+			return ThreadTheme.warning.main;
 		default:
 			return ThreadTheme.text.standard;
 	}

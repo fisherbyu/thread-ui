@@ -13,17 +13,18 @@ export type GalleryItem = ReactNode;
  * Controls the visual treatment of gallery item containers.
  * - `'framed'` — Adds background, border, and border-radius to each item.
  * - `'bare'` — Renders items without any decorative container styles.
+ * - `'rounded'` — No background or border, but rounds the clip box so overlaid media keeps rounded corners.
  */
-export type GalleryAppearanceOptions = 'framed' | 'bare';
+export type GalleryAppearanceOptions = 'framed' | 'bare' | 'rounded';
 
 export type GalleryProps = Prettify<
 	ContentTitle & {
 		/** Visual treatment for item containers @default `'framed'` */
 		appearance?: GalleryAppearanceOptions;
-		/** Array of React nodes to render as slides, in display order */
+		/** Array of items to render as slides, in display order */
 		items: GalleryItem[];
-		/** Optional component used to wrap each item, replacing the default container */
-		itemWrapper?: ComponentType<any>;
+		/** Alternate content for the gallery track — must match `items` by index */
+		trackItems?: GalleryItem[];
 		/** Controls the gallery's dimensional presets @default `'lg'` */
 		size?: UtilitySizeOptions | 'fill';
 		/** Index of Item Gallery opens at Start @default 0 */
@@ -42,7 +43,7 @@ export type GalleryState = Prettify<
 	Pick<GalleryProps, 'title' | 'subtitle'> &
 		Required<Pick<GalleryProps, 'size' | 'appearance' | 'variableWidths'>> & {
 			items: Record<GalleryItemId, InternalGalleryItem>;
-			ItemWrapper: GalleryProps['itemWrapper'];
+			trackItems: Record<GalleryItemId, InternalGalleryItem>;
 			itemOrder: GalleryItemId[];
 		}
 >;

@@ -46,6 +46,9 @@ const styles = {
 					borderColor: 'structure.subtle',
 				},
 				bare: {},
+				rounded: {
+					borderRadius: 'lg',
+				},
 			},
 		},
 		defaultVariants: {
@@ -56,18 +59,9 @@ const styles = {
 
 export const GalleryItem = ({ itemId }: GalleryItemProps) => {
 	const {
-		value: { items, ItemWrapper, appearance },
+		value: { items, appearance },
 	} = useGalleryContext();
-
 	const item = items[itemId];
-
-	if (ItemWrapper) {
-		return (
-			<div className={styles.container}>
-				<ItemWrapper>{item.content}</ItemWrapper>
-			</div>
-		);
-	}
 
 	return (
 		<div className={styles.container}>
