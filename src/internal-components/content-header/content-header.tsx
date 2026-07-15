@@ -4,6 +4,9 @@ import { ContentHeaderProps } from './content-header.types';
 import { H2, Text } from '@/components';
 
 const styles = {
+	defaultContainer: css({
+		marginBottom: '2',
+	}),
 	header: css({
 		display: 'flex',
 		flexDirection: 'row',
@@ -53,7 +56,7 @@ export const ContentHeader = ({
 	}
 
 	return (
-		<div className={className}>
+		<div className={cx(styles.defaultContainer, className)}>
 			{(title || secondaryContent) && (
 				<div className={styles.header}>
 					{title && titleDisplay}

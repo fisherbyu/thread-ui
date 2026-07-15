@@ -7,7 +7,6 @@ import { ContentHeader } from '@/internal-components';
 const styles = {
 	container: css({ width: 'full' }),
 	list: css({
-		marginTop: '2',
 		columnCount: { base: 2, md: 3, lg: 4 },
 		columnGap: '2',
 	}),
