@@ -8,7 +8,6 @@ import { SurfaceLayerMap } from '@/theme';
 const styles = {
 	card: cva({
 		base: {
-			margin: 'auto',
 			borderStyle: 'solid',
 			borderRadius: 'md',
 			maxHeight: '60',
