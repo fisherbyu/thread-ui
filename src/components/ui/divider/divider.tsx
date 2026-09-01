@@ -33,9 +33,9 @@ const styles = {
 	dividerWeight: cva({
 		variants: {
 			weight: {
-				light: { height: '0.125' },
-				standard: { height: '0.25' },
-				heavy: { height: '0.5' },
+				light: { height: '0.0625rem' },
+				standard: { height: '0.125rem' },
+				heavy: { height: '0.1875rem' },
 			},
 		},
 		defaultVariants: {
