@@ -47,10 +47,10 @@ Thread UI uses a **layer-based elevation system**. Every component either sits o
 <Card layer="surface" bg="elevated" shadow="md" structure="none" />
 ```
 
-#### The Two Rules
+#### Moded Elevation
 
-1. **Light mode communicates elevation through shadows.** Surface, elevated, and overlay share the same background color — shadows and z-index differentiate them.
-2. **Dark mode communicates elevation through lightness.** Each layer step up is slightly lighter. Shadows are nearly invisible against dark surfaces.
+- **Light mode communicates elevation through shadows.** Surface, elevated, and overlay share the same background color — shadows and z-index differentiate them.
+- **Dark mode communicates elevation through lightness.** Each layer step up is slightly lighter. Shadows are nearly invisible against dark surfaces.
 
 ### Typography
 
