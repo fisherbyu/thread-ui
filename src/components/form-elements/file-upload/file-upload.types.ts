@@ -1,5 +1,5 @@
 import { Prettify, UtilitySizeOptions } from '@/types';
-import { InputProps } from '../input-props.types';
+import { BaseInputProps, ControlledValueProps } from '../input-props.types';
 
 export type UploadableFile = File & {
 	/** Alt text for image files */
@@ -7,18 +7,19 @@ export type UploadableFile = File & {
 };
 
 export type FileUploadProps = Prettify<
-	Omit<InputProps<UploadableFile[], UploadableFile[]>, 'placeholder'> & {
-		/** Optional Title Rendered before file is added */
-		emptyTitle?: string;
-		/** MIME types accepted. Supports wildcards like `image/*` @default `['*\/*']` */
-		allowedFileTypes?: string[];
-		/** Maximum file size in bytes */
-		maxFileSize?: number;
-		/** Maximum number of files that can be uploaded */
-		maxNumberFiles?: number;
-		/** Custom text describing supported formats, shown in the upload area */
-		supportedFormatsText?: string;
-	}
+	Omit<BaseInputProps, 'placeholder'> &
+		ControlledValueProps<UploadableFile[], UploadableFile[]> & {
+			/** Optional Title Rendered before file is added */
+			emptyTitle?: string;
+			/** MIME types accepted. Supports wildcards like `image/*` @default `['*\/*']` */
+			allowedFileTypes?: string[];
+			/** Maximum file size in bytes */
+			maxFileSize?: number;
+			/** Maximum number of files that can be uploaded */
+			maxNumberFiles?: number;
+			/** Custom text describing supported formats, shown in the upload area */
+			supportedFormatsText?: string;
+		}
 >;
 
 export type FileUploadContext = FileUploadProps & {

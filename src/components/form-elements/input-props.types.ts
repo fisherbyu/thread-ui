@@ -1,26 +1,7 @@
 import { UtilitySizeOptions } from '@/types';
 
-/** Controlled when `value` is passed, uncontrolled otherwise. */
-type ControlProps<TValue, TChange> =
-	| {
-			/** Controlled value */
-			value: TValue;
-			/** Called when the input value changes */
-			onChange: (e: TChange) => void | Promise<void>;
-			defaultValue?: never;
-	  }
-	| {
-			value?: never;
-			/** Called when the input value changes */
-			onChange?: (e: TChange) => void | Promise<void>;
-			/** Initial value for uncontrolled use */
-			defaultValue?: TValue;
-	  };
-
-export type InputProps<
-	TValue,
-	TChange = React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
-> = {
+/** Props shared by every form element, independent of control mode. */
+export type BaseInputProps = {
 	/** Defaults to `name` if not provided */
 	id?: string;
 	/** Form field name */
@@ -35,4 +16,30 @@ export type InputProps<
 	size?: UtilitySizeOptions;
 	/** Block interaction and exclude the value from form submission */
 	disabled?: boolean;
-} & ControlProps<TValue, TChange>;
+};
+
+/** Control props for inputs that only support controlled use. */
+export type ControlledValueProps<TValue, TChange> = {
+	/** Controlled value */
+	value: TValue;
+	/** Called when the input value changes */
+	onChange: (e: TChange) => void | Promise<void>;
+};
+
+/** Controlled when `value` is passed, uncontrolled otherwise. */
+type ControllableValueProps<TValue, TChange> =
+	| (ControlledValueProps<TValue, TChange> & {
+			defaultValue?: never;
+	  })
+	| {
+			value?: never;
+			/** Called when the input value changes */
+			onChange?: (e: TChange) => void | Promise<void>;
+			/** Initial value for uncontrolled use */
+			defaultValue?: TValue;
+	  };
+
+export type InputProps<
+	TValue,
+	TChange = React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
+> = BaseInputProps & ControllableValueProps<TValue, TChange>;
