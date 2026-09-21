@@ -18,6 +18,8 @@ export type InputProps<
 	placeholder?: string;
 	/** Size @default `md` */
 	size?: UtilitySizeOptions;
+	/** Block interaction and exclude the value from form submission */
+	disabled?: boolean;
 	/** Called when the input value changes */
 	onChange: (e: TChange) => void | Promise<void>;
 };
