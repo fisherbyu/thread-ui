@@ -1,4 +1,34 @@
 import { cva } from '@/styled-system/css';
+import type { IconSizes } from '@/components';
+
+/** Size scale shared by every form element. */
+export type InputSize = 'sm' | 'md' | 'lg';
+
+// Single source of truth for size-driven spacing and type
+const sizeVariants = {
+	sm: {
+		paddingX: '2',
+		paddingY: '1',
+		fontSize: 'xs',
+	},
+	md: {
+		paddingX: '3',
+		paddingY: '1.5',
+		fontSize: 'sm',
+	},
+	lg: {
+		paddingX: '4',
+		paddingY: '2',
+		fontSize: 'md',
+	},
+} as const;
+
+/** Icon size to pair with each `InputSize`. */
+export const inputIconSizes: Record<InputSize, IconSizes> = {
+	sm: 8,
+	md: 12,
+	lg: 16,
+};
 
 export const baseInputStyles = cva({
 	base: {
@@ -24,26 +54,24 @@ export const baseInputStyles = cva({
 				width: '100%',
 			},
 		},
-		size: {
-			sm: {
-				paddingX: '2',
-				paddingY: '1',
-				fontSize: 'xs',
-			},
-			md: {
-				paddingX: '3',
-				paddingY: '1.5',
-				fontSize: 'sm',
-			},
-			lg: {
-				paddingX: '4',
-				paddingY: '2',
-				fontSize: 'md',
-			},
-		},
+		size: sizeVariants,
 	},
 	defaultVariants: {
 		alt: false,
+		size: 'md',
+	},
+});
+
+/** Sizing for non-input pieces of composite controls, like the `NumberInput` stepper buttons. */
+export const inputSegmentStyles = cva({
+	base: {
+		borderWidth: 'md',
+		borderColor: 'structure.default',
+	},
+	variants: {
+		size: sizeVariants,
+	},
+	defaultVariants: {
 		size: 'md',
 	},
 });
