@@ -23,7 +23,9 @@ export const TextInput = ({
 	required,
 	placeholder,
 	multiline = false,
+	type = 'text',
 	size = 'md',
+	disabled,
 	onChange,
 }: TextInputProps) => {
 	return (
@@ -34,6 +36,7 @@ export const TextInput = ({
 					id={id}
 					name={name}
 					required={required}
+					disabled={disabled}
 					value={value}
 					onChange={onChange}
 					placeholder={placeholder}
@@ -42,10 +45,11 @@ export const TextInput = ({
 				/>
 			) : (
 				<input
-					type="text"
+					type={type}
 					id={id}
 					name={name}
 					required={required}
+					disabled={disabled}
 					value={value}
 					onChange={onChange}
 					placeholder={placeholder}
