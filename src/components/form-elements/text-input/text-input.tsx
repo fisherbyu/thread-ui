@@ -11,6 +11,7 @@ const style = css({
 
 /**
  * Text input that renders either a single-line `input` or a resizable `textarea`.
+ * Controlled when `value` is passed, uncontrolled otherwise.
  *
  * @example
  * <TextInput name="bio" title="Bio" value={bio} multiline onChange={handleChange} />
@@ -20,6 +21,7 @@ export const TextInput = ({
 	id = name,
 	title,
 	value,
+	defaultValue,
 	required,
 	placeholder,
 	multiline = false,
@@ -38,6 +40,7 @@ export const TextInput = ({
 					required={required}
 					disabled={disabled}
 					value={value}
+					defaultValue={defaultValue}
 					onChange={onChange}
 					placeholder={placeholder}
 					rows={3}
@@ -51,6 +54,7 @@ export const TextInput = ({
 					required={required}
 					disabled={disabled}
 					value={value}
+					defaultValue={defaultValue}
 					onChange={onChange}
 					placeholder={placeholder}
 					className={baseInputStyles({ size })}

@@ -98,6 +98,7 @@ const valueWithinRange = (value: number, min?: number, max?: number): boolean =>
 /**
  * Number input with increment/decrement buttons and optional min/max range enforcement.
  * Blocks non-numeric keyboard input and respects range bounds on both direct input and stepping.
+ * Controlled when `value` is passed, uncontrolled otherwise.
  *
  * @example
  * <NumberInput
@@ -114,6 +115,7 @@ export const NumberInput = ({
 	id = name,
 	title,
 	value,
+	defaultValue,
 	placeholder,
 	required,
 	min,
@@ -123,11 +125,14 @@ export const NumberInput = ({
 	onChange,
 }: NumberInputProps) => {
 	// Initialize state with the value from props or null
-	const [num, setNum] = useState<number | null>(value ?? null);
+	const [num, setNum] = useState<number | null>(value ?? defaultValue ?? null);
 
 	// Update internal state
 	useEffect(() => {
-		setNum(value ?? null);
+		// Only sync when controlled
+		if (value !== undefined) {
+			setNum(value);
+		}
 	}, [value]);
 
 	// Handle Num Increment
@@ -194,6 +199,7 @@ export const NumberInput = ({
 						inputSegmentStyles({ size })
 					)}
 					onClick={handleIncrement(-1)}
+					disabled={disabled}
 				>
 					<Icon name="CaretLeft" color="gray" size={inputIconSizes[size]} />
 				</button>
