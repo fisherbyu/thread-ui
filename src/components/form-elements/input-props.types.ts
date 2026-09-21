@@ -1,5 +1,22 @@
 import { UtilitySizeOptions } from '@/types';
 
+/** Controlled when `value` is passed, uncontrolled otherwise. */
+type ControlProps<TValue, TChange> =
+	| {
+			/** Controlled value */
+			value: TValue;
+			/** Called when the input value changes */
+			onChange: (e: TChange) => void | Promise<void>;
+			defaultValue?: never;
+	  }
+	| {
+			value?: never;
+			/** Called when the input value changes */
+			onChange?: (e: TChange) => void | Promise<void>;
+			/** Initial value for uncontrolled use */
+			defaultValue?: TValue;
+	  };
+
 export type InputProps<
 	TValue,
 	TChange = React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
@@ -10,8 +27,6 @@ export type InputProps<
 	name: string;
 	/** Label text rendered above the input */
 	title?: string;
-	/** Controlled value */
-	value: TValue;
 	/** Require value for form submission */
 	required?: boolean;
 	/** Descriptive text rendered within input */
@@ -20,6 +35,4 @@ export type InputProps<
 	size?: UtilitySizeOptions;
 	/** Block interaction and exclude the value from form submission */
 	disabled?: boolean;
-	/** Called when the input value changes */
-	onChange: (e: TChange) => void | Promise<void>;
-};
+} & ControlProps<TValue, TChange>;
