@@ -3,6 +3,7 @@ import { Icon } from '@/components';
 import { FormLabel } from '../form-label';
 import { InputWrapper } from '../input-wrapper';
 import { NumberInputProps } from './number-input.types';
+import { inputIconSizes, inputSegmentStyles } from '../styles';
 import { useState, useEffect } from 'react';
 import { css, cva, cx } from '@/styled-system/css';
 
@@ -31,34 +32,44 @@ const styles = {
 			},
 		},
 	}),
-	baseSegment: css({
-		borderWidth: 'md',
-		borderColor: 'structure.default',
-		padding: '3',
-		height: '11',
-		textAlign: 'center',
-		fontSize: 'sm',
-	}),
-	centerSegment: css({
-		color: 'text.standard',
-		backgroundColor: 'inset',
-		width: '16',
-		appearance: 'none',
-		'&::-webkit-outer-spin-button': {
+	centerSegment: cva({
+		base: {
+			color: 'text.standard',
+			backgroundColor: 'inset',
+			textAlign: 'center',
 			appearance: 'none',
+			'&::-webkit-outer-spin-button': {
+				appearance: 'none',
+			},
+			'&::-webkit-inner-spin-button': {
+				appearance: 'none',
+			},
+			_focus: {
+				ringColor: 'info.main',
+				borderColor: 'info.main',
+			},
 		},
-		'&::-webkit-inner-spin-button': {
-			appearance: 'none',
+		variants: {
+			size: {
+				sm: {
+					width: '12',
+				},
+				md: {
+					width: '14',
+				},
+				lg: {
+					width: '16',
+				},
+			},
 		},
-		_focus: {
-			ringColor: 'info.main',
-			borderColor: 'info.main',
+		defaultVariants: {
+			size: 'md',
 		},
 	}),
 	container: css({
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'center',
+		alignItems: 'stretch',
 		alignSelf: 'start',
 	}),
 };
@@ -96,6 +107,7 @@ export const NumberInput = ({
 	required,
 	min,
 	max,
+	size = 'md',
 	onChange,
 }: NumberInputProps) => {
 	// Initialize state with the value from props or null
@@ -161,14 +173,17 @@ export const NumberInput = ({
 
 	return (
 		<InputWrapper>
-			{title && <FormLabel id={id} name={name} title={title} />}
+			{title && <FormLabel id={id} name={name} title={title} size={size} />}
 			<div className={styles.container}>
 				<button
 					type="button"
-					className={cx(styles.arrowButton({ direction: 'left' }), styles.baseSegment)}
+					className={cx(
+						styles.arrowButton({ direction: 'left' }),
+						inputSegmentStyles({ size })
+					)}
 					onClick={handleIncrement(-1)}
 				>
-					<Icon name="CaretLeft" color="gray" size={12} />
+					<Icon name="CaretLeft" color="gray" size={inputIconSizes[size]} />
 				</button>
 				<input
 					type="number"
@@ -177,7 +192,7 @@ export const NumberInput = ({
 					placeholder={placeholder}
 					value={num ?? ''}
 					onChange={handleInputChange}
-					className={cx(styles.baseSegment, styles.centerSegment)}
+					className={cx(inputSegmentStyles({ size }), styles.centerSegment({ size }))}
 					onKeyDown={(e) => {
 						// Allow minus sign as first character if negative values are allowed
 						if (
@@ -212,10 +227,13 @@ export const NumberInput = ({
 				/>
 				<button
 					type="button"
-					className={cx(styles.arrowButton({ direction: 'right' }), styles.baseSegment)}
+					className={cx(
+						styles.arrowButton({ direction: 'right' }),
+						inputSegmentStyles({ size })
+					)}
 					onClick={handleIncrement(1)}
 				>
-					<Icon name="CaretRight" color="gray" size={12} />
+					<Icon name="CaretRight" color="gray" size={inputIconSizes[size]} />
 				</button>
 			</div>
 		</InputWrapper>
