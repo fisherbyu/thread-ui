@@ -23,11 +23,12 @@ export const TextInput = ({
 	required,
 	placeholder,
 	multiline = false,
+	size = 'md',
 	onChange,
 }: TextInputProps) => {
 	return (
 		<InputWrapper>
-			{title && <FormLabel id={id} name={name} title={title} />}
+			{title && <FormLabel id={id} name={name} title={title} size={size} />}
 			{multiline ? (
 				<textarea
 					id={id}
@@ -37,7 +38,7 @@ export const TextInput = ({
 					onChange={onChange}
 					placeholder={placeholder}
 					rows={3}
-					className={cx(baseInputStyles(), style)}
+					className={cx(baseInputStyles({ size }), style)}
 				/>
 			) : (
 				<input
@@ -48,7 +49,7 @@ export const TextInput = ({
 					value={value}
 					onChange={onChange}
 					placeholder={placeholder}
-					className={baseInputStyles()}
+					className={baseInputStyles({ size })}
 				/>
 			)}
 		</InputWrapper>
