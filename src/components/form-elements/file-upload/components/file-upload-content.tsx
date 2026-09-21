@@ -21,11 +21,13 @@ const styles = {
 };
 
 export const FileUploadContent = () => {
-	const { value, name, title, removeFile, selectedFile } = useFileUploadContext();
+	const { value, name, title, emptyTitle, removeFile, selectedFile } = useFileUploadContext();
+
+	const displayTitle = value.length === 0 ? (emptyTitle ?? title) : title;
 
 	return (
 		<div className={styles.container}>
-			<FormLabel name={name} title={title} />
+			<FormLabel name={name} title={displayTitle} />
 			<Divider width="100%" marginY="2px" />
 			<div>
 				{/* Current Files */}

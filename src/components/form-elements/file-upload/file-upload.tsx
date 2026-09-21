@@ -24,6 +24,7 @@ import { FileUploadContent } from './components/file-upload-content';
  */
 export const FileUpload = ({
 	title = 'Upload a File',
+	emptyTitle,
 	name,
 	id = name,
 	value,
@@ -147,6 +148,7 @@ export const FileUpload = ({
 			value={{
 				id,
 				title,
+				emptyTitle,
 				name,
 				onChange,
 				allowedFileTypes,

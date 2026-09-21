@@ -49,7 +49,8 @@ export const ImageOnly: Story = {
 	},
 	args: {
 		name: 'image-upload',
-		title: 'Upload an Image',
+		title: 'Image',
+		emptyTitle: 'Upload an Image',
 		size: 'lg',
 		allowedFileTypes: ['image/*'],
 		maxFileSize: 5 * 1024 * 1024, // 5MB

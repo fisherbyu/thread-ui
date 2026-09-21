@@ -8,6 +8,8 @@ export type UploadableFile = File & {
 
 export type FileUploadProps = Prettify<
 	Omit<InputProps<UploadableFile[], UploadableFile[]>, 'placeholder'> & {
+		/** Optional Title Rendered before file is added */
+		emptyTitle?: string;
 		/** MIME types accepted. Supports wildcards like `image/*` @default `['*\/*']` */
 		allowedFileTypes?: string[];
 		/** Maximum file size in bytes */
