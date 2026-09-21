@@ -18,8 +18,6 @@ export type FileUploadProps = Prettify<
 		maxNumberFiles?: number;
 		/** Custom text describing supported formats, shown in the upload area */
 		supportedFormatsText?: string;
-		/** Controls the size of the upload area @default `'md'` */
-		size?: UtilitySizeOptions;
 	}
 >;
 
