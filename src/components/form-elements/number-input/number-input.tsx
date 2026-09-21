@@ -66,11 +66,22 @@ const styles = {
 			size: 'md',
 		},
 	}),
-	container: css({
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'stretch',
-		alignSelf: 'start',
+	container: cva({
+		base: {
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'stretch',
+			alignSelf: 'start',
+		},
+		variants: {
+			disabled: {
+				true: { opacity: '0.5', cursor: 'not-allowed' },
+				false: {},
+			},
+		},
+		defaultVariants: {
+			disabled: false,
+		},
 	}),
 };
 
@@ -108,14 +119,15 @@ export const NumberInput = ({
 	min,
 	max,
 	size = 'md',
+	disabled,
 	onChange,
 }: NumberInputProps) => {
 	// Initialize state with the value from props or null
-	const [num, setNum] = useState<number | null>(value);
+	const [num, setNum] = useState<number | null>(value ?? null);
 
 	// Update internal state
 	useEffect(() => {
-		setNum(value);
+		setNum(value ?? null);
 	}, [value]);
 
 	// Handle Num Increment
@@ -174,7 +186,7 @@ export const NumberInput = ({
 	return (
 		<InputWrapper>
 			{title && <FormLabel id={id} name={name} title={title} size={size} />}
-			<div className={styles.container}>
+			<div className={styles.container({ disabled: disabled })}>
 				<button
 					type="button"
 					className={cx(
@@ -222,6 +234,7 @@ export const NumberInput = ({
 						}
 					}}
 					required={required}
+					disabled={disabled}
 					min={min}
 					max={max}
 				/>
@@ -232,6 +245,7 @@ export const NumberInput = ({
 						inputSegmentStyles({ size })
 					)}
 					onClick={handleIncrement(1)}
+					disabled={disabled}
 				>
 					<Icon name="CaretRight" color="gray" size={inputIconSizes[size]} />
 				</button>
