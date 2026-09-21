@@ -1,3 +1,5 @@
+import { UtilitySizeOptions } from '@/types';
+
 export type InputProps<
 	TValue,
 	TChange = React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
@@ -14,6 +16,8 @@ export type InputProps<
 	required?: boolean;
 	/** Descriptive text rendered within input */
 	placeholder?: string;
+	/** Size @default `md` */
+	size?: UtilitySizeOptions;
 	/** Called when the input value changes */
 	onChange: (e: TChange) => void | Promise<void>;
 };
