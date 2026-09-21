@@ -28,14 +28,17 @@ export const baseInputStyles = cva({
 			sm: {
 				paddingX: '2',
 				paddingY: '1',
+				fontSize: 'xs',
 			},
 			md: {
 				paddingX: '3',
 				paddingY: '1.5',
+				fontSize: 'sm',
 			},
 			lg: {
 				paddingX: '4',
 				paddingY: '2',
+				fontSize: 'md',
 			},
 		},
 	},
