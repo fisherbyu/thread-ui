@@ -44,6 +44,10 @@ export const baseInputStyles = cva({
 			borderColor: 'info.main',
 			boxShadow: '0 0 0 2px {colors.info.main}',
 		},
+		_disabled: {
+			opacity: '0.5',
+			cursor: 'not-allowed',
+		},
 	},
 	variants: {
 		alt: {
