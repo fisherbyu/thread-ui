@@ -1,4 +1,4 @@
-import { Prettify } from '@/types';
+import { Prettify, UtilitySizeOptions } from '@/types';
 import { InputProps } from '../input-props.types';
 
 export type UploadableFile = File & {
@@ -19,7 +19,7 @@ export type FileUploadProps = Prettify<
 		/** Custom text describing supported formats, shown in the upload area */
 		supportedFormatsText?: string;
 		/** Controls the size of the upload area @default `'md'` */
-		size?: 'sm' | 'md' | 'lg';
+		size?: UtilitySizeOptions;
 	}
 >;
 
