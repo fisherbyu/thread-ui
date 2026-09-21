@@ -29,7 +29,7 @@ export default meta;
 type Story = StoryObj<typeof FileUpload>;
 
 export const Default: Story = {
-	render: (args) => {
+	render: (args: any) => {
 		const [files, onChange] = useState<UploadableFile[]>([]);
 		return <FileUpload {...args} value={files} onChange={onChange} />;
 	},
@@ -43,7 +43,7 @@ export const Default: Story = {
 };
 
 export const ImageOnly: Story = {
-	render: (args) => {
+	render: (args: any) => {
 		const [files, onChange] = useState<UploadableFile[]>([]);
 		return <FileUpload {...args} value={files} onChange={onChange} />;
 	},
@@ -53,7 +53,7 @@ export const ImageOnly: Story = {
 		size: 'lg',
 		allowedFileTypes: ['image/*'],
 		maxFileSize: 5 * 1024 * 1024, // 5MB
-		maxNumberFiles: 3,
+		maxNumberFiles: 1,
 		supportedFormatsText: 'PNG, JPG, GIF up to 5MB',
 		required: true,
 	},
