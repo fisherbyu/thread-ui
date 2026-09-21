@@ -4,8 +4,6 @@ export const baseInputStyles = cva({
 	base: {
 		color: 'text.standard',
 		backgroundColor: 'inset',
-		paddingX: '4',
-		paddingY: '2',
 		borderWidth: 'md',
 		borderStyle: 'solid',
 		borderColor: 'structure.default',
@@ -26,8 +24,23 @@ export const baseInputStyles = cva({
 				width: '100%',
 			},
 		},
+		size: {
+			sm: {
+				paddingX: '2',
+				paddingY: '1',
+			},
+			md: {
+				paddingX: '3',
+				paddingY: '1.5',
+			},
+			lg: {
+				paddingX: '4',
+				paddingY: '2',
+			},
+		},
 	},
 	defaultVariants: {
 		alt: false,
+		size: 'md',
 	},
 });
