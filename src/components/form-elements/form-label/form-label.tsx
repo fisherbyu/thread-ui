@@ -29,22 +29,9 @@ const styles = cva({
  * <FormLabel name="email" title="Email Address" />
  */
 export const FormLabel = ({ name, id = name, title, size = 'md' }: FormLabelProps) => {
-	const textSizeFromSizeProp = (() => {
-		switch (size) {
-			case 'sm':
-				return 'md';
-			case 'md':
-				return 'lg';
-			case 'lg':
-				return 'xl';
-			default:
-				return 'lg';
-		}
-	})();
-
 	return (
 		<label id={id} htmlFor={name} className={styles({ size })}>
-			<Text weight="semibold" size={textSizeFromSizeProp}>
+			<Text inline weight="semibold" size={size}>
 				{title}
 			</Text>
 		</label>
