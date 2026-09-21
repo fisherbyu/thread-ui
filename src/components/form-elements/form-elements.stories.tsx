@@ -34,7 +34,7 @@ export const FormElements: Story = {
 				flexDirection: 'column',
 				margin: 'auto',
 				width: '75%',
-				// gap: '16px',
+				gap: '12px',
 			}}
 		>
 			<TextInput name="text" title="Full Name" placeholder="Enter your name" size={size} />
