@@ -7,7 +7,7 @@ export type UploadableFile = File & {
 };
 
 export type FileUploadProps = Prettify<
-	Omit<BaseInputProps, 'placeholder'> &
+	Omit<BaseInputProps, 'placeholder' | 'disabled'> &
 		ControlledValueProps<UploadableFile[], UploadableFile[]> & {
 			/** Optional Title Rendered before file is added */
 			emptyTitle?: string;
