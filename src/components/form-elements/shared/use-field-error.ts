@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { InputElement } from './input-props.types';
 
 /** Options for `useFieldError`. */
@@ -8,7 +8,7 @@ type UseFieldErrorProps = {
 	id: string;
 	/** Consumer-supplied error; takes precedence over the native validation message */
 	error?: string;
-	/** Current value; keeps a visible native message in step as it changes */
+	/** Current value; refreshes a visible native message when the value changes without user input, like stepper buttons */
 	value?: unknown;
 };
 
@@ -26,26 +26,40 @@ export const getErrorId = (id: string) => `${id}-error`;
  * <InputWrapper id={id} error={message} size={size}>
  *   <input ref={ref} id={id} {...fieldProps} />
  * </InputWrapper>
+ *
+ * @example
+ * // One `ref` for either element when the control can swap
+ * const { ref, fieldProps } = useFieldError<HTMLInputElement | HTMLTextAreaElement>({ id, error });
  */
 export const useFieldError = <T extends InputElement = HTMLInputElement>({
 	id,
 	error,
 	value,
 }: UseFieldErrorProps) => {
-	const ref = useRef<T>(null);
+	const elementRef = useRef<T | null>(null);
 	const [nativeMessage, setNativeMessage] = useState<string | null>(null);
 
-	// Mirror the `error` prop into native validity so the form refuses to submit while it is set
-	useEffect(() => {
-		ref.current?.setCustomValidity(error ?? '');
-	}, [error]);
+	// Mirror `error` into native validity so the form refuses to submit while it is set.
+	// A callback ref re-applies it when `error` changes or the element is swapped
+	const ref = useCallback(
+		(node: T | null) => {
+			elementRef.current = node;
+			node?.setCustomValidity(error ?? '');
+		},
+		[error]
+	);
 
-	// Once a native message is showing, refresh it as the value or `error` changes; clears when valid
+	// Refresh a visible native message; clears once the field is valid
+	const refresh = useCallback(() => {
+		setNativeMessage((prev) =>
+			prev === null ? null : elementRef.current?.validationMessage || null
+		);
+	}, []);
+
+	// Catch changes that don't fire `input`, like programmatic value updates or `error` being cleared
 	useEffect(() => {
-		if (nativeMessage !== null) {
-			setNativeMessage(ref.current?.validationMessage || null);
-		}
-	}, [value, error, nativeMessage]);
+		refresh();
+	}, [value, error, refresh]);
 
 	const handleInvalid = (e: React.FormEvent<T>) => {
 		// Suppress the browser bubble; the message renders inline instead
@@ -67,6 +81,7 @@ export const useFieldError = <T extends InputElement = HTMLInputElement>({
 		message,
 		fieldProps: {
 			onInvalid: handleInvalid,
+			onInput: refresh,
 			'aria-invalid': message ? true : undefined,
 			'aria-describedby': message ? getErrorId(id) : undefined,
 		},
