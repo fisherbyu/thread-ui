@@ -60,7 +60,7 @@ export const FormElements: Story = {
 			<NumberInput
 				name="count"
 				title="Quantity"
-				value={5}
+				defaultValue={5}
 				min={1}
 				max={10}
 				size={size}
