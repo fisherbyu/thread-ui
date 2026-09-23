@@ -1,7 +1,7 @@
 import { FormLabel } from '../form-label';
 import { TextInputProps } from './text-input.types';
 import { InputWrapper } from '../input-wrapper';
-import { baseInputStyles } from '../styles';
+import { baseInputStyles } from '../shared/styles';
 import { cx, css } from '@/styled-system/css';
 
 const style = css({

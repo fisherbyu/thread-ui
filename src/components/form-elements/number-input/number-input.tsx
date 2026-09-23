@@ -3,9 +3,9 @@ import { Icon } from '@/components';
 import { FormLabel } from '../form-label';
 import { InputWrapper } from '../input-wrapper';
 import { NumberInputProps } from './number-input.types';
-import { inputIconSizes, inputSegmentStyles } from '../styles';
+import { inputIconSizes, inputSegmentStyles } from '../shared/styles';
 import { useState } from 'react';
-import { css, cva, cx } from '@/styled-system/css';
+import { cva, cx } from '@/styled-system/css';
 
 const styles = {
 	arrowButton: cva({
