@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../ui';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { TextInput } from './text-input';
@@ -29,7 +30,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<CollectionArgs>;
 
 export const FormElements: Story = {
 	render: ({ size, disabled }) => (
@@ -68,4 +69,69 @@ export const FormElements: Story = {
 			/>
 		</div>
 	),
+};
+
+const ValidationForm = ({ size, disabled }: CollectionArgs) => {
+	const [username, setUsername] = React.useState('');
+	const usernameError = username === 'admin' ? 'That username is taken' : undefined;
+
+	return (
+		<form
+			noValidate={false}
+			onSubmit={(e) => {
+				e.preventDefault();
+				alert('Submitted');
+			}}
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				margin: 'auto',
+				width: '75%',
+				gap: '12px',
+			}}
+		>
+			<TextInput
+				name="fullName"
+				title="Full Name (required)"
+				placeholder="Enter your name"
+				required
+				size={size}
+				disabled={disabled}
+			/>
+			<TextInput
+				name="email"
+				title="Email (native type check)"
+				type="email"
+				placeholder="you@example.com"
+				required
+				size={size}
+				disabled={disabled}
+			/>
+			<TextInput
+				name="username"
+				title="Username (custom error on `admin`)"
+				value={username}
+				onChange={(e) => setUsername(e.target.value)}
+				error={usernameError}
+				size={size}
+				disabled={disabled}
+			/>
+			<NumberInput
+				name="quantity"
+				title="Quantity (required, 1–10)"
+				min={1}
+				max={10}
+				required
+				size={size}
+				disabled={disabled}
+			/>
+			<div style={{ alignSelf: 'flex-end' }}>
+				<Button type="submit">Submit</Button>
+			</div>
+		</form>
+	);
+};
+
+export const Validation: Story = {
+	render: (args) => <ValidationForm {...args} />,
 };
