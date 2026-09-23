@@ -2,6 +2,7 @@
 import { Icon } from '@/components';
 import { FormLabel } from '../shared/form-label';
 import { InputWrapper } from '../shared/input-wrapper';
+import { useFieldError } from '../shared/use-field-error';
 import { NumberInputProps } from './number-input.types';
 import { inputIconSizes, inputSegmentStyles } from '../shared/styles';
 import { useState } from 'react';
@@ -34,8 +35,6 @@ const styles = {
 	}),
 	centerSegment: cva({
 		base: {
-			color: 'text.standard',
-			backgroundColor: 'inset',
 			textAlign: 'center',
 			appearance: 'none',
 			'&::-webkit-outer-spin-button': {
@@ -43,10 +42,6 @@ const styles = {
 			},
 			'&::-webkit-inner-spin-button': {
 				appearance: 'none',
-			},
-			_focus: {
-				ringColor: 'info.main',
-				borderColor: 'info.main',
 			},
 		},
 		variants: {
@@ -72,15 +67,6 @@ const styles = {
 			justifyContent: 'center',
 			alignItems: 'stretch',
 			alignSelf: 'start',
-		},
-		variants: {
-			disabled: {
-				true: { opacity: '0.5', cursor: 'not-allowed' },
-				false: {},
-			},
-		},
-		defaultVariants: {
-			disabled: false,
 		},
 	}),
 };
@@ -125,6 +111,7 @@ export const NumberInput = ({
 	max,
 	size = 'md',
 	disabled,
+	error,
 	onChange,
 }: NumberInputProps) => {
 	const isControlled = value !== undefined;
@@ -132,6 +119,8 @@ export const NumberInput = ({
 	// Internal state only backs the uncontrolled case; a controlled parent owns the value
 	const [internalNum, setInternalNum] = useState<number | null>(defaultValue ?? null);
 	const num = isControlled ? value : internalNum;
+
+	const { ref, message, fieldProps } = useFieldError({ id, error, value: num });
 
 	// Keep internal state in step unless the parent is driving the value
 	const setNum = (newValue: number | null) => {
@@ -194,9 +183,9 @@ export const NumberInput = ({
 	};
 
 	return (
-		<InputWrapper>
+		<InputWrapper id={id} error={message} size={size}>
 			{title && <FormLabel id={id} name={name} title={title} size={size} />}
-			<div className={styles.container({ disabled: disabled })}>
+			<div className={styles.container()}>
 				<button
 					type="button"
 					className={cx(
@@ -209,13 +198,17 @@ export const NumberInput = ({
 					<Icon name="CaretLeft" color="gray" size={inputIconSizes[size]} />
 				</button>
 				<input
+					ref={ref}
 					type="number"
 					id={id}
 					name={name}
 					placeholder={placeholder}
 					value={num ?? ''}
 					onChange={handleInputChange}
-					className={cx(inputSegmentStyles({ size }), styles.centerSegment({ size }))}
+					className={cx(
+						inputSegmentStyles({ size, field: true }),
+						styles.centerSegment({ size })
+					)}
 					onKeyDown={(e) => {
 						// Allow minus sign as first character if negative values are allowed
 						if (
@@ -248,6 +241,7 @@ export const NumberInput = ({
 					disabled={disabled}
 					min={min}
 					max={max}
+					{...fieldProps}
 				/>
 				<button
 					type="button"
