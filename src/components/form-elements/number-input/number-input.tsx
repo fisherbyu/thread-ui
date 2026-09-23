@@ -4,7 +4,7 @@ import { FormLabel } from '../form-label';
 import { InputWrapper } from '../input-wrapper';
 import { NumberInputProps } from './number-input.types';
 import { inputIconSizes, inputSegmentStyles } from '../styles';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { css, cva, cx } from '@/styled-system/css';
 
 const styles = {
@@ -109,6 +109,9 @@ const valueWithinRange = (value: number, min?: number, max?: number): boolean =>
  *   max={99}
  *   onChange={handleChange}
  * />
+ *
+ * @example
+ * <NumberInput name="quantity" title="Quantity" defaultValue={1} min={1} max={99} />
  */
 export const NumberInput = ({
 	name,
@@ -124,16 +127,18 @@ export const NumberInput = ({
 	disabled,
 	onChange,
 }: NumberInputProps) => {
-	// Initialize state with the value from props or null
-	const [num, setNum] = useState<number | null>(value ?? defaultValue ?? null);
+	const isControlled = value !== undefined;
 
-	// Update internal state
-	useEffect(() => {
-		// Only sync when controlled
-		if (value !== undefined) {
-			setNum(value);
+	// Internal state only backs the uncontrolled case; a controlled parent owns the value
+	const [internalNum, setInternalNum] = useState<number | null>(defaultValue ?? null);
+	const num = isControlled ? value : internalNum;
+
+	// Keep internal state in step unless the parent is driving the value
+	const setNum = (newValue: number | null) => {
+		if (!isControlled) {
+			setInternalNum(newValue);
 		}
-	}, [value]);
+	};
 
 	// Handle Num Increment
 	const handleIncrement = (increment: number) => () => {

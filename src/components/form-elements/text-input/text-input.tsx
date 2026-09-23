@@ -15,6 +15,9 @@ const style = css({
  *
  * @example
  * <TextInput name="bio" title="Bio" value={bio} multiline onChange={handleChange} />
+ *
+ * @example
+ * <TextInput name="bio" title="Bio" defaultValue={artist.bio} multiline />
  */
 export const TextInput = ({
 	name,
@@ -30,6 +33,9 @@ export const TextInput = ({
 	disabled,
 	onChange,
 }: TextInputProps) => {
+	// Pass only one of the two so the element never flips between modes
+	const valueProps = value !== undefined ? { value } : { defaultValue };
+
 	return (
 		<InputWrapper>
 			{title && <FormLabel id={id} name={name} title={title} size={size} />}
@@ -39,8 +45,7 @@ export const TextInput = ({
 					name={name}
 					required={required}
 					disabled={disabled}
-					value={value}
-					defaultValue={defaultValue}
+					{...valueProps}
 					onChange={onChange}
 					placeholder={placeholder}
 					rows={3}
@@ -53,8 +58,7 @@ export const TextInput = ({
 					name={name}
 					required={required}
 					disabled={disabled}
-					value={value}
-					defaultValue={defaultValue}
+					{...valueProps}
 					onChange={onChange}
 					placeholder={placeholder}
 					className={baseInputStyles({ size })}
