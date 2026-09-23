@@ -16,6 +16,8 @@ export type BaseInputProps = {
 	size?: UtilitySizeOptions;
 	/** Block interaction and exclude the value from form submission */
 	disabled?: boolean;
+	/** Error message rendered below the input. Overrides native validation message and blocks form submission while set */
+	error?: string;
 };
 
 /** Control props for inputs that only support controlled use. */
