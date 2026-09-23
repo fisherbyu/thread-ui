@@ -30,7 +30,7 @@ const styles = cva({
  */
 export const FormLabel = ({ name, id = name, title, size = 'md' }: FormLabelProps) => {
 	return (
-		<label id={id} htmlFor={name} className={styles({ size })}>
+		<label id={`${id}-label`} htmlFor={id} className={styles({ size })}>
 			<Text inline weight="semibold" size={size}>
 				{title}
 			</Text>
