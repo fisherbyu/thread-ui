@@ -1,6 +1,6 @@
-import { FormLabel } from '../form-label';
+import { FormLabel } from '../shared/form-label';
 import { TextInputProps } from './text-input.types';
-import { InputWrapper } from '../input-wrapper';
+import { InputWrapper } from '../shared/input-wrapper';
 import { baseInputStyles } from '../shared/styles';
 import { cx, css } from '@/styled-system/css';
 

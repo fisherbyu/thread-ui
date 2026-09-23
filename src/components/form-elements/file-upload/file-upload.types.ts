@@ -1,5 +1,5 @@
 import { Prettify, UtilitySizeOptions } from '@/types';
-import { BaseInputProps, ControlledValueProps } from '../input-props.types';
+import { BaseInputProps, ControlledValueProps } from '../shared/input-props.types';
 
 export type UploadableFile = File & {
 	/** Alt text for image files */

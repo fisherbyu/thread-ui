@@ -1,6 +1,6 @@
 'use client';
 import { css } from '@/styled-system/css';
-import { FormLabel } from '../../form-label';
+import { FormLabel } from '../../shared/form-label';
 import { useFileUploadContext } from '../file-upload-context';
 import { Divider, IconButton } from '@/components/ui';
 import { FileInput } from './file-input';

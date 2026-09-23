@@ -1,5 +1,5 @@
 import { Prettify } from '@/types';
-import { InputProps } from '../input-props.types';
+import { InputProps } from '../shared/input-props.types';
 
 export type NumberInputProps = Prettify<
 	InputProps<number | null> & {

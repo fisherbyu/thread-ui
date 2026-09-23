@@ -1,7 +1,7 @@
 'use client';
 import { Icon } from '@/components';
-import { FormLabel } from '../form-label';
-import { InputWrapper } from '../input-wrapper';
+import { FormLabel } from '../shared/form-label';
+import { InputWrapper } from '../shared/input-wrapper';
 import { NumberInputProps } from './number-input.types';
 import { inputIconSizes, inputSegmentStyles } from '../shared/styles';
 import { useState } from 'react';

@@ -1,8 +1,8 @@
 'use client';
 import { useRef } from 'react';
 import { DropdownBaseProps } from './dropdown-base.types';
-import { InputWrapper } from '../../input-wrapper';
-import { FormLabel } from '../../form-label';
+import { InputWrapper } from '../../shared/input-wrapper';
+import { FormLabel } from '../../shared/form-label';
 import { Icon } from '@/components/ui';
 import { css } from '@/styled-system/css';
 import { useClickOutside } from '@/hooks';

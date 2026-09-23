@@ -1,4 +1,4 @@
-import { InputProps } from '../input-props.types';
+import { InputProps } from '../shared/input-props.types';
 
 export type TextInputProps = InputProps<string> & {
 	/** Native input type. Ignored when `multiline` @default `text` */
