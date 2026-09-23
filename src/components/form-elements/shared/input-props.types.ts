@@ -1,5 +1,8 @@
 import { UtilitySizeOptions } from '@/types';
 
+/** HTML Elements that accept inputs */
+export type InputElement = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+
 /** Props shared by every form element, independent of control mode. */
 export type BaseInputProps = {
 	/** Defaults to `name` if not provided */
