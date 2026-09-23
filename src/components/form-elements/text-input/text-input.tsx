@@ -1,6 +1,8 @@
+'use client';
 import { FormLabel } from '../shared/form-label';
 import { TextInputProps } from './text-input.types';
 import { InputWrapper } from '../shared/input-wrapper';
+import { useFieldError } from '../shared/use-field-error';
 import { baseInputStyles } from '../shared/styles';
 import { cx, css } from '@/styled-system/css';
 
@@ -18,6 +20,9 @@ const style = css({
  *
  * @example
  * <TextInput name="bio" title="Bio" defaultValue={artist.bio} multiline />
+ *
+ * @example
+ * <TextInput name="email" title="Email" type="email" required error={emailError} />
  */
 export const TextInput = ({
 	name,
@@ -31,16 +36,24 @@ export const TextInput = ({
 	type = 'text',
 	size = 'md',
 	disabled,
+	error,
 	onChange,
 }: TextInputProps) => {
 	// Pass only one of the two so the element never flips between modes
 	const valueProps = value !== undefined ? { value } : { defaultValue };
 
+	const { ref, message, fieldProps } = useFieldError<HTMLInputElement | HTMLTextAreaElement>({
+		id,
+		error,
+		value,
+	});
+
 	return (
-		<InputWrapper>
+		<InputWrapper id={id} error={message} size={size}>
 			{title && <FormLabel id={id} name={name} title={title} size={size} />}
 			{multiline ? (
 				<textarea
+					ref={ref}
 					id={id}
 					name={name}
 					required={required}
@@ -50,9 +63,11 @@ export const TextInput = ({
 					placeholder={placeholder}
 					rows={3}
 					className={cx(baseInputStyles({ size }), style)}
+					{...fieldProps}
 				/>
 			) : (
 				<input
+					ref={ref}
 					type={type}
 					id={id}
 					name={name}
@@ -62,6 +77,7 @@ export const TextInput = ({
 					onChange={onChange}
 					placeholder={placeholder}
 					className={baseInputStyles({ size })}
+					{...fieldProps}
 				/>
 			)}
 		</InputWrapper>
