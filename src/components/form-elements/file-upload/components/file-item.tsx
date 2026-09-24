@@ -19,6 +19,7 @@ const styles = {
 	actions: css({
 		display: 'flex',
 		gap: '1',
+		alignItems: 'center',
 	}),
 	editor: css({
 		display: 'flex',
@@ -96,17 +97,19 @@ export const FileItem = ({ item }: FileItemProps) => {
 								}
 								onClick={() => setIsEditing((prev) => !prev)}
 								name={isEditing ? 'Check' : 'PencilSimple'}
-								size="sm"
-								color="text"
+								size="md"
+								color="neutral"
+								text
 							/>
 						)}
 						<IconButton
 							ariaLabel={`Remove ${item.name}`}
 							onClick={() => removeItem(key)}
 							name="XSquare"
-							size="sm"
+							size="md"
 							color="error"
 							disabled={disabled}
+							text
 						/>
 					</div>
 				}
