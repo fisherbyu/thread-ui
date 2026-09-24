@@ -24,6 +24,9 @@ const styles = {
 		display: 'flex',
 		flexDirection: 'row',
 		gap: '2',
+		width: '100%',
+		// Don't let the inputs' default width widen the component; fill the width the rows set instead
+		contain: 'inline-size',
 	}),
 	field: css({
 		width: '100%',
