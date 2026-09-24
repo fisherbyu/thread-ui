@@ -44,6 +44,7 @@ export const FileUpload = ({
 	error,
 	size = 'md',
 	editMode = 'on-demand',
+	divider = true,
 }: FileUploadProps) => {
 	const id = useInputId(idProp, name);
 
@@ -74,6 +75,7 @@ export const FileUpload = ({
 				editMode,
 				maxFiles,
 				formatsText: supportedFormatsText ?? describeFormats(accept, maxSize),
+				divider,
 			}}
 		>
 			<FileUploadContent />
