@@ -55,7 +55,7 @@ type InputWrapperProps = Prettify<
 >;
 
 /**
- * Field shell for a form control: label, optional divider, the control, and the error message.
+ * Field shell for an input control: label, optional divider, the control, and the error message.
  * The message slot is an always-present `aria-live` region so screen readers announce changes.
  *
  * @example
