@@ -70,12 +70,24 @@ export const FilterControls = <T,>({
 						<MultiDropdown
 							size={size}
 							key={String(key)}
-							id={String(key)}
+							name={String(key)}
 							title={label}
 							options={options as { label: string; value: string | number }[]}
-							values={selectedValues}
-							onToggle={(value) => onToggle(key, value as T[keyof T])}
-							onClear={() => onClear(key)}
+							value={selectedValues}
+							onChange={(next) => {
+								// Clear arrives as an empty selection; anything else changes exactly one value
+								if (next.length === 0) {
+									onClear(key);
+									return;
+								}
+								const toggled =
+									next.find((v) => !selectedValues.includes(v)) ??
+									selectedValues.find((v) => !next.includes(v));
+								if (toggled !== undefined) {
+									onToggle(key, toggled as T[keyof T]);
+								}
+							}}
+							variant="button"
 							icon={icon}
 							showLabel={false}
 							color={active ? color : undefined}
