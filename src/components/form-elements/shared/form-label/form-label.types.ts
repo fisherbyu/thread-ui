@@ -1,10 +1,8 @@
 import { UtilitySizeOptions } from '@/types';
 
 export type FormLabelProps = {
-	/** Defaults to `name` if not provided */
-	id?: string;
-	/** Associates the label with its form control via `htmlFor` */
-	name: string;
+	/** Id of the control this label points to via `htmlFor`; the label's own id is `${id}-label` */
+	id: string;
 	/** Text displayed in the label */
 	title?: string;
 	/** Label Size @default `'md'`` */
