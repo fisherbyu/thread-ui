@@ -1,7 +1,6 @@
 import { css, cva } from '@/styled-system/css';
 import { Override, Prettify } from '@/types';
 import { ReactNode } from 'react';
-import { Divider } from '@/components/ui';
 import { BaseInputProps } from './input-props.types';
 import { FormLabel } from './form-label';
 import { getErrorId } from './use-field-error';
@@ -55,7 +54,7 @@ type InputWrapperProps = Prettify<
 >;
 
 /**
- * Field shell for an input control: label, optional divider, the control, and the error message.
+ * Field shell for a form control: label (with optional divider), the control, and the error message.
  * The message slot is an always-present `aria-live` region so screen readers announce changes.
  *
  * @example
@@ -64,7 +63,7 @@ type InputWrapperProps = Prettify<
  * </InputWrapper>
  *
  * @example
- * <InputWrapper id={id} title="Filters" hideLabel divider>
+ * <InputWrapper id={id} title="Filters" hideLabel>
  *   <button id={id}>Open</button>
  * </InputWrapper>
  */
@@ -77,12 +76,11 @@ export const InputWrapper = ({
 	hideLabel,
 	error,
 }: InputWrapperProps) => {
-	const label = title && <FormLabel id={id} title={title} size={size} />;
+	const label = title && <FormLabel id={id} title={title} size={size} divider={divider} />;
 
 	return (
 		<div className={styles.wrapper}>
 			{label && (hideLabel ? <div className={styles.srOnly}>{label}</div> : label)}
-			{divider && <Divider width="100%" marginY="2px" />}
 			{children}
 			<div id={getErrorId(id)} aria-live="polite" className={styles.message({ size })}>
 				{error}

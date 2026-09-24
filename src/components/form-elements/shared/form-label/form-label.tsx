@@ -1,6 +1,7 @@
 import { cva } from '@/styled-system/css';
 import { FormLabelProps } from './form-label.types';
 import { Text } from '@/components/typography';
+import { Divider } from '@/components/ui';
 
 const styles = cva({
 	base: {
@@ -29,13 +30,17 @@ const styles = cva({
  *
  * @example
  * <FormLabel id="email" title="Email Address" />
+ *
+ * @example
+ * <FormLabel id="attachments" title="Attachments" divider />
  */
-export const FormLabel = ({ id, title, size = 'md' }: FormLabelProps) => {
+export const FormLabel = ({ id, title, size = 'md', divider }: FormLabelProps) => {
 	return (
 		<label id={`${id}-label`} htmlFor={id} className={styles({ size })}>
 			<Text inline weight="semibold" size={size}>
 				{title}
 			</Text>
+			{divider && <Divider width="100%" marginY="2px" />}
 		</label>
 	);
 };
