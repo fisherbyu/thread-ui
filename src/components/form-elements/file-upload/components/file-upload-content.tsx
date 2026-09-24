@@ -30,6 +30,10 @@ const styles = {
 		gap: '1',
 		flexDirection: 'column',
 		width: '100%',
+		// ~3.5 rows (64px row + 4px gap) so the cut-off row signals there's more to scroll
+		maxHeight: '60',
+		overflowY: 'auto',
+		padding: '0.5',
 	}),
 	srOnly: css({ srOnly: true }),
 };
