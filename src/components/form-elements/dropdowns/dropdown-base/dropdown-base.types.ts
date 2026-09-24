@@ -1,14 +1,17 @@
 import { ButtonProps, IconNames } from '@/components/ui';
 import { UtilityColorOptions, UtilitySizeOptions } from '@/types';
 
-/**
- * A single option in the Dropdown list.
- */
-export type DropdownOption = {
+/** Values a dropdown option can hold. */
+export type DropdownValue = string | number;
+
+/** A single option in the dropdown list. */
+export type DropdownOption<T extends DropdownValue = DropdownValue> = {
 	/** Display text shown in the list */
 	label: string;
-	/** Value passed to `onSelect` when this option is chosen */
-	value: string | number;
+	/** Value passed to `onChange` when this option is chosen */
+	value: T;
+	/** Block selecting this option */
+	disabled?: boolean;
 };
 
 export type DropdownBaseProps = {
