@@ -7,4 +7,6 @@ export type FormLabelProps = {
 	title?: string;
 	/** Label Size @default `'md'`` */
 	size?: UtilitySizeOptions;
+	/** Optionally render divider beneath label @default false */
+	divider?: boolean;
 };
