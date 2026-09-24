@@ -136,8 +136,10 @@ export const Dropzone = () => {
 			<Icon name="UploadSimple" size={iconSizes[size]} color="gray" />
 			<div className={styles.contents({ size })}>
 				<span className={styles.dragText({ size })}>
-					<Text inline>
-						{plural ? 'Drag and drop your files here' : 'Drag and drop your file here'}
+					<Text size={size == 'lg' ? 'md' : size} inline>
+						{plural
+							? 'Drag and Drop Your Files Here'
+							: 'Drag and Drop Your File Here'}{' '}
 					</Text>
 				</span>
 				<Button
