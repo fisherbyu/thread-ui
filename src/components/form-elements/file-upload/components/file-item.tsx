@@ -24,7 +24,6 @@ const styles = {
 		display: 'flex',
 		flexDirection: 'row',
 		gap: '2',
-		paddingX: '5',
 	}),
 	field: css({
 		width: '100%',
@@ -57,6 +56,8 @@ export const FileItem = ({ item }: FileItemProps) => {
 	const [originalBase] = useState(base);
 
 	const fieldId = `${id}-${key}`;
+
+	const inputSize = size === 'lg' ? 'md' : size;
 
 	// `on-add` moves focus to the first new file's name field
 	useEffect(() => {
@@ -115,7 +116,7 @@ export const FileItem = ({ item }: FileItemProps) => {
 							title="Filename"
 							value={draftName}
 							onChange={handleNameChange}
-							size={size}
+							size={inputSize}
 						/>
 						{extension && (
 							<Text color="text-secondary" size="xs">
@@ -130,7 +131,7 @@ export const FileItem = ({ item }: FileItemProps) => {
 								title="Alt Text"
 								value={item.alt ?? ''}
 								onChange={handleAltChange}
-								size={size}
+								size={inputSize}
 							/>
 						</div>
 					)}
