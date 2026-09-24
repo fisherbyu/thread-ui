@@ -1,75 +1,36 @@
 'use client';
-import { useState } from 'react';
-import { cva } from '@/styled-system/css';
 import { DropdownProps } from './dropdown.types';
-import { DropdownOption } from '../dropdown-base/dropdown-base.types';
+import { DropdownValue } from '../dropdown-base/dropdown-base.types';
 import { DropdownBase } from '../dropdown-base/dropdown-base';
 
-const itemStyles = cva({
-	base: {
-		cursor: 'pointer',
-		paddingX: '4',
-		paddingY: '2',
-		_hover: { backgroundColor: 'hover' },
-	},
-	variants: {
-		isSelected: {
-			true: { backgroundColor: 'active' },
-		},
-	},
-});
+const toArray = <T,>(value: T | null) => (value === null ? [] : [value]);
 
 /**
- * Single-select dropdown with an option list and outside-click dismissal.
+ * Single-select dropdown with keyboard navigation, outside-click dismissal, and native form participation.
+ * Controlled when `value` is passed, uncontrolled otherwise.
  *
  * @example
  * <Dropdown
+ *   name="status"
  *   title="Status"
  *   value={status}
  *   options={[{ label: 'Active', value: 'active' }, { label: 'Inactive', value: 'inactive' }]}
- *   onSelect={(val) => setStatus(val)}
+ *   onChange={setStatus}
  * />
+ *
+ * @example
+ * <Dropdown name="status" title="Status" options={options} defaultValue="active" required />
  */
-export const Dropdown = ({
-	id,
-	title,
+export const Dropdown = <T extends DropdownValue>({
 	value,
-	options,
-	onSelect,
-	placeholder = 'Select an option...',
-	size,
-	color,
-}: DropdownProps) => {
-	const [isOpen, setIsOpen] = useState(false);
-	const selected = options.find((opt) => opt.value === value);
-
-	const handleSelect = (option: DropdownOption) => {
-		onSelect(option.value);
-		setIsOpen(false);
-	};
-
-	return (
-		<DropdownBase
-			id={id}
-			title={title}
-			options={options}
-			isOpen={isOpen}
-			onToggle={() => setIsOpen((prev) => !prev)}
-			onClose={() => {
-				setIsOpen(false);
-			}}
-			triggerLabel={selected ? selected.label : placeholder}
-			renderItem={(option, index) => (
-				<li
-					key={index}
-					className={itemStyles({ isSelected: option.value === selected?.value })}
-					onClick={() => handleSelect(option)}
-				>
-					{option.label}
-				</li>
-			)}
-			size={size}
-			color={color}
-		/>
-	);
-};
+	defaultValue,
+	onChange,
+	...props
+}: DropdownProps<T>) => (
+	<DropdownBase
+		{...props}
+		value={value === undefined ? undefined : toArray(value)}
+		defaultValue={defaultValue === undefined ? undefined : toArray(defaultValue)}
+		onChange={(next) => onChange?.(next[0] ?? null)}
+	/>
+);
