@@ -21,6 +21,8 @@ export type BaseInputProps = {
 	disabled?: boolean;
 	/** Error message rendered below the input. Overrides native validation message and blocks form submission while set */
 	error?: string;
+	/** Optionally render divider beneath label @default false */
+	divider?: boolean;
 };
 
 /** Control props for inputs that only support controlled use. */
