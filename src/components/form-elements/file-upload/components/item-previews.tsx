@@ -46,6 +46,8 @@ const styles = {
 		borderRadius: 'md',
 	}),
 	content: css({
+		display: 'flex',
+		flexDirection: 'column',
 		overflow: 'hidden',
 		textOverflow: 'ellipsis',
 		whiteSpace: 'nowrap',
@@ -114,9 +116,11 @@ export const FilePreview = ({ item, actions }: FilePreviewProps) => {
 					<Icon name={isImage ? 'Image' : 'FileText'} size={48} color="gray" />
 				)}
 				<div className={styles.content}>
-					<Text size="sm">{item.name}</Text>
+					<Text inline size="sm" weight="medium">
+						{item.name}
+					</Text>
 					{size !== undefined && (
-						<Text size="xs" color="text-secondary">
+						<Text inline size="xs" color="text-secondary">
 							{formatBytes(size)}
 						</Text>
 					)}
