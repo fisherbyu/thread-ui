@@ -27,18 +27,15 @@ export type DropdownSharedProps<T extends DropdownValue> = {
 	showLabel?: boolean;
 };
 
-export type DropdownBaseProps = {
-	id?: string;
-	title?: string;
-	placeholder?: string;
-	options: DropdownOption[];
-	isOpen: boolean;
-	onClose: () => void;
-	onToggle: () => void;
-	triggerLabel: string;
-	renderItem: (option: DropdownOption, index: number) => React.ReactNode;
-	listHeader?: React.ReactNode;
-	size?: UtilitySizeOptions;
-	icon?: IconNames;
-	color?: ButtonProps['color'];
-};
+/** Internal props for `DropdownBase`; values are always arrays so single and multi share one path. */
+export type DropdownBaseProps<T extends DropdownValue> = BaseInputProps &
+	DropdownSharedProps<T> & {
+		/** Controlled selection */
+		value?: T[];
+		/** Initial selection for uncontrolled use */
+		defaultValue?: T[];
+		/** Called with the full next selection */
+		onChange?: (value: T[]) => void | Promise<void>;
+		/** Allow several selections and keep the list open on select @default `false` */
+		multiple?: boolean;
+	};
