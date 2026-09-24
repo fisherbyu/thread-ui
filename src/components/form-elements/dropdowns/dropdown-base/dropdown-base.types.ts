@@ -1,5 +1,5 @@
 import { ButtonProps, IconNames } from '@/components/ui';
-import { UtilityColorOptions, UtilitySizeOptions } from '@/types';
+import { BaseInputProps } from '../../shared/input-props.types';
 
 /** Values a dropdown option can hold. */
 export type DropdownValue = string | number;
@@ -12,6 +12,19 @@ export type DropdownOption<T extends DropdownValue = DropdownValue> = {
 	value: T;
 	/** Block selecting this option */
 	disabled?: boolean;
+};
+
+/** Props shared by `Dropdown` and `MultiDropdown` on top of the base input props. */
+export type DropdownSharedProps<T extends DropdownValue> = {
+	options: DropdownOption<T>[];
+	/** Trigger style: a form `field` or a `button` @default `field` */
+	variant?: 'field' | 'button';
+	/** Trigger color; applies to the `button` variant only @default `neutral` */
+	color?: ButtonProps['color'];
+	/** Icon rendered at the start of the trigger */
+	icon?: IconNames;
+	/** Show the `title` label above the trigger; when `false` it stays available to screen readers @default `true` */
+	showLabel?: boolean;
 };
 
 export type DropdownBaseProps = {
