@@ -3,9 +3,10 @@ import { Icon } from '@/components';
 import { FormLabel } from '../shared/form-label';
 import { InputWrapper } from '../shared/input-wrapper';
 import { useFieldError } from '../shared/use-field-error';
+import { useControllableState } from '../shared/use-controllable-state';
 import { NumberInputProps } from './number-input.types';
 import { inputIconSizes, inputSegmentStyles } from '../shared/styles';
-import { useState } from 'react';
+import { useRef } from 'react';
 import { cva, cx } from '@/styled-system/css';
 
 const styles = {
@@ -114,20 +115,21 @@ export const NumberInput = ({
 	error,
 	onChange,
 }: NumberInputProps) => {
-	const isControlled = value !== undefined;
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	// Internal state only backs the uncontrolled case; a controlled parent owns the value
-	const [internalNum, setInternalNum] = useState<number | null>(defaultValue ?? null);
-	const num = isControlled ? value : internalNum;
+	const [num, setNum] = useControllableState<number | null>({
+		value,
+		defaultValue: defaultValue ?? null,
+		elementRef: inputRef,
+	});
 
-	const { ref, message, fieldProps } = useFieldError({ id, error, value: num });
-
-	// Keep internal state in step unless the parent is driving the value
-	const setNum = (newValue: number | null) => {
-		if (!isControlled) {
-			setInternalNum(newValue);
-		}
-	};
+	const { ref, message, fieldProps } = useFieldError({
+		id,
+		error,
+		value: num,
+		elementRef: inputRef,
+	});
 
 	// Handle Num Increment
 	const handleIncrement = (increment: number) => () => {
