@@ -1,15 +1,19 @@
 'use client';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { InputElement } from './input-props.types';
 
-/** Options for `useFieldError`. */
-type UseFieldErrorProps = {
+/** Props for `useFieldError`. */
+type UseFieldErrorProps<T extends InputElement> = {
 	/** Id of the control; the message id is derived from it */
 	id: string;
 	/** Consumer-supplied error; takes precedence over the native validation message */
 	error?: string;
 	/** Current value; refreshes a visible native message when the value changes without user input, like stepper buttons */
 	value?: unknown;
+	/** Ref to share the validated element with other hooks; one is created when omitted */
+	elementRef?: RefObject<T | null>;
+	/** Element to focus when validation fails, for controls whose native element is hidden. Defaults to the validated element */
+	focusRef?: RefObject<HTMLElement | null>;
 };
 
 /** Id of the message element linked to a control via `aria-describedby`. */
@@ -18,7 +22,10 @@ export const getErrorId = (id: string) => `${id}-error`;
 /**
  * Replaces the browser validation bubble with an inline message.
  * Mirrors `error` into native validity via `setCustomValidity`, captures native messages on `invalid`,
- * and returns props wiring `aria-invalid` and `aria-describedby` to the message rendered by `InputWrapper`.
+ * clears them on form `reset`, and wires `aria-invalid` and `aria-describedby` to the message rendered by `InputWrapper`.
+ *
+ * `validationProps` go on the native element, `ariaProps` on the element the user focuses.
+ * `fieldProps` combines both for controls where those are the same element.
  *
  * @example
  * const { ref, message, fieldProps } = useFieldError({ id, error, value });
@@ -28,15 +35,21 @@ export const getErrorId = (id: string) => `${id}-error`;
  * </InputWrapper>
  *
  * @example
- * // One `ref` for either element when the control can swap
- * const { ref, fieldProps } = useFieldError<HTMLInputElement | HTMLTextAreaElement>({ id, error });
+ * // Hidden native element with a custom trigger
+ * const { ref, validationProps, ariaProps } = useFieldError<HTMLSelectElement>({ id, error, focusRef: triggerRef });
+ *
+ * <button ref={triggerRef} {...ariaProps} />
+ * <select ref={ref} {...validationProps} />
  */
 export const useFieldError = <T extends InputElement = HTMLInputElement>({
 	id,
 	error,
 	value,
-}: UseFieldErrorProps) => {
-	const elementRef = useRef<T | null>(null);
+	elementRef: externalRef,
+	focusRef,
+}: UseFieldErrorProps<T>) => {
+	const internalRef = useRef<T | null>(null);
+	const elementRef = externalRef ?? internalRef;
 	const [nativeMessage, setNativeMessage] = useState<string | null>(null);
 
 	// Mirror `error` into native validity so the form refuses to submit while it is set.
@@ -46,7 +59,7 @@ export const useFieldError = <T extends InputElement = HTMLInputElement>({
 			elementRef.current = node;
 			node?.setCustomValidity(error ?? '');
 		},
-		[error]
+		[error, elementRef]
 	);
 
 	// Refresh a visible native message; clears once the field is valid
@@ -54,12 +67,22 @@ export const useFieldError = <T extends InputElement = HTMLInputElement>({
 		setNativeMessage((prev) =>
 			prev === null ? null : elementRef.current?.validationMessage || null
 		);
-	}, []);
+	}, [elementRef]);
 
 	// Catch changes that don't fire `input`, like programmatic value updates or `error` being cleared
 	useEffect(() => {
 		refresh();
 	}, [value, error, refresh]);
+
+	// A form reset clears native messages, matching browser behaviour
+	useEffect(() => {
+		const form = elementRef.current?.form;
+		if (!form) return;
+
+		const handleReset = () => setNativeMessage(null);
+		form.addEventListener('reset', handleReset);
+		return () => form.removeEventListener('reset', handleReset);
+	}, [elementRef]);
 
 	const handleInvalid = (e: React.FormEvent<T>) => {
 		// Suppress the browser bubble; the message renders inline instead
@@ -70,20 +93,27 @@ export const useFieldError = <T extends InputElement = HTMLInputElement>({
 		const form = e.currentTarget.form;
 		const firstInvalid = form?.querySelector('input:invalid, select:invalid, textarea:invalid');
 		if (firstInvalid === e.currentTarget) {
-			e.currentTarget.focus();
+			(focusRef?.current ?? e.currentTarget).focus();
 		}
 	};
 
 	const message = error || nativeMessage || null;
 
+	const validationProps = {
+		onInvalid: handleInvalid,
+		onInput: refresh,
+	};
+
+	const ariaProps = {
+		'aria-invalid': message ? true : undefined,
+		'aria-describedby': message ? getErrorId(id) : undefined,
+	};
+
 	return {
 		ref,
 		message,
-		fieldProps: {
-			onInvalid: handleInvalid,
-			onInput: refresh,
-			'aria-invalid': message ? true : undefined,
-			'aria-describedby': message ? getErrorId(id) : undefined,
-		},
+		validationProps,
+		ariaProps,
+		fieldProps: { ...validationProps, ...ariaProps },
 	};
 };
