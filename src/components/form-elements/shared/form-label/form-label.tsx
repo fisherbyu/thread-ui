@@ -23,12 +23,12 @@ const styles = cva({
 });
 
 /**
- * Form label linked to a control by `name`. Renders as an `H3` typographic style.
+ * Form label linked to a control by `id`. Renders as an `H3` typographic style.
  *
  * @example
- * <FormLabel name="email" title="Email Address" />
+ * <FormLabel id="email" title="Email Address" />
  */
-export const FormLabel = ({ name, id = name, title, size = 'md' }: FormLabelProps) => {
+export const FormLabel = ({ id, title, size = 'md' }: FormLabelProps) => {
 	return (
 		<label id={`${id}-label`} htmlFor={id} className={styles({ size })}>
 			<Text inline weight="semibold" size={size}>
