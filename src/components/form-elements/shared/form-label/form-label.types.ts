@@ -10,6 +10,6 @@ export type FormLabelProps = Prettify<
 				id: string;
 			}
 		>,
-		'id' | 'title' | 'size' | 'divider'
+		'id' | 'title' | 'size'
 	>
 >;
