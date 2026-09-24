@@ -1,14 +1,28 @@
 'use client';
-import { css } from '@/styled-system/css';
+import { css, cva } from '@/styled-system/css';
 import { InputWrapper } from '../../shared/input-wrapper';
 import { useFileUploadContext } from '../file-upload-context';
 import { Dropzone } from './dropzone';
 import { FileItem } from './file-item';
 
 const styles = {
-	container: css({
-		width: '100%',
-		padding: '1',
+	container: cva({
+		base: {
+			width: '100%',
+			padding: '1',
+			// Content never sets the width, so long names truncate instead of widening the component
+			contain: 'inline-size',
+		},
+		variants: {
+			size: {
+				sm: { minWidth: 'xs' }, // 20rem
+				md: { minWidth: 'sm' }, // 24rem
+				lg: { minWidth: 'md' }, // 28rem
+			},
+		},
+		defaultVariants: {
+			size: 'md',
+		},
 	}),
 	fileList: css({
 		marginBottom: '2',
@@ -50,7 +64,7 @@ export const FileUploadContent = () => {
 	const displayTitle = items.length === 0 ? (emptyTitle ?? title) : title;
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.container({ size })}>
 			<InputWrapper
 				id={id}
 				title={displayTitle}

@@ -27,15 +27,18 @@ const styles = {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'space-between',
+		gap: '3',
 		borderRadius: 'md',
 		backgroundColor: 'gray.light',
 		paddingY: '2',
 		paddingX: '5',
+		'& > :last-child': { flexShrink: '0' },
 	}),
 	innerWrapper: css({
 		display: 'flex',
 		alignItems: 'center',
 		gap: '2',
+		flex: '1',
 		minWidth: '0',
 	}),
 	thumbnail: css({
@@ -48,9 +51,14 @@ const styles = {
 	content: css({
 		display: 'flex',
 		flexDirection: 'column',
-		overflow: 'hidden',
-		textOverflow: 'ellipsis',
-		whiteSpace: 'nowrap',
+		flex: '1',
+		minWidth: '0',
+		// Each line is its own flex item, so the ellipsis has to live on the lines, not the column
+		'& > *': {
+			overflow: 'hidden',
+			textOverflow: 'ellipsis',
+			whiteSpace: 'nowrap',
+		},
 	}),
 };
 
@@ -116,7 +124,7 @@ export const FilePreview = ({ item, actions }: FilePreviewProps) => {
 					<Icon name={isImage ? 'Image' : 'FileText'} size={48} color="gray" />
 				)}
 				<div className={styles.content}>
-					<Text inline size="sm" weight="medium">
+					<Text inline size="sm" weight="medium" truncate>
 						{item.name}
 					</Text>
 					{size !== undefined && (
