@@ -8,6 +8,7 @@ import { NumberInput } from './number-input';
 type CollectionArgs = {
 	size: 'sm' | 'md' | 'lg';
 	disabled: boolean;
+	divider: boolean;
 };
 
 const meta = {
@@ -16,6 +17,7 @@ const meta = {
 	args: {
 		size: 'lg',
 		disabled: false,
+		divider: false,
 	},
 	argTypes: {
 		size: {
@@ -23,6 +25,9 @@ const meta = {
 			options: ['sm', 'md', 'lg'],
 		},
 		disabled: {
+			control: 'boolean',
+		},
+		divider: {
 			control: 'boolean',
 		},
 	},
@@ -33,7 +38,7 @@ export default meta;
 type Story = StoryObj<CollectionArgs>;
 
 export const FormElements: Story = {
-	render: ({ size, disabled }) => (
+	render: ({ size, disabled, divider }) => (
 		<div
 			style={{
 				display: 'flex',
@@ -49,6 +54,7 @@ export const FormElements: Story = {
 				placeholder="Enter your name"
 				size={size}
 				disabled={disabled}
+				divider={divider}
 			/>
 			<TextInput
 				name="notes"
@@ -57,6 +63,7 @@ export const FormElements: Story = {
 				multiline
 				size={size}
 				disabled={disabled}
+				divider={divider}
 			/>
 			<NumberInput
 				name="count"
@@ -66,12 +73,13 @@ export const FormElements: Story = {
 				max={10}
 				size={size}
 				disabled={disabled}
+				divider={divider}
 			/>
 		</div>
 	),
 };
 
-const ValidationForm = ({ size, disabled }: CollectionArgs) => {
+const ValidationForm = ({ size, disabled, divider }: CollectionArgs) => {
 	const [username, setUsername] = React.useState('');
 	const usernameError = username === 'admin' ? 'That username is taken' : undefined;
 
@@ -97,6 +105,7 @@ const ValidationForm = ({ size, disabled }: CollectionArgs) => {
 				required
 				size={size}
 				disabled={disabled}
+				divider={divider}
 			/>
 			<TextInput
 				name="email"
@@ -106,6 +115,7 @@ const ValidationForm = ({ size, disabled }: CollectionArgs) => {
 				required
 				size={size}
 				disabled={disabled}
+				divider={divider}
 			/>
 			<TextInput
 				name="username"
@@ -115,6 +125,7 @@ const ValidationForm = ({ size, disabled }: CollectionArgs) => {
 				error={usernameError}
 				size={size}
 				disabled={disabled}
+				divider={divider}
 			/>
 			<NumberInput
 				name="quantity"
@@ -124,6 +135,7 @@ const ValidationForm = ({ size, disabled }: CollectionArgs) => {
 				required
 				size={size}
 				disabled={disabled}
+				divider={divider}
 			/>
 			<div style={{ alignSelf: 'flex-end' }}>
 				<Button type="submit">Submit</Button>
