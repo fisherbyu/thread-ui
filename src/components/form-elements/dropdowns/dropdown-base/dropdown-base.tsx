@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { DropdownBaseProps, DropdownOption, DropdownValue } from './dropdown-base.types';
 import { InputWrapper } from '../../shared/input-wrapper';
-import { FormLabel } from '../../shared/form-label';
 import { useFieldError } from '../../shared/use-field-error';
 import { useControllableState } from '../../shared/use-controllable-state';
 import { useInputId } from '../../shared/use-input-id';
@@ -87,8 +86,8 @@ export const styles = {
 };
 
 /**
- * Shared engine for `Dropdown` and `MultiDropdown`: label, trigger, listbox, keyboard navigation,
- * a hidden native `select` for form submission and validation, and the error slot.
+ * Shared engine for `Dropdown` and `MultiDropdown`: trigger, listbox, keyboard navigation,
+ * and a hidden native `select` for form submission and validation. Label and error slot come from `InputWrapper`.
  * Selection is always an array; wrappers map it to their own value shape.
  *
  * @example
@@ -102,6 +101,7 @@ export const DropdownBase = <T extends DropdownValue>({
 	placeholder,
 	size = 'md',
 	disabled,
+	divider,
 	error,
 	options,
 	variant = 'field',
@@ -251,11 +251,15 @@ export const DropdownBase = <T extends DropdownValue>({
 		onKeyUp: handleKeyUp,
 	};
 
-	const label = <FormLabel id={id} title={title} size={size} />;
-
 	return (
-		<InputWrapper id={id} error={message} size={size}>
-			{title && (showLabel ? label : <div className={styles.srOnly}>{label}</div>)}
+		<InputWrapper
+			id={id}
+			title={title}
+			size={size}
+			divider={divider}
+			hideLabel={!showLabel}
+			error={message}
+		>
 			<div ref={containerRef} className={styles.interior}>
 				{variant === 'field' ? (
 					<button

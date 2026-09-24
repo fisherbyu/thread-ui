@@ -1,5 +1,4 @@
 'use client';
-import { FormLabel } from '../shared/form-label';
 import { TextInputProps } from './text-input.types';
 import { InputWrapper } from '../shared/input-wrapper';
 import { useFieldError } from '../shared/use-field-error';
@@ -38,6 +37,7 @@ export const TextInput = ({
 	type = 'text',
 	size = 'md',
 	disabled,
+	divider,
 	error,
 	onChange,
 }: TextInputProps) => {
@@ -53,8 +53,7 @@ export const TextInput = ({
 	});
 
 	return (
-		<InputWrapper id={id} error={message} size={size}>
-			{title && <FormLabel id={id} title={title} size={size} />}
+		<InputWrapper id={id} title={title} size={size} divider={divider} error={message}>
 			{multiline ? (
 				<textarea
 					ref={ref}

@@ -1,9 +1,7 @@
 'use client';
 import { css } from '@/styled-system/css';
-import { FormLabel } from '../../shared/form-label';
 import { InputWrapper } from '../../shared/input-wrapper';
 import { useFileUploadContext } from '../file-upload-context';
-import { Divider } from '@/components/ui';
 import { Dropzone } from './dropzone';
 import { FileItem } from './file-item';
 
@@ -17,12 +15,13 @@ const styles = {
 		display: 'flex',
 		gap: '1',
 		flexDirection: 'column',
+		width: '100%',
 	}),
 	srOnly: css({ srOnly: true }),
 };
 
 /**
- * Layout for `FileUpload`: label, file list, dropzone, and the hidden form payload.
+ * Layout for `FileUpload`: file list, dropzone, and the hidden form payload inside `InputWrapper`.
  * Reads everything from `FileUploadContext`.
  *
  * @example
@@ -38,6 +37,7 @@ export const FileUploadContent = () => {
 		emptyTitle,
 		size,
 		disabled,
+		divider,
 		items,
 		remoteFiles,
 		isFull,
@@ -51,9 +51,13 @@ export const FileUploadContent = () => {
 
 	return (
 		<div className={styles.container}>
-			<InputWrapper id={id} error={message} size={size}>
-				{displayTitle && <FormLabel id={id} title={displayTitle} size={size} />}
-				<Divider width="100%" marginY="2px" />
+			<InputWrapper
+				id={id}
+				title={displayTitle}
+				size={size}
+				divider={divider}
+				error={message}
+			>
 				{items.length > 0 && (
 					<div className={styles.fileList}>
 						{items.map((item) => (

@@ -1,6 +1,5 @@
 'use client';
 import { Icon } from '@/components';
-import { FormLabel } from '../shared/form-label';
 import { InputWrapper } from '../shared/input-wrapper';
 import { useFieldError } from '../shared/use-field-error';
 import { useControllableState } from '../shared/use-controllable-state';
@@ -113,6 +112,7 @@ export const NumberInput = ({
 	max,
 	size = 'md',
 	disabled,
+	divider,
 	error,
 	onChange,
 }: NumberInputProps) => {
@@ -187,8 +187,7 @@ export const NumberInput = ({
 	};
 
 	return (
-		<InputWrapper id={id} error={message} size={size}>
-			{title && <FormLabel id={id} title={title} size={size} />}
+		<InputWrapper id={id} title={title} size={size} divider={divider} error={message}>
 			<div className={styles.container()}>
 				<button
 					type="button"

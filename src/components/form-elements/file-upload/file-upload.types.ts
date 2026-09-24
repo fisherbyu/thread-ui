@@ -53,6 +53,7 @@ export type FileUploadContext = ReturnType<typeof useFileUpload> & {
 	emptyTitle?: string;
 	size: UtilitySizeOptions;
 	disabled?: boolean;
+	divider?: boolean;
 	editMode: FileEditMode;
 	maxFiles?: number;
 	formatsText?: string;
