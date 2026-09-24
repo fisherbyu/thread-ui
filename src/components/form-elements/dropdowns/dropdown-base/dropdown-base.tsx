@@ -5,6 +5,7 @@ import { InputWrapper } from '../../shared/input-wrapper';
 import { FormLabel } from '../../shared/form-label';
 import { useFieldError } from '../../shared/use-field-error';
 import { useControllableState } from '../../shared/use-controllable-state';
+import { useInputId } from '../../shared/use-input-id';
 import { baseInputStyles, inputIconSizes } from '../../shared/styles';
 import { Icon, IconButton } from '@/components/ui';
 import { css, cva, cx } from '@/styled-system/css';
@@ -95,7 +96,7 @@ export const styles = {
  */
 export const DropdownBase = <T extends DropdownValue>({
 	name,
-	id = name,
+	id: idProp,
 	title,
 	required,
 	placeholder,
@@ -112,6 +113,7 @@ export const DropdownBase = <T extends DropdownValue>({
 	onChange,
 	multiple = false,
 }: DropdownBaseProps<T>) => {
+	const id = useInputId(idProp, name);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const triggerRef = useRef<HTMLButtonElement>(null);
 	const selectRef = useRef<HTMLSelectElement>(null);
@@ -249,7 +251,7 @@ export const DropdownBase = <T extends DropdownValue>({
 		onKeyUp: handleKeyUp,
 	};
 
-	const label = <FormLabel id={id} name={name} title={title} size={size} />;
+	const label = <FormLabel id={id} title={title} size={size} />;
 
 	return (
 		<InputWrapper id={id} error={message} size={size}>

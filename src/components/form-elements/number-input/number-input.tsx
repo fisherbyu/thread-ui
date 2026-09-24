@@ -4,6 +4,7 @@ import { FormLabel } from '../shared/form-label';
 import { InputWrapper } from '../shared/input-wrapper';
 import { useFieldError } from '../shared/use-field-error';
 import { useControllableState } from '../shared/use-controllable-state';
+import { useInputId } from '../shared/use-input-id';
 import { NumberInputProps } from './number-input.types';
 import { inputIconSizes, inputSegmentStyles } from '../shared/styles';
 import { useRef } from 'react';
@@ -102,7 +103,7 @@ const valueWithinRange = (value: number, min?: number, max?: number): boolean =>
  */
 export const NumberInput = ({
 	name,
-	id = name,
+	id: idProp,
 	title,
 	value,
 	defaultValue,
@@ -115,6 +116,7 @@ export const NumberInput = ({
 	error,
 	onChange,
 }: NumberInputProps) => {
+	const id = useInputId(idProp, name);
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	// Internal state only backs the uncontrolled case; a controlled parent owns the value
@@ -186,7 +188,7 @@ export const NumberInput = ({
 
 	return (
 		<InputWrapper id={id} error={message} size={size}>
-			{title && <FormLabel id={id} name={name} title={title} size={size} />}
+			{title && <FormLabel id={id} title={title} size={size} />}
 			<div className={styles.container()}>
 				<button
 					type="button"
