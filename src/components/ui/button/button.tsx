@@ -1,5 +1,4 @@
 import { button } from '@/styled-system/recipes';
-import { cx } from '@/styled-system/css';
 import { ButtonProps } from './button.types';
 
 /**
@@ -28,8 +27,6 @@ export const Button = ({
 	text = false,
 	disabled = false,
 	highlightOnHover = false,
-	className,
-	style,
 	...rest
 }: ButtonProps) => {
 	const buttonClasses = button({
@@ -43,13 +40,14 @@ export const Button = ({
 
 	return (
 		<button
+			// Before `rest` so an explicit native `aria-label` takes precedence over `ariaLabel`
 			aria-label={ariaLabel}
 			{...rest}
 			type={type}
-			className={cx(buttonClasses, className)}
+			className={buttonClasses}
 			onClick={onClick}
 			disabled={disabled}
-			style={margin ? { margin, ...style } : style}
+			style={margin ? { margin } : undefined}
 		>
 			{children}
 		</button>

@@ -2,10 +2,7 @@ import { ComponentPropsWithRef, MouseEventHandler, ReactNode } from 'react';
 import { Prettify, UtilityColorOptions, UtilitySizeOptions } from '@/types';
 
 export type ButtonProps = Prettify<
-	Omit<
-		ComponentPropsWithRef<'button'>,
-		'color' | 'type' | 'onClick' | 'disabled' | 'children'
-	> & {
+	{
 		/** Stretches the button to fill its container @default `false` */
 		fullWidth?: boolean;
 		/** Color variant @default `'primary'` */
@@ -27,5 +24,8 @@ export type ButtonProps = Prettify<
 		children: ReactNode;
 		/** Highlight background on hover @default `false` */
 		highlightOnHover?: boolean;
-	}
+	} & Omit<
+		ComponentPropsWithRef<'button'>,
+		'color' | 'type' | 'onClick' | 'disabled' | 'children' | 'className' | 'style'
+	>
 >;
