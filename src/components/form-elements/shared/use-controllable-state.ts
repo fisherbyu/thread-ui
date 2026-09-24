@@ -2,7 +2,7 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { InputElement } from './input-props.types';
 
-/** Options for `useControllableState`. */
+/** Props for `useControllableState`. */
 type UseControllableStateProps<T> = {
 	/** Controlled value; the hook is uncontrolled while this is `undefined` */
 	value?: T;
