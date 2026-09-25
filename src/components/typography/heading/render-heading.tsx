@@ -3,6 +3,7 @@ import { TypographyHeadingProps } from './heading.types';
 import { cx } from '@/styled-system/css';
 import { getTypographyStyles } from '../shared-utils/get-typography-styles';
 import { getPresentationStyles } from '../shared-utils/get-presentation-styles';
+import { resolveMarginBottom } from '../shared-utils/resolve-margin-bottom';
 
 /** Subtitle role mapping: subtitle under a heading uses one-step-down typography role. */
 const SUBTITLE_ROLE_MAP = {
@@ -25,17 +26,19 @@ export const renderHeading = (
 	{
 		children,
 		align = 'left',
-		inline = false,
+		marginBottom,
 		color = 'standard',
 		truncate = false,
 		subtitle,
 	}: TypographyHeadingProps
 ) => {
-	// If no subtitle, pass marginBottom through unless inline
+	const resolvedMarginBottom = resolveMarginBottom(marginBottom, { defaultOn: true });
+
+	// If no subtitle, pass marginBottom through to the heading
 	if (!subtitle) {
 		const resolved = getResolvedTypographyValues({
 			role,
-			marginBottom: inline ? 'none' : undefined,
+			marginBottom: resolvedMarginBottom,
 		});
 
 		const headingClass = cx(
@@ -75,7 +78,7 @@ export const renderHeading = (
 	// Derive hgroup outer margin from heading
 	const wrapperResolved = getResolvedTypographyValues({
 		role,
-		marginBottom: inline ? 'none' : undefined,
+		marginBottom: resolvedMarginBottom,
 	});
 
 	const wrapperClass = getTypographyStyles({
