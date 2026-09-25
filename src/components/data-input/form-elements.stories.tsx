@@ -12,7 +12,7 @@ type CollectionArgs = {
 };
 
 const meta = {
-	title: 'Form Elements/Collection',
+	title: 'Data Input/Collection',
 	tags: ['autodocs'],
 	args: {
 		size: 'lg',

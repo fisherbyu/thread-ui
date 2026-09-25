@@ -6,7 +6,7 @@ import { FileUploadItem, RemoteFile } from './file-upload.types';
 import { Button } from '../../ui';
 
 const meta = {
-	title: 'Form Elements/FileUpload',
+	title: 'Data Input/FileUpload',
 	component: FileUpload,
 	parameters: {
 		layout: 'centered',

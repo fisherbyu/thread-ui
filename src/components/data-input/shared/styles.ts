@@ -1,8 +1,9 @@
 import { cva } from '@/styled-system/css';
 import type { IconSizes } from '@/components';
+import { UtilitySizeOptions } from '@/types';
 
-/** Size scale shared by every form element. */
-export type InputSize = 'sm' | 'md' | 'lg';
+/** Size scale shared by every input element. */
+export type InputSize = UtilitySizeOptions;
 
 // Single source of truth for size-driven spacing and type
 const sizeVariants = {

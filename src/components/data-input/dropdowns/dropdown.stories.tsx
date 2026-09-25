@@ -5,7 +5,7 @@ import { Dropdown } from './dropdown/dropdown';
 import { MultiDropdown } from './multi-dropdown/multi-dropdown';
 
 const meta: Meta<typeof Dropdown> = {
-	title: 'Form Elements/Dropdown',
+	title: 'Data Input/Dropdown',
 	component: Dropdown,
 	parameters: {
 		layout: 'centered',
