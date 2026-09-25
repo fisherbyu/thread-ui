@@ -11,7 +11,8 @@ type TypographyArgs = {
 	h2Text: string;
 	h3Text: string;
 	paragraphText: string;
-	textInline: boolean;
+	textAs: 'p' | 'span';
+	textMarginBottom: boolean;
 	subtitleText: string;
 	showSubtitles: boolean;
 };
@@ -76,10 +77,16 @@ const meta: Meta<TypographyArgs> = {
 			control: 'text',
 			description: 'Content for the paragraph Text component',
 		},
-		textInline: {
-			name: 'Text Inline Control',
+		textAs: {
+			name: 'Text Element',
+			control: 'radio',
+			options: ['p', 'span'],
+			description: 'Element the paragraph Text renders as',
+		},
+		textMarginBottom: {
+			name: 'Text Margin Bottom',
 			control: 'boolean',
-			description: 'Control wether Text is block or inline',
+			description: 'Apply the size-derived bottom margin to the paragraph Text',
 		},
 		// Subtitle text — used both as standalone Subtitle and as heading subtitle prop
 		subtitleText: {
@@ -123,8 +130,12 @@ export const Typography: Story = {
 			<H3 subtitle={args.showSubtitles ? args.subtitleText : undefined}>{args.h3Text}</H3>
 
 			{/* --- Body + standalone Subtitle --- */}
-			<Text>{args.paragraphText}</Text>
-			<Text>{args.paragraphText}</Text>
+			<Text as={args.textAs} marginBottom={args.textMarginBottom}>
+				{args.paragraphText}
+			</Text>
+			<Text as={args.textAs} marginBottom={args.textMarginBottom}>
+				{args.paragraphText}
+			</Text>
 			{args.showSubtitles && <Subtitle>{args.subtitleText}</Subtitle>}
 
 			<div style={{ display: 'flex', gap: '48px', marginTop: '8px' }}>
@@ -189,29 +200,61 @@ export const Typography: Story = {
 					</div>
 				</div>
 
+				{/* Margin bottom by size */}
+				<div style={{ display: 'flex', gap: '48px', marginBottom: '32px' }}>
+					<div>
+						<H3>Margin Bottom (size-derived)</H3>
+						<Text size="xs" marginBottom>
+							xs — first line
+						</Text>
+						<Text size="xs" marginBottom>
+							xs — second line
+						</Text>
+						<Text size="md" marginBottom>
+							md — first line
+						</Text>
+						<Text size="md" marginBottom>
+							md — second line
+						</Text>
+						<Text size="xl" marginBottom>
+							xl — first line
+						</Text>
+						<Text size="xl" marginBottom>
+							xl — second line
+						</Text>
+					</div>
+					<div>
+						<H3>Margin Bottom (token)</H3>
+						<Text marginBottom="xxs">xxs token</Text>
+						<Text marginBottom="md">md token</Text>
+						<Text marginBottom="xl">xl token</Text>
+						<Text>no margin</Text>
+					</div>
+				</div>
+
 				{/* List decorations side by side */}
 				<div style={{ display: 'flex', gap: '48px', marginBottom: '32px' }}>
 					<div>
 						<H3>List Decorations</H3>
-						<Text size="xs" weight="semibold" inline>
+						<Text size="xs" weight="semibold">
 							disc
 						</Text>
 						<List items={['Item one', 'Item two', 'Item three']} decoration="disc" />
-						<Text size="xs" weight="semibold" inline>
+						<Text size="xs" weight="semibold">
 							circle
 						</Text>
 						<List items={['Item one', 'Item two', 'Item three']} decoration="circle" />
-						<Text size="xs" weight="semibold" inline>
+						<Text size="xs" weight="semibold">
 							square
 						</Text>
 						<List items={['Item one', 'Item two', 'Item three']} decoration="square" />
 					</div>
 					<div style={{ marginTop: '36px' }}>
-						<Text size="xs" weight="semibold" inline>
+						<Text size="xs" weight="semibold">
 							blank
 						</Text>
 						<List items={['Item one', 'Item two', 'Item three']} decoration="blank" />
-						<Text size="xs" weight="semibold" inline>
+						<Text size="xs" weight="semibold">
 							none
 						</Text>
 						<List items={['Item one', 'Item two', 'Item three']} decoration="none" />
@@ -221,7 +264,7 @@ export const Typography: Story = {
 				{/* Code */}
 				<div style={{ marginBottom: '32px' }}>
 					<H3>Code</H3>
-					<Text>
+					<Text marginBottom>
 						Install the package with <Code>npm install thread-ui</Code> to get started.
 					</Text>
 					<Text>
@@ -248,6 +291,9 @@ export const Typography: Story = {
 					<Text truncate>
 						Long body text that should be truncated here and not wrap to a second line
 					</Text>
+					<Text as="span" truncate>
+						Long span text that should be truncated here via inline-block
+					</Text>
 				</div>
 			</div>
 		</div>
@@ -263,7 +309,8 @@ export const Typography: Story = {
 		h3Text: 'Heading 3',
 		paragraphText:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-		textInline: false,
+		textAs: 'p',
+		textMarginBottom: true,
 		subtitleText: 'Subtitle',
 		showSubtitles: true,
 	},
