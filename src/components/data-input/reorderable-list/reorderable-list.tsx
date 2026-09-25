@@ -58,7 +58,7 @@ export const ReorderableList = <T extends ReorderableItem>({
 	ItemComponent,
 	onChange,
 	getItemLabel = defaultGetItemLabel,
-	id,
+	id: idProp,
 	name,
 	title,
 	size = 'md',
@@ -66,7 +66,7 @@ export const ReorderableList = <T extends ReorderableItem>({
 }: ReorderableListProps<T>) => {
 	// Resolve Id
 	const generatedId = useId();
-	const inputId = id ?? name ?? generatedId;
+	const inputId = idProp ?? name ?? generatedId;
 
 	// Configure sensors for mouse, touch, and keyboard interactions
 	const sensors = useSensors(
