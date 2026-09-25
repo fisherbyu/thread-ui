@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useId, useMemo } from 'react';
 import {
 	DndContext,
 	closestCenter,
@@ -18,8 +18,16 @@ import {
 	sortableKeyboardCoordinates,
 	verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
+import { css } from '@/styled-system/css';
+import { InputWrapper } from '../shared/input-wrapper';
 import { SortableItem, type ReorderableItem } from './sortable-item';
 import type { ReorderableListProps } from './reorderable-list.types';
+
+const styles = {
+	list: css({
+		width: '100%',
+	}),
+};
 
 const screenReaderInstructions: ScreenReaderInstructions = {
 	draggable:
@@ -36,6 +44,7 @@ const defaultGetItemLabel = (_item: unknown, index: number) => `Item ${index + 1
  *
  * <ReorderableList
  *     name="taskOrder"
+ *     title="Tasks"
  *     value={tasks}
  *     orderProperty="order"
  *     ItemComponent={TaskRow}
@@ -49,8 +58,16 @@ export const ReorderableList = <T extends ReorderableItem>({
 	ItemComponent,
 	onChange,
 	getItemLabel = defaultGetItemLabel,
+	id,
 	name,
+	title,
+	size = 'md',
+	divider,
 }: ReorderableListProps<T>) => {
+	// Resolve Id
+	const generatedId = useId();
+	const inputId = id ?? name ?? generatedId;
+
 	// Configure sensors for mouse, touch, and keyboard interactions
 	const sensors = useSensors(
 		useSensor(PointerSensor, {
@@ -135,29 +152,38 @@ export const ReorderableList = <T extends ReorderableItem>({
 	);
 
 	return (
-		<DndContext
-			sensors={sensors}
-			collisionDetection={closestCenter}
-			onDragEnd={handleDragEnd}
-			accessibility={{ announcements, screenReaderInstructions }}
-		>
-			<SortableContext items={ids} strategy={verticalListSortingStrategy}>
-				<div>
-					{value.map((item, index) => (
-						<SortableItem
-							key={item.id}
-							item={item}
-							label={getItemLabel(item, index)}
-							ItemComponent={ItemComponent}
-							onItemChange={handleItemChange}
-						/>
-					))}
+		<InputWrapper id={inputId} title={title} size={size} divider={divider}>
+			<DndContext
+				sensors={sensors}
+				collisionDetection={closestCenter}
+				onDragEnd={handleDragEnd}
+				accessibility={{ announcements, screenReaderInstructions }}
+			>
+				<SortableContext items={ids} strategy={verticalListSortingStrategy}>
+					<div
+						id={inputId}
+						role="group"
+						aria-labelledby={title ? `${inputId}-label` : undefined}
+						className={styles.list}
+					>
+						{value.map((item, index) => (
+							<SortableItem
+								key={item.id}
+								item={item}
+								label={getItemLabel(item, index)}
+								ItemComponent={ItemComponent}
+								onItemChange={handleItemChange}
+							/>
+						))}
 
-					{/* Form Participation */}
-					{name &&
-						ids.map((id) => <input key={id} type="hidden" name={name} value={id} />)}
-				</div>
-			</SortableContext>
-		</DndContext>
+						{/* Form Participation */}
+						{name &&
+							ids.map((id) => (
+								<input key={id} type="hidden" name={name} value={id} />
+							))}
+					</div>
+				</SortableContext>
+			</DndContext>
+		</InputWrapper>
 	);
 };

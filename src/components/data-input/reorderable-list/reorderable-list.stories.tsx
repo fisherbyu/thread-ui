@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ReorderableList } from './reorderable-list';
+import type { ReorderableListProps } from './reorderable-list.types';
 import type { ReorderableItemProps } from './sortable-item';
 import { Text } from '../../typography';
 
@@ -27,11 +28,13 @@ const TaskRow = ({ item, dragHandle, onItemChange }: ReorderableItemProps<Task>)
 	</div>
 );
 
-const Demo = () => {
+const Demo = ({ title, size }: Pick<ReorderableListProps<Task>, 'title' | 'size'>) => {
 	const [tasks, setTasks] = useState(initialTasks);
 	return (
 		<ReorderableList
 			name="taskOrder"
+			title={title}
+			size={size}
 			value={tasks}
 			orderProperty="order"
 			ItemComponent={TaskRow}
@@ -45,11 +48,19 @@ const meta: Meta<typeof ReorderableList> = {
 	title: 'Data Input/ReorderableList',
 	component: ReorderableList,
 	parameters: { layout: 'padded' },
+	argTypes: {
+		title: { control: 'text' },
+		size: { control: 'select', options: ['sm', 'md', 'lg'] },
+	},
+	args: {
+		title: 'Tasks',
+		size: 'md',
+	},
 };
 
 export default meta;
 type Story = StoryObj<typeof ReorderableList>;
 
 export const Default: Story = {
-	render: () => <Demo />,
+	render: ({ title, size }) => <Demo title={title} size={size} />,
 };

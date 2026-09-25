@@ -19,6 +19,13 @@ export type ReorderableListProps<T extends ReorderableItem> = {
 	 * @default `'Item {n}'`
 	 */
 	getItemLabel?: (item: T, index: number) => string;
+	/** Defaults to `name`, or a generated id when neither is set. Labels the list via `aria-labelledby`. */
+	id?: BaseInputProps['id'];
 	/** Form field name. When set, renders one hidden input per item so `formData.getAll(name)` returns item `id`s in order. */
 	name?: BaseInputProps['name'];
+	/** Label text rendered above the list */
+	title?: BaseInputProps['title'];
+	/** Size @default `md` */
+	size?: BaseInputProps['size'];
+	divider?: BaseInputProps['divider'];
 };
