@@ -2,7 +2,7 @@ import { css, cva } from '@/styled-system/css';
 import { Override, Prettify } from '@/types';
 import { ReactNode } from 'react';
 import { BaseInputProps } from './input-props.types';
-import { FormLabel } from './form-label';
+import { FormLabel, FormLabelProps } from './form-label';
 import { getErrorId } from './use-field-error';
 
 const styles = {
@@ -50,7 +50,7 @@ type InputWrapperProps = Prettify<
 		error?: string | null;
 		/** Keep the label for screen readers but hide it visually */
 		hideLabel?: boolean;
-	}
+	} & Pick<FormLabelProps, 'secondaryContent'>
 >;
 
 /**
@@ -75,8 +75,17 @@ export const InputWrapper = ({
 	divider,
 	hideLabel,
 	error,
+	secondaryContent,
 }: InputWrapperProps) => {
-	const label = title && <FormLabel id={id} title={title} size={size} divider={divider} />;
+	const label = title && (
+		<FormLabel
+			id={id}
+			title={title}
+			size={size}
+			divider={divider}
+			secondaryContent={secondaryContent}
+		/>
+	);
 
 	return (
 		<div className={styles.wrapper}>
