@@ -114,7 +114,7 @@ export const Card = ({
 		>
 			{title && (
 				<div className={styles.title({ size })}>
-					<H3 align={title.align} inline>
+					<H3 align={title.align} marginBottom={false}>
 						{title.text}
 					</H3>
 					{title?.divider && <Divider />}

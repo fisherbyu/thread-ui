@@ -37,7 +37,7 @@ export const ContentHeader = ({
 }: ContentHeaderProps) => {
 	const titleDisplay: ReactNode =
 		typeof title === 'string' ? (
-			<H2 subtitle={subtitle} inline>
+			<H2 subtitle={subtitle} marginBottom={false}>
 				{title}
 			</H2>
 		) : (

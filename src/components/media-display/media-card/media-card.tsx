@@ -240,7 +240,7 @@ export const MediaCard = ({
 			})}
 		>
 			<div className={styles.title}>
-				<H1 align="center" inline>
+				<H1 align="center" marginBottom={false}>
 					{title}
 				</H1>
 			</div>

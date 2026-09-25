@@ -113,7 +113,7 @@ export const InfoCard = ({ title, url, icon, image, layer = 'surface' }: InfoCar
 			</div>
 			<div className={styles.information}>
 				<DynamicIcon icon={icon} size={24} />
-				<Text size="sm" truncate inline>
+				<Text size="sm" truncate marginBottom={false}>
 					{title}
 				</Text>
 			</div>

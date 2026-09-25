@@ -17,7 +17,7 @@ export const LightboxTitle = () => {
 
 	const titleDisplay =
 		typeof title === 'string' ? (
-			<H2 color="inverted" inline>
+			<H2 color="inverted" marginBottom={false}>
 				{title}
 			</H2>
 		) : (

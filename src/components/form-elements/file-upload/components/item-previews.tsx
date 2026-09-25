@@ -124,11 +124,11 @@ export const FilePreview = ({ item, actions }: FilePreviewProps) => {
 					<Icon name={isImage ? 'Image' : 'FileText'} size={48} color="gray" />
 				)}
 				<div className={styles.content}>
-					<Text inline size="sm" weight="medium" truncate>
+					<Text marginBottom={false} size="sm" weight="medium" truncate>
 						{item.name}
 					</Text>
 					{size !== undefined && (
-						<Text inline size="xs" color="text-secondary">
+						<Text marginBottom={false} size="xs" color="text-secondary">
 							{formatBytes(size)}
 						</Text>
 					)}

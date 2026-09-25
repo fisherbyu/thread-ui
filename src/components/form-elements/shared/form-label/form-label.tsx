@@ -37,7 +37,7 @@ const styles = cva({
 export const FormLabel = ({ id, title, size = 'md', divider }: FormLabelProps) => {
 	return (
 		<label id={`${id}-label`} htmlFor={id} className={styles({ size })}>
-			<Text inline weight="semibold" size={size}>
+			<Text marginBottom={false} weight="semibold" size={size}>
 				{title}
 			</Text>
 			{divider && <Divider width="100%" marginY="2px" />}
