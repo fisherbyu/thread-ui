@@ -1,5 +1,6 @@
 import { Override, Prettify } from '@/types';
 import { BaseInputProps } from '../input-props.types';
+import { ReactNode } from 'react';
 
 export type FormLabelProps = Prettify<
 	Pick<
@@ -11,5 +12,8 @@ export type FormLabelProps = Prettify<
 			}
 		>,
 		'id' | 'title' | 'size' | 'divider'
-	>
+	> & {
+		/** Optional content rendered on the trailing end of the label */
+		secondaryContent?: ReactNode;
+	}
 >;
