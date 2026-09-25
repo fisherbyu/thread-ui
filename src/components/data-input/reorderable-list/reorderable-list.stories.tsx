@@ -62,5 +62,5 @@ export default meta;
 type Story = StoryObj<typeof ReorderableList>;
 
 export const Default: Story = {
-	render: ({ title, size }) => <Demo title={title} size={size} />,
+	render: ({ title, size }: any) => <Demo title={title} size={size} />,
 };
