@@ -2,7 +2,7 @@
 import { cva } from '@/styled-system/css';
 import { FilterControlsProps, ActiveFilter } from '../filter-controls.types';
 import { Button, Text } from '@/components';
-import { MultiDropdown } from '../../../form-elements';
+import { MultiDropdown } from '../../../data-input';
 
 const styles = {
 	container: cva({
