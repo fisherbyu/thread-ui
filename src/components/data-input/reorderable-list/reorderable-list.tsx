@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useId, useMemo } from 'react';
+import { useCallback, useEffect, useId, useMemo, useRef } from 'react';
 import {
 	DndContext,
 	closestCenter,
@@ -21,7 +21,7 @@ import {
 import { css } from '@/styled-system/css';
 import { InputWrapper } from '../shared/input-wrapper';
 import { SortableItem, type ReorderableItem } from './sortable-item';
-import type { ReorderableListProps } from './reorderable-list.types';
+import type { NumericKeys, ReorderableListProps } from './reorderable-list.types';
 
 const styles = {
 	list: css({
@@ -35,6 +35,15 @@ const screenReaderInstructions: ScreenReaderInstructions = {
 };
 
 const defaultGetItemLabel = (_item: unknown, index: number) => `Item ${index + 1}`;
+
+// Rewrite `orderProperty` to match array position
+const applyOrder = <T,>(items: T[], orderProperty?: NumericKeys<T>): T[] =>
+	orderProperty
+		? items.map((item, index) => ({
+				...item,
+				[orderProperty]: index,
+			}))
+		: items;
 
 /**
  * Controlled vertical list input whose items can be reordered by pointer, touch, or keyboard. Each item renders through `ItemComponent`, which receives a `dragHandle` to place wherever the item should be grabbed. Set `name` to submit the order with a form.
@@ -68,6 +77,12 @@ export const ReorderableList = <T extends ReorderableItem>({
 	// Resolve Id
 	const generatedId = useId();
 	const inputId = idProp ?? name ?? generatedId;
+
+	// Latest value, so delayed item callbacks never act on a stale list
+	const valueRef = useRef(value);
+	useEffect(() => {
+		valueRef.current = value;
+	}, [value]);
 
 	// Configure sensors for mouse, touch, and keyboard interactions
 	const sensors = useSensors(
@@ -122,12 +137,7 @@ export const ReorderableList = <T extends ReorderableItem>({
 			const newItems = arrayMove(value, oldIndex, newIndex);
 
 			// Update OrderProperty on each Item
-			const updatedItems = orderProperty
-				? newItems.map((item, index) => ({
-						...item,
-						[orderProperty]: index,
-					}))
-				: newItems;
+			const updatedItems = applyOrder(newItems, orderProperty);
 
 			// Update Data
 			onChange(updatedItems);
@@ -138,18 +148,35 @@ export const ReorderableList = <T extends ReorderableItem>({
 	// Handle Item Change with memoized callback
 	const handleItemChange = useCallback(
 		(updatedItem: T) => {
+			const current = valueRef.current;
+
 			// Find the item index in the current list
-			const itemIndex = ids.indexOf(updatedItem.id);
+			const itemIndex = current.findIndex((item) => item.id === updatedItem.id);
 			if (itemIndex === -1) return;
 
 			// Create a new array with the updated item
-			const updatedItems = [...value];
+			const updatedItems = [...current];
 			updatedItems[itemIndex] = updatedItem;
 
 			// Notify parent component
 			onChange(updatedItems);
 		},
-		[value, ids, onChange]
+		[onChange]
+	);
+
+	// Handle Item Remove with memoized callback
+	const handleItemRemove = useCallback(
+		(itemId: ReorderableItem['id']) => {
+			const current = valueRef.current;
+
+			// Drop the item
+			const remaining = current.filter((item) => item.id !== itemId);
+			if (remaining.length === current.length) return;
+
+			// Re-index and notify parent component
+			onChange(applyOrder(remaining, orderProperty));
+		},
+		[onChange, orderProperty]
 	);
 
 	return (
@@ -180,6 +207,7 @@ export const ReorderableList = <T extends ReorderableItem>({
 								label={getItemLabel(item, index)}
 								ItemComponent={ItemComponent}
 								onItemChange={handleItemChange}
+								onItemRemove={handleItemRemove}
 							/>
 						))}
 

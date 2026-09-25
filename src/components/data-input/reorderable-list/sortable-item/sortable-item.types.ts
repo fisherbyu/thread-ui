@@ -13,6 +13,8 @@ export type ReorderableItemProps<T> = {
 	dragHandle: ReactNode;
 	/** Report changes to this item back to the list. */
 	onItemChange: ReorderableItemChangeHandler<T>;
+	/** Remove this item from the list. Remaining items are re-indexed via `orderProperty`. */
+	onItemRemove: () => void;
 	/** `true` while this item is being dragged. */
 	isDragging: boolean;
 };
@@ -27,4 +29,6 @@ export type SortableItemProps<T extends ReorderableItem> = {
 	label: string;
 	ItemComponent: ReorderableItemComponent<T>;
 	onItemChange: ReorderableItemChangeHandler<T>;
+	/** Remove an item from the list by `id`. */
+	onItemRemove: (id: ReorderableItem['id']) => void;
 };

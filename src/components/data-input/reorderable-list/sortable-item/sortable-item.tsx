@@ -59,6 +59,7 @@ export const SortableItem = <T extends ReorderableItem>({
 	label,
 	ItemComponent,
 	onItemChange,
+	onItemRemove,
 }: SortableItemProps<T>) => {
 	// Init DnD Kit Functionality
 	const {
@@ -97,6 +98,7 @@ export const SortableItem = <T extends ReorderableItem>({
 				item={item}
 				dragHandle={dragHandle}
 				onItemChange={onItemChange}
+				onItemRemove={() => onItemRemove(item.id)}
 				isDragging={isDragging}
 			/>
 		</div>
