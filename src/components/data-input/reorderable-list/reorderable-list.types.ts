@@ -1,6 +1,7 @@
 import { Prettify } from '@/types';
 import type { BaseInputProps, ControlledValueProps } from '../shared/input-props.types';
 import type { ReorderableItem, ReorderableItemComponent } from './sortable-item';
+import { FormLabelProps } from '../shared/form-label';
 
 /** Keys of `T` whose values are numbers. */
 export type NumericKeys<T> = { [K in keyof T]: T[K] extends number ? K : never }[keyof T];
@@ -23,5 +24,6 @@ export type ReorderableListProps<T extends ReorderableItem> = Prettify<
 		getItemLabel?: (item: T, index: number) => string;
 		/** Form field name. When set, renders one hidden input per item so `formData.getAll(name)` returns item `id`s in order. */
 		name?: BaseInputProps['name'];
-	} & Pick<BaseInputProps, 'id' | 'title' | 'size' | 'divider'>
+	} & Pick<BaseInputProps, 'id' | 'title' | 'size' | 'divider'> &
+		Pick<FormLabelProps, 'secondaryContent'>
 >;

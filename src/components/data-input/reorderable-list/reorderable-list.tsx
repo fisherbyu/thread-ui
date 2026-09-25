@@ -63,6 +63,7 @@ export const ReorderableList = <T extends ReorderableItem>({
 	title,
 	size = 'md',
 	divider,
+	secondaryContent,
 }: ReorderableListProps<T>) => {
 	// Resolve Id
 	const generatedId = useId();
@@ -152,7 +153,13 @@ export const ReorderableList = <T extends ReorderableItem>({
 	);
 
 	return (
-		<InputWrapper id={inputId} title={title} size={size} divider={divider}>
+		<InputWrapper
+			id={inputId}
+			title={title}
+			size={size}
+			divider={divider}
+			secondaryContent={secondaryContent}
+		>
 			<DndContext
 				sensors={sensors}
 				collisionDetection={closestCenter}
