@@ -299,6 +299,14 @@ export const buttonRecipe = defineRecipe({
 				},
 			},
 		},
+		// Text buttons sit inline with surrounding text: no border and no padding
+		{
+			textVariant: true,
+			css: {
+				borderWidth: '0',
+				padding: '0',
+			},
+		},
 		// textVariant color overrides — inherit the color's main value as text color
 		{
 			textVariant: true,

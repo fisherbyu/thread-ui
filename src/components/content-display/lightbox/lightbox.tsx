@@ -1,4 +1,4 @@
-import { ModalPrimitive } from '@/internal-components';
+import { ModalPrimitive } from '@/internal';
 import { LightboxProps, LightboxState } from './lightbox.types';
 import { LightboxProvider } from './lightbox-context';
 import { css, cva } from '@/styled-system/css';

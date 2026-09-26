@@ -3,10 +3,16 @@ import { ButtonProps } from './button.types';
 
 /**
  * Button with color, size, and full-width variants.
+ * Forwards native button props, including `ref`, `id`, `aria-*`, and event handlers.
  *
  * @example
  * <Button color="primary" size="md" onClick={handleSubmit}>
  *   Save Changes
+ * </Button>
+ *
+ * @example
+ * <Button ref={browseRef} text aria-describedby={errorId} onClick={openPicker}>
+ *   Select Files
  * </Button>
  */
 export const Button = ({
@@ -21,6 +27,7 @@ export const Button = ({
 	text = false,
 	disabled = false,
 	highlightOnHover = false,
+	...rest
 }: ButtonProps) => {
 	const buttonClasses = button({
 		color,
@@ -33,10 +40,13 @@ export const Button = ({
 
 	return (
 		<button
+			// Before `rest` so an explicit native `aria-label` takes precedence over `ariaLabel`
 			aria-label={ariaLabel}
+			{...rest}
 			type={type}
 			className={buttonClasses}
-			onClick={disabled ? undefined : onClick}
+			onClick={onClick}
+			disabled={disabled}
 			style={margin ? { margin } : undefined}
 		>
 			{children}

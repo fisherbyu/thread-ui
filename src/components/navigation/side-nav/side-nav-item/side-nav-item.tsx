@@ -1,5 +1,5 @@
 'use client';
-import { Link } from '@/internal-components';
+import { Link } from '@/internal';
 import { usePathname } from '@/hooks';
 import { Icon } from '@/components';
 import { SideNavItemProps } from './side-nav-item.types';

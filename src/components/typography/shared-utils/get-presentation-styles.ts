@@ -25,6 +25,14 @@ const getPresentationStylesCva = cva({
 			true: { textDecorationLine: 'underline' },
 			false: {},
 		},
+		display: {
+			block: { display: 'block' },
+			'inline-block': {
+				display: 'inline-block',
+				maxWidth: '100%',
+				verticalAlign: 'bottom',
+			},
+		},
 	},
 });
 

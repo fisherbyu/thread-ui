@@ -2,7 +2,7 @@ import { css, cva } from '@/styled-system/css';
 import { MediaCardProps } from './media-card.types';
 import { H1, Text } from '@/components/typography';
 import { Divider, Icon } from '@/components/ui';
-import { Link, renderImage } from '@/internal-components';
+import { Link, renderImage } from '@/internal';
 import { SurfaceLayerMap } from '@/theme';
 import { cloneElement, isValidElement } from 'react';
 
@@ -240,7 +240,7 @@ export const MediaCard = ({
 			})}
 		>
 			<div className={styles.title}>
-				<H1 align="center" inline>
+				<H1 align="center" marginBottom={false}>
 					{title}
 				</H1>
 			</div>

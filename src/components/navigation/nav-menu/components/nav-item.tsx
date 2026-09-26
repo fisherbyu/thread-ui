@@ -11,7 +11,7 @@ export const NavItem = ({ href, title, icon, isDropdownItem = false }: NavItemPr
 	return (
 		<NavLink href={href} isDropdownItem={isDropdownItem}>
 			{icon && <Icon color="text" name={icon} size={isDropdownItem ? 12 : 16} />}
-			<Text size="sm" inline weight="medium">
+			<Text size="sm" marginBottom={false} weight="medium">
 				{title}
 			</Text>
 		</NavLink>

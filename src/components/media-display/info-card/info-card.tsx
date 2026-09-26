@@ -2,7 +2,7 @@ import { InfoCardProps } from './info-card.types';
 import { css } from '@/styled-system/css';
 import { cva } from '@/styled-system/css';
 import { Text } from '@/components/typography';
-import { DynamicIcon, Link, renderImage } from '@/internal-components';
+import { DynamicIcon, Link, renderImage } from '@/internal';
 import { SurfaceLayerMap } from '@/theme';
 
 const styles = {
@@ -113,7 +113,7 @@ export const InfoCard = ({ title, url, icon, image, layer = 'surface' }: InfoCar
 			</div>
 			<div className={styles.information}>
 				<DynamicIcon icon={icon} size={24} />
-				<Text size="sm" truncate inline>
+				<Text size="sm" truncate marginBottom={false}>
 					{title}
 				</Text>
 			</div>

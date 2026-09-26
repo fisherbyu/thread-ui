@@ -1,4 +1,4 @@
-import { ContentHeading } from '@/internal-components';
+import { ContentHeading } from '@/internal';
 import { ImageProps, Prettify } from '../../../types';
 import { LayoutComponentProps } from '../layout-component.types';
 

@@ -1,4 +1,4 @@
-import { DynamicIconProps } from '@/internal-components';
+import { DynamicIconProps } from '@/internal';
 import { ImageProps, SurfaceLayerOptions } from '@/types';
 
 export type InfoCardProps = {

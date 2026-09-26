@@ -2,7 +2,7 @@ import { cva } from '@/styled-system/css';
 import { CardProps } from './card.types';
 import { H3 } from '@/components/typography';
 import { Divider } from '../divider';
-import { Surface } from '@/internal-components/surface';
+import { Surface } from '@/internal';
 
 const styles = {
 	cardContainer: cva({
@@ -114,7 +114,7 @@ export const Card = ({
 		>
 			{title && (
 				<div className={styles.title({ size })}>
-					<H3 align={title.align} inline>
+					<H3 align={title.align} marginBottom={false}>
 						{title.text}
 					</H3>
 					{title?.divider && <Divider />}

@@ -3,7 +3,7 @@ import { useLightboxContext } from '../lightbox-context';
 import { H2, Text } from '@/components/typography';
 import { css } from '@/styled-system/css';
 import { IconButton } from '@/components/ui';
-import { ContentHeader } from '@/internal-components';
+import { ContentHeader } from '@/internal';
 
 const styles = {
 	titleBlock: css({
@@ -17,7 +17,7 @@ export const LightboxTitle = () => {
 
 	const titleDisplay =
 		typeof title === 'string' ? (
-			<H2 color="inverted" inline>
+			<H2 color="inverted" marginBottom={false}>
 				{title}
 			</H2>
 		) : (
