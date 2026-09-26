@@ -10,6 +10,8 @@ const styles = {
 		position: 'sticky',
 		top: 0,
 		zIndex: 1,
+		// Flex child of a scrolling column: keep its full height so the backing covers the title row
+		flexShrink: 0,
 		display: 'flex',
 		alignItems: 'center',
 		gap: '2',

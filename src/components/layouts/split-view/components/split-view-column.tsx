@@ -23,7 +23,7 @@ const styles = {
 			overflowY: 'auto',
 			backgroundColor: 'surface',
 			outline: 'none',
-			transitionProperty: 'transform, margin',
+			transitionProperty: 'transform, margin, visibility',
 			transitionDuration: '300ms',
 			transitionTimingFunction: 'ease-in-out',
 			_motionReduce: { transition: 'none' },
@@ -61,11 +61,17 @@ const styles = {
 						borderColor: 'transparent',
 						boxShadow: 'lg',
 						transform: 'translateX(calc(-100% - 2 * var(--split-view-gap)))',
-						'&[data-overlay=open]': { transform: 'translateX(0)' },
+						visibility: 'hidden',
+						'&[data-overlay=open]': {
+							transform: 'translateX(0)',
+							visibility: 'visible',
+						},
 					},
 					// Wide: docked, slides out of flow (with its gap) when closed
 					lg: {
+						// Hidden once slid out, so its shadow can't show at the edge
 						_closed: {
+							visibility: 'hidden',
 							marginLeft:
 								'calc(-1 * (var(--split-view-sidebar-width) + var(--split-view-gap)))',
 						},
