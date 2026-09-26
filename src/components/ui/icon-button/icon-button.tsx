@@ -11,10 +11,10 @@ import { getUtilityIconSize } from '@/utils';
  * </IconButton>
  */
 export const IconButton = (props: IconButtonProps) => {
-	const { name, size = 'md', children, ...buttonProps } = props;
+	const { name, size = 'md', filled, children, ...buttonProps } = props;
 	return (
 		<Button size={size} {...buttonProps}>
-			<Icon name={name} size={getUtilityIconSize(size)} />
+			<Icon name={name} size={getUtilityIconSize(size)} filled={filled} />
 			{children}
 		</Button>
 	);
