@@ -3,14 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 import { DropdownBaseProps, DropdownOption, DropdownValue } from './dropdown-base.types';
 import { InputWrapper } from '../../shared/input-wrapper';
 import { useFieldError } from '../../shared/use-field-error';
-import { useControllableState } from '../../shared/use-controllable-state';
 import { useInputId } from '../../shared/use-input-id';
 import { baseInputStyles, inputIconSizes } from '../../shared/styles';
 import { Icon, IconButton } from '@/components/ui';
 import { css, cva, cx } from '@/styled-system/css';
 import { useDismiss } from '@/hooks';
 import { getUtilityIconSize } from '@/utils';
-import { OptionalIconButton } from '@/internal';
+import { OptionalIconButton, useControllableState } from '@/internal';
 
 export const styles = {
 	interior: css({
