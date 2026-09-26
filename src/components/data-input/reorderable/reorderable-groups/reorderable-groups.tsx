@@ -9,7 +9,7 @@ import {
 	type Announcements,
 	type UniqueIdentifier,
 } from '@dnd-kit/core';
-import { SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
+import { SortableContext } from '@dnd-kit/sortable';
 import { css } from '@/styled-system/css';
 import { InputWrapper } from '../../shared/input-wrapper';
 import {
@@ -97,23 +97,32 @@ export const ReorderableGroups = <G extends ReorderableGroup>({
 	// Latest value, so delayed item callbacks never act on stale groups
 	const valueRef = useLatestRef(value);
 
+	// Drag State
+	const {
+		groups,
+		collisionDetection,
+		keyboardCoordinates,
+		onDragStart,
+		onDragOver,
+		onDragEnd,
+		onDragCancel,
+	} = useGroupDrag({
+		value,
+		onChange,
+		orderProperty,
+		layout,
+		groupLayout,
+	});
+
 	// Configure sensors for mouse, touch, and keyboard interactions
 	const sensors = useSensors(
 		useSensor(PointerSensor, {
 			activationConstraint: { distance: 4 },
 		}),
 		useSensor(KeyboardSensor, {
-			coordinateGetter: sortableKeyboardCoordinates,
+			coordinateGetter: keyboardCoordinates,
 		})
 	);
-
-	// Drag State
-	const { groups, collisionDetection, onDragStart, onDragOver, onDragEnd, onDragCancel } =
-		useGroupDrag({
-			value,
-			onChange,
-			orderProperty,
-		});
 
 	// Group keys in display order
 	const groupKeys = useMemo(() => groups.map((group) => groupKey(group.id)), [groups]);

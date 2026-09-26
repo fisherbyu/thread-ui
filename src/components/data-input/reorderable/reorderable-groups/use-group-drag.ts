@@ -8,11 +8,12 @@ import {
 	type DragEndEvent,
 	type DragOverEvent,
 	type DragStartEvent,
+	type KeyboardCoordinateGetter,
 	type UniqueIdentifier,
 } from '@dnd-kit/core';
-import { arrayMove } from '@dnd-kit/sortable';
-import { applyOrder, type NumericKeys } from '../shared';
+import { arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 import { useLatestRef } from '@/internal';
+import { applyOrder, type NumericKeys, type ReorderableLayout } from '../shared';
 import { containerKey, findGroupIndex, itemKey, itemsOf, nodeKind, withItems } from './group-utils';
 import type {
 	GroupItem,
@@ -25,6 +26,10 @@ type UseGroupDragOptions<G extends ReorderableGroup> = {
 	value: G[];
 	onChange: ReorderableGroupsProps<G>['onChange'];
 	orderProperty?: NumericKeys<GroupItem<G>>;
+	/** Item arrangement within a group; decides whether arrow keys sort or cross groups */
+	layout: ReorderableLayout;
+	/** Group arrangement; its axis is the one arrow keys cross groups on */
+	groupLayout: ReorderableLayout;
 };
 
 // Re-index items within every group
@@ -37,15 +42,18 @@ const orderAll = <G extends ReorderableGroup>(
 		: groups;
 
 /**
- * Drag state for `ReorderableGroups`. Holds a draft copy of `value` while an item is dragged so it can jump between groups mid-drag, commits once on drop, and discards on cancel. Also provides multi-container collision detection.
+ * Drag state for `ReorderableGroups`. Holds a draft copy of `value` while an item is dragged so it can jump between groups mid-drag, commits once on drop, and discards on cancel. Also provides multi-container collision detection and a keyboard coordinate getter that can move items into empty groups.
  *
  * @example
- * const { groups, collisionDetection, onDragStart, onDragOver, onDragEnd, onDragCancel } = useGroupDrag({ value, onChange, orderProperty });
+ * const { groups, collisionDetection, keyboardCoordinates, onDragStart, onDragOver, onDragEnd, onDragCancel } =
+ *     useGroupDrag({ value, onChange, orderProperty, layout, groupLayout });
  */
 export const useGroupDrag = <G extends ReorderableGroup>({
 	value,
 	onChange,
 	orderProperty,
+	layout,
+	groupLayout,
 }: UseGroupDragOptions<G>) => {
 	// Drag-time copy of `value`; `null` when idle
 	const [draft, setDraft] = useState<G[] | null>(null);
@@ -128,6 +136,44 @@ export const useGroupDrag = <G extends ReorderableGroup>({
 			return lastOverKey.current ? [{ id: lastOverKey.current }] : [];
 		},
 		[valueRef]
+	);
+
+	// Arrow keys along the group axis move items between groups; everything else sorts within a group
+	const keyboardCoordinates: KeyboardCoordinateGetter = useCallback(
+		(event, args) => {
+			const { active, droppableRects } = args.context;
+			const groupAxis = groupLayout === 'horizontal' ? 'x' : 'y';
+			const forwardKey = groupAxis === 'y' ? 'ArrowDown' : 'ArrowRight';
+			const backKey = groupAxis === 'y' ? 'ArrowUp' : 'ArrowLeft';
+			const direction = event.code === forwardKey ? 1 : event.code === backKey ? -1 : 0;
+
+			if (!active || direction === 0 || nodeKind(active.id) !== 'item') {
+				return sortableKeyboardCoordinates(event, args);
+			}
+
+			const current = draftRef.current ?? valueRef.current;
+			const fromGroup = findGroupIndex(current, active.id);
+			if (fromGroup === -1) return sortableKeyboardCoordinates(event, args);
+
+			// Items share the group axis: only cross from the first or last item
+			const itemAxis = layout === 'vertical' ? 'y' : 'x';
+			if (itemAxis === groupAxis) {
+				const items = current[fromGroup].items;
+				const index = items.findIndex((item) => itemKey(item.id) === active.id);
+				const atEdge = direction === 1 ? index === items.length - 1 : index === 0;
+				if (!atEdge) return sortableKeyboardCoordinates(event, args);
+			}
+
+			event.preventDefault();
+
+			// Jump into the adjacent group's drop zone, empty or not
+			const toGroup = current[fromGroup + direction];
+			if (!toGroup) return undefined;
+
+			const rect = droppableRects.get(containerKey(toGroup.id));
+			return rect ? { x: rect.left, y: rect.top } : undefined;
+		},
+		[layout, groupLayout, valueRef]
 	);
 
 	const onDragStart = useCallback(
@@ -221,6 +267,7 @@ export const useGroupDrag = <G extends ReorderableGroup>({
 	return {
 		groups,
 		collisionDetection,
+		keyboardCoordinates,
 		onDragStart,
 		onDragOver,
 		onDragEnd,
