@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { FileUploadItem, UploadableFile } from './file-upload.types';
-import { useControllableState } from '../shared/use-controllable-state';
+import { useControllableState } from '@/internal';
 import { getErrorId, useFieldError } from '../shared/use-field-error';
 import {
 	formatBytes,
