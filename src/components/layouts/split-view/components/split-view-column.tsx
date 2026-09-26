@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { cva } from '@/styled-system/css';
+import { css, cva } from '@/styled-system/css';
 import { useDismiss } from '@/hooks';
 import { SplitViewColumnProvider, useSplitView } from '../split-view-context';
 import { SplitViewHeader } from './split-view-header';
@@ -150,6 +150,20 @@ const styles = {
 	}),
 };
 
+// Sticky to the bottom of the scrolling column; pushed down when the content is short
+const footerStyles = css({
+	position: 'sticky',
+	bottom: 0,
+	zIndex: 1,
+	flexShrink: 0,
+	marginTop: 'auto',
+	paddingX: '4',
+	paddingY: '3',
+	borderTopWidth: '1px',
+	borderColor: 'structure.subtle',
+	backgroundColor: 'inherit',
+});
+
 const elements = { sidebar: 'nav', list: 'section', detail: 'section' } as const;
 
 /** Internal column shared by `SplitView.Sidebar`, `SplitView.List` and `SplitView.Detail`. */
@@ -157,6 +171,7 @@ export const SplitViewColumn = ({
 	column,
 	title,
 	actions,
+	footer,
 	ariaLabel = typeof title === 'string' ? title : undefined,
 	children,
 }: SplitViewColumnProps & { column: Column }) => {
@@ -226,6 +241,7 @@ export const SplitViewColumn = ({
 			<SplitViewColumnProvider value={column}>
 				{(title || actions) && <SplitViewHeader title={title} actions={actions} />}
 				{children}
+				{footer && <footer className={footerStyles}>{footer}</footer>}
 			</SplitViewColumnProvider>
 		</Element>
 	);

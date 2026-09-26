@@ -9,12 +9,12 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ThreadProvider } from '../../../foundation';
 import { usePathname } from '../../../hooks';
 import { Button, IconButton } from '../../ui';
-import { SplitBrowser } from './split-navigator';
-import type { SplitBrowserProps, SplitBrowserSection } from './split-navigator.types';
+import { SplitNavigator } from './split-navigator';
+import type { SplitNavigatorProps, SplitNavigatorSection } from './split-navigator.types';
 
 type Message = { id: number; from: string; subject: string; body: string };
 
-const sections: SplitBrowserSection[] = [
+const sections: SplitNavigatorSection[] = [
 	{ id: 'inbox', title: 'Inbox', icon: 'Tray' },
 	{ id: 'archive', title: 'Archive', icon: 'Archive' },
 	{ id: 'drafts', title: 'Drafts', icon: 'NotePencil' },
@@ -47,6 +47,11 @@ const Frame = ({ children }: { children: ReactNode }) => (
 const mailProps = {
 	sections,
 	sidebarTitle: 'Mailboxes',
+	sidebarFooter: (
+		<Button size="sm" color="secondary" text>
+			Sign out
+		</Button>
+	),
 	renderItem: (msg: Message) => (
 		<>
 			<strong>{msg.from}</strong>
@@ -64,10 +69,10 @@ const mailProps = {
 	detailActions: () => <IconButton name="Trash" color="neutral" text ariaLabel="Delete" />,
 	emptyList: 'No messages',
 	emptyDetail: 'Select a message',
-} satisfies Partial<SplitBrowserProps<Message>>;
+} satisfies Partial<SplitNavigatorProps<Message>>;
 
 type StoryArgs = Pick<
-	SplitBrowserProps<Message>,
+	SplitNavigatorProps<Message>,
 	'variant' | 'sidebarActiveColor' | 'listActiveColor'
 >;
 
@@ -76,7 +81,7 @@ const UncontrolledMail = (args: StoryArgs) => {
 	const [section, setSection] = useState('inbox');
 	return (
 		<Frame>
-			<SplitBrowser
+			<SplitNavigator
 				{...mailProps}
 				{...args}
 				items={mailbox[section]}
@@ -118,7 +123,7 @@ const ControlledMail = (args: StoryArgs) => {
 				</Button>
 			</div>
 			<Frame>
-				<SplitBrowser
+				<SplitNavigator
 					{...mailProps}
 					{...args}
 					items={mailbox[section]}
@@ -161,7 +166,7 @@ const RoutedMail = (args: StoryArgs) => {
 				</Button>
 			</div>
 			<Frame>
-				<SplitBrowser
+				<SplitNavigator
 					{...mailProps}
 					{...args}
 					items={mailbox[sectionId] ?? []}
@@ -190,8 +195,8 @@ const colorOptions = [
 ];
 
 const meta: Meta<StoryArgs> = {
-	title: 'Layouts/SplitBrowser',
-	component: SplitBrowser,
+	title: 'Layouts/SplitNavigator',
+	component: SplitNavigator,
 	tags: ['autodocs'],
 	parameters: { layout: 'fullscreen' },
 	args: { variant: 'floating', sidebarActiveColor: 'primary', listActiveColor: 'neutral' },

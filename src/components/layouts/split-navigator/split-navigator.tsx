@@ -107,7 +107,7 @@ const ItemEntries = <T extends SplitNavigatorItem>({
  * - Selecting a section clears the item; selections move phones to the next column
  * - Follows selection changes from outside (router, browser back) on phones
  * - Derives active markers, column titles, and back labels from the data
- * - Optional links via `getSectionHref` / `getItemHref`, plus empty states
+ * - Optional links via `getSectionHref` / `getItemHref`, a sidebar footer, and empty states
  *
  * @example
  * <SplitNavigator
@@ -131,6 +131,7 @@ export const SplitNavigator = <T extends SplitNavigatorItem>({
 	getSectionHref,
 	getItemHref,
 	sidebarTitle,
+	sidebarFooter,
 	listTitle,
 	detailTitle,
 	listActions,
@@ -170,7 +171,7 @@ export const SplitNavigator = <T extends SplitNavigatorItem>({
 			{...splitViewProps}
 		>
 			<SelectionSync section={sectionId} item={itemId} />
-			<SplitView.Sidebar title={sidebarTitle}>
+			<SplitView.Sidebar title={sidebarTitle} footer={sidebarFooter}>
 				<SectionEntries
 					sections={sections}
 					selected={sectionId}

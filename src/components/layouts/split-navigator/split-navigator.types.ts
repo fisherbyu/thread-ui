@@ -42,6 +42,8 @@ export type SplitNavigatorProps<T extends SplitNavigatorItem> = Omit<SplitViewPr
 
 	/** Sidebar header title */
 	sidebarTitle?: string;
+	/** Content pinned to the bottom of the sidebar, e.g. account controls */
+	sidebarFooter?: ReactNode;
 	/** List header title @default the section's title */
 	listTitle?: (section: SplitNavigatorSection) => string;
 	/** Detail header title for the selected item */

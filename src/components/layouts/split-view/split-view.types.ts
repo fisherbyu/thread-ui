@@ -57,6 +57,8 @@ export type SplitViewColumnProps = {
 	title?: ReactNode;
 	/** Content at the trailing end of the column header */
 	actions?: ReactNode;
+	/** Content pinned to the bottom of the column, e.g. account controls in the sidebar */
+	footer?: ReactNode;
 	/** Accessible label for the column @default `title` when it is a string */
 	ariaLabel?: string;
 };
