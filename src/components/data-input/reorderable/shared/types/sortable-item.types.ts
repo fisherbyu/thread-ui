@@ -3,7 +3,7 @@ import type {
 	ReorderableItem,
 	ReorderableItemChangeHandler,
 	ReorderableItemComponent,
-} from './types/reorderable.types';
+} from './reorderable.types';
 
 /** Props for internal `SortableItem` wrapper. */
 export type SortableItemProps<T extends ReorderableItem> = {
