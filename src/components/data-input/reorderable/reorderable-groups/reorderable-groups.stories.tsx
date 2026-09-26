@@ -2,10 +2,12 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ReorderableGroups } from './reorderable-groups';
 import type { ReorderableGroup, ReorderableGroupsProps } from './reorderable-groups.types';
-import type { ReorderableItemProps } from '../shared';
+import type { ReorderableItemProps, ReorderableWrapperProps } from '../shared';
 
 type Tile = { id: string; name: string; color: string; order: number };
 type Tier = ReorderableGroup<Tile>;
+
+const TILE_ROW_HEIGHT = 72;
 
 const initialTiers: Tier[] = [
 	{ id: 'S', title: 'S', items: [{ id: 'a', name: 'Alpha', color: '#FAC898', order: 0 }] },
@@ -24,6 +26,21 @@ const initialTiers: Tier[] = [
 ];
 
 const getTileLabel = (tile: Tile) => tile.name;
+
+// Uniform-height row for each tier's items
+const TierItems = ({ children }: ReorderableWrapperProps) => (
+	<div
+		style={{
+			display: 'flex',
+			flexWrap: 'wrap',
+			alignItems: 'center',
+			width: '100%',
+			minHeight: TILE_ROW_HEIGHT,
+		}}
+	>
+		{children}
+	</div>
+);
 
 // Whole tile is the handle via `dragHandleProps`
 const TierTile = ({ item, dragHandleProps, isDragging }: ReorderableItemProps<Tile>) => (
@@ -70,6 +87,7 @@ const Demo = ({
 			value={tiers}
 			orderProperty="order"
 			ItemComponent={TierTile}
+			ItemsWrapper={TierItems}
 			onChange={setTiers}
 			getItemLabel={getTileLabel}
 		/>
