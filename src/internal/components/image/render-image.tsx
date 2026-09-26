@@ -1,5 +1,5 @@
 import React, { CSSProperties, isValidElement, ReactElement } from 'react';
-import { ImageProps } from '../../types';
+import { ImageProps } from '../../../types';
 import { isHtmlImageProps } from './is-html-image-props';
 import { cx } from '@/styled-system/css'; // Add this import
 

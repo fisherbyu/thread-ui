@@ -1,4 +1,4 @@
-import { HtmlImageProps } from '../../types';
+import { HtmlImageProps } from '../../../types';
 
 export const isHtmlImageProps = (value: any): value is HtmlImageProps => {
 	return (
