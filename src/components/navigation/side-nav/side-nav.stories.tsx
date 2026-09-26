@@ -78,3 +78,11 @@ export const Default: Story = {
 		controls: <IconButton name="SignOut" aria-label="Sign out" />,
 	},
 };
+
+/** Labels only show at the `lg` breakpoint (1024px), so force a desktop-width viewport. */
+export const Expanded: Story = {
+	...Default,
+	globals: {
+		viewport: { value: 'desktop', isRotated: false },
+	},
+};
