@@ -25,6 +25,7 @@ const styles = {
 			cursor: 'pointer',
 			transition: 'background-color 150ms ease-in-out, color 150ms ease-in-out',
 			_hover: { backgroundColor: 'hover', color: 'text.standard' },
+			'&[data-active]': { color: 'text.inverted' },
 			_focusVisible: {
 				outline: '2px solid',
 				outlineColor: 'primary.main',
@@ -36,36 +37,18 @@ const styles = {
 				pill: { borderRadius: 'full' },
 				row: { borderRadius: 'md' },
 			},
-			// Active marker, applied only while `data-active` is set
+			// Active marker fill; text inverts by default (see base) and overrides where it can't
 			color: {
-				primary: {
-					'&[data-active]': { backgroundColor: 'primary.main', color: 'text.inverted' },
-				},
-				secondary: {
-					'&[data-active]': { backgroundColor: 'secondary.main', color: 'text.inverted' },
-				},
-				tertiary: {
-					'&[data-active]': { backgroundColor: 'tertiary.main', color: 'text.inverted' },
-				},
+				primary: { '&[data-active]': { backgroundColor: 'primary.main' } },
+				secondary: { '&[data-active]': { backgroundColor: 'secondary.main' } },
+				tertiary: { '&[data-active]': { backgroundColor: 'tertiary.main' } },
 				black: { '&[data-active]': { backgroundColor: 'black', color: 'white' } },
-				gray: {
-					'&[data-active]': { backgroundColor: 'gray.main', color: 'text.inverted' },
-				},
-				success: {
-					'&[data-active]': { backgroundColor: 'success.main', color: 'text.inverted' },
-				},
-				error: {
-					'&[data-active]': { backgroundColor: 'error.main', color: 'text.inverted' },
-				},
-				warning: {
-					'&[data-active]': { backgroundColor: 'warning.main', color: 'text.inverted' },
-				},
-				info: {
-					'&[data-active]': { backgroundColor: 'info.main', color: 'text.inverted' },
-				},
-				text: {
-					'&[data-active]': { backgroundColor: 'text.standard', color: 'text.inverted' },
-				},
+				gray: { '&[data-active]': { backgroundColor: 'gray.main' } },
+				success: { '&[data-active]': { backgroundColor: 'success.main' } },
+				error: { '&[data-active]': { backgroundColor: 'error.main' } },
+				warning: { '&[data-active]': { backgroundColor: 'warning.main' } },
+				info: { '&[data-active]': { backgroundColor: 'info.main' } },
+				text: { '&[data-active]': { backgroundColor: 'text.standard' } },
 				neutral: {
 					'&[data-active]': { backgroundColor: 'active', color: 'text.standard' },
 				},
@@ -92,7 +75,7 @@ export const SplitViewItem = ({
 	onClick,
 }: SplitViewItemProps) => {
 	const { activeColors } = useSplitView();
-	const column = useSplitViewColumn() ?? 'list';
+	const column = useSplitViewColumn();
 
 	const className = styles.item({
 		shape: column === 'sidebar' ? 'pill' : 'row',
