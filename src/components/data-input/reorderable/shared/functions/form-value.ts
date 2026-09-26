@@ -1,4 +1,4 @@
-import type { ReorderableItem } from './reorderable.types';
+import type { ReorderableItem } from '../types/reorderable.types';
 
 /** How a `ReorderableList` submits its order when `name` is set. `'inputs'` renders one hidden input per item; `'json'` renders one hidden input holding a JSON array of ids. */
 export type FormValueMode = 'inputs' | 'json';

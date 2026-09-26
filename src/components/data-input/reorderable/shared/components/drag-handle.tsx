@@ -3,7 +3,7 @@ import type { KeyboardEventHandler, PointerEventHandler } from 'react';
 import type { DraggableAttributes, DraggableSyntheticListeners } from '@dnd-kit/core';
 import { cva } from '@/styled-system/css';
 import { Icon } from '@/components/ui';
-import type { DragHandleProps } from './reorderable.types';
+import type { DragHandleProps } from '../types/reorderable.types';
 
 const dragHandleRecipe = cva({
 	base: {

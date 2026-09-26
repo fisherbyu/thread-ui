@@ -1,4 +1,4 @@
-import type { NumericKeys } from './reorderable.types';
+import type { NumericKeys } from '../types/reorderable.types';
 
 // Rewrite `orderProperty` to match array position; unchanged when omitted
 export const applyOrder = <T>(items: T[], orderProperty?: NumericKeys<T>): T[] =>

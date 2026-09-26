@@ -8,20 +8,20 @@ export type {
 	ReorderableItemChangeHandler,
 	ReorderableItemProps,
 	ReorderableItemComponent,
-} from './reorderable.types';
-export type { SortableItemProps } from './sortable-item.types';
-export type { FormValueMode, ReorderableGroupsFormValue } from './form-value';
+} from './types/reorderable.types';
+export type { SortableItemProps } from './types/sortable-item.types';
+export type { FormValueMode, ReorderableGroupsFormValue } from './functions/form-value';
 export {
 	parseReorderableValue,
 	parseReorderableGroups,
 	serializeReorderableGroups,
-} from './form-value';
-export { applyOrder } from './apply-order';
-export { layoutStrategies, layoutRecipe } from './layout';
+} from './functions/form-value';
+export { applyOrder } from './functions/apply-order';
+export { layoutStrategies, layoutRecipe } from './functions/layout';
 export {
 	screenReaderInstructions,
 	defaultGetItemLabel,
 	createListAnnouncements,
-} from './announcements';
-export { DragHandle, createDragHandleProps } from './drag-handle';
-export { SortableItem } from './sortable-item';
+} from './functions/announcements';
+export { DragHandle, createDragHandleProps } from './components/drag-handle';
+export { SortableItem } from './components/sortable-item';

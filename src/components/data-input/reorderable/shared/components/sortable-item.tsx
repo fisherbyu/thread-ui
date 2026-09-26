@@ -3,7 +3,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { cva } from '@/styled-system/css';
 import { DragHandle, createDragHandleProps } from './drag-handle';
-import type { ReorderableItem } from './reorderable.types';
+import type { ReorderableItem } from '../types/reorderable.types';
 import type { SortableItemProps } from './sortable-item.types';
 
 const itemRecipe = cva({

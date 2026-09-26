@@ -5,7 +5,7 @@ import {
 	verticalListSortingStrategy,
 	type SortingStrategy,
 } from '@dnd-kit/sortable';
-import type { ReorderableLayout } from './reorderable.types';
+import type { ReorderableLayout } from '../types/reorderable.types';
 
 // dnd-kit sorting strategy for each layout
 export const layoutStrategies: Record<ReorderableLayout, SortingStrategy> = {
