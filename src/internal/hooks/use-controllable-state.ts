@@ -1,6 +1,6 @@
 'use client';
 import { RefObject, useEffect, useRef, useState } from 'react';
-import { InputElement } from './input-props.types';
+import type { InputElement } from '@/components/data-input/shared/input-props.types';
 
 /** Props for `useControllableState`. */
 type UseControllableStateProps<T> = {
