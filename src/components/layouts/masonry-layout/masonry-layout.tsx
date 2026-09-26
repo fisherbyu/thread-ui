@@ -2,7 +2,7 @@ import { H3, Subtitle } from '@/components';
 import { MasonryLayoutProps } from './masonry-layout.types';
 import { css } from '@/styled-system/css';
 import { LayoutWrapper } from '../layout-wrapper';
-import { ContentHeader } from '@/internal-components';
+import { ContentHeader } from '@/internal';
 
 const styles = {
 	container: css({ width: 'full' }),

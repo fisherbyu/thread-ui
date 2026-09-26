@@ -3,7 +3,7 @@ import { ModalProps } from './modal.types';
 import { ModalProvider } from './modal-context';
 import { ModalContent } from './components/modal-content';
 import { cva } from '@/styled-system/css';
-import { ModalPrimitive } from '@/internal-components';
+import { ModalPrimitive } from '@/internal';
 
 const styles = {
 	overlay: cva({

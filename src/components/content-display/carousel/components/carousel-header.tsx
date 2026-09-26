@@ -3,7 +3,7 @@
 import { css } from '@/styled-system/css';
 import { useCarouselContext } from '../carousel-context';
 import { CarouselControls } from './carousel-controls';
-import { ContentHeader } from '@/internal-components';
+import { ContentHeader } from '@/internal';
 
 const styles = {
 	titleBlock: css({

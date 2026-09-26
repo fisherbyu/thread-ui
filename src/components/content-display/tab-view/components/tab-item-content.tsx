@@ -1,7 +1,7 @@
 'use client';
 import { css } from '@/styled-system/css';
 import { Card } from '@/components/ui';
-import { ConditionalWrapper } from '../../../../internal-components';
+import { ConditionalWrapper } from '../../../../internal';
 import { useTabViewContext } from '../tab-view-context';
 import { TabViewControls } from './tab-view-controls';
 import { H3 } from '@/components/typography';

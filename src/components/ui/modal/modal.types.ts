@@ -1,4 +1,4 @@
-import { ModalPrimitiveProps } from '@/internal-components/modal-primitive';
+import { ModalPrimitiveProps } from '@/internal/modal-primitive';
 import { Prettify, ScrimScaleOptions, UtilitySizeOptions } from '@/types';
 import { ReactNode } from 'react';
 

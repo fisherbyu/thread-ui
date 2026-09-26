@@ -10,7 +10,7 @@ import { Icon, IconButton } from '@/components/ui';
 import { css, cva, cx } from '@/styled-system/css';
 import { useDismiss } from '@/hooks';
 import { getUtilityIconSize } from '@/utils';
-import { OptionalIconButton } from '@/internal-components';
+import { OptionalIconButton } from '@/internal';
 
 export const styles = {
 	interior: css({

@@ -2,7 +2,7 @@ import { InfoCardProps } from './info-card.types';
 import { css } from '@/styled-system/css';
 import { cva } from '@/styled-system/css';
 import { Text } from '@/components/typography';
-import { DynamicIcon, Link, renderImage } from '@/internal-components';
+import { DynamicIcon, Link, renderImage } from '@/internal';
 import { SurfaceLayerMap } from '@/theme';
 
 const styles = {

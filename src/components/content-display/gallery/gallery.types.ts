@@ -2,7 +2,7 @@ import { ReactNode, ComponentType } from 'react';
 import { Prettify, UtilitySizeOptions } from '@/types';
 import { EmblaViewportRefType } from 'embla-carousel-react';
 import { EmblaCarouselType } from 'embla-carousel';
-import { ContentTitle } from '@/internal-components';
+import { ContentTitle } from '@/internal';
 
 export type GalleryItemId = number;
 
