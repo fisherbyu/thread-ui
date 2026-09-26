@@ -5,7 +5,7 @@ import type {
 	ReorderableItemComponent,
 } from './reorderable.types';
 
-/** Props for the internal `SortableItem` wrapper. */
+/** Props for internal `SortableItem` wrapper. */
 export type SortableItemProps<T extends ReorderableItem> = {
 	item: T;
 	/** Human-readable name used in the drag handle's `aria-label`. */

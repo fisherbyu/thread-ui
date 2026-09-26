@@ -13,7 +13,7 @@ export type ReorderableItem = { id: string | number };
 /** Keys of `T` whose values are numbers. */
 export type NumericKeys<T> = { [K in keyof T]: T[K] extends number ? K : never }[keyof T];
 
-/** Arrangement of items or groups; also selects the matching sorting strategy. */
+/** Layout and sorting arrangement of items or groups */
 export type ReorderableLayout = 'vertical' | 'horizontal' | 'grid';
 
 /** Props passed to a consumer-provided layout wrapper. */
