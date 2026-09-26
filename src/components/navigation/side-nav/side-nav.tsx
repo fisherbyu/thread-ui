@@ -5,7 +5,7 @@ import { SideNavProps } from './side-nav.types';
 
 const styles = {
 	navBar: css({
-		width: { base: '16px', lg: '175px' },
+		width: { base: '64px', lg: '175px' },
 		display: 'flex',
 		flexDirection: 'column',
 		gap: '16px',
@@ -16,6 +16,13 @@ const styles = {
 		width: { base: '100%', lg: '95%' },
 		marginX: 'auto',
 		flexDirection: 'column',
+	}),
+	controlsBlock: css({
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		gap: '8px',
+		marginTop: 'auto',
 	}),
 };
 
@@ -38,6 +45,7 @@ export const SideNav = ({ logo, links, controls, basePath = '' }: SideNavProps) 
 					<SideNavItem key={link.title} {...link} basePath={basePath} />
 				))}
 			</div>
+			{controls && <div className={styles.controlsBlock}>{controls}</div>}
 		</nav>
 	);
 };
