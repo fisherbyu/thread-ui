@@ -2,7 +2,7 @@
 import { Icon } from '@/components';
 import { InputWrapper } from '../shared/input-wrapper';
 import { useFieldError } from '../shared/use-field-error';
-import { useControllableState } from '../shared/use-controllable-state';
+import { useControllableState } from '@/internal';
 import { useInputId } from '../shared/use-input-id';
 import { NumberInputProps } from './number-input.types';
 import { inputIconSizes, inputSegmentStyles } from '../shared/styles';
