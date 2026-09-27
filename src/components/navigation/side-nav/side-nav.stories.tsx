@@ -1,4 +1,4 @@
-import { useEffect, type ComponentPropsWithRef, type MouseEvent } from 'react';
+import { useEffect, useState, type ComponentPropsWithRef, type MouseEvent } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ThreadProvider } from '../../../foundation';
 import { usePathname } from '../../../hooks';
@@ -32,6 +32,24 @@ const meta: Meta<typeof SideNav> = {
 	title: 'Navigation/SideNav',
 	component: SideNav,
 	tags: ['autodocs'],
+	argTypes: {
+		activeColor: {
+			control: 'select',
+			options: [
+				'primary',
+				'secondary',
+				'tertiary',
+				'black',
+				'gray',
+				'success',
+				'error',
+				'warning',
+				'info',
+				'text',
+				'neutral',
+			],
+		},
+	},
 	decorators: [
 		(Story, { args }) => {
 			// Start the iframe at the nav's base path, and restore Storybook's real URL on the way out
@@ -70,12 +88,12 @@ type Story = StoryObj<typeof SideNav>;
 export const Default: Story = {
 	args: {
 		basePath: '/dashboard',
+		activeColor: 'primary',
 		links: [
 			{ title: 'Home', path: '/', icon: 'House' },
 			{ title: 'Documents', path: '/documents', icon: 'File' },
 			{ title: 'Controls', path: '/controls', icon: 'Gear' },
 		],
-		controls: <IconButton name="SignOut" aria-label="Sign out" />,
 	},
 };
 
@@ -84,5 +102,35 @@ export const Expanded: Story = {
 	...Default,
 	globals: {
 		viewport: { value: 'desktop', isRotated: false },
+	},
+};
+
+/** `collapsed` forces the icon-only rail at any viewport width. */
+export const Collapsed: Story = {
+	...Expanded,
+	args: { ...Default.args, collapsed: true },
+};
+
+/** Controlled from app state, with a toggle passed in through `controls`. */
+export const Toggleable: Story = {
+	...Expanded,
+	render: (args) => {
+		const [collapsed, setCollapsed] = useState(false);
+		return (
+			<SideNav
+				{...args}
+				collapsed={collapsed}
+				controls={
+					<IconButton
+						name="SidebarSimple"
+						color="neutral"
+						text
+						ariaLabel={collapsed ? 'Expand navigation' : 'Collapse navigation'}
+						aria-expanded={!collapsed}
+						onClick={() => setCollapsed(!collapsed)}
+					/>
+				}
+			/>
+		);
 	},
 };

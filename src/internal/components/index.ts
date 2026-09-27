@@ -5,5 +5,6 @@ export * from './dynamic-icon';
 export * from './image';
 export * from './link';
 export * from './modal-primitive';
+export * from './nav-item';
 export * from './optional-icon-button';
 export * from './surface';

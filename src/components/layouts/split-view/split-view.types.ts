@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
-import { IconNames } from '@/components/ui';
-import { UtilityColorOptions } from '@/types';
+import { NavItemActiveColor, NavItemProps } from '@/internal';
 
 /** A column of the split view, in navigation order. */
 export type SplitViewColumn = 'sidebar' | 'list' | 'detail';
@@ -21,7 +20,7 @@ export type SplitViewMode = 'wide' | 'medium' | 'compact';
 export type SplitViewVariant = 'floating' | 'layered';
 
 /** Color of the active item marker. `neutral` uses the theme's `active` highlight */
-export type SplitViewActiveColor = UtilityColorOptions | 'neutral';
+export type SplitViewActiveColor = NavItemActiveColor;
 
 export type SplitViewProps = {
 	/** `SplitView.Sidebar`, optional `SplitView.List`, and `SplitView.Detail` as direct children */
@@ -63,18 +62,10 @@ export type SplitViewColumnProps = {
 	ariaLabel?: string;
 };
 
-export type SplitViewItemProps = {
-	/** Item contents */
-	children: ReactNode;
-	/** Shows the active marker @default `false` */
-	active?: boolean;
-	/** Leading icon, filled while active */
-	icon?: IconNames;
-	/** Renders the item as a link */
-	href?: string;
-	/** Click handler */
-	onClick?: () => void;
-};
+export type SplitViewItemProps = Pick<
+	NavItemProps,
+	'children' | 'active' | 'icon' | 'href' | 'onClick'
+>;
 
 export type SplitViewBackButtonProps = {
 	/** Button label @default the previous column's string `title`, otherwise `'Back'` */
