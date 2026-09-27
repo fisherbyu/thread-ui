@@ -63,7 +63,8 @@ const SectionEntries = ({
 			href={getHref?.(section)}
 			onClick={() => {
 				onSelect(section.id);
-				show('list');
+				// Without a list, the section's content is in the detail column
+				show(section.hideList ? 'detail' : 'list');
 			}}
 		>
 			{section.title}
@@ -108,6 +109,8 @@ const ItemEntries = <T extends SplitNavigatorItem>({
  * - Follows selection changes from outside (router, browser back) on phones
  * - Derives active markers, column titles, and back labels from the data
  * - Optional links via `getSectionHref` / `getItemHref`, a sidebar footer, and empty states
+ * - `hideList` sections skip the list, showing the selected item (or the first) in the detail
+ * - Optional pinned detail footer via `detailFooter`, e.g. for a save button
  *
  * @example
  * <SplitNavigator
@@ -115,6 +118,16 @@ const ItemEntries = <T extends SplitNavigatorItem>({
  *   items={messages}
  *   renderItem={(msg) => msg.subject}
  *   renderDetail={(msg) => <Message message={msg} />}
+ * />
+ *
+ * @example
+ * // One-item section with no list, e.g. a settings page with a pinned save button
+ * <SplitNavigator
+ *   sections={[{ id: 'settings', title: 'Settings', hideList: true }]}
+ *   items={[{ id: 'settings' }]}
+ *   renderItem={() => null}
+ *   renderDetail={() => <SettingsForm />}
+ *   detailFooter={() => <Button type="submit" form="settings">Save</Button>}
  * />
  */
 export const SplitNavigator = <T extends SplitNavigatorItem>({
@@ -136,6 +149,7 @@ export const SplitNavigator = <T extends SplitNavigatorItem>({
 	detailTitle,
 	listActions,
 	detailActions,
+	detailFooter,
 	emptyList = 'Nothing here yet',
 	emptyDetail = 'Select an item',
 	defaultColumn,
@@ -155,7 +169,9 @@ export const SplitNavigator = <T extends SplitNavigatorItem>({
 	});
 
 	const section = sections.find(({ id }) => id === sectionId);
-	const selected = items.find(({ id }) => id === itemId) ?? null;
+	// Hidden lists can't be clicked, so fall back to the first item rather than an empty detail
+	const selected =
+		items.find(({ id }) => id === itemId) ?? (section?.hideList ? (items[0] ?? null) : null);
 	const selectedTitle = selected && detailTitle?.(selected);
 
 	const selectSection = (id: string) => {
@@ -179,28 +195,31 @@ export const SplitNavigator = <T extends SplitNavigatorItem>({
 					getHref={getSectionHref}
 				/>
 			</SplitView.Sidebar>
-			<SplitView.List
-				title={section && (listTitle?.(section) ?? section.title)}
-				actions={section && listActions?.(section)}
-			>
-				{items.length ? (
-					<ItemEntries<T>
-						items={items}
-						selected={itemId}
-						onSelect={setItemId}
-						renderItem={renderItem}
-						getHref={
-							section && getItemHref && ((item: T) => getItemHref(item, section))
-						}
-					/>
-				) : (
-					<Empty>{emptyList}</Empty>
-				)}
-			</SplitView.List>
+			{!section?.hideList && (
+				<SplitView.List
+					title={section && (listTitle?.(section) ?? section.title)}
+					actions={section && listActions?.(section)}
+				>
+					{items.length ? (
+						<ItemEntries<T>
+							items={items}
+							selected={itemId}
+							onSelect={setItemId}
+							renderItem={renderItem}
+							getHref={
+								section && getItemHref && ((item: T) => getItemHref(item, section))
+							}
+						/>
+					) : (
+						<Empty>{emptyList}</Empty>
+					)}
+				</SplitView.List>
+			)}
 			<SplitView.Detail
 				title={selectedTitle}
 				ariaLabel={typeof selectedTitle === 'string' ? selectedTitle : 'Details'}
 				actions={selected && detailActions?.(selected)}
+				footer={selected && detailFooter?.(selected)}
 			>
 				{selected ? renderDetail(selected) : <Empty>{emptyDetail}</Empty>}
 			</SplitView.Detail>
