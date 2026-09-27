@@ -171,6 +171,7 @@ export const ReorderableList = <T extends ReorderableItem>({
 			secondaryContent={secondaryContent}
 		>
 			<DndContext
+				id={generatedId}
 				sensors={sensors}
 				collisionDetection={closestCenter}
 				onDragEnd={handleDragEnd}
