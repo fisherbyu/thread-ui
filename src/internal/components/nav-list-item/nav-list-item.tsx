@@ -2,7 +2,7 @@
 import { cva } from '@/styled-system/css';
 import { Icon } from '@/components/ui';
 import { Link } from '../link';
-import { NavItemProps } from './nav-item.types';
+import { NavItemProps } from './nav-list-item.types';
 
 const styles = {
 	item: cva({
