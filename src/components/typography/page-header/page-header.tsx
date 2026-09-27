@@ -24,7 +24,7 @@ const styles = {
 export const PageHeader = ({ title, description, center }: PageHeaderProps) => {
 	return (
 		<Container>
-			<Title align="center" inline>
+			<Title align="center" marginBottom={false}>
 				{title}
 			</Title>
 			{description && (

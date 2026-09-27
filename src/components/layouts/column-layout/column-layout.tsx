@@ -1,4 +1,4 @@
-import { ContentHeader, renderImage } from '@/internal-components';
+import { ContentHeader, renderImage } from '@/internal';
 import { ColumnSkeleton } from './column-skeleton';
 import { ColumnLayoutProps } from './column-layout.types';
 import { H2, H3, Text } from '@/components';

@@ -62,12 +62,17 @@ export const Subtitle = ({
 
 	const className = cx(
 		getTypographyStyles(resolved),
-		getPresentationStyles({ indent, align, truncate: truncate || undefined }),
+		getPresentationStyles({
+			indent,
+			align,
+			truncate: truncate || undefined,
+			display: 'block',
+		}),
 		getTextColorStyles(color)
 	);
 
 	return (
-		<span className={className} style={{ display: 'block', marginTop: '0.2em' }}>
+		<span className={className} style={{ marginTop: '0.2em' }}>
 			{children}
 		</span>
 	);

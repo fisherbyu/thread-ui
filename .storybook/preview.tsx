@@ -46,7 +46,7 @@ const preview: Preview = {
 					'Typography',
 					'Navigation',
 					'Layouts',
-					'Form Elements',
+					'Data Inputs',
 					'*',
 				],
 			},

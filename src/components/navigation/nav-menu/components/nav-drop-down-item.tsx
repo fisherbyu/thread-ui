@@ -104,7 +104,7 @@ export const NavDropdownItem = ({ title, items, icon }: NavigationDropdownItem) 
 		>
 			<NavLink href="#">
 				{icon && <Icon size={16} color="text" name={icon} />}
-				<Text size="sm" weight="medium" inline>
+				<Text size="sm" weight="medium" marginBottom={false}>
 					{title}
 				</Text>
 				<span className={styles.caretWrapper({ open: isOpen })}>

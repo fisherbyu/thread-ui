@@ -1,8 +1,8 @@
-import { ModalPrimitiveProps } from '@/internal-components/modal-primitive';
+import { ModalPrimitiveProps } from '@/internal';
 import { Prettify, ScrimScaleOptions, UtilitySizeOptions } from '@/types';
 import { ReactNode } from 'react';
 
-type ModalSizeOptions = UtilitySizeOptions & 'full';
+type ModalSizeOptions = UtilitySizeOptions | 'full';
 
 export type ModalProps = Prettify<
 	ModalPrimitiveProps & {

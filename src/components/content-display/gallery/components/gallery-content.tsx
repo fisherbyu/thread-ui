@@ -8,7 +8,7 @@ import {
 } from '../gallery-display-constants';
 import { GalleryItemsDisplay } from './item-display/gallery-items-display';
 import { ItemTrack } from './item-track/item-track';
-import { ContentHeader } from '@/internal-components';
+import { ContentHeader } from '@/internal';
 
 const styles = {
 	container: cva({

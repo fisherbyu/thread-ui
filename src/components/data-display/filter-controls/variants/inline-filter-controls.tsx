@@ -2,7 +2,7 @@
 import { css, cva } from '@/styled-system/css';
 import { InlineFilterControlsProps } from '../filter-controls.types';
 import { Button, ButtonProps, Text } from '@/components';
-import { OptionalIconButton } from '@/internal-components';
+import { OptionalIconButton } from '@/internal';
 
 const styles = {
 	container: cva({

@@ -1,4 +1,4 @@
-import { Link } from '@/internal-components';
+import { Link } from '@/internal';
 import { css, cva } from '@/styled-system/css';
 import { ReactNode } from 'react';
 

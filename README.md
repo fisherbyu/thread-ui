@@ -120,9 +120,9 @@ Component CSS is pre-generated using Panda CSS, so components render correctly s
 
 `NavMenu` `SideNav`
 
-### Form Elements
+### Data Input Components
 
-`Dropdown` `FileUpload` `FormLabel` `NumberInput` `TextInput`
+`Dropdown` `FileUpload` `FormLabel` `NumberInput` `ReorderableList` `TextInput`
 
 ### Layout Components
 

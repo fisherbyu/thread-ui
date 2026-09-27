@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { LayoutComponentProps } from './layout-component.types';
 import { Container } from './container';
-import { ConditionalWrapper } from '@/internal-components';
+import { ConditionalWrapper } from '@/internal';
 
 type LayoutWrapperProps = LayoutComponentProps & {
 	children: ReactNode;

@@ -9,7 +9,7 @@ import {
 	TwitterLogoIcon,
 } from '@phosphor-icons/react';
 import { css } from '@/styled-system/css';
-import { Link } from '@/internal-components';
+import { Link } from '@/internal';
 
 const styles = {
 	footerContents: css({

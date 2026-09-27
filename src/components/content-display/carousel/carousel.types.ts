@@ -3,7 +3,7 @@ import { Prettify } from '@/types';
 import { EmblaViewportRefType } from 'embla-carousel-react';
 import { EmblaCarouselType } from 'embla-carousel';
 import { LargeColumnOptions, MediumColumnOptions } from '@/components';
-import { ContentHeading } from '@/internal-components';
+import { ContentHeading } from '@/internal';
 
 export type CarouselControlsPosition = 'above' | 'around' | 'below' | 'none';
 

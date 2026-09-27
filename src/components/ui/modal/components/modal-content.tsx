@@ -92,9 +92,9 @@ export const ModalContent = () => {
 
 	const TitleContent = title ? (
 		size === 'sm' ? (
-			<H3 inline>{title}</H3>
+			<H3 marginBottom={false}>{title}</H3>
 		) : (
-			<H2 inline>{title}</H2>
+			<H2 marginBottom={false}>{title}</H2>
 		)
 	) : null;
 
