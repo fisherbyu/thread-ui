@@ -3,11 +3,11 @@ import { IconNames } from '@/components/ui';
 import { UtilityColorOptions } from '@/types';
 
 /** Fill of the active item. `neutral` uses the theme's `active` highlight */
-export type NavItemActiveColor = UtilityColorOptions | 'neutral';
+export type NavListItemActiveColor = UtilityColorOptions | 'neutral';
 
-export type NavItemCollapse = 'never' | 'responsive' | 'always';
+export type NavListItemCollapse = 'never' | 'responsive' | 'always';
 
-export type NavItemProps = {
+export type NavListItemProps = {
 	/** Item label */
 	children: ReactNode;
 	/** Shows the active fill @default `false` */
@@ -19,9 +19,9 @@ export type NavItemProps = {
 	/** Click handler */
 	onClick?: () => void;
 	/** Active fill color @default `'primary'` */
-	activeColor?: NavItemActiveColor;
+	activeColor?: NavListItemActiveColor;
 	/** `pill` for navigation, `row` for list selections @default `'pill'` */
 	shape?: 'pill' | 'row';
 	/** When to collapse to an icon-only circle; `responsive` collapses below `lg` @default `'never'` */
-	collapse?: NavItemCollapse;
+	collapse?: NavListItemCollapse;
 };

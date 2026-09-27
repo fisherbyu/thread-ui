@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { NavItemActiveColor, NavItemProps } from '@/internal';
+import { NavListItemActiveColor, NavListItemProps } from '@/internal';
 
 /** A column of the split view, in navigation order. */
 export type SplitViewColumn = 'sidebar' | 'list' | 'detail';
@@ -20,7 +20,7 @@ export type SplitViewMode = 'wide' | 'medium' | 'compact';
 export type SplitViewVariant = 'floating' | 'layered';
 
 /** Color of the active item marker. `neutral` uses the theme's `active` highlight */
-export type SplitViewActiveColor = NavItemActiveColor;
+export type SplitViewActiveColor = NavListItemActiveColor;
 
 export type SplitViewProps = {
 	/** `SplitView.Sidebar`, optional `SplitView.List`, and `SplitView.Detail` as direct children */
@@ -63,7 +63,7 @@ export type SplitViewColumnProps = {
 };
 
 export type SplitViewItemProps = Pick<
-	NavItemProps,
+	NavListItemProps,
 	'children' | 'active' | 'icon' | 'href' | 'onClick'
 >;
 

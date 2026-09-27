@@ -2,7 +2,7 @@
 import { cva } from '@/styled-system/css';
 import { Icon } from '@/components/ui';
 import { Link } from '../link';
-import { NavItemProps } from './nav-list-item.types';
+import { NavListItemProps } from './nav-list-item.types';
 
 const styles = {
 	item: cva({
@@ -105,7 +105,7 @@ export const NavItem = ({
 	activeColor = 'primary',
 	shape = 'pill',
 	collapse = 'never',
-}: NavItemProps) => {
+}: NavListItemProps) => {
 	const className = styles.item({ shape, activeColor, collapse });
 	const content = (
 		<>
