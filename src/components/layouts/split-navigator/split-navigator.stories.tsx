@@ -91,6 +91,44 @@ const UncontrolledMail = (args: StoryArgs) => {
 	);
 };
 
+/** Adds a Settings section with `hideList`: one item, shown in the detail with a pinned footer. */
+const HiddenListMail = (args: StoryArgs) => {
+	const [section, setSection] = useState('settings');
+	const settings: Message = { id: 999, from: 'Me', subject: 'Settings', body: '' };
+
+	return (
+		<Frame>
+			<SplitNavigator
+				{...mailProps}
+				{...args}
+				sections={[
+					...sections,
+					{ id: 'settings', title: 'Settings', icon: 'Gear', hideList: true },
+				]}
+				items={section === 'settings' ? [settings] : mailbox[section]}
+				defaultSection="settings"
+				onSectionChange={setSection}
+				renderDetail={(msg) =>
+					msg.id === settings.id ? (
+						<div style={{ padding: '0 16px 16px' }}>
+							{Array.from({ length: 40 }, (_, i) => (
+								<p key={i} style={{ marginBottom: '12px' }}>
+									Setting {i + 1}
+								</p>
+							))}
+						</div>
+					) : (
+						mailProps.renderDetail(msg)
+					)
+				}
+				detailFooter={(msg) =>
+					msg.id === settings.id && <Button size="sm">Save settings</Button>
+				}
+			/>
+		</Frame>
+	);
+};
+
 const ControlledMail = (args: StoryArgs) => {
 	const [section, setSection] = useState('inbox');
 	const [item, setItem] = useState<number | null>(3);
@@ -239,6 +277,11 @@ export const Routed: Story = {
 		},
 	],
 	render: (args) => <RoutedMail {...args} />,
+};
+
+/** Opens on Settings, which uses `hideList`: its one item fills the detail, with a pinned footer. Other sections keep their lists. */
+export const HiddenList: Story = {
+	render: (args) => <HiddenListMail {...args} />,
 };
 
 /** Compact width: selecting pushes columns; the back buttons pop them. */
