@@ -256,6 +256,7 @@ export const ReorderableGroups = <G extends ReorderableGroup>({
 			secondaryContent={secondaryContent}
 		>
 			<DndContext
+				id={generatedId}
 				sensors={sensors}
 				collisionDetection={collisionDetection}
 				onDragStart={onDragStart}
