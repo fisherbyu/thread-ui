@@ -7,6 +7,8 @@ export type SplitNavigatorSection = {
 	id: string;
 	title: string;
 	icon?: IconNames;
+	/** Don't render the list; the detail shows the selected item, or the first when none is selected @default `false` */
+	hideList?: boolean;
 };
 
 /** Minimum shape of a list item. */
@@ -52,6 +54,8 @@ export type SplitNavigatorProps<T extends SplitNavigatorItem> = Omit<SplitViewPr
 	listActions?: (section: SplitNavigatorSection) => ReactNode;
 	/** Trailing detail header content for the selected item */
 	detailActions?: (item: T) => ReactNode;
+	/** Content pinned to the bottom of the detail column for the selected item, e.g. a save button */
+	detailFooter?: (item: T) => ReactNode;
 	/** Shown in the list when the section has no items @default `'Nothing here yet'` */
 	emptyList?: ReactNode;
 	/** Shown in the detail when no item is selected @default `'Select an item'` */
