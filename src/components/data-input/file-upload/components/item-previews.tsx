@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 import { FileUploadItem } from '../file-upload.types';
 import { formatBytes, isImageItem, isRemoteFile } from '../file-upload.utils';
 import { useObjectUrl } from '../use-object-url';
+import { Surface } from '@/internal';
 
 const styles = {
 	image: css({
@@ -29,7 +30,6 @@ const styles = {
 		justifyContent: 'space-between',
 		gap: '3',
 		borderRadius: 'md',
-		backgroundColor: 'gray.light',
 		paddingY: '2',
 		paddingX: '5',
 		'& > :last-child': { flexShrink: '0' },
@@ -116,7 +116,7 @@ export const FilePreview = ({ item, actions }: FilePreviewProps) => {
 	const size = isRemote ? item.size : item.size;
 
 	return (
-		<div className={styles.container}>
+		<Surface className={styles.container} surfaceConfig={{ layer: 'inset' }}>
 			<div className={styles.innerWrapper}>
 				{thumbnail ? (
 					<img src={thumbnail} alt={item.alt ?? ''} className={styles.thumbnail} />
@@ -135,6 +135,6 @@ export const FilePreview = ({ item, actions }: FilePreviewProps) => {
 				</div>
 			</div>
 			{actions}
-		</div>
+		</Surface>
 	);
 };
