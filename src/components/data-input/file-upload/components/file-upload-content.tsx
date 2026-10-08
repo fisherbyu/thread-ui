@@ -13,13 +13,6 @@ const styles = {
 			// Content never sets the width, so long names truncate instead of widening the component
 			contain: 'inline-size',
 		},
-		variants: {
-			size: {
-				sm: { minWidth: 'xs' }, // 20rem
-				md: { minWidth: 'sm' }, // 24rem
-				lg: { minWidth: 'md' }, // 28rem
-			},
-		},
 		defaultVariants: {
 			size: 'md',
 		},
