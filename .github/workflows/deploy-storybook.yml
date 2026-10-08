@@ -73,4 +73,4 @@ jobs:
               env:
                   TUNNEL_SERVICE_TOKEN_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
                   TUNNEL_SERVICE_TOKEN_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
-              run: ssh deploy 'cd /srv/thread-ui-docs/ && docker compose pull && docker compose up -d'
+              run: ssh deploy 'cd /srv/a-fisher-data-center && make pull up S=thread-docs'
