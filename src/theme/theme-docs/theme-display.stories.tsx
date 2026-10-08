@@ -262,7 +262,7 @@ export const Theme: Story = {
 							on a named layer that determines its background, shadow, border, and
 							stacking order. The theme palette includes primary, secondary, and
 							tertiary brand colors, as well as definitions for interactions, text,
-							and neutrals.
+							and neutral colors.
 							<br /> <br />
 							Each element of this theme can be configured and customized by consumers
 							of the library.
