@@ -50,15 +50,27 @@ export const ModalPrimitive = ({
 		// Focus the first focusable descendant after the portal has mounted
 		const raf = requestAnimationFrame(() => {
 			const first = primitiveRef.current?.querySelector<HTMLElement>(FOCUSABLE_SELECTOR);
-			first?.focus();
+			first?.focus({ preventScroll: true });
 		});
 
 		return () => {
 			cancelAnimationFrame(raf);
 			// Restore focus to the trigger when the modal closes
-			triggerRef.current?.focus();
+			triggerRef.current?.focus({ preventScroll: true });
 		};
 	}, [isOpen, autoFocus, primitiveRef]);
+
+	useEffect(() => {
+		if (!isOpen) return;
+
+		const scrollY = window.scrollY;
+		const href = window.location.href;
+
+		return () => {
+			// Return page to original position, unless the modal closed by navigating
+			if (window.location.href === href) window.scrollTo({ top: scrollY });
+		};
+	}, [isOpen]);
 
 	if (isOpen) {
 		const target = portalTarget ?? document.body;
