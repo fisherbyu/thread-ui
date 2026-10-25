@@ -1,3 +1,5 @@
+'use client';
+import { useState } from 'react';
 import { css, cva } from '@/styled-system/css';
 import { MediaOverlayProps } from './media-overlay.types';
 import type { ThreadCssName } from '@/theme/css-name-configurations/theme-css-names';
@@ -6,36 +8,37 @@ const MAX_HEIGHT_CSS_NAME: ThreadCssName = '--thread-media-overlay-max-height';
 const MAX_WIDTH_CSS_NAME: ThreadCssName = '--thread-media-overlay-max-width';
 
 const styles = {
-	root: cva({
-		base: {
-			position: 'relative',
-			overflow: 'hidden',
-			borderRadius: 'inherit',
-			_hover: {
-				'& [data-overlay]': {
-					opacity: 1,
-				},
+	frame: css({
+		width: '100%',
+		height: '100%',
+		containerType: 'size',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderRadius: 'inherit',
+	}),
+	root: css({
+		position: 'relative',
+		overflow: 'hidden',
+		borderRadius: 'inherit',
+		'& > :first-child': {
+			display: 'block',
+			width: '100%',
+			height: '100%',
+		},
+		'&:focus-within [data-overlay]': {
+			opacity: 1,
+		},
+		// Touch screens keep :hover after a tap, toggle on tap instead
+		'@media (hover: hover)': {
+			'&:hover [data-overlay]': {
+				opacity: 1,
 			},
 		},
-		variants: {
-			fit: {
-				contain: {
-					'& > :first-child': {
-						display: 'block',
-						width: '100%',
-						height: '100%',
-					},
-				},
-				fill: {
-					display: 'inline-flex',
-					height: '100%',
-					maxWidth: '100%',
-					maxHeight: '100%',
-				},
+		'@media (hover: none)': {
+			'&[data-revealed] [data-overlay]': {
+				opacity: 1,
 			},
-		},
-		defaultVariants: {
-			fit: 'contain',
 		},
 	}),
 	overlay: cva({
@@ -76,6 +79,7 @@ const styles = {
 
 /**
  * Renders an overlay layer on top of arbitrary media, with a configurable scrim, placement, and size caps.
+ * The media fills the overlay's box; with `aspectRatio`, the box is fitted inside the parent at that ratio.
  *
  * @example
  * <MediaOverlay
@@ -92,12 +96,23 @@ export const MediaOverlay = ({
 	overlay,
 	scrimLevel = 'medium',
 	placement,
-	fit = 'contain',
 	maxHeight,
 	maxWidth,
+	aspectRatio,
 }: MediaOverlayProps) => {
-	return (
-		<div className={styles.root({ fit })}>
+	const [revealed, setRevealed] = useState(false);
+
+	const content = (
+		<div
+			className={styles.root}
+			style={
+				aspectRatio
+					? { aspectRatio, width: `min(100cqw, calc(100cqh * ${aspectRatio}))` }
+					: undefined
+			}
+			data-revealed={revealed || undefined}
+			onClick={() => setRevealed((open) => !open)}
+		>
 			{children}
 			<div
 				data-overlay
@@ -113,4 +128,6 @@ export const MediaOverlay = ({
 			</div>
 		</div>
 	);
+
+	return aspectRatio ? <div className={styles.frame}>{content}</div> : content;
 };

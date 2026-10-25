@@ -16,6 +16,6 @@ export type MediaOverlayProps = {
 	maxHeight?: string;
 	/** Caps overlay width. Any CSS length. @default `100%` */
 	maxWidth?: string;
-	/** Media sizing mode. @default `contain` */
-	fit?: 'contain' | 'fill';
+	/** Media width / height. Fits the media and overlay to the largest box of this ratio inside the parent, which needs a definite size */
+	aspectRatio?: number;
 };
